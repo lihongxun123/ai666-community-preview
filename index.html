@@ -10,11 +10,11 @@
 <body>
   <div class="page">
     <div class="page-bg"><img src="assets/image_assets/17.png" alt=""></div>
-    <div class="top-campaign"><span>活动剩余</span><span class="timer">20时 42分 39秒</span><span>618 API 模型体验季返场，文本模型试用包限量开放</span><span>限时抢购</span></div>
-    <a class="floating-deal" href="#"><strong>7折</strong><span>限时折扣</span></a>
+    <input class="top-campaign-toggle" type="checkbox" id="top-campaign-dismiss-index" aria-label="关闭顶部广告">
+    <div class="top-campaign"><span>活动剩余</span><span class="timer">20时 42分 39秒</span><span>618 API 模型体验季返场，文本模型试用包限量开放</span><span>限时抢购</span><label class="top-campaign-close" for="top-campaign-dismiss-index" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
     <header class="site-header">
       <div class="header-inner wide-container">
-        <a class="logo" href="#" aria-label="多元拾光">
+        <a class="logo" href="./index.html" aria-label="多元拾光">
           <img class="brand-mark" src="assets/brand/duoyuan-shiguang-logo-mark-reverse.svg" alt="">
           <span class="brand-copy">
             <span class="brand-name">多元拾光</span>
@@ -22,7 +22,7 @@
           </span>
         </a>
         <nav class="nav" aria-label="主导航">
-          <a class="is-active" href="#">首页</a>
+          <a class="is-active" href="./index.html">首页</a>
           <a href="./aigc.html">AIGC</a>
           <a href="./model-plaza.html">模型广场</a>
           <a href="./flash.html">闪念</a>
@@ -53,14 +53,14 @@
           <em>今日再赚 260 积分</em>
         </div>
         <div class="task-grid">
-          <a class="task-item" href="#"><strong>签到登录</strong><span>+20</span></a>
-          <a class="task-item" href="#"><strong>发布闪念</strong><span>+30</span></a>
-          <a class="task-item" href="#"><strong>发模型经验</strong><span>+60</span></a>
-          <a class="task-item" href="#"><strong>发布案例</strong><span>+80</span></a>
+          <a class="task-item" href="./user-growth.html#profile-panel"><strong>签到登录</strong><span>+20</span></a>
+          <a class="task-item" href="./flash.html#compose-flash"><strong>发布闪念</strong><span>+30</span></a>
+          <a class="task-item" href="./model-plaza.html#model-list"><strong>发模型经验</strong><span>+60</span></a>
+          <a class="task-item" href="./aigc.html#aigc-create-panel"><strong>发布案例</strong><span>+80</span></a>
         </div>
         <div class="modal-actions">
           <a class="button" href="./user-growth.html#points-center">进入积分任务中心</a>
-          <a class="button secondary" href="#">充值加速</a>
+          <a class="button secondary" href="./user-growth.html#member-panel">充值加速</a>
         </div>
       </div>
     </section>
@@ -91,7 +91,7 @@
           <div class="experience-toolbar">
             <div class="select-pill"><span>大模型</span><strong>gemini-3-flash-preview</strong></div>
             <div class="select-pill"><span>消耗</span><strong>12 积分</strong></div>
-            <a class="button" href="#">开始创作</a>
+            <a class="button" href="./aigc.html#aigc-create-panel">开始创作</a>
           </div>
         </div>
       </div>
@@ -102,18 +102,18 @@
         <div class="container wide-container">
           <section class="hero-carousel" aria-label="运营轮播">
             <div class="carousel-track">
-              <a class="carousel-slide carousel-slide-primary has-video" href="#">
+              <a class="carousel-slide carousel-slide-primary has-video" href="./aigc.html#aigc-create-panel">
                 <video class="carousel-video" src="assets/video_assets/sd2_gen.mp4" poster="assets/image_assets/17.png" autoplay muted loop playsinline aria-hidden="true"></video>
                 <span class="slide-kicker">广告片生成</span>
                 <strong>1句话 = 1支广告</strong>
                 <em>电影级质感即刻生成</em>
               </a>
-              <a class="carousel-slide carousel-slide-manga" href="#">
+              <a class="carousel-slide carousel-slide-manga" href="./campaign-detail.html">
                 <span class="slide-kicker">赛事公布</span>
                 <strong>漫剧挑战赛</strong>
                 <em>5万奖池 获奖作品公布</em>
               </a>
-              <a class="carousel-slide carousel-slide-tools has-video" href="#">
+              <a class="carousel-slide carousel-slide-tools has-video" href="./user-growth.html#member-panel">
                 <video class="carousel-video" src="assets/video_assets/effects_template.mp4" poster="assets/image_assets/3.png" muted loop playsinline aria-hidden="true"></video>
                 <span class="slide-kicker">限时优惠</span>
                 <strong>Seedance 2.0 官方35折</strong>
@@ -140,22 +140,22 @@
               <span class="ad-thumb"><img src="assets/image_assets/2.png" alt=""></span>
               <span class="ad-copy"><strong>模型体验季</strong><em>文本、图像、视频模型精选入口</em></span>
             </a>
-            <a class="ad-card ad-card-tools" href="#">
+            <a class="ad-card ad-card-tools" href="./aigc-templates.html">
               <span class="ad-icon"><img src="resources/icons/remixicon/svg/Design/tools-line.svg" alt=""></span>
               <span class="ad-copy"><strong>AI工具合集</strong><em>剧本分镜、AI视频、AI生图等</em></span>
             </a>
           </div>
 
-          <div class="case-section-head">
+          <div id="case-gallery" class="case-section-head">
             <h2>爆款作品</h2>
           </div>
 
           <div class="filter-row">
-            <a class="filter-chip is-active" href="#">全部</a>
-            <a class="filter-chip" href="#">短剧漫剧</a>
-            <a class="filter-chip" href="#">文本模型</a>
-            <a class="filter-chip" href="#">图片生成</a>
-            <a class="filter-chip" href="#">视频生成</a>
+            <a class="filter-chip is-active" href="#case-gallery">全部</a>
+            <a class="filter-chip" href="./aigc.html#template-market">短剧漫剧</a>
+            <a class="filter-chip" href="./model-plaza.html#model-list">文本模型</a>
+            <a class="filter-chip" href="./aigc.html#aigc-create-panel">图片生成</a>
+            <a class="filter-chip" href="./aigc.html#aigc-create-panel">视频生成</a>
           </div>
 
           <div class="masonry">

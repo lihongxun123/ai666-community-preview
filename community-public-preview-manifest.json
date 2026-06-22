@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-22T10:31:21.444Z",
+  "generatedAt": "2026-06-22T11:56:44.149Z",
   "packageType": "community-public-preview",
   "sourceRoot": "outputs/community-homepage-style-exploration",
   "entry": "index.html",
@@ -92,6 +92,7 @@
     "resources/icons/remixicon/svg/Media/play-circle-line.svg",
     "resources/icons/remixicon/svg/Media/play-fill.svg",
     "resources/icons/remixicon/svg/System/add-line.svg",
+    "resources/icons/remixicon/svg/System/close-line.svg",
     "resources/icons/remixicon/svg/System/search-line.svg",
     "resources/icons/remixicon/svg/System/share-forward-line.svg",
     "resources/icons/remixicon/svg/Weather/fire-line.svg"

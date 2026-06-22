@@ -1,0 +1,99 @@
+{
+  "generatedAt": "2026-06-22T10:31:21.444Z",
+  "packageType": "community-public-preview",
+  "sourceRoot": "outputs/community-homepage-style-exploration",
+  "entry": "index.html",
+  "homepage": "index.html",
+  "publishBasePath": "/ai666-community-preview",
+  "pageCount": 9,
+  "pages": [
+    {
+      "slug": "index",
+      "label": "社区首页",
+      "path": "index.html"
+    },
+    {
+      "slug": "aigc",
+      "label": "AIGC",
+      "path": "aigc.html"
+    },
+    {
+      "slug": "aigc-templates",
+      "label": "AIGC 模板库",
+      "path": "aigc-templates.html"
+    },
+    {
+      "slug": "model-plaza",
+      "label": "模型广场",
+      "path": "model-plaza.html"
+    },
+    {
+      "slug": "flash",
+      "label": "闪念",
+      "path": "flash.html"
+    },
+    {
+      "slug": "tutorial",
+      "label": "官方教程",
+      "path": "tutorial.html"
+    },
+    {
+      "slug": "campaign-ops",
+      "label": "活动运营位",
+      "path": "campaign-ops.html"
+    },
+    {
+      "slug": "campaign-detail",
+      "label": "活动详情",
+      "path": "campaign-detail.html"
+    },
+    {
+      "slug": "user-growth",
+      "label": "用户成长轻中心",
+      "path": "user-growth.html"
+    }
+  ],
+  "copiedRuntimeRoots": [
+    "assets/brand",
+    "assets/image_assets",
+    "assets/video_assets",
+    "resources/icons/remixicon/svg"
+  ],
+  "copiedAssets": [
+    "assets/image_assets/11.png",
+    "assets/image_assets/12.png",
+    "assets/image_assets/15.jpg",
+    "assets/image_assets/17.png",
+    "assets/image_assets/18.png",
+    "assets/image_assets/2.png",
+    "assets/image_assets/3.png",
+    "assets/image_assets/4.png",
+    "assets/video_assets/28_landing.mov",
+    "assets/video_assets/effects_template.mp4",
+    "assets/video_assets/sd2_gen.mp4"
+  ],
+  "copiedResources": [
+    "resources/icons/remixicon/svg/Arrows/arrow-up-line.svg",
+    "resources/icons/remixicon/svg/Business/send-plane-line.svg",
+    "resources/icons/remixicon/svg/Communication/chat-3-line.svg",
+    "resources/icons/remixicon/svg/Design/magic-line.svg",
+    "resources/icons/remixicon/svg/Design/tools-line.svg",
+    "resources/icons/remixicon/svg/Editor/bold.svg",
+    "resources/icons/remixicon/svg/Editor/double-quotes-l.svg",
+    "resources/icons/remixicon/svg/Editor/draggable.svg",
+    "resources/icons/remixicon/svg/Editor/h-2.svg",
+    "resources/icons/remixicon/svg/Editor/italic.svg",
+    "resources/icons/remixicon/svg/Editor/list-ordered.svg",
+    "resources/icons/remixicon/svg/Editor/list-unordered.svg",
+    "resources/icons/remixicon/svg/Health & Medical/heart-line.svg",
+    "resources/icons/remixicon/svg/Media/image-add-line.svg",
+    "resources/icons/remixicon/svg/Media/movie-2-ai-line.svg",
+    "resources/icons/remixicon/svg/Media/movie-ai-line.svg",
+    "resources/icons/remixicon/svg/Media/play-circle-line.svg",
+    "resources/icons/remixicon/svg/Media/play-fill.svg",
+    "resources/icons/remixicon/svg/System/add-line.svg",
+    "resources/icons/remixicon/svg/System/search-line.svg",
+    "resources/icons/remixicon/svg/System/share-forward-line.svg",
+    "resources/icons/remixicon/svg/Weather/fire-line.svg"
+  ]
+}

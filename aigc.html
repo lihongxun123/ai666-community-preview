@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>多元拾光 AIGC</title>
+  <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="page aigc-page" data-page="community-aigc">
+    <div class="page-bg"><img src="assets/image_assets/17.png" alt=""></div>
+    <div class="top-campaign"><span>活动剩余</span><span class="timer">20时 42分 39秒</span><span>AIGC 创作挑战开放中，完成体验可领积分和模板权益</span><span>立即体验</span></div>
+    <header class="site-header">
+      <div class="header-inner wide-container">
+        <a class="logo" href="./index.html" aria-label="多元拾光">
+          <img class="brand-mark" src="assets/brand/duoyuan-shiguang-logo-mark-reverse.svg" alt="">
+          <span class="brand-copy">
+            <span class="brand-name">多元拾光</span>
+            <span class="brand-sub">AI原生实践者社区</span>
+          </span>
+        </a>
+        <nav class="nav" aria-label="主导航">
+          <a href="./index.html">首页</a>
+          <a class="is-active" href="./aigc.html">AIGC</a>
+          <a href="./model-plaza.html">模型广场</a>
+          <a href="./flash.html">闪念</a>
+          <a href="./tutorial.html">官方教程</a>
+        </nav>
+        <div class="header-actions">
+          <a class="action-link" href="./user-growth.html#invite-panel">邀请有礼</a>
+          <a class="action-link" href="./user-growth.html#member-panel">会员超市</a>
+          <a class="action-link points-link" href="./user-growth.html#points-center">积分 1280</a>
+          <a class="button" href="./user-growth.html#profile-panel">登录/注册</a>
+        </div>
+      </div>
+    </header>
+
+    <section id="points-center" class="points-modal" aria-label="积分任务中心">
+      <a class="modal-backdrop" href="#" aria-label="关闭积分任务中心"></a>
+      <div class="points-dialog points-panel">
+        <div class="panel-head">
+          <div>
+            <span class="eyebrow dark">积分中心</span>
+            <h2>用任务换免费体验</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <div class="credit-card">
+          <span>积分任务</span>
+          <strong>去领取</strong>
+          <em>AIGC 体验、作品案例和邀请好友均可进入任务中心</em>
+        </div>
+        <div class="task-grid">
+          <a class="task-item" href="#"><strong>完成一次 AIGC 体验</strong><span>+10</span></a>
+          <a class="task-item" href="#"><strong>发布作品案例</strong><span>+80</span></a>
+          <a class="task-item" href="#"><strong>发布闪念</strong><span>+30</span></a>
+          <a class="task-item" href="#"><strong>邀请好友体验</strong><span>+120</span></a>
+        </div>
+        <div class="modal-actions">
+          <a class="button" href="#aigc-create-panel">继续创作</a>
+          <a class="button secondary" href="./user-growth.html#points-center">进入积分任务中心</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="quick-create" class="create-modal" aria-label="AIGC 轻创作">
+      <a class="modal-backdrop" href="#" aria-label="关闭 AIGC 轻创作"></a>
+      <div class="create-dialog aigc-experience">
+        <div class="create-dialog-head">
+          <div>
+            <span class="eyebrow dark">AIGC 轻创作</span>
+            <h2>从模板开始一次创作</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <div class="experience-tabs">
+          <button class="experience-tab is-active" type="button">剧本创作</button>
+          <button class="experience-tab" type="button">图片生成</button>
+          <button class="experience-tab" type="button">视频生成</button>
+        </div>
+        <div class="experience-canvas">
+          <div class="create-input">输入角色、场景或镜头想法。</div>
+          <div class="create-presets">
+            <span>短剧漫剧开场</span>
+            <span>角色设定</span>
+            <span>活动海报</span>
+            <span>图生视频</span>
+          </div>
+          <div class="experience-toolbar">
+            <div class="select-pill"><span>模型</span><strong>文本模型包</strong></div>
+            <div class="select-pill"><span>消耗</span><strong>12 积分起</strong></div>
+            <a class="button" href="#aigc-create-panel">发布 · 消耗 12 积分</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main>
+      <section class="aigc-hero-section">
+        <video class="aigc-hero-video" autoplay muted loop playsinline poster="assets/image_assets/17.png">
+          <source src="assets/video_assets/28_landing.mov" type="video/quicktime">
+          <source src="assets/video_assets/sd2_gen.mp4" type="video/mp4">
+        </video>
+        <div class="aigc-hero-overlay"></div>
+        <div class="wide-container aigc-hero-grid">
+          <div class="aigc-hero-copy">
+            <h1>有什么新的创作灵感？</h1>
+          </div>
+
+          <section id="aigc-create-panel" class="aigc-create-panel aigc-hero-composer" aria-label="AIGC 创作输入">
+            <div class="aigc-mode-tabs" role="tablist" aria-label="创作类型">
+              <button class="is-active" type="button">剧本创作</button>
+              <button type="button">图片生成</button>
+              <button type="button">视频生成</button>
+              <button type="button">漫剧制作</button>
+            </div>
+            <div class="aigc-prompt-box">
+              <textarea rows="2" placeholder="输入一句想法，开始剧本、图片、视频或漫剧创作"></textarea>
+              <a class="aigc-hero-submit" href="#quick-create" aria-label="开始创作">↑</a>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="section aigc-feature-section">
+        <div class="wide-container">
+          <div class="case-section-head">
+            <h2>特色功能</h2>
+          </div>
+          <div class="aigc-feature-grid">
+            <a class="aigc-feature-card is-primary" href="#canvas-studio">
+              <span class="aigc-icon"><img src="resources/icons/remixicon/svg/Media/movie-2-ai-line.svg" alt=""></span>
+              <strong>漫剧制作</strong>
+              <em>无限画布，释放你的想象力</em>
+            </a>
+            <a class="aigc-feature-card" href="#aigc-create-panel">
+              <span class="aigc-icon"><img src="resources/icons/remixicon/svg/Design/magic-line.svg" alt=""></span>
+              <strong>一句话生成</strong>
+              <em>输入一句想法，生成脚本、画面和分镜</em>
+            </a>
+            <a class="aigc-feature-card" href="#template-market">
+              <span class="aigc-icon"><img src="resources/icons/remixicon/svg/Media/image-add-line.svg" alt=""></span>
+              <strong>图片生成</strong>
+              <em>人物、场景、封面、海报快速出图</em>
+            </a>
+            <a class="aigc-feature-card" href="#template-market">
+              <span class="aigc-icon"><img src="resources/icons/remixicon/svg/Media/movie-ai-line.svg" alt=""></span>
+              <strong>视频生成</strong>
+              <em>图生视频、短片预览、动态镜头</em>
+            </a>
+            <a class="aigc-feature-card" href="#template-market">
+              <span class="aigc-icon"><img src="resources/icons/remixicon/svg/Design/tools-line.svg" alt=""></span>
+              <strong>AI 工具合集</strong>
+              <em>分镜、提示词、脚本、封面工具</em>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="canvas-studio" class="section canvas-section">
+        <div class="wide-container">
+          <div class="canvas-studio">
+            <div class="canvas-copy">
+              <span class="eyebrow dark">无限画布</span>
+              <h2>无限画布，直接编排分镜</h2>
+              <div class="hero-actions">
+                <a class="button" href="#aigc-create-panel">打开画布</a>
+                <a class="button secondary" href="#template-market">从模板开始</a>
+              </div>
+            </div>
+            <div class="canvas-board" aria-label="无限画布预览">
+              <div class="canvas-node node-role"><strong>角色设定</strong><span>新人设计师 / 竞争者 / 客户</span></div>
+              <div class="canvas-node node-scene"><strong>场景库</strong><span>会议室 / 画室 / 发布现场</span></div>
+              <div class="canvas-node node-shot"><strong>分镜脚本</strong><span>01 强冲突 / 05 反证 / 09 反转</span></div>
+              <div class="canvas-node node-prompt"><strong>Prompt</strong><span>国漫悬疑、侧光、强对比</span></div>
+              <div class="canvas-node node-cover"><strong>封面候选</strong><span>3 张图像方向</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="template-market" class="section">
+        <div class="wide-container">
+          <div class="case-section-head section-head-with-link">
+            <h2>热门模板</h2>
+            <a class="section-link" href="./aigc-templates.html">查看全部</a>
+          </div>
+          <div class="aigc-template-grid">
+            <article class="aigc-template-card" style="--template-image:url('assets/image_assets/11.png')"><div class="copy"><h3>短剧漫剧开场</h3><p>适合强冲突开头和 9 格分镜</p><span>16 积分起</span><a href="#quick-create">一键同款</a></div></article>
+            <article class="aigc-template-card" style="--template-image:url('assets/image_assets/15.jpg')"><div class="copy"><h3>国风角色设定</h3><p>角色卡、服饰、表情和封面提示词</p><span>12 积分起</span><a href="#quick-create">一键同款</a></div></article>
+            <article class="aigc-template-card" style="--template-image:url('assets/image_assets/18.png')"><div class="copy"><h3>商品广告片</h3><p>卖点脚本、海报和短片分镜</p><span>18 积分起</span><a href="#quick-create">一键同款</a></div></article>
+            <article class="aigc-template-card" style="--template-image:url('assets/image_assets/4.png')"><div class="copy"><h3>活动海报</h3><p>标题、主视觉、文案和 CTA</p><span>8 积分起</span><a href="#quick-create">一键同款</a></div></article>
+            <article class="aigc-template-card" style="--template-image:url('assets/image_assets/3.png')"><div class="copy"><h3>图生视频</h3><p>镜头节奏、动态描述和字幕提示</p><span>20 积分起</span><a href="#quick-create">一键同款</a></div></article>
+            <article class="aigc-template-card" style="--template-image:url('assets/image_assets/2.png')"><div class="copy"><h3>文本模型写作</h3><p>内容大纲、标题和复盘正文</p><span>6 积分起</span><a href="#quick-create">一键同款</a></div></article>
+            <article class="aigc-template-card" style="--template-image:url('assets/image_assets/17.png')"><div class="copy"><h3>模型经验复盘</h3><p>输入、过程、结果和使用前确认</p><span>10 积分起</span><a href="#quick-create">一键同款</a></div></article>
+            <article class="aigc-template-card" style="--template-image:url('assets/image_assets/4.png')"><div class="copy"><h3>教程封面</h3><p>工具教程、步骤封面和配图方向</p><span>8 积分起</span><a href="#quick-create">一键同款</a></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wide-container">
+          <div class="case-section-head">
+            <h2>灵感广场</h2>
+          </div>
+          <div class="filter-row">
+            <a class="filter-chip is-active" href="#">全部</a>
+            <a class="filter-chip" href="#">短剧漫剧</a>
+            <a class="filter-chip" href="#">文本模型</a>
+            <a class="filter-chip" href="#">图片生成</a>
+            <a class="filter-chip" href="#">视频生成</a>
+          </div>
+          <div class="masonry aigc-inspiration">
+            <article class="case-card tall"><img src="assets/image_assets/11.png" alt=""><div class="copy"><h3>龙虎天劫</h3><p>高燃对决封面，漫剧开场感拉满</p><a class="case-copy-cta" href="#quick-create">一键同款</a></div></article>
+            <article class="case-card short"><img src="assets/image_assets/3.png" alt=""><div class="copy"><h3>竹泉秘境</h3><p>清新治愈场景，夏日氛围一键生成</p><a class="case-copy-cta" href="#quick-create">一键同款</a></div></article>
+            <article class="case-card"><img src="assets/image_assets/4.png" alt=""><div class="copy"><h3>海灯守望</h3><p>海边落日镜头，故事片头更有画面</p><a class="case-copy-cta" href="#quick-create">一键同款</a></div></article>
+            <article class="case-card tall"><img src="assets/image_assets/15.jpg" alt=""><div class="copy"><h3>凤冠神女</h3><p>国风神女设定，古装角色直接出图</p><a class="case-copy-cta" href="#quick-create">一键同款</a></div></article>
+            <article class="case-card"><img src="assets/image_assets/18.png" alt=""><div class="copy"><h3>金色启航</h3><p>品牌主视觉海报，适合活动首屏投放</p><a class="case-copy-cta" href="#quick-create">一键同款</a></div></article>
+            <article class="case-card short"><img src="assets/image_assets/2.png" alt=""><div class="copy"><h3>画室追光</h3><p>真人质感画面，短剧角色宣传图</p><a class="case-copy-cta" href="#quick-create">一键同款</a></div></article>
+            <article class="case-card tall"><img src="assets/image_assets/17.png" alt=""><div class="copy"><h3>异界裂隙</h3><p>暗黑幻想场景，战斗分镜快速定调</p><a class="case-copy-cta" href="#quick-create">一键同款</a></div></article>
+            <article class="case-card"><img src="assets/image_assets/18.png" alt=""><div class="copy"><h3>霓虹追车</h3><p>视频镜头感强，适合动作短片预览</p><a class="case-copy-cta" href="#quick-create">一键同款</a></div></article>
+            <article class="case-card short"><img src="assets/image_assets/3.png" alt=""><div class="copy"><h3>模型复盘封面</h3><p>经验帖配图，模型使用过程更清楚</p><a class="case-copy-cta" href="#quick-create">一键同款</a></div></article>
+            <article class="case-card"><img src="assets/image_assets/4.png" alt=""><div class="copy"><h3>云海行舟</h3><p>轻幻想插画，故事配图更容易出片</p><a class="case-copy-cta" href="#quick-create">一键同款</a></div></article>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div class="footer-space"></div>
+  </div>
+</body>
+</html>

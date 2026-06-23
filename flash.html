@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
@@ -12,7 +12,6 @@
     <div class="page-bg"><img src="assets/image_assets/17.png" alt=""></div>
     <input class="top-campaign-toggle" type="checkbox" id="top-campaign-dismiss-flash" aria-label="关闭顶部广告">
     <div class="top-campaign"><span>活动剩余</span><span class="timer">20时 42分 39秒</span><span>618 API 模型体验季返场，发布模型体验闪念可领积分</span><span>立即参与</span><label class="top-campaign-close" for="top-campaign-dismiss-flash" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
-    <a class="floating-deal" href="#activity-rules"><strong>+120</strong><span>邀请奖励</span></a>
     <header class="site-header">
       <div class="header-inner wide-container">
         <a class="logo" href="./index.html" aria-label="多元拾光">
@@ -30,13 +29,97 @@
           <a href="./tutorial.html">官方教程</a>
         </nav>
         <div class="header-actions">
-          <a class="action-link" href="./user-growth.html#invite-panel">邀请有礼</a>
-          <a class="action-link" href="./user-growth.html#member-panel">会员超市</a>
-          <a class="action-link points-link" href="./user-growth.html#points-center">积分 1280</a>
-          <a class="button" href="./user-growth.html#profile-panel">登录/注册</a>
+          <a class="action-link" href="./invite.html" data-nav-action="invite">邀请有礼</a>
+          <a class="action-link" href="./member-store.html" data-nav-action="member">会员超市</a>
+          <a class="action-link points-link" href="./points-center.html" data-nav-action="points">积分 1280</a>
+          <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
+          <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="用户头像"><img src="assets/image_assets/1.png" alt=""></a>
         </div>
       </div>
     </header>
+    <section id="nav-invite" class="create-modal nav-action-modal" aria-label="邀请有礼">
+      <a class="modal-backdrop" href="#" aria-label="关闭邀请有礼"></a>
+      <div class="create-dialog nav-action-dialog">
+        <div class="create-dialog-head">
+          <div>
+            <span class="eyebrow dark">邀请有礼</span>
+            <h2>邀请好友一起试模型，双方都拿创作积分</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <div class="nav-action-body">
+          <div class="nav-action-hero invite">
+            <img src="assets/image_assets/11.png" alt="">
+            <div><span>我的邀请码</span><strong>SG2026</strong><em>好友注册、完成 AIGC 或模型体验后，奖励进入积分和体验券体系。</em></div>
+          </div>
+          <div class="nav-reward-grid">
+            <div><strong>注册</strong><span>双方 +30 积分</span></div>
+            <div><strong>完成 AIGC 体验</strong><span>邀请人 +90 积分</span></div>
+            <div><strong>完成模型体验</strong><span>文本模型试用包</span></div>
+          </div>
+          <div class="modal-actions">
+            <a class="button" href="./invite.html">生成邀请卡</a>
+            <a class="button secondary" href="./invite.html">查看邀请记录</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="nav-member" class="create-modal nav-action-modal" aria-label="会员超市">
+      <a class="modal-backdrop" href="#" aria-label="关闭会员超市"></a>
+      <div class="create-dialog nav-action-dialog">
+        <div class="create-dialog-head">
+          <div>
+            <span class="eyebrow dark">会员超市</span>
+            <h2>先看清权益，再决定是否进入会员页</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <div class="nav-action-body">
+          <div class="member-strip">
+            <div><strong>每月积分包</strong><span>创作、模型和模板体验可用</span></div>
+            <div><strong>AIGC 折扣</strong><span>图片、视频和漫剧体验优先</span></div>
+            <div><strong>活动专属奖励</strong><span>创作挑战和模型体验季加成</span></div>
+          </div>
+          <div class="modal-actions">
+            <a class="button" href="./member-store.html">查看完整权益</a>
+            <a class="button secondary" href="./points-center.html">先做任务攒积分</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="nav-points" class="points-modal" aria-label="积分任务中心">
+      <a class="modal-backdrop" href="#" aria-label="关闭积分任务中心"></a>
+      <div class="points-dialog points-panel nav-points-dialog">
+        <div class="panel-head">
+          <div>
+            <span class="eyebrow dark">积分中心</span>
+            <h2>今天还能赚 260 积分</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <div class="nav-points-hero">
+          <div>
+            <span>我的创作积分</span>
+            <strong>1280</strong>
+            <em>用于 AIGC、模型广场、模板和轻创作体验。</em>
+          </div>
+          <div class="nav-points-ring"><strong>+260</strong><span>今日可领</span></div>
+        </div>
+        <div class="nav-points-progress"><span style="width: 68%"></span></div>
+        <div class="task-grid">
+          <a class="task-item" href="./user-center.html"><strong>每日登录</strong><span>+20</span></a>
+          <a class="task-item" href="./aigc.html"><strong>AIGC 体验</strong><span>+10</span></a>
+          <a class="task-item" href="./flash.html"><strong>发布闪念</strong><span>+30</span></a>
+          <a class="task-item" href="./model-plaza.html"><strong>模型反馈</strong><span>+60</span></a>
+        </div>
+        <div class="modal-actions">
+          <a class="button" href="./points-center.html">进入积分任务中心</a>
+          <a class="button secondary" href="./member-store.html">领取会员折扣</a>
+        </div>
+      </div>
+    </section>
 
     <section id="points-center" class="points-modal" aria-label="积分任务中心">
       <a class="modal-backdrop" href="#" aria-label="关闭积分任务中心"></a>
@@ -54,14 +137,14 @@
           <em>今日再赚 260 积分</em>
         </div>
         <div class="task-grid">
-          <a class="task-item" href="#"><strong>签到登录</strong><span>+20</span></a>
+          <a class="task-item" href="./user-center.html"><strong>签到登录</strong><span>+20</span></a>
           <a class="task-item" href="#compose-flash"><strong>发布闪念</strong><span>+30</span></a>
-          <a class="task-item" href="#"><strong>发模型经验</strong><span>+60</span></a>
-          <a class="task-item" href="#"><strong>邀请好友</strong><span>+120</span></a>
+          <a class="task-item" href="./model-plaza.html#model-list"><strong>发模型经验</strong><span>+60</span></a>
+          <a class="task-item" href="./invite.html"><strong>邀请好友</strong><span>+120</span></a>
         </div>
         <div class="modal-actions">
-          <a class="button" href="./user-growth.html#points-center">进入积分任务中心</a>
-          <a class="button secondary" href="./user-growth.html#member-panel">领取体验包</a>
+          <a class="button" href="./points-center.html">进入积分任务中心</a>
+          <a class="button secondary" href="./member-store.html">领取体验包</a>
         </div>
       </div>
     </section>
@@ -91,6 +174,12 @@
               <span class="flash-compose-counter">96 / 600</span>
             </div>
           </div>
+          <div class="flash-meta-grid" aria-label="闪念结构化反馈">
+            <label><strong>关联模型/工具</strong><input type="text" value="gemini-3-flash-preview" aria-label="关联模型或工具"></label>
+            <label><strong>内容类型</strong><select aria-label="内容类型"><option>模型体验</option><option>AIGC 过程</option><option>API 排错</option><option>工具心得</option></select></label>
+            <label><strong>结果判断</strong><select aria-label="结果判断"><option>可复用</option><option>待优化</option><option>踩坑记录</option></select></label>
+            <label><strong>同步去向</strong><select aria-label="同步去向"><option>仅发布闪念</option><option>候选模型反馈</option><option>候选模板案例</option><option>候选活动精选</option></select></label>
+          </div>
           <div class="flash-media-section">
             <div class="flash-media-head">
               <strong>媒体文件</strong>
@@ -115,9 +204,13 @@
           <div class="flash-editor-footer">
             <span>发布后可获得 30 积分，优质模型体验可进入右侧热门位</span>
             <div class="flash-editor-actions">
-              <a class="button secondary" href="#">取消</a>
-              <a class="button" href="#">发布</a>
+              <a class="button secondary" href="./flash.html">取消</a>
+              <a class="button" href="#" data-cta-state="闪念发布状态：发布成功后留在闪念流并进入候选精选">发布</a>
             </div>
+          </div>
+          <div class="flash-disclosure-card">
+            <strong>AI 生成声明</strong>
+            <span>闪念可包含 AI 生成或 AI 辅助创作过程；模型反馈需要说明目标、输入、过程和结果判断，商业授权边界暂不在 1.0 展开。</span>
           </div>
         </div>
       </div>
@@ -129,7 +222,7 @@
         <div class="create-dialog-head">
           <div>
             <span class="eyebrow dark">全部评论</span>
-            <h2>模型体验季下的讨论</h2>
+            <h2>闪念下的讨论</h2>
           </div>
           <a class="section-link" href="#">关闭</a>
         </div>
@@ -149,7 +242,7 @@
         </div>
         <div class="comment-input-bar">
           <span>写下你的经验或补充</span>
-          <a class="button" href="#">发布</a>
+          <a class="button" href="#" data-cta-state="评论发布状态：成功后追加到当前讨论">发布</a>
         </div>
       </div>
     </section>
@@ -167,8 +260,52 @@
         <div class="activity-rule-grid">
           <div><strong>参与动作</strong><span>发布模型体验、API 排错或 AIGC 过程闪念</span></div>
           <div><strong>奖励</strong><span>积分、体验券、首页曝光位候选</span></div>
-          <div><strong>流向</strong><span>优秀内容进入热门闪念和模型广场运营位</span></div>
+          <div><strong>流向</strong><span>优秀内容进入右侧运营位和模型广场候选</span></div>
         </div>
+      </div>
+    </section>
+
+    <section id="flash-image-preview-1" class="create-modal flash-media-preview-modal" aria-label="图片预览">
+      <a class="modal-backdrop" href="#" aria-label="关闭图片预览"></a>
+      <div class="create-dialog flash-media-preview-dialog">
+        <div class="create-dialog-head">
+          <div>
+            <span class="eyebrow dark">图片预览</span>
+            <h2>漫剧开场镜头参考</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <img src="assets/image_assets/11.png" alt="漫剧开场镜头大图预览">
+      </div>
+    </section>
+
+    <section id="flash-image-preview-2" class="create-modal flash-media-preview-modal" aria-label="图片预览">
+      <a class="modal-backdrop" href="#" aria-label="关闭图片预览"></a>
+      <div class="create-dialog flash-media-preview-dialog">
+        <div class="create-dialog-head">
+          <div>
+            <span class="eyebrow dark">图片预览</span>
+            <h2>角色与场景氛围参考</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <img src="assets/image_assets/17.png" alt="角色与场景氛围大图预览">
+      </div>
+    </section>
+
+    <section id="flash-video-preview" class="create-modal flash-media-preview-modal" aria-label="视频播放">
+      <a class="modal-backdrop" href="#" aria-label="关闭视频播放"></a>
+      <div class="create-dialog flash-media-preview-dialog">
+        <div class="create-dialog-head">
+          <div>
+            <span class="eyebrow dark">视频播放</span>
+            <h2>九宫格视频生成片段</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <video controls autoplay playsinline poster="assets/image_assets/18.png">
+          <source src="assets/video_assets/nine_grid.mp4" type="video/mp4">
+        </video>
       </div>
     </section>
 
@@ -217,7 +354,7 @@
             <p>发布模型体验、AIGC 过程、API 排错和工具心得，让社区先有可消费的真实信号，再把高价值内容沉淀到模型广场、教程和案例里。</p>
             <div class="flash-hero-actions">
               <a class="button" href="#compose-flash">发闪念</a>
-              <a class="button secondary" href="#activity-rules">参加模型体验季</a>
+              <a class="button secondary" href="#flash-timeline">浏览时间流</a>
             </div>
             <div class="flash-stat-row">
               <div><strong>2.4k</strong><span>本周轻内容</span></div>
@@ -228,36 +365,26 @@
         </div>
       </section>
 
-      <section class="section flash-main-section">
+      <section id="flash-timeline" class="section flash-main-section">
         <div class="wide-container flash-layout">
           <div class="flash-feed-column">
-            <div class="flash-filter-row">
-              <a class="filter-chip is-active" href="#">全部</a>
-              <a class="filter-chip" href="#">AIGC 过程</a>
-              <a class="filter-chip" href="#">模型体验</a>
-              <a class="filter-chip" href="#">API 排错</a>
-              <a class="filter-chip" href="#">工具心得</a>
-              <a class="filter-chip" href="#">漫剧片段</a>
-            </div>
-
             <article class="flash-post-card" data-flash-card>
               <div class="flash-post-head">
                 <img class="flash-avatar" src="assets/image_assets/3.png" alt="">
                 <div>
                   <strong>南舟</strong>
-                  <span>AIGC 过程 · 18 分钟前</span>
+                  <span>18 分钟前</span>
                 </div>
-                <em>热度 312</em>
               </div>
               <p>今天把漫剧开场拆成“人物冲突、场景气氛、镜头推进”三段，再让模型分别补细节，生成结果比直接长 Prompt 更稳定。</p>
               <div class="flash-media-grid">
-                <figure><img src="assets/image_assets/11.png" alt=""></figure>
-                <figure><img src="assets/image_assets/17.png" alt=""></figure>
+                <figure><a class="flash-image-thumb" href="#flash-image-preview-1" aria-label="预览漫剧开场镜头"><img src="assets/image_assets/11.png" alt=""></a></figure>
+                <figure><a class="flash-image-thumb" href="#flash-image-preview-2" aria-label="预览角色与场景氛围"><img src="assets/image_assets/17.png" alt=""></a></figure>
               </div>
               <div class="flash-post-actions">
-                <a href="#"><img src="resources/icons/remixicon/svg/Health & Medical/heart-line.svg" alt="">186</a>
+                <a href="#" data-cta-state="点赞状态：切换喜欢并更新计数"><img src="resources/icons/remixicon/svg/Health & Medical/heart-line.svg" alt="">186</a>
                 <a href="#all-comments"><img src="resources/icons/remixicon/svg/Communication/chat-3-line.svg" alt="">24</a>
-                <a href="#"><img src="resources/icons/remixicon/svg/System/share-forward-line.svg" alt="">分享</a>
+                <a href="#" data-cta-state="分享状态：打开分享卡片"><img src="resources/icons/remixicon/svg/System/share-forward-line.svg" alt="">分享</a>
               </div>
               <details class="flash-comments-inline">
                 <summary>展开 3 条评论</summary>
@@ -265,7 +392,15 @@
                   <img src="assets/image_assets/4.png" alt="">
                   <div><strong>青梧</strong><p>这个拆法适合做模板，尤其是先固定冲突和镜头。</p><span>回复 · 8</span></div>
                 </div>
-                <div class="comment-reply-box"><span>回复这条闪念</span><a href="#">评论</a></div>
+                <div class="comment-row compact">
+                  <img src="assets/image_assets/2.png" alt="">
+                  <div><strong>木辛</strong><p>我会补一个反例：直接长 Prompt 时，角色动机会更容易散。</p><span>回复 · 5</span></div>
+                </div>
+                <div class="comment-row compact">
+                  <img src="assets/image_assets/15.jpg" alt="">
+                  <div><strong>多元拾光官方</strong><p>这条适合沉淀到教程案例库，后续可以补一版完整拆解。</p><span>回复 · 3</span></div>
+                </div>
+                <div class="comment-reply-box"><span>回复这条闪念</span><a href="#all-comments">评论</a></div>
               </details>
             </article>
 
@@ -274,15 +409,14 @@
                 <img class="flash-avatar" src="assets/image_assets/4.png" alt="">
                 <div>
                   <strong>木辛</strong>
-                  <span>模型体验 · 42 分钟前</span>
+                  <span>42 分钟前</span>
                 </div>
-                <em>热度 247</em>
               </div>
               <p>试了 3 个文本模型写 API 错误复盘，最适合公开分享的不是最会写长文的模型，而是能把复现步骤压成清单的模型。</p>
               <div class="flash-post-actions">
-                <a href="#"><img src="resources/icons/remixicon/svg/Health & Medical/heart-line.svg" alt="">142</a>
+                <a href="#" data-cta-state="点赞状态：切换喜欢并更新计数"><img src="resources/icons/remixicon/svg/Health & Medical/heart-line.svg" alt="">142</a>
                 <a href="#all-comments"><img src="resources/icons/remixicon/svg/Communication/chat-3-line.svg" alt="">18</a>
-                <a href="#"><img src="resources/icons/remixicon/svg/System/share-forward-line.svg" alt="">分享</a>
+                <a href="#" data-cta-state="分享状态：打开分享卡片"><img src="resources/icons/remixicon/svg/System/share-forward-line.svg" alt="">分享</a>
               </div>
             </article>
 
@@ -290,18 +424,25 @@
               <div class="flash-post-head">
                 <img class="flash-avatar" src="assets/image_assets/15.jpg" alt="">
                 <div>
-                  <strong>多元拾光官方</strong>
-                  <span>模型体验季 · 1 小时前</span>
+                  <strong>星野</strong>
+                  <span>1 小时前</span>
                 </div>
-                <em>进行中</em>
               </div>
-              <p>本周优先征集文本模型试用、图像模型出图和视频模型片段体验。发布真实过程即可进入精选池候选，优秀内容会回流到模型广场。</p>
+              <p>把同一段角色设定拆成 9 个小镜头后，视频生成更容易保持动作连续，尤其适合先看节奏再补画面细节。</p>
               <div class="flash-media-grid single">
-                <figure class="is-video"><img src="assets/image_assets/18.png" alt=""><span><img src="resources/icons/remixicon/svg/Media/play-fill.svg" alt="">创作挑战</span></figure>
+                <figure class="is-video">
+                  <a class="flash-video-thumb" href="#flash-video-preview" aria-label="播放九宫格视频生成片段">
+                    <video data-hover-play muted loop playsinline preload="metadata" poster="assets/image_assets/18.png">
+                      <source src="assets/video_assets/nine_grid.mp4" type="video/mp4">
+                    </video>
+                    <span><img src="resources/icons/remixicon/svg/Media/play-fill.svg" alt="">点击播放</span>
+                  </a>
+                </figure>
               </div>
               <div class="flash-post-actions">
-                <a href="#activity-rules"><img src="resources/icons/remixicon/svg/Weather/fire-line.svg" alt="">查看玩法</a>
-                <a href="#compose-flash"><img src="resources/icons/remixicon/svg/Business/send-plane-line.svg" alt="">立即发布</a>
+                <a href="#" data-cta-state="点赞状态：切换喜欢并更新计数"><img src="resources/icons/remixicon/svg/Health & Medical/heart-line.svg" alt="">88</a>
+                <a href="#all-comments"><img src="resources/icons/remixicon/svg/Communication/chat-3-line.svg" alt="">11</a>
+                <a href="#" data-cta-state="分享状态：打开分享卡片"><img src="resources/icons/remixicon/svg/System/share-forward-line.svg" alt="">分享</a>
               </div>
             </article>
 
@@ -310,73 +451,81 @@
                 <img class="flash-avatar" src="assets/image_assets/2.png" alt="">
                 <div>
                   <strong>青梧</strong>
-                  <span>API 排错 · 2 小时前</span>
+                  <span>2 小时前</span>
                 </div>
-                <em>热度 158</em>
               </div>
               <p>遇到 429 不要急着换模型。先看请求频率、上下文长度和是否重复提交，再决定是降并发还是换更轻的文本模型。</p>
               <div class="flash-post-actions">
-                <a href="#"><img src="resources/icons/remixicon/svg/Health & Medical/heart-line.svg" alt="">97</a>
+                <a href="#" data-cta-state="点赞状态：切换喜欢并更新计数"><img src="resources/icons/remixicon/svg/Health & Medical/heart-line.svg" alt="">97</a>
                 <a href="#all-comments"><img src="resources/icons/remixicon/svg/Communication/chat-3-line.svg" alt="">15</a>
-                <a href="#"><img src="resources/icons/remixicon/svg/System/share-forward-line.svg" alt="">分享</a>
+                <a href="#" data-cta-state="分享状态：打开分享卡片"><img src="resources/icons/remixicon/svg/System/share-forward-line.svg" alt="">分享</a>
               </div>
             </article>
           </div>
 
           <aside class="flash-right-rail" aria-label="闪念右侧运营栏">
             <section class="flash-rail-card flash-quick-compose" data-rail-module="quick-compose">
-              <span>发闪念 +30</span>
-              <strong>记录刚刚的 AI 实战过程</strong>
+              <strong class="flash-quick-title">记录刚刚的 AI 实战过程</strong>
               <p>支持短文本、图片和视频片段，适合快速沉淀模型体验、排错记录和创作过程。</p>
-              <a class="button" href="#compose-flash">发布闪念</a>
-            </section>
-
-            <section class="flash-rail-card invite-card" data-rail-module="invite">
-              <div class="flash-rail-head">
-                <strong>邀请有礼</strong>
-                <a href="#invite-panel">查看</a>
+              <div class="flash-compose-bottom">
+                <a class="button" href="#compose-flash">发布闪念 + 30积分</a>
               </div>
-              <p>邀请好友完成首次 AIGC 或模型体验，双方都获得积分和试用包。</p>
-              <a class="button" href="#invite-panel">邀请好友</a>
             </section>
 
-            <section class="flash-rail-card rail-hot" data-rail-module="hot">
-              <div class="flash-rail-head">
-                <strong>热门闪念</strong>
-                <a href="#">更多</a>
-              </div>
-              <a class="hot-flash-row" href="#"><span>视频提示词更像分镜</span><em>312</em></a>
-              <a class="hot-flash-row" href="#"><span>RAG 召回链路三段检查</span><em>247</em></a>
-              <a class="hot-flash-row" href="#"><span>API 429 排错先看限流窗口</span><em>158</em></a>
-            </section>
-
-            <a class="flash-rail-banner model-season" href="#activity-rules" data-rail-module="model-season">
-              <span>进行中</span>
-              <strong>模型体验季</strong>
-              <em>发布模型体验，领积分和试用包</em>
-            </a>
-
-            <a class="flash-rail-banner aigc-challenge" href="#compose-flash" data-rail-module="aigc-challenge">
-              <span>创作挑战</span>
-              <strong>AIGC 创作挑战</strong>
-              <em>把生成过程发成闪念，优秀内容进首页候选</em>
+            <a class="flash-rail-ad model-season" href="#activity-rules" data-rail-module="ad" data-ad-slot="flash-right-activity" data-ad-campaign="model-season-618" aria-label="618 模型体验季活动广告">
+              <span>活动广告</span>
+              <strong>618 模型体验季</strong>
+              <em>发布真实模型体验，领试用包和精选曝光</em>
+              <small>06.18-06.30 · 限时开放</small>
             </a>
 
             <section class="flash-rail-card" data-rail-module="tutorial">
               <div class="flash-rail-head">
                 <strong>官方教程</strong>
-                <a href="#">进入</a>
+                <a href="./tutorial.html">进入</a>
               </div>
-              <a class="rail-link-row" href="#"><span>文本模型体验怎么写</span><em>6 分钟</em></a>
-              <a class="rail-link-row" href="#"><span>用闪念沉淀 API 排错经验</span><em>图文</em></a>
-              <a class="rail-link-row" href="#"><span>漫剧片段从 Prompt 到封面</span><em>视频</em></a>
+              <a class="rail-link-row" href="./tutorial-detail.html?lesson=article"><span>文本模型体验怎么写</span><em>6 分钟</em></a>
+              <a class="rail-link-row" href="./tutorial-detail.html?lesson=article"><span>用闪念沉淀 API 排错经验</span><em>图文</em></a>
+              <a class="rail-link-row" href="./tutorial-detail.html?lesson=video"><span>漫剧片段从 Prompt 到封面</span><em>视频</em></a>
             </section>
 
           </aside>
         </div>
       </section>
     </main>
+    <details class="v1-walkthrough-drawer" data-v1-walkthrough-drawer>
+      <summary>走查</summary>
+      <div class="v1-walkthrough-panel">
+        <div class="v1-walkthrough-head"><strong>闪念频道走查</strong><span>用于确认轻内容发布、评论互动、模型反馈和运营右栏是否形成低门槛闭环。</span></div>
+        <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>运营关注</span><span>研发关注</span></div>
+        <div class="v1-rule-section"><strong>页面定位</strong><span>闪念是轻内容和模型体验反馈入口，不承担完整内容社区、圈子或话题体系。</span></div>
+        <div class="v1-rule-section"><strong>用户主路径</strong><span>用户浏览轻内容 -> 打开发闪念 -> 填写正文、模型/工具、类型、结果判断和同步去向 -> 发布后回到闪念流或候选精选。</span></div>
+        <div class="v1-rule-section"><strong>关键字段</strong><span>闪念正文、媒体、作者、时间、评论、点赞、分享、模型/工具、内容类型、结果判断、同步去向和右侧运营位。</span></div>
+        <div class="v1-rule-section"><strong>状态规则</strong><span>闪念按时间流展示，不提供类型筛选；点赞、分享和发布成功是轻状态；评论通过弹层承接；不做独立闪念详情页、关注流或话题聚合。</span></div>
+        <div class="v1-rule-section"><strong>CTA 闭环</strong><span>发布闪念、评论、回复、点赞、分享、话题和热门入口均保留轻状态；发闪念可带媒体或模型反馈，并回到内容流或积分提示，不扩成完整动态社区。</span></div>
+        <div class="v1-rule-section"><strong>运营配置</strong><span>热门闪念、推荐话题、参与话题、右侧 Banner 和积分提示来自人工热门池、话题库、低风险活动方案和积分任务口径；每日或隔日调整，不做算法榜。</span></div>
+        <div class="v1-rule-section"><strong>研发验收</strong><span>验收要求：发布入口、媒体附件、评论展开、全部评论、回复框和热门目标跳转可用；不展示审核命中词、内部处理状态、私信、圈子或实时消息流。</span></div>
+        <div class="v1-rule-section"><strong>边界</strong><span>闪念只做轻内容 UGC 和反馈入口；不做圈子、私信、独立详情页、实时流、自动积分结算或复杂推荐排序。</span></div>
+      </div>
+    </details>
     <div class="footer-space"></div>
   </div>
+  <script>
+    document.querySelectorAll("[data-hover-play]").forEach((video) => {
+      const holder = video.closest(".flash-video-thumb");
+      if (!holder) return;
+      holder.dataset.hoverPlayback = "ready";
+      const playPreview = () => video.play().catch(() => {});
+      const stopPreview = () => {
+        video.pause();
+        video.currentTime = 0;
+      };
+      holder.addEventListener("mouseenter", playPreview);
+      holder.addEventListener("focusin", playPreview);
+      holder.addEventListener("mouseleave", stopPreview);
+      holder.addEventListener("focusout", stopPreview);
+    });
+  </script>
+  <script src="./walkthrough.js" defer></script>
 </body>
 </html>

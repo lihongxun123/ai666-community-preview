@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
@@ -12,8 +12,6 @@
     <div class="page-bg"><img src="assets/image_assets/17.png" alt=""></div>
     <input class="top-campaign-toggle" type="checkbox" id="top-campaign-dismiss-campaign-detail" aria-label="关闭顶部广告">
     <div class="top-campaign"><span>官方发布</span><span class="timer">2026.06.22 更新</span><span>模型体验季返场，文本模型试用包、反馈任务和教程路径同步开放</span><span>进行中</span><label class="top-campaign-close" for="top-campaign-dismiss-campaign-detail" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
-    <a class="floating-deal" href="./campaign-ops.html"><strong>10</strong><span>运营位</span></a>
-
     <header class="site-header">
       <div class="header-inner wide-container">
         <a class="logo" href="./index.html" aria-label="多元拾光">
@@ -31,13 +29,97 @@
           <a href="./tutorial.html">官方教程</a>
         </nav>
         <div class="header-actions">
-          <a class="action-link" href="./user-growth.html#invite-panel">邀请有礼</a>
-          <a class="action-link" href="./user-growth.html#member-panel">会员超市</a>
-          <a class="action-link points-link" href="./user-growth.html#points-center">积分 1280</a>
-          <a class="button" href="./user-growth.html#profile-panel">登录/注册</a>
+          <a class="action-link" href="./invite.html" data-nav-action="invite">邀请有礼</a>
+          <a class="action-link" href="./member-store.html" data-nav-action="member">会员超市</a>
+          <a class="action-link points-link" href="./points-center.html" data-nav-action="points">积分 1280</a>
+          <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
+          <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="用户头像"><img src="assets/image_assets/1.png" alt=""></a>
         </div>
       </div>
     </header>
+    <section id="nav-invite" class="create-modal nav-action-modal" aria-label="邀请有礼">
+      <a class="modal-backdrop" href="#" aria-label="关闭邀请有礼"></a>
+      <div class="create-dialog nav-action-dialog">
+        <div class="create-dialog-head">
+          <div>
+            <span class="eyebrow dark">邀请有礼</span>
+            <h2>邀请好友一起试模型，双方都拿创作积分</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <div class="nav-action-body">
+          <div class="nav-action-hero invite">
+            <img src="assets/image_assets/11.png" alt="">
+            <div><span>我的邀请码</span><strong>SG2026</strong><em>好友注册、完成 AIGC 或模型体验后，奖励进入积分和体验券体系。</em></div>
+          </div>
+          <div class="nav-reward-grid">
+            <div><strong>注册</strong><span>双方 +30 积分</span></div>
+            <div><strong>完成 AIGC 体验</strong><span>邀请人 +90 积分</span></div>
+            <div><strong>完成模型体验</strong><span>文本模型试用包</span></div>
+          </div>
+          <div class="modal-actions">
+            <a class="button" href="./invite.html">生成邀请卡</a>
+            <a class="button secondary" href="./invite.html">查看邀请记录</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="nav-member" class="create-modal nav-action-modal" aria-label="会员超市">
+      <a class="modal-backdrop" href="#" aria-label="关闭会员超市"></a>
+      <div class="create-dialog nav-action-dialog">
+        <div class="create-dialog-head">
+          <div>
+            <span class="eyebrow dark">会员超市</span>
+            <h2>先看清权益，再决定是否进入会员页</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <div class="nav-action-body">
+          <div class="member-strip">
+            <div><strong>每月积分包</strong><span>创作、模型和模板体验可用</span></div>
+            <div><strong>AIGC 折扣</strong><span>图片、视频和漫剧体验优先</span></div>
+            <div><strong>活动专属奖励</strong><span>创作挑战和模型体验季加成</span></div>
+          </div>
+          <div class="modal-actions">
+            <a class="button" href="./member-store.html">查看完整权益</a>
+            <a class="button secondary" href="./points-center.html">先做任务攒积分</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="nav-points" class="points-modal" aria-label="积分任务中心">
+      <a class="modal-backdrop" href="#" aria-label="关闭积分任务中心"></a>
+      <div class="points-dialog points-panel nav-points-dialog">
+        <div class="panel-head">
+          <div>
+            <span class="eyebrow dark">积分中心</span>
+            <h2>今天还能赚 260 积分</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <div class="nav-points-hero">
+          <div>
+            <span>我的创作积分</span>
+            <strong>1280</strong>
+            <em>用于 AIGC、模型广场、模板和轻创作体验。</em>
+          </div>
+          <div class="nav-points-ring"><strong>+260</strong><span>今日可领</span></div>
+        </div>
+        <div class="nav-points-progress"><span style="width: 68%"></span></div>
+        <div class="task-grid">
+          <a class="task-item" href="./user-center.html"><strong>每日登录</strong><span>+20</span></a>
+          <a class="task-item" href="./aigc.html"><strong>AIGC 体验</strong><span>+10</span></a>
+          <a class="task-item" href="./flash.html"><strong>发布闪念</strong><span>+30</span></a>
+          <a class="task-item" href="./model-plaza.html"><strong>模型反馈</strong><span>+60</span></a>
+        </div>
+        <div class="modal-actions">
+          <a class="button" href="./points-center.html">进入积分任务中心</a>
+          <a class="button secondary" href="./member-store.html">领取会员折扣</a>
+        </div>
+      </div>
+    </section>
 
     <main>
       <section class="section campaign-detail-hero" data-campaign-detail>
@@ -54,7 +136,7 @@
             <div class="hero-actions">
               <a class="button" href="./model-plaza.html#model-list">去模型广场</a>
               <a class="button secondary" href="./flash.html#compose-flash">发布反馈</a>
-              <a class="button dark" href="./user-growth.html#points-center">查看任务</a>
+              <a class="button dark" href="./points-center.html">查看任务</a>
             </div>
             <div class="campaign-hero-stats">
               <div><strong>90</strong><span>文本模型</span></div>
@@ -104,11 +186,24 @@
               <div class="article-block-index">02</div>
               <div>
                 <h2>奖励如何确认</h2>
-                <p>反馈内容需要包含模型名称、使用目标、关键输入、结果判断和下一步建议。通过人工确认后，积分或体验券会进入用户成长页对应状态；邀请和会员权益继续由用户成长页统一承接。</p>
-                <div class="reward-note-grid">
-                  <div><strong>基础反馈</strong><span>完整记录一次模型体验</span><em>+60 积分</em></div>
-                  <div><strong>优质复盘</strong><span>包含输入、过程和结果截图说明</span><em>体验券候选</em></div>
-                  <div><strong>邀请完成体验</strong><span>好友完成首次体验后进入邀请记录</span><em>成长页承接</em></div>
+              <p>反馈内容需要包含模型名称、使用目标、关键输入、结果判断和下一步建议。通过人工确认后，积分或体验券会进入积分中心、邀请页、会员超市和用户中心对应状态。</p>
+              <div class="reward-note-grid">
+                <div><strong>基础反馈</strong><span>完整记录一次模型体验</span><em>+60 积分</em></div>
+                <div><strong>优质复盘</strong><span>包含输入、过程和结果截图说明</span><em>体验券候选</em></div>
+                <div><strong>邀请完成体验</strong><span>好友完成首次体验后进入邀请记录</span><em>邀请页承接</em></div>
+              </div>
+            </div>
+          </section>
+
+            <section id="activity-status" class="article-block" data-article-block>
+              <div class="article-block-index">S</div>
+              <div>
+                <h2>参与状态</h2>
+                <p>活动不新增独立运营页，用户只需要看懂自己处在哪一步，并能回到已有模块完成动作。</p>
+                <div class="campaign-status-grid">
+                  <div><strong>待选择模型</strong><span>进入模型广场选择文本、图像或视频模型。</span><em>模型广场</em></div>
+                  <div><strong>待发布反馈</strong><span>在闪念记录模型名称、使用目标、输入和结果判断。</span><em>闪念</em></div>
+                  <div><strong>待人工确认</strong><span>官方确认后进入积分记录、体验券候选或会员权益。</span><em>积分中心</em></div>
                 </div>
               </div>
             </section>
@@ -125,7 +220,7 @@
                 <div class="official-update-list">
                   <div data-update-item><span>06-22</span><strong>返场页上线</strong><em>补齐官方图文详情、参与步骤和奖励口径。</em></div>
                   <div data-update-item><span>06-22</span><strong>入口统一</strong><em>活动入口接入首页、模型广场、闪念、教程和用户成长。</em></div>
-                  <div data-update-item><span>06-22</span><strong>成长承接</strong><em>积分、邀请、会员入口统一回到用户成长轻中心。</em></div>
+                  <div data-update-item><span>06-22</span><strong>状态承接</strong><em>积分、邀请、会员入口统一回到用户中心和对应权益页。</em></div>
                 </div>
               </div>
             </section>
@@ -134,14 +229,14 @@
               <a href="./model-plaza.html#model-list" data-related-module><span>模型广场</span><strong>去试文本模型</strong></a>
               <a href="./flash.html#compose-flash" data-related-module><span>闪念</span><strong>发布体验反馈</strong></a>
               <a href="./tutorial.html" data-related-module><span>官方教程</span><strong>先看轻教程</strong></a>
-              <a href="./user-growth.html#points-center" data-related-module><span>用户成长</span><strong>查看积分任务</strong></a>
+              <a href="./points-center.html" data-related-module><span>积分中心</span><strong>查看积分任务</strong></a>
             </section>
 
             <details class="detail-rule-panel" data-walkthrough-panel>
               <summary>页面口径</summary>
               <div>
                 <strong>活动详情用于官方发布更新和图文规则说明，不进入顶部主导航。</strong>
-                <strong>积分、邀请、会员只跳转用户成长轻中心，活动页不保留第二套成长入口。</strong>
+                <strong>积分、邀请、会员只跳转用户中心和对应权益页，活动页不保留第二套成长入口。</strong>
                 <strong>奖励文案采用人工确认口径，不表达实时到账、支付、完整账本或生产系统能力。</strong>
               </div>
             </details>
@@ -153,32 +248,47 @@
               <strong>三步完成体验反馈</strong>
               <a class="button" href="./model-plaza.html#model-list">选择模型</a>
               <a class="button secondary" href="./flash.html#compose-flash">发布反馈</a>
-              <a class="button dark" href="./user-growth.html#points-center">查看积分</a>
+              <a class="button dark" href="./points-center.html">查看积分</a>
             </section>
             <section class="detail-rail-card">
               <div class="rail-head">
                 <strong>官方更新</strong>
-                <a href="./campaign-ops.html">运营位</a>
+                <a href="#activity-status">状态</a>
               </div>
               <div class="detail-rail-list">
                 <a href="./tutorial.html"><span>轻教程列表已开放</span><em>去学习</em></a>
-                <a href="./user-growth.html#invite-panel"><span>邀请奖励进入成长页</span><em>去邀请</em></a>
+                <a href="./invite.html"><span>邀请奖励进入成长页</span><em>去邀请</em></a>
                 <a href="./aigc.html#aigc-create-panel"><span>漫剧挑战回到 AIGC</span><em>去创作</em></a>
               </div>
             </section>
             <section class="detail-rail-card">
               <div class="rail-head">
                 <strong>活动边界</strong>
-                <a href="./campaign-ops.html">查看</a>
+                <a href="#activity-status">查看</a>
               </div>
-              <p>本页只表达官方规则、参与动作和人工确认口径，最终权益以用户成长页展示状态为准。</p>
+              <p>本页只表达官方规则、参与动作和人工确认口径，最终权益以用户中心、积分中心、邀请页和会员超市展示状态为准。</p>
             </section>
           </aside>
         </div>
       </section>
     </main>
-
+    <details class="v1-walkthrough-drawer" data-v1-walkthrough-drawer>
+      <summary>走查</summary>
+      <div class="v1-walkthrough-panel">
+        <div class="v1-walkthrough-head"><strong>活动详情走查</strong><span>用于确认跨页运营位是否能落到活动规则、参与路径和权益承接。</span></div>
+        <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>运营关注</span><span>研发关注</span></div>
+        <div class="v1-rule-section"><strong>页面定位</strong><span>活动详情承接首页、模型广场、闪念、积分、邀请和会员中的运营位，不新增固定活动频道。</span></div>
+        <div class="v1-rule-section"><strong>用户主路径</strong><span>用户从运营位进入 -> 查看活动规则 -> 去模型广场选模型 -> 发布闪念反馈 -> 回积分/会员/邀请查看权益状态。</span></div>
+        <div class="v1-rule-section"><strong>关键字段</strong><span>活动标题、时间、状态、参与步骤、奖励、资格、人工确认、权益承接、规则说明和相关业务入口。</span></div>
+        <div class="v1-rule-section"><strong>状态规则</strong><span>活动状态包含待选模型、待发布反馈、待人工确认和权益承接；奖励以页面状态和人工确认为准。</span></div>
+        <div class="v1-rule-section"><strong>CTA 闭环</strong><span>活动 CTA 只承接参与状态、规则查看、反馈/领取状态或回到相关频道；活动不作为一级导航，也不回链活动运营位。</span></div>
+        <div class="v1-rule-section"><strong>运营配置</strong><span>活动标题、时间、权益、规则、参与状态和目标 CTA 来自低风险活动任务最小方案与 API 灰度承接表，人工维护并在结束后复盘。</span></div>
+        <div class="v1-rule-section"><strong>研发验收</strong><span>验收要求：活动详情有参与状态锚点或目标状态；不出现支付履约、退款、自动奖励、奖品发放承诺、完整活动体系或内部配置。</span></div>
+        <div class="v1-rule-section"><strong>边界</strong><span>当前只验证低风险活动入口和反馈意向；不做活动聚合页、任务中心、积分商城、自动资格判断、防刷或奖品履约。</span></div>
+      </div>
+    </details>
     <div class="footer-space"></div>
   </div>
+  <script src="./walkthrough.js" defer></script>
 </body>
 </html>

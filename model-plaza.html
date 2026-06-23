@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
@@ -29,13 +29,97 @@
           <a href="./tutorial.html">官方教程</a>
         </nav>
         <div class="header-actions">
-          <a class="action-link" href="./user-growth.html#invite-panel">邀请有礼</a>
-          <a class="action-link" href="./user-growth.html#member-panel">会员超市</a>
-          <a class="action-link points-link" href="./user-growth.html#points-center">积分 1280</a>
-          <a class="button" href="./user-growth.html#profile-panel">登录/注册</a>
+          <a class="action-link" href="./invite.html" data-nav-action="invite">邀请有礼</a>
+          <a class="action-link" href="./member-store.html" data-nav-action="member">会员超市</a>
+          <a class="action-link points-link" href="./points-center.html" data-nav-action="points">积分 1280</a>
+          <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
+          <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="用户头像"><img src="assets/image_assets/1.png" alt=""></a>
         </div>
       </div>
     </header>
+    <section id="nav-invite" class="create-modal nav-action-modal" aria-label="邀请有礼">
+      <a class="modal-backdrop" href="#" aria-label="关闭邀请有礼"></a>
+      <div class="create-dialog nav-action-dialog">
+        <div class="create-dialog-head">
+          <div>
+            <span class="eyebrow dark">邀请有礼</span>
+            <h2>邀请好友一起试模型，双方都拿创作积分</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <div class="nav-action-body">
+          <div class="nav-action-hero invite">
+            <img src="assets/image_assets/11.png" alt="">
+            <div><span>我的邀请码</span><strong>SG2026</strong><em>好友注册、完成 AIGC 或模型体验后，奖励进入积分和体验券体系。</em></div>
+          </div>
+          <div class="nav-reward-grid">
+            <div><strong>注册</strong><span>双方 +30 积分</span></div>
+            <div><strong>完成 AIGC 体验</strong><span>邀请人 +90 积分</span></div>
+            <div><strong>完成模型体验</strong><span>文本模型试用包</span></div>
+          </div>
+          <div class="modal-actions">
+            <a class="button" href="./invite.html">生成邀请卡</a>
+            <a class="button secondary" href="./invite.html">查看邀请记录</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="nav-member" class="create-modal nav-action-modal" aria-label="会员超市">
+      <a class="modal-backdrop" href="#" aria-label="关闭会员超市"></a>
+      <div class="create-dialog nav-action-dialog">
+        <div class="create-dialog-head">
+          <div>
+            <span class="eyebrow dark">会员超市</span>
+            <h2>先看清权益，再决定是否进入会员页</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <div class="nav-action-body">
+          <div class="member-strip">
+            <div><strong>每月积分包</strong><span>创作、模型和模板体验可用</span></div>
+            <div><strong>AIGC 折扣</strong><span>图片、视频和漫剧体验优先</span></div>
+            <div><strong>活动专属奖励</strong><span>创作挑战和模型体验季加成</span></div>
+          </div>
+          <div class="modal-actions">
+            <a class="button" href="./member-store.html">查看完整权益</a>
+            <a class="button secondary" href="./points-center.html">先做任务攒积分</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="nav-points" class="points-modal" aria-label="积分任务中心">
+      <a class="modal-backdrop" href="#" aria-label="关闭积分任务中心"></a>
+      <div class="points-dialog points-panel nav-points-dialog">
+        <div class="panel-head">
+          <div>
+            <span class="eyebrow dark">积分中心</span>
+            <h2>今天还能赚 260 积分</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <div class="nav-points-hero">
+          <div>
+            <span>我的创作积分</span>
+            <strong>1280</strong>
+            <em>用于 AIGC、模型广场、模板和轻创作体验。</em>
+          </div>
+          <div class="nav-points-ring"><strong>+260</strong><span>今日可领</span></div>
+        </div>
+        <div class="nav-points-progress"><span style="width: 68%"></span></div>
+        <div class="task-grid">
+          <a class="task-item" href="./user-center.html"><strong>每日登录</strong><span>+20</span></a>
+          <a class="task-item" href="./aigc.html"><strong>AIGC 体验</strong><span>+10</span></a>
+          <a class="task-item" href="./flash.html"><strong>发布闪念</strong><span>+30</span></a>
+          <a class="task-item" href="./model-plaza.html"><strong>模型反馈</strong><span>+60</span></a>
+        </div>
+        <div class="modal-actions">
+          <a class="button" href="./points-center.html">进入积分任务中心</a>
+          <a class="button secondary" href="./member-store.html">领取会员折扣</a>
+        </div>
+      </div>
+    </section>
 
     <section id="points-center" class="points-modal" aria-label="积分任务中心">
       <a class="modal-backdrop" href="#" aria-label="关闭积分任务中心"></a>
@@ -53,14 +137,14 @@
           <em>今日模型反馈再赚 260 积分</em>
         </div>
         <div class="task-grid">
-          <a class="task-item" href="#"><strong>签到登录</strong><span>+20</span></a>
-          <a class="task-item" href="#"><strong>发模型经验</strong><span>+60</span></a>
-          <a class="task-item" href="#"><strong>发布案例</strong><span>+80</span></a>
-          <a class="task-item" href="#"><strong>邀请体验</strong><span>+120</span></a>
+          <a class="task-item" href="./user-center.html"><strong>签到登录</strong><span>+20</span></a>
+          <a class="task-item" href="./flash.html#compose-flash"><strong>发模型经验</strong><span>+60</span></a>
+          <a class="task-item" href="./aigc.html#template-market"><strong>发布案例</strong><span>+80</span></a>
+          <a class="task-item" href="./invite.html"><strong>邀请体验</strong><span>+120</span></a>
         </div>
         <div class="modal-actions">
-          <a class="button" href="./user-growth.html#points-center">进入积分任务中心</a>
-          <a class="button secondary" href="#">领取模型券</a>
+          <a class="button" href="./points-center.html">进入积分任务中心</a>
+          <a class="button secondary" href="./member-store.html">领取模型券</a>
         </div>
       </div>
     </section>
@@ -104,123 +188,149 @@
 
       <section class="section model-filter-section" id="model-list">
         <div class="wide-container">
-          <div class="model-section-head">
-            <div>
-              <span class="eyebrow dark">模型货架</span>
-            </div>
-          </div>
-
           <div class="model-search-band">
-            <div class="model-search-box">
-              <img src="resources/icons/remixicon/svg/System/search-line.svg" alt="">
-              <span>搜索模型、供应商或使用场景</span>
-            </div>
-            <div class="model-filter-tabs">
-              <a class="is-active" href="#" data-model-filter>全部</a>
-              <a href="#" data-model-filter>文本模型</a>
-              <a href="#" data-model-filter>图像模型</a>
-              <a href="#" data-model-filter>视频模型</a>
-            </div>
-            <div class="supplier-chips" aria-label="供应商筛选">
-              <span data-supplier-filter>OpenAI</span>
-              <span data-supplier-filter>Claude</span>
-              <span data-supplier-filter>Gemini</span>
-              <span data-supplier-filter>Doubao</span>
-              <span data-supplier-filter>xAI</span>
+            <form class="model-search-form" action="#model-list" aria-label="搜索模型">
+              <label class="model-search-box">
+                <img src="resources/icons/remixicon/svg/System/search-line.svg" alt="">
+                <input type="search" name="q" placeholder="搜索模型名称" aria-label="搜索模型名称">
+              </label>
+              <button class="button secondary" type="submit">搜索</button>
+            </form>
+            <div class="model-filter-toolbar" aria-label="模型筛选">
+              <div class="model-filter-group" aria-label="模型类型">
+                <span>模型类型</span>
+                <div class="model-filter-tabs">
+                  <a class="is-active" href="#" data-model-filter data-cta-state="筛选全部模型">全部</a>
+                  <a href="#" data-model-filter data-cta-state="筛选文本模型">文本</a>
+                  <a href="#" data-model-filter data-cta-state="筛选图像模型">图像</a>
+                  <a href="#" data-model-filter data-cta-state="筛选视频模型">视频</a>
+                </div>
+              </div>
             </div>
           </div>
 
           <div class="model-shelf-grid">
-            <article class="plaza-model-card is-hot" data-model-card>
+            <a class="plaza-model-card is-hot" href="./model-detail.html?model=gpt-4.1" target="_blank" rel="noopener" data-model-card aria-label="查看 gpt-4.1 模型详情">
               <div class="model-card-top"><span>文本</span><em>OpenAI</em></div>
               <h3>gpt-4.1</h3>
               <p>复杂写作、代码生成、产品分析和多轮推理。</p>
+              <small>适合：长文方案、代码辅助和复杂拆解；下一步：看详情并发布反馈。</small>
               <div class="model-card-tags"><span>长文</span><span>代码</span><span>方案</span></div>
-              <div class="model-card-actions"><span>查看详情</span><span>体验入口</span><span>API 接入</span></div>
-            </article>
-            <article class="plaza-model-card" data-model-card>
+            </a>
+            <a class="plaza-model-card" href="./model-detail.html?model=claude-sonnet-4-6" target="_blank" rel="noopener" data-model-card aria-label="查看 claude-sonnet-4-6 模型详情">
               <div class="model-card-top"><span>文本</span><em>Anthropic / Claude</em></div>
               <h3>claude-sonnet-4-6</h3>
               <p>长文档阅读、方案审校、需求拆解和深度改写。</p>
+              <small>适合：文档审校、资料整理和结构化改写；下一步：对比长文模型。</small>
               <div class="model-card-tags"><span>长上下文</span><span>审校</span><span>写作</span></div>
-              <div class="model-card-actions"><span>查看详情</span><span>体验入口</span><span>API 接入</span></div>
-            </article>
-            <article class="plaza-model-card" data-model-card>
+            </a>
+            <a class="plaza-model-card" href="./model-detail.html?model=gemini-3-pro-preview" target="_blank" rel="noopener" data-model-card aria-label="查看 gemini-3-pro-preview 模型详情">
               <div class="model-card-top"><span>文本</span><em>Google / Gemini</em></div>
               <h3>gemini-3-pro-preview</h3>
               <p>多模态分析、截图理解、长内容整理和复杂判断。</p>
+              <small>适合：截图理解、多源资料和复杂判断；下一步：看输入边界。</small>
               <div class="model-card-tags"><span>多模态</span><span>思考</span><span>资料</span></div>
-              <div class="model-card-actions"><span>查看详情</span><span>体验入口</span><span>API 接入</span></div>
-            </article>
-            <article class="plaza-model-card" data-model-card>
+            </a>
+            <a class="plaza-model-card" href="./model-detail.html?model=text-embedding-3-large" target="_blank" rel="noopener" data-model-card aria-label="查看 text-embedding-3-large 模型详情">
               <div class="model-card-top"><span>Embedding</span><em>OpenAI</em></div>
               <h3>text-embedding-3-large</h3>
               <p>知识库检索、相似内容召回和问答证据链。</p>
+              <small>适合：RAG、相似内容召回和证据链；下一步：看 API 经验。</small>
               <div class="model-card-tags"><span>RAG</span><span>检索</span><span>证据</span></div>
-              <div class="model-card-actions"><span>查看详情</span><span>体验入口</span><span>API 接入</span></div>
-            </article>
-            <article class="plaza-model-card" data-model-card>
+            </a>
+            <a class="plaza-model-card" href="./model-detail.html?model=o4-mini" target="_blank" rel="noopener" data-model-card aria-label="查看 o4-mini 模型详情">
               <div class="model-card-top"><span>文本</span><em>OpenAI</em></div>
               <h3>o4-mini</h3>
               <p>轻量推理、低成本草稿、批量问答和代码辅助。</p>
+              <small>适合：低成本试跑、批量问答和轻推理；下一步：评估成本口径。</small>
               <div class="model-card-tags"><span>轻量</span><span>推理</span><span>低成本</span></div>
-              <div class="model-card-actions"><span>查看详情</span><span>体验入口</span><span>API 接入</span></div>
-            </article>
-            <article class="plaza-model-card" data-model-card>
+            </a>
+            <a class="plaza-model-card" href="./model-detail.html?model=gemini-2.5-pro" target="_blank" rel="noopener" data-model-card aria-label="查看 gemini-2.5-pro 模型详情">
               <div class="model-card-top"><span>文本</span><em>Google / Gemini</em></div>
               <h3>gemini-2.5-pro</h3>
               <p>多源抽取、长文档总结、截图理解和资料整合。</p>
+              <small>适合：长文档、识图和资料整合；下一步：看教程入口。</small>
               <div class="model-card-tags"><span>长文档</span><span>识图</span><span>总结</span></div>
-              <div class="model-card-actions"><span>查看详情</span><span>体验入口</span><span>API 接入</span></div>
-            </article>
-            <article class="plaza-model-card" data-model-card>
+            </a>
+            <a class="plaza-model-card" href="./model-detail.html?model=grok-4-1-auto" target="_blank" rel="noopener" data-model-card aria-label="查看 grok-4-1-auto 模型详情">
               <div class="model-card-top"><span>文本</span><em>Grok / xAI</em></div>
               <h3>grok-4-1-auto</h3>
               <p>实时感任务、观点整理、短内容扩写和轻量判断。</p>
+              <small>适合：观点整理、短内容判断和快速草稿；下一步：发布闪念反馈。</small>
               <div class="model-card-tags"><span>观点</span><span>短内容</span><span>判断</span></div>
-              <div class="model-card-actions"><span>查看详情</span><span>体验入口</span><span>API 接入</span></div>
-            </article>
-            <article class="plaza-model-card" data-model-card>
+            </a>
+            <a class="plaza-model-card" href="./model-detail.html?model=doubao-pro" target="_blank" rel="noopener" data-model-card aria-label="查看 doubao-pro 模型详情">
               <div class="model-card-top"><span>文本</span><em>Doubao</em></div>
               <h3>doubao-pro</h3>
               <p>中文内容生成、运营话术、活动文案和客服摘要。</p>
+              <small>适合：中文运营、客服摘要和活动文案；下一步：套用教程结构。</small>
               <div class="model-card-tags"><span>中文</span><span>运营</span><span>客服</span></div>
-              <div class="model-card-actions"><span>查看详情</span><span>体验入口</span><span>API 接入</span></div>
-            </article>
-            <article class="plaza-model-card media-model" data-model-card>
+            </a>
+            <a class="plaza-model-card media-model" href="./model-detail.html?model=doubao-seedream-4-0" target="_blank" rel="noopener" data-model-card aria-label="查看 doubao-seedream-4-0 模型详情">
               <div class="model-card-top"><span>图像</span><em>Doubao</em></div>
               <h3>doubao-seedream-4-0</h3>
               <p>角色设定、场景封面、商品海报和图像样片。</p>
+              <small>适合：角色定妆、封面和活动海报；下一步：回到 AIGC 同款。</small>
               <div class="model-card-tags"><span>封面</span><span>角色</span><span>海报</span></div>
-              <div class="model-card-actions"><span>查看详情</span><span>体验入口</span><span>API 接入</span></div>
-            </article>
-            <article class="plaza-model-card media-model" data-model-card>
+            </a>
+            <a class="plaza-model-card media-model" href="./model-detail.html?model=gemini-3.1-flash-image" target="_blank" rel="noopener" data-model-card aria-label="查看 gemini-3.1-flash-image 模型详情">
               <div class="model-card-top"><span>图像</span><em>Google / Gemini</em></div>
               <h3>gemini-3.1-flash-image</h3>
               <p>快速图片生成、提示词测试、教程封面和创作样片。</p>
+              <small>适合：快速样片、教程封面和提示词测试；下一步：看封面教程。</small>
               <div class="model-card-tags"><span>快速</span><span>提示词</span><span>样片</span></div>
-              <div class="model-card-actions"><span>查看详情</span><span>体验入口</span><span>API 接入</span></div>
-            </article>
-            <article class="plaza-model-card video-model" data-model-card>
+            </a>
+            <a class="plaza-model-card video-model" href="./model-detail.html?model=veo_3_1" target="_blank" rel="noopener" data-model-card aria-label="查看 veo_3_1 模型详情">
               <div class="model-card-top"><span>视频</span><em>Google / Gemini</em></div>
               <h3>veo_3_1</h3>
               <p>图生视频、首尾帧短片、动态镜头和样片预览。</p>
+              <small>适合：首尾帧短片、镜头测试和样片预览；下一步：进 AIGC 画布。</small>
               <div class="model-card-tags"><span>图生视频</span><span>镜头</span><span>预览</span></div>
-              <div class="model-card-actions"><span>查看详情</span><span>体验入口</span><span>API 接入</span></div>
-            </article>
-            <article class="plaza-model-card video-model" data-model-card>
+            </a>
+            <a class="plaza-model-card video-model" href="./model-detail.html?model=veo_3_1-fast" target="_blank" rel="noopener" data-model-card aria-label="查看 veo_3_1-fast 模型详情">
               <div class="model-card-top"><span>视频</span><em>Google / Gemini</em></div>
               <h3>veo_3_1-fast</h3>
               <p>快速视频片段、动态广告预览和漫剧镜头测试。</p>
+              <small>适合：快速短片、广告预览和漫剧镜头；下一步：参加创作挑战。</small>
               <div class="model-card-tags"><span>快速</span><span>短片</span><span>漫剧</span></div>
-              <div class="model-card-actions"><span>查看详情</span><span>体验入口</span><span>API 接入</span></div>
-            </article>
+            </a>
           </div>
         </div>
       </section>
 
     </main>
+    <details class="v1-walkthrough-drawer" data-v1-walkthrough-drawer>
+      <summary>走查</summary>
+      <div class="v1-walkthrough-panel">
+        <div class="v1-walkthrough-head"><strong>模型广场走查</strong><span>用于确认模型发现、搜索筛选、模型详情和体验季导流是否完整。</span></div>
+        <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>运营关注</span><span>研发关注</span></div>
+        <div class="v1-rule-section"><strong>页面定位</strong><span>模型广场是模型供给和 API 转化主阵地，前台只表达用户能理解的模型能力、适用场景和下一步反馈。</span></div>
+        <div class="v1-rule-section"><strong>用户主路径</strong><span>用户查看 90/10/2 供给 -> 搜索或按模型类型筛选 -> 点击模型卡 -> 浏览器新页打开模型详情、教程或活动反馈。</span></div>
+        <div class="v1-rule-section"><strong>关键字段</strong><span>供给概览、搜索框、模型类型、模型名、供应商、适合场景、标签和详情入口。</span></div>
+        <div class="v1-rule-section"><strong>状态规则</strong><span>筛选只表达当前列表状态；搜索只表达原型查询状态；不展示复杂排序、跑分榜或实时可用性。</span></div>
+        <div class="v1-rule-section"><strong>CTA 闭环</strong><span>模型卡新页打开详情，搜索和类型筛选只帮助用户收窄选择；推荐模型入口也到详情；API 或体验相关动作后置在详情页或人工灰度承接。</span></div>
+        <div class="v1-rule-section"><strong>运营配置</strong><span>模型列表、文本/图像/视频类型、推荐模型和首屏卖点来自模型服务库、P0 模型内容和 API 灰度承接表；6-7 月人工维护模型顺序与文案。</span></div>
+        <div class="v1-rule-section"><strong>研发验收</strong><span>验收要求：12 张卡可点击且 target=_blank；只保留搜索和类型筛选；无供应商或用途筛选节点；无真实 API Key、调用日志、余额或价格承诺。</span></div>
+        <div class="v1-rule-section"><strong>边界</strong><span>这是模型供给货架和判断入口，不是实时模型市场；不做在线调用、自动资格判断、供应商可用性监控、报价合同或跑分榜。</span></div>
+      </div>
+    </details>
     <div class="footer-space"></div>
   </div>
+  <script>
+    document.querySelectorAll("[data-model-card]").forEach((card) => {
+      const href = card.getAttribute("href");
+      if (!href || !href.includes("model-detail.html?model=")) return;
+
+      const detailUrl = new URL(href, window.location.href).href;
+      card.dataset.detailUrl = detailUrl;
+
+      card.addEventListener("click", (event) => {
+        if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
+        event.preventDefault();
+        window.open(detailUrl, "_blank", "noopener");
+      });
+    });
+  </script>
+  <script src="./walkthrough.js" defer></script>
 </body>
 </html>

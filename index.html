@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
@@ -29,13 +29,97 @@
           <a href="./tutorial.html">官方教程</a>
         </nav>
         <div class="header-actions">
-          <a class="action-link" href="./user-growth.html#invite-panel">邀请有礼</a>
-          <a class="action-link" href="./user-growth.html#member-panel">会员超市</a>
-          <a class="action-link points-link" href="./user-growth.html#points-center">积分 1280</a>
-          <a class="button" href="./user-growth.html#profile-panel">登录/注册</a>
+          <a class="action-link" href="./invite.html" data-nav-action="invite">邀请有礼</a>
+          <a class="action-link" href="./member-store.html" data-nav-action="member">会员超市</a>
+          <a class="action-link points-link" href="./points-center.html" data-nav-action="points">积分 1280</a>
+          <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
+          <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="用户头像"><img src="assets/image_assets/1.png" alt=""></a>
         </div>
       </div>
     </header>
+    <section id="nav-invite" class="create-modal nav-action-modal" aria-label="邀请有礼">
+      <a class="modal-backdrop" href="#" aria-label="关闭邀请有礼"></a>
+      <div class="create-dialog nav-action-dialog">
+        <div class="create-dialog-head">
+          <div>
+            <span class="eyebrow dark">邀请有礼</span>
+            <h2>邀请好友一起试模型，双方都拿创作积分</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <div class="nav-action-body">
+          <div class="nav-action-hero invite">
+            <img src="assets/image_assets/11.png" alt="">
+            <div><span>我的邀请码</span><strong>SG2026</strong><em>好友注册、完成 AIGC 或模型体验后，奖励进入积分和体验券体系。</em></div>
+          </div>
+          <div class="nav-reward-grid">
+            <div><strong>注册</strong><span>双方 +30 积分</span></div>
+            <div><strong>完成 AIGC 体验</strong><span>邀请人 +90 积分</span></div>
+            <div><strong>完成模型体验</strong><span>文本模型试用包</span></div>
+          </div>
+          <div class="modal-actions">
+            <a class="button" href="./invite.html">生成邀请卡</a>
+            <a class="button secondary" href="./invite.html">查看邀请记录</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="nav-member" class="create-modal nav-action-modal" aria-label="会员超市">
+      <a class="modal-backdrop" href="#" aria-label="关闭会员超市"></a>
+      <div class="create-dialog nav-action-dialog">
+        <div class="create-dialog-head">
+          <div>
+            <span class="eyebrow dark">会员超市</span>
+            <h2>先看清权益，再决定是否进入会员页</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <div class="nav-action-body">
+          <div class="member-strip">
+            <div><strong>每月积分包</strong><span>创作、模型和模板体验可用</span></div>
+            <div><strong>AIGC 折扣</strong><span>图片、视频和漫剧体验优先</span></div>
+            <div><strong>活动专属奖励</strong><span>创作挑战和模型体验季加成</span></div>
+          </div>
+          <div class="modal-actions">
+            <a class="button" href="./member-store.html">查看完整权益</a>
+            <a class="button secondary" href="./points-center.html">先做任务攒积分</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="nav-points" class="points-modal" aria-label="积分任务中心">
+      <a class="modal-backdrop" href="#" aria-label="关闭积分任务中心"></a>
+      <div class="points-dialog points-panel nav-points-dialog">
+        <div class="panel-head">
+          <div>
+            <span class="eyebrow dark">积分中心</span>
+            <h2>今天还能赚 260 积分</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <div class="nav-points-hero">
+          <div>
+            <span>我的创作积分</span>
+            <strong>1280</strong>
+            <em>用于 AIGC、模型广场、模板和轻创作体验。</em>
+          </div>
+          <div class="nav-points-ring"><strong>+260</strong><span>今日可领</span></div>
+        </div>
+        <div class="nav-points-progress"><span style="width: 68%"></span></div>
+        <div class="task-grid">
+          <a class="task-item" href="./user-center.html"><strong>每日登录</strong><span>+20</span></a>
+          <a class="task-item" href="./aigc.html"><strong>AIGC 体验</strong><span>+10</span></a>
+          <a class="task-item" href="./flash.html"><strong>发布闪念</strong><span>+30</span></a>
+          <a class="task-item" href="./model-plaza.html"><strong>模型反馈</strong><span>+60</span></a>
+        </div>
+        <div class="modal-actions">
+          <a class="button" href="./points-center.html">进入积分任务中心</a>
+          <a class="button secondary" href="./member-store.html">领取会员折扣</a>
+        </div>
+      </div>
+    </section>
 
     <section id="points-center" class="points-modal" aria-label="积分任务中心">
       <a class="modal-backdrop" href="#" aria-label="关闭积分任务中心"></a>
@@ -53,14 +137,14 @@
           <em>今日再赚 260 积分</em>
         </div>
         <div class="task-grid">
-          <a class="task-item" href="./user-growth.html#profile-panel"><strong>签到登录</strong><span>+20</span></a>
+          <a class="task-item" href="./user-center.html"><strong>签到登录</strong><span>+20</span></a>
           <a class="task-item" href="./flash.html#compose-flash"><strong>发布闪念</strong><span>+30</span></a>
           <a class="task-item" href="./model-plaza.html#model-list"><strong>发模型经验</strong><span>+60</span></a>
           <a class="task-item" href="./aigc.html#aigc-create-panel"><strong>发布案例</strong><span>+80</span></a>
         </div>
         <div class="modal-actions">
-          <a class="button" href="./user-growth.html#points-center">进入积分任务中心</a>
-          <a class="button secondary" href="./user-growth.html#member-panel">充值加速</a>
+          <a class="button" href="./points-center.html">进入积分任务中心</a>
+          <a class="button secondary" href="./member-store.html">充值加速</a>
         </div>
       </div>
     </section>
@@ -113,7 +197,7 @@
                 <strong>漫剧挑战赛</strong>
                 <em>5万奖池 获奖作品公布</em>
               </a>
-              <a class="carousel-slide carousel-slide-tools has-video" href="./user-growth.html#member-panel">
+              <a class="carousel-slide carousel-slide-tools has-video" href="./member-store.html">
                 <video class="carousel-video" src="assets/video_assets/effects_template.mp4" poster="assets/image_assets/3.png" muted loop playsinline aria-hidden="true"></video>
                 <span class="slide-kicker">限时优惠</span>
                 <strong>Seedance 2.0 官方35折</strong>
@@ -140,9 +224,9 @@
               <span class="ad-thumb"><img src="assets/image_assets/2.png" alt=""></span>
               <span class="ad-copy"><strong>模型体验季</strong><em>文本、图像、视频模型精选入口</em></span>
             </a>
-            <a class="ad-card ad-card-tools" href="./aigc-templates.html">
-              <span class="ad-icon"><img src="resources/icons/remixicon/svg/Design/tools-line.svg" alt=""></span>
-              <span class="ad-copy"><strong>AI工具合集</strong><em>剧本分镜、AI视频、AI生图等</em></span>
+            <a class="ad-card ad-card-points" href="./points-center.html">
+              <span class="ad-icon"><img src="resources/icons/remixicon/svg/Finance/hand-coin-line.svg" alt=""></span>
+              <span class="ad-copy"><strong>新手任务</strong><em>签到发帖，免费体验模型</em></span>
             </a>
           </div>
 
@@ -159,17 +243,112 @@
           </div>
 
           <div class="masonry">
-            <article class="case-card tall"><img src="assets/image_assets/11.png" alt=""><div class="copy"><h3>龙虎天劫</h3><p>高燃对决封面，漫剧开场感拉满</p><a class="case-copy-cta" href="#quick-create">一键同款</a></div></article>
-            <article class="case-card short"><img src="assets/image_assets/3.png" alt=""><div class="copy"><h3>竹泉秘境</h3><p>清新治愈场景，夏日氛围一键生成</p><a class="case-copy-cta" href="#quick-create">一键同款</a></div></article>
-            <article class="case-card"><img src="assets/image_assets/4.png" alt=""><div class="copy"><h3>海灯守望</h3><p>海边落日镜头，故事片头更有画面</p><a class="case-copy-cta" href="#quick-create">一键同款</a></div></article>
-            <article class="case-card tall"><img src="assets/image_assets/15.jpg" alt=""><div class="copy"><h3>凤冠神女</h3><p>国风神女设定，古装角色直接出图</p><a class="case-copy-cta" href="#quick-create">一键同款</a></div></article>
-            <article class="case-card"><img src="assets/image_assets/18.png" alt=""><div class="copy"><h3>金色启航</h3><p>品牌主视觉海报，适合活动首屏投放</p><a class="case-copy-cta" href="#quick-create">一键同款</a></div></article>
-            <article class="case-card short"><img src="assets/image_assets/2.png" alt=""><div class="copy"><h3>画室追光</h3><p>真人质感画面，短剧角色宣传图</p><a class="case-copy-cta" href="#quick-create">一键同款</a></div></article>
-            <article class="case-card tall"><img src="assets/image_assets/17.png" alt=""><div class="copy"><h3>异界裂隙</h3><p>暗黑幻想场景，战斗分镜快速定调</p><a class="case-copy-cta" href="#quick-create">一键同款</a></div></article>
-            <article class="case-card"><img src="assets/image_assets/11.png" alt=""><div class="copy"><h3>决战前夜</h3><p>双主角压迫感，高潮镜头直接复用</p><a class="case-copy-cta" href="#quick-create">一键同款</a></div></article>
-            <article class="case-card short"><img src="assets/image_assets/2.png" alt=""><div class="copy"><h3>AI画师工作台</h3><p>创作过程画面，工具教程封面即用</p><a class="case-copy-cta" href="#quick-create">一键同款</a></div></article>
-            <article class="case-card"><img src="assets/image_assets/4.png" alt=""><div class="copy"><h3>云海行舟</h3><p>轻幻想插画，故事配图更容易出片</p><a class="case-copy-cta" href="#quick-create">一键同款</a></div></article>
+            <a class="case-card tall" href="#case-detail-manga"><img src="assets/image_assets/11.png" alt=""><div class="copy"><h3>龙虎天劫</h3><p>高燃对决封面，漫剧开场感拉满</p><div class="case-hover-meta"><span>Seedance 2.0</span><span>短剧漫剧</span></div></div></a>
+            <a class="case-card short" href="#case-detail-image"><img src="assets/image_assets/3.png" alt=""><div class="copy"><h3>竹泉秘境</h3><p>清新治愈场景，夏日氛围一键生成</p><div class="case-hover-meta"><span>Flux Pro 1.1</span><span>图片生成</span></div></div></a>
+            <a class="case-card" href="#case-detail-video"><img src="assets/image_assets/4.png" alt=""><div class="copy"><h3>海灯守望</h3><p>海边落日镜头，故事片头更有画面</p><div class="case-hover-meta"><span>Seedance 2.0</span><span>视频生成</span></div></div></a>
+            <a class="case-card tall" href="#case-detail-image"><img src="assets/image_assets/15.jpg" alt=""><div class="copy"><h3>凤冠神女</h3><p>国风神女设定，古装角色直接出图</p><div class="case-hover-meta"><span>Flux Pro 1.1</span><span>图片生成</span></div></div></a>
+            <a class="case-card" href="#case-detail-text"><img src="assets/image_assets/18.png" alt=""><div class="copy"><h3>金色启航</h3><p>活动海报脚本，首屏转化文案成稿</p><div class="case-hover-meta"><span>GPT-4.1</span><span>文本模型</span></div></div></a>
+            <a class="case-card short" href="#case-detail-manga"><img src="assets/image_assets/2.png" alt=""><div class="copy"><h3>画室追光</h3><p>真人质感画面，短剧角色宣传图</p><div class="case-hover-meta"><span>Seedance 2.0</span><span>短剧漫剧</span></div></div></a>
+            <a class="case-card tall" href="#case-detail-video"><img src="assets/image_assets/17.png" alt=""><div class="copy"><h3>异界裂隙</h3><p>暗黑幻想场景，战斗分镜快速定调</p><div class="case-hover-meta"><span>Seedance 2.0</span><span>视频生成</span></div></div></a>
+            <a class="case-card" href="#case-detail-manga"><img src="assets/image_assets/11.png" alt=""><div class="copy"><h3>决战前夜</h3><p>双主角压迫感，高潮镜头直接复用</p><div class="case-hover-meta"><span>Seedance 2.0</span><span>短剧漫剧</span></div></div></a>
+            <a class="case-card short" href="#case-detail-text"><img src="assets/image_assets/2.png" alt=""><div class="copy"><h3>AI画师工作台</h3><p>教程结构草稿，工具卖点快速拆解</p><div class="case-hover-meta"><span>Gemini 3 Flash</span><span>文本模型</span></div></div></a>
+            <a class="case-card" href="#case-detail-image"><img src="assets/image_assets/4.png" alt=""><div class="copy"><h3>云海行舟</h3><p>轻幻想插画，故事配图更容易出片</p><div class="case-hover-meta"><span>Flux Pro 1.1</span><span>图片生成</span></div></div></a>
           </div>
+
+          <section id="case-detail-manga" class="case-detail-modal" aria-label="短剧漫剧作品详情">
+            <a class="modal-backdrop" href="#case-gallery" aria-label="关闭作品详情"></a>
+            <article class="case-detail-dialog">
+              <a class="case-detail-close" href="#case-gallery" aria-label="关闭">×</a>
+              <div class="case-detail-media">
+                <div class="case-detail-viewport"><img class="case-gallery-main" src="assets/image_assets/11.png" alt=""></div>
+                <div class="case-thumb-strip">
+                  <button class="case-thumb is-active" type="button" data-src="assets/image_assets/11.png"><img src="assets/image_assets/11.png" alt=""></button>
+                  <button class="case-thumb" type="button" data-src="assets/image_assets/2.png"><img src="assets/image_assets/2.png" alt=""></button>
+                  <button class="case-thumb" type="button" data-src="assets/image_assets/17.png"><img src="assets/image_assets/17.png" alt=""></button>
+                  <button class="case-thumb" type="button" data-src="assets/image_assets/15.jpg"><img src="assets/image_assets/15.jpg" alt=""></button>
+                </div>
+              </div>
+              <aside class="case-detail-aside">
+                <h3>龙虎天劫</h3>
+                <div class="detail-tags"><span>Seedance 2.0</span><span>短剧漫剧</span></div>
+                <p>高燃对决封面与分镜感画面，适合作为漫剧开场、角色冲突预告和活动挑战样片。</p>
+                <div class="case-info-grid"><span>画面比例</span><strong>9:16 / 16:9</strong><span>生成消耗</span><strong>28 积分起</strong></div>
+                <div class="detail-prompt"><strong>创作提示</strong><p>东方玄幻，巨龙盘旋，双主角对峙，云层撕裂，电影级光影，强冲突开场。</p></div>
+                <a class="button" href="./aigc.html#canvas-studio">一键同款</a>
+              </aside>
+            </article>
+          </section>
+
+          <section id="case-detail-image" class="case-detail-modal" aria-label="图片作品详情">
+            <a class="modal-backdrop" href="#case-gallery" aria-label="关闭作品详情"></a>
+            <article class="case-detail-dialog">
+              <a class="case-detail-close" href="#case-gallery" aria-label="关闭">×</a>
+              <div class="case-detail-media">
+                <div class="case-detail-viewport"><img class="case-gallery-main" src="assets/image_assets/3.png" alt=""></div>
+                <div class="case-thumb-strip">
+                  <button class="case-thumb is-active" type="button" data-src="assets/image_assets/3.png"><img src="assets/image_assets/3.png" alt=""></button>
+                  <button class="case-thumb" type="button" data-src="assets/image_assets/4.png"><img src="assets/image_assets/4.png" alt=""></button>
+                  <button class="case-thumb" type="button" data-src="assets/image_assets/15.jpg"><img src="assets/image_assets/15.jpg" alt=""></button>
+                  <button class="case-thumb" type="button" data-src="assets/image_assets/18.png"><img src="assets/image_assets/18.png" alt=""></button>
+                </div>
+              </div>
+              <aside class="case-detail-aside">
+                <h3>竹泉秘境</h3>
+                <div class="detail-tags"><span>Flux Pro 1.1</span><span>图片生成</span></div>
+                <p>清新治愈场景图，可用于角色世界观、教程封面、活动海报和社媒内容头图。</p>
+                <div class="case-info-grid"><span>图片规格</span><strong>高清 4 张</strong><span>生成消耗</span><strong>8 积分起</strong></div>
+                <div class="detail-prompt"><strong>创作提示</strong><p>竹林泉水，柔和阳光，轻幻想插画，干净构图，治愈氛围，细节丰富。</p></div>
+                <a class="button" href="./aigc.html#aigc-create-panel">一键同款</a>
+              </aside>
+            </article>
+          </section>
+
+          <section id="case-detail-video" class="case-detail-modal" aria-label="视频作品详情">
+            <a class="modal-backdrop" href="#case-gallery" aria-label="关闭作品详情"></a>
+            <article class="case-detail-dialog">
+              <a class="case-detail-close" href="#case-gallery" aria-label="关闭">×</a>
+              <div class="case-detail-media">
+                <div class="case-detail-viewport video-viewport"><video src="assets/video_assets/sd2_gen.mp4" poster="assets/image_assets/17.png" controls muted playsinline></video></div>
+                <div class="case-thumb-strip">
+                  <button class="case-thumb is-active" type="button" data-src="assets/image_assets/17.png"><img src="assets/image_assets/17.png" alt=""></button>
+                  <button class="case-thumb" type="button" data-src="assets/image_assets/4.png"><img src="assets/image_assets/4.png" alt=""></button>
+                  <button class="case-thumb" type="button" data-src="assets/image_assets/18.png"><img src="assets/image_assets/18.png" alt=""></button>
+                </div>
+              </div>
+              <aside class="case-detail-aside">
+                <h3>海灯守望</h3>
+                <div class="detail-tags"><span>Seedance 2.0</span><span>视频生成</span></div>
+                <p>落日、灯塔、海雾与镜头推进组合，适合做短片开头、广告片转场和情绪化视频素材。</p>
+                <div class="case-info-grid"><span>视频时长</span><strong>5-10 秒</strong><span>生成消耗</span><strong>低至 8 积分/秒</strong></div>
+                <div class="detail-prompt"><strong>创作提示</strong><p>海边灯塔，傍晚金色光线，镜头缓慢推进，电影感，空气中有薄雾。</p></div>
+                <a class="button" href="./aigc.html#aigc-create-panel">一键同款</a>
+              </aside>
+            </article>
+          </section>
+
+          <section id="case-detail-text" class="case-detail-modal" aria-label="文本模型作品详情">
+            <a class="modal-backdrop" href="#case-gallery" aria-label="关闭作品详情"></a>
+            <article class="case-detail-dialog">
+              <a class="case-detail-close" href="#case-gallery" aria-label="关闭">×</a>
+              <div class="case-detail-media">
+                <div class="case-text-preview">
+                  <span>生成结果预览</span>
+                  <h3>618 模型体验季广告脚本</h3>
+                  <div class="script-block"><strong>开场 0-3s</strong><p>镜头扫过创作台，字幕出现：一句话，直接生成一支广告。</p></div>
+                  <div class="script-block"><strong>卖点 4-12s</strong><p>展示文本、图片、视频模型并列切换，强调 90 款文本模型、10 款图像模型和 2 款视频模型的组合能力。</p></div>
+                  <div class="script-block"><strong>收口 13-18s</strong><p>用积分免费试一次，再进入模型广场选择更适合的创作链路。</p></div>
+                </div>
+              </div>
+              <aside class="case-detail-aside">
+                <h3>金色启航</h3>
+                <div class="detail-tags"><span>GPT-4.1</span><span>文本模型</span></div>
+                <p>文本模型作品用“结果预览”承载，不硬塞成图片。重点展示脚本、标题、卖点拆解、分镜结构和可复用提示词。</p>
+                <div class="case-info-grid"><span>适用场景</span><strong>广告脚本 / 标题</strong><span>生成消耗</span><strong>3 积分起</strong></div>
+                <div class="detail-prompt"><strong>创作提示</strong><p>为 AI 模型体验季写一条 18 秒短视频广告脚本，突出低门槛试用、模型丰富和积分体验。</p></div>
+                <a class="button" href="./model-plaza.html#model-list">一键同款</a>
+              </aside>
+            </article>
+          </section>
 
           <a class="floating-create-trigger" href="#quick-create" aria-label="打开轻创作体验">
             <span class="floating-create-mode">短剧漫剧</span>
@@ -181,6 +360,21 @@
         </div>
       </section>
     </main>
+    <details class="v1-walkthrough-drawer" data-v1-walkthrough-drawer>
+      <summary>走查</summary>
+      <div class="v1-walkthrough-panel">
+        <div class="v1-walkthrough-head"><strong>社区 1.0 正式页走查</strong><span>用于确认首页是否把新用户分流到可体验、可消费、可反馈的正式 1.0 页面。</span></div>
+        <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>运营关注</span><span>研发关注</span></div>
+        <div class="v1-rule-section"><strong>页面定位</strong><span>首页负责说明“多元拾光 = AI原生实战者社区”，并把用户分流到 AIGC、模型广场、闪念、官方教程和活动详情。</span></div>
+        <div class="v1-rule-section"><strong>用户主路径</strong><span>新用户先看顶部活动和 Hero，随后选择开始创作、查看模型、浏览作品或进入教程；右上角承接邀请、会员、积分和用户入口。</span></div>
+        <div class="v1-rule-section"><strong>关键字段</strong><span>品牌、一级导航、顶部活动、Hero 输入、模型/积分提示、运营广告位、爆款作品、案例详情锚点和右侧运营入口。</span></div>
+        <div class="v1-rule-section"><strong>状态规则</strong><span>首页只展示精选运营位、案例预览和入口状态；发帖、权益结算和完整成长中心进入对应页面承接。</span></div>
+        <div class="v1-rule-section"><strong>CTA 闭环</strong><span>首页 CTA 只做分发：作品卡进入详情或当前状态，AIGC、模型、闪念、教程进入对应频道，邀请、会员、积分、登录进入独立页；右侧运营位必须有目标页或 data-cta-state，不承诺自动任务或推荐算法。</span></div>
+        <div class="v1-rule-section"><strong>运营配置</strong><span>推荐作品、顶部活动条、右侧话题、权益和公告来自 P0 内容池、运营配置来源清单和低风险活动方案；6-7 月由人工维护排序、文案和目标，不做后台投放系统。</span></div>
+        <div class="v1-rule-section"><strong>研发验收</strong><span>验收要求：无 href=# 空链，站内链接落在 14 个正式页面集合内；无 floating-deal；首页内容点击、导航和右侧入口均可达；不暴露推荐权重、审核状态或真实积分账本。</span></div>
+        <div class="v1-rule-section"><strong>边界</strong><span>当前只保留聚合分发和人工精选；隐藏个性化推荐算法、实时广告、自动奖励、等级权益、完整活动体系、任务中心和登录支付履约。</span></div>
+      </div>
+    </details>
     <div class="footer-space"></div>
   </div>
   <script>
@@ -215,6 +409,22 @@
       syncVideos();
       window.setInterval(() => setActive(activeIndex + 1), 4200);
     })();
+
+    (() => {
+      document.querySelectorAll(".case-thumb").forEach((button) => {
+        button.addEventListener("click", () => {
+          const dialog = button.closest(".case-detail-dialog");
+          const target = dialog?.querySelector(".case-gallery-main");
+          const nextSrc = button.dataset.src;
+          if (!target || !nextSrc) return;
+          target.src = nextSrc;
+          dialog.querySelectorAll(".case-thumb").forEach((item) => {
+            item.classList.toggle("is-active", item === button);
+          });
+        });
+      });
+    })();
   </script>
+  <script src="./walkthrough.js" defer></script>
 </body>
 </html>

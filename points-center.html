@@ -1,0 +1,180 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>积分中心 - 多元拾光</title>
+  <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="page growth-detail-page growth-app-page points-detail-page" data-page="points-center" style="--growth-hero-image: url('assets/image_assets/18.png')">
+    <div class="page-bg"><img src="assets/image_assets/18.png" alt=""></div>
+    <input class="top-campaign-toggle" type="checkbox" id="top-campaign-dismiss-points" aria-label="关闭顶部广告">
+    <div class="top-campaign"><span>新手签到周</span><span class="timer">20时 42分 39秒</span><span>签到、体验、反馈、邀请，今日最多 +260</span><span>今日可领</span><label class="top-campaign-close" for="top-campaign-dismiss-points" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
+    <header class="site-header">
+      <div class="header-inner wide-container">
+        <a class="logo" href="./index.html" aria-label="多元拾光">
+          <img class="brand-mark" src="assets/brand/duoyuan-shiguang-logo-mark-reverse.svg" alt="">
+          <span class="brand-copy">
+            <span class="brand-name">多元拾光</span>
+            <span class="brand-sub">AI原生实践者社区</span>
+          </span>
+        </a>
+        <nav class="nav" aria-label="主导航">
+          <a href="./index.html">首页</a>
+          <a href="./aigc.html">AIGC</a>
+          <a href="./model-plaza.html">模型广场</a>
+          <a href="./flash.html">闪念</a>
+          <a href="./tutorial.html">官方教程</a>
+        </nav>
+        <div class="header-actions">
+          <a class="action-link" href="./invite.html" data-nav-action="invite">邀请有礼</a>
+          <a class="action-link" href="./member-store.html" data-nav-action="member">会员超市</a>
+          <a class="action-link points-link" href="./points-center.html" data-nav-action="points">积分 1280</a>
+          <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
+          <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="用户头像"><img src="assets/image_assets/1.png" alt=""></a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="app-workspace section" data-points-section="overview">
+        <div class="wide-container app-shell-grid">
+          <aside class="app-command-panel points-balance-panel">
+            <span class="eyebrow dark">积分中心</span>
+            <div class="balance-display">
+              <strong>1280</strong>
+              <span>可用积分</span>
+            </div>
+            <div class="balance-meter" aria-label="本周任务进度"><span style="width: 72%"></span></div>
+            <div class="side-metric-grid">
+              <div><strong>260</strong><span>今日可赚</span></div>
+              <div><strong>5/7</strong><span>本周任务</span></div>
+              <div><strong>120</strong><span>即将到期</span></div>
+            </div>
+            <div class="side-action-stack">
+              <a class="button" href="#earn-tasks">去做任务</a>
+              <a class="button secondary" href="#spend-points">积分用途</a>
+              <a class="button dark" href="./member-store.html">会员加速</a>
+            </div>
+          </aside>
+
+          <div class="app-main-stack">
+            <section class="app-card points-summary-card">
+              <div class="app-card-head">
+                <div>
+                  <span class="eyebrow dark">今天</span>
+                  <h1>积分中心</h1>
+                </div>
+                <a class="section-link" href="./user-center.html">用户中心</a>
+              </div>
+              <div class="summary-strip">
+                <a href="./aigc.html"><strong>AIGC 体验</strong><span>+10</span></a>
+                <a href="./flash.html"><strong>发布闪念</strong><span>+30</span></a>
+                <a href="./model-plaza.html"><strong>模型反馈</strong><span>+60</span></a>
+                <a href="./invite.html"><strong>邀请好友</strong><span>+120</span></a>
+              </div>
+            </section>
+
+            <section id="earn-tasks" class="app-card" data-points-section="earn">
+              <div class="app-card-head">
+                <div>
+                  <span class="eyebrow dark">今日任务</span>
+                  <h2>今日任务</h2>
+                </div>
+                <a class="section-link" href="./campaign-detail.html">签到周</a>
+              </div>
+              <div class="task-list compact-task-list">
+                <a class="task-row" href="./user-center.html" data-points-task><strong>每日登录</strong><span>回到用户中心</span><em>+20</em><b>已完成</b></a>
+                <a class="task-row" href="./aigc.html" data-points-task><strong>完成一次 AIGC 体验</strong><span>图片、视频、漫剧任选</span><em>+10</em><b>继续</b></a>
+                <a class="task-row" href="./aigc.html#quick-create" data-points-task><strong>生成一组草稿</strong><span>保存草稿或继续编辑</span><em>+40</em><b>去创作</b></a>
+                <a class="task-row" href="./flash.html#compose-flash" data-points-task><strong>发布闪念</strong><span>记录一次模型体验</span><em>+30</em><b>发布</b></a>
+                <a class="task-row" href="./aigc.html#template-market" data-points-task><strong>发布作品案例</strong><span>模板同款或创作成果</span><em>+80</em><b>提交</b></a>
+                <a class="task-row" href="./model-plaza.html" data-points-task><strong>发布模型反馈</strong><span>选择模型并反馈体验</span><em>+60</em><b>去反馈</b></a>
+                <a class="task-row" href="./aigc-templates.html#template-list" data-points-task><strong>关联模板体验</strong><span>从教程或模板继续一次创作</span><em>+20</em><b>体验</b></a>
+                <a class="task-row" href="./invite.html" data-points-task><strong>邀请好友完成体验</strong><span>好友完成首次体验</span><em>+120</em><b>邀请</b></a>
+              </div>
+            </section>
+
+            <section id="spend-points" class="app-card" data-points-section="spend">
+              <div class="app-card-head">
+                <div>
+                  <span class="eyebrow dark">兑换</span>
+                  <h2>积分用途</h2>
+                </div>
+                <a class="section-link" href="./member-store.html">会员换券</a>
+              </div>
+              <div class="scenario-grid">
+                <a class="scenario-card" href="./aigc.html" data-spend-scenario><strong>图片生成</strong><span>角色封面、海报、场景图</span><em>12 起</em></a>
+                <a class="scenario-card" href="./aigc.html" data-spend-scenario><strong>视频生成</strong><span>广告片、短视频镜头</span><em>60 起</em></a>
+                <a class="scenario-card" href="./aigc.html#canvas-studio" data-spend-scenario><strong>漫剧制作</strong><span>分镜、角色、封面组合</span><em>80 起</em></a>
+                <a class="scenario-card" href="./model-plaza.html" data-spend-scenario><strong>模型体验</strong><span>文本模型试用和反馈</span><em>20 起</em></a>
+                <a class="scenario-card" href="./aigc-templates.html" data-spend-scenario><strong>模板高级能力</strong><span>同款、参数复用、进阶能力</span><em>30 起</em></a>
+              </div>
+            </section>
+
+            <section class="app-card" data-points-section="records">
+              <div class="app-card-head">
+                <div>
+                  <span class="eyebrow dark">明细</span>
+                  <h2>积分记录</h2>
+                </div>
+                <div class="profile-tabs compact-tabs" aria-label="积分记录筛选">
+                  <a href="#points-records">全部</a>
+                  <a href="#points-records">获取</a>
+                  <a href="#points-records">使用</a>
+                  <a href="#points-records">到期</a>
+                </div>
+              </div>
+              <div id="points-records" class="growth-table compact-table">
+                <div class="growth-table-row is-head"><span>时间</span><span>动作</span><span>变化</span><span>状态</span></div>
+                <div class="growth-table-row" data-points-record><strong>今天 09:12</strong><span>每日登录</span><em>+20</em><span>已确认</span></div>
+                <div class="growth-table-row" data-points-record><strong>今天 10:26</strong><span>AIGC 体验</span><em>+10</em><span>已确认</span></div>
+                <div class="growth-table-row" data-points-record><strong>今天 11:40</strong><span>模板生成角色封面</span><em>-12</em><span>已使用</span></div>
+                <div class="growth-table-row" data-points-record><strong>昨天 18:06</strong><span>模型体验反馈</span><em>+60</em><span>已确认</span></div>
+                <div class="growth-table-row" data-points-record><strong>昨天 20:15</strong><span>好友完成首次体验</span><em>+120</em><span>已确认</span></div>
+                <div class="growth-table-row" data-points-record><strong>本周</strong><span>活动积分到期提醒</span><em>-120</em><span>优先使用</span></div>
+              </div>
+            </section>
+
+            <section class="app-rule-strip" data-points-section="rules">
+              <div class="points-rule-grid">
+                <div><strong>获取规则</strong><span>积分绑定登录、AIGC 体验、模型反馈、闪念发布、邀请转化等可验证动作。</span></div>
+                <div><strong>使用规则</strong><span>积分用于站内模板、AIGC、模型体验和会员换券，不表达现金等价。</span></div>
+                <div><strong>到期与确认</strong><span>活动积分可设置到期提醒；高价值奖励需要人工确认后进入记录。</span></div>
+              </div>
+              <details class="growth-rule-panel">
+                <summary>走查规则</summary>
+                <div>
+                  <strong>研发走查</strong>
+                  <span>任务入口回流到 AIGC、模型广场、闪念、教程、邀请或会员页面；记录不展示内部流水号。</span>
+                  <strong>运营来源</strong>
+                  <span>任务值、活动加成、会员加赠和到期提醒由运营配置维护。</span>
+                </div>
+              </details>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+    <details class="v1-walkthrough-drawer" data-v1-walkthrough-drawer>
+      <summary>走查</summary>
+      <div class="v1-walkthrough-panel">
+        <div class="v1-walkthrough-head"><strong>积分中心走查</strong><span>用于确认积分是否服务免费体验、行为激励和会员转化，而不是独立金融账本。</span></div>
+        <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>运营关注</span><span>研发关注</span></div>
+        <div class="v1-rule-section"><strong>页面定位</strong><span>积分中心承接余额、任务、用途、明细和规则说明，辅助 AIGC、模型广场、闪念、邀请和会员转化。</span></div>
+        <div class="v1-rule-section"><strong>用户主路径</strong><span>用户查看当前积分 -> 选择任务入口 -> 完成 AIGC、模型反馈、闪念或邀请 -> 回到积分明细查看轻状态。</span></div>
+        <div class="v1-rule-section"><strong>关键字段</strong><span>当前积分、今日可领、任务列表、积分用途、积分明细、到期提醒、人工确认状态和规则说明。</span></div>
+        <div class="v1-rule-section"><strong>状态规则</strong><span>积分状态包含获取、使用、到期提醒和人工确认；不展示内部流水号、风控字段或现金等价承诺。</span></div>
+        <div class="v1-rule-section"><strong>CTA 闭环</strong><span>积分页承接余额查看、今日任务、用途和记录；任务按钮只表达目标页或人工确认状态，不直接触发真实积分发放。</span></div>
+        <div class="v1-rule-section"><strong>运营配置</strong><span>任务列表、积分用途、记录样例和到期提示来自用户成长轻路径、低风险活动方案和每日复盘口径，灰度期人工维护。</span></div>
+        <div class="v1-rule-section"><strong>研发验收</strong><span>验收要求：余额、任务、用途和记录可读，任务有目标页或状态；不出现完整账务明细、自动奖励、防刷、支付、提现或完整积分商城。</span></div>
+        <div class="v1-rule-section"><strong>边界</strong><span>积分中心是轻激励展示和复盘入口，不是财务账本；真实积分结算、权益兑换、自动奖励和过期规则后置；积分变更以人工复盘记录为准。</span></div>
+      </div>
+    </details>
+    <div class="footer-space"></div>
+  </div>
+  <script src="./walkthrough.js" defer></script>
+</body>
+</html>

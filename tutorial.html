@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
@@ -27,13 +27,97 @@
           <a class="is-active" href="./tutorial.html">官方教程</a>
         </nav>
         <div class="header-actions">
-          <a class="action-link" href="./user-growth.html#invite-panel">邀请有礼</a>
-          <a class="action-link" href="./user-growth.html#member-panel">会员超市</a>
-          <a class="action-link points-link" href="./user-growth.html#points-center">积分 1280</a>
-          <a class="button" href="./user-growth.html#profile-panel">登录/注册</a>
+          <a class="action-link" href="./invite.html" data-nav-action="invite">邀请有礼</a>
+          <a class="action-link" href="./member-store.html" data-nav-action="member">会员超市</a>
+          <a class="action-link points-link" href="./points-center.html" data-nav-action="points">积分 1280</a>
+          <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
+          <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="用户头像"><img src="assets/image_assets/1.png" alt=""></a>
         </div>
       </div>
     </header>
+    <section id="nav-invite" class="create-modal nav-action-modal" aria-label="邀请有礼">
+      <a class="modal-backdrop" href="#" aria-label="关闭邀请有礼"></a>
+      <div class="create-dialog nav-action-dialog">
+        <div class="create-dialog-head">
+          <div>
+            <span class="eyebrow dark">邀请有礼</span>
+            <h2>邀请好友一起试模型，双方都拿创作积分</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <div class="nav-action-body">
+          <div class="nav-action-hero invite">
+            <img src="assets/image_assets/11.png" alt="">
+            <div><span>我的邀请码</span><strong>SG2026</strong><em>好友注册、完成 AIGC 或模型体验后，奖励进入积分和体验券体系。</em></div>
+          </div>
+          <div class="nav-reward-grid">
+            <div><strong>注册</strong><span>双方 +30 积分</span></div>
+            <div><strong>完成 AIGC 体验</strong><span>邀请人 +90 积分</span></div>
+            <div><strong>完成模型体验</strong><span>文本模型试用包</span></div>
+          </div>
+          <div class="modal-actions">
+            <a class="button" href="./invite.html">生成邀请卡</a>
+            <a class="button secondary" href="./invite.html">查看邀请记录</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="nav-member" class="create-modal nav-action-modal" aria-label="会员超市">
+      <a class="modal-backdrop" href="#" aria-label="关闭会员超市"></a>
+      <div class="create-dialog nav-action-dialog">
+        <div class="create-dialog-head">
+          <div>
+            <span class="eyebrow dark">会员超市</span>
+            <h2>先看清权益，再决定是否进入会员页</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <div class="nav-action-body">
+          <div class="member-strip">
+            <div><strong>每月积分包</strong><span>创作、模型和模板体验可用</span></div>
+            <div><strong>AIGC 折扣</strong><span>图片、视频和漫剧体验优先</span></div>
+            <div><strong>活动专属奖励</strong><span>创作挑战和模型体验季加成</span></div>
+          </div>
+          <div class="modal-actions">
+            <a class="button" href="./member-store.html">查看完整权益</a>
+            <a class="button secondary" href="./points-center.html">先做任务攒积分</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="nav-points" class="points-modal" aria-label="积分任务中心">
+      <a class="modal-backdrop" href="#" aria-label="关闭积分任务中心"></a>
+      <div class="points-dialog points-panel nav-points-dialog">
+        <div class="panel-head">
+          <div>
+            <span class="eyebrow dark">积分中心</span>
+            <h2>今天还能赚 260 积分</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <div class="nav-points-hero">
+          <div>
+            <span>我的创作积分</span>
+            <strong>1280</strong>
+            <em>用于 AIGC、模型广场、模板和轻创作体验。</em>
+          </div>
+          <div class="nav-points-ring"><strong>+260</strong><span>今日可领</span></div>
+        </div>
+        <div class="nav-points-progress"><span style="width: 68%"></span></div>
+        <div class="task-grid">
+          <a class="task-item" href="./user-center.html"><strong>每日登录</strong><span>+20</span></a>
+          <a class="task-item" href="./aigc.html"><strong>AIGC 体验</strong><span>+10</span></a>
+          <a class="task-item" href="./flash.html"><strong>发布闪念</strong><span>+30</span></a>
+          <a class="task-item" href="./model-plaza.html"><strong>模型反馈</strong><span>+60</span></a>
+        </div>
+        <div class="modal-actions">
+          <a class="button" href="./points-center.html">进入积分任务中心</a>
+          <a class="button secondary" href="./member-store.html">领取会员折扣</a>
+        </div>
+      </div>
+    </section>
 
     <section id="points-center" class="points-modal" aria-label="积分中心">
       <a class="modal-backdrop" href="#" aria-label="关闭积分中心"></a>
@@ -41,23 +125,23 @@
         <div class="panel-head">
           <div>
             <span class="eyebrow dark">积分中心</span>
-            <h2>学完教程继续体验</h2>
+            <h2>看完教程直接上手</h2>
           </div>
           <a class="section-link" href="#">关闭</a>
         </div>
         <div class="credit-card">
-          <span>当前可用</span>
-          <strong>1280</strong>
-          <em>今日完成一篇教程可得 30 积分</em>
+          <span>推荐下一步</span>
+          <strong>同款模板</strong>
+          <em>教程不做学习进度和完成积分，回流到模板、画布和闪念反馈。</em>
         </div>
         <div class="task-grid">
-          <a class="task-item" href="#video-lesson"><strong>完成官方教程</strong><span>+30</span></a>
-          <a class="task-item" href="#article-lesson"><strong>收藏一篇教程</strong><span>+10</span></a>
-          <a class="task-item" href="./aigc.html"><strong>完成一次 AIGC 体验</strong><span>+10</span></a>
-          <a class="task-item" href="./flash.html"><strong>发布一条学习反馈</strong><span>+20</span></a>
+          <a class="task-item" href="./aigc-templates.html#template-list"><strong>打开关联模板</strong><span>同款</span></a>
+          <a class="task-item" href="./aigc.html#aigc-create-panel"><strong>进入创作画布</strong><span>上手</span></a>
+          <a class="task-item" href="./model-plaza.html#model-list"><strong>选择模型</strong><span>选型</span></a>
+          <a class="task-item" href="./flash.html#compose-flash"><strong>发布学习反馈</strong><span>沉淀</span></a>
         </div>
         <div class="modal-actions">
-          <a class="button" href="#video-lesson">继续学习</a>
+          <a class="button" href="./aigc-templates.html#template-list">查看关联模板</a>
           <a class="button secondary" href="#tutorial-list">查看教程</a>
         </div>
       </div>
@@ -99,74 +183,6 @@
       </div>
     </section>
 
-    <section id="video-lesson" class="create-modal tutorial-modal" aria-label="视频教程详情">
-      <a class="modal-backdrop" href="#" aria-label="关闭视频教程详情"></a>
-      <div class="create-dialog tutorial-detail-dialog" data-tutorial-detail="video">
-        <div class="create-dialog-head">
-          <div>
-            <span class="eyebrow dark">视频教程</span>
-            <h2>12 分钟完成第一条漫剧分镜</h2>
-          </div>
-          <a class="section-link" href="#">关闭</a>
-        </div>
-        <div class="lesson-detail-grid">
-          <div class="lesson-player">
-            <img src="assets/image_assets/11.png" alt="">
-            <span><img src="resources/icons/remixicon/svg/Media/play-circle-line.svg" alt="">12:08</span>
-          </div>
-          <div class="lesson-detail-copy">
-            <div class="lesson-meta-row"><span>漫剧生成</span><span>视频教程</span><span>12 分钟</span></div>
-            <p>先把故事拆成冲突、角色、场景和镜头，再进入 AIGC 画布生成分镜与封面提示词。</p>
-            <ol>
-              <li>选一个短剧开场模板，填入角色关系。</li>
-              <li>把 9 格分镜拆成起承转合和情绪变化。</li>
-              <li>用图片生成补齐封面、角色和关键场景。</li>
-            </ol>
-            <div class="lesson-actions">
-              <a class="button" href="./aigc.html">开始同款</a>
-              <a class="button secondary" href="#tutorial-list">查看教程</a>
-              <a class="button dark" href="#">收藏教程</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="article-lesson" class="create-modal tutorial-modal" aria-label="图文教程详情">
-      <a class="modal-backdrop" href="#" aria-label="关闭图文教程详情"></a>
-      <div class="create-dialog tutorial-detail-dialog" data-tutorial-detail="article">
-        <div class="create-dialog-head">
-          <div>
-            <span class="eyebrow dark">图文教程</span>
-            <h2>图片生成封面提示词怎么写</h2>
-          </div>
-          <a class="section-link" href="#">关闭</a>
-        </div>
-        <div class="lesson-article-layout">
-          <aside class="lesson-toc">
-            <a href="#">先定画面用途</a>
-            <a href="#">补齐主体和风格</a>
-            <a href="#">控制构图比例</a>
-            <a href="#">保存可复用写法</a>
-          </aside>
-          <article class="lesson-article">
-            <h3>把封面需求写成可生成的画面描述</h3>
-            <p>图文教程按“用途、主体、风格、构图、限制词”组织，帮助用户更快生成可用的封面、角色和场景图。</p>
-            <div class="lesson-step-list">
-              <div><strong>01</strong><span>先说明图片用途，比如封面、角色定妆或关键场景。</span></div>
-              <div><strong>02</strong><span>写清主体、动作、环境、光线和画面比例。</span></div>
-              <div><strong>03</strong><span>保存能复用的提示词结构，下次只替换角色和场景。</span></div>
-            </div>
-            <div class="lesson-actions">
-              <a class="button" href="./aigc.html">开始同款</a>
-              <a class="button secondary" href="#tutorial-list">查看教程</a>
-              <a class="button dark" href="#">收藏教程</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <main>
       <section id="tutorial-list" class="section tutorial-main-section">
         <div class="wide-container tutorial-feed tutorial-feed-simple">
@@ -178,93 +194,99 @@
           </div>
 
           <div class="tutorial-course-grid" data-tutorial-grid>
-                <article class="tutorial-course-card" data-tutorial-card data-tutorial-type="漫剧生成">
-                  <a class="tutorial-cover" href="#video-lesson"><img src="assets/image_assets/11.png" alt=""><span>视频 · 12 分钟</span></a>
+                <a class="tutorial-course-card" data-tutorial-card data-tutorial-type="漫剧生成" href="./tutorial-detail.html?lesson=video" aria-label="打开教程：12 分钟完成第一条漫剧分镜">
+                  <div class="tutorial-cover"><img src="assets/image_assets/11.png" alt=""><span>视频 · 12 分钟</span></div>
                   <div class="tutorial-card-copy">
                     <span>漫剧生成</span>
                     <h3>12 分钟完成第一条漫剧分镜</h3>
                     <p>从一句创意拆到角色、场景、镜头和封面提示词。</p>
-                    <div><a href="#video-lesson">查看教程</a><a href="./aigc.html">开始同款</a></div>
                   </div>
-                </article>
-                <article class="tutorial-course-card" data-tutorial-card data-tutorial-type="漫剧生成">
-                  <a class="tutorial-cover" href="#video-lesson"><img src="assets/image_assets/12.png" alt=""><span>视频 · 8 分钟</span></a>
+                </a>
+                <a class="tutorial-course-card" data-tutorial-card data-tutorial-type="漫剧生成" href="./tutorial-detail.html?lesson=video" aria-label="打开教程：国风角色设定怎么保持一致">
+                  <div class="tutorial-cover"><img src="assets/image_assets/1.png" alt=""><span>视频 · 8 分钟</span></div>
                   <div class="tutorial-card-copy">
                     <span>漫剧生成</span>
                     <h3>国风角色设定怎么保持一致</h3>
                     <p>先锁角色关键词，再补服饰、表情和镜头风格。</p>
-                    <div><a href="#video-lesson">查看教程</a><a href="./aigc.html">开始同款</a></div>
                   </div>
-                </article>
-                <article class="tutorial-course-card" data-tutorial-card data-tutorial-type="漫剧生成">
-                  <a class="tutorial-cover" href="#video-lesson"><img src="assets/image_assets/17.png" alt=""><span>图文 · 入门</span></a>
+                </a>
+                <a class="tutorial-course-card" data-tutorial-card data-tutorial-type="漫剧生成" href="./tutorial-detail.html?lesson=video" aria-label="打开教程：一句话变成 9 格分镜">
+                  <div class="tutorial-cover"><img src="assets/image_assets/17.png" alt=""><span>图文 · 入门</span></div>
                   <div class="tutorial-card-copy">
                     <span>漫剧生成</span>
                     <h3>一句话变成 9 格分镜</h3>
                     <p>把开场冲突、人物动作和画面节奏拆成可生成镜头。</p>
-                    <div><a href="#video-lesson">查看教程</a><a href="./aigc.html">开始同款</a></div>
                   </div>
-                </article>
+                </a>
 
-                <article class="tutorial-course-card" data-tutorial-card data-tutorial-type="图片生成">
-                  <a class="tutorial-cover" href="#article-lesson"><img src="assets/image_assets/18.png" alt=""><span>图文 · 入门</span></a>
+                <a class="tutorial-course-card" data-tutorial-card data-tutorial-type="图片生成" href="./tutorial-detail.html?lesson=article" aria-label="打开教程：封面主视觉提示词怎么写">
+                  <div class="tutorial-cover"><img src="assets/image_assets/18.png" alt=""><span>图文 · 入门</span></div>
                   <div class="tutorial-card-copy">
                     <span>图片生成</span>
                     <h3>封面主视觉提示词怎么写</h3>
                     <p>从标题、主体、背景和氛围词生成一张可用封面。</p>
-                    <div><a href="#article-lesson">查看教程</a><a href="./aigc.html">开始同款</a></div>
                   </div>
-                </article>
-                <article class="tutorial-course-card" data-tutorial-card data-tutorial-type="图片生成">
-                  <a class="tutorial-cover" href="#article-lesson"><img src="assets/image_assets/4.png" alt=""><span>图文 · 进阶</span></a>
+                </a>
+                <a class="tutorial-course-card" data-tutorial-card data-tutorial-type="图片生成" href="./tutorial-detail.html?lesson=article" aria-label="打开教程：角色定妆图如何保持一致">
+                  <div class="tutorial-cover"><img src="assets/image_assets/4.png" alt=""><span>图文 · 进阶</span></div>
                   <div class="tutorial-card-copy">
                     <span>图片生成</span>
                     <h3>角色定妆图如何保持一致</h3>
                     <p>用固定描述、服饰细节和镜头距离稳定角色形象。</p>
-                    <div><a href="#article-lesson">查看教程</a><a href="./aigc.html">开始同款</a></div>
                   </div>
-                </article>
-                <article class="tutorial-course-card" data-tutorial-card data-tutorial-type="图片生成">
-                  <a class="tutorial-cover" href="#article-lesson"><img src="assets/image_assets/2.png" alt=""><span>视频 · 7 分钟</span></a>
+                </a>
+                <a class="tutorial-course-card" data-tutorial-card data-tutorial-type="图片生成" href="./tutorial-detail.html?lesson=article" aria-label="打开教程：场景图从空画面到有故事">
+                  <div class="tutorial-cover"><img src="assets/image_assets/2.png" alt=""><span>视频 · 7 分钟</span></div>
                   <div class="tutorial-card-copy">
                     <span>图片生成</span>
                     <h3>场景图从空画面到有故事</h3>
                     <p>用前景、主体和远景关系，让图片更像一个可延展片段。</p>
-                    <div><a href="#article-lesson">查看教程</a><a href="./aigc.html">开始同款</a></div>
                   </div>
-                </article>
+                </a>
 
-                <article class="tutorial-course-card" data-tutorial-card data-tutorial-type="视频生成">
-                  <a class="tutorial-cover" href="#video-lesson"><img src="assets/image_assets/3.png" alt=""><span>视频 · 6 分钟</span></a>
+                <a class="tutorial-course-card" data-tutorial-card data-tutorial-type="视频生成" href="./tutorial-detail.html?lesson=video" aria-label="打开教程：图生视频的镜头描述怎么写">
+                  <div class="tutorial-cover"><img src="assets/image_assets/3.png" alt=""><span>视频 · 6 分钟</span></div>
                   <div class="tutorial-card-copy">
                     <span>视频生成</span>
                     <h3>图生视频的镜头描述怎么写</h3>
                     <p>把主体、运动、景别和转场拆开写，减少返工。</p>
-                    <div><a href="#video-lesson">查看教程</a><a href="./aigc.html">开始同款</a></div>
                   </div>
-                </article>
-                <article class="tutorial-course-card" data-tutorial-card data-tutorial-type="视频生成">
-                  <a class="tutorial-cover" href="#video-lesson"><img src="assets/image_assets/11.png" alt=""><span>视频 · 5 分钟</span></a>
+                </a>
+                <a class="tutorial-course-card" data-tutorial-card data-tutorial-type="视频生成" href="./tutorial-detail.html?lesson=video" aria-label="打开教程：短视频开场 3 秒怎么做">
+                  <div class="tutorial-cover"><img src="assets/image_assets/11.png" alt=""><span>视频 · 5 分钟</span></div>
                   <div class="tutorial-card-copy">
                     <span>视频生成</span>
                     <h3>短视频开场 3 秒怎么做</h3>
                     <p>先写主体入场、镜头推进和第一帧吸引点。</p>
-                    <div><a href="#video-lesson">查看教程</a><a href="./aigc.html">开始同款</a></div>
                   </div>
-                </article>
-                <article class="tutorial-course-card" data-tutorial-card data-tutorial-type="视频生成">
-                  <a class="tutorial-cover" href="#video-lesson"><img src="assets/image_assets/17.png" alt=""><span>图文 · 进阶</span></a>
+                </a>
+                <a class="tutorial-course-card" data-tutorial-card data-tutorial-type="视频生成" href="./tutorial-detail.html?lesson=video" aria-label="打开教程：分镜到动态预览怎么串起来">
+                  <div class="tutorial-cover"><img src="assets/image_assets/17.png" alt=""><span>图文 · 进阶</span></div>
                   <div class="tutorial-card-copy">
                     <span>视频生成</span>
                     <h3>分镜到动态预览怎么串起来</h3>
                     <p>把关键帧、运动方向和转场要求写成连续镜头。</p>
-                    <div><a href="#video-lesson">查看教程</a><a href="./aigc.html">开始同款</a></div>
                   </div>
-                </article>
+                </a>
           </div>
         </div>
       </section>
     </main>
+    <details class="v1-walkthrough-drawer" data-v1-walkthrough-drawer>
+      <summary>走查</summary>
+      <div class="v1-walkthrough-panel">
+        <div class="v1-walkthrough-head"><strong>官方教程走查</strong><span>用于确认教程是否能把用户从学习直接带回模板、创作和反馈。</span></div>
+        <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>运营关注</span><span>研发关注</span></div>
+        <div class="v1-rule-section"><strong>页面定位</strong><span>官方教程服务 AIGC、模型广场、活动玩法和积分任务，是转化辅助页，不进入首页信息流铺开。</span></div>
+        <div class="v1-rule-section"><strong>用户主路径</strong><span>用户按分类浏览教程 -> 点击教程卡进入详情 -> 看完后去模板库、AIGC 输入区、模型广场或闪念反馈。</span></div>
+        <div class="v1-rule-section"><strong>关键字段</strong><span>教程分类、封面、内容类型、时长/难度、教程标题、教程卡、回流 CTA、关联模板和 AI 生成声明。</span></div>
+        <div class="v1-rule-section"><strong>状态规则</strong><span>教程不记录学习进度，不设置完成教程积分，不做证书、测验或付费课程；只引导继续上手。</span></div>
+        <div class="v1-rule-section"><strong>CTA 闭环</strong><span>教程卡整卡进入教程详情；详情内再承接 AIGC 直达、模板或反馈入口；列表页不放多按钮，避免教程卡变成操作面板。</span></div>
+        <div class="v1-rule-section"><strong>运营配置</strong><span>教程列表、分类、封面和推荐顺序来自官方教程内容池与 P0 教程素材；运营人工维护重点教程和目标模块，不做学习系统后台。</span></div>
+        <div class="v1-rule-section"><strong>研发验收</strong><span>验收要求：9 张教程卡可点击或键盘进入详情；无旧锚点详情层和卡内动作按钮；无学习进度、完成积分、真实扣费或自动生成承诺。</span></div>
+        <div class="v1-rule-section"><strong>边界</strong><span>教程频道只做官方内容消费和创作回流，不做完整课程系统、学习打卡、证书、自动积分或付费课履约；教程发布前需人工确认目标频道和回流入口。</span></div>
+      </div>
+    </details>
     <div class="footer-space"></div>
   </div>
   <script>
@@ -280,5 +302,6 @@
       });
     });
   </script>
+  <script src="./walkthrough.js" defer></script>
 </body>
 </html>

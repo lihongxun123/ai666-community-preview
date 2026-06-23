@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
@@ -29,13 +29,97 @@
           <a href="./tutorial.html">官方教程</a>
         </nav>
         <div class="header-actions">
-          <a class="action-link" href="./user-growth.html#invite-panel">邀请有礼</a>
-          <a class="action-link" href="./user-growth.html#member-panel">会员超市</a>
-          <a class="action-link points-link" href="./user-growth.html#points-center">积分 1280</a>
-          <a class="button" href="./user-growth.html#profile-panel">登录/注册</a>
+          <a class="action-link" href="./invite.html" data-nav-action="invite">邀请有礼</a>
+          <a class="action-link" href="./member-store.html" data-nav-action="member">会员超市</a>
+          <a class="action-link points-link" href="./points-center.html" data-nav-action="points">积分 1280</a>
+          <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
+          <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="用户头像"><img src="assets/image_assets/1.png" alt=""></a>
         </div>
       </div>
     </header>
+    <section id="nav-invite" class="create-modal nav-action-modal" aria-label="邀请有礼">
+      <a class="modal-backdrop" href="#" aria-label="关闭邀请有礼"></a>
+      <div class="create-dialog nav-action-dialog">
+        <div class="create-dialog-head">
+          <div>
+            <span class="eyebrow dark">邀请有礼</span>
+            <h2>邀请好友一起试模型，双方都拿创作积分</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <div class="nav-action-body">
+          <div class="nav-action-hero invite">
+            <img src="assets/image_assets/11.png" alt="">
+            <div><span>我的邀请码</span><strong>SG2026</strong><em>好友注册、完成 AIGC 或模型体验后，奖励进入积分和体验券体系。</em></div>
+          </div>
+          <div class="nav-reward-grid">
+            <div><strong>注册</strong><span>双方 +30 积分</span></div>
+            <div><strong>完成 AIGC 体验</strong><span>邀请人 +90 积分</span></div>
+            <div><strong>完成模型体验</strong><span>文本模型试用包</span></div>
+          </div>
+          <div class="modal-actions">
+            <a class="button" href="./invite.html">生成邀请卡</a>
+            <a class="button secondary" href="./invite.html">查看邀请记录</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="nav-member" class="create-modal nav-action-modal" aria-label="会员超市">
+      <a class="modal-backdrop" href="#" aria-label="关闭会员超市"></a>
+      <div class="create-dialog nav-action-dialog">
+        <div class="create-dialog-head">
+          <div>
+            <span class="eyebrow dark">会员超市</span>
+            <h2>先看清权益，再决定是否进入会员页</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <div class="nav-action-body">
+          <div class="member-strip">
+            <div><strong>每月积分包</strong><span>创作、模型和模板体验可用</span></div>
+            <div><strong>AIGC 折扣</strong><span>图片、视频和漫剧体验优先</span></div>
+            <div><strong>活动专属奖励</strong><span>创作挑战和模型体验季加成</span></div>
+          </div>
+          <div class="modal-actions">
+            <a class="button" href="./member-store.html">查看完整权益</a>
+            <a class="button secondary" href="./points-center.html">先做任务攒积分</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="nav-points" class="points-modal" aria-label="积分任务中心">
+      <a class="modal-backdrop" href="#" aria-label="关闭积分任务中心"></a>
+      <div class="points-dialog points-panel nav-points-dialog">
+        <div class="panel-head">
+          <div>
+            <span class="eyebrow dark">积分中心</span>
+            <h2>今天还能赚 260 积分</h2>
+          </div>
+          <a class="section-link" href="#">关闭</a>
+        </div>
+        <div class="nav-points-hero">
+          <div>
+            <span>我的创作积分</span>
+            <strong>1280</strong>
+            <em>用于 AIGC、模型广场、模板和轻创作体验。</em>
+          </div>
+          <div class="nav-points-ring"><strong>+260</strong><span>今日可领</span></div>
+        </div>
+        <div class="nav-points-progress"><span style="width: 68%"></span></div>
+        <div class="task-grid">
+          <a class="task-item" href="./user-center.html"><strong>每日登录</strong><span>+20</span></a>
+          <a class="task-item" href="./aigc.html"><strong>AIGC 体验</strong><span>+10</span></a>
+          <a class="task-item" href="./flash.html"><strong>发布闪念</strong><span>+30</span></a>
+          <a class="task-item" href="./model-plaza.html"><strong>模型反馈</strong><span>+60</span></a>
+        </div>
+        <div class="modal-actions">
+          <a class="button" href="./points-center.html">进入积分任务中心</a>
+          <a class="button secondary" href="./member-store.html">领取会员折扣</a>
+        </div>
+      </div>
+    </section>
 
     <section id="quick-create" class="create-modal" aria-label="AIGC 轻创作">
       <a class="modal-backdrop" href="#" aria-label="关闭 AIGC 轻创作"></a>
@@ -90,7 +174,7 @@
         </div>
       </section>
 
-      <section class="section template-list-section">
+      <section id="template-list" class="section template-list-section">
         <div class="wide-container">
           <div class="template-list-toolbar">
             <div class="case-section-head">
@@ -131,6 +215,21 @@
         </div>
       </section>
     </main>
+    <details class="v1-walkthrough-drawer" data-v1-walkthrough-drawer>
+      <summary>走查</summary>
+      <div class="v1-walkthrough-panel">
+        <div class="v1-walkthrough-head"><strong>模板库走查</strong><span>用于确认模板发现、筛选和同款创作是否形成低成本闭环。</span></div>
+        <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>运营关注</span><span>研发关注</span></div>
+        <div class="v1-rule-section"><strong>页面定位</strong><span>模板库承接 AIGC 的“试试模板”和教程的“关联模板”，让用户不用从空白 Prompt 开始。</span></div>
+        <div class="v1-rule-section"><strong>用户主路径</strong><span>用户按用途筛选模板 -> 选择模板 -> 一键同款回到 AIGC 输入区 -> 结果保存到用户中心或发布为闪念反馈。</span></div>
+        <div class="v1-rule-section"><strong>关键字段</strong><span>模板分类、模板标题、用途、积分消耗、会员/活动提示、关联模型、预览封面和一键同款入口。</span></div>
+        <div class="v1-rule-section"><strong>状态规则</strong><span>模板状态只表达类型、消耗、权益和可复用方向；不展示完整参数表、商用授权详情或真实生成记录。</span></div>
+        <div class="v1-rule-section"><strong>CTA 闭环</strong><span>模板卡整卡或入口进入 AIGC 使用状态或详情说明；收藏、同款、搜索筛选只保留目标状态，不在卡片内展开安装、复制流程或真实生成。</span></div>
+        <div class="v1-rule-section"><strong>运营配置</strong><span>模板清单、分类、推荐理由和示例封面来自 AIGC P0 内容与运营模板池；每周人工替换重点模板，不做模板后台或实时库存。</span></div>
+        <div class="v1-rule-section"><strong>研发验收</strong><span>验收要求：模板类型、适用场景、输入提示和示例结果可读；入口能返回 AIGC 创作链路；无真实扣费、余额、生成队列或版权承诺。</span></div>
+        <div class="v1-rule-section"><strong>边界</strong><span>模板库只验证发现和同款意向；不做完整模板市场、付费模板、批量任务、自动审核或商用授权履约；模板上线前需人工确认素材和目标页。</span></div>
+      </div>
+    </details>
     <div class="footer-space"></div>
   </div>
 
@@ -147,5 +246,6 @@
       });
     });
   </script>
+  <script src="./walkthrough.js" defer></script>
 </body>
 </html>

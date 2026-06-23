@@ -1,0 +1,238 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>用户中心 - 多元拾光</title>
+  <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="page growth-detail-page growth-app-page user-center-page" data-page="user-center" style="--growth-hero-image: url('assets/image_assets/2.png')">
+    <div class="page-bg"><img src="assets/image_assets/2.png" alt=""></div>
+    <input class="top-campaign-toggle" type="checkbox" id="top-campaign-dismiss-user-center" aria-label="关闭顶部广告">
+    <div class="top-campaign"><span>用户中心</span><span class="timer">20时 42分 39秒</span><span>作品、收藏、积分、邀请和会员权益集中管理</span><span>继续创作</span><label class="top-campaign-close" for="top-campaign-dismiss-user-center" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
+    <header class="site-header">
+      <div class="header-inner wide-container">
+        <a class="logo" href="./index.html" aria-label="多元拾光">
+          <img class="brand-mark" src="assets/brand/duoyuan-shiguang-logo-mark-reverse.svg" alt="">
+          <span class="brand-copy">
+            <span class="brand-name">多元拾光</span>
+            <span class="brand-sub">AI原生实践者社区</span>
+          </span>
+        </a>
+        <nav class="nav" aria-label="主导航">
+          <a href="./index.html">首页</a>
+          <a href="./aigc.html">AIGC</a>
+          <a href="./model-plaza.html">模型广场</a>
+          <a href="./flash.html">闪念</a>
+          <a href="./tutorial.html">官方教程</a>
+        </nav>
+        <div class="header-actions">
+          <a class="action-link" href="./invite.html" data-nav-action="invite">邀请有礼</a>
+          <a class="action-link" href="./member-store.html" data-nav-action="member">会员超市</a>
+          <a class="action-link points-link" href="./points-center.html" data-nav-action="points">积分 1280</a>
+          <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
+          <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="用户头像"><img src="assets/image_assets/1.png" alt=""></a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="app-workspace section">
+        <div class="wide-container app-profile-layout">
+          <aside class="profile-side-nav compact-profile-nav" aria-label="用户中心分区">
+            <div class="profile-mini-card">
+              <img src="assets/image_assets/3.png" alt="">
+              <strong>拾光创作者</strong>
+              <span>创作会员 · 1280 积分</span>
+            </div>
+            <a class="is-active" href="#works">我的作品</a>
+            <a href="#favorites">我的收藏</a>
+            <a href="#records">创作记录</a>
+            <a href="#points">积分</a>
+            <a href="#invite">邀请</a>
+            <a href="#member">会员</a>
+            <a href="#account">账号资料</a>
+          </aside>
+
+          <div class="app-main-stack">
+            <section class="app-card profile-dashboard-head">
+              <div>
+                <span class="eyebrow dark">用户中心</span>
+                <h1>拾光创作者</h1>
+              </div>
+              <div class="profile-quick-actions">
+                <a class="button" href="./aigc.html">继续创作</a>
+                <a class="button secondary" href="./points-center.html">去做任务</a>
+                <a class="button dark" href="./invite.html">邀请好友</a>
+              </div>
+              <div class="profile-stat-strip">
+                <div><strong>12</strong><span>本周创作</span></div>
+                <div><strong>36</strong><span>收藏资产</span></div>
+                <div><strong>1280</strong><span>可用积分</span></div>
+                <div><strong>创作会员</strong><span>已开通</span></div>
+              </div>
+            </section>
+
+            <section id="works" class="app-card" data-user-section="works">
+              <div class="app-card-head">
+                <div>
+                  <span class="eyebrow dark">作品</span>
+                  <h2>我的作品</h2>
+                </div>
+                <a class="section-link" href="./aigc.html">新建作品</a>
+              </div>
+              <div class="profile-asset-list compact-asset-list">
+                <article class="profile-asset-tile" data-user-asset><img src="assets/image_assets/11.png" alt=""><div><strong>龙虎天劫封面</strong><span>已发布 · 同款短片</span></div></article>
+                <article class="profile-asset-tile" data-user-asset><img src="assets/image_assets/17.png" alt=""><div><strong>赛博广告分镜</strong><span>草稿 · 继续编辑</span></div></article>
+                <article class="profile-asset-tile" data-user-asset><img src="assets/image_assets/18.png" alt=""><div><strong>模型体验图文</strong><span>待完善 · 发布闪念</span></div></article>
+              </div>
+            </section>
+
+            <section id="my-projects" class="app-card" data-user-section="my-projects">
+              <div class="app-card-head">
+                <div>
+                  <span class="eyebrow dark">轻状态</span>
+                  <h2>我的项目</h2>
+                </div>
+                <a class="section-link" href="./aigc.html#aigc-light-state">轻体验说明</a>
+              </div>
+              <div class="my-project-grid">
+                <a href="./aigc.html#aigc-create-panel"><strong>草稿</strong><span>保存一句灵感、模板选择和第一版预览。</span><em>继续编辑</em></a>
+                <a href="./aigc-templates.html#template-list"><strong>生成结果</strong><span>从模板同款生成的封面、分镜和文案候选。</span><em>找模板</em></a>
+                <a href="./flash.html#compose-flash"><strong>已发布反馈</strong><span>模型体验、创作过程和踩坑记录沉淀到闪念。</span><em>发闪念</em></a>
+              </div>
+            </section>
+
+            <section id="favorites" class="app-card" data-user-section="favorites">
+              <div class="app-card-head">
+                <div>
+                  <span class="eyebrow dark">收藏</span>
+                  <h2>我的收藏</h2>
+                </div>
+                <a class="section-link" href="./aigc-templates.html">模板库</a>
+              </div>
+              <div class="profile-asset-list compact-asset-list">
+                <article class="profile-asset-tile" data-user-asset><img src="assets/image_assets/3.png" alt=""><div><strong>竹泉秘境模板</strong><span>模板 · 一键同款</span></div></article>
+                <article class="profile-asset-tile" data-user-asset><img src="assets/image_assets/4.png" alt=""><div><strong>文本模型体验卡</strong><span>模型 · 去体验</span></div></article>
+                <article class="profile-asset-tile" data-user-asset><img src="assets/image_assets/15.jpg" alt=""><div><strong>漫剧教程合集</strong><span>教程 · 继续学习</span></div></article>
+              </div>
+            </section>
+
+            <section id="records" class="app-card" data-user-section="records">
+              <div class="app-card-head">
+                <div>
+                  <span class="eyebrow dark">记录</span>
+                  <h2>创作记录</h2>
+                </div>
+                <div class="profile-tabs compact-tabs" aria-label="创作记录筛选">
+                  <a href="#records">全部</a>
+                  <a href="#records">AIGC</a>
+                  <a href="#records">模型</a>
+                  <a href="#records">闪念</a>
+                </div>
+              </div>
+              <div class="growth-table compact-table">
+                <div class="growth-table-row is-head"><span>时间</span><span>动作</span><span>权益</span><span>入口</span></div>
+                <div class="growth-table-row"><strong>今天 10:26</strong><span>完成一次 AIGC 体验</span><em>+10</em><span>AIGC</span></div>
+                <div class="growth-table-row"><strong>今天 11:40</strong><span>生成角色封面草稿</span><em>-12</em><span>继续编辑</span></div>
+                <div class="growth-table-row"><strong>昨天 18:06</strong><span>发布模型体验反馈</span><em>+60</em><span>模型广场</span></div>
+                <div class="growth-table-row"><strong>昨天 20:15</strong><span>邀请好友完成体验</span><em>+120</em><span>邀请</span></div>
+              </div>
+            </section>
+
+            <section id="points" class="app-card" data-user-section="points">
+              <div class="app-card-head">
+                <div>
+                  <span class="eyebrow dark">积分</span>
+                  <h2>积分</h2>
+                </div>
+                <a class="section-link" href="./points-center.html">积分中心</a>
+              </div>
+              <div class="summary-strip">
+                <a href="./points-center.html"><strong>1280</strong><span>当前可用</span></a>
+                <a href="./points-center.html#earn-tasks"><strong>260</strong><span>今日可赚</span></a>
+                <a href="./points-center.html"><strong>5/7</strong><span>本周进度</span></a>
+                <a href="./member-store.html"><strong>会员</strong><span>加速权益</span></a>
+              </div>
+            </section>
+
+            <section id="invite" class="app-card" data-user-section="invite">
+              <div class="app-card-head">
+                <div>
+                  <span class="eyebrow dark">邀请</span>
+                  <h2>邀请</h2>
+                </div>
+                <a class="section-link" href="./invite.html">邀请好友</a>
+              </div>
+              <div class="scenario-grid three">
+                <a class="scenario-card" href="./invite.html"><strong>邀请码 SG2026</strong><span>好友注册和首次体验时使用</span><em>复制链接</em></a>
+                <a class="scenario-card" href="./invite.html#invite-records"><strong>4 位待体验</strong><span>已注册，未完成首次体验</span><em>提醒</em></a>
+                <a class="scenario-card" href="./member-store.html"><strong>1 张会员券</strong><span>邀请转化后可用</span><em>去使用</em></a>
+              </div>
+            </section>
+
+            <section id="member" class="app-card" data-user-section="member">
+              <div class="app-card-head">
+                <div>
+                  <span class="eyebrow dark">会员</span>
+                  <h2>会员</h2>
+                </div>
+                <a class="section-link" href="./member-store.html">会员超市</a>
+              </div>
+              <div class="scenario-grid three">
+                <a class="scenario-card" href="./member-store.html"><strong>创作会员</strong><span>积分包、折扣和活动权益</span><em>已开通</em></a>
+                <a class="scenario-card" href="./aigc.html"><strong>生成折扣</strong><span>图片、视频和漫剧制作</span><em>去创作</em></a>
+                <a class="scenario-card" href="./tutorial.html"><strong>会员教程</strong><span>进阶教程和案例复盘</span><em>去学习</em></a>
+              </div>
+            </section>
+
+            <section id="account" class="app-card" data-user-section="account">
+              <div class="app-card-head">
+                <div>
+                  <span class="eyebrow dark">账号</span>
+                  <h2>账号资料</h2>
+                </div>
+                <a class="section-link" href="#records">我的记录</a>
+              </div>
+              <div class="account-state-grid">
+                <div><strong>头像与昵称</strong><span>已完善</span><em>作品和闪念展示</em></div>
+                <div><strong>手机绑定</strong><span>已保护</span><em>登录与安全确认</em></div>
+                <div><strong>偏好设置</strong><span>可完善</span><em>AIGC、模型、教程推荐</em></div>
+                <div><strong>通知设置</strong><span>已开启</span><em>积分、活动、会员提醒</em></div>
+              </div>
+              <details class="growth-rule-panel">
+                <summary>走查规则</summary>
+                <div>
+                  <strong>研发走查</strong>
+                  <span>七个分区必须可见；作品和收藏回流到 AIGC、模板库、模型广场或教程页面。</span>
+                  <strong>敏感字段</strong>
+                  <span>账号资料只展示绑定、保护、完善等状态，不展示完整手机号、邮箱、三方账号和凭证。</span>
+                </div>
+              </details>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+    <details class="v1-walkthrough-drawer" data-v1-walkthrough-drawer>
+      <summary>走查</summary>
+      <div class="v1-walkthrough-panel">
+        <div class="v1-walkthrough-head"><strong>用户中心走查</strong><span>用于确认个人资产、轻状态、积分、邀请和会员是否有低层级承接。</span></div>
+        <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>运营关注</span><span>研发关注</span></div>
+        <div class="v1-rule-section"><strong>页面定位</strong><span>用户中心是个人资产和成长路径，不是社交主页；承接作品、项目轻状态、收藏、记录、积分、邀请、会员和账号资料。</span></div>
+        <div class="v1-rule-section"><strong>用户主路径</strong><span>用户从头像进入 -> 查看最近作品和我的项目 -> 继续创作、找模板或发布闪念 -> 查看积分、邀请、会员和账号资料。</span></div>
+        <div class="v1-rule-section"><strong>关键字段</strong><span>头像昵称、积分、会员状态、最近作品、我的项目、收藏、创作记录、积分记录、邀请记录、会员入口和脱敏资料状态。</span></div>
+        <div class="v1-rule-section"><strong>状态规则</strong><span>我的项目低层级展示草稿、生成结果和已发布反馈；账号资料只展示脱敏状态；不表达完整账号系统。</span></div>
+        <div class="v1-rule-section"><strong>CTA 闭环</strong><span>用户中心承接我的项目、作品、收藏、记录、积分、邀请、会员和资料状态；轻操作进入对应独立页或当前状态，不做复杂账户系统。</span></div>
+        <div class="v1-rule-section"><strong>运营配置</strong><span>资料完善提示、我的项目、作品/收藏/记录、积分/邀请/会员状态来自用户成长轻路径、字段口径和人工样例数据。</span></div>
+        <div class="v1-rule-section"><strong>研发验收</strong><span>验收要求：个人工作台分区可读，作品、收藏、记录和权益入口有目标；敏感资料只显示绑定或脱敏状态；不展示 openId、unionId、完整手机号或隐私日志。</span></div>
+        <div class="v1-rule-section"><strong>边界</strong><span>用户中心是轻工作台，不做私信、等级、复杂账号体系、推荐关注、收益中心、完整资料审核或真实隐私管理后台。</span></div>
+      </div>
+    </details>
+    <div class="footer-space"></div>
+  </div>
+  <script src="./walkthrough.js" defer></script>
+</body>
+</html>

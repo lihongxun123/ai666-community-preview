@@ -1,6 +1,6 @@
 # AI666 社区模块公网静态预览包
 
-生成时间：2026-06-22T11:56:44.149Z
+生成时间：2026-06-23T10:13:20.557Z
 
 ## 用途
 
@@ -31,11 +31,16 @@ npm.cmd run validate:community:public-preview
 - AIGC: aigc.html
 - AIGC 模板库: aigc-templates.html
 - 模型广场: model-plaza.html
+- 模型详情: model-detail.html
 - 闪念: flash.html
 - 官方教程: tutorial.html
-- 活动运营位: campaign-ops.html
+- 教程详情: tutorial-detail.html
 - 活动详情: campaign-detail.html
-- 用户成长轻中心: user-growth.html
+- 消息中心: message-center.html
+- 积分中心: points-center.html
+- 邀请有礼: invite.html
+- 会员超市: member-store.html
+- 用户中心: user-center.html
 
 ## 边界
 

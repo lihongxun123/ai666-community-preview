@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>会员超市 - 多元拾光</title>
+  <title>AI商城 - 多元拾光</title>
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
   <link rel="stylesheet" href="./style.css">
 </head>
@@ -11,7 +11,7 @@
   <div class="page growth-detail-page growth-app-page member-store-page" data-page="member-store" style="--growth-hero-image: url('assets/image_assets/17.png')">
     <div class="page-bg"><img src="assets/image_assets/17.png" alt=""></div>
     <input class="top-campaign-toggle" type="checkbox" id="top-campaign-dismiss-member" aria-label="关闭顶部广告">
-    <div class="top-campaign"><span>会员超市</span><span class="timer">20时 42分 39秒</span><span>创作会员加赠积分包、视频优先体验和活动专属奖励</span><span>限时权益</span><label class="top-campaign-close" for="top-campaign-dismiss-member" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
+    <div class="top-campaign"><span>AI商城</span><span class="timer">20时 42分 39秒</span><span>积分兑换 gpt-5-chat-latest、Codex体验卡和闪创AI体验卡</span><span>积分兑换</span><label class="top-campaign-close" for="top-campaign-dismiss-member" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
     <header class="site-header">
       <div class="header-inner wide-container">
         <a class="logo" href="./index.html" aria-label="多元拾光">
@@ -30,7 +30,7 @@
         </nav>
         <div class="header-actions">
           <a class="action-link" href="./invite.html" data-nav-action="invite">邀请有礼</a>
-          <a class="action-link" href="./member-store.html" data-nav-action="member">会员超市</a>
+          <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a>
           <a class="action-link points-link" href="./points-center.html" data-nav-action="points">积分 1280</a>
           <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
           <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="用户头像"><img src="assets/image_assets/1.png" alt=""></a>
@@ -41,133 +41,408 @@
     <main>
       <section class="app-workspace section">
         <div class="wide-container member-store-shell">
-          <section id="member-plans" class="app-card member-plan-board" data-member-section="plans">
+          <section id="ai-store-catalog" class="app-card member-plan-board ai-store-hero-card" data-member-section="catalog">
             <div class="app-card-head">
               <div>
-                <span class="eyebrow dark">会员超市</span>
-                <h1>选择创作权益</h1>
+                <h1>用积分兑换 AI 产品权益</h1>
               </div>
-              <a class="section-link" href="./user-center.html">我的会员</a>
+              <a class="section-link" href="#ai-store-records" data-ai-store-record-entry>兑换记录</a>
             </div>
-            <div class="pricing-grid">
-              <article class="pricing-card" data-member-plan>
-                <span>入门</span>
-                <h2>月度积分包</h2>
-                <strong>600 积分</strong>
-                <p>图片、模板、模型轻体验</p>
-                <ul>
-                  <li>基础生成折扣</li>
-                  <li>模板同款能力</li>
-                  <li>签到周加赠</li>
-                </ul>
-                <a class="button secondary" href="./points-center.html">积分换券</a>
-              </article>
-              <article class="pricing-card is-featured" data-member-plan>
-                <span>推荐</span>
-                <h2>创作会员</h2>
-                <strong>1200 积分 / 月</strong>
-                <p>图片、视频、漫剧、模型高频创作</p>
-                <ul>
-                  <li>AIGC 生成折扣</li>
-                  <li>视频优先体验</li>
-                  <li>会员专属活动</li>
-                </ul>
-                <a class="button" href="#member-benefits">领取权益</a>
-              </article>
-              <article class="pricing-card" data-member-plan>
-                <span>进阶</span>
-                <h2>模型体验包</h2>
-                <strong>800 积分 + 模型券</strong>
-                <p>模型广场、教程和 API 学习</p>
-                <ul>
-                  <li>文本模型试用包</li>
-                  <li>模型专项教程</li>
-                  <li>体验季加赠</li>
-                </ul>
-                <a class="button secondary" href="./model-plaza.html">查看模型</a>
-              </article>
+            <div class="ai-store-lineup" data-ai-store-lineup>
+              <section class="ai-store-product-group" data-ai-store-group="api-relay" aria-label="API中转站">
+                <div class="ai-store-group-head">
+                  <h2>API中转站</h2>
+                </div>
+                <div class="pricing-grid ai-store-product-grid">
+                  <article class="pricing-card ai-store-product is-featured" data-ai-store-product>
+                    <h2>gpt-5-chat-latest Token</h2>
+                    <strong>1200 积分</strong>
+                    <a class="button" href="#redeem-gpt5-token">去兑换</a>
+                  </article>
+                  <article class="pricing-card ai-store-product" data-ai-store-product>
+                    <h2>gpt-4.1 Token</h2>
+                    <strong>520 积分</strong>
+                    <a class="button secondary" href="#redeem-gpt41-token">去兑换</a>
+                  </article>
+                  <article class="pricing-card ai-store-product" data-ai-store-product>
+                    <h2>gpt-image-2 Token</h2>
+                    <strong>760 积分</strong>
+                    <a class="button secondary" href="#redeem-gpt-image-token">去兑换</a>
+                  </article>
+                  <article class="pricing-card ai-store-product" data-ai-store-product>
+                    <h2>text-embedding-3-large Token</h2>
+                    <strong>880 积分</strong>
+                    <a class="button secondary" href="#redeem-embedding-token">去兑换</a>
+                  </article>
+                </div>
+              </section>
+
+              <section class="ai-store-product-group" data-ai-store-group="mirror-site" aria-label="镜像站">
+                <div class="ai-store-group-head">
+                  <h2>镜像站</h2>
+                </div>
+                <div class="pricing-grid ai-store-product-grid">
+                  <article class="pricing-card ai-store-product" data-ai-store-product>
+                    <h2>多元探索网页体验卡</h2>
+                    <strong>100 积分</strong>
+                    <a class="button secondary" href="#redeem-mirror-day">去兑换</a>
+                  </article>
+                  <article class="pricing-card ai-store-product" data-ai-store-product>
+                    <h2>Codex体验卡</h2>
+                    <strong>200 积分</strong>
+                    <a class="button secondary" href="#redeem-codex-card">去兑换</a>
+                  </article>
+                  <article class="pricing-card ai-store-product" data-ai-store-product>
+                    <h2>多元探索网页月卡</h2>
+                    <strong>360 积分</strong>
+                    <a class="button secondary" href="#redeem-mirror-month">去兑换</a>
+                  </article>
+                  <article class="pricing-card ai-store-product" data-ai-store-product>
+                    <h2>多元探索网页加量包-周卡</h2>
+                    <strong>480 积分</strong>
+                    <a class="button secondary" href="#redeem-mirror-week-pack">去兑换</a>
+                  </article>
+                </div>
+              </section>
+
+              <section class="ai-store-product-group" data-ai-store-group="flash-create-ai" aria-label="闪创AI">
+                <div class="ai-store-group-head">
+                  <h2>闪创AI</h2>
+                </div>
+                <div class="pricing-grid ai-store-product-grid">
+                  <article class="pricing-card ai-store-product" data-ai-store-product>
+                    <h2>闪创AI 体验小时卡</h2>
+                    <strong>180 积分</strong>
+                    <a class="button secondary" href="#redeem-flash-hour">去兑换</a>
+                  </article>
+                  <article class="pricing-card ai-store-product" data-ai-store-product>
+                    <h2>闪创AI 体验日卡</h2>
+                    <strong>260 积分</strong>
+                    <a class="button secondary" href="#redeem-flash-day">去兑换</a>
+                  </article>
+                  <article class="pricing-card ai-store-product" data-ai-store-product>
+                    <h2>闪创AI 体验周卡</h2>
+                    <strong>680 积分</strong>
+                    <a class="button secondary" href="#redeem-flash-week">去兑换</a>
+                  </article>
+                  <article class="pricing-card ai-store-product" data-ai-store-product>
+                    <h2>闪创AI 体验月卡</h2>
+                    <strong>900 积分</strong>
+                    <a class="button secondary" href="#redeem-flash-month">去兑换</a>
+                  </article>
+                  <article class="pricing-card ai-store-product" data-ai-store-product>
+                    <h2>漫剧制作小时卡</h2>
+                    <strong>240 积分</strong>
+                    <a class="button secondary" href="#redeem-manga-hour">去兑换</a>
+                  </article>
+                  <article class="pricing-card ai-store-product" data-ai-store-product>
+                    <h2>漫剧制作日卡</h2>
+                    <strong>320 积分</strong>
+                    <a class="button secondary" href="#redeem-manga-day">去兑换</a>
+                  </article>
+                  <article class="pricing-card ai-store-product" data-ai-store-product>
+                    <h2>漫剧制作周卡</h2>
+                    <strong>420 积分</strong>
+                    <a class="button secondary" href="#redeem-manga-week">去兑换</a>
+                  </article>
+                  <article class="pricing-card ai-store-product" data-ai-store-product>
+                    <h2>漫剧制作月卡</h2>
+                    <strong>560 积分</strong>
+                    <a class="button secondary" href="#redeem-manga-month">去兑换</a>
+                  </article>
+                </div>
+              </section>
             </div>
           </section>
 
-          <section id="member-benefits" class="app-card" data-member-section="benefits">
-            <div class="app-card-head">
-              <div>
-                <span class="eyebrow dark">对比</span>
-                <h2>权益对比</h2>
-              </div>
-              <a class="section-link" href="./tutorial.html">会员教程</a>
-            </div>
-            <div class="benefit-grid compact-benefit-grid">
-              <div data-member-benefit><strong>每月积分包</strong><span>创作、模型体验和模板能力</span></div>
-              <div data-member-benefit><strong>AIGC 生成折扣</strong><span>图片、视频和漫剧制作</span></div>
-              <div data-member-benefit><strong>视频生成优先体验</strong><span>优先进入视频能力入口</span></div>
-              <div data-member-benefit><strong>模型广场体验包</strong><span>文本模型和 API 接入学习</span></div>
-              <div data-member-benefit><strong>活动专属奖励</strong><span>创作挑战和体验季加赠</span></div>
-              <div data-member-benefit><strong>官方教程会员内容</strong><span>进阶教程和案例复盘</span></div>
-              <div data-member-benefit><strong>模板高级能力</strong><span>热门模板和参数复用</span></div>
-              <div data-member-benefit><strong>会员客服入口</strong><span>创作路径和模型选择响应</span></div>
-            </div>
-            <div class="member-matrix compact-matrix">
-              <div class="member-matrix-row"><strong>权益</strong><span>月度积分包</span><span>创作会员</span><span>模型体验包</span></div>
-              <div class="member-matrix-row" data-member-row><strong>每月积分</strong><span>600</span><span>1200</span><span>800 + 模型券</span></div>
-              <div class="member-matrix-row" data-member-row><strong>生成折扣</strong><span>基础折扣</span><span>图片 / 视频 / 漫剧</span><span>模型体验加赠</span></div>
-              <div class="member-matrix-row" data-member-row><strong>视频优先体验</strong><span>活动期开放</span><span>优先入口</span><span>专项入口</span></div>
-              <div class="member-matrix-row" data-member-row><strong>教程内容</strong><span>基础教程</span><span>会员教程</span><span>模型专项教程</span></div>
-              <div class="member-matrix-row" data-member-row><strong>活动奖励</strong><span>签到周</span><span>会员专属挑战</span><span>体验季加赠</span></div>
-              <div class="member-matrix-row" data-member-row><strong>适合人群</strong><span>新手</span><span>高频创作者</span><span>模型深度用户</span></div>
-            </div>
-            <div class="member-rule-grid">
-              <div><strong>权益生效</strong><span>当前 1.0 只表达领取、查看和权益状态，不连接收银、订单或售后流程。</span></div>
-              <div><strong>额度周期</strong><span>参考创作工具常见做法，会员权益按月度积分包、体验券和活动加赠表达，不承诺现金价值。</span></div>
-              <div><strong>创作权益</strong><span>AIGC 折扣、视频优先体验和模板高级能力统一回到 AIGC 与模板库。</span></div>
-              <div><strong>模型权益</strong><span>模型广场体验包只用于学习、选型和反馈，不表达生产接入资格或真实 SLA。</span></div>
-              <div><strong>集中复用</strong><span>积分包、模板权益、教程内容和活动奖励与 AIGC、模型广场、教程和邀请共用同一权益口径。</span></div>
-              <div><strong>商业规则</strong><span>会员权益用于站内体验、学习和运营活动；商用授权、企业采购和售后条款暂不在 1.0 展开。</span></div>
-            </div>
-          </section>
-
-          <section class="app-card" data-member-section="activities">
-            <div class="app-card-head">
-              <div>
-                <span class="eyebrow dark">活动</span>
-                <h2>会员专属</h2>
-              </div>
-              <a class="section-link" href="./campaign-detail.html">活动详情</a>
-            </div>
-            <div class="scenario-grid three">
-              <a class="scenario-card" href="./campaign-detail.html"><strong>模型体验季加赠</strong><span>额外文本模型体验券</span><em>本周</em></a>
-              <a class="scenario-card" href="./aigc.html#template-market"><strong>漫剧挑战优先</strong><span>模板和画布能力优先进入挑战</span><em>创作</em></a>
-              <a class="scenario-card" href="./tutorial.html"><strong>官方教程专项</strong><span>进阶教程、案例和模板拆解</span><em>学习</em></a>
-            </div>
-          </section>
-
-          <section class="app-rule-strip" data-member-section="rules">
-            <details class="growth-rule-panel">
-              <summary>走查规则</summary>
-              <div>
-                <strong>研发走查</strong>
-                <span>主动作使用领取、查看、对比和换券；订单、收银和售后细节不进入本页。</span>
-                <strong>运营来源</strong>
-                <span>权益围绕积分包、生成折扣、模型体验、教程内容、活动奖励和模板能力维护。</span>
-              </div>
-            </details>
-          </section>
         </div>
       </section>
     </main>
-    <details class="v1-walkthrough-drawer" data-v1-walkthrough-drawer>
+    <section id="ai-store-records" class="create-modal ai-store-redeem-modal ai-store-record-modal" data-ai-store-record-modal aria-labelledby="ai-store-records-title">
+      <a class="modal-backdrop" href="#ai-store-catalog" aria-label="关闭兑换记录"></a>
+      <div class="create-dialog ai-store-redeem-dialog ai-store-record-dialog" role="dialog" aria-modal="true">
+        <div class="ai-store-redeem-head"><h2 id="ai-store-records-title">兑换记录</h2><a class="modal-close-icon" href="#ai-store-catalog" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a></div>
+        <div class="ai-store-record-summary"><span>本月已兑换 <strong>5</strong> 次</span><span>累计消耗 <strong>1180</strong> 积分</span></div>
+        <div class="ai-store-record-table" data-ai-store-record-list>
+          <div class="ai-store-record-row is-head"><span>时间</span><span>兑换商品</span><span>积分变化</span></div>
+          <div class="ai-store-record-row" data-ai-store-record-row><strong>今天 11:40</strong><span>Codex体验卡</span><em>-180</em></div>
+          <div class="ai-store-record-row" data-ai-store-record-row><strong>昨天 16:12</strong><span>闪创AI 体验小时卡</span><em>-180</em></div>
+          <div class="ai-store-record-row" data-ai-store-record-row><strong>06-23 20:18</strong><span>多元探索网页体验卡</span><em>-100</em></div>
+          <div class="ai-store-record-row" data-ai-store-record-row><strong>06-22 14:05</strong><span>gpt-4.1 Token</span><em>-520</em></div>
+          <div class="ai-store-record-row" data-ai-store-record-row><strong>06-21 09:36</strong><span>漫剧制作日卡</span><em>-200</em></div>
+        </div>
+        <div class="ai-store-redeem-actions"><a class="button secondary" href="#ai-store-catalog">关闭</a></div>
+      </div>
+    </section>
+    <section id="redeem-gpt5-token" class="create-modal ai-store-redeem-modal" data-ai-store-redeem-modal aria-labelledby="redeem-gpt5-title">
+      <a class="modal-backdrop" href="#ai-store-catalog" aria-label="关闭兑换弹层"></a>
+      <div class="create-dialog ai-store-redeem-dialog" role="dialog" aria-modal="true">
+        <div class="ai-store-redeem-head"><h2 id="redeem-gpt5-title">商品兑换</h2><a class="modal-close-icon" href="#ai-store-catalog" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a></div>
+        <dl class="ai-store-redeem-detail"><div><dt>商品名称</dt><dd>gpt-5-chat-latest Token</dd></div><div><dt>兑换所需积分</dt><dd>1200</dd></div><div><dt>产品站点</dt><dd>API中转站</dd></div><div><dt>商品描述</dt><dd>用于 gpt-5-chat-latest 的 Token 体验额度</dd></div></dl>
+        <div class="ai-store-redeem-actions"><a class="button" href="#redeem-success-gpt5-token">确认兑换</a></div>
+      </div>
+    </section>
+    <section id="redeem-gpt41-token" class="create-modal ai-store-redeem-modal" data-ai-store-redeem-modal aria-labelledby="redeem-gpt41-title">
+      <a class="modal-backdrop" href="#ai-store-catalog" aria-label="关闭兑换弹层"></a>
+      <div class="create-dialog ai-store-redeem-dialog" role="dialog" aria-modal="true">
+        <div class="ai-store-redeem-head"><h2 id="redeem-gpt41-title">商品兑换</h2><a class="modal-close-icon" href="#ai-store-catalog" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a></div>
+        <dl class="ai-store-redeem-detail"><div><dt>商品名称</dt><dd>gpt-4.1 Token</dd></div><div><dt>兑换所需积分</dt><dd>520</dd></div><div><dt>产品站点</dt><dd>API中转站</dd></div><div><dt>商品描述</dt><dd>用于 gpt-4.1 的 Token 体验额度</dd></div></dl>
+        <div class="ai-store-redeem-actions"><a class="button" href="#redeem-success-gpt41-token">确认兑换</a></div>
+      </div>
+    </section>
+    <section id="redeem-gpt-image-token" class="create-modal ai-store-redeem-modal" data-ai-store-redeem-modal aria-labelledby="redeem-gpt-image-title">
+      <a class="modal-backdrop" href="#ai-store-catalog" aria-label="关闭兑换弹层"></a>
+      <div class="create-dialog ai-store-redeem-dialog" role="dialog" aria-modal="true">
+        <div class="ai-store-redeem-head"><h2 id="redeem-gpt-image-title">商品兑换</h2><a class="modal-close-icon" href="#ai-store-catalog" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a></div>
+        <dl class="ai-store-redeem-detail"><div><dt>商品名称</dt><dd>gpt-image-2 Token</dd></div><div><dt>兑换所需积分</dt><dd>760</dd></div><div><dt>产品站点</dt><dd>API中转站</dd></div><div><dt>商品描述</dt><dd>用于 gpt-image-2 的图片模型体验额度</dd></div></dl>
+        <div class="ai-store-redeem-actions"><a class="button" href="#redeem-success-gpt-image-token">确认兑换</a></div>
+      </div>
+    </section>
+    <section id="redeem-embedding-token" class="create-modal ai-store-redeem-modal" data-ai-store-redeem-modal aria-labelledby="redeem-embedding-title">
+      <a class="modal-backdrop" href="#ai-store-catalog" aria-label="关闭兑换弹层"></a>
+      <div class="create-dialog ai-store-redeem-dialog" role="dialog" aria-modal="true">
+        <div class="ai-store-redeem-head"><h2 id="redeem-embedding-title">商品兑换</h2><a class="modal-close-icon" href="#ai-store-catalog" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a></div>
+        <dl class="ai-store-redeem-detail"><div><dt>商品名称</dt><dd>text-embedding-3-large Token</dd></div><div><dt>兑换所需积分</dt><dd>880</dd></div><div><dt>产品站点</dt><dd>API中转站</dd></div><div><dt>商品描述</dt><dd>用于文本向量模型的 Token 体验额度</dd></div></dl>
+        <div class="ai-store-redeem-actions"><a class="button" href="#redeem-success-embedding-token">确认兑换</a></div>
+      </div>
+    </section>
+    <section id="redeem-mirror-day" class="create-modal ai-store-redeem-modal" data-ai-store-redeem-modal aria-labelledby="redeem-mirror-day-title">
+      <a class="modal-backdrop" href="#ai-store-catalog" aria-label="关闭兑换弹层"></a>
+      <div class="create-dialog ai-store-redeem-dialog" role="dialog" aria-modal="true">
+        <div class="ai-store-redeem-head"><h2 id="redeem-mirror-day-title">商品兑换</h2><a class="modal-close-icon" href="#ai-store-catalog" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a></div>
+        <dl class="ai-store-redeem-detail"><div><dt>商品名称</dt><dd>多元探索网页体验卡</dd></div><div><dt>兑换所需积分</dt><dd>100</dd></div><div><dt>产品站点</dt><dd>镜像站</dd></div><div><dt>商品描述</dt><dd>兑换后进入镜像站体验多元探索网页权益</dd></div></dl>
+        <div class="ai-store-redeem-actions"><a class="button" href="#redeem-success-mirror-day">确认兑换</a></div>
+      </div>
+    </section>
+    <section id="redeem-codex-card" class="create-modal ai-store-redeem-modal" data-ai-store-redeem-modal aria-labelledby="redeem-codex-title">
+      <a class="modal-backdrop" href="#ai-store-catalog" aria-label="关闭兑换弹层"></a>
+      <div class="create-dialog ai-store-redeem-dialog" role="dialog" aria-modal="true">
+        <div class="ai-store-redeem-head"><h2 id="redeem-codex-title">商品兑换</h2><a class="modal-close-icon" href="#ai-store-catalog" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a></div>
+        <dl class="ai-store-redeem-detail"><div><dt>商品名称</dt><dd>Codex体验卡</dd></div><div><dt>兑换所需积分</dt><dd>200</dd></div><div><dt>产品站点</dt><dd>镜像站</dd></div><div><dt>商品描述</dt><dd>兑换后进入镜像站使用 Codex 体验权益</dd></div></dl>
+        <div class="ai-store-redeem-actions"><a class="button" href="#redeem-success-codex-card">确认兑换</a></div>
+      </div>
+    </section>
+    <section id="redeem-mirror-month" class="create-modal ai-store-redeem-modal" data-ai-store-redeem-modal aria-labelledby="redeem-mirror-month-title">
+      <a class="modal-backdrop" href="#ai-store-catalog" aria-label="关闭兑换弹层"></a>
+      <div class="create-dialog ai-store-redeem-dialog" role="dialog" aria-modal="true">
+        <div class="ai-store-redeem-head"><h2 id="redeem-mirror-month-title">商品兑换</h2><a class="modal-close-icon" href="#ai-store-catalog" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a></div>
+        <dl class="ai-store-redeem-detail"><div><dt>商品名称</dt><dd>多元探索网页月卡</dd></div><div><dt>兑换所需积分</dt><dd>360</dd></div><div><dt>产品站点</dt><dd>镜像站</dd></div><div><dt>商品描述</dt><dd>兑换后进入镜像站使用多元探索网页月卡权益</dd></div></dl>
+        <div class="ai-store-redeem-actions"><a class="button" href="#redeem-success-mirror-month">确认兑换</a></div>
+      </div>
+    </section>
+    <section id="redeem-mirror-week-pack" class="create-modal ai-store-redeem-modal" data-ai-store-redeem-modal aria-labelledby="redeem-mirror-week-pack-title">
+      <a class="modal-backdrop" href="#ai-store-catalog" aria-label="关闭兑换弹层"></a>
+      <div class="create-dialog ai-store-redeem-dialog" role="dialog" aria-modal="true">
+        <div class="ai-store-redeem-head"><h2 id="redeem-mirror-week-pack-title">商品兑换</h2><a class="modal-close-icon" href="#ai-store-catalog" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a></div>
+        <dl class="ai-store-redeem-detail"><div><dt>商品名称</dt><dd>多元探索网页加量包-周卡</dd></div><div><dt>兑换所需积分</dt><dd>480</dd></div><div><dt>产品站点</dt><dd>镜像站</dd></div><div><dt>商品描述</dt><dd>兑换后进入镜像站使用多元探索网页加量权益</dd></div></dl>
+        <div class="ai-store-redeem-actions"><a class="button" href="#redeem-success-mirror-week-pack">确认兑换</a></div>
+      </div>
+    </section>
+    <section id="redeem-flash-hour" class="create-modal ai-store-redeem-modal" data-ai-store-redeem-modal aria-labelledby="redeem-flash-hour-title">
+      <a class="modal-backdrop" href="#ai-store-catalog" aria-label="关闭兑换弹层"></a>
+      <div class="create-dialog ai-store-redeem-dialog" role="dialog" aria-modal="true">
+        <div class="ai-store-redeem-head"><h2 id="redeem-flash-hour-title">商品兑换</h2><a class="modal-close-icon" href="#ai-store-catalog" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a></div>
+        <dl class="ai-store-redeem-detail"><div><dt>商品名称</dt><dd>闪创AI 体验小时卡</dd></div><div><dt>兑换所需积分</dt><dd>180</dd></div><div><dt>产品站点</dt><dd>闪创AI</dd></div><div><dt>商品描述</dt><dd>用于闪创AI的短时创作体验</dd></div></dl>
+        <div class="ai-store-redeem-actions"><a class="button" href="#redeem-success-flash-hour">确认兑换</a></div>
+      </div>
+    </section>
+    <section id="redeem-flash-day" class="create-modal ai-store-redeem-modal" data-ai-store-redeem-modal aria-labelledby="redeem-flash-day-title">
+      <a class="modal-backdrop" href="#ai-store-catalog" aria-label="关闭兑换弹层"></a>
+      <div class="create-dialog ai-store-redeem-dialog" role="dialog" aria-modal="true">
+        <div class="ai-store-redeem-head"><h2 id="redeem-flash-day-title">商品兑换</h2><a class="modal-close-icon" href="#ai-store-catalog" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a></div>
+        <dl class="ai-store-redeem-detail"><div><dt>商品名称</dt><dd>闪创AI 体验日卡</dd></div><div><dt>兑换所需积分</dt><dd>260</dd></div><div><dt>产品站点</dt><dd>闪创AI</dd></div><div><dt>商品描述</dt><dd>用于闪创AI的单日创作体验</dd></div></dl>
+        <div class="ai-store-redeem-actions"><a class="button" href="#redeem-success-flash-day">确认兑换</a></div>
+      </div>
+    </section>
+    <section id="redeem-flash-week" class="create-modal ai-store-redeem-modal" data-ai-store-redeem-modal aria-labelledby="redeem-flash-week-title">
+      <a class="modal-backdrop" href="#ai-store-catalog" aria-label="关闭兑换弹层"></a>
+      <div class="create-dialog ai-store-redeem-dialog" role="dialog" aria-modal="true">
+        <div class="ai-store-redeem-head"><h2 id="redeem-flash-week-title">商品兑换</h2><a class="modal-close-icon" href="#ai-store-catalog" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a></div>
+        <dl class="ai-store-redeem-detail"><div><dt>商品名称</dt><dd>闪创AI 体验周卡</dd></div><div><dt>兑换所需积分</dt><dd>680</dd></div><div><dt>产品站点</dt><dd>闪创AI</dd></div><div><dt>商品描述</dt><dd>用于闪创AI的一周创作体验</dd></div></dl>
+        <div class="ai-store-redeem-actions"><a class="button" href="#redeem-success-flash-week">确认兑换</a></div>
+      </div>
+    </section>
+    <section id="redeem-flash-month" class="create-modal ai-store-redeem-modal" data-ai-store-redeem-modal aria-labelledby="redeem-flash-month-title">
+      <a class="modal-backdrop" href="#ai-store-catalog" aria-label="关闭兑换弹层"></a>
+      <div class="create-dialog ai-store-redeem-dialog" role="dialog" aria-modal="true">
+        <div class="ai-store-redeem-head"><h2 id="redeem-flash-month-title">商品兑换</h2><a class="modal-close-icon" href="#ai-store-catalog" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a></div>
+        <dl class="ai-store-redeem-detail"><div><dt>商品名称</dt><dd>闪创AI 体验月卡</dd></div><div><dt>兑换所需积分</dt><dd>900</dd></div><div><dt>产品站点</dt><dd>闪创AI</dd></div><div><dt>商品描述</dt><dd>用于闪创AI的整月创作体验</dd></div></dl>
+        <div class="ai-store-redeem-actions"><a class="button" href="#redeem-success-flash-month">确认兑换</a></div>
+      </div>
+    </section>
+    <section id="redeem-manga-hour" class="create-modal ai-store-redeem-modal" data-ai-store-redeem-modal aria-labelledby="redeem-manga-hour-title">
+      <a class="modal-backdrop" href="#ai-store-catalog" aria-label="关闭兑换弹层"></a>
+      <div class="create-dialog ai-store-redeem-dialog" role="dialog" aria-modal="true">
+        <div class="ai-store-redeem-head"><h2 id="redeem-manga-hour-title">商品兑换</h2><a class="modal-close-icon" href="#ai-store-catalog" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a></div>
+        <dl class="ai-store-redeem-detail"><div><dt>商品名称</dt><dd>漫剧制作小时卡</dd></div><div><dt>兑换所需积分</dt><dd>240</dd></div><div><dt>产品站点</dt><dd>闪创AI</dd></div><div><dt>商品描述</dt><dd>用于漫剧制作的短时体验</dd></div></dl>
+        <div class="ai-store-redeem-actions"><a class="button" href="#redeem-success-manga-hour">确认兑换</a></div>
+      </div>
+    </section>
+    <section id="redeem-manga-day" class="create-modal ai-store-redeem-modal" data-ai-store-redeem-modal aria-labelledby="redeem-manga-day-title">
+      <a class="modal-backdrop" href="#ai-store-catalog" aria-label="关闭兑换弹层"></a>
+      <div class="create-dialog ai-store-redeem-dialog" role="dialog" aria-modal="true">
+        <div class="ai-store-redeem-head"><h2 id="redeem-manga-day-title">商品兑换</h2><a class="modal-close-icon" href="#ai-store-catalog" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a></div>
+        <dl class="ai-store-redeem-detail"><div><dt>商品名称</dt><dd>漫剧制作日卡</dd></div><div><dt>兑换所需积分</dt><dd>320</dd></div><div><dt>产品站点</dt><dd>闪创AI</dd></div><div><dt>商品描述</dt><dd>用于漫剧制作的单日体验</dd></div></dl>
+        <div class="ai-store-redeem-actions"><a class="button" href="#redeem-success-manga-day">确认兑换</a></div>
+      </div>
+    </section>
+    <section id="redeem-manga-week" class="create-modal ai-store-redeem-modal" data-ai-store-redeem-modal aria-labelledby="redeem-manga-week-title">
+      <a class="modal-backdrop" href="#ai-store-catalog" aria-label="关闭兑换弹层"></a>
+      <div class="create-dialog ai-store-redeem-dialog" role="dialog" aria-modal="true">
+        <div class="ai-store-redeem-head"><h2 id="redeem-manga-week-title">商品兑换</h2><a class="modal-close-icon" href="#ai-store-catalog" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a></div>
+        <dl class="ai-store-redeem-detail"><div><dt>商品名称</dt><dd>漫剧制作周卡</dd></div><div><dt>兑换所需积分</dt><dd>420</dd></div><div><dt>产品站点</dt><dd>闪创AI</dd></div><div><dt>商品描述</dt><dd>用于漫剧制作的一周体验</dd></div></dl>
+        <div class="ai-store-redeem-actions"><a class="button" href="#redeem-success-manga-week">确认兑换</a></div>
+      </div>
+    </section>
+    <section id="redeem-manga-month" class="create-modal ai-store-redeem-modal" data-ai-store-redeem-modal aria-labelledby="redeem-manga-month-title">
+      <a class="modal-backdrop" href="#ai-store-catalog" aria-label="关闭兑换弹层"></a>
+      <div class="create-dialog ai-store-redeem-dialog" role="dialog" aria-modal="true">
+        <div class="ai-store-redeem-head"><h2 id="redeem-manga-month-title">商品兑换</h2><a class="modal-close-icon" href="#ai-store-catalog" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a></div>
+        <dl class="ai-store-redeem-detail"><div><dt>商品名称</dt><dd>漫剧制作月卡</dd></div><div><dt>兑换所需积分</dt><dd>560</dd></div><div><dt>产品站点</dt><dd>闪创AI</dd></div><div><dt>商品描述</dt><dd>用于漫剧制作的整月体验</dd></div></dl>
+        <div class="ai-store-redeem-actions"><a class="button" href="#redeem-success-manga-month">确认兑换</a></div>
+      </div>
+    </section>
+    <section id="redeem-success-gpt5-token" class="create-modal ai-store-redeem-modal" data-ai-store-success-modal aria-labelledby="redeem-success-gpt5-title">
+      <a class="modal-backdrop" href="#ai-store-catalog" aria-label="关闭兑换结果"></a>
+      <div class="create-dialog ai-store-redeem-dialog ai-store-redeem-success" role="dialog" aria-modal="true">
+        <div class="ai-store-redeem-head"><h2 id="redeem-success-gpt5-title">兑换成功</h2><a class="modal-close-icon" href="#ai-store-catalog" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a></div>
+        <p>恭喜您兑换【gpt-5-chat-latest Token】成功</p>
+        <div class="ai-store-redeem-actions"><a class="button secondary" href="#ai-store-catalog">关闭</a><a class="button" href="./model-plaza.html">前往API中转站</a></div>
+      </div>
+    </section>
+    <section id="redeem-success-gpt41-token" class="create-modal ai-store-redeem-modal" data-ai-store-success-modal aria-labelledby="redeem-success-gpt41-title">
+      <a class="modal-backdrop" href="#ai-store-catalog" aria-label="关闭兑换结果"></a>
+      <div class="create-dialog ai-store-redeem-dialog ai-store-redeem-success" role="dialog" aria-modal="true">
+        <div class="ai-store-redeem-head"><h2 id="redeem-success-gpt41-title">兑换成功</h2><a class="modal-close-icon" href="#ai-store-catalog" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a></div>
+        <p>恭喜您兑换【gpt-4.1 Token】成功</p>
+        <div class="ai-store-redeem-actions"><a class="button secondary" href="#ai-store-catalog">关闭</a><a class="button" href="./model-plaza.html">前往API中转站</a></div>
+      </div>
+    </section>
+    <section id="redeem-success-gpt-image-token" class="create-modal ai-store-redeem-modal" data-ai-store-success-modal aria-labelledby="redeem-success-gpt-image-title">
+      <a class="modal-backdrop" href="#ai-store-catalog" aria-label="关闭兑换结果"></a>
+      <div class="create-dialog ai-store-redeem-dialog ai-store-redeem-success" role="dialog" aria-modal="true">
+        <div class="ai-store-redeem-head"><h2 id="redeem-success-gpt-image-title">兑换成功</h2><a class="modal-close-icon" href="#ai-store-catalog" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a></div>
+        <p>恭喜您兑换【gpt-image-2 Token】成功</p>
+        <div class="ai-store-redeem-actions"><a class="button secondary" href="#ai-store-catalog">关闭</a><a class="button" href="./model-plaza.html">前往API中转站</a></div>
+      </div>
+    </section>
+    <section id="redeem-success-embedding-token" class="create-modal ai-store-redeem-modal" data-ai-store-success-modal aria-labelledby="redeem-success-embedding-title">
+      <a class="modal-backdrop" href="#ai-store-catalog" aria-label="关闭兑换结果"></a>
+      <div class="create-dialog ai-store-redeem-dialog ai-store-redeem-success" role="dialog" aria-modal="true">
+        <div class="ai-store-redeem-head"><h2 id="redeem-success-embedding-title">兑换成功</h2><a class="modal-close-icon" href="#ai-store-catalog" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a></div>
+        <p>恭喜您兑换【text-embedding-3-large Token】成功</p>
+        <div class="ai-store-redeem-actions"><a class="button secondary" href="#ai-store-catalog">关闭</a><a class="button" href="./model-plaza.html">前往API中转站</a></div>
+      </div>
+    </section>
+    <section id="redeem-success-mirror-day" class="create-modal ai-store-redeem-modal" data-ai-store-success-modal aria-labelledby="redeem-success-mirror-day-title">
+      <a class="modal-backdrop" href="#ai-store-catalog" aria-label="关闭兑换结果"></a>
+      <div class="create-dialog ai-store-redeem-dialog ai-store-redeem-success" role="dialog" aria-modal="true">
+        <div class="ai-store-redeem-head"><h2 id="redeem-success-mirror-day-title">兑换成功</h2><a class="modal-close-icon" href="#ai-store-catalog" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a></div>
+        <p>恭喜您兑换【多元探索网页体验卡】成功</p>
+        <div class="ai-store-redeem-actions"><a class="button secondary" href="#ai-store-catalog">关闭</a><a class="button" href="https://chat.ai666.net/dashboard/points-mall" target="_blank" rel="noreferrer">前往镜像站</a></div>
+      </div>
+    </section>
+    <section id="redeem-success-codex-card" class="create-modal ai-store-redeem-modal" data-ai-store-success-modal aria-labelledby="redeem-success-codex-title">
+      <a class="modal-backdrop" href="#ai-store-catalog" aria-label="关闭兑换结果"></a>
+      <div class="create-dialog ai-store-redeem-dialog ai-store-redeem-success" role="dialog" aria-modal="true">
+        <div class="ai-store-redeem-head"><h2 id="redeem-success-codex-title">兑换成功</h2><a class="modal-close-icon" href="#ai-store-catalog" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a></div>
+        <p>恭喜您兑换【Codex体验卡】成功</p>
+        <div class="ai-store-redeem-actions"><a class="button secondary" href="#ai-store-catalog">关闭</a><a class="button" href="https://chat.ai666.net/dashboard/points-mall" target="_blank" rel="noreferrer">前往镜像站</a></div>
+      </div>
+    </section>
+    <section id="redeem-success-mirror-month" class="create-modal ai-store-redeem-modal" data-ai-store-success-modal aria-labelledby="redeem-success-mirror-month-title">
+      <a class="modal-backdrop" href="#ai-store-catalog" aria-label="关闭兑换结果"></a>
+      <div class="create-dialog ai-store-redeem-dialog ai-store-redeem-success" role="dialog" aria-modal="true">
+        <div class="ai-store-redeem-head"><h2 id="redeem-success-mirror-month-title">兑换成功</h2><a class="modal-close-icon" href="#ai-store-catalog" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a></div>
+        <p>恭喜您兑换【多元探索网页月卡】成功</p>
+        <div class="ai-store-redeem-actions"><a class="button secondary" href="#ai-store-catalog">关闭</a><a class="button" href="https://chat.ai666.net/dashboard/points-mall" target="_blank" rel="noreferrer">前往镜像站</a></div>
+      </div>
+    </section>
+    <section id="redeem-success-mirror-week-pack" class="create-modal ai-store-redeem-modal" data-ai-store-success-modal aria-labelledby="redeem-success-mirror-week-pack-title">
+      <a class="modal-backdrop" href="#ai-store-catalog" aria-label="关闭兑换结果"></a>
+      <div class="create-dialog ai-store-redeem-dialog ai-store-redeem-success" role="dialog" aria-modal="true">
+        <div class="ai-store-redeem-head"><h2 id="redeem-success-mirror-week-pack-title">兑换成功</h2><a class="modal-close-icon" href="#ai-store-catalog" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a></div>
+        <p>恭喜您兑换【多元探索网页加量包-周卡】成功</p>
+        <div class="ai-store-redeem-actions"><a class="button secondary" href="#ai-store-catalog">关闭</a><a class="button" href="https://chat.ai666.net/dashboard/points-mall" target="_blank" rel="noreferrer">前往镜像站</a></div>
+      </div>
+    </section>
+    <section id="redeem-success-flash-hour" class="create-modal ai-store-redeem-modal" data-ai-store-success-modal aria-labelledby="redeem-success-flash-hour-title">
+      <a class="modal-backdrop" href="#ai-store-catalog" aria-label="关闭兑换结果"></a>
+      <div class="create-dialog ai-store-redeem-dialog ai-store-redeem-success" role="dialog" aria-modal="true">
+        <div class="ai-store-redeem-head"><h2 id="redeem-success-flash-hour-title">兑换成功</h2><a class="modal-close-icon" href="#ai-store-catalog" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a></div>
+        <p>恭喜您兑换【闪创AI 体验小时卡】成功</p>
+        <div class="ai-store-redeem-actions"><a class="button secondary" href="#ai-store-catalog">关闭</a><a class="button" href="./aigc.html">前往闪创AI</a></div>
+      </div>
+    </section>
+    <section id="redeem-success-flash-day" class="create-modal ai-store-redeem-modal" data-ai-store-success-modal aria-labelledby="redeem-success-flash-day-title">
+      <a class="modal-backdrop" href="#ai-store-catalog" aria-label="关闭兑换结果"></a>
+      <div class="create-dialog ai-store-redeem-dialog ai-store-redeem-success" role="dialog" aria-modal="true">
+        <div class="ai-store-redeem-head"><h2 id="redeem-success-flash-day-title">兑换成功</h2><a class="modal-close-icon" href="#ai-store-catalog" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a></div>
+        <p>恭喜您兑换【闪创AI 体验日卡】成功</p>
+        <div class="ai-store-redeem-actions"><a class="button secondary" href="#ai-store-catalog">关闭</a><a class="button" href="./aigc.html">前往闪创AI</a></div>
+      </div>
+    </section>
+    <section id="redeem-success-flash-week" class="create-modal ai-store-redeem-modal" data-ai-store-success-modal aria-labelledby="redeem-success-flash-week-title">
+      <a class="modal-backdrop" href="#ai-store-catalog" aria-label="关闭兑换结果"></a>
+      <div class="create-dialog ai-store-redeem-dialog ai-store-redeem-success" role="dialog" aria-modal="true">
+        <div class="ai-store-redeem-head"><h2 id="redeem-success-flash-week-title">兑换成功</h2><a class="modal-close-icon" href="#ai-store-catalog" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a></div>
+        <p>恭喜您兑换【闪创AI 体验周卡】成功</p>
+        <div class="ai-store-redeem-actions"><a class="button secondary" href="#ai-store-catalog">关闭</a><a class="button" href="./aigc.html">前往闪创AI</a></div>
+      </div>
+    </section>
+    <section id="redeem-success-flash-month" class="create-modal ai-store-redeem-modal" data-ai-store-success-modal aria-labelledby="redeem-success-flash-month-title">
+      <a class="modal-backdrop" href="#ai-store-catalog" aria-label="关闭兑换结果"></a>
+      <div class="create-dialog ai-store-redeem-dialog ai-store-redeem-success" role="dialog" aria-modal="true">
+        <div class="ai-store-redeem-head"><h2 id="redeem-success-flash-month-title">兑换成功</h2><a class="modal-close-icon" href="#ai-store-catalog" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a></div>
+        <p>恭喜您兑换【闪创AI 体验月卡】成功</p>
+        <div class="ai-store-redeem-actions"><a class="button secondary" href="#ai-store-catalog">关闭</a><a class="button" href="./aigc.html">前往闪创AI</a></div>
+      </div>
+    </section>
+    <section id="redeem-success-manga-hour" class="create-modal ai-store-redeem-modal" data-ai-store-success-modal aria-labelledby="redeem-success-manga-hour-title">
+      <a class="modal-backdrop" href="#ai-store-catalog" aria-label="关闭兑换结果"></a>
+      <div class="create-dialog ai-store-redeem-dialog ai-store-redeem-success" role="dialog" aria-modal="true">
+        <div class="ai-store-redeem-head"><h2 id="redeem-success-manga-hour-title">兑换成功</h2><a class="modal-close-icon" href="#ai-store-catalog" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a></div>
+        <p>恭喜您兑换【漫剧制作小时卡】成功</p>
+        <div class="ai-store-redeem-actions"><a class="button secondary" href="#ai-store-catalog">关闭</a><a class="button" href="./aigc.html">前往闪创AI</a></div>
+      </div>
+    </section>
+    <section id="redeem-success-manga-day" class="create-modal ai-store-redeem-modal" data-ai-store-success-modal aria-labelledby="redeem-success-manga-day-title">
+      <a class="modal-backdrop" href="#ai-store-catalog" aria-label="关闭兑换结果"></a>
+      <div class="create-dialog ai-store-redeem-dialog ai-store-redeem-success" role="dialog" aria-modal="true">
+        <div class="ai-store-redeem-head"><h2 id="redeem-success-manga-day-title">兑换成功</h2><a class="modal-close-icon" href="#ai-store-catalog" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a></div>
+        <p>恭喜您兑换【漫剧制作日卡】成功</p>
+        <div class="ai-store-redeem-actions"><a class="button secondary" href="#ai-store-catalog">关闭</a><a class="button" href="./aigc.html">前往闪创AI</a></div>
+      </div>
+    </section>
+    <section id="redeem-success-manga-week" class="create-modal ai-store-redeem-modal" data-ai-store-success-modal aria-labelledby="redeem-success-manga-week-title">
+      <a class="modal-backdrop" href="#ai-store-catalog" aria-label="关闭兑换结果"></a>
+      <div class="create-dialog ai-store-redeem-dialog ai-store-redeem-success" role="dialog" aria-modal="true">
+        <div class="ai-store-redeem-head"><h2 id="redeem-success-manga-week-title">兑换成功</h2><a class="modal-close-icon" href="#ai-store-catalog" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a></div>
+        <p>恭喜您兑换【漫剧制作周卡】成功</p>
+        <div class="ai-store-redeem-actions"><a class="button secondary" href="#ai-store-catalog">关闭</a><a class="button" href="./aigc.html">前往闪创AI</a></div>
+      </div>
+    </section>
+    <section id="redeem-success-manga-month" class="create-modal ai-store-redeem-modal" data-ai-store-success-modal aria-labelledby="redeem-success-manga-month-title">
+      <a class="modal-backdrop" href="#ai-store-catalog" aria-label="关闭兑换结果"></a>
+      <div class="create-dialog ai-store-redeem-dialog ai-store-redeem-success" role="dialog" aria-modal="true">
+        <div class="ai-store-redeem-head"><h2 id="redeem-success-manga-month-title">兑换成功</h2><a class="modal-close-icon" href="#ai-store-catalog" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a></div>
+        <p>恭喜您兑换【漫剧制作月卡】成功</p>
+        <div class="ai-store-redeem-actions"><a class="button secondary" href="#ai-store-catalog">关闭</a><a class="button" href="./aigc.html">前往闪创AI</a></div>
+      </div>
+    </section>
+    <details class="v1-walkthrough-drawer" data-v1-walkthrough-drawer data-member-section="rules">
       <summary>走查</summary>
       <div class="v1-walkthrough-panel">
-        <div class="v1-walkthrough-head"><strong>会员超市走查</strong><span>用于确认会员权益是否围绕积分、创作、模型、教程和活动形成首购转化。</span></div>
+        <div class="v1-walkthrough-head"><strong>AI商城走查</strong><span>AI商城要按 API中转站、镜像站、闪创AI 三条产品线承接积分兑换。</span></div>
         <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>运营关注</span><span>研发关注</span></div>
-        <div class="v1-rule-section"><strong>页面定位</strong><span>会员超市先做权益说明和转化，不接收银流程；权益需要服务 AIGC、模型广场、教程、邀请和活动。</span></div>
-        <div class="v1-rule-section"><strong>用户主路径</strong><span>用户查看套餐 -> 对比积分包、生成折扣、模型体验、教程和活动奖励 -> 领取/查看权益 -> 回对应业务页面使用。</span></div>
-        <div class="v1-rule-section"><strong>关键字段</strong><span>套餐卡、月度积分包、AIGC 折扣、视频优先体验、模型体验包、教程内容、模板高级能力、活动奖励和商业规则。</span></div>
-        <div class="v1-rule-section"><strong>状态规则</strong><span>会员状态包含积分包、生成折扣、模型体验、教程模板和活动奖励；领取、换券和查看为静态原型状态。</span></div>
-        <div class="v1-rule-section"><strong>CTA 闭环</strong><span>会员卡、权益对比、活动加赠和兑换入口只承接查看、选择或人工领取状态；不进入真实收银或支付流程；选择后进入状态提示或人工承接。</span></div>
-        <div class="v1-rule-section"><strong>运营配置</strong><span>套餐、权益、额度周期和会员活动来自会员权益口径、低风险活动方案和运营人工配置；灰度期人工调整文案与目标。</span></div>
-        <div class="v1-rule-section"><strong>研发验收</strong><span>验收要求：套餐档位、权益矩阵、可感知权益、领取/兑换状态可读；不出现支付履约、退款、发票、自动开通、企业采购或售后承诺。</span></div>
-        <div class="v1-rule-section"><strong>边界</strong><span>会员超市是权益展示和转化意向页，不是正式电商或收银系统；支付、权益结算、合同、发票和自动续费后置。</span></div>
+        <div class="v1-rule-section"><strong>页面定位</strong><span>AI商城是积分兑换型产品货架，主界面按 API中转站、镜像站、闪创AI 分组，本轮用 16 张兑换商品观察多商品铺开效果。</span></div>
+        <div class="v1-rule-section"><strong>用户主路径</strong><span>用户先按产品线分组识别商品归属 -> 在组内浏览商品名称和积分价格 -> 点击去兑换打开确认弹层 -> 核对商品名称、积分、产品站点和描述 -> 确认兑换；查看历史消耗时通过标题右侧兑换记录打开页内弹层。</span></div>
+        <div class="v1-rule-section"><strong>关键字段</strong><span>主货架字段为产品线分组、商品名称和积分价格。兑换弹层补充商品名称、兑换所需积分、产品站点和商品描述；兑换记录弹层展示时间、兑换商品和积分变化。</span></div>
+        <div class="v1-rule-section"><strong>状态规则</strong><span>兑换状态由弹层承接确认动作，商品卡保持货架信息密度。分组帮助 C端识别产品线，不拆成独立商城频道。商品过多时，每组先展示核心商品，其余进入组内更多入口或二级列表。兑换记录在 AI商城页内弹层查看，不打断商品浏览上下文。</span></div>
+        <div class="v1-rule-section"><strong>动作去向</strong><span>商品按钮打开本页兑换确认弹层，不直接跳模型广场、AIGC 或镜像站。确认后进入商品专属兑换成功态，主按钮前往对应产品线，次按钮关闭弹层；标题右侧兑换记录打开页内记录弹层。</span></div>
+        <div class="v1-rule-section"><strong>运营维护</strong><span>产品线分组、商品名称、兑换积分、主推排序和弹层描述由运营维护。当前商品名称参考 API中转站定价页模型名、镜像站订阅页商品名；闪创AI按体验小时卡、体验日卡、体验周卡和体验月卡等梯度表达。</span></div>
+        <div class="v1-rule-section"><strong>研发关注</strong><span>顶部入口显示 AI商城且无角标。主内容保留紧凑商品货架，包含 API中转站、镜像站、闪创AI 3 个产品线分组。分组标题不带序号和描述，商品卡不带顶部标签和详情内容。当前铺开 16 个兑换商品观察密度，所有按钮统一为“去兑换”并打开本页弹层。</span></div>
+        <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付积分兑换确认原型和积分记录回流口径。确认弹层不执行扣费、发码、订单、售后、发票或自动权益发放。</span></div>
       </div>
     </details>
     <div class="footer-space"></div>

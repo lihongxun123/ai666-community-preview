@@ -30,7 +30,7 @@
         </nav>
         <div class="header-actions">
           <a class="action-link" href="./invite.html" data-nav-action="invite">邀请有礼</a>
-          <a class="action-link" href="./member-store.html" data-nav-action="member">会员超市</a>
+          <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a>
           <a class="action-link points-link" href="./points-center.html" data-nav-action="points">积分 1280</a>
           <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
           <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="用户头像"><img src="assets/image_assets/1.png" alt=""></a>
@@ -65,13 +65,13 @@
       </div>
     </section>
 
-    <section id="nav-member" class="create-modal nav-action-modal" aria-label="会员超市">
-      <a class="modal-backdrop" href="#" aria-label="关闭会员超市"></a>
+    <section id="nav-member" class="create-modal nav-action-modal" aria-label="AI商城">
+      <a class="modal-backdrop" href="#" aria-label="关闭AI商城"></a>
       <div class="create-dialog nav-action-dialog">
         <div class="create-dialog-head">
           <div>
-            <span class="eyebrow dark">会员超市</span>
-            <h2>先看清权益，再决定是否进入会员页</h2>
+            <span class="eyebrow dark">AI商城</span>
+            <h2>先看清权益，再决定是否进入AI商城</h2>
           </div>
           <a class="section-link" href="#">关闭</a>
         </div>
@@ -82,72 +82,13 @@
             <div><strong>活动专属奖励</strong><span>创作挑战和模型体验季加成</span></div>
           </div>
           <div class="modal-actions">
-            <a class="button" href="./member-store.html">查看完整权益</a>
+            <a class="button" href="./member-store.html">进入AI商城</a>
             <a class="button secondary" href="./points-center.html">先做任务攒积分</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="nav-points" class="points-modal" aria-label="积分任务中心">
-      <a class="modal-backdrop" href="#" aria-label="关闭积分任务中心"></a>
-      <div class="points-dialog points-panel nav-points-dialog">
-        <div class="panel-head">
-          <div>
-            <span class="eyebrow dark">积分中心</span>
-            <h2>今天还能赚 260 积分</h2>
-          </div>
-          <a class="section-link" href="#">关闭</a>
-        </div>
-        <div class="nav-points-hero">
-          <div>
-            <span>我的创作积分</span>
-            <strong>1280</strong>
-            <em>用于 AIGC、模型广场、模板和轻创作体验。</em>
-          </div>
-          <div class="nav-points-ring"><strong>+260</strong><span>今日可领</span></div>
-        </div>
-        <div class="nav-points-progress"><span style="width: 68%"></span></div>
-        <div class="task-grid">
-          <a class="task-item" href="./user-center.html"><strong>每日登录</strong><span>+20</span></a>
-          <a class="task-item" href="./aigc.html"><strong>AIGC 体验</strong><span>+10</span></a>
-          <a class="task-item" href="./flash.html"><strong>发布闪念</strong><span>+30</span></a>
-          <a class="task-item" href="./model-plaza.html"><strong>模型反馈</strong><span>+60</span></a>
-        </div>
-        <div class="modal-actions">
-          <a class="button" href="./points-center.html">进入积分任务中心</a>
-          <a class="button secondary" href="./member-store.html">领取会员折扣</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="points-center" class="points-modal" aria-label="积分任务中心">
-      <a class="modal-backdrop" href="#" aria-label="关闭积分任务中心"></a>
-      <div class="points-dialog points-panel">
-        <div class="panel-head">
-          <div>
-            <span class="eyebrow dark">积分中心</span>
-            <h2>用任务换免费体验</h2>
-          </div>
-          <a class="section-link" href="#">关闭</a>
-        </div>
-        <div class="credit-card">
-          <span>当前可用</span>
-          <strong>1280</strong>
-          <em>今日再赚 260 积分</em>
-        </div>
-        <div class="task-grid">
-          <a class="task-item" href="./user-center.html"><strong>签到登录</strong><span>+20</span></a>
-          <a class="task-item" href="#compose-flash"><strong>发布闪念</strong><span>+30</span></a>
-          <a class="task-item" href="./model-plaza.html#model-list"><strong>发模型经验</strong><span>+60</span></a>
-          <a class="task-item" href="./invite.html"><strong>邀请好友</strong><span>+120</span></a>
-        </div>
-        <div class="modal-actions">
-          <a class="button" href="./points-center.html">进入积分任务中心</a>
-          <a class="button secondary" href="./member-store.html">领取体验包</a>
-        </div>
-      </div>
-    </section>
 
     <section id="compose-flash" class="create-modal flash-compose-modal" aria-label="发闪念">
       <a class="modal-backdrop" href="#" aria-label="关闭发闪念"></a>
@@ -174,12 +115,6 @@
               <span class="flash-compose-counter">96 / 600</span>
             </div>
           </div>
-          <div class="flash-meta-grid" aria-label="闪念结构化反馈">
-            <label><strong>关联模型/工具</strong><input type="text" value="gemini-3-flash-preview" aria-label="关联模型或工具"></label>
-            <label><strong>内容类型</strong><select aria-label="内容类型"><option>模型体验</option><option>AIGC 过程</option><option>API 排错</option><option>工具心得</option></select></label>
-            <label><strong>结果判断</strong><select aria-label="结果判断"><option>可复用</option><option>待优化</option><option>踩坑记录</option></select></label>
-            <label><strong>同步去向</strong><select aria-label="同步去向"><option>仅发布闪念</option><option>候选模型反馈</option><option>候选模板案例</option><option>候选活动精选</option></select></label>
-          </div>
           <div class="flash-media-section">
             <div class="flash-media-head">
               <strong>媒体文件</strong>
@@ -202,15 +137,11 @@
             </div>
           </div>
           <div class="flash-editor-footer">
-            <span>发布后可获得 30 积分，优质模型体验可进入右侧热门位</span>
+            <span>发布后可获得 30 积分，好的经验会被更多人看到</span>
             <div class="flash-editor-actions">
               <a class="button secondary" href="./flash.html">取消</a>
-              <a class="button" href="#" data-cta-state="闪念发布状态：发布成功后留在闪念流并进入候选精选">发布</a>
+              <a class="button" href="#" data-cta-state="闪念发布状态：发布成功后留在闪念流">发布</a>
             </div>
-          </div>
-          <div class="flash-disclosure-card">
-            <strong>AI 生成声明</strong>
-            <span>闪念可包含 AI 生成或 AI 辅助创作过程；模型反馈需要说明目标、输入、过程和结果判断，商业授权边界暂不在 1.0 展开。</span>
           </div>
         </div>
       </div>
@@ -259,8 +190,8 @@
         </div>
         <div class="activity-rule-grid">
           <div><strong>参与动作</strong><span>发布模型体验、API 排错或 AIGC 过程闪念</span></div>
-          <div><strong>奖励</strong><span>积分、体验券、首页曝光位候选</span></div>
-          <div><strong>流向</strong><span>优秀内容进入右侧运营位和模型广场候选</span></div>
+          <div><strong>奖励</strong><span>积分、体验券和更多展示机会</span></div>
+          <div><strong>展示</strong><span>好的经验会被更多人看到</span></div>
         </div>
       </div>
     </section>
@@ -327,12 +258,12 @@
       </div>
     </section>
 
-    <section id="member-panel" class="create-modal flash-comments-modal" aria-label="会员超市">
-      <a class="modal-backdrop" href="#" aria-label="关闭会员超市"></a>
+    <section id="member-panel" class="create-modal flash-comments-modal" aria-label="AI商城">
+      <a class="modal-backdrop" href="#" aria-label="关闭AI商城"></a>
       <div class="create-dialog flash-comments-dialog">
         <div class="create-dialog-head">
           <div>
-            <span class="eyebrow dark">会员超市</span>
+            <span class="eyebrow dark">AI商城</span>
             <h2>先看权益，再决定要不要升级</h2>
           </div>
           <a class="section-link" href="#">关闭</a>
@@ -340,7 +271,7 @@
         <div class="activity-rule-grid">
           <div><strong>每月积分包</strong><span>用于 AIGC、模型体验和模板能力</span></div>
           <div><strong>创作折扣</strong><span>图片、视频、漫剧模板优先体验</span></div>
-          <div><strong>会员活动</strong><span>模型体验季和创作挑战优先参与</span></div>
+          <div><strong>AI商城权益</strong><span>模型体验季和创作挑战优先参与</span></div>
         </div>
       </div>
     </section>
@@ -353,7 +284,7 @@
             <h1>轻量记录每一次 AI 实战灵感</h1>
             <p>发布模型体验、AIGC 过程、API 排错和工具心得，让社区先有可消费的真实信号，再把高价值内容沉淀到模型广场、教程和案例里。</p>
             <div class="flash-hero-actions">
-              <a class="button" href="#compose-flash">发闪念</a>
+              <a class="button" href="#compose-flash" data-cta-state="打开发闪念编辑弹层">发闪念</a>
               <a class="button secondary" href="#flash-timeline">浏览时间流</a>
             </div>
             <div class="flash-stat-row">
@@ -412,7 +343,7 @@
                   <span>42 分钟前</span>
                 </div>
               </div>
-              <p>试了 3 个文本模型写 API 错误复盘，最适合公开分享的不是最会写长文的模型，而是能把复现步骤压成清单的模型。</p>
+              <p>试了 3 个文本模型写 API 错误复盘，最后选了能把复现步骤压成清单的模型，公开分享时更容易被照着排查。</p>
               <div class="flash-post-actions">
                 <a href="#" data-cta-state="点赞状态：切换喜欢并更新计数"><img src="resources/icons/remixicon/svg/Health & Medical/heart-line.svg" alt="">142</a>
                 <a href="#all-comments"><img src="resources/icons/remixicon/svg/Communication/chat-3-line.svg" alt="">18</a>
@@ -468,7 +399,7 @@
               <strong class="flash-quick-title">记录刚刚的 AI 实战过程</strong>
               <p>支持短文本、图片和视频片段，适合快速沉淀模型体验、排错记录和创作过程。</p>
               <div class="flash-compose-bottom">
-                <a class="button" href="#compose-flash">发布闪念 + 30积分</a>
+                <a class="button" href="#compose-flash" data-cta-state="打开发闪念编辑弹层">发布闪念 + 30积分</a>
               </div>
             </section>
 
@@ -496,16 +427,16 @@
     <details class="v1-walkthrough-drawer" data-v1-walkthrough-drawer>
       <summary>走查</summary>
       <div class="v1-walkthrough-panel">
-        <div class="v1-walkthrough-head"><strong>闪念频道走查</strong><span>用于确认轻内容发布、评论互动、模型反馈和运营右栏是否形成低门槛闭环。</span></div>
+        <div class="v1-walkthrough-head"><strong>闪念频道走查</strong><span>闪念负责低门槛发布、评论互动、模型反馈和右栏运营入口。</span></div>
         <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>运营关注</span><span>研发关注</span></div>
         <div class="v1-rule-section"><strong>页面定位</strong><span>闪念是轻内容和模型体验反馈入口，不承担完整内容社区、圈子或话题体系。</span></div>
-        <div class="v1-rule-section"><strong>用户主路径</strong><span>用户浏览轻内容 -> 打开发闪念 -> 填写正文、模型/工具、类型、结果判断和同步去向 -> 发布后回到闪念流或候选精选。</span></div>
-        <div class="v1-rule-section"><strong>关键字段</strong><span>闪念正文、媒体、作者、时间、评论、点赞、分享、模型/工具、内容类型、结果判断、同步去向和右侧运营位。</span></div>
-        <div class="v1-rule-section"><strong>状态规则</strong><span>闪念按时间流展示，不提供类型筛选；点赞、分享和发布成功是轻状态；评论通过弹层承接；不做独立闪念详情页、关注流或话题聚合。</span></div>
-        <div class="v1-rule-section"><strong>CTA 闭环</strong><span>发布闪念、评论、回复、点赞、分享、话题和热门入口均保留轻状态；发闪念可带媒体或模型反馈，并回到内容流或积分提示，不扩成完整动态社区。</span></div>
-        <div class="v1-rule-section"><strong>运营配置</strong><span>热门闪念、推荐话题、参与话题、右侧 Banner 和积分提示来自人工热门池、话题库、低风险活动方案和积分任务口径；每日或隔日调整，不做算法榜。</span></div>
-        <div class="v1-rule-section"><strong>研发验收</strong><span>验收要求：发布入口、媒体附件、评论展开、全部评论、回复框和热门目标跳转可用；不展示审核命中词、内部处理状态、私信、圈子或实时消息流。</span></div>
-        <div class="v1-rule-section"><strong>边界</strong><span>闪念只做轻内容 UGC 和反馈入口；不做圈子、私信、独立详情页、实时流、自动积分结算或复杂推荐排序。</span></div>
+        <div class="v1-rule-section"><strong>用户主路径</strong><span>用户浏览轻内容 -> 打开发闪念 -> 填写正文并上传媒体 -> 发布后回到闪念流或候选精选。</span></div>
+        <div class="v1-rule-section"><strong>关键字段</strong><span>闪念正文、媒体、作者、时间、评论、点赞、分享和右侧运营位。</span></div>
+        <div class="v1-rule-section"><strong>状态规则</strong><span>闪念按时间流展示，暂不提供类型筛选；点赞、分享和发布成功是轻状态；评论通过弹层承接；独立闪念详情页、关注流和话题聚合后置。</span></div>
+        <div class="v1-rule-section"><strong>动作去向</strong><span>发布闪念、评论、回复、点赞、分享、话题和热门入口都保留轻状态。发闪念可带媒体或模型反馈，发布后回到内容流或积分提示，暂不扩成完整动态社区。</span></div>
+        <div class="v1-rule-section"><strong>运营维护</strong><span>热门闪念、推荐话题、参与话题、右侧 Banner 和积分提示来自人工热门池、话题库、低风险活动方案和积分任务口径。每日或隔日调整，算法榜后置。</span></div>
+        <div class="v1-rule-section"><strong>研发关注</strong><span>发布入口、媒体附件、评论展开、全部评论、回复框和热门目标跳转需要可用。审核命中词、内部处理状态、私信、圈子和实时消息流不进入前台。</span></div>
+        <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付轻内容 UGC 和反馈入口。圈子、私信、独立详情页、实时流、自动积分结算和复杂推荐排序后置。</span></div>
       </div>
     </details>
     <div class="footer-space"></div>

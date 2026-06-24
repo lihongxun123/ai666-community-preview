@@ -31,7 +31,7 @@
         </nav>
         <div class="header-actions">
           <a class="action-link" href="./invite.html" data-nav-action="invite">邀请有礼</a>
-          <a class="action-link" href="./member-store.html" data-nav-action="member">会员超市</a>
+          <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a>
           <a class="action-link points-link" href="./points-center.html" data-nav-action="points">积分 1280</a>
           <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
           <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="用户头像"><img src="assets/image_assets/1.png" alt=""></a>
@@ -63,12 +63,12 @@
               <strong id="modelPrimaryUse">长文与方案</strong>
             </div>
             <div>
-              <span>体验成本</span>
-              <strong id="modelBudget">低</strong>
+              <span>价格口径</span>
+              <strong id="modelPrice">输入 $0.4000</strong>
             </div>
             <div>
-              <span>详情状态</span>
-              <strong>已开放</strong>
+              <span>底部标签</span>
+              <strong id="modelTagSummary">工具 / 对话 / 识图</strong>
             </div>
           </aside>
         </div>
@@ -141,14 +141,15 @@
           <aside class="model-detail-rail" aria-label="模型详情侧栏">
             <div class="detail-rail-card">
               <span>供给结构</span>
-              <strong>90 / 10 / 2</strong>
+              <strong>98 / 79 / 10 / 2</strong>
             </div>
             <div class="detail-rail-card">
               <span>相关模型</span>
               <div class="related-model-links">
+                <a href="./model-detail.html?model=gpt-5-chat-latest">gpt-5-chat-latest</a>
                 <a href="./model-detail.html?model=o4-mini">o4-mini</a>
                 <a href="./model-detail.html?model=gemini-2.5-pro">gemini-2.5-pro</a>
-                <a href="./model-detail.html?model=doubao-pro">doubao-pro</a>
+                <a href="./model-detail.html?model=gpt-image-2">gpt-image-2</a>
               </div>
             </div>
           </aside>
@@ -158,16 +159,16 @@
     <details class="v1-walkthrough-drawer" data-v1-walkthrough-drawer>
       <summary>走查</summary>
       <div class="v1-walkthrough-panel">
-        <div class="v1-walkthrough-head"><strong>模型详情走查</strong><span>用于确认单个模型是否讲清适合什么、不适合什么、怎么反馈和下一步去哪里。</span></div>
+        <div class="v1-walkthrough-head"><strong>模型详情走查</strong><span>模型详情要讲清适合什么、暂不适合什么、怎么反馈、下一步去哪。</span></div>
         <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>运营关注</span><span>研发关注</span></div>
         <div class="v1-rule-section"><strong>页面定位</strong><span>模型详情承接模型广场卡片，提供适用场景、使用前确认、API 接入口径、案例反馈和相关模型。</span></div>
         <div class="v1-rule-section"><strong>用户主路径</strong><span>用户从模型卡进入 -> 阅读适合/暂不适合 -> 查看 API 接入口径 -> 发布模型反馈或进入教程、活动和相关模型。</span></div>
-        <div class="v1-rule-section"><strong>关键字段</strong><span>模型名、类型、供应商、适合场景、暂不适合、成本口径、接入建议、反馈字段、相关模型和 AI 生成声明。</span></div>
+        <div class="v1-rule-section"><strong>关键字段</strong><span>模型名、类型、供应商、计费类型、价格口径、底部标签、适合场景、暂不适合、接入建议、反馈字段和相关模型。</span></div>
         <div class="v1-rule-section"><strong>状态规则</strong><span>详情状态只表达学习、选型和反馈口径；模型 ID 是示例字段，不代表真实可调用密钥或生产接入资格。</span></div>
-        <div class="v1-rule-section"><strong>CTA 闭环</strong><span>详情 CTA 承接 API 接入意向、案例反馈和相关模型浏览；返回与相关入口保持站内可达，不在详情页直接暴露真实控制台或密钥。</span></div>
-        <div class="v1-rule-section"><strong>运营配置</strong><span>模型介绍、适用与不适用场景、API 接入口径、案例反馈和相关模型来自模型服务内容承载规则、模型对象字段表与 P0 内容池；价格和可用性由人工口径维护。</span></div>
-        <div class="v1-rule-section"><strong>研发验收</strong><span>验收要求：标题、供应商、类型、适用场景、API 接入说明、案例反馈和相关模型可读；禁止真实 API Key、真实余额、调用日志和实时价格承诺。</span></div>
-        <div class="v1-rule-section"><strong>边界</strong><span>详情页是选型说明和转化入口，不是在线调试台；不承诺实时 SLA、自动开通、生产调用或商用授权履约。</span></div>
+        <div class="v1-rule-section"><strong>动作去向</strong><span>详情按钮承接 API 接入意向、案例反馈和相关模型浏览。返回与相关入口保持站内可达，真实控制台和密钥不在详情页露出。</span></div>
+        <div class="v1-rule-section"><strong>运营维护</strong><span>模型介绍、Logo、标签、价格和相关模型来自 `kk2.deepwl.net/pricing` 当前展示。正式跳转前需要定期对齐源站价格。</span></div>
+        <div class="v1-rule-section"><strong>研发关注</strong><span>标题、供应商、类型、价格、标签、适用场景、API 接入说明、案例反馈和相关模型需要可读。页面不能展示真实 API Key、真实余额或调用日志。</span></div>
+        <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付选型说明和转化入口。在线调试台、实时 SLA、自动开通、生产调用和商用授权履约后置。</span></div>
       </div>
     </details>
     <div class="footer-space"></div>
@@ -178,122 +179,134 @@
       "gpt-4.1": {
         type: "文本模型",
         provider: "OpenAI",
-        cost: "低成本试用",
-        summary: "复杂写作、代码生成、产品分析和多轮推理。",
-        primaryUse: "长文与方案",
-        budget: "中",
-        uses: ["产品方案审校", "代码生成辅助", "复杂问题拆解", "长内容改写"],
-        costNote: "小样本试跑"
+        billing: "按量计费",
+        summary: "GPT-4.1 是由 openai 提供的人工智能模型。",
+        primaryUse: "工具对话",
+        price: "输入 $0.4000",
+        tagSummary: "工具 / 对话 / 识图",
+        uses: ["工具调用对话", "视觉输入理解", "复杂任务拆解", "产品方案审校"],
+        costNote: "输入 $0.4000 / 1M Tokens；补全 $0.8000 / 1M Tokens"
+      },
+      "gpt-5-chat-latest": {
+        type: "文本模型",
+        provider: "OpenAI",
+        billing: "按量计费",
+        summary: "GPT-5 Chat 指向当前 ChatGPT 所使用的 GPT-5 快照版本。",
+        primaryUse: "ChatGPT 快照",
+        price: "输入 $0.2500",
+        tagSummary: "对话 / 识图",
+        uses: ["通用对话", "图文理解", "内容改写", "复杂问答"],
+        costNote: "输入 $0.2500 / 1M Tokens；补全 $2.0000 / 1M Tokens"
       },
       "claude-sonnet-4-6": {
         type: "文本模型",
-        provider: "Anthropic / Claude",
-        cost: "长文优先",
-        summary: "长文档阅读、方案审校、需求拆解和深度改写。",
-        primaryUse: "长文档审校",
-        budget: "中",
-        uses: ["长文阅读", "需求拆解", "方案复核", "语气改写"],
-        costNote: "单篇验证"
+        provider: "Anthropic",
+        billing: "按量计费",
+        summary: "Claude Sonnet 4.6 可大规模提供前沿智能，专为编码、代理和企业工作流而打造。",
+        primaryUse: "编码与代理",
+        price: "输入 $1.5000",
+        tagSummary: "对话 / 识图 / 工具",
+        uses: ["编码任务", "代理流程", "企业工作流", "复杂文档处理"],
+        costNote: "输入 $1.5000 / 1M Tokens；补全 $7.5000 / 1M Tokens"
       },
       "gemini-3-pro-preview": {
         type: "文本模型",
-        provider: "Google / Gemini",
-        cost: "多模态优先",
-        summary: "多模态分析、截图理解、长内容整理和复杂判断。",
-        primaryUse: "图文理解",
-        budget: "中",
-        uses: ["截图分析", "多源资料整理", "长内容判断", "图文任务复核"],
-        costNote: "图文验证"
+        provider: "Google",
+        billing: "按量计费",
+        summary: "Gemini 3 以先进推理能力为基础，适合复杂任务和多模态任务。",
+        primaryUse: "复杂多模态",
+        price: "输入 $1.4000",
+        tagSummary: "对话 / 思考 / 多模态",
+        uses: ["复杂推理", "多模态理解", "自主编码", "跨模态资料整理"],
+        costNote: "输入 $1.4000 / 1M Tokens；补全 $8.4000 / 1M Tokens"
       },
-      "text-embedding-3-large": {
-        type: "Embedding",
-        provider: "OpenAI",
-        cost: "检索优先",
-        summary: "知识库检索、相似内容召回和问答证据链。",
-        primaryUse: "RAG 检索",
-        budget: "低",
-        uses: ["内容召回", "相似度匹配", "证据片段检索", "知识库问答"],
-        costNote: "脱敏小库"
+      "gemini-2.5-pro": {
+        type: "文本模型",
+        provider: "Google",
+        billing: "按量计费",
+        summary: "Gemini 2.5 Pro 擅长编码和复杂提示，支持文本、图像、音频、视频及代码的多模态输入。",
+        primaryUse: "编码与思考",
+        price: "输入 $0.8750",
+        tagSummary: "对话 / 识图 / 思考",
+        uses: ["编码任务", "复杂提示", "图文理解", "资料整合"],
+        costNote: "输入 $0.8750 / 1M Tokens；补全 $7.0000 / 1M Tokens"
       },
       "o4-mini": {
         type: "文本模型",
         provider: "OpenAI",
-        cost: "低成本优先",
-        summary: "轻量推理、低成本草稿、批量问答和代码辅助。",
-        primaryUse: "低成本草稿",
-        budget: "低",
-        uses: ["批量草稿", "轻量推理", "快速问答", "代码辅助"],
-        costNote: "批量草稿"
+        billing: "按量计费",
+        summary: "o4-mini 偏轻量推理，适合需要较快响应的推理任务，支持多模态输入。",
+        primaryUse: "轻量推理",
+        price: "输入 $0.5000",
+        tagSummary: "对话 / 识图",
+        uses: ["低延迟问答", "轻量推理", "视觉输入", "批量草稿"],
+        costNote: "输入 $0.5000 / 1M Tokens；补全 $0.5000 / 1M Tokens"
       },
-      "gemini-2.5-pro": {
-        type: "文本模型",
-        provider: "Google / Gemini",
-        cost: "资料整合",
-        summary: "多源抽取、长文档总结、截图理解和资料整合。",
-        primaryUse: "资料总结",
-        budget: "中",
-        uses: ["长文总结", "截图理解", "多源抽取", "资料整合"],
-        costNote: "资料样例"
+      "text-embedding-3-large": {
+        type: "Embedding",
+        provider: "OpenAI",
+        billing: "按量计费",
+        summary: "OpenAI 第三代嵌入模型，比 small 版本更强大，适用于需要最高性能的检索任务。",
+        primaryUse: "文本嵌入",
+        price: "输入 $0.0260",
+        tagSummary: "文本嵌入",
+        uses: ["RAG 检索", "相似内容召回", "证据链匹配", "知识库问答"],
+        costNote: "输入 $0.0260 / 1M Tokens；补全 $0.1040 / 1M Tokens"
       },
-      "grok-4-1-auto": {
-        type: "文本模型",
-        provider: "Grok / xAI",
-        cost: "短内容优先",
-        summary: "实时感任务、观点整理、短内容扩写和轻量判断。",
-        primaryUse: "观点整理",
-        budget: "中",
-        uses: ["观点提炼", "短内容扩写", "轻量判断", "运营素材"],
-        costNote: "短内容测试"
-      },
-      "doubao-pro": {
-        type: "文本模型",
-        provider: "Doubao",
-        cost: "中文友好",
-        summary: "中文内容生成、运营话术、活动文案和客服摘要。",
-        primaryUse: "中文运营",
-        budget: "低",
-        uses: ["中文文案", "客服摘要", "活动话术", "运营素材"],
-        costNote: "中文任务"
-      },
-      "doubao-seedream-4-0": {
+      "gpt-image-2": {
         type: "图像模型",
-        provider: "Doubao",
-        cost: "视觉样片",
-        summary: "角色设定、场景封面、商品海报和图像样片。",
-        primaryUse: "封面海报",
-        budget: "中",
-        uses: ["角色设定", "场景封面", "商品海报", "图像样片"],
-        costNote: "视觉样片"
+        provider: "OpenAI",
+        billing: "按次计费",
+        summary: "GPT Image 2 支持快速、高质量的图像生成和编辑。",
+        primaryUse: "图像生成",
+        price: "$0.056 / 次",
+        tagSummary: "绘画 / dall-e-3格式",
+        uses: ["高质量出图", "图像编辑", "封面生成", "视觉素材测试"],
+        costNote: "模型价格 $0.056 / 次"
+      },
+      "doubao-seedream-4-5-251128": {
+        type: "图像模型",
+        provider: "Doubao (豆包)",
+        billing: "按次计费",
+        summary: "Seedream 4.5 支持文本、单图和多图输入，适合主体一致性的多图融合创作。",
+        primaryUse: "多图融合",
+        price: "$0.150 / 次",
+        tagSummary: "绘画 / dall-e-3格式",
+        uses: ["多图融合", "图像编辑", "组图生成", "角色一致性创作"],
+        costNote: "模型价格 $0.150 / 次"
       },
       "gemini-3.1-flash-image": {
         type: "图像模型",
-        provider: "Google / Gemini",
-        cost: "快速出图",
-        summary: "快速图片生成、提示词测试、教程封面和创作样片。",
-        primaryUse: "快速样片",
-        budget: "低",
-        uses: ["快速出图", "提示词测试", "教程封面", "创作样片"],
-        costNote: "提示词测试"
+        provider: "Google",
+        billing: "按次计费",
+        summary: "Gemini 图像模型，适合快速图片生成、提示词测试和教程封面。",
+        primaryUse: "快速出图",
+        price: "$0.175 / 次",
+        tagSummary: "绘画 / 快速",
+        uses: ["快速图片生成", "提示词测试", "教程封面", "创作样片"],
+        costNote: "模型价格 $0.175 / 次"
       },
-      "veo_3_1": {
+      "grok-video-3": {
         type: "视频模型",
-        provider: "Google / Gemini",
-        cost: "高价值样片",
-        summary: "图生视频、首尾帧短片、动态镜头和样片预览。",
-        primaryUse: "图生视频",
-        budget: "高",
-        uses: ["图生视频", "动态镜头", "首尾帧短片", "视频样片"],
-        costNote: "短片验证"
+        provider: "Grok (xAI)",
+        billing: "按次计费",
+        summary: "grok 的最新视频模型，6S。",
+        primaryUse: "6S 视频",
+        price: "$0.158 / 次",
+        tagSummary: "视频 / 参考生视频",
+        uses: ["短视频生成", "参考生视频", "动态广告预览", "漫剧镜头测试"],
+        costNote: "模型价格 $0.158 / 次"
       },
-      "veo_3_1-fast": {
+      "grok-video-3-10s": {
         type: "视频模型",
-        provider: "Google / Gemini",
-        cost: "快速视频",
-        summary: "快速视频片段、动态广告预览和漫剧镜头测试。",
-        primaryUse: "快速预览",
-        budget: "中",
-        uses: ["短片预览", "动态广告", "漫剧镜头", "快速测试"],
-        costNote: "快速预览"
+        provider: "Grok (xAI)",
+        billing: "按次计费",
+        summary: "grok 的最新视频模型，10s，支持音画同出。",
+        primaryUse: "10S 视频",
+        price: "$0.158 / 次",
+        tagSummary: "视频 / 参考生视频",
+        uses: ["10s 视频生成", "音画同出", "参考生视频", "动态片段预览"],
+        costNote: "模型价格 $0.158 / 次"
       }
     };
 
@@ -305,10 +318,11 @@
     document.getElementById("modelId").textContent = modelId;
     document.getElementById("modelType").textContent = current.type;
     document.getElementById("modelProvider").textContent = current.provider;
-    document.getElementById("modelCost").textContent = current.cost;
+    document.getElementById("modelCost").textContent = current.billing;
     document.getElementById("modelSummary").textContent = current.summary;
     document.getElementById("modelPrimaryUse").textContent = current.primaryUse;
-    document.getElementById("modelBudget").textContent = current.budget;
+    document.getElementById("modelPrice").textContent = current.price;
+    document.getElementById("modelTagSummary").textContent = current.tagSummary;
     document.getElementById("modelCostNote").textContent = current.costNote;
     document.getElementById("modelUseCases").innerHTML = current.uses
       .map((item) => `<div><strong>${item}</strong></div>`)

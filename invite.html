@@ -11,7 +11,7 @@
   <div class="page growth-detail-page growth-app-page invite-detail-page" data-page="invite" style="--growth-hero-image: url('assets/image_assets/15.jpg')">
     <div class="page-bg"><img src="assets/image_assets/15.jpg" alt=""></div>
     <input class="top-campaign-toggle" type="checkbox" id="top-campaign-dismiss-invite" aria-label="关闭顶部广告">
-    <div class="top-campaign"><span>邀请有礼</span><span class="timer">20时 42分 39秒</span><span>好友完成首次体验，双方获得积分和体验权益</span><span>双向奖励</span><label class="top-campaign-close" for="top-campaign-dismiss-invite" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
+    <div class="top-campaign"><span>邀请有礼</span><span class="timer">20时 42分 39秒</span><span>好友完成首次体验，双方获得积分奖励</span><span>双向积分</span><label class="top-campaign-close" for="top-campaign-dismiss-invite" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
     <header class="site-header">
       <div class="header-inner wide-container">
         <a class="logo" href="./index.html" aria-label="多元拾光">
@@ -30,7 +30,7 @@
         </nav>
         <div class="header-actions">
           <a class="action-link" href="./invite.html" data-nav-action="invite">邀请有礼</a>
-          <a class="action-link" href="./member-store.html" data-nav-action="member">会员超市</a>
+          <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a>
           <a class="action-link points-link" href="./points-center.html" data-nav-action="points">积分 1280</a>
           <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
           <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="用户头像"><img src="assets/image_assets/1.png" alt=""></a>
@@ -39,123 +39,50 @@
     </header>
 
     <main>
-      <section class="app-workspace section" data-invite-section="overview">
-        <div class="wide-container app-shell-grid invite-shell-grid">
-          <aside class="app-command-panel invite-code-panel">
-            <span class="eyebrow dark">邀请有礼</span>
-            <h1>SG2026</h1>
-            <span class="code-caption">我的邀请码</span>
-            <div class="invite-link-box"><span>duoyuan-shiguang.local/invite/SG2026</span></div>
-            <div class="side-action-stack">
-              <a class="button" href="#invite-path">邀请好友</a>
-              <a class="button secondary" href="#invite-records">邀请记录</a>
-              <a class="button dark" href="./points-center.html">查看积分</a>
+      <section class="invite-landing-screen section" data-invite-section="overview">
+        <div class="wide-container invite-landing-layout">
+          <div class="invite-hero-copy">
+            <h1>邀请好友，爽拿500积分</h1>
+            <p>好友越多，积分涨得越快。</p>
+            <div class="invite-primary-actions">
+              <a class="button" href="#invite-records">查看邀请记录</a>
             </div>
-          </aside>
+          </div>
 
-          <div class="app-main-stack">
-            <section class="app-card invite-dashboard-card" data-invite-section="path" id="invite-path">
-              <div class="app-card-head">
-                <div>
-                  <span class="eyebrow dark">路径</span>
-                  <h2>邀请好友</h2>
-                </div>
-                <a class="section-link" href="./aigc.html">好友体验入口</a>
-              </div>
-              <div class="invite-stat-strip">
-                <div><strong>8</strong><span>本周有效体验</span></div>
-                <div><strong>4</strong><span>待首次体验</span></div>
-                <div><strong>1</strong><span>会员券待用</span></div>
-              </div>
-              <div class="invite-step-track">
-                <a href="./user-center.html" data-invite-step><strong>1</strong><span>好友注册</span><em>双方 +30</em></a>
-                <a href="./aigc.html" data-invite-step><strong>2</strong><span>AIGC 体验</span><em>邀请人 +90</em></a>
-                <a href="./model-plaza.html" data-invite-step><strong>3</strong><span>模型体验</span><em>邀请人 +120</em></a>
-                <a href="./member-store.html" data-invite-step><strong>4</strong><span>会员领取</span><em>双方优惠</em></a>
-              </div>
-            </section>
+          <div class="invite-code-stage">
+            <span class="code-caption">我的邀请码</span>
+            <strong>SG2026</strong>
+            <div class="invite-link-box" id="invite-link"><span>duoyuan-shiguang.local/invite/SG2026</span><a href="#invite-link" data-invite-copy>复制</a></div>
+          </div>
 
-            <section class="app-card" data-invite-section="tiers">
-              <div class="app-card-head">
-                <div>
-                  <span class="eyebrow dark">奖励</span>
-                  <h2>奖励阶梯</h2>
-                </div>
-                <a class="section-link" href="./points-center.html">积分中心</a>
-              </div>
-              <div class="tier-board">
-                <div data-invite-tier><strong>注册</strong><span>邀请人 +30</span><em>好友 +30</em></div>
-                <div data-invite-tier><strong>首次 AIGC 体验</strong><span>邀请人 +90</span><em>好友 +50</em></div>
-                <div data-invite-tier><strong>首次模型体验</strong><span>邀请人 +120</span><em>好友试用包</em></div>
-                <div data-invite-tier><strong>会员领取</strong><span>邀请人会员券</span><em>好友首月优惠</em></div>
-              </div>
-            </section>
+          <div class="invite-progress-stage" data-invite-section="path" id="invite-path">
+            <div class="invite-progress-head">
+              <h2>邀请奖励规则</h2>
+              <p>好友完成对应体验后，奖励进入邀请记录和积分中心。</p>
+            </div>
+            <div class="invite-rule-table" data-invite-section="tiers" aria-label="邀请奖励规则">
+              <div class="invite-rule-row is-head"><span>好友动作</span><span>你获得</span><span>好友获得</span></div>
+              <a class="invite-rule-row" href="./user-center.html" data-invite-step data-invite-tier><strong>注册账号</strong><span>+80 积分</span><span>+30 积分</span></a>
+              <a class="invite-rule-row" href="./aigc.html" data-invite-step data-invite-tier><strong>首次 AIGC 体验</strong><span>+170 积分</span><span>+50 积分</span></a>
+              <a class="invite-rule-row" href="./model-plaza.html" data-invite-step data-invite-tier><strong>首次模型体验</strong><span>+250 积分</span><span>+80 积分</span></a>
+            </div>
+          </div>
+        </div>
+      </section>
 
-            <section id="invite-records" class="app-card" data-invite-section="records">
-              <div class="app-card-head">
-                <div>
-                  <span class="eyebrow dark">记录</span>
-                  <h2>邀请记录</h2>
-                </div>
-                <div class="profile-tabs compact-tabs" aria-label="邀请记录筛选">
-                  <a href="#invite-records">全部</a>
-                  <a href="#invite-records">待体验</a>
-                  <a href="#invite-records">已确认</a>
-                  <a href="#invite-records">会员</a>
-                </div>
-              </div>
-              <div class="growth-table compact-table">
-                <div class="growth-table-row is-head"><span>好友</span><span>当前状态</span><span>奖励</span><span>下一步</span></div>
-                <div class="growth-table-row" data-invite-record><strong>林舟</strong><span>已完成首次 AIGC 体验</span><em>+90</em><span>模型体验</span></div>
-                <div class="growth-table-row" data-invite-record><strong>青梧</strong><span>已注册，等待首次体验</span><em>+30</em><span>AIGC</span></div>
-                <div class="growth-table-row" data-invite-record><strong>木辛</strong><span>已完成模型体验</span><em>+120</em><span>教程</span></div>
-                <div class="growth-table-row" data-invite-record><strong>阿澈</strong><span>已领取会员折扣券</span><em>权益券</em><span>会员超市</span></div>
-                <div class="growth-table-row" data-invite-record><strong>雁回</strong><span>已完成模板体验</span><em>+20</em><span>AIGC</span></div>
-              </div>
-            </section>
-
-            <section class="app-card" data-invite-section="rule-detail">
-              <div class="app-card-head">
-                <div>
-                  <span class="eyebrow dark">规则</span>
-                  <h2>邀请有效规则</h2>
-                </div>
-                <a class="section-link" href="./points-center.html#points-records">奖励记录</a>
-              </div>
-              <div class="invite-rule-grid">
-                <div><strong>参与资格</strong><span>邀请人需为已登录用户；好友需通过邀请入口完成注册和首次体验。</span></div>
-                <div><strong>有效动作</strong><span>首次 AIGC、首次模型体验和会员领取分别进入不同奖励状态，不重复计算同一好友。</span></div>
-                <div><strong>无效情况</strong><span>重复注册、非首次体验、异常批量行为或人工复核不通过时不发放奖励。</span></div>
-              </div>
-            </section>
-
-            <section class="app-card invite-recommend-card">
-              <div class="app-card-head">
-                <div>
-                  <span class="eyebrow dark">推荐入口</span>
-                  <h2>好友先从这里开始</h2>
-                </div>
-                <a class="section-link" href="./campaign-detail.html">活动详情</a>
-              </div>
-              <div class="scenario-grid four">
-                <a class="scenario-card" href="./aigc.html"><strong>AIGC 轻体验</strong><span>最快完成首次体验</span><em>推荐</em></a>
-                <a class="scenario-card" href="./model-plaza.html"><strong>模型体验季</strong><span>高价值奖励路径</span><em>+120</em></a>
-                <a class="scenario-card" href="./tutorial.html"><strong>官方教程</strong><span>降低上手门槛</span><em>学习</em></a>
-                <a class="scenario-card" href="./flash.html"><strong>发布闪念</strong><span>沉淀体验反馈</span><em>互动</em></a>
-              </div>
-            </section>
-
-            <section class="app-rule-strip" data-invite-section="rules">
-              <details class="growth-rule-panel">
-                <summary>走查规则</summary>
-                <div>
-                  <strong>研发走查</strong>
-                  <span>邀请状态只展示注册、体验、反馈、权益领取等用户可理解进度，不展示敏感资料和内部识别字段。</span>
-                  <strong>运营来源</strong>
-                  <span>积分、体验券和会员优惠进入积分中心与会员超市；高价值奖励可设置人工确认节点。</span>
-                </div>
-              </details>
-            </section>
+      <section id="invite-records" class="invite-record-screen section" data-invite-section="records">
+        <div class="wide-container">
+          <div class="invite-record-head">
+            <div>
+              <h2>邀请记录</h2>
+            </div>
+          </div>
+          <div class="invite-record-list">
+            <a class="invite-record-row" href="./model-plaza.html" data-invite-record><img src="assets/image_assets/1.png" alt=""><strong>林舟</strong><span>已完成首次 AIGC 体验</span><em>+170</em></a>
+            <a class="invite-record-row" href="./aigc.html" data-invite-record><img src="assets/image_assets/2.png" alt=""><strong>青梧</strong><span>已注册，等待首次体验</span><em>+80</em></a>
+            <a class="invite-record-row" href="./tutorial.html" data-invite-record><img src="assets/image_assets/3.png" alt=""><strong>木辛</strong><span>已完成模型体验</span><em>+250</em></a>
+            <a class="invite-record-row" href="./aigc.html" data-invite-record><img src="assets/image_assets/4.png" alt=""><strong>阿澈</strong><span>已完成首次 AIGC 体验</span><em>+170</em></a>
+            <a class="invite-record-row" href="./aigc.html" data-invite-record><img src="assets/image_assets/5.png" alt=""><strong>雁回</strong><span>已完成模板体验</span><em>+170</em></a>
           </div>
         </div>
       </section>
@@ -163,16 +90,17 @@
     <details class="v1-walkthrough-drawer" data-v1-walkthrough-drawer>
       <summary>走查</summary>
       <div class="v1-walkthrough-panel">
-        <div class="v1-walkthrough-head"><strong>邀请有礼走查</strong><span>用于确认邀请是否形成拉新、体验和权益承接闭环。</span></div>
+        <div class="v1-walkthrough-head"><strong>邀请有礼走查</strong><span>邀请页要让用户快速复制邀请链接、看懂奖励规则和邀请记录。</span></div>
         <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>运营关注</span><span>研发关注</span></div>
-        <div class="v1-rule-section"><strong>页面定位</strong><span>邀请页承接右上角入口和积分任务，是拉新入口，奖励结算进入积分、体验券和会员权益体系。</span></div>
-        <div class="v1-rule-section"><strong>用户主路径</strong><span>用户复制邀请码或邀请链接 -> 好友注册并完成 AIGC/模型体验 -> 查看邀请记录 -> 进入积分、活动或会员页承接权益。</span></div>
-        <div class="v1-rule-section"><strong>关键字段</strong><span>邀请码、邀请链接、奖励阶梯、邀请记录、状态、无效原因、常见问题、推荐体验入口和会员权益入口。</span></div>
-        <div class="v1-rule-section"><strong>状态规则</strong><span>邀请状态包含注册、首次 AIGC 体验、首次模型体验、会员领取和无效情况；好友信息必须脱敏。</span></div>
-        <div class="v1-rule-section"><strong>CTA 闭环</strong><span>邀请页承接邀请码复制/分享、路径进度、奖励说明和邀请记录；奖励只表达人工确认或状态，不承诺自动结算。</span></div>
-        <div class="v1-rule-section"><strong>运营配置</strong><span>邀请奖励、有效动作、记录样例和好友推荐来自用户成长轻路径与活动任务方案；人工维护名单与回访状态。</span></div>
-        <div class="v1-rule-section"><strong>研发验收</strong><span>验收要求：邀请码、邀请链接、路径进度、奖励阶梯和记录可读；手机号、邮箱等敏感信息脱敏；不展示完整联系方式、自动奖励或资金类权益。</span></div>
-        <div class="v1-rule-section"><strong>边界</strong><span>邀请只验证拉新意向和有效动作，不做完整分销、返佣、风控、自动资格判断或支付履约；奖励发放以人工核对记录为准。</span></div>
+        <div class="v1-rule-section"><strong>页面定位</strong><span>邀请页承接右上角入口和积分任务，是拉新入口，奖励结算进入积分体系。</span></div>
+        <div class="v1-rule-section"><strong>用户主路径</strong><span>首屏完成活动感知、邀请码查看、邀请链接复制和奖励规则浏览；第二屏只承接邀请记录和下一步动作。</span></div>
+        <div class="v1-rule-section"><strong>关键字段</strong><span>邀请码、邀请链接、复制按钮、奖励规则表、邀请记录和下一步入口。</span></div>
+        <div class="v1-rule-section"><strong>状态规则</strong><span>邀请记录面向用户只表达已注册、等待首次体验、已完成 AIGC 体验和已完成模型体验；后台复核类状态不进入 C端主界面。好友信息必须脱敏。</span></div>
+        <div class="v1-rule-section"><strong>展示边界</strong><span>C端主界面不展示路径、奖励等卡片标签，不放规则区、推荐入口或说明型信息架构块；这些内容只保留在走查辅助信息中。</span></div>
+        <div class="v1-rule-section"><strong>动作去向</strong><span>邀请页承接邀请码复制/分享、奖励规则浏览和邀请记录。奖励只展示可读状态，不承诺自动结算。</span></div>
+        <div class="v1-rule-section"><strong>运营维护</strong><span>邀请奖励、有效动作、记录样例来自用户成长轻路径与活动任务方案。名单与回访状态由人工维护。</span></div>
+        <div class="v1-rule-section"><strong>研发关注</strong><span>标题、副标题、邀请码、邀请链接、行内复制、规则表和记录需要可读。手机号、邮箱等敏感信息必须脱敏；完整联系方式、自动奖励和资金类奖励不进入前台。</span></div>
+        <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付拉新意向和有效动作验证。完整分销、返佣、风控、自动资格判断和支付履约后置；奖励发放以人工核对记录为准。</span></div>
       </div>
     </details>
     <div class="footer-space"></div>

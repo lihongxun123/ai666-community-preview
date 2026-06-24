@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>作品详情｜多元拾光</title>
+  <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
+  <link rel="stylesheet" href="./style.css">
+  <style>
+    .content-detail-lab-page {
+      min-height: 100vh;
+      padding-bottom: 96px;
+    }
+
+    .content-detail-lab-main {
+      position: relative;
+      z-index: 2;
+      padding: 132px 0 72px;
+    }
+
+    .content-detail-lab-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 360px;
+      gap: 36px;
+      align-items: end;
+      margin-bottom: 32px;
+    }
+
+    .content-detail-lab-hero span {
+      color: rgba(102, 226, 207, 0.92);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .content-detail-lab-hero h1 {
+      max-width: 760px;
+      margin: 14px 0 0;
+      color: #fffaf0;
+      font-size: 52px;
+      line-height: 1.04;
+      letter-spacing: 0;
+    }
+
+    .content-detail-lab-hero p,
+    .content-format-card p {
+      margin: 0;
+      color: rgba(255, 247, 230, 0.7);
+      font-size: 14px;
+      line-height: 1.72;
+    }
+
+    .content-detail-lab-hero p {
+      max-width: 360px;
+    }
+
+    .content-format-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .content-format-card {
+      min-height: 310px;
+      display: grid;
+      align-content: end;
+      gap: 12px;
+      overflow: hidden;
+      padding: 18px;
+      border: 1px solid rgba(255, 247, 230, 0.12);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.06);
+      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.28);
+    }
+
+    .content-format-card::before {
+      content: "";
+      height: 150px;
+      margin: -18px -18px 0;
+      background-position: center;
+      background-size: cover;
+      opacity: 0.86;
+    }
+
+    .content-format-card.manga::before {
+      background-image: linear-gradient(180deg, transparent, rgba(5, 7, 11, 0.6)), url("assets/image_assets/11.png");
+    }
+
+    .content-format-card.image::before {
+      background-image: linear-gradient(180deg, transparent, rgba(5, 7, 11, 0.6)), url("assets/image_assets/3.png");
+    }
+
+    .content-format-card.video::before {
+      background-image: linear-gradient(180deg, transparent, rgba(5, 7, 11, 0.6)), url("assets/image_assets/17.png");
+    }
+
+    .content-format-card.text::before {
+      background-image: linear-gradient(180deg, rgba(102, 226, 207, 0.2), rgba(5, 7, 11, 0.78)), url("assets/image_assets/18.png");
+    }
+
+    .content-format-card span {
+      width: fit-content;
+      padding: 5px 9px;
+      border: 1px solid rgba(255, 247, 230, 0.14);
+      border-radius: 999px;
+      color: rgba(244, 201, 93, 0.92);
+      background: rgba(255, 255, 255, 0.07);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .content-format-card strong {
+      color: #fffaf0;
+      font-size: 24px;
+      line-height: 1.18;
+    }
+
+    .content-format-card em {
+      color: rgba(102, 226, 207, 0.9);
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 900;
+    }
+
+    .content-format-modal .case-detail-dialog {
+      grid-template-columns: minmax(0, 1fr) 392px;
+      width: min(1420px, calc(100vw - 64px));
+      padding: 22px;
+    }
+
+    .content-format-modal .case-detail-media {
+      align-content: stretch;
+    }
+
+    .content-format-modal .case-detail-viewport {
+      min-height: 500px;
+      height: min(61vh, 620px);
+    }
+
+    .content-format-modal .case-detail-aside {
+      padding: 0 8px 4px 0;
+      gap: 14px;
+    }
+
+    .content-format-modal .case-detail-aside h3 {
+      padding-right: 48px;
+      font-size: 28px;
+    }
+
+    .content-format-modal .detail-prompt {
+      max-height: min(42vh, 360px);
+      min-height: 220px;
+      overflow-y: auto;
+      align-content: start;
+    }
+
+    .content-format-modal .detail-prompt p {
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .content-action-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+      margin-top: auto;
+    }
+
+    .content-action-row .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 16px;
+    }
+
+    .content-action-row .button.secondary {
+      color: #fffaf0;
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 247, 230, 0.16);
+    }
+
+    .content-action-row .content-remix-button {
+      gap: 8px;
+    }
+
+    .content-remix-icon {
+      width: 14px;
+      height: 14px;
+      background: currentColor;
+      -webkit-mask: url("resources/icons/remixicon/svg/Weather/flashlight-fill.svg") center / contain no-repeat;
+      mask: url("resources/icons/remixicon/svg/Weather/flashlight-fill.svg") center / contain no-repeat;
+    }
+
+    .content-remix-cost {
+      min-width: 14px;
+      color: inherit;
+      font-size: 14px;
+      font-weight: 950;
+      line-height: 1;
+      text-align: left;
+    }
+
+    .content-text-result {
+      min-height: 500px;
+      max-height: min(61vh, 620px);
+      overflow-y: auto;
+    }
+
+    .content-markdown-preview {
+      padding: 42px 50px;
+      border: 0;
+      border-radius: 10px;
+      color: rgba(255, 250, 240, 0.86);
+      background:
+        radial-gradient(circle at 18% 0%, rgba(102, 226, 207, 0.14), transparent 34%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.035));
+    }
+
+    .content-markdown-preview .markdown-kicker {
+      display: block;
+      margin-bottom: 18px;
+      color: rgba(102, 226, 207, 0.92);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .content-markdown-preview h1,
+    .content-markdown-preview h2,
+    .content-markdown-preview p,
+    .content-markdown-preview ul,
+    .content-markdown-preview blockquote {
+      margin: 0;
+    }
+
+    .content-markdown-preview h1 {
+      max-width: 720px;
+      color: #fffaf0;
+      font-size: 34px;
+      line-height: 1.18;
+    }
+
+    .content-markdown-preview h2 {
+      margin-top: 30px;
+      color: #fffaf0;
+      font-size: 18px;
+      line-height: 1.36;
+    }
+
+    .content-markdown-preview p,
+    .content-markdown-preview li {
+      color: rgba(255, 247, 230, 0.76);
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    .content-markdown-preview p {
+      margin-top: 12px;
+    }
+
+    .content-markdown-preview strong {
+      color: rgba(244, 201, 93, 0.96);
+      font-weight: 950;
+    }
+
+    .content-markdown-preview blockquote {
+      margin-top: 24px;
+      padding: 2px 0 2px 16px;
+      border-left: 3px solid rgba(102, 226, 207, 0.72);
+      color: rgba(255, 247, 230, 0.72);
+      font-size: 15px;
+      line-height: 1.85;
+    }
+
+    .content-markdown-preview ul {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+      padding-left: 20px;
+    }
+
+    .content-markdown-preview hr {
+      height: 1px;
+      margin: 30px 0 0;
+      border: 0;
+      background: linear-gradient(90deg, rgba(102, 226, 207, 0.34), rgba(255, 247, 230, 0.08), transparent);
+    }
+
+    @media (max-width: 1100px) {
+      .content-detail-lab-hero,
+      .content-format-modal .case-detail-dialog {
+        grid-template-columns: 1fr;
+      }
+
+      .content-detail-lab-hero h1 {
+        font-size: 42px;
+      }
+
+      .content-format-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .content-format-modal .case-detail-dialog {
+        overflow-y: auto;
+      }
+
+      .content-format-modal .case-detail-viewport,
+      .content-text-result {
+        min-height: 360px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .content-detail-lab-main {
+        padding-top: 112px;
+      }
+
+      .content-detail-lab-hero h1 {
+        font-size: 34px;
+      }
+
+      .content-format-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .content-format-modal.case-detail-modal {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page content-detail-lab-page">
+    <div class="page-bg"><img src="assets/image_assets/17.png" alt=""></div>
+    <header class="site-header">
+      <div class="header-inner wide-container">
+        <a class="logo" href="./index.html" aria-label="多元拾光">
+          <img class="brand-mark" src="assets/brand/duoyuan-shiguang-logo-mark-reverse.svg" alt="">
+          <span class="brand-copy">
+            <span class="brand-name">多元拾光</span>
+            <span class="brand-sub">AI原生实践者社区</span>
+          </span>
+        </a>
+        <nav class="nav" aria-label="主导航">
+          <a href="./index.html">首页</a>
+          <a href="./aigc.html">AIGC</a>
+          <a href="./model-plaza.html">模型广场</a>
+          <a href="./flash.html">闪念</a>
+          <a href="./tutorial.html">官方教程</a>
+        </nav>
+        <div class="header-actions">
+          <a class="action-link" href="./user-center.html">用户中心</a>
+          <a class="icon-action notification-link" href="./message-center.html" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
+          <a class="user-avatar-link" href="./user-center.html" aria-label="用户头像"><img src="assets/image_assets/1.png" alt=""></a>
+        </div>
+      </div>
+    </header>
+
+    <main id="modal-picker" class="content-detail-lab-main wide-container">
+      <section class="content-detail-lab-hero" aria-labelledby="content-detail-title">
+        <div>
+          <span>作品详情</span>
+          <h1 id="content-detail-title">精选创作结果</h1>
+        </div>
+        <p>查看完整作品、创作信息和可继续复用的提示词，也可以直接收藏、同款生成或继续创作。</p>
+      </section>
+
+      <section class="content-format-grid" aria-label="内容格式入口">
+        <a class="content-format-card manga" href="#detail-manga">
+          <span>01 · 漫剧</span>
+          <strong>漫剧成片</strong>
+          <p>完整竖屏漫剧结果，保留角色冲突、镜头节奏和可继续制作的故事线索。</p>
+          <em>打开弹层</em>
+        </a>
+        <a class="content-format-card image" href="#detail-image">
+          <span>02 · 图片</span>
+          <strong>单图与组图作品</strong>
+          <p>查看高清成图和同组变体，适合继续出同款封面、海报或角色图。</p>
+          <em>打开弹层</em>
+        </a>
+        <a class="content-format-card video" href="#detail-video">
+          <span>03 · 视频</span>
+          <strong>短视频生成结果</strong>
+          <p>播放短视频结果，查看镜头运动、画面比例和适合复用的提示词。</p>
+          <em>打开弹层</em>
+        </a>
+        <a class="content-format-card text" href="#detail-text">
+          <span>04 · 文本</span>
+          <strong>脚本与长文本结果</strong>
+          <p>阅读完整脚本正文，也可以收藏作品或用同款提示词生成新版本。</p>
+          <em>打开弹层</em>
+        </a>
+      </section>
+    </main>
+
+    <section id="detail-manga" class="case-detail-modal content-format-modal" aria-label="漫剧作品">
+      <a class="modal-backdrop" href="#modal-picker" aria-label="关闭漫剧作品"></a>
+      <article class="case-detail-dialog">
+        <a class="case-detail-close" href="#modal-picker" aria-label="关闭">×</a>
+        <div class="case-detail-media">
+          <div class="case-detail-viewport video-viewport">
+            <video src="assets/video_assets/nine_grid.mp4" poster="assets/image_assets/11.png" controls muted playsinline></video>
+          </div>
+        </div>
+        <aside class="case-detail-aside">
+          <h3>龙虎天劫：第一幕冲突</h3>
+          <div class="detail-tags"><span>漫剧</span><span>9:16 竖屏</span><span>约 8 秒</span><span>Seedance 2.0</span></div>
+          <p>云层裂开的一刻，双主角在龙影下正面相遇。整段视频适合作为第一集开场，也可以继续扩写后续分镜。</p>
+          <div class="detail-prompt"><strong>提示词</strong><p>东方玄幻竖屏漫剧，第一集开场，乌云从高空撕裂，远处宫殿屋脊被金色雷光照亮，巨龙从云层后盘旋而出，鳞片带有暗金反光，两位主角站在断裂石桥两端正面对峙，一人握剑，一人披黑色斗篷，空气里有碎石、尘雾和闪电残光。
+
+镜头先从高处俯冲到石桥，展示断桥、深渊和远处宫殿，再缓慢推近两位角色的表情。第一位角色眼神坚定，身上有浅金色护体光；第二位角色低头冷笑，斗篷边缘被风吹起，露出暗红色纹路。镜头中段加入巨龙低空掠过的阴影，让两人都被压在龙翼投下的暗面里，画面需要有紧张感和压迫感。
+
+最后 2 秒让雷光照亮两位角色的脸，龙影从画面上方压下，石桥碎裂但人物保持站立，停在即将开战的一瞬间。整体风格为东方玄幻、电影级光影、强冲突、竖屏构图、清晰人物轮廓、丰富环境细节、动作节奏紧凑、适合短剧漫剧开篇。不要现代城市元素，不要文字，不要水印，不要过度卡通化，保持质感、层次和连续镜头感。</p></div>
+          <div class="content-action-row">
+            <a class="button secondary" href="./user-center.html#favorites">收藏</a>
+            <a class="button content-remix-button" href="./aigc.html#aigc-create-panel" aria-label="一键同款，预计消耗 28 积分"><span>一键同款</span><span class="content-remix-icon" aria-hidden="true"></span><strong class="content-remix-cost" aria-hidden="true">28</strong></a>
+          </div>
+        </aside>
+      </article>
+    </section>
+
+    <section id="detail-image" class="case-detail-modal content-format-modal" aria-label="图片内容详情">
+      <a class="modal-backdrop" href="#modal-picker" aria-label="关闭图片详情"></a>
+      <article class="case-detail-dialog">
+        <a class="case-detail-close" href="#modal-picker" aria-label="关闭">×</a>
+        <div class="case-detail-media">
+          <div class="case-detail-viewport">
+            <img class="case-gallery-main" src="assets/image_assets/3.png" alt="竹泉秘境图片作品">
+          </div>
+          <div class="case-thumb-strip" aria-label="图片变体缩略图">
+            <button class="case-thumb is-active" type="button" data-src="assets/image_assets/3.png"><img src="assets/image_assets/3.png" alt=""></button>
+            <button class="case-thumb" type="button" data-src="assets/image_assets/4.png"><img src="assets/image_assets/4.png" alt=""></button>
+            <button class="case-thumb" type="button" data-src="assets/image_assets/15.jpg"><img src="assets/image_assets/15.jpg" alt=""></button>
+            <button class="case-thumb" type="button" data-src="assets/image_assets/18.png"><img src="assets/image_assets/18.png" alt=""></button>
+          </div>
+        </div>
+        <aside class="case-detail-aside">
+          <h3>竹泉秘境</h3>
+          <div class="detail-tags"><span>图片</span><span>3:4</span><span>高清 4 张</span><span>Flux Pro 1.1</span></div>
+          <p>清透竹林、泉水和柔和阳光组成一张治愈系场景图，适合做故事封面、教程头图或活动海报。</p>
+          <div class="detail-prompt"><strong>提示词</strong><p>清晨竹林秘境，画面中央有一汪清澈泉水，水面映出竹叶和柔和阳光，浅绿色雾气从水边缓慢升起，远处有被藤蔓覆盖的石阶和小木桥，整体氛围安静、清新、治愈。构图保持干净，主体集中在泉水与透光竹林，前景加入几片虚化竹叶，背景有轻微层次但不杂乱。
+
+画面比例为 3:4，适合封面和海报使用。上方留出一定干净空间，方便后续放标题；下方保留泉水、石阶和竹影细节，形成稳定视觉重心。光线从画面右上方斜照进来，落在泉水边缘和竹叶上，水面有细小高光，但不要过曝。颜色以青绿、浅金、雾白为主，不要过于饱和，不要出现荧光色。
+
+风格为轻幻想插画，细节丰富但不拥挤，画面清透、高级、自然，有轻微梦境感。不要出现文字、水印、二维码、现代建筑、真实品牌标识或明显人物主体。整体适合做故事封面、教程封面、活动海报主视觉，也可以作为同系列场景图的第一张。</p></div>
+          <div class="content-action-row">
+            <a class="button secondary" href="./user-center.html#favorites">收藏</a>
+            <a class="button content-remix-button" href="./aigc.html#aigc-create-panel" aria-label="一键同款，预计消耗 8 积分"><span>一键同款</span><span class="content-remix-icon" aria-hidden="true"></span><strong class="content-remix-cost" aria-hidden="true">8</strong></a>
+          </div>
+        </aside>
+      </article>
+    </section>
+
+    <section id="detail-video" class="case-detail-modal content-format-modal" aria-label="视频内容详情">
+      <a class="modal-backdrop" href="#modal-picker" aria-label="关闭视频详情"></a>
+      <article class="case-detail-dialog">
+        <a class="case-detail-close" href="#modal-picker" aria-label="关闭">×</a>
+        <div class="case-detail-media">
+          <div class="case-detail-viewport video-viewport">
+            <video src="assets/video_assets/sd2_gen.mp4" poster="assets/image_assets/17.png" controls muted playsinline></video>
+          </div>
+        </div>
+        <aside class="case-detail-aside">
+          <h3>海灯守望</h3>
+          <div class="detail-tags"><span>视频</span><span>16:9</span><span>8 秒</span><span>Seedance 2.0</span></div>
+          <p>落日、灯塔和海雾组成一段慢推进镜头，适合做短片开头、广告转场或情绪化视频素材。</p>
+          <div class="detail-prompt"><strong>提示词</strong><p>傍晚海边灯塔，金色落日从云层缝隙照向海面，远处浪花缓慢拍打礁石，空气中有薄雾和细小水汽，灯塔顶部的光束轻轻扫过海面。镜头从低机位贴近海岸线开始，沿着湿润礁石缓慢向前推进，再逐渐抬高看到灯塔全貌，最后停在灯塔与夕阳同框的位置。
+
+视频时长约 8 秒，镜头运动要连续、舒缓、稳定，不要快速切镜。前 2 秒展示海浪和礁石细节，中间 3 秒让镜头缓慢抬高，看到灯塔、海雾和远处云层，最后 3 秒停在灯塔发光的瞬间，海面有轻微反光，画面氛围安静、有等待感。
+
+画面需要电影感、真实光影、海风感和细腻空气层次。色彩为暖金、深蓝和灰白雾气，整体克制，不要夸张特效，不要文字，不要水印，不要人物突然入镜，不要出现现代广告牌。适合短片开场、品牌情绪片、旅行影像转场，也可以作为视频生成案例展示。</p></div>
+          <div class="content-action-row">
+            <a class="button secondary" href="./user-center.html#favorites">收藏</a>
+            <a class="button content-remix-button" href="./aigc.html#aigc-create-panel" aria-label="一键同款，预计消耗 64 积分"><span>一键同款</span><span class="content-remix-icon" aria-hidden="true"></span><strong class="content-remix-cost" aria-hidden="true">64</strong></a>
+          </div>
+        </aside>
+      </article>
+    </section>
+
+    <section id="detail-text" class="case-detail-modal content-format-modal" aria-label="文本内容详情">
+      <a class="modal-backdrop" href="#modal-picker" aria-label="关闭文本详情"></a>
+      <article class="case-detail-dialog">
+        <a class="case-detail-close" href="#modal-picker" aria-label="关闭">×</a>
+        <div class="case-detail-media">
+          <article class="content-markdown-preview content-text-result">
+            <span class="markdown-kicker">Markdown 预览</span>
+            <h1>模型体验季 18 秒广告脚本</h1>
+            <blockquote>一句话，直接生成一支广告。先用积分试一次，再选择适合自己的模型链路。</blockquote>
+
+            <h2>脚本正文</h2>
+            <p><strong>开场 0-3s</strong>：镜头扫过创作台，输入框里出现一句灵感，字幕同步出现“还在为第一版创意卡住？”</p>
+            <p><strong>卖点 4-12s</strong>：文本、图片、视频模型并列切换，画面依次出现标题初稿、海报方向和短片镜头预览，突出多模型组合、积分体验和低门槛试用。</p>
+            <p><strong>收口 13-18s</strong>：用户点击体验按钮，画面落到作品结果页，字幕收束为“先试一次，再把好结果继续做下去”。</p>
+
+            <hr>
+
+            <h2>发布摘要</h2>
+            <ul>
+              <li>适合活动短视频、教程片头和社群转发文案。</li>
+              <li>可以作为同款生成的参考，也可以整理成口播稿或海报文案。</li>
+              <li>保留轻量体验语气，不夸大生成结果。</li>
+            </ul>
+          </article>
+        </div>
+        <aside class="case-detail-aside">
+          <h3>金色启航</h3>
+          <div class="detail-tags"><span>文本</span><span>短视频脚本</span><span>约 280 字</span><span>GPT-4.1</span></div>
+          <p>这是一条用于活动推广的短视频脚本，已经按开场、卖点和收口拆成可直接拍摄的段落。</p>
+          <div class="detail-prompt"><strong>提示词</strong><p>为 AI 模型体验季写一条 18 秒短视频广告脚本，目标用户是刚开始尝试 AI 创作的内容创作者、运营人员和小团队。脚本要突出三个卖点：第一，用户不用先研究复杂模型参数，只要输入一句话就能得到文本、图片或视频方向的初稿；第二，平台内有多种模型可以按场景选择，适合标题、脚本、海报、短视频镜头和漫剧开场；第三，可以先用积分轻量体验，满意后再继续同款生成或保存作品。
+
+输出结构需要分为四段：0-3 秒是开场钩子，用一句直接的问题抓住注意力；4-9 秒展示使用方式，强调输入一句话后快速得到初稿；10-14 秒展示多种内容形态，包括脚本、图片、视频和漫剧开场；15-18 秒给出行动召唤，引导用户立即体验。每段都要给出口播、画面建议和字幕建议，语气要自然，不要像硬广。
+
+文案风格要简洁、有画面感、节奏紧凑，适合信息流短视频。不要夸大承诺，不要写绝对化效果，不要出现复杂技术术语，不要使用“颠覆”“唯一”“全网最强”等表达。结尾要让用户知道可以先用积分试一次，再收藏结果或一键同款生成新版本。</p></div>
+          <div class="content-action-row">
+            <a class="button secondary" href="./user-center.html#favorites">收藏</a>
+            <a class="button content-remix-button" href="./aigc.html#aigc-create-panel" aria-label="一键同款，预计消耗 3 积分"><span>一键同款</span><span class="content-remix-icon" aria-hidden="true"></span><strong class="content-remix-cost" aria-hidden="true">3</strong></a>
+          </div>
+        </aside>
+      </article>
+    </section>
+  </div>
+
+  <script>
+    (() => {
+      document.querySelectorAll(".case-thumb[data-src]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const dialog = button.closest(".case-detail-dialog");
+          const target = dialog?.querySelector(".case-gallery-main");
+          const nextSrc = button.dataset.src;
+          if (!target || !nextSrc) return;
+          target.src = nextSrc;
+          dialog.querySelectorAll(".case-thumb").forEach((item) => {
+            item.classList.toggle("is-active", item === button);
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

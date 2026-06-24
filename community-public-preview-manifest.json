@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-23T10:13:20.557Z",
+  "generatedAt": "2026-06-24T18:23:35.547Z",
   "packageType": "community-public-preview",
   "sourceRoot": "outputs/community-homepage-style-exploration",
   "entry": "index.html",
@@ -69,7 +69,7 @@
     },
     {
       "slug": "member-store",
-      "label": "会员超市",
+      "label": "AI商城",
       "path": "member-store.html"
     },
     {
@@ -78,25 +78,36 @@
       "path": "user-center.html"
     }
   ],
+  "standalonePages": [
+    {
+      "slug": "content-detail-modals",
+      "label": "内容详情弹层调试台",
+      "path": "content-detail-modals.html"
+    }
+  ],
   "copiedRuntimeRoots": [
     "walkthrough.js",
+    "vendor",
     "assets/brand",
     "assets/image_assets",
     "assets/video_assets",
     "resources/icons/remixicon/svg"
   ],
   "runtimeScripts": [
+    "vendor/gsap.min.js",
     "walkthrough.js"
   ],
   "copiedAssets": [
     "assets/image_assets/1.png",
     "assets/image_assets/11.png",
+    "assets/image_assets/12.png",
     "assets/image_assets/15.jpg",
     "assets/image_assets/17.png",
     "assets/image_assets/18.png",
     "assets/image_assets/2.png",
     "assets/image_assets/3.png",
     "assets/image_assets/4.png",
+    "assets/image_assets/5.png",
     "assets/video_assets/28_landing.mov",
     "assets/video_assets/effects_template.mp4",
     "assets/video_assets/nine_grid.mp4",
@@ -104,11 +115,12 @@
   ],
   "copiedResources": [
     "resources/icons/remixicon/svg/Arrows/arrow-up-line.svg",
-    "resources/icons/remixicon/svg/Business/megaphone-line.svg",
-    "resources/icons/remixicon/svg/Business/shake-hands-line.svg",
-    "resources/icons/remixicon/svg/Business/stack-line.svg",
+    "resources/icons/remixicon/svg/Business/bookmark-line.svg",
     "resources/icons/remixicon/svg/Communication/chat-3-line.svg",
-    "resources/icons/remixicon/svg/Design/magic-line.svg",
+    "resources/icons/remixicon/svg/Design/edit-2-line.svg",
+    "resources/icons/remixicon/svg/Development/terminal-window-line.svg",
+    "resources/icons/remixicon/svg/Device/smartphone-line.svg",
+    "resources/icons/remixicon/svg/Document/draft-line.svg",
     "resources/icons/remixicon/svg/Editor/bold.svg",
     "resources/icons/remixicon/svg/Editor/double-quotes-l.svg",
     "resources/icons/remixicon/svg/Editor/draggable.svg",
@@ -116,14 +128,11 @@
     "resources/icons/remixicon/svg/Editor/italic.svg",
     "resources/icons/remixicon/svg/Editor/list-ordered.svg",
     "resources/icons/remixicon/svg/Editor/list-unordered.svg",
-    "resources/icons/remixicon/svg/Finance/coin-line.svg",
     "resources/icons/remixicon/svg/Finance/coins-fill.svg",
-    "resources/icons/remixicon/svg/Finance/coins-line.svg",
     "resources/icons/remixicon/svg/Finance/gift-2-fill.svg",
-    "resources/icons/remixicon/svg/Finance/hand-coin-line.svg",
     "resources/icons/remixicon/svg/Finance/vip-crown-2-fill.svg",
-    "resources/icons/remixicon/svg/Finance/vip-crown-2-line.svg",
     "resources/icons/remixicon/svg/Health & Medical/heart-line.svg",
+    "resources/icons/remixicon/svg/Logos/wechat-line.svg",
     "resources/icons/remixicon/svg/Media/image-add-line.svg",
     "resources/icons/remixicon/svg/Media/image-edit-line.svg",
     "resources/icons/remixicon/svg/Media/notification-3-line.svg",
@@ -132,6 +141,7 @@
     "resources/icons/remixicon/svg/System/add-line.svg",
     "resources/icons/remixicon/svg/System/close-line.svg",
     "resources/icons/remixicon/svg/System/search-line.svg",
-    "resources/icons/remixicon/svg/System/share-forward-line.svg"
+    "resources/icons/remixicon/svg/System/share-forward-line.svg",
+    "resources/icons/remixicon/svg/Weather/flashlight-fill.svg"
   ]
 }

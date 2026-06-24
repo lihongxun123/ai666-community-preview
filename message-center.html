@@ -31,7 +31,7 @@
         </nav>
         <div class="header-actions">
           <a class="action-link" href="./invite.html" data-nav-action="invite">邀请有礼</a>
-          <a class="action-link" href="./member-store.html" data-nav-action="member">会员超市</a>
+          <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a>
           <a class="action-link points-link" href="./points-center.html" data-nav-action="points">积分 1280</a>
           <a class="icon-action notification-link is-active" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
           <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="用户头像"><img src="assets/image_assets/1.png" alt=""></a>
@@ -40,61 +40,9 @@
     </header>
 
     <main>
-      <section class="section message-hero-section">
-        <div class="wide-container message-hero-grid">
-          <div class="message-hero-copy">
-            <span class="eyebrow dark">消息中心</span>
-            <h1>把创作反馈和权益提醒，集中到一个处理入口</h1>
-            <div class="message-hero-actions">
-              <a class="button" href="#unread">查看未读</a>
-              <a class="button secondary" href="./points-center.html">处理积分任务</a>
-            </div>
-          </div>
-          <div class="message-signal-panel">
-            <div class="message-signal-card is-hot">
-              <span>未读</span>
-              <strong>3</strong>
-              <em>创作互动、模型体验、积分权益</em>
-            </div>
-            <div class="message-signal-card">
-              <span>今日新增</span>
-              <strong>8</strong>
-              <em>包含 2 条需要继续动作</em>
-            </div>
-            <div class="message-signal-card">
-              <span>待领取</span>
-              <strong>260</strong>
-              <em>积分任务仍在有效期内</em>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section class="section message-list-section" id="unread">
-        <div class="wide-container message-layout">
-          <aside class="message-sidebar">
-            <div class="message-user-card">
-              <span>当前账号</span>
-              <strong>未登录访客</strong>
-              <em>登录后同步作品、积分、邀请和订阅提醒。</em>
-              <a class="button" href="./user-center.html">登录并同步</a>
-            </div>
-            <div class="message-quick-stack">
-              <a href="./aigc.html"><img src="resources/icons/remixicon/svg/Design/magic-line.svg" alt=""><span>AIGC 创作</span><strong>2</strong></a>
-              <a href="./model-plaza.html"><img src="resources/icons/remixicon/svg/Business/stack-line.svg" alt=""><span>模型体验</span><strong>1</strong></a>
-              <a href="./points-center.html"><img src="resources/icons/remixicon/svg/Finance/coins-line.svg" alt=""><span>积分权益</span><strong>3</strong></a>
-              <a href="./invite.html"><img src="resources/icons/remixicon/svg/Business/shake-hands-line.svg" alt=""><span>邀请进展</span><strong>1</strong></a>
-            </div>
-          </aside>
-
+        <div class="wide-container message-layout message-layout-single">
           <div class="message-feed">
-            <div class="message-feed-head">
-              <div>
-                <span class="eyebrow dark">消息列表</span>
-                <h2>优先处理会影响创作、积分和权益的消息</h2>
-              </div>
-              <a class="section-link" href="./user-center.html">我的记录</a>
-            </div>
             <div class="message-tabs">
               <a class="is-active" href="#unread">全部</a>
               <a href="#unread">未读</a>
@@ -103,47 +51,29 @@
               <a href="#benefit" data-cta-state="filter">积分权益</a>
             </div>
             <div class="message-list">
-              <a class="message-row is-unread" href="./campaign-detail.html">
-                <img src="resources/icons/remixicon/svg/Business/megaphone-line.svg" alt="">
+              <a class="message-row is-unread" href="./campaign-detail.html" data-message-kind="activity" data-message-name="model-experience-season-task" data-message-interaction="link" data-message-target="campaign-detail" data-message-source="campaign">
                 <span>活动</span>
                 <strong>模型体验季任务已开启</strong>
                 <p>完成一次模型体验并补充反馈，可领取积分和模板权益。</p>
                 <em>刚刚</em>
               </a>
-              <a class="message-row is-unread" href="./flash.html#compose-flash">
-                <img src="resources/icons/remixicon/svg/Communication/chat-3-line.svg" alt="">
+              <a class="message-row is-unread" href="./flash.html#compose-flash" data-message-kind="interaction-comment" data-message-name="flash-new-comments" data-message-interaction="link" data-message-target="flash-compose" data-message-source="flash-comment">
                 <span>互动</span>
                 <strong>你的闪念收到 2 条新评论</strong>
-                <p>继续补充 API 排错过程，能提升内容在灵感广场的可见度。</p>
+                <p>继续补充处理过程，方便别人复用这次经验。</p>
                 <em>18 分钟前</em>
               </a>
-              <a class="message-row is-unread" href="./points-center.html">
-                <img src="resources/icons/remixicon/svg/Finance/coin-line.svg" alt="">
+              <a class="message-row is-unread" href="./points-center.html" data-message-kind="points-ledger" data-message-name="model-feedback-points" data-message-interaction="link" data-message-target="points-center" data-message-source="model-feedback">
                 <span>积分</span>
-                <strong>今日积分还可领取 260</strong>
-                <p>登录、体验、反馈和邀请动作都可以进入成长任务。</p>
-                <em>今天</em>
+                <strong>积分变动 +60</strong>
+                <p>今天 10:18 完成模型反馈后入账，可在积分中心查看这笔记录。</p>
+                <em>今天 10:18</em>
               </a>
-              <a class="message-row" href="./aigc-templates.html">
-                <img src="resources/icons/remixicon/svg/Media/image-edit-line.svg" alt="">
-                <span>AIGC</span>
-                <strong>你收藏的模板新增同款案例</strong>
-                <p>短剧分镜、国风角色和海报模板都有新的可复用案例。</p>
-                <em>昨天</em>
-              </a>
-              <a class="message-row" href="./member-store.html">
-                <img src="resources/icons/remixicon/svg/Finance/vip-crown-2-line.svg" alt="">
-                <span>会员</span>
-                <strong>会员权益包本周加赠创作积分</strong>
-                <p>适合继续做图片、视频和漫剧模板体验的用户。</p>
-                <em>周一</em>
-              </a>
-              <a class="message-row" href="./invite.html">
-                <img src="resources/icons/remixicon/svg/Business/shake-hands-line.svg" alt="">
-                <span>邀请</span>
-                <strong>好友完成首次 AIGC 体验</strong>
-                <p>双方奖励已进入积分中心和邀请记录，可继续引导好友反馈模型。</p>
-                <em>06-22</em>
+              <a class="message-row" href="./points-center.html" data-message-kind="invite-points-ledger" data-message-name="invite-first-aigc-reward" data-message-interaction="link" data-message-target="points-center" data-message-source="invite">
+                <span>积分</span>
+                <strong>邀请奖励 +120</strong>
+                <p>06-22 15:42 好友完成首次 AIGC 体验后入账，来源：邀请有礼。</p>
+                <em>06-22 15:42</em>
               </a>
             </div>
           </div>
@@ -154,16 +84,58 @@
     <details class="v1-walkthrough-drawer" data-v1-walkthrough-drawer>
       <summary>走查</summary>
       <div class="v1-walkthrough-panel">
-        <div class="v1-walkthrough-head"><strong>消息中心走查</strong><span>用于确认顶部消息入口是否承接到独立列表页，并与创作、模型、积分、邀请和会员动作联动。</span></div>
+        <div class="v1-walkthrough-head"><strong>消息中心走查</strong><span>顶部消息入口需要把创作、模型、积分、邀请和AI商城的提醒收进一个列表页。</span></div>
         <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>运营关注</span><span>研发关注</span></div>
         <div class="v1-rule-section"><strong>页面定位</strong><span>消息中心是顶部右侧个人与运营消息入口，不进入五个一级频道主导航。</span></div>
-        <div class="v1-rule-section"><strong>用户主路径</strong><span>顶部消息入口进入列表页，用户按未读、创作互动、模型体验和积分权益继续处理。</span></div>
-        <div class="v1-rule-section"><strong>关键字段</strong><span>消息包含分类、标题、摘要、时间、未读状态和业务落点。</span></div>
-        <div class="v1-rule-section"><strong>状态规则</strong><span>消息状态包含未读、已读、待处理和已处理；当前原型只表达列表状态与跳转承接。</span></div>
-        <div class="v1-rule-section"><strong>CTA 闭环</strong><span>消息中心承接创作、模型、积分、邀请和会员相关通知；点击消息跳到对应页面或当前状态，不做私信会话或实时推送。</span></div>
-        <div class="v1-rule-section"><strong>运营配置</strong><span>消息分类、样例内容、未读提示来自用户成长轻路径、运营动作和系统通知样例；6-7 月人工维护，不接消息服务配置。</span></div>
-        <div class="v1-rule-section"><strong>研发验收</strong><span>验收要求：通知、互动、系统三类消息和未读状态可读，消息链接可达或有 data-cta-state；不展示真实用户隐私、内部工单或完整通知日志。</span></div>
-        <div class="v1-rule-section"><strong>边界</strong><span>消息中心是轻通知页，不是 IM 或工单中心；不做私信、实时长连接、推送订阅、批量站内信或用户画像触达。</span></div>
+        <div class="v1-rule-section"><strong>用户主路径</strong><span>顶部消息入口直接进入消息条目，用户按全部、未读、创作互动、模型与 AIGC、积分权益筛选处理。</span></div>
+        <div class="v1-rule-section"><strong>关键字段</strong><span>每条消息保留消息编号、类型、名称、标题、副标题、时间、已读状态、处理方式、业务落点和来源；积分流水补充积分增减值、方向、发生时间和来源。消息文案只展示用户能理解的信息，敏感明文和内部记录不进入前台。</span></div>
+        <div class="v1-rule-section"><strong>状态规则</strong><span>消息状态包含未读、已读、待处理和已处理。当前原型表达列表状态、跳转承接和消息规则；持久化、推送通道和批量触达留到后续系统。</span></div>
+        <div class="v1-rule-section"><strong>动作去向</strong><span>活动类整条进入活动页；互动类进入对应内容位置；积分变动和邀请奖励进入积分中心；较长规则说明可在页内展开；纯系统提醒只标记已读。</span></div>
+        <div class="v1-rule-section"><strong>运营维护</strong><span>需要发消息的场景包括活动任务发布或状态变更、闪念评论或回复、模型反馈积分入账或消耗、邀请奖励入账、AI商城兑换状态、系统公告、规则变更和账号安全提醒。收藏模板新增案例、权益包加赠、今日可领取任务这类高维护提醒暂不进入消息池。</span></div>
+        <div class="v1-rule-section"><strong>研发关注</strong><span>研发按场景、消息名称、副标题、交互方式、业务落点和来源核对。当前必须覆盖活动、互动评论、模型反馈积分、邀请奖励、AI商城兑换状态、系统公告和账号安全提醒。</span>
+          <table class="v1-message-rule-table" data-message-rule-table>
+            <thead>
+              <tr>
+                <th>场景</th>
+                <th>消息</th>
+                <th>副标题</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>活动发布或状态变化，整条进入活动页</td>
+                <td>模型体验季任务已开启</td>
+                <td>完成一次模型体验并补充反馈，可领取积分和模板权益。</td>
+              </tr>
+              <tr>
+                <td>闪念收到评论或回复，进入对应内容位置</td>
+                <td>你的闪念收到 2 条新评论</td>
+                <td>继续补充处理过程，方便别人复用这次经验。</td>
+              </tr>
+              <tr>
+                <td>模型反馈积分入账或消耗，进入积分中心</td>
+                <td>积分变动 +60</td>
+                <td>今天 10:18 完成模型反馈后入账，可在积分中心查看这笔记录。</td>
+              </tr>
+              <tr>
+                <td>邀请奖励入账，进入积分中心</td>
+                <td>邀请奖励 +120</td>
+                <td>06-22 15:42 好友完成首次 AIGC 体验后入账，来源：邀请有礼。</td>
+              </tr>
+              <tr>
+                <td>AI商城兑换状态变化，进入积分中心或兑换结果</td>
+                <td>AI商城兑换已受理</td>
+                <td>兑换商品进入确认流程，处理结果会同步到积分记录。</td>
+              </tr>
+              <tr>
+                <td>系统公告、规则变化或账号安全提醒，必要时页内展开</td>
+                <td>系统通知</td>
+                <td>只保留与账号、规则或社区使用相关的必要信息。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付轻通知页。私信、实时长连接、推送订阅、批量站内信、用户画像触达、首屏总览、左侧分类卡和访客登录面板后置。</span></div>
       </div>
     </details>
   </div>

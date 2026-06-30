@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>登录 - 多元拾光</title>
+  <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="page growth-detail-page growth-app-page login-detail-page" data-page="login" style="--growth-hero-image: url('assets/image_assets/7.png')">
+    <div class="page-bg"><img src="assets/image_assets/7.png" alt=""></div>
+    <header class="site-header">
+      <div class="header-inner wide-container">
+        <a class="logo" href="./index.html" aria-label="多元拾光">
+          <img class="brand-mark" src="assets/brand/duoyuan-shiguang-logo-mark-reverse.svg" alt="">
+          <span class="brand-copy">
+            <span class="brand-name">多元拾光</span>
+            <span class="brand-sub">AI原生实践者社区</span>
+          </span>
+        </a>
+        <nav class="nav" aria-label="主导航">
+          <a href="./index.html">首页</a>
+          <a href="./aigc.html">AIGC</a>
+          <a href="./model-plaza.html">模型广场</a>
+          <a href="./flash.html">闪念</a>
+          <a href="./tutorial.html">官方教程</a>
+        </nav>
+        <div class="header-actions">
+          <a class="action-link activity-center-link" href="./activity-center.html" data-nav-action="activity-center" data-action-label="活动中心">活动中心</a>
+          <a class="action-link" href="./invite.html" data-nav-action="invite">邀请有礼</a>
+          <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a>
+          <a class="action-link points-link" href="./points-center.html" data-nav-action="points">积分 1280</a>
+          <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
+          <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="用户头像"><img src="assets/image_assets/1.png" alt=""></a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="login-modal-shell section" data-login-section="auth">
+        <div class="login-dialog" data-login-modal>
+          <div class="login-dialog-head">
+            <div>
+              <h1>登录</h1>
+            </div>
+            <a class="modal-close-icon" href="./index.html" aria-label="关闭登录"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a>
+          </div>
+          <div class="login-panel" data-login-panel>
+            <section class="login-pane phone-login-pane" data-login-mode="phone" aria-label="手机号登录">
+              <h2>手机号登录</h2>
+              <div class="login-field-stack">
+                <label class="login-field">
+                  <span>手机号</span>
+                  <input type="tel" placeholder="请输入手机号" aria-label="请输入手机号">
+                </label>
+                <label class="login-field login-code-field">
+                  <span>验证码</span>
+                  <input type="text" placeholder="请输入验证码" aria-label="请输入验证码">
+                  <a href="#login-phone" data-cta-state="send-code">获取验证码</a>
+                </label>
+                <label class="login-field">
+                  <span>邀请码</span>
+                  <input type="text" value="SG2026" data-invite-code-field aria-label="邀请码">
+                </label>
+              </div>
+              <a class="button login-submit" href="./user-center.html#invite" data-login-complete-target>继续登录</a>
+            </section>
+
+            <section class="login-pane wechat-login-pane" data-login-mode="wechat" aria-label="微信扫码登录">
+              <h2>微信扫码登录</h2>
+              <div class="login-qr-frame" aria-label="微信扫码">
+                <div class="login-qr-grid">
+                  <span></span><span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span><span></span>
+                  <span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <img src="resources/icons/remixicon/svg/Logos/wechat-line.svg" alt="">
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <details class="v1-walkthrough-drawer" data-v1-walkthrough-drawer>
+      <summary>走查</summary>
+      <div class="v1-walkthrough-panel">
+        <div class="v1-walkthrough-head"><strong>登录弹层走查</strong><span>登录只承接手机号和微信扫码路径。</span></div>
+        <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>运营关注</span><span>研发关注</span></div>
+        <div class="v1-rule-section"><strong>页面定位</strong><span>登录页以弹层承载，不做营销解释页；邀请链接、退出登录和普通登录入口都进入同一弹层。</span></div>
+        <div class="v1-rule-section"><strong>用户主路径</strong><span>手机号登录可直接带入邀请码 SG2026；微信扫码只完成登录，不展示额外补填说明或继续按钮。</span></div>
+        <div class="v1-rule-section"><strong>关键字段</strong><span>手机号、验证码、邀请码、微信扫码、继续登录。</span></div>
+        <div class="v1-rule-section"><strong>状态规则</strong><span>邀请码只出现在手机号登录路径；微信扫码路径不出现邀请码输入项，避免扫码前填码的误解。</span></div>
+        <div class="v1-rule-section"><strong>动作去向</strong><span>继续登录进入 `user-center.html#invite`；微信扫码区域不设置二次按钮。</span></div>
+        <div class="v1-rule-section"><strong>运营维护</strong><span>当前只验证登录承接闭环、邀请码带入和微信扫码入口；验证码发送、微信会话和账号合并后置。</span></div>
+        <div class="v1-rule-section"><strong>研发验收</strong><span>主内容必须是单个登录弹层；不要出现顶部提示条、左右大段说明卡或多层边框；手机号区必须有手机号、验证码、邀请码和继续登录按钮，微信区必须只有扫码，不展示补填提示或继续按钮；头像菜单退出登录必须指向 `login.html?logout=1`，用于演示退出后回到登录弹层。</span></div>
+        <div class="v1-rule-section"><strong>交付边界</strong><span>当前是静态原型闭环，只表达退出登录、邀请链接承接、手机号填码和微信扫码入口；不模拟真实短信、微信授权、登录态校验、账号合并、邀请码有效性校验和邀请奖励结算。</span></div>
+      </div>
+    </details>
+    <div class="footer-space"></div>
+  </div>
+  <script src="./walkthrough.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>发布 Prompt - 多元拾光</title>
+  <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="page growth-detail-page prompt-submit-page" data-page="prompt-submit">
+    <div class="page-bg"><img src="assets/image_assets/15.jpg" alt=""></div>
+    <input class="top-campaign-toggle" type="checkbox" id="top-campaign-dismiss-prompt-submit" aria-label="关闭顶部广告">
+    <div class="top-campaign"><span>Prompt 共创计划</span><span class="timer">投稿编辑</span><span>标题、正文、场景和模型达标后即可发布</span><span>进行中</span><label class="top-campaign-close" for="top-campaign-dismiss-prompt-submit" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
+    <header class="site-header">
+      <div class="header-inner wide-container">
+        <a class="logo" href="./index.html" aria-label="多元拾光">
+          <img class="brand-mark" src="assets/brand/duoyuan-shiguang-logo-mark-reverse.svg" alt="">
+          <span class="brand-copy"><span class="brand-name">多元拾光</span><span class="brand-sub">AI原生实践者社区</span></span>
+        </a>
+        <nav class="nav" aria-label="主导航">
+          <a href="./index.html">首页</a>
+          <a href="./aigc.html">AIGC</a>
+          <a href="./model-plaza.html">模型广场</a>
+          <a href="./flash.html">闪念</a>
+          <a href="./tutorial.html">官方教程</a>
+        </nav>
+        <div class="header-actions">
+          <a class="action-link activity-center-link" href="./activity-center.html" data-nav-action="activity-center" data-action-label="活动中心">活动中心</a>
+          <a class="action-link" href="./invite.html" data-nav-action="invite">邀请有礼</a>
+          <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a>
+          <a class="action-link points-link" href="./points-center.html" data-nav-action="points">积分 1280</a>
+          <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
+          <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="用户头像"><img src="assets/image_assets/1.png" alt=""></a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="prompt-submit-screen section">
+        <div class="wide-container">
+          <div class="prompt-submit-head">
+            <div>
+              <a class="prompt-breadcrumb" href="./campaign-prompt.html">Prompt 共创计划</a>
+              <h1>发布 Prompt</h1>
+              <p>把可复用的提示词写完整，发布后进入详情页展示，其他用户可免费复制或同款复用。</p>
+            </div>
+            <a class="button secondary" href="./prompt-detail.html">查看示例详情</a>
+          </div>
+
+          <div class="prompt-submit-layout">
+            <article class="prompt-editor-card" aria-label="Prompt 投稿编辑器">
+              <div class="prompt-field" data-prompt-submit-field="标题">
+                <label for="prompt-title">标题</label>
+                <input id="prompt-title" value="国风神女角色设定 Prompt" aria-label="Prompt 标题">
+                <span>标题不少于 4 个字，建议直接说明结果和场景。</span>
+              </div>
+
+              <div class="prompt-field" data-prompt-submit-field="Prompt 正文">
+                <label for="prompt-body">Prompt 正文</label>
+                <textarea id="prompt-body" rows="8" aria-label="Prompt 正文">国风神女角色设定，凤冠、金色发饰、白金长裙，站在云海和古建筑之间，柔和逆光，电影级构图，人物面部清晰，服饰纹理精细，画面有轻微风感和神话氛围。适合用于角色海报、封面图和短剧开场视觉。</textarea>
+                <span>中文正文不少于 30 字；英文或中英混合不少于 20 个英文单词。</span>
+              </div>
+
+              <div class="prompt-field-grid">
+                <div class="prompt-field" data-prompt-submit-field="适用场景">
+                  <label for="prompt-scene">适用场景</label>
+                  <input id="prompt-scene" value="角色设定 / 封面图 / 漫剧开场" aria-label="适用场景">
+                  <span>让复用者知道它适合解决什么问题。</span>
+                </div>
+                <div class="prompt-field" data-prompt-submit-field="推荐模型">
+                  <label for="prompt-model">推荐模型</label>
+                  <input id="prompt-model" value="Flux Pro 1.1" aria-label="推荐模型">
+                  <span>推荐模型会展示在详情页和同款入口。</span>
+                </div>
+              </div>
+
+              <div id="prompt-media-upload" class="prompt-media-upload" data-prompt-submit-field="效果图/视频">
+                <div>
+                  <strong>效果图/视频</strong>
+                  <span>上传至少 1 张匹配效果图或 1 段效果视频后，本条投稿可按图文/视频案例计 40 积分。</span>
+                </div>
+                <figure>
+                  <img src="assets/image_assets/15.jpg" alt="国风神女 Prompt 效果图">
+                  <figcaption>已选择：国风神女角色设定效果图</figcaption>
+                </figure>
+              </div>
+
+              <div class="prompt-validation-panel" aria-label="发布前校验">
+                <strong>发布前校验</strong>
+                <span data-prompt-validation-rule>标题不少于 4 个字</span>
+                <span data-prompt-validation-rule>中文正文不少于 30 字，英文或中英混合不少于 20 个英文单词</span>
+                <span data-prompt-validation-rule>适用场景和推荐模型已填写</span>
+                <span data-prompt-validation-rule>未达标时发布按钮置灰，页面内提示缺失项</span>
+              </div>
+
+              <div class="prompt-submit-actions">
+                <a class="button secondary" href="./campaign-prompt.html">返回活动详情</a>
+                <a class="button" href="./prompt-detail.html" data-prompt-submit-publish>发布纯文字 Prompt</a>
+                <a class="button" href="./prompt-detail.html?toast=media" data-prompt-submit-publish>发布图文案例</a>
+              </div>
+            </article>
+
+            <aside class="prompt-submit-rail" aria-label="投稿状态与奖励预览">
+              <section class="prompt-state-list">
+                <div class="prompt-state-card is-muted" data-prompt-submit-state="invalid">
+                  <strong>未达标</strong>
+                  <p>缺少标题、正文、场景或模型时，发布按钮置灰。</p>
+                </div>
+                <div class="prompt-state-card" data-prompt-submit-state="pure-text">
+                  <strong>纯文字达标</strong>
+                  <p>发布成功！获得 20 积分。</p>
+                </div>
+                <div class="prompt-state-card is-active" data-prompt-submit-state="media">
+                  <strong>图文/视频达标</strong>
+                  <p>发布成功！获得 40 积分。</p>
+                </div>
+                <div class="prompt-state-card" data-prompt-submit-state="daily-cap">
+                  <strong>每日上限</strong>
+                  <p>发布成功！今日积分已达上限，感谢您的共创。</p>
+                </div>
+              </section>
+
+              <section class="prompt-reward-preview">
+                <h2>奖励预览</h2>
+                <div data-prompt-reward-preview><strong>20 积分</strong><span>发布纯文字 Prompt</span></div>
+                <div data-prompt-reward-preview><strong>40 积分</strong><span>补充图文/视频案例</span></div>
+                <div data-prompt-reward-preview><strong>100 积分</strong><span>入选精选</span></div>
+                <div data-prompt-reward-preview><strong>500 积分</strong><span>首页推荐</span></div>
+              </section>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="activity-config-schema" hidden aria-hidden="true">
+      <strong data-activity-field>活动标题：Prompt 共创计划</strong>
+      <strong data-activity-field>关联页面：活动详情、投稿编辑、Prompt 详情、积分中心</strong>
+      <strong data-activity-field>CTA 文案：发布 Prompt</strong>
+      <strong data-activity-field>CTA 目标：prompt-detail.html</strong>
+    </div>
+
+    <details class="v1-walkthrough-drawer" data-v1-walkthrough-drawer>
+      <summary>走查</summary>
+      <div class="v1-walkthrough-panel">
+        <div class="v1-walkthrough-head"><strong>Prompt 投稿页走查</strong><span>本页用于确认投稿编辑、校验、奖励预览和发布后跳转的产品路径。</span></div>
+        <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>产品关注</span><span>原型关注</span></div>
+        <div class="v1-rule-section"><strong>页面定位</strong><span>投稿页承接活动详情 CTA，用户在这里完成标题、Prompt 正文、适用场景、推荐模型和可选案例素材。</span></div>
+        <div class="v1-rule-section"><strong>用户主路径</strong><span>用户从 campaign-prompt.html 进入投稿页，先补齐必填字段，再根据是否上传效果图或视频选择纯文字发布或图文案例发布，发布后进入 prompt-detail.html。</span></div>
+        <div class="v1-rule-section"><strong>关键字段</strong><span>必须展示标题、Prompt 正文、适用场景、推荐模型、效果图/视频、发布前校验、奖励预览和四类发布状态。</span></div>
+        <div class="v1-rule-section"><strong>状态规则</strong><span>标题、正文、场景和模型未达标时发布按钮置灰；纯文字达标显示 20 积分，图文/视频达标显示 40 积分，每日上限只显示感谢共创。</span></div>
+        <div class="v1-rule-section"><strong>动作去向</strong><span>发布动作进入 prompt-detail.html；返回活动进入 campaign-prompt.html；效果图/视频任务可通过 prompt-submit.html#prompt-media-upload 定位到上传区。</span></div>
+        <div class="v1-rule-section"><strong>运营维护</strong><span>维护奖励预览、校验提示、每日上限提示和入选奖励文案时，需要同步活动详情页和 Prompt 详情页，避免入口页与投稿页奖励不一致。</span></div>
+        <div class="v1-rule-section"><strong>研发验收</strong><span>页面必须包含 data-prompt-submit-field、data-prompt-submit-state、data-prompt-validation-rule、data-prompt-reward-preview 和 data-prompt-submit-publish；发布链接必须能进入 Prompt 详情页。</span></div>
+        <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付静态高保真投稿编辑原型，只表达字段、校验、状态和跳转；保存草稿、内容判定、奖励结算、素材处理和账号权限在后续规则中继续细化。</span></div>
+      </div>
+    </details>
+    <div class="footer-space"></div>
+  </div>
+  <script src="./walkthrough.js" defer></script>
+</body>
+</html>

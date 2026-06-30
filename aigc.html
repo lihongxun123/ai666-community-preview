@@ -29,6 +29,7 @@
           <a href="./tutorial.html">官方教程</a>
         </nav>
         <div class="header-actions">
+          <a class="action-link activity-center-link" href="./activity-center.html" data-nav-action="activity-center" data-action-label="活动中心">活动中心</a>
           <a class="action-link" href="./invite.html" data-nav-action="invite">邀请有礼</a>
           <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a>
           <a class="action-link points-link" href="./points-center.html" data-nav-action="points">积分 1280</a>
@@ -42,7 +43,6 @@
       <div class="create-dialog nav-action-dialog">
         <div class="create-dialog-head">
           <div>
-            <span class="eyebrow dark">邀请有礼</span>
             <h2>邀请好友一起试模型，双方都拿创作积分</h2>
           </div>
           <a class="section-link" href="#">关闭</a>
@@ -50,12 +50,12 @@
         <div class="nav-action-body">
           <div class="nav-action-hero invite">
             <img src="assets/image_assets/11.png" alt="">
-            <div><span>我的邀请码</span><strong>SG2026</strong><em>好友注册、完成 AIGC 或模型体验后，奖励进入积分和体验券体系。</em></div>
+            <div><span>我的邀请码</span><strong>SG2026</strong><em>好友注册、首次互动、首次发布 AI 作品后，奖励进入积分体系。</em></div>
           </div>
           <div class="nav-reward-grid">
-            <div><strong>注册</strong><span>双方 +30 积分</span></div>
-            <div><strong>完成 AIGC 体验</strong><span>邀请人 +90 积分</span></div>
-            <div><strong>完成模型体验</strong><span>文本模型试用包</span></div>
+            <div><strong>注册</strong><span>邀请人 +20 积分</span></div>
+            <div><strong>首次互动</strong><span>邀请人 +20 积分</span></div>
+            <div><strong>首次发布</strong><span>邀请人 +50 积分</span></div>
           </div>
           <div class="modal-actions">
             <a class="button" href="./invite.html">生成邀请卡</a>
@@ -70,7 +70,6 @@
       <div class="create-dialog nav-action-dialog">
         <div class="create-dialog-head">
           <div>
-            <span class="eyebrow dark">AI商城</span>
             <h2>先看清权益，再决定是否进入AI商城</h2>
           </div>
           <a class="section-link" href="#">关闭</a>
@@ -79,7 +78,7 @@
           <div class="member-strip">
             <div><strong>每月积分包</strong><span>创作、模型和模板体验可用</span></div>
             <div><strong>AIGC 折扣</strong><span>图片、视频和漫剧体验优先</span></div>
-            <div><strong>活动专属奖励</strong><span>创作挑战和模型体验季加成</span></div>
+            <div><strong>活动专属奖励</strong><span>生图挑战和共创计划加成</span></div>
           </div>
           <div class="modal-actions">
             <a class="button" href="./member-store.html">进入AI商城</a>
@@ -93,11 +92,8 @@
 
     <section id="quick-create" class="create-modal" aria-label="AIGC 轻创作">
       <a class="modal-backdrop" href="#" aria-label="关闭 AIGC 轻创作"></a>
+      <a class="creation-side-close" href="#aigc-create-panel" role="button" aria-label="关闭轻发布弹层" data-creation-side-close><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a>
       <div class="create-dialog aigc-experience">
-        <div class="create-dialog-head create-dialog-head-title">
-          <h2>创作体验</h2>
-          <a class="modal-close-icon" href="#" role="button" aria-label="关闭创作体验"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a>
-        </div>
         <input class="creation-mode-radio" id="aigc-create-mode-image" name="aigc-create-mode" type="radio" value="image" data-create-mode="image" checked>
         <input class="creation-mode-radio" id="aigc-create-mode-script" name="aigc-create-mode" type="radio" value="script" data-create-mode="script">
         <input class="creation-mode-radio" id="aigc-create-mode-video" name="aigc-create-mode" type="radio" value="video" data-create-mode="video">
@@ -325,28 +321,67 @@
               </section>
               <section class="creation-step-panel creation-progress-panel" data-creation-step-panel="generating" aria-label="生成中状态">
                 <div class="creation-state-shell creation-generating-shell" data-creation-motion-part>
-                  <div class="creation-live-stage">
-                    <div class="generation-status-chip"><span class="generation-spinner" data-generation-spinner aria-hidden="true"></span><b>0/1 生成中</b><em>预计约 8 秒</em></div>
-                    <div class="generation-preview-frame">
-                      <img class="creation-mode-panel" data-create-mode-panel="image" src="assets/image_assets/15.jpg" alt="生成中的图片预览">
-                      <article class="generation-script-preview creation-mode-panel" data-create-mode-panel="script"><span>脚本生成中</span><strong>正在拆分角色、冲突和分镜节奏</strong><p>第 1 幕：雨夜霓虹街头，主角回头确认追踪者。第 2 幕：镜头切到手部细节，提示隐藏道具。</p></article>
-                      <video class="creation-mode-panel" data-create-mode-panel="video" src="assets/video_assets/sd2_gen.mp4" poster="assets/image_assets/17.png" autoplay muted loop playsinline aria-label="生成中的视频预览"></video>
-                      <div class="generation-scan" aria-hidden="true"></div>
-                      <span class="generation-progress-badge"><b>2%</b> 生成中...</span>
+                  <div class="creation-conversation-panel" data-creation-motion-part>
+                    <div class="creation-chat-thread creation-chat-thread-workspace" aria-live="polite"><div class="creation-chat-message creation-chat-message-user"><span>你</span><p data-creation-prompt-preview>返回调整后可继续补充输入。</p></div><div class="creation-chat-message creation-chat-message-assistant"><span>AI</span><p>我会保留你的原始输入，先生成一版结果；如果生成方向需要收窄，可以直接在下方继续补充限制、风格或镜头要求。</p><div class="creation-assistant-progress-card"><div><strong class="creation-mode-panel" data-create-mode-panel="image">正在处理图像提示、参考素材和画幅比例</strong><strong class="creation-mode-panel" data-create-mode-panel="script">正在拆解故事设定、角色关系和分镜节奏</strong><strong class="creation-mode-panel" data-create-mode-panel="video">正在解析镜头运动、时长和视觉节奏</strong><span>上下文已保留，生成完成后可补充灵感或返回调整。</span></div><i aria-hidden="true"></i></div><label class="generation-preview-card creation-chat-preview-card" data-generation-preview-open data-creation-next="result" for="aigc-create-step-result" aria-label="点击预览大图"><div class="generation-preview-frame"><img class="creation-mode-panel" data-create-mode-panel="image" src="assets/image_assets/15.jpg" alt="生成中的图片预览"><article class="generation-script-preview creation-mode-panel" data-create-mode-panel="script"><span>脚本生成中</span><strong>正在拆分角色、冲突和分镜节奏</strong><p>第 1 幕：雨夜霓虹街头，主角回头确认追踪者。第 2 幕：镜头切到手部细节，提示隐藏道具。</p></article><video class="creation-mode-panel" data-create-mode-panel="video" src="assets/video_assets/sd2_gen.mp4" poster="assets/image_assets/17.png" autoplay muted loop playsinline aria-label="生成中的视频预览"></video><div class="generation-scan" aria-hidden="true"></div><span class="generation-progress-badge"><b>2%</b> 生成中...</span></div><span class="generation-preview-open-hint">点击预览大图</span></label></div></div>
+                                        <div class="creation-followup-composer" aria-label="输入灵感输入区">
+                      <label class="creation-followup-field">
+                        <span>输入灵感</span>
+                        <textarea class="creation-followup-input" rows="2" placeholder="补充风格、调整镜头或加入限制条件"></textarea>
+                      </label>
+                      <div class="creation-followup-controls">
+                        <div class="creation-followup-options" aria-label="本轮生成设置">
+                        <span class="creation-followup-model-summary creation-mode-panel" data-create-mode-panel="image" data-followup-model-summary>
+                          <span>图片模型</span>
+                          <em><b class="model-current" data-model-current="doubao-seedream-4-5-251128">doubao-seedream-4-5-251128</b><b class="model-current" data-model-current="doubao-seedream-5-0-260128">doubao-seedream-5-0-260128</b><b class="model-current" data-model-current="nano-banana-pro">Nano Banana Pro</b><b class="model-current" data-model-current="gpt-image-2">gpt-image-2</b><b class="model-current" data-model-current="nano-banana-2">nano-banana-2</b><i class="model-current-cost" data-model-current-cost="doubao-seedream-4-5-251128">24 积分</i><i class="model-current-cost" data-model-current-cost="doubao-seedream-5-0-260128">28 积分</i><i class="model-current-cost" data-model-current-cost="nano-banana-pro">22 积分</i><i class="model-current-cost" data-model-current-cost="gpt-image-2">18 积分</i><i class="model-current-cost" data-model-current-cost="nano-banana-2">20 积分</i></em>
+                        </span>
+                        <span class="creation-followup-model-summary creation-mode-panel" data-create-mode-panel="script" data-followup-model-summary>
+                          <span>剧本模型</span>
+                          <em><b class="model-current" data-model-current="gemini-3-flash-preview">gemini-3-flash-preview</b><b class="model-current" data-model-current="kimi-k2-6">kimi-k2.6</b><b class="model-current" data-model-current="gpt-5-5">gpt-5.5</b><b class="model-current" data-model-current="deepseek-v4-pro">deepseek-v4-pro</b><i class="model-current-cost" data-model-current-cost="gemini-3-flash-preview">8 积分</i><i class="model-current-cost" data-model-current-cost="kimi-k2-6">10 积分</i><i class="model-current-cost" data-model-current-cost="gpt-5-5">12 积分</i><i class="model-current-cost" data-model-current-cost="deepseek-v4-pro">9 积分</i></em>
+                        </span>
+                        <span class="creation-followup-model-summary creation-mode-panel" data-create-mode-panel="video" data-followup-model-summary>
+                          <span>视频模型</span>
+                          <em><b class="model-current" data-model-current="doubao-seedance-1-5-pro">doubao-seedance-1-5-pro</b><b class="model-current" data-model-current="doubao-seedance-2-0-5s">doubao-seedance-2-0-5s</b><b class="model-current" data-model-current="kling-3-0-omni-720p-ref-mute">kling-3.0-omni-720p-ref-mute</b><b class="model-current" data-model-current="grok-video-3-10s">grok-video-3-10s</b><b class="model-current" data-model-current="omni-fast">omni-fast</b><b class="model-current" data-model-current="doubao-seedance-2-0-10s">doubao-seedance-2-0-10s</b><b class="model-current" data-model-current="doubao-seedance-2-0-15s">doubao-seedance-2-0-15s</b><b class="model-current" data-model-current="kling-2-5-1080p">kling-2.5-1080p</b><b class="model-current" data-model-current="grok-1-5-video-10s">grok-1.5-video-10s</b><b class="model-current" data-model-current="grok-video-3">grok-video-3</b><i class="model-current-cost" data-model-current-cost="doubao-seedance-1-5-pro">36 积分</i><i class="model-current-cost" data-model-current-cost="doubao-seedance-2-0-5s">42 积分</i><i class="model-current-cost" data-model-current-cost="kling-3-0-omni-720p-ref-mute">48 积分</i><i class="model-current-cost" data-model-current-cost="grok-video-3-10s">40 积分</i><i class="model-current-cost" data-model-current-cost="omni-fast">28 积分</i><i class="model-current-cost" data-model-current-cost="doubao-seedance-2-0-10s">56 积分</i><i class="model-current-cost" data-model-current-cost="doubao-seedance-2-0-15s">72 积分</i><i class="model-current-cost" data-model-current-cost="kling-2-5-1080p">64 积分</i><i class="model-current-cost" data-model-current-cost="grok-1-5-video-10s">44 积分</i><i class="model-current-cost" data-model-current-cost="grok-video-3">36 积分</i></em>
+                        </span>
+                          <div class="creation-ratio-select creation-followup-ratio creation-media-panel" data-followup-ratio aria-label="比例选择">
+                            <span>比例</span>
+                            <label><input type="radio" name="aigc-create-followup-ratio" value="16:9" checked><b>16:9</b></label>
+                            <label><input type="radio" name="aigc-create-followup-ratio" value="9:16"><b>9:16</b></label>
+                            <label><input type="radio" name="aigc-create-followup-ratio" value="1:1"><b>1:1</b></label>
+                          </div>
+                        </div>
+                        <div class="creation-panel-actions creation-panel-actions-submit creation-followup-submit-actions">
+                        <label class="generation-submit-pill creation-followup-submit" data-create-followup-submit for="aigc-create-step-generating" aria-label="生成，当前模型预计消耗积分">
+                          <b class="generation-submit-label" data-submit-label="image">生成图片</b>
+                          <b class="generation-submit-label" data-submit-label="script">开始创作</b>
+                          <b class="generation-submit-label" data-submit-label="video">生成视频</b>
+                          <span class="generation-submit-bolt" aria-hidden="true"></span>
+                          <span class="generation-submit-costs" aria-hidden="true">
+                          <strong class="generation-submit-cost" data-submit-cost="doubao-seedream-4-5-251128">24</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="doubao-seedream-5-0-260128">28</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="nano-banana-pro">22</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="gpt-image-2">18</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="nano-banana-2">20</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="gemini-3-flash-preview">8</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="kimi-k2-6">10</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="gpt-5-5">12</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="deepseek-v4-pro">9</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="doubao-seedance-1-5-pro">36</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="doubao-seedance-2-0-5s">42</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="kling-3-0-omni-720p-ref-mute">48</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="grok-video-3-10s">40</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="omni-fast">28</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="doubao-seedance-2-0-10s">56</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="doubao-seedance-2-0-15s">72</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="kling-2-5-1080p">64</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="grok-1-5-video-10s">44</strong>
+                          <strong class="generation-submit-cost" data-submit-cost="grok-video-3">36</strong>
+                          </span>
+                          <span class="generation-submit-arrow" aria-hidden="true"></span>
+                        </label>
+                        </div>
+                      </div>
                     </div>
-                    <div class="generation-progress-track" aria-hidden="true"><i data-generation-progress></i></div>
                   </div>
-                  <aside class="creation-state-aside">
-                    <span class="eyebrow dark">生成中</span>
-                    <h3 class="creation-mode-panel" data-create-mode-panel="image">正在使用所选图片模型处理图像指令</h3>
-                    <h3 class="creation-mode-panel" data-create-mode-panel="script">正在使用所选大模型生成剧本设定</h3>
-                    <h3 class="creation-mode-panel" data-create-mode-panel="video">正在使用所选视频模型生成镜头方案</h3>
-                    <p>系统会先读取输入、模型和比例，再生成一版可继续编辑、发布或保存的结果。</p>
-                    <div class="creation-input-summary" aria-live="polite"><strong>本次输入</strong><p data-creation-prompt-preview>返回调整后可继续补充输入。</p></div>
-                    <ol class="creation-progress-list"><li class="is-done">识别输入内容和参考素材</li><li class="is-active">读取模型配置和积分预估</li><li>生成可继续深化的第一版结果</li></ol>
-                    <div class="creation-parameter-stack"><span><b>当前模型</b><em class="creation-mode-panel" data-create-mode-panel="image">doubao-seedream-4-5-251128</em><em class="creation-mode-panel" data-create-mode-panel="script">gemini-3-flash-preview</em><em class="creation-mode-panel" data-create-mode-panel="video">doubao-seedance-1-5-pro</em></span><span><b>结果去向</b><em>结果预览 -> 下一步分发</em></span></div>
-                    <div class="creation-panel-actions"><label class="button" data-creation-next="result" for="aigc-create-step-result">查看结果</label><label class="button subtle" data-creation-next="input" for="aigc-create-step-input">返回调整</label></div>
-                  </aside>
                 </div>
               </section>
               <section class="creation-step-panel creation-result-panel" data-creation-step-panel="result" aria-label="结果预览状态">
@@ -356,30 +391,55 @@
                       <img class="creation-mode-panel" data-create-mode-panel="image" src="assets/image_assets/15.jpg" alt="图片生成结果预览">
                       <article class="creation-script-result creation-mode-panel" data-create-mode-panel="script"><span>Markdown 预览</span><h4>雨夜霓虹街头 · 分镜设定</h4><p>主角在霓虹雨幕中回头，镜头从街面水光推到眼神特写，随后切入手部道具和追踪者剪影。</p><ul><li>人物：少年主角、隐藏追踪者、远处路人。</li><li>节奏：慢推进、强反差光、结尾留悬念。</li></ul></article>
                       <video class="creation-mode-panel" data-create-mode-panel="video" src="assets/video_assets/sd2_gen.mp4" poster="assets/image_assets/17.png" controls muted playsinline aria-label="视频生成结果预览"></video>
-                      <span class="creation-result-badge">结果 01</span>
+                      <span class="creation-result-badge">AI 生成</span>
                     </div>
                   </div>
-                  <aside class="creation-result-body creation-state-aside">
-                    <span class="eyebrow dark">轻创作结果</span>
-                    <h3 class="creation-mode-panel" data-create-mode-panel="image">图片结果已生成</h3><h3 class="creation-mode-panel" data-create-mode-panel="script">剧本设定已生成</h3><h3 class="creation-mode-panel" data-create-mode-panel="video">视频镜头已生成</h3>
-                    <p class="creation-mode-panel" data-create-mode-panel="image">本次按所选图片模型预估消耗积分，已生成图片预览、局部编辑方向和可复用提示词。</p><p class="creation-mode-panel" data-create-mode-panel="script">本次按所选大模型预估消耗积分，已生成故事设定、人物关系和可拆分分镜的第一版结构。</p><p class="creation-mode-panel" data-create-mode-panel="video">本次按所选视频模型预估消耗积分，已生成镜头预览、运动节奏和可继续改写的镜头提示。</p>
-                    <div class="creation-result-meta"><span><b>生成参数</b><em class="creation-mode-panel" data-create-mode-panel="image">图片生成 · 16:9 · 24 积分</em><em class="creation-mode-panel" data-create-mode-panel="script">剧本创作 · 8 积分</em><em class="creation-mode-panel" data-create-mode-panel="video">视频生成 · 16:9 · 36 积分</em></span><span><b>后续处理</b><em>可继续做成漫剧、发布作品、发布闪念或保存</em></span></div>
-                    <div class="creation-panel-actions creation-result-actions"><label class="button subtle" data-creation-next="input" for="aigc-create-step-input">继续调整</label><label class="button" data-creation-next="distribute" for="aigc-create-step-distribute">查看下一步</label></div>
+                  <aside class="creation-result-body creation-state-aside" data-creation-result-detail>
+                    <div class="creation-result-top creation-result-info" aria-label="结果操作栏">
+                      <div class="creation-result-status">
+                        <strong class="creation-mode-panel" data-create-mode-panel="image">图片生成</strong>
+                        <strong class="creation-mode-panel" data-create-mode-panel="script">剧本创作</strong>
+                        <strong class="creation-mode-panel" data-create-mode-panel="video">视频生成</strong>
+                        <em>刚刚生成 · 内容由 AI 生成</em>
+                      </div>
+                      <div class="creation-result-toolbar" aria-label="操作栏">
+                        <button class="creation-result-icon-button" type="button" aria-label="下载结果"><img src="resources/icons/remixicon/svg/Document/file-download-line.svg" alt=""><span>下载</span></button>
+                        <button class="creation-result-icon-button" type="button" aria-label="分享结果"><img src="resources/icons/remixicon/svg/System/share-2-line.svg" alt=""><span>分享</span></button>
+                        <button class="creation-result-icon-button" type="button" aria-label="收藏结果"><img src="resources/icons/remixicon/svg/Business/bookmark-line.svg" alt=""><span>收藏</span></button>
+                      </div>
+                    </div>
+                    <section class="creation-result-section creation-result-params" aria-label="提示词和参数">
+                      <div class="creation-result-prompt-card">
+                        <div class="creation-result-row-head"><b>提示词</b><button class="creation-copy-button" type="button" data-result-copy-prompt aria-label="复制提示词"><img src="resources/icons/remixicon/svg/Document/file-copy-line.svg" alt=""><span>复制</span></button></div>
+                        <p class="creation-result-prompt-text" data-result-prompt data-creation-prompt-preview>描述你想生成的画面，例如：雨夜霓虹街头，少年回头，电影感构图。</p>
+                      </div>
+                      <div class="creation-result-basic" aria-label="基础参数">
+                        <div class="creation-result-row-head"><b>基础参数</b></div>
+                        <span><b>模型</b><em class="creation-mode-panel" data-create-mode-panel="image"><b class="model-current" data-model-current="doubao-seedream-4-5-251128">doubao-seedream-4-5-251128</b><b class="model-current" data-model-current="doubao-seedream-5-0-260128">doubao-seedream-5-0-260128</b><b class="model-current" data-model-current="nano-banana-pro">Nano Banana Pro</b><b class="model-current" data-model-current="gpt-image-2">gpt-image-2</b><b class="model-current" data-model-current="nano-banana-2">nano-banana-2</b></em><em class="creation-mode-panel" data-create-mode-panel="script"><b class="model-current" data-model-current="gemini-3-flash-preview">gemini-3-flash-preview</b><b class="model-current" data-model-current="kimi-k2-6">kimi-k2.6</b><b class="model-current" data-model-current="gpt-5-5">gpt-5.5</b><b class="model-current" data-model-current="deepseek-v4-pro">deepseek-v4-pro</b></em><em class="creation-mode-panel" data-create-mode-panel="video"><b class="model-current" data-model-current="doubao-seedance-1-5-pro">doubao-seedance-1-5-pro</b><b class="model-current" data-model-current="doubao-seedance-2-0-5s">doubao-seedance-2-0-5s</b><b class="model-current" data-model-current="kling-3-0-omni-720p-ref-mute">kling-3.0-omni-720p-ref-mute</b><b class="model-current" data-model-current="grok-video-3-10s">grok-video-3-10s</b><b class="model-current" data-model-current="omni-fast">omni-fast</b><b class="model-current" data-model-current="doubao-seedance-2-0-10s">doubao-seedance-2-0-10s</b><b class="model-current" data-model-current="doubao-seedance-2-0-15s">doubao-seedance-2-0-15s</b><b class="model-current" data-model-current="kling-2-5-1080p">kling-2.5-1080p</b><b class="model-current" data-model-current="grok-1-5-video-10s">grok-1.5-video-10s</b><b class="model-current" data-model-current="grok-video-3">grok-video-3</b></em></span>
+                        <span><b>尺寸</b><em class="creation-mode-panel" data-create-mode-panel="image">1536x864</em><em class="creation-mode-panel" data-create-mode-panel="script">Markdown 文本</em><em class="creation-mode-panel" data-create-mode-panel="video">1280x720</em></span>
+                        <span><b>比例</b><em class="creation-mode-panel" data-create-mode-panel="image">16:9</em><em class="creation-mode-panel" data-create-mode-panel="script">文本结构化</em><em class="creation-mode-panel" data-create-mode-panel="video">16:9</em></span>
+                      </div>
+                    </section>
+                    <div class="creation-result-footer" aria-label="下一步">
+                      <label class="creation-result-adjust" data-creation-next="generating" for="aigc-create-step-generating">继续调整</label>
+                      <div class="creation-result-destination-actions" aria-label="这次结果下一步动作">
+                        <a class="button" data-result-destination-action="manga" data-creation-action="manga" href="#canvas-studio">继续做成漫剧</a>
+                        <a class="button secondary" data-result-destination-action="flash" data-creation-action="flash" href="./flash.html#compose-flash">发布闪念</a>
+                      </div>
+                    </div>
                   </aside>
                 </article>
               </section>
               <section class="creation-step-panel creation-distribute-panel" data-creation-step-panel="distribute" aria-label="下一步分发状态">
                 <div class="creation-distribute-shell creation-state-shell" data-creation-motion-part>
                   <aside class="creation-state-aside creation-distribute-summary">
-                    <span class="eyebrow dark">下一步分发</span><h3>把这次结果变成可沉淀的社区资产</h3><p>结果不止停在预览，可以继续进入漫剧画布、沉淀为案例、发布为闪念，或先保存到用户中心。</p>
-                    <div class="creation-result-mini"><span>结果 01</span><strong class="creation-mode-panel" data-create-mode-panel="image">图片生成结果</strong><strong class="creation-mode-panel" data-create-mode-panel="script">剧本设定结果</strong><strong class="creation-mode-panel" data-create-mode-panel="video">视频镜头结果</strong></div>
+                    <h3>把这次结果变成可继续创作的素材</h3><p>结果不止停在预览，可以继续进入漫剧画布，或把过程想法发布为闪念。</p>
+                    <div class="creation-result-mini"><span>AI 生成</span><strong class="creation-mode-panel" data-create-mode-panel="image">图片生成结果</strong><strong class="creation-mode-panel" data-create-mode-panel="script">剧本设定结果</strong><strong class="creation-mode-panel" data-create-mode-panel="video">视频镜头结果</strong></div>
                     <label class="button subtle" data-creation-next="result" for="aigc-create-step-result">返回结果</label>
                   </aside>
                   <div class="creation-destination-grid">
                     <article class="creation-destination-card"><span>漫剧项目</span><strong>进入画布继续拆分脚本、分镜和封面</strong><a class="button" data-creation-action="manga" href="#canvas-studio">继续做成漫剧</a></article>
-                    <article class="creation-destination-card"><span>分享作品</span><strong>把这次结果发到灵感广场</strong><a class="button secondary" data-creation-action="case" href="#inspiration-gallery">发布作品</a></article>
                     <article class="creation-destination-card"><span>轻内容</span><strong>把生成过程和想法发布为闪念</strong><a class="button secondary" data-creation-action="flash" href="./flash.html#compose-flash">发布为闪念</a></article>
-                    <article class="creation-destination-card"><span>我的项目</span><strong>保存第一版结果，后续继续编辑</strong><a class="button subtle" data-creation-action="save" href="./user-center.html">保存</a></article>
                   </div>
                 </div>
               </section>
@@ -420,7 +480,6 @@
         <div class="wide-container">
           <div class="canvas-studio">
             <div class="canvas-copy">
-              <span class="eyebrow dark">无限画布</span>
               <h2>直接编排分镜</h2>
               <div class="hero-actions">
                 <a class="button" href="#aigc-create-panel">打开画布</a>
@@ -693,10 +752,12 @@
             <a class="filter-chip" href="#" data-cta-state="筛选图片灵感">图片</a>
             <a class="filter-chip" href="#" data-cta-state="筛选视频灵感">视频</a>
             <a class="filter-chip" href="#" data-cta-state="筛选文本灵感">文本</a>
+            <a class="filter-chip" href="./prompt-detail.html" data-cta-state="筛选 Prompt/带提示词灵感">Prompt/带提示词</a>
           </div>
           <div class="masonry aigc-inspiration">
             <a class="case-card tall" href="#case-detail-manga"><img src="assets/image_assets/11.png" alt=""><div class="copy"><h3>龙虎天劫</h3><p>高燃对决封面，漫剧开场感拉满</p><div class="case-hover-meta"><span>Seedance 2.0</span><span>漫剧</span></div></div></a>
             <a class="case-card short" href="#case-detail-image"><img src="assets/image_assets/3.png" alt=""><div class="copy"><h3>竹泉秘境</h3><p>清新治愈场景，夏日氛围一键生成</p><div class="case-hover-meta"><span>Flux Pro 1.1</span><span>图片</span></div></div></a>
+            <a class="case-card" href="./prompt-detail.html"><img src="assets/image_assets/15.jpg" alt=""><div class="copy"><h3>国风神女 Prompt</h3><p>带完整提示词、效果图和免费同款入口</p><div class="case-hover-meta"><span>Flux Pro 1.1</span><span>Prompt/带提示词</span></div></div></a>
             <a class="case-card" href="#case-detail-video"><img src="assets/image_assets/4.png" alt=""><div class="copy"><h3>海灯守望</h3><p>海边落日镜头，故事片头更有画面</p><div class="case-hover-meta"><span>Seedance 2.0</span><span>视频</span></div></div></a>
             <a class="case-card tall" href="#case-detail-image"><img src="assets/image_assets/15.jpg" alt=""><div class="copy"><h3>凤冠神女</h3><p>国风神女设定，古装角色直接出图</p><div class="case-hover-meta"><span>Flux Pro 1.1</span><span>图片</span></div></div></a>
             <a class="case-card" href="#case-detail-text"><img src="assets/image_assets/18.png" alt=""><div class="copy"><h3>金色启航</h3><p>活动海报脚本，首屏转化文案成稿</p><div class="case-hover-meta"><span>GPT-4.1</span><span>文本</span></div></div></a>
@@ -720,13 +781,18 @@
                 <h3>龙虎天劫：第一幕冲突</h3>
                 <div class="detail-tags"><span>漫剧</span><span>9:16 竖屏</span><span>约 8 秒</span><span>Seedance 2.0</span></div>
                 <p>云层裂开的一刻，双主角在龙影下正面相遇。整段视频适合作为第一集开场，也可以继续扩写后续分镜。</p>
+                <div class="case-detail-engagement" data-content-detail-actions aria-label="作品互动">
+                  <button type="button" data-detail-like-action data-cta-state="点赞状态：切换喜欢并更新计数">点赞</button>
+                  <button type="button" data-detail-comment-action data-cta-state="评论状态：打开作品评论并聚焦输入框">评论</button>
+                  <a href="./user-center.html#favorites" data-detail-favorite-action data-cta-state="收藏状态：加入我的收藏">收藏</a>
+                  <button type="button" data-detail-share-action data-cta-state="分享状态：复制作品链接">分享</button>
+                </div>
                 <div class="detail-prompt"><strong>提示词</strong><p>东方玄幻竖屏漫剧，第一集开场，乌云从高空撕裂，远处宫殿屋脊被金色雷光照亮，巨龙从云层后盘旋而出，鳞片带有暗金反光，两位主角站在断裂石桥两端正面对峙，一人握剑，一人披黑色斗篷，空气里有碎石、尘雾和闪电残光。
 
 镜头先从高处俯冲到石桥，展示断桥、深渊和远处宫殿，再缓慢推近两位角色的表情。第一位角色眼神坚定，身上有浅金色护体光；第二位角色低头冷笑，斗篷边缘被风吹起，露出暗红色纹路。镜头中段加入巨龙低空掠过的阴影，让两人都被压在龙翼投下的暗面里，画面需要有紧张感和压迫感。
 
 最后 2 秒让雷光照亮两位角色的脸，龙影从画面上方压下，石桥碎裂但人物保持站立，停在即将开战的一瞬间。整体风格为东方玄幻、电影级光影、强冲突、竖屏构图、清晰人物轮廓、丰富环境细节、动作节奏紧凑、适合短剧漫剧开篇。不要现代城市元素，不要文字，不要水印，不要过度卡通化，保持质感、层次和连续镜头感。</p></div>
                 <div class="content-action-row">
-                  <a class="button secondary" href="./user-center.html#favorites">收藏</a>
                   <a class="button content-remix-button" href="#quick-create" aria-label="一键同款，预计消耗 28 积分"><span>一键同款</span><span class="content-remix-icon" aria-hidden="true"></span><strong class="content-remix-cost" aria-hidden="true">28</strong></a>
                 </div>
               </aside>
@@ -750,13 +816,18 @@
                 <h3>竹泉秘境</h3>
                 <div class="detail-tags"><span>图片</span><span>3:4</span><span>高清 4 张</span><span>Flux Pro 1.1</span></div>
                 <p>清透竹林、泉水和柔和阳光组成一张治愈系场景图，适合做故事封面、教程头图或活动海报。</p>
+                <div class="case-detail-engagement" data-content-detail-actions aria-label="作品互动">
+                  <button type="button" data-detail-like-action data-cta-state="点赞状态：切换喜欢并更新计数">点赞</button>
+                  <button type="button" data-detail-comment-action data-cta-state="评论状态：打开作品评论并聚焦输入框">评论</button>
+                  <a href="./user-center.html#favorites" data-detail-favorite-action data-cta-state="收藏状态：加入我的收藏">收藏</a>
+                  <button type="button" data-detail-share-action data-cta-state="分享状态：复制作品链接">分享</button>
+                </div>
                 <div class="detail-prompt"><strong>提示词</strong><p>清晨竹林秘境，画面中央有一汪清澈泉水，水面映出竹叶和柔和阳光，浅绿色雾气从水边缓慢升起，远处有被藤蔓覆盖的石阶和小木桥，整体氛围安静、清新、治愈。构图保持干净，主体集中在泉水与透光竹林，前景加入几片虚化竹叶，背景有轻微层次但不杂乱。
 
 画面比例为 3:4，适合封面和海报使用。上方留出一定干净空间，方便后续放标题；下方保留泉水、石阶和竹影细节，形成稳定视觉重心。光线从画面右上方斜照进来，落在泉水边缘和竹叶上，水面有细小高光，但不要过曝。颜色以青绿、浅金、雾白为主，不要过于饱和，不要出现荧光色。
 
 风格为轻幻想插画，细节丰富但不拥挤，画面清透、高级、自然，有轻微梦境感。不要出现文字、水印、二维码、现代建筑、真实品牌标识或明显人物主体。整体适合做故事封面、教程封面、活动海报主视觉，也可以作为同系列场景图的第一张。</p></div>
                 <div class="content-action-row">
-                  <a class="button secondary" href="./user-center.html#favorites">收藏</a>
                   <a class="button content-remix-button" href="#quick-create" aria-label="一键同款，预计消耗 8 积分"><span>一键同款</span><span class="content-remix-icon" aria-hidden="true"></span><strong class="content-remix-cost" aria-hidden="true">8</strong></a>
                 </div>
               </aside>
@@ -774,13 +845,18 @@
                 <h3>海灯守望</h3>
                 <div class="detail-tags"><span>视频</span><span>16:9</span><span>8 秒</span><span>Seedance 2.0</span></div>
                 <p>落日、灯塔、海雾与镜头推进组合，适合做短片开头、广告片转场和情绪化视频素材。</p>
+                <div class="case-detail-engagement" data-content-detail-actions aria-label="作品互动">
+                  <button type="button" data-detail-like-action data-cta-state="点赞状态：切换喜欢并更新计数">点赞</button>
+                  <button type="button" data-detail-comment-action data-cta-state="评论状态：打开作品评论并聚焦输入框">评论</button>
+                  <a href="./user-center.html#favorites" data-detail-favorite-action data-cta-state="收藏状态：加入我的收藏">收藏</a>
+                  <button type="button" data-detail-share-action data-cta-state="分享状态：复制作品链接">分享</button>
+                </div>
                 <div class="detail-prompt"><strong>提示词</strong><p>傍晚海边灯塔，金色落日从云层缝隙照向海面，远处浪花缓慢拍打礁石，空气中有薄雾和细小水汽，灯塔顶部的光束轻轻扫过海面。镜头从低机位贴近海岸线开始，沿着湿润礁石缓慢向前推进，再逐渐抬高看到灯塔全貌，最后停在灯塔与夕阳同框的位置。
 
 视频时长约 8 秒，镜头运动要连续、舒缓、稳定，不要快速切镜。前 2 秒展示海浪和礁石细节，中间 3 秒让镜头缓慢抬高，看到灯塔、海雾和远处云层，最后 3 秒停在灯塔发光的瞬间，海面有轻微反光，画面氛围安静、有等待感。
 
 画面需要电影感、真实光影、海风感和细腻空气层次。色彩为暖金、深蓝和灰白雾气，整体克制，不要夸张特效，不要文字，不要水印，不要人物突然入镜，不要出现现代广告牌。适合短片开场、品牌情绪片、旅行影像转场，也可以作为视频生成案例展示。</p></div>
                 <div class="content-action-row">
-                  <a class="button secondary" href="./user-center.html#favorites">收藏</a>
                   <a class="button content-remix-button" href="#quick-create" aria-label="一键同款，预计消耗 64 积分"><span>一键同款</span><span class="content-remix-icon" aria-hidden="true"></span><strong class="content-remix-cost" aria-hidden="true">64</strong></a>
                 </div>
               </aside>
@@ -794,7 +870,7 @@
               <div class="case-detail-media">
                 <article class="content-markdown-preview content-text-result">
                   <span class="markdown-kicker">Markdown 预览</span>
-                  <h1>模型体验季 18 秒广告脚本</h1>
+                  <h1>AI 生图挑战 18 秒广告脚本</h1>
                   <blockquote>一句话，直接生成一支广告。先用积分试一次，再选择适合自己的模型链路。</blockquote>
 
                   <h2>脚本正文</h2>
@@ -816,13 +892,18 @@
                 <h3>金色启航</h3>
                 <div class="detail-tags"><span>文本</span><span>短视频脚本</span><span>约 280 字</span><span>GPT-4.1</span></div>
                 <p>这是一条用于活动推广的短视频脚本，已经按开场、卖点和收口拆成可直接拍摄的段落。</p>
-                <div class="detail-prompt"><strong>提示词</strong><p>为 AI 模型体验季写一条 18 秒短视频广告脚本，目标用户是刚开始尝试 AI 创作的内容创作者、运营人员和小团队。脚本要突出三个卖点：第一，用户不用先研究复杂模型参数，只要输入一句话就能得到文本、图片或视频方向的初稿；第二，平台内有多种模型可以按场景选择，适合标题、脚本、海报、短视频镜头和漫剧开场；第三，可以先用积分轻量体验，满意后再继续同款生成或保存作品。
+                <div class="case-detail-engagement" data-content-detail-actions aria-label="作品互动">
+                  <button type="button" data-detail-like-action data-cta-state="点赞状态：切换喜欢并更新计数">点赞</button>
+                  <button type="button" data-detail-comment-action data-cta-state="评论状态：打开作品评论并聚焦输入框">评论</button>
+                  <a href="./user-center.html#favorites" data-detail-favorite-action data-cta-state="收藏状态：加入我的收藏">收藏</a>
+                  <button type="button" data-detail-share-action data-cta-state="分享状态：复制作品链接">分享</button>
+                </div>
+                <div class="detail-prompt"><strong>提示词</strong><p>为 AI 生图挑战写一条 18 秒短视频广告脚本，目标用户是刚开始尝试 AI 创作的内容创作者、运营人员和小团队。脚本要突出三个卖点：第一，用户不用先研究复杂模型参数，只要输入一句话就能得到文本、图片或视频方向的初稿；第二，平台内有多种模型可以按场景选择，适合标题、脚本、海报、短视频镜头和漫剧开场；第三，可以先用积分轻量体验，满意后再继续同款生成或保存作品。
 
 输出结构需要分为四段：0-3 秒是开场钩子，用一句直接的问题抓住注意力；4-9 秒展示使用方式，强调输入一句话后快速得到初稿；10-14 秒展示多种内容形态，包括脚本、图片、视频和漫剧开场；15-18 秒给出行动召唤，引导用户立即体验。每段都要给出口播、画面建议和字幕建议，语气要自然，不要像硬广。
 
 文案风格要简洁、有画面感、节奏紧凑，适合信息流短视频。不要夸大承诺，不要写绝对化效果，不要出现复杂技术术语，不要使用“颠覆”“唯一”“全网最强”等表达。结尾要让用户知道可以先用积分试一次，再收藏结果或一键同款生成新版本。</p></div>
                 <div class="content-action-row">
-                  <a class="button secondary" href="./user-center.html#favorites">收藏</a>
                   <a class="button content-remix-button" href="#quick-create" aria-label="一键同款，预计消耗 3 积分"><span>一键同款</span><span class="content-remix-icon" aria-hidden="true"></span><strong class="content-remix-cost" aria-hidden="true">3</strong></a>
                 </div>
               </aside>
@@ -837,12 +918,12 @@
         <div class="v1-walkthrough-head"><strong>AIGC 频道走查</strong><span>用户需要从一句想法进入模板、画布、预览和反馈，不被说明文打断。</span></div>
         <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>运营关注</span><span>研发关注</span></div>
         <div class="v1-rule-section"><strong>页面定位</strong><span>AIGC 是 1.0 最强创作入口，承接一句话创作、模板同款、无限画布、灵感消费和用户反馈。</span></div>
-        <div class="v1-rule-section"><strong>用户主路径</strong><span>输入创意或点击热门模板 -> 查看模板详情 -> 一键同款进入轻创作 -> 查看轻创作结果 -> 继续做成漫剧、发布案例到灵感广场、发布为闪念或保存到用户中心；点击灵感广场卡片先看内容详情，再收藏或一键同款。</span></div>
-        <div class="v1-rule-section"><strong>关键字段</strong><span>创作 Tab、Prompt 输入、模型选择、积分提示、轻创作结果态、下一步动作、画布节点、模板卡、模板详情、灵感卡、四类内容详情、提示词和一键同款入口。</span></div>
-        <div class="v1-rule-section"><strong>状态规则</strong><span>轻创作保留输入灵感、生成中、结果预览和下一步分发四个状态。输入态不露步骤条；可点击模式顺序为图片生成、剧本创作、视频生成。图片模型为 doubao-seedream-4-5-251128、doubao-seedream-5-0-260128、Nano Banana Pro、gpt-image-2、nano-banana-2；剧本模型为 gemini-3-flash-preview、kimi-k2.6、gpt-5.5、deepseek-v4-pro；视频模型为 doubao-seedance-1-5-pro、doubao-seedance-2-0-5s、kling-3.0-omni-720p-ref-mute、grok-video-3-10s、omni-fast、doubao-seedance-2-0-10s、doubao-seedance-2-0-15s、kling-2.5-1080p、grok-1.5-video-10s、grok-video-3。图片/视频显示 16:9、9:16、1:1，剧本不显示比例；发布案例进入灵感广场普通案例流，灵感广场只按漫剧、图片、视频、文本四类内容承接详情弹层。</span></div>
-        <div class="v1-rule-section"><strong>动作去向</strong><span>创作入口承接输入灵感、选择模板或模型、生成中、结果预览和下一步动作。结果可以继续做成漫剧、发布案例、发布闪念或保存；模板卡先进入模板详情，模板详情底部保留收藏模板和一键同款；灵感卡进入内容详情，内容详情底部保留收藏和一键同款。一键同款按钮同时展示动作和当前模型积分，积分图标紧邻数字之前。</span></div>
+        <div class="v1-rule-section"><strong>用户主路径</strong><span>输入创意或点击热门模板 -> 查看模板详情 -> 一键同款进入轻创作 -> 查看轻创作结果 -> 继续做成漫剧或发布为闪念；点击灵感广场卡片先看内容详情，Prompt/带提示词内容进入独立详情页免费复制或同款复用。</span></div>
+        <div class="v1-rule-section"><strong>关键字段</strong><span>创作 Tab、Prompt 输入、模型选择、积分提示、轻创作结果态、下一步动作、画布节点、模板卡、模板详情、灵感卡、Prompt/带提示词筛选、内容详情互动动作区、四类内容详情、提示词和一键同款入口。</span></div>
+        <div class="v1-rule-section"><strong>状态规则</strong><span>轻创作保留输入灵感、生成中、结果预览和下一步分发四个状态。输入态不露步骤条；可点击模式顺序为图片生成、剧本创作、视频生成。图片模型为 doubao-seedream-4-5-251128、doubao-seedream-5-0-260128、Nano Banana Pro、gpt-image-2、nano-banana-2；剧本模型为 gemini-3-flash-preview、kimi-k2.6、gpt-5.5、deepseek-v4-pro；视频模型为 doubao-seedance-1-5-pro、doubao-seedance-2-0-5s、kling-3.0-omni-720p-ref-mute、grok-video-3-10s、omni-fast、doubao-seedance-2-0-10s、doubao-seedance-2-0-15s、kling-2.5-1080p、grok-1.5-video-10s、grok-video-3。图片/视频显示 16:9、9:16、1:1，剧本不显示比例；灵感广场只按漫剧、图片、视频、文本四类内容承接详情弹层。</span></div>
+        <div class="v1-rule-section"><strong>动作去向</strong><span>创作入口承接输入灵感、选择模板或模型、生成中、结果预览和下一步动作。结果可以继续做成漫剧或发布闪念；模板卡先进入模板详情，模板详情底部保留收藏模板和一键同款；灵感卡只进入内容详情，点赞、评论、收藏和分享放在内容详情动作区，一键同款保留在详情底部。一键同款按钮同时展示动作和当前模型积分，积分图标紧邻数字之前。</span></div>
         <div class="v1-rule-section"><strong>运营维护</strong><span>重点模板、示例结果、模型积分、任务返还提示、灵感广场案例和首页爆款作品由 AIGC P0 内容、体验目标和低风险活动方案维护。6-7 月先用人工内容池，不接在线生成排队或扣费。</span></div>
-        <div class="v1-rule-section"><strong>研发关注</strong><span>模板名称、类型、textarea、图片上传、底部模型选择、图片/视频比例、不同模型积分、主动生成按钮、示例结果和任务返还说明需要可读。轻创作弹层输入态不展示标题栏和关闭图标，关闭由遮罩承接；输入态外层容器不再保留边框，实际内容宽度等于原外框宽度；输入态需支持图片、剧本、视频三种模式点击切换，图片模式上传包裹在输入区内且按钮按内容宽度收拢，按钮内积分图标需位于数字之前；长模型列表需要可滚动且可点击，模型名完整展示，选中态与积分分列不重叠，点击模型选项后下拉自动收起，模式切换时弹层高度保持稳定。点击生成后需使用 GSAP 从输入态扩展到更宽更高的生成中态，生成中展示过程舞台、进度光带、本次输入摘要和参数侧栏；生成中、结果和分发阶段顶部内容类型锁定为发起生成时的类型，返回调整后恢复可切换且保留原输入内容；结果态展示大结果区与参数/后续动作侧栏，分发态保留继续做成漫剧、发布作品、发布闪念和保存四个目标，并尊重减少动态效果偏好。模板详情用于生成前预览，左侧展示模板示例与产出结构，右侧展示模板标题、标签、说明、提示词结构、收藏模板和一键同款；模板详情打开时需覆盖顶部活动条、导航和走查入口。内容详情使用左右布局，漫剧和视频为单视频，图片支持多图切换，文本以 Markdown 预览呈现，右侧提示词可滚动。页面不露账户余额、正式额度、供应商成本或正式扣费。</span></div>
+        <div class="v1-rule-section"><strong>研发验收</strong><span>模板名称、类型、textarea、图片上传、底部模型选择、图片/视频比例、不同模型积分、主动生成按钮、示例结果和任务返还说明需要可读。轻创作弹层输入态不展示标题栏和关闭图标，关闭由遮罩承接；生成中、结果和分发态在最外层弹层右侧显示外置关闭按钮，点击后关闭弹层；输入态外层容器不再保留边框，实际内容宽度等于原外框宽度；输入态需支持图片、剧本、视频三种模式点击切换，图片模式上传包裹在输入区内且按钮按内容宽度收拢，按钮内积分图标需位于数字之前；长模型列表需要可滚动且可点击，模型名完整展示，选中态与积分分列不重叠，点击模型选项后下拉自动收起，模式切换时弹层高度保持稳定。点击生成后需使用 GSAP 从输入态扩展到更宽更高的生成中态，生成中进入专属处理场景并隐藏顶部内容类型框体；对话区展示用户输入气泡、AI 处理说明、带进度提示的小尺寸生成预览和底部输入灵感输入区，当前模型放在底部输入区内并跟随生成前选择；点击小预览进入结果态大图预览。生成中、结果和分发阶段仍锁定为发起生成时的类型，返回调整后恢复输入态类型切换且保留原输入内容；结果态和分发态保持与生成中态一致的大框体尺寸，结果态左侧为大结果预览且徽标为 AI 生成，右侧按结果详情侧栏组织，顶部直接以当前内容类型作为主标题并与下载、分享、收藏操作对齐，生成说明保持单行不中断；中部为提示词复制与基础参数；底部不展示额外说明标题，继续调整以独立次级按钮承接，两个下一步动作平铺展示；继续调整返回生成中对话状态，分发态保留继续做成漫剧和发布闪念两个目标，并尊重减少动态效果偏好。模板详情用于生成前预览，左侧展示模板示例与产出结构，右侧展示模板标题、标签、说明、提示词结构、收藏模板和一键同款；模板详情打开时需覆盖顶部活动条、导航和走查入口。灵感卡不得展示点赞、评论、收藏或分享动作位；内容详情使用左右布局，漫剧和视频为单视频，图片支持多图切换，文本以 Markdown 预览呈现，右侧需展示点赞、评论、收藏、分享动作区且提示词可滚动。页面不露账户余额、正式额度、供应商成本或正式扣费。</span></div>
         <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付受控体验入口，只表达轻创作、模板发现和下一步承接。真实出片、自动任务返还、防刷、完整漫剧生产、真实模型调用和配置能力留到后续。</span></div>
       </div>
     </details>

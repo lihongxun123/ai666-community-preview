@@ -11,7 +11,7 @@
   <div class="page model-plaza-page">
     <div class="page-bg"><img src="assets/image_assets/2.png" alt=""></div>
     <input class="top-campaign-toggle" type="checkbox" id="top-campaign-dismiss-model-plaza" aria-label="关闭顶部广告">
-    <div class="top-campaign"><span>模型体验季</span><span class="timer">18时 26分 12秒</span><span>立即体验</span><label class="top-campaign-close" for="top-campaign-dismiss-model-plaza" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
+    <div class="top-campaign"><span>Prompt 共创计划</span><span class="timer">一期活动</span><span>复制和一键同款免费，生成时再消耗次数或积分</span><label class="top-campaign-close" for="top-campaign-dismiss-model-plaza" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
     <header class="site-header">
       <div class="header-inner wide-container">
         <a class="logo" href="./index.html" aria-label="多元拾光">
@@ -29,6 +29,7 @@
           <a href="./tutorial.html">官方教程</a>
         </nav>
         <div class="header-actions">
+          <a class="action-link activity-center-link" href="./activity-center.html" data-nav-action="activity-center" data-action-label="活动中心">活动中心</a>
           <a class="action-link" href="./invite.html" data-nav-action="invite">邀请有礼</a>
           <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a>
           <a class="action-link points-link" href="./points-center.html" data-nav-action="points">积分 1280</a>
@@ -42,7 +43,6 @@
       <div class="create-dialog nav-action-dialog">
         <div class="create-dialog-head">
           <div>
-            <span class="eyebrow dark">邀请有礼</span>
             <h2>邀请好友一起试模型，双方都拿创作积分</h2>
           </div>
           <a class="section-link" href="#">关闭</a>
@@ -50,12 +50,12 @@
         <div class="nav-action-body">
           <div class="nav-action-hero invite">
             <img src="assets/image_assets/11.png" alt="">
-            <div><span>我的邀请码</span><strong>SG2026</strong><em>好友注册、完成 AIGC 或模型体验后，奖励进入积分和体验券体系。</em></div>
+            <div><span>我的邀请码</span><strong>SG2026</strong><em>好友注册、首次互动、首次发布 AI 作品后，奖励进入积分体系。</em></div>
           </div>
           <div class="nav-reward-grid">
-            <div><strong>注册</strong><span>双方 +30 积分</span></div>
-            <div><strong>完成 AIGC 体验</strong><span>邀请人 +90 积分</span></div>
-            <div><strong>完成模型体验</strong><span>文本模型试用包</span></div>
+            <div><strong>注册</strong><span>邀请人 +20 积分</span></div>
+            <div><strong>首次互动</strong><span>邀请人 +20 积分</span></div>
+            <div><strong>首次发布</strong><span>邀请人 +50 积分</span></div>
           </div>
           <div class="modal-actions">
             <a class="button" href="./invite.html">生成邀请卡</a>
@@ -70,7 +70,6 @@
       <div class="create-dialog nav-action-dialog">
         <div class="create-dialog-head">
           <div>
-            <span class="eyebrow dark">AI商城</span>
             <h2>先看清权益，再决定是否进入AI商城</h2>
           </div>
           <a class="section-link" href="#">关闭</a>
@@ -79,7 +78,7 @@
           <div class="member-strip">
             <div><strong>每月积分包</strong><span>创作、模型和模板体验可用</span></div>
             <div><strong>AIGC 折扣</strong><span>图片、视频和漫剧体验优先</span></div>
-            <div><strong>活动专属奖励</strong><span>创作挑战和模型体验季加成</span></div>
+            <div><strong>活动专属奖励</strong><span>生图挑战和共创计划加成</span></div>
           </div>
           <div class="modal-actions">
             <a class="button" href="./member-store.html">进入AI商城</a>
@@ -117,8 +116,8 @@
           <div class="model-ops-grid">
             <a class="model-op-card model-op-season" href="#model-list" data-model-operation>
               <span>限时</span>
-              <strong>模型体验季</strong>
-              <em>低成本试遍热门模型</em>
+              <strong>Prompt 共创计划</strong>
+              <em>从可复用提示词回到创作</em>
             </a>
             <a class="model-op-card model-op-guide" href="./tutorial.html" data-model-operation>
               <span>新手入口</span>
@@ -253,7 +252,7 @@
         <div class="v1-rule-section"><strong>状态规则</strong><span>筛选表达当前列表状态；搜索表达原型查询状态。复杂排序、跑分榜和实时可用性后置。</span></div>
         <div class="v1-rule-section"><strong>动作去向</strong><span>模型卡在新页打开详情。搜索和类型筛选帮助用户收窄选择，推荐模型入口也进入详情。API 或体验相关动作由详情页或人工灰度承接。</span></div>
         <div class="v1-rule-section"><strong>运营维护</strong><span>模型名称、Logo、介绍、标签和价格来自 `kk2.deepwl.net/pricing` 当前展示。6-7 月人工维护首批 12 张推荐模型和跳转 key。</span></div>
-        <div class="v1-rule-section"><strong>研发关注</strong><span>12 张模型卡需要可点击且 target=_blank；每张卡保留 Logo、计费类型、价格和标签。页面只保留搜索和类型筛选，不露真实 API Key、调用日志或余额。</span></div>
+        <div class="v1-rule-section"><strong>研发验收</strong><span>12 张模型卡需要可点击且 target=_blank；每张卡保留 Logo、计费类型、价格和标签。页面只保留搜索和类型筛选，不露真实 API Key、调用日志或余额。</span></div>
         <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付模型供给货架和判断入口。在线调用、自动资格判断、供应商可用性监控、报价合同和跑分榜后置。</span></div>
       </div>
     </details>

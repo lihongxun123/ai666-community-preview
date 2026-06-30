@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
@@ -11,7 +11,7 @@
   <div class="page growth-detail-page growth-app-page points-detail-page" data-page="points-center" data-points-entry-surface="unified-center" style="--growth-hero-image: url('assets/image_assets/18.png')">
     <div class="page-bg"><img src="assets/image_assets/18.png" alt=""></div>
     <input class="top-campaign-toggle" type="checkbox" id="top-campaign-dismiss-points" aria-label="关闭顶部广告">
-    <div class="top-campaign"><span>新手签到周</span><span class="timer">20时 42分 39秒</span><span>完成体验后在积分记录查看入账</span><span>查看记录</span><label class="top-campaign-close" for="top-campaign-dismiss-points" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
+    <div class="top-campaign"><span>赚积分入口</span><span class="timer">一期活动已聚合</span><span>新手、七日、创作挑战、Prompt 共创和邀请奖励都在这里找入口</span><span>查看入口</span><label class="top-campaign-close" for="top-campaign-dismiss-points" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
     <header class="site-header">
       <div class="header-inner wide-container">
         <a class="logo" href="./index.html" aria-label="多元拾光">
@@ -29,6 +29,7 @@
           <a href="./tutorial.html">官方教程</a>
         </nav>
         <div class="header-actions">
+          <a class="action-link activity-center-link" href="./activity-center.html" data-nav-action="activity-center" data-action-label="活动中心">活动中心</a>
           <a class="action-link" href="./invite.html" data-nav-action="invite">邀请有礼</a>
           <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a>
           <a class="action-link points-link" href="./points-center.html" data-nav-action="points">积分 1280</a>
@@ -41,39 +42,57 @@
     <main>
       <section class="app-workspace section points-center-workspace">
         <div class="wide-container points-center-layout">
-          <div class="points-focus-grid">
-            <section class="app-card points-balance-hero" data-points-section="balance">
-              <div class="points-balance-copy">
-                <span class="eyebrow dark">积分中心</span>
-                <h1>1280</h1>
-                <p>可用积分</p>
-              </div>
-              <div class="points-balance-stats" aria-label="积分状态">
-                <span><strong>16</strong><em>可兑换权益</em></span>
-                <span><strong>+20</strong><em>今日已入账</em></span>
-                <span><strong>-12</strong><em>最近一次使用</em></span>
-              </div>
-              <a class="points-balance-shop" href="./member-store.html" data-points-shop-entry>
-                <strong>去AI商城兑换</strong>
-                <span>模型体验、镜像站权益和创作工具</span>
-              </a>
-            </section>
+          <section class="app-card points-balance-hero" data-points-section="balance">
+            <div class="points-balance-copy">
+              <h1>1280</h1>
+              <p>可用积分</p>
+            </div>
+            <div class="points-balance-stats" aria-label="积分状态">
+              <span><strong>+40</strong><em>今日获得</em></span>
+              <span><strong>+180</strong><em>近 7 日获得</em></span>
+              <span><strong>+40</strong><em>待到账</em></span>
+            </div>
+            <a class="points-balance-shop" href="./member-store.html" data-points-shop-entry>
+              <strong>去 AI 商城兑换</strong>
+              <span>把积分换成模型体验卡和创作权益</span>
+            </a>
+          </section>
 
-            <section class="app-card points-task-card" data-points-section="today-tasks">
-              <div class="app-card-head">
-                <div>
-                  <h2>今日任务</h2>
-                </div>
+          <section class="app-card points-earn-card" data-points-section="earn">
+            <div class="app-card-head">
+              <div>
+                <h2>赚积分入口</h2>
               </div>
-              <div class="task-list points-task-list">
-                <a class="task-row" href="./aigc.html#quick-create" data-points-task><strong>AIGC 体验</strong><span>完成一次图片、视频或漫剧创作</span><em>+10</em><b class="task-status is-action">前往完成</b></a>
-                <a class="task-row" href="./flash.html#compose-flash" data-points-task><strong>发布闪念</strong><span>记录一次模型体验或创作心得</span><em>+30</em><b class="task-status is-action">前往完成</b></a>
-                <a class="task-row" href="./model-plaza.html" data-points-task><strong>模型反馈</strong><span>选择模型并提交体验反馈</span><em>+60</em><b class="task-status is-action">前往完成</b></a>
-                <a class="task-row" href="./invite.html" data-points-task><strong>邀请好友</strong><span>好友完成首次 AIGC 体验</span><em>+120</em><b class="task-status is-action">前往完成</b></a>
-                <a class="task-row" href="./user-center.html" data-points-task><strong>每日登录</strong><span>回到用户中心</span><em>+20</em><b class="task-status is-done">已完成</b></a>
-              </div>
-            </section>
-          </div>
+              <a class="section-link" href="#points-records">积分记录</a>
+            </div>
+            <div class="points-earn-grid">
+              <a class="points-earn-tile" href="./user-center.html#points" data-points-earn-card>
+                <strong>新手任务</strong>
+                <p>完成首次访问、资料、浏览、互动、收藏和首次发布。</p>
+                <em>最高 110 积分</em>
+              </a>
+              <a class="points-earn-tile" href="./user-center.html#points" data-points-earn-card>
+                <strong>七日成长任务</strong>
+                <p>连续 7 天完成浏览、收藏、复制、发布、挑战、分享和兑换。</p>
+                <em>每日 140 + 连续 180</em>
+              </a>
+              <a class="points-earn-tile" href="./campaign-detail.html" data-points-earn-card>
+                <strong>AI 生图创作挑战</strong>
+                <p>按主题发布 AI 作品，争取精选候选和首页推荐候选。</p>
+                <em>50 / 100 / 1000 积分</em>
+              </a>
+              <a class="points-earn-tile" href="./campaign-prompt.html" data-points-earn-card>
+                <strong>Prompt 共创计划</strong>
+                <p>进入共创活动，发布可复用 Prompt 并补充图文案例。</p>
+                <em>20 / 40 / 100 / 500 积分</em>
+              </a>
+              <a class="points-earn-tile" href="./invite.html" data-points-earn-card>
+                <strong>邀请有礼</strong>
+                <p>好友完成注册、首次互动和首次发布后累计奖励。</p>
+                <em>单个好友最高 90 积分</em>
+              </a>
+            </div>
+          </section>
 
           <section class="app-card points-record-card" data-points-section="records">
             <div class="app-card-head">
@@ -83,17 +102,36 @@
             </div>
             <div id="points-records" class="growth-table compact-table points-record-table">
               <div class="growth-table-row is-head"><span>时间</span><span>动作</span><span>变化</span></div>
-              <div class="growth-table-row" data-points-record><strong>今天 09:12</strong><span>每日登录</span><em>+20</em></div>
-              <div class="growth-table-row" data-points-record><strong>今天 10:26</strong><span>AIGC 体验</span><em>+10</em></div>
-              <div class="growth-table-row" data-points-record><strong>今天 11:40</strong><span>AI商城兑换 Codex体验卡</span><em>-180</em></div>
-              <div class="growth-table-row" data-points-record><strong>昨天 18:06</strong><span>模型体验反馈</span><em>+60</em></div>
-              <div class="growth-table-row" data-points-record><strong>昨天 20:15</strong><span>好友完成首次体验</span><em>+120</em></div>
+              <div class="growth-table-row" data-points-record><strong>今天 09:12</strong><span>新手首访</span><em>+10</em></div>
+              <div class="growth-table-row" data-points-record><strong>今天 09:28</strong><span>完善资料</span><em>+10</em></div>
+              <div class="growth-table-row" data-points-record><strong>今天 11:40</strong><span>AI商城工具兑换</span><em>-40</em></div>
+              <div class="growth-table-row" data-points-record><strong>昨天 18:06</strong><span>参与生图挑战</span><em>+20</em></div>
+              <div class="growth-table-row" data-points-record><strong>昨天 20:15</strong><span>生图挑战作品发布</span><em>+50</em></div>
             </div>
           </section>
         </div>
       </section>
     </main>
+    <details class="v1-walkthrough" data-walkthrough-panel>
+      <summary>
+        <span>积分中心走查</span>
+        <button type="button" data-walkthrough-close aria-label="关闭走查规则">×</button>
+      </summary>
+      <div class="v1-walkthrough-panel">
+        <div class="v1-walkthrough-head"><strong>积分中心走查</strong><span>本页用于承接赚积分入口、积分资产和最近积分记录。</span></div>
+        <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>运营关注</span><span>研发关注</span></div>
+        <div class="v1-rule-section"><strong>页面定位</strong><span>积分中心是用户侧积分资产和赚积分入口聚合页，只承接余额、近期积分状态、入口卡和积分记录；新手、七日、创作挑战、Prompt 共创和邀请有礼进入各自承接页。</span></div>
+        <div class="v1-rule-section"><strong>用户主路径</strong><span>用户先查看可用积分和最近获得情况，再从五张赚积分入口卡进入对应承接页，最后查看最近积分记录。</span></div>
+        <div class="v1-rule-section"><strong>关键字段</strong><span>可用积分、今日获得、近 7 日获得、待到账、AI 商城兑换入口、五张赚积分入口卡、最近积分记录时间和变化值。</span></div>
+        <div class="v1-rule-section"><strong>状态规则</strong><span>积分数值和奖励摘要只表达原型口径；任务完成、积分发放、兑换扣减和异常校验不在本静态原型中执行。</span></div>
+        <div class="v1-rule-section"><strong>动作去向</strong><span>新手和七日卡进入用户中心积分面板，生图挑战进入活动详情页，Prompt 共创进入活动详情页，邀请有礼进入 `invite.html`；积分中心不保留已迁出的活动详情锚点。</span></div>
+        <div class="v1-rule-section"><strong>运营维护</strong><span>五张入口卡来自一期活动需求；积分中心只维护入口排序、积分资产展示和记录露出。活动规则、任务节点、邀请规则和拉新转化分别在对应页面维护。</span></div>
+        <div class="v1-rule-section"><strong>研发验收</strong><span>积分资产栏必须为通栏短卡，不能回到左右分栏；赚积分入口固定 5 张卡，入口卡不得出现说明型标签；页面内不得保留 `data-points-task-detail` 或 `data-points-detail-row`；邀请有礼链接必须直达 `invite.html`。</span></div>
+        <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付 C 端静态原型中的入口聚合和浏览路径。真实积分账务、奖励结算、防刷、卡密、支付履约、运营配置、接口协议和真实上线工程方案后置。</span></div>
+      </div>
+    </details>
     <div class="footer-space"></div>
   </div>
+  <script src="./walkthrough.js" defer></script>
 </body>
 </html>

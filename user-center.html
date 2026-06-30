@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
@@ -29,6 +29,7 @@
           <a href="./tutorial.html">官方教程</a>
         </nav>
         <div class="header-actions">
+          <a class="action-link activity-center-link" href="./activity-center.html" data-nav-action="activity-center" data-action-label="活动中心">活动中心</a>
           <a class="action-link" href="./invite.html" data-nav-action="invite">邀请有礼</a>
           <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a>
           <a class="action-link points-link" href="./points-center.html" data-nav-action="points">积分 1280</a>
@@ -42,7 +43,7 @@
       <a class="modal-backdrop" href="#" aria-label="关闭轻发布"></a>
       <div class="create-dialog profile-create-dialog">
         <div class="create-dialog-head">
-          <div><span class="eyebrow dark">轻发布</span><h2>龙虎天劫封面</h2></div>
+          <div><h2>龙虎天劫封面</h2></div>
           <a class="modal-close-button modal-close-icon-button" href="#" role="button" aria-label="关闭轻发布"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a>
         </div>
         <div class="profile-create-body">
@@ -64,7 +65,7 @@
       <a class="modal-backdrop" href="#" aria-label="关闭轻发布"></a>
       <div class="create-dialog profile-create-dialog">
         <div class="create-dialog-head">
-          <div><span class="eyebrow dark">轻发布</span><h2>赛博广告分镜</h2></div>
+          <div><h2>赛博广告分镜</h2></div>
           <a class="modal-close-button modal-close-icon-button" href="#" role="button" aria-label="关闭轻发布"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a>
         </div>
         <div class="profile-create-body">
@@ -86,7 +87,7 @@
       <a class="modal-backdrop" href="#" aria-label="关闭轻发布"></a>
       <div class="create-dialog profile-create-dialog">
         <div class="create-dialog-head">
-          <div><span class="eyebrow dark">轻发布</span><h2>模型体验图文</h2></div>
+          <div><h2>模型体验图文</h2></div>
           <a class="modal-close-button modal-close-icon-button" href="#" role="button" aria-label="关闭轻发布"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a>
         </div>
         <div class="profile-create-body">
@@ -179,7 +180,7 @@
             <section id="creation-records" class="profile-module-panel is-default-profile-panel" data-user-section="creation-records">
               <section class="profile-section profile-record-section">
                 <div class="profile-section-head">
-                  <div><span class="eyebrow dark">创作</span><h2>创作记录</h2></div>
+                  <div><h2>创作记录</h2></div>
                 </div>
                 <div class="profile-creation-grid" data-profile-card-grid>
                   <a class="case-card profile-creation-card" href="#continue-dragon" data-user-asset data-user-create-source data-profile-standard-card>
@@ -209,7 +210,7 @@
 
             <section id="favorites" class="profile-module-panel profile-section" data-user-section="favorites">
               <div class="profile-section-head">
-                <div><span class="eyebrow dark">收藏</span><h2>我的收藏</h2></div>
+                <div><h2>我的收藏</h2></div>
                 <a class="section-link" href="./aigc-templates.html">模板库</a>
               </div>
               <div class="profile-favorite-row">
@@ -221,39 +222,57 @@
 
             <section id="points" class="profile-module-panel profile-points-section" data-user-section="points">
               <div class="points-center-layout profile-points-layout">
-                <div class="points-focus-grid">
-                  <section class="app-card points-balance-hero" data-profile-points-section="balance">
-                    <div class="points-balance-copy">
-                      <span class="eyebrow dark">积分中心</span>
-                      <h1>1280</h1>
-                      <p>可用积分</p>
-                    </div>
-                    <div class="points-balance-stats" aria-label="积分状态">
-                      <span><strong>16</strong><em>可兑换权益</em></span>
-                      <span><strong>+20</strong><em>今日已入账</em></span>
-                      <span><strong>-12</strong><em>最近一次使用</em></span>
-                    </div>
-                    <a class="points-balance-shop" href="./member-store.html" data-points-shop-entry>
-                      <strong>去AI商城兑换</strong>
-                      <span>模型体验、镜像站权益和创作工具</span>
-                    </a>
-                  </section>
+                <section class="app-card points-balance-hero" data-profile-points-section="balance">
+                  <div class="points-balance-copy">
+                    <h1>1280</h1>
+                    <p>可用积分</p>
+                  </div>
+                  <div class="points-balance-stats" aria-label="积分状态">
+                    <span><strong>+40</strong><em>今日获得</em></span>
+                    <span><strong>+180</strong><em>近 7 日获得</em></span>
+                    <span><strong>+40</strong><em>待到账</em></span>
+                  </div>
+                  <a class="points-balance-shop" href="./member-store.html" data-points-shop-entry>
+                    <strong>去 AI 商城兑换</strong>
+                    <span>把积分换成模型体验卡和创作权益</span>
+                  </a>
+                </section>
 
-                  <section class="app-card points-task-card" data-profile-points-section="today-tasks">
-                    <div class="app-card-head">
-                      <div>
-                        <h2>今日任务</h2>
-                      </div>
+                <section class="app-card points-earn-card" data-profile-points-section="earn">
+                  <div class="app-card-head">
+                    <div>
+                      <h2>赚积分入口</h2>
                     </div>
-                    <div class="task-list points-task-list">
-                      <a class="task-row" href="./aigc.html#quick-create" data-profile-points-task><strong>AIGC 体验</strong><span>完成一次图片、视频或漫剧创作</span><em>+10</em><b class="task-status is-action">前往完成</b></a>
-                      <a class="task-row" href="./flash.html#compose-flash" data-profile-points-task><strong>发布闪念</strong><span>记录一次模型体验或创作心得</span><em>+30</em><b class="task-status is-action">前往完成</b></a>
-                      <a class="task-row" href="./model-plaza.html" data-profile-points-task><strong>模型反馈</strong><span>选择模型并提交体验反馈</span><em>+60</em><b class="task-status is-action">前往完成</b></a>
-                      <a class="task-row" href="./invite.html" data-profile-points-task><strong>邀请好友</strong><span>好友完成首次 AIGC 体验</span><em>+120</em><b class="task-status is-action">前往完成</b></a>
-                      <a class="task-row" href="#points" data-profile-points-task><strong>每日登录</strong><span>回到用户中心</span><em>+20</em><b class="task-status is-done">已完成</b></a>
-                    </div>
-                  </section>
-                </div>
+                    <a class="section-link" href="./points-center.html">积分中心</a>
+                  </div>
+                  <div class="points-earn-grid">
+                    <a class="points-earn-tile" href="./user-center.html#points" data-profile-earn-card>
+                      <strong>新手任务</strong>
+                      <p>完成首次访问、资料、浏览、互动、收藏和首次发布。</p>
+                      <em>最高 110 积分</em>
+                    </a>
+                    <a class="points-earn-tile" href="./user-center.html#points" data-profile-earn-card>
+                      <strong>七日成长任务</strong>
+                      <p>连续 7 天完成浏览、共创、发布、分享和兑换。</p>
+                      <em>最高 320 积分</em>
+                    </a>
+                    <a class="points-earn-tile" href="./campaign-detail.html" data-profile-earn-card>
+                      <strong>AI 生图创作挑战</strong>
+                      <p>按主题发布 AI 作品，进入挑战和精选候选。</p>
+                      <em>发布奖励 50 积分</em>
+                    </a>
+                    <a class="points-earn-tile" href="./aigc-templates.html" data-profile-earn-card>
+                      <strong>Prompt 共创计划</strong>
+                      <p>发布可复用 Prompt，沉淀模板和同款入口。</p>
+                      <em>纯文字 20 积分</em>
+                    </a>
+                    <a class="points-earn-tile" href="./invite.html" data-profile-earn-card>
+                      <strong>邀请有礼</strong>
+                      <p>好友完成注册、首次互动和首次发布后累计奖励。</p>
+                      <em>单个好友最高 90 积分</em>
+                    </a>
+                  </div>
+                </section>
 
                 <section class="app-card points-record-card" data-profile-points-section="records">
                   <div class="app-card-head">
@@ -263,11 +282,12 @@
                   </div>
                   <div class="growth-table compact-table points-record-table">
                     <div class="growth-table-row is-head"><span>时间</span><span>动作</span><span>变化</span></div>
-                    <div class="growth-table-row" data-profile-points-record><strong>今天 09:12</strong><span>每日登录</span><em>+20</em></div>
-                    <div class="growth-table-row" data-profile-points-record><strong>今天 10:26</strong><span>AIGC 体验</span><em>+10</em></div>
-                    <div class="growth-table-row" data-profile-points-record><strong>今天 11:40</strong><span>模板生成角色封面</span><em>-12</em></div>
-                    <div class="growth-table-row" data-profile-points-record><strong>昨天 18:06</strong><span>模型体验反馈</span><em>+60</em></div>
-                    <div class="growth-table-row" data-profile-points-record><strong>昨天 20:15</strong><span>好友完成首次体验</span><em>+120</em></div>
+                    <div class="growth-table-row" data-profile-points-record><strong>今天 09:12</strong><span>新手首访</span><em>+10</em></div>
+                    <div class="growth-table-row" data-profile-points-record><strong>今天 09:28</strong><span>完善资料</span><em>+10</em></div>
+                    <div class="growth-table-row" data-profile-points-record><strong>今天 10:26</strong><span>参与生图挑战</span><em>+20</em></div>
+                    <div class="growth-table-row" data-profile-points-record><strong>今天 11:40</strong><span>AI商城工具兑换</span><em>-40</em></div>
+                    <div class="growth-table-row" data-profile-points-record><strong>昨天 18:06</strong><span>生图挑战作品发布</span><em>+50</em></div>
+                    <div class="growth-table-row" data-profile-points-record><strong>昨天 20:15</strong><span>好友首次发布作品</span><em>+90</em></div>
                   </div>
                 </section>
               </div>
@@ -275,22 +295,92 @@
 
             <section id="invite" class="profile-module-panel profile-section profile-invite-section" data-user-section="invite">
               <div class="profile-section-head">
-                <div><span class="eyebrow dark">邀请</span><h2>邀请有礼</h2></div>
-                <a class="section-link" href="./invite.html">完整邀请页</a>
+                <div><h2>邀请有礼</h2></div>
               </div>
-              <div class="profile-invite-layout">
-                <div class="profile-invite-code">
-                  <span>我的邀请码</span>
-                  <strong>SG2026</strong>
-                  <em>好友完成首次体验后，双方获得积分或体验权益。</em>
-                  <div><a class="button" href="./invite.html">邀请好友</a><a class="button secondary" href="./invite.html#invite-records">查看记录</a></div>
+              <div class="profile-invite-mirror" data-profile-invite-mirror>
+                <div class="invite-landing-layout profile-invite-overview">
+                  <div class="invite-hero-copy">
+                    <h1>邀好友来创作，最高拿 90 积分</h1>
+                    <p>好友注册、互动、首次发布都能解锁奖励。越早带朋友开始创作，越快把积分攒起来。</p>
+                    <div class="invite-primary-actions">
+                      <a class="button" href="./invite.html#invite-records">查看邀请记录</a>
+                    </div>
+                  </div>
+
+                  <div class="invite-right-stack" data-profile-invite-right-stack>
+                    <div class="invite-referrer-card profile-invite-relation" id="profile-invite-referrer" data-profile-invite-relation>
+                      <span class="invite-referrer-target" id="profile-invite-referrer-bound" aria-hidden="true"></span>
+                      <div class="invite-referrer-head">
+                        <span>我的邀请人</span>
+                      </div>
+                      <div class="invite-referrer-states">
+                        <div class="invite-referrer-state is-empty" data-profile-invite-state="empty">
+                          <div class="invite-referrer-binder" data-profile-invite-binder>
+                            <label>
+                              <input type="text" value="SG2026" placeholder="绑定邀请码" data-profile-invite-code-field aria-label="绑定邀请码">
+                            </label>
+                            <a class="button" href="#profile-invite-referrer-bound" data-profile-invite-bind-action>绑定邀请人</a>
+                          </div>
+                        </div>
+                        <div class="invite-referrer-state is-bound" data-profile-invite-state="bound">
+                          <div class="invite-referrer-person-card" data-profile-inviter-card>
+                            <img src="assets/image_assets/2.png" alt="">
+                            <strong>青梧</strong>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="invite-code-stage">
+                      <span class="code-caption">我的邀请码</span>
+                      <strong>SG2026</strong>
+                      <p class="invite-code-helper">复制给朋友，进入登录页后完成绑定邀请关系。</p>
+                      <div class="invite-link-box"><a class="invite-link-url" href="./login.html?invite=SG2026" data-invite-login-link>duoyuan-shiguang.local/login?invite=SG2026</a><a href="./invite.html#invite-link" data-invite-copy>复制</a></div>
+                    </div>
+                  </div>
+
+                  <div class="invite-progress-stage" data-invite-section="path">
+                    <div class="invite-progress-head">
+                      <div>
+                        <h2>邀请奖励规则</h2>
+                        <p>好友完成对应动作后，奖励进入邀请记录和积分中心。</p>
+                      </div>
+                      <a class="invite-rule-head-link" href="./invite.html#invite-rules-modal">完整规则</a>
+                    </div>
+                    <div class="invite-reward-summary" data-invite-section="tiers" aria-label="邀请分阶段奖励摘要">
+                      <a class="invite-reward-card" href="./user-center.html" data-invite-step data-invite-tier><strong>注册</strong><span>+20</span><em>成功注册</em></a>
+                      <a class="invite-reward-card" href="./aigc.html" data-invite-step data-invite-tier><strong>互动</strong><span>+20</span><em>点赞/收藏/评论</em></a>
+                      <a class="invite-reward-card" href="./campaign-detail.html" data-invite-step data-invite-tier><strong>发布</strong><span>+50</span><em>有效 AI 作品</em></a>
+                      <div class="invite-reward-card is-total" data-invite-tier><strong>单个好友最高</strong><span>90</span><em>三阶段完成</em></div>
+                    </div>
+                  </div>
                 </div>
-                <div class="profile-invite-list">
-                  <div class="profile-invite-row is-head"><span>好友</span><span>状态</span><span>奖励</span><span>下一步</span></div>
-                  <a class="profile-invite-row" href="./invite.html#invite-records" data-user-invite-record><strong>林舟</strong><span>已完成 AIGC 体验</span><em>+90</em><span>模型体验</span></a>
-                  <a class="profile-invite-row" href="./invite.html#invite-records" data-user-invite-record><strong>青梧</strong><span>已注册，待体验</span><em>+30</em><span>AIGC</span></a>
-                  <a class="profile-invite-row" href="./invite.html#invite-records" data-user-invite-record><strong>木辛</strong><span>已完成模型体验</span><em>+120</em><span>教程</span></a>
-                  <a class="profile-invite-row" href="./invite.html#invite-records" data-user-invite-record><strong>阿澈</strong><span>已领取商城券</span><em>权益券</em><span>AI商城</span></a>
+
+                <div class="invite-record-dashboard" aria-label="邀请数据概览">
+                  <div class="invite-stat-strip invite-overview-stats">
+                    <div data-invite-stat><span>总邀请人数</span><strong>18</strong></div>
+                    <div data-invite-stat><span>已激活好友</span><strong>11</strong></div>
+                    <div data-invite-stat><span>累计获得积分</span><strong>620</strong></div>
+                    <div data-invite-stat><span>处理中积分</span><strong>40</strong></div>
+                  </div>
+                  <div class="invite-period-summary" aria-label="今日和本月邀请奖励统计">
+                    <div class="invite-period-record" data-invite-limit-hint data-invite-period-record>
+                      <strong>今日邀请奖励</strong>
+                      <span>180/300 积分</span>
+                      <em>注册 3/5 · 互动 2/5 · 发布 1/3</em>
+                    </div>
+                    <div class="invite-period-record" data-invite-limit-hint data-invite-period-record>
+                      <strong>本月邀请奖励</strong>
+                      <span>620/2000 积分</span>
+                      <em>注册 18/50 · 互动 11/30 · 发布 6/20</em>
+                    </div>
+                  </div>
+                </div>
+                <div class="invite-record-list">
+                  <a class="invite-record-row" href="./campaign-detail.html" data-user-invite-record data-invite-record><img src="assets/image_assets/1.png" alt=""><strong>林舟<time datetime="2026-06-28T14:20" data-invite-time>06-28 14:20 邀请</time></strong><span class="invite-record-stage"><span class="invite-action-timeline" data-invite-timeline aria-label="关键动作进度"><span class="invite-timeline-node is-done" data-invite-timeline-node><b>注册</b><small>+20</small></span><span class="invite-timeline-node is-done" data-invite-timeline-node><b>互动</b><small>+20</small></span><span class="invite-timeline-node is-done is-current" data-invite-timeline-node><b>发布</b><small>+50</small></span></span></span><em>+90</em></a>
+                  <a class="invite-record-row" href="./aigc.html" data-user-invite-record data-invite-record><img src="assets/image_assets/2.png" alt=""><strong>青梧<time datetime="2026-06-28T11:05" data-invite-time>06-28 11:05 邀请</time></strong><span class="invite-record-stage"><span class="invite-action-timeline" data-invite-timeline aria-label="关键动作进度"><span class="invite-timeline-node is-done" data-invite-timeline-node><b>注册</b><small>+20</small></span><span class="invite-timeline-node is-current" data-invite-timeline-node><b>互动</b><small>+20</small></span><span class="invite-timeline-node is-todo" data-invite-timeline-node><b>发布</b><small>+50</small></span></span></span><em>+20</em></a>
+                  <a class="invite-record-row" href="./aigc.html" data-user-invite-record data-invite-record><img src="assets/image_assets/3.png" alt=""><strong>木辛<time datetime="2026-06-27T19:40" data-invite-time>06-27 19:40 邀请</time></strong><span class="invite-record-stage"><span class="invite-action-timeline" data-invite-timeline aria-label="关键动作进度"><span class="invite-timeline-node is-done" data-invite-timeline-node><b>注册</b><small>+20</small></span><span class="invite-timeline-node is-done" data-invite-timeline-node><b>互动</b><small>+20</small></span><span class="invite-timeline-node is-current" data-invite-timeline-node><b>发布</b><small>+50</small></span></span></span><em>+40</em></a>
+                  <a class="invite-record-row" href="./campaign-detail.html" data-user-invite-record data-invite-record><img src="assets/image_assets/4.png" alt=""><strong>阿澈<time datetime="2026-06-27T16:18" data-invite-time>06-27 16:18 邀请</time></strong><span class="invite-record-stage"><span class="invite-action-timeline" data-invite-timeline aria-label="关键动作进度"><span class="invite-timeline-node is-done" data-invite-timeline-node><b>注册</b><small>+20</small></span><span class="invite-timeline-node is-done" data-invite-timeline-node><b>互动</b><small>+20</small></span><span class="invite-timeline-node is-done is-current" data-invite-timeline-node><b>发布</b><small>+50</small></span></span></span><em>+90</em></a>
                 </div>
               </div>
             </section>
@@ -305,12 +395,12 @@
         <div class="v1-walkthrough-head"><strong>用户中心走查</strong><span>用户中心需要承接个人资产、轻创作回流、积分和邀请。</span></div>
         <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>运营关注</span><span>研发关注</span></div>
         <div class="v1-rule-section"><strong>页面定位</strong><span>用户中心是个人资产和创作回流工作台，左侧保留用户资料和分区按钮，右侧直接呈现当前模块内容；独立总览横幅已退出。</span></div>
-        <div class="v1-rule-section"><strong>用户主路径</strong><span>用户从头像进入 -> 点击左侧分区 -> 右侧只呈现创作、收藏、积分或邀请模块；左侧积分中心不跳转，直接在用户中心右侧呈现与积分中心一致的 UI。</span></div>
-        <div class="v1-rule-section"><strong>关键字段</strong><span>头像昵称、最近创作卡片、收藏资产、积分入口数值、邀请码、邀请列表、积分任务和积分记录。</span></div>
+        <div class="v1-rule-section"><strong>用户主路径</strong><span>用户从头像下拉进入个人中心 -> 点击左侧分区 -> 右侧只呈现创作、收藏、积分或邀请模块；左侧积分中心不跳转，直接在用户中心右侧呈现与积分中心一致的 UI；左侧邀请有礼直接在用户中心右侧呈现与独立邀请页一致的内容，顶部导航邀请入口只是快捷入口。</span></div>
+        <div class="v1-rule-section"><strong>关键字段</strong><span>头像昵称、最近创作卡片、收藏资产、积分入口数值、赚积分入口卡、新手/七日/生图/Prompt/邀请活动、邀请码、邀请链接、我的邀请人、邀请码输入框、绑定邀请人按钮、绑定后头像昵称卡片、邀请奖励规则、今日/月度奖励统计、邀请列表、积分记录和邀请阶段。</span></div>
         <div class="v1-rule-section"><strong>状态规则</strong><span>默认显示创作记录卡片网格；创作记录复用社区内容卡片，不使用独立大卡、堆叠和时间线；卡片不展示已发布、草稿、待完善等状态标签，也不展示继续创作按钮；点击卡片直接打开携带上下文的轻发布弹层。标题区不放额外创建入口；左侧不放额外建议卡；资料编辑只保留用户卡右侧图标入口，并在同一弹层承载头像上传、昵称、个人简介、微信绑定和手机号绑定；手机号已绑定时只展示脱敏号码，弹层关闭使用图标按钮，底部操作按钮靠右。</span></div>
-        <div class="v1-rule-section"><strong>动作去向</strong><span>左侧创作记录、我的收藏、积分中心和邀请有礼切换右侧模块。用户中心积分模块复用积分中心的资产卡、今日任务和积分记录；顶部积分入口仍进入独立积分中心页。</span></div>
-        <div class="v1-rule-section"><strong>运营维护</strong><span>最近创作、收藏资产、积分任务、邀请状态和邀请码来自用户成长轻路径、活动任务方案和人工样例数据，灰度期由运营手动维护。</span></div>
-        <div class="v1-rule-section"><strong>研发关注</strong><span>左侧不放额外建议卡，右侧不放用户中心总览横幅。左侧入口均带图标，积分值显示在积分中心入口右侧；左侧积分中心为 `#points` 页内模块，今日任务宽度优先保障，积分资产卡和积分记录可随右侧容器压缩；创作记录标题区没有额外创建入口，至少保留 3 张社区通用内容卡片，不保留状态标签、卡片 CTA 或旧特殊结构；邀请列表不少于 4 条。</span></div>
+        <div class="v1-rule-section"><strong>动作去向</strong><span>左侧创作记录、我的收藏、积分中心和邀请有礼切换右侧模块。用户中心积分模块复用独立积分中心的资产卡、赚积分入口和积分记录；用户中心邀请模块复用独立邀请页的邀请码、邀请人、奖励规则摘要、统计和记录；新手和七日卡停留在用户中心积分面板，生图挑战进入活动详情页，Prompt 共创进入模板库；扫码登录后的邀请关系补填在邀请有礼模块内承接。</span></div>
+        <div class="v1-rule-section"><strong>运营维护</strong><span>最近创作、收藏资产、活动入口、邀请状态、邀请码和我的邀请人来自用户成长轻路径、一期活动需求和人工样例数据。导航栏邀请有礼和我的邀请有礼保持内容一致，避免两套口径；我的邀请人状态只维护填写邀请码和绑定后头像昵称两种展示，默认不同时露出。</span></div>
+        <div class="v1-rule-section"><strong>研发验收</strong><span>左侧不放额外建议卡，右侧不放用户中心总览横幅。左侧入口均带图标，积分值显示在积分中心入口右侧；左侧积分中心为 `#points` 页内模块，积分资产卡通栏且高度压缩，赚积分入口固定 5 张卡且不出现说明型标签；创作记录标题区没有额外创建入口，至少保留 3 张社区通用内容卡片，不保留状态标签、卡片 CTA 或旧特殊结构；邀请模块标题区不展示眉标或打开独立邀请页入口，必须直接展示我的邀请码、邀请链接、我的邀请人、邀请码输入框、绑定邀请人按钮、绑定后头像昵称卡片、奖励规则摘要、今日/月度奖励统计和不少于 4 条邀请列表；邀请概览首屏左侧入口卡与右侧邀请人/邀请码堆栈顶部和底部对齐；默认不展示未绑定提示，点击绑定邀请人后切换为头像昵称卡片。</span></div>
         <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付个人工作台、创作回流、积分入口、邀请进展和资料编辑意向。完整账号体系、私信、收益中心、隐私管理能力和正式发布流程后置。</span></div>
       </div>
     </details>

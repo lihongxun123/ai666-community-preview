@@ -1,6 +1,6 @@
 # AI666 社区模块公网静态预览包
 
-生成时间：2026-06-24T18:23:35.547Z
+生成时间：2026-06-30T19:14:54.681Z
 
 ## 用途
 
@@ -35,16 +35,24 @@ npm.cmd run validate:community:public-preview
 - 闪念: flash.html
 - 官方教程: tutorial.html
 - 教程详情: tutorial-detail.html
+- 活动中心: activity-center.html
 - 活动详情: campaign-detail.html
+- Prompt 共创计划: campaign-prompt.html
+- Prompt 投稿: prompt-submit.html
+- Prompt 详情: prompt-detail.html
+- 新手任务: campaign-new-user.html
+- 七日成长任务: campaign-seven-day.html
 - 消息中心: message-center.html
 - 积分中心: points-center.html
 - 邀请有礼: invite.html
+- 登录承接: login.html
 - AI商城: member-store.html
 - 用户中心: user-center.html
 
 ## 调试页
 
 - 内容详情弹层调试台: content-detail-modals.html
+- 一期活动预览入口: campaign-ops.html
 
 ## 边界
 

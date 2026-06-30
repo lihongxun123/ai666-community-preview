@@ -1,6 +1,6 @@
 (function () {
-  const prototypeLabels = new Set(["页面定位", "用户主路径", "关键字段", "状态规则"]);
-  const businessLabels = new Set(["动作去向", "运营维护", "研发关注", "交付边界"]);
+  const operationsLabels = new Set(["页面定位", "用户主路径", "关键字段", "状态规则", "动作去向", "运营维护"]);
+  const engineeringLabels = new Set(["研发关注", "研发验收", "交互与状态", "数据与资源", "验证关注", "交付边界"]);
 
   function getSectionLabel(section) {
     return section.querySelector("strong")?.textContent.trim() || "";
@@ -9,9 +9,9 @@
   function classifySections(drawer) {
     return Array.from(drawer.querySelectorAll(".v1-rule-section")).map((section, index) => {
       const label = getSectionLabel(section);
-      const pane = businessLabels.has(label) || (!prototypeLabels.has(label) && index >= 4)
-        ? "business"
-        : "prototype";
+      const pane = engineeringLabels.has(label) || (!operationsLabels.has(label) && index >= 6)
+        ? "engineering"
+        : "operations";
       section.dataset.walkthroughPane = pane;
       return section;
     });
@@ -39,7 +39,7 @@
 
   function resetToPrototype(drawer) {
     delete drawer.dataset.walkthroughManualPane;
-    activatePane(drawer, "prototype");
+    activatePane(drawer, "operations");
     const panel = drawer.querySelector(".v1-walkthrough-panel");
     if (panel) {
       panel.scrollTop = 0;
@@ -68,7 +68,7 @@
     });
 
     labels.forEach((label, index) => {
-      const pane = index === 0 ? "prototype" : "business";
+      const pane = index === 0 ? "operations" : "engineering";
       const oldNode = existing[index];
       const button = document.createElement("button");
       button.type = "button";
@@ -81,7 +81,7 @@
           return;
         }
         event.preventDefault();
-        const nextPane = pane === "prototype" ? "business" : "prototype";
+        const nextPane = pane === "operations" ? "engineering" : "operations";
         markManualPane(drawer);
         activatePane(drawer, nextPane);
         drawer.querySelector(`[data-walkthrough-tab="${nextPane}"]`)?.focus();
@@ -162,7 +162,7 @@
     enhanceClose(drawer);
     enhanceTabs(drawer);
     resetOnOpen(drawer);
-    activatePane(drawer, "prototype");
+    activatePane(drawer, "operations");
   }
 
   function closeCreationModelSelect(event) {
@@ -204,6 +204,8 @@
       const dialog = flow.closest(".create-dialog");
       let activeTween = null;
       let generationLoop = null;
+      const stateMotionDuration = (value) => reduceMotion ? Math.min(value * 1.35, 0.48) : value;
+      const stateMotionStagger = reduceMotion ? 0.018 : 0.035;
 
       const currentRadio = () => flow.querySelector(".creation-flow-radio:checked");
       const activeMode = () => dialog?.querySelector("[data-create-mode]:checked")?.value || "image";
@@ -238,6 +240,12 @@
         if (generationLoop) {
           generationLoop.kill();
           generationLoop = null;
+        }
+      };
+      const setTransitionState = (state) => {
+        flow.dataset.creationFlowTransition = state;
+        if (dialog) {
+          dialog.dataset.creationFlowTransition = state;
         }
       };
       const startGenerationLoop = () => {
@@ -277,22 +285,27 @@
         if (activeTween) {
           activeTween.kill();
           activeTween = null;
+          setTransitionState("idle");
         }
 
+        const fromState = currentRadio()?.value || "input";
         const fromRect = dialog?.getBoundingClientRect();
         stopGenerationLoop();
         targetRadio.checked = true;
         setStateData();
         syncPromptPreview();
+        const toState = targetRadio.value || currentRadio()?.value || "input";
         const nextPanel = visiblePanel();
         const toRect = dialog?.getBoundingClientRect();
 
-        if (!gsap || reduceMotion || !dialog || !hasUsableRect(fromRect) || !hasUsableRect(toRect)) {
+        if (!gsap || !dialog || !hasUsableRect(fromRect) || !hasUsableRect(toRect)) {
+          setTransitionState("idle");
           startGenerationLoop();
           return;
         }
 
-        const parts = Array.from(nextPanel?.querySelectorAll("[data-creation-motion-part], .creation-live-stage, .creation-state-aside, .creation-result-preview, .creation-destination-card") || []);
+        setTransitionState(`${fromState}:${toState}`);
+        const parts = Array.from(nextPanel?.querySelectorAll("[data-creation-motion-part], .creation-conversation-panel, .creation-generation-rail, .creation-live-stage, .creation-state-aside, .creation-result-preview, .creation-destination-card") || []);
         gsap.set(dialog, {
           transformOrigin: "50% 100%",
           scaleX: fromRect.width / toRect.width,
@@ -308,13 +321,14 @@
             activeTween = null;
             gsap.set(dialog, { clearProps: "transform,willChange" });
             gsap.set([nextPanel, ...parts], { clearProps: "opacity,visibility,transform" });
+            setTransitionState("idle");
             startGenerationLoop();
           }
         });
         activeTween
-          .to(dialog, { scaleX: 1, scaleY: 1, duration: 0.46, ease: "power3.inOut" }, 0)
-          .to(nextPanel, { autoAlpha: 1, y: 0, scale: 1, duration: 0.3, ease: "power2.out" }, 0.12)
-          .to(parts, { autoAlpha: 1, y: 0, duration: 0.26, stagger: 0.035, ease: "power2.out" }, 0.18);
+          .to(dialog, { scaleX: 1, scaleY: 1, duration: stateMotionDuration(0.42), ease: "power3.inOut" }, 0)
+          .to(nextPanel, { autoAlpha: 1, y: 0, scale: 1, duration: stateMotionDuration(0.26), ease: "power2.out" }, stateMotionDuration(0.08))
+          .to(parts, { autoAlpha: 1, y: 0, duration: stateMotionDuration(0.24), stagger: stateMotionStagger, ease: "power2.out" }, stateMotionDuration(0.12));
       };
 
       setStateData();
@@ -364,6 +378,9 @@
       dialog.querySelector(".experience-canvas")
     ].filter(Boolean);
     let morphTimeline = null;
+    const motionDuration = (value) => value;
+    const shellEase = "power3.inOut";
+    const revealEase = "power2.out";
 
     const setQuickCreateHash = (isOpen) => {
       const nextUrl = new URL(window.location.href);
@@ -403,7 +420,8 @@
         scaleY,
         autoAlpha: 1,
         borderRadius,
-        transformOrigin: "50% 100%"
+        transformOrigin: "50% 100%",
+        "--quick-create-shell-sheen-x": "-72%"
       });
       return shell;
     };
@@ -478,14 +496,15 @@
             scaleX: 1,
             scaleY: 1,
             borderRadius: radiusOf(dialog, "18px"),
-            duration: 0.52,
-            ease: "power3.inOut"
+            duration: motionDuration(0.72),
+            ease: shellEase
           },
           0
         )
-        .to(shell, { autoAlpha: 0, duration: 0.16, ease: "power1.out" }, 0.38)
-        .to(dialog, { autoAlpha: 1, y: 0, scale: 1, duration: 0.24, ease: "power2.out" }, 0.34)
-        .to(revealParts, { autoAlpha: 1, y: 0, duration: 0.24, stagger: 0.035, ease: "power2.out" }, 0.38);
+        .to(shell, { "--quick-create-shell-sheen-x": "86%", duration: motionDuration(0.56), ease: "power2.inOut" }, motionDuration(0.04))
+        .to(shell, { autoAlpha: 0, duration: motionDuration(0.16), ease: "power1.out" }, motionDuration(0.62))
+        .to(dialog, { autoAlpha: 1, y: 0, scale: 1, duration: motionDuration(0.2), ease: revealEase }, motionDuration(0.52))
+        .to(revealParts, { autoAlpha: 1, y: 0, duration: motionDuration(0.2), stagger: reduceMotion ? 0.008 : 0.018, ease: revealEase }, motionDuration(0.56));
     };
 
     const closeQuickCreate = (event) => {
@@ -518,50 +537,44 @@
       });
 
       morphTimeline
-        .to(backdrop, { autoAlpha: 0, duration: 0.2, ease: "power1.out" }, 0)
+        .to(backdrop, { autoAlpha: 0, duration: 0.16, ease: "power1.out" }, 0)
         .to(
           shell,
           {
             scaleX: toRect.width / fromRect.width,
             scaleY: toRect.height / fromRect.height,
             borderRadius: radiusOf(trigger, "999px"),
-            duration: 0.44,
-            ease: "power3.inOut"
+            duration: motionDuration(0.5),
+            ease: shellEase
           },
           0
         )
-        .to(shell, { autoAlpha: 0, duration: 0.14, ease: "power1.out" }, 0.34)
-        .to(trigger, { autoAlpha: 1, duration: 0.16, ease: "power1.out" }, 0.34);
+        .to(shell, { "--quick-create-shell-sheen-x": "72%", duration: motionDuration(0.44), ease: "power2.inOut" }, 0)
+        .to(shell, { autoAlpha: 0, duration: motionDuration(0.12), ease: "power1.out" }, motionDuration(0.44))
+        .to(trigger, { autoAlpha: 1, duration: motionDuration(0.14), ease: "power1.out" }, motionDuration(0.4));
     };
 
     const startsOpen = window.location.hash === "#quick-create";
-    modal.classList.toggle("is-quick-create-morph-open", startsOpen);
-    setMorphState(startsOpen ? "open" : "closed");
+    modal.classList.remove("is-quick-create-morph-open", "is-quick-create-morphing");
+    setMorphState("closed");
+    trigger.dataset.quickCreateHashOpenPending = startsOpen ? "true" : "false";
+    const requestHashOpen = () => {
+      if (window.location.hash !== "#quick-create" || root.dataset.quickCreateMorphState !== "closed") {
+        return;
+      }
+      trigger.dispatchEvent(new CustomEvent("quick-create:morph-open", { cancelable: true }));
+    };
 
-    if (reduceMotion) {
-      trigger.addEventListener("click", (event) => {
-        event.preventDefault();
-        finishOpenWithoutMotion();
-      });
-      modal.addEventListener("click", (event) => {
-        const closeTarget = event.target.closest(".modal-backdrop, .modal-close-icon");
-        if (!closeTarget || !modal.contains(closeTarget)) {
-          return;
-        }
-        event.preventDefault();
-        finishCloseWithoutMotion();
-      });
-      return;
-    }
-
+    trigger.addEventListener("quick-create:morph-open", openQuickCreate);
     trigger.addEventListener("click", openQuickCreate);
     modal.addEventListener("click", (event) => {
-      const closeTarget = event.target.closest(".modal-backdrop, .modal-close-icon");
+      const closeTarget = event.target.closest(".modal-backdrop, .modal-close-icon, .creation-side-close");
       if (!closeTarget || !modal.contains(closeTarget)) {
         return;
       }
       closeQuickCreate(event);
     });
+    window.addEventListener("hashchange", requestHashOpen);
   }
 
   function initFloatingCreateMotion() {
@@ -577,6 +590,12 @@
     if (reduceMotion) {
       trigger.dataset.gsapMotionState = "reduced";
       gsap.set(trigger, { autoAlpha: 1, clearProps: "visibility" });
+      if (trigger.dataset.quickCreateHashOpenPending === "true") {
+        requestAnimationFrame(() => {
+          trigger.dataset.quickCreateHashOpenPending = "false";
+          trigger.dispatchEvent(new CustomEvent("quick-create:morph-open", { cancelable: true }));
+        });
+      }
       return;
     }
 
@@ -598,6 +617,10 @@
       defaults: { ease: "power2.out", overwrite: "auto" },
       onComplete: () => {
         trigger.dataset.gsapMotionState = "ready";
+        if (trigger.dataset.quickCreateHashOpenPending === "true") {
+          trigger.dataset.quickCreateHashOpenPending = "false";
+          trigger.dispatchEvent(new CustomEvent("quick-create:morph-open", { cancelable: true }));
+        }
       }
     });
 
@@ -651,11 +674,181 @@
     }
   }
 
+  function fallbackCopyText(value) {
+    const textarea = document.createElement("textarea");
+    textarea.value = value;
+    textarea.setAttribute("readonly", "");
+    textarea.style.position = "fixed";
+    textarea.style.left = "-9999px";
+    textarea.style.top = "0";
+    document.body.append(textarea);
+    textarea.select();
+    try {
+      document.execCommand("copy");
+    } finally {
+      textarea.remove();
+    }
+    return Promise.resolve();
+  }
+
+  function writeClipboardText(value) {
+    if (navigator.clipboard?.writeText) {
+      return navigator.clipboard.writeText(value).catch(() => fallbackCopyText(value));
+    }
+
+    return fallbackCopyText(value);
+  }
+
+  function initResultPromptCopy() {
+    if (document.documentElement.dataset.resultPromptCopyReady === "true") {
+      return;
+    }
+
+    document.documentElement.dataset.resultPromptCopyReady = "true";
+    document.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-result-copy-prompt]");
+      if (!button) {
+        return;
+      }
+
+      const prompt = button.closest(".creation-result-prompt-card")?.querySelector("[data-result-prompt]");
+      const value = prompt?.textContent.trim();
+      if (!value) {
+        return;
+      }
+
+      event.preventDefault();
+      writeClipboardText(value).finally(() => {
+        const label = button.querySelector("span");
+        const originalLabel = button.dataset.copyLabel || label?.textContent || "复制";
+        button.dataset.copyLabel = originalLabel;
+        button.dataset.copyState = "copied";
+        if (label) {
+          label.textContent = "已复制";
+        }
+        window.clearTimeout(button.resultCopyTimer);
+        button.resultCopyTimer = window.setTimeout(() => {
+          button.dataset.copyState = "idle";
+          if (label) {
+            label.textContent = originalLabel;
+          }
+        }, 1200);
+      });
+    });
+  }
+
+  function closeUserMenus(exceptMenu) {
+    document.querySelectorAll("[data-user-menu]").forEach((menu) => {
+      if (menu === exceptMenu) {
+        return;
+      }
+      menu.classList.remove("is-open");
+      menu.querySelector(".user-avatar-link")?.setAttribute("aria-expanded", "false");
+    });
+  }
+
+  function setUserMenuOpen(menu, open) {
+    menu.classList.toggle("is-open", open);
+    menu.querySelector(".user-avatar-link")?.setAttribute("aria-expanded", String(open));
+  }
+
+  function createUserMenuLink(item) {
+    const link = document.createElement("a");
+    link.href = item.href;
+    link.dataset.userMenuItem = item.key;
+    if (item.logout) {
+      link.dataset.logoutAction = "true";
+    }
+    if (item.setting) {
+      link.dataset.userMenuSetting = "true";
+    }
+    if (item.ctaState) {
+      link.dataset.ctaState = item.ctaState;
+    }
+    link.setAttribute("role", "menuitem");
+
+    const icon = document.createElement("img");
+    icon.src = item.icon;
+    icon.alt = "";
+    link.append(icon);
+
+    const text = document.createElement("span");
+    text.textContent = item.label;
+    link.append(text);
+
+    return link;
+  }
+
+  function enhanceUserMenus() {
+    if (document.documentElement.dataset.userMenuReady === "true") {
+      return;
+    }
+
+    document.documentElement.dataset.userMenuReady = "true";
+    const items = [
+      { key: "profile", label: "我的主页", href: "./user-center.html", icon: "resources/icons/remixicon/svg/User & Faces/user-3-line.svg" },
+      { key: "invite", label: "邀请有礼", href: "./invite.html", icon: "resources/icons/remixicon/svg/Finance/gift-2-line.svg" },
+      { key: "points", label: "积分中心", href: "./points-center.html", icon: "resources/icons/remixicon/svg/Finance/coins-line.svg" },
+      { key: "logout", label: "退出登录", href: "./login.html?logout=1", icon: "resources/icons/remixicon/svg/System/logout-box-r-line.svg", logout: true },
+    ];
+
+    document.querySelectorAll(".site-header .user-avatar-link").forEach((avatar, index) => {
+      if (avatar.closest("[data-user-menu]")) {
+        return;
+      }
+
+      const menu = document.createElement("div");
+      menu.className = "user-menu";
+      menu.dataset.userMenu = "true";
+
+      const target = document.createElement("span");
+      target.id = index === 0 ? "user-menu" : `user-menu-${index + 1}`;
+      target.className = "user-menu-target";
+      target.setAttribute("aria-hidden", "true");
+
+      const dropdown = document.createElement("div");
+      dropdown.className = "user-menu-dropdown";
+      dropdown.dataset.userMenuDropdown = "true";
+      dropdown.setAttribute("role", "menu");
+      dropdown.setAttribute("aria-label", "用户快捷菜单");
+      items.forEach((item) => dropdown.append(createUserMenuLink(item)));
+
+      avatar.parentElement?.insertBefore(menu, avatar);
+      menu.append(target, avatar, dropdown);
+      avatar.href = `#${target.id}`;
+      avatar.dataset.ctaState = "open-user-menu";
+      avatar.setAttribute("aria-haspopup", "menu");
+      avatar.setAttribute("aria-expanded", "false");
+
+      avatar.addEventListener("click", (event) => {
+        event.preventDefault();
+        const shouldOpen = !menu.classList.contains("is-open");
+        closeUserMenus(menu);
+        setUserMenuOpen(menu, shouldOpen);
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      if (event.target.closest("[data-user-menu]")) {
+        return;
+      }
+      closeUserMenus();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeUserMenus();
+      }
+    });
+  }
+
   function init() {
     const gsap = window.gsap;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     document.querySelectorAll("[data-v1-walkthrough-drawer]").forEach(enhanceDrawer);
     enhanceCreationModelSelects();
+    enhanceUserMenus();
+    initResultPromptCopy();
     initCreationFlowMotion(gsap, reduceMotion);
     initFloatingCreateMotion();
   }

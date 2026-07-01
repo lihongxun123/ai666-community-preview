@@ -842,12 +842,376 @@
     });
   }
 
+  const taskGuideStorageKey = "ai666-task-guide-dismissed-date";
+  const taskGuideDefaultOrder = "new-user,seven-day,image,prompt,invite";
+  const taskGuideTasks = [
+    {
+      key: "new-user",
+      datasetKey: "NewUser",
+      label: "新手任务",
+      state: "未完成",
+      reward: "110 积分",
+      cover: "assets/image_assets/18.png",
+      title: "新手任务，先拿 110 积分",
+      description: "几分钟完成基础动作，建立账号信用，解锁后续活动承接。",
+      href: "./campaign-new-user.html",
+      cta: "查看新手任务",
+      entry: "成长入口"
+    },
+    {
+      key: "seven-day",
+      datasetKey: "SevenDay",
+      label: "七日任务",
+      state: "今日待做",
+      reward: "320 积分",
+      cover: "assets/image_assets/11.png",
+      title: "七日成长，最高 320 积分",
+      description: "每天完成一个关键动作，把浏览、收藏、发布和兑换串成稳定习惯。",
+      href: "./campaign-seven-day.html",
+      cta: "查看七日任务",
+      entry: "连续成长"
+    },
+    {
+      key: "image",
+      datasetKey: "Image",
+      label: "AI 生图",
+      state: "可投稿",
+      reward: "最高 1200 积分",
+      cover: "assets/image_assets/2.png",
+      title: "生图挑战，最高 1200 积分",
+      description: "按主题发布作品，前 2 次有效发布有基础奖励，优质作品争取精选和首页曝光。",
+      href: "./campaign-detail.html#image-challenge-tasks",
+      cta: "去看活动详情",
+      entry: "主题投稿"
+    },
+    {
+      key: "prompt",
+      datasetKey: "Prompt",
+      label: "Prompts",
+      state: "可投稿",
+      reward: "最高 680 积分",
+      cover: "assets/image_assets/4.png",
+      title: "Prompt 共创，最高 680 积分",
+      description: "发布可复用提示词，补充图文案例后更容易获得复用、精选和首页推荐。",
+      href: "./campaign-prompt.html",
+      cta: "去看活动详情",
+      entry: "Prompt 投稿"
+    },
+    {
+      key: "invite",
+      datasetKey: "Invite",
+      label: "邀请",
+      state: "长期有效",
+      reward: "单人最高 90 积分",
+      cover: "assets/image_assets/15.jpg",
+      title: "邀请好友，单人最高 90 积分",
+      description: "把社区发给合适的创作者，好友注册、互动和首次发布后分阶段解锁奖励。",
+      href: "./invite.html",
+      cta: "查看邀请详情",
+      entry: "邀请增长",
+      inviteUrl: "duoyuan-shiguang.local/login?invite=SG2026",
+      inviteLabel: "邀请链接"
+    }
+  ];
+
+  function getTodayKey() {
+    const date = new Date();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${date.getFullYear()}-${month}-${day}`;
+  }
+
+  function getTaskGuideDatasetValue(task, suffix) {
+    const key = `taskGuide${task.datasetKey}${suffix}`;
+    return document.documentElement.dataset[key] || document.body?.dataset[key] || "";
+  }
+
+  function getTaskGuideStoredValue(task, suffix) {
+    try {
+      return window.localStorage.getItem(`ai666-task-guide-${task.key}-${suffix}`) || "";
+    } catch (error) {
+      return "";
+    }
+  }
+
+  function isTaskGuideTaskComplete(task) {
+    const explicit = getTaskGuideDatasetValue(task, "Complete") || getTaskGuideStoredValue(task, "complete");
+    return explicit === "true";
+  }
+
+  function isTaskGuideTaskAvailable(task) {
+    const explicit = getTaskGuideDatasetValue(task, "Available") || getTaskGuideStoredValue(task, "available");
+    return explicit === "" || explicit === "true";
+  }
+
+  function selectDefaultTaskGuideTask() {
+    return taskGuideTasks.find((task) => isTaskGuideTaskAvailable(task) && !isTaskGuideTaskComplete(task)) || taskGuideTasks[0];
+  }
+
+  function hasDismissedTaskGuideToday() {
+    try {
+      return window.localStorage.getItem(taskGuideStorageKey) === getTodayKey();
+    } catch (error) {
+      return false;
+    }
+  }
+
+  function dismissTaskGuideForToday() {
+    try {
+      window.localStorage.setItem(taskGuideStorageKey, getTodayKey());
+    } catch (error) {
+      // Static prototype: storage can be unavailable in privacy modes.
+    }
+  }
+
+  function shouldForceTaskGuideOpen() {
+    const params = new URLSearchParams(window.location.search);
+    return window.location.hash === "#task-guide" || params.get("taskGuide") === "1" || params.has("taskGuideTest");
+  }
+
+  function shouldSuppressTaskGuideForHash() {
+    return window.location.hash === "#quick-create" || window.location.hash === "#quick-create-campaign";
+  }
+
+  function isTaskGuideHomeSurface() {
+    const path = window.location.pathname.replace(/\\/g, "/");
+    return path.endsWith("/") || path.endsWith("/index.html") || path === "index.html";
+  }
+
+  function createTaskGuideElement(tag, className, text) {
+    const node = document.createElement(tag);
+    if (className) {
+      node.className = className;
+    }
+    if (text) {
+      node.textContent = text;
+    }
+    return node;
+  }
+
+  function createTaskGuideInviteLink(task) {
+    if (!task.inviteUrl) {
+      return null;
+    }
+
+    const box = createTaskGuideElement("div", "activity-task-guide-invite-link", "");
+    const caption = createTaskGuideElement("span", "", task.inviteLabel || "邀请链接");
+    const link = createTaskGuideElement("a", "", task.inviteUrl);
+    link.href = "./login.html?invite=SG2026";
+    link.dataset.taskGuideLink = "true";
+    const button = createTaskGuideElement("button", "", "复制");
+    button.type = "button";
+    button.dataset.taskGuideCopy = "true";
+    button.dataset.copyValue = task.inviteUrl;
+    box.append(caption, link, button);
+    return box;
+  }
+
+  function createTaskGuideMetric(label, value) {
+    const item = createTaskGuideElement("div", "activity-task-guide-metric", "");
+    item.append(createTaskGuideElement("span", "", label), createTaskGuideElement("strong", "", value));
+    return item;
+  }
+
+  function createTaskGuideVisualPanel(task) {
+    const visual = createTaskGuideElement("div", "activity-task-guide-visual", "");
+    visual.style.setProperty("--task-guide-cover", `url("${task.cover}")`);
+
+    const content = createTaskGuideElement("div", "activity-task-guide-visual-content", "");
+    const title = createTaskGuideElement("h2", "", task.title);
+    const description = createTaskGuideElement("p", "activity-task-guide-description", task.description);
+
+    const metrics = createTaskGuideElement("div", "activity-task-guide-metrics", "");
+    metrics.append(
+      createTaskGuideMetric("奖励", task.reward)
+    );
+
+    const actionRow = createTaskGuideElement("div", "activity-task-guide-actions", "");
+    const primary = createTaskGuideElement("a", "activity-task-guide-primary", task.cta);
+    primary.href = task.href;
+    primary.dataset.taskGuideLink = "true";
+    actionRow.append(primary);
+
+    const inviteLink = createTaskGuideInviteLink(task);
+    content.append(title, description, metrics);
+    if (inviteLink) {
+      content.append(inviteLink);
+    }
+    content.append(actionRow);
+    visual.append(content);
+    return visual;
+  }
+
+  async function copyTaskGuideValue(button) {
+    const value = button.dataset.copyValue || "";
+    if (!value) {
+      return;
+    }
+
+    try {
+      await navigator.clipboard?.writeText(value);
+      button.textContent = "已复制";
+    } catch (error) {
+      button.textContent = "已选中";
+    }
+
+    window.setTimeout(() => {
+      button.textContent = "复制";
+    }, 1600);
+  }
+
+  function setActiveTaskGuideTask(modal, key) {
+    const task = taskGuideTasks.find((item) => item.key === key) || selectDefaultTaskGuideTask();
+    modal.dataset.taskGuideActive = task.key;
+
+    modal.querySelectorAll("[data-task-guide-tab]").forEach((tab) => {
+      const isActive = tab.dataset.taskGuideTab === task.key;
+      tab.classList.toggle("is-active", isActive);
+      tab.setAttribute("aria-selected", String(isActive));
+    });
+
+    const panel = modal.querySelector("[data-task-guide-panel]");
+    if (!panel) {
+      return;
+    }
+
+    panel.replaceChildren();
+    panel.append(createTaskGuideVisualPanel(task));
+  }
+
+  function closeTaskGuide(modal, persist = true) {
+    if (persist) {
+      dismissTaskGuideForToday();
+    }
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("activity-task-guide-open");
+  }
+
+  function openTaskGuide(modal, force = false) {
+    if (!force && hasDismissedTaskGuideToday()) {
+      return;
+    }
+    setActiveTaskGuideTask(modal, selectDefaultTaskGuideTask().key);
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("activity-task-guide-open");
+    window.requestAnimationFrame(() => {
+      modal.querySelector(".activity-task-guide-primary")?.focus();
+    });
+  }
+
+  function createTaskGuideModal() {
+    const modal = createTaskGuideElement("section", "activity-task-guide", "");
+    modal.setAttribute("data-task-guide-modal", "true");
+    modal.setAttribute("data-task-guide-default-order", taskGuideDefaultOrder);
+    modal.setAttribute("role", "dialog");
+    modal.setAttribute("aria-modal", "true");
+    modal.setAttribute("aria-hidden", "true");
+    modal.setAttribute("aria-label", "任务强引导");
+
+    const backdrop = createTaskGuideElement("div", "activity-task-guide-backdrop", "");
+    const dialog = createTaskGuideElement("div", "activity-task-guide-dialog", "");
+
+    const head = createTaskGuideElement("div", "activity-task-guide-head", "");
+    const headingBlock = createTaskGuideElement("div", "", "");
+    headingBlock.append(
+      createTaskGuideElement("h1", "", "参与活动，最高赚 2400 积分")
+    );
+    const closeButton = createTaskGuideElement("button", "activity-task-guide-close", "");
+    closeButton.type = "button";
+    closeButton.dataset.taskGuideDismiss = "true";
+    closeButton.setAttribute("aria-label", "关闭任务引导");
+    const closeIcon = document.createElement("img");
+    closeIcon.src = "resources/icons/remixicon/svg/System/close-line.svg";
+    closeIcon.alt = "";
+    closeButton.append(closeIcon);
+    head.append(headingBlock, closeButton);
+
+    const body = createTaskGuideElement("div", "activity-task-guide-body", "");
+    const tabs = createTaskGuideElement("div", "activity-task-guide-tabs", "");
+    tabs.setAttribute("role", "tablist");
+    tabs.setAttribute("aria-label", "可切换任务");
+    taskGuideTasks.forEach((task) => {
+      const tab = createTaskGuideElement("button", "activity-task-guide-tab", "");
+      tab.type = "button";
+      tab.dataset.taskGuideTab = task.key;
+      tab.setAttribute("role", "tab");
+      tab.append(
+        createTaskGuideElement("span", "", task.label),
+        createTaskGuideElement("em", "", task.reward)
+      );
+      tabs.append(tab);
+    });
+
+    const panel = createTaskGuideElement("article", "activity-task-guide-panel", "");
+    panel.dataset.taskGuidePanel = "true";
+    panel.setAttribute("role", "tabpanel");
+    body.append(tabs, panel);
+
+    dialog.append(head, body);
+    modal.append(backdrop, dialog);
+    return modal;
+  }
+
+  function initActivityTaskGuide() {
+    if (document.documentElement.dataset.taskGuideReady === "true") {
+      return;
+    }
+    if (document.querySelector('[data-page="login"]')) {
+      return;
+    }
+
+    document.documentElement.dataset.taskGuideReady = "true";
+    const modal = createTaskGuideModal();
+    document.body.append(modal);
+
+    modal.addEventListener("click", (event) => {
+      const target = event.target;
+      if (!(target instanceof Element)) {
+        return;
+      }
+      const tab = target.closest("[data-task-guide-tab]");
+      if (tab) {
+        event.preventDefault();
+        setActiveTaskGuideTask(modal, tab.dataset.taskGuideTab);
+        return;
+      }
+      const copyButton = target.closest("[data-task-guide-copy]");
+      if (copyButton) {
+        event.preventDefault();
+        copyTaskGuideValue(copyButton);
+        return;
+      }
+      if (target.closest("[data-task-guide-dismiss]")) {
+        event.preventDefault();
+        closeTaskGuide(modal, true);
+        return;
+      }
+      if (target.closest("[data-task-guide-link]")) {
+        dismissTaskGuideForToday();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && modal.classList.contains("is-open")) {
+        closeTaskGuide(modal, true);
+      }
+    });
+
+    const forceOpen = shouldForceTaskGuideOpen();
+    if (forceOpen || (isTaskGuideHomeSurface() && !shouldSuppressTaskGuideForHash())) {
+      openTaskGuide(modal, forceOpen);
+    }
+  }
+
   function init() {
     const gsap = window.gsap;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     document.querySelectorAll("[data-v1-walkthrough-drawer]").forEach(enhanceDrawer);
     enhanceCreationModelSelects();
     enhanceUserMenus();
+    initActivityTaskGuide();
     initResultPromptCopy();
     initCreationFlowMotion(gsap, reduceMotion);
     initFloatingCreateMotion();

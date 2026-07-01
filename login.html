@@ -96,6 +96,7 @@
         <div class="v1-rule-section"><strong>状态规则</strong><span>邀请码只出现在手机号登录路径；微信扫码路径不出现邀请码输入项，避免扫码前填码的误解。</span></div>
         <div class="v1-rule-section"><strong>动作去向</strong><span>继续登录进入 `user-center.html#invite`；微信扫码区域不设置二次按钮。</span></div>
         <div class="v1-rule-section"><strong>运营维护</strong><span>当前只验证登录承接闭环、邀请码带入和微信扫码入口；验证码发送、微信会话和账号合并后置。</span></div>
+        <div class="v1-rule-section"><strong>研发规则</strong><span data-engineering-rule>手机号字段必填时按 11 位大陆手机号格式展示原型校验；输入为空、少于 11 位或包含非数字时继续登录按钮禁用或提示格式不正确</span><span data-engineering-rule>验证码字段建议 6 位数字；发送验证码按钮在手机号格式正确后启用，发送后进入 60 秒倒计时，倒计时内不可重复发送</span><span data-engineering-rule>邀请码为可选字段，格式与邀请页一致：6-12 位大写字母或数字；带 invite 参数进入时自动填入邀请码字段，但登录页不展示邀请关系解释条</span><span data-engineering-rule>继续登录成功后进入 user-center.html#invite 或登录前来源页；登录失败保留手机号和邀请码，清空验证码并提示重新输入</span><span data-engineering-rule>微信扫码只展示二维码区域和状态，不放补填说明或第二个继续按钮；扫码成功后如缺邀请关系，回到用户中心邀请模块补填</span><span data-engineering-rule>退出登录入口为 login.html?logout=1；页面不得展示完整手机号、短信内容、设备标识、认证凭证或第三方会话明文</span></div>
         <div class="v1-rule-section"><strong>研发验收</strong><span>主内容必须是单个登录弹层；不要出现顶部提示条、左右大段说明卡或多层边框；手机号区必须有手机号、验证码、邀请码和继续登录按钮，微信区必须只有扫码，不展示补填提示或继续按钮；头像菜单退出登录必须指向 `login.html?logout=1`，用于演示退出后回到登录弹层。</span></div>
         <div class="v1-rule-section"><strong>交付边界</strong><span>当前是静态原型闭环，只表达退出登录、邀请链接承接、手机号填码和微信扫码入口；不模拟真实短信、微信授权、登录态校验、账号合并、邀请码有效性校验和邀请奖励结算。</span></div>
       </div>

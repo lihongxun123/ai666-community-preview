@@ -246,12 +246,12 @@
                     <a class="section-link" href="./points-center.html">积分中心</a>
                   </div>
                   <div class="points-earn-grid">
-                    <a class="points-earn-tile" href="./user-center.html#points" data-profile-earn-card>
+                    <a class="points-earn-tile" href="./campaign-new-user.html" data-profile-earn-card>
                       <strong>新手任务</strong>
                       <p>完成首次访问、资料、浏览、互动、收藏和首次发布。</p>
                       <em>最高 110 积分</em>
                     </a>
-                    <a class="points-earn-tile" href="./user-center.html#points" data-profile-earn-card>
+                    <a class="points-earn-tile" href="./campaign-seven-day.html" data-profile-earn-card>
                       <strong>七日成长任务</strong>
                       <p>连续 7 天完成浏览、共创、发布、分享和兑换。</p>
                       <em>最高 320 积分</em>
@@ -261,7 +261,7 @@
                       <p>按主题发布 AI 作品，进入挑战和精选候选。</p>
                       <em>发布奖励 50 积分</em>
                     </a>
-                    <a class="points-earn-tile" href="./aigc-templates.html" data-profile-earn-card>
+                    <a class="points-earn-tile" href="./campaign-prompt.html" data-profile-earn-card>
                       <strong>Prompt 共创计划</strong>
                       <p>发布可复用 Prompt，沉淀模板和同款入口。</p>
                       <em>纯文字 20 积分</em>
@@ -398,8 +398,9 @@
         <div class="v1-rule-section"><strong>用户主路径</strong><span>用户从头像下拉进入个人中心 -> 点击左侧分区 -> 右侧只呈现创作、收藏、积分或邀请模块；左侧积分中心不跳转，直接在用户中心右侧呈现与积分中心一致的 UI；左侧邀请有礼直接在用户中心右侧呈现与独立邀请页一致的内容，顶部导航邀请入口只是快捷入口。</span></div>
         <div class="v1-rule-section"><strong>关键字段</strong><span>头像昵称、最近创作卡片、收藏资产、积分入口数值、赚积分入口卡、新手/七日/生图/Prompt/邀请活动、邀请码、邀请链接、我的邀请人、邀请码输入框、绑定邀请人按钮、绑定后头像昵称卡片、邀请奖励规则、今日/月度奖励统计、邀请列表、积分记录和邀请阶段。</span></div>
         <div class="v1-rule-section"><strong>状态规则</strong><span>默认显示创作记录卡片网格；创作记录复用社区内容卡片，不使用独立大卡、堆叠和时间线；卡片不展示已发布、草稿、待完善等状态标签，也不展示继续创作按钮；点击卡片直接打开携带上下文的轻发布弹层。标题区不放额外创建入口；左侧不放额外建议卡；资料编辑只保留用户卡右侧图标入口，并在同一弹层承载头像上传、昵称、个人简介、微信绑定和手机号绑定；手机号已绑定时只展示脱敏号码，弹层关闭使用图标按钮，底部操作按钮靠右。</span></div>
-        <div class="v1-rule-section"><strong>动作去向</strong><span>左侧创作记录、我的收藏、积分中心和邀请有礼切换右侧模块。用户中心积分模块复用独立积分中心的资产卡、赚积分入口和积分记录；用户中心邀请模块复用独立邀请页的邀请码、邀请人、奖励规则摘要、统计和记录；新手和七日卡停留在用户中心积分面板，生图挑战进入活动详情页，Prompt 共创进入模板库；扫码登录后的邀请关系补填在邀请有礼模块内承接。</span></div>
+        <div class="v1-rule-section"><strong>动作去向</strong><span>左侧创作记录、我的收藏、积分中心和邀请有礼切换右侧模块。用户中心积分模块复用独立积分中心的资产卡、赚积分入口和积分记录；用户中心邀请模块复用独立邀请页的邀请码、邀请人、奖励规则摘要、统计和记录；新手和七日进入对应任务页，生图挑战进入活动详情页，Prompt 共创进入 Prompt 活动详情页；扫码登录后的邀请关系补填在邀请有礼模块内承接。</span></div>
         <div class="v1-rule-section"><strong>运营维护</strong><span>最近创作、收藏资产、活动入口、邀请状态、邀请码和我的邀请人来自用户成长轻路径、一期活动需求和人工样例数据。导航栏邀请有礼和我的邀请有礼保持内容一致，避免两套口径；我的邀请人状态只维护填写邀请码和绑定后头像昵称两种展示，默认不同时露出。</span></div>
+        <div class="v1-rule-section"><strong>研发规则</strong><span data-engineering-rule>左侧分区固定为创作记录、我的收藏、积分中心、邀请有礼；点击只切换右侧模块或锚点，不跳出用户中心，除非任务卡明确进入活动承接页</span><span data-engineering-rule>资料编辑弹层字段：头像允许 JPG、PNG、WebP，昵称 2-20 字，个人简介 0-80 字，微信绑定展示绑定状态，手机号只展示脱敏号码；保存失败保留输入并提示原因</span><span data-engineering-rule>创作记录至少 3 张社区通用内容卡片；卡片只进入对应详情或轻发布上下文，不展示已发布、草稿、待完善状态标签，也不放继续创作 CTA</span><span data-engineering-rule>积分模块复用积分中心规则：资产为非负整数，赚积分入口固定 5 张，目标为 campaign-new-user.html、campaign-seven-day.html、campaign-detail.html、campaign-prompt.html、invite.html</span><span data-engineering-rule>邀请模块复用邀请页规则：邀请码 6-12 位大写字母或数字；未绑定只展示输入框和绑定按钮，绑定成功后只展示头像昵称卡片，不同时展示两种状态</span><span data-engineering-rule>邀请记录不少于 4 条样例，字段为邀请时间、好友脱敏昵称、注册/互动/发布三阶段节点和累计积分；点击记录进入对应业务上下文，不展示复核证据或完整联系方式</span></div>
         <div class="v1-rule-section"><strong>研发验收</strong><span>左侧不放额外建议卡，右侧不放用户中心总览横幅。左侧入口均带图标，积分值显示在积分中心入口右侧；左侧积分中心为 `#points` 页内模块，积分资产卡通栏且高度压缩，赚积分入口固定 5 张卡且不出现说明型标签；创作记录标题区没有额外创建入口，至少保留 3 张社区通用内容卡片，不保留状态标签、卡片 CTA 或旧特殊结构；邀请模块标题区不展示眉标或打开独立邀请页入口，必须直接展示我的邀请码、邀请链接、我的邀请人、邀请码输入框、绑定邀请人按钮、绑定后头像昵称卡片、奖励规则摘要、今日/月度奖励统计和不少于 4 条邀请列表；邀请概览首屏左侧入口卡与右侧邀请人/邀请码堆栈顶部和底部对齐；默认不展示未绑定提示，点击绑定邀请人后切换为头像昵称卡片。</span></div>
         <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付个人工作台、创作回流、积分入口、邀请进展和资料编辑意向。完整账号体系、私信、收益中心、隐私管理能力和正式发布流程后置。</span></div>
       </div>

@@ -66,12 +66,12 @@
               <a class="section-link" href="#points-records">积分记录</a>
             </div>
             <div class="points-earn-grid">
-              <a class="points-earn-tile" href="./user-center.html#points" data-points-earn-card>
+              <a class="points-earn-tile" href="./campaign-new-user.html" data-points-earn-card>
                 <strong>新手任务</strong>
                 <p>完成首次访问、资料、浏览、互动、收藏和首次发布。</p>
                 <em>最高 110 积分</em>
               </a>
-              <a class="points-earn-tile" href="./user-center.html#points" data-points-earn-card>
+              <a class="points-earn-tile" href="./campaign-seven-day.html" data-points-earn-card>
                 <strong>七日成长任务</strong>
                 <p>连续 7 天完成浏览、收藏、复制、发布、挑战、分享和兑换。</p>
                 <em>每日 140 + 连续 180</em>
@@ -112,11 +112,8 @@
         </div>
       </section>
     </main>
-    <details class="v1-walkthrough" data-walkthrough-panel>
-      <summary>
-        <span>积分中心走查</span>
-        <button type="button" data-walkthrough-close aria-label="关闭走查规则">×</button>
-      </summary>
+    <details class="v1-walkthrough-drawer" data-v1-walkthrough-drawer>
+      <summary>走查</summary>
       <div class="v1-walkthrough-panel">
         <div class="v1-walkthrough-head"><strong>积分中心走查</strong><span>本页用于承接赚积分入口、积分资产和最近积分记录。</span></div>
         <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>运营关注</span><span>研发关注</span></div>
@@ -124,9 +121,10 @@
         <div class="v1-rule-section"><strong>用户主路径</strong><span>用户先查看可用积分和最近获得情况，再从五张赚积分入口卡进入对应承接页，最后查看最近积分记录。</span></div>
         <div class="v1-rule-section"><strong>关键字段</strong><span>可用积分、今日获得、近 7 日获得、待到账、AI 商城兑换入口、五张赚积分入口卡、最近积分记录时间和变化值。</span></div>
         <div class="v1-rule-section"><strong>状态规则</strong><span>积分数值和奖励摘要只表达原型口径；任务完成、积分发放、兑换扣减和异常校验不在本静态原型中执行。</span></div>
-        <div class="v1-rule-section"><strong>动作去向</strong><span>新手和七日卡进入用户中心积分面板，生图挑战进入活动详情页，Prompt 共创进入活动详情页，邀请有礼进入 `invite.html`；积分中心不保留已迁出的活动详情锚点。</span></div>
+        <div class="v1-rule-section"><strong>动作去向</strong><span>新手任务进入 `campaign-new-user.html`，七日成长进入 `campaign-seven-day.html`，生图挑战进入 `campaign-detail.html`，Prompt 共创进入 `campaign-prompt.html`，邀请有礼进入 `invite.html`；积分中心不保留已迁出的活动详情锚点。</span></div>
         <div class="v1-rule-section"><strong>运营维护</strong><span>五张入口卡来自一期活动需求；积分中心只维护入口排序、积分资产展示和记录露出。活动规则、任务节点、邀请规则和拉新转化分别在对应页面维护。</span></div>
-        <div class="v1-rule-section"><strong>研发验收</strong><span>积分资产栏必须为通栏短卡，不能回到左右分栏；赚积分入口固定 5 张卡，入口卡不得出现说明型标签；页面内不得保留 `data-points-task-detail` 或 `data-points-detail-row`；邀请有礼链接必须直达 `invite.html`。</span></div>
+        <div class="v1-rule-section"><strong>研发规则</strong><span data-engineering-rule>积分资产只展示非负整数：可用积分、今日获得、近 7 日获得、待到账；待到账单独展示，不计入可用积分；异常、冻结或追回只在记录里以用户可读文案表达</span><span data-engineering-rule>赚积分入口固定 5 张卡：新手任务、七日成长、AI 生图创作挑战、Prompt 共创计划、邀请有礼；每张卡必须有标题、奖励摘要、状态短文案和非空 href，不在卡片内展开完整活动规则</span><span data-engineering-rule>跳转目标固定：新手任务进入 ./campaign-new-user.html，七日成长进入 ./campaign-seven-day.html，AI 生图进入 ./campaign-detail.html，Prompt 共创进入 ./campaign-prompt.html，邀请有礼进入 ./invite.html</span><span data-engineering-rule>积分记录为只读列表，字段为时间、来源、积分变化和状态；正数使用 +N，扣减使用 -N，处理中或待到账不得伪装成已到账；点击记录优先保持当前页或进入对应业务上下文，不新增独立记录详情页</span><span data-engineering-rule>空态和失败态：无积分记录时展示空态和赚积分入口；资产加载失败时保留页面壳和重试提示，不显示 0 积分误导用户；活动配置缺失时隐藏对应入口并记录为验证失败</span><span data-engineering-rule>积分中心只做入口聚合和记录浏览，不承载活动详情、任务判定、防刷证据、卡密、订单、支付或后台配置说明</span></div>
+        <div class="v1-rule-section"><strong>研发验收</strong><span>积分资产栏必须为通栏短卡，不能回到左右分栏；赚积分入口固定 5 张卡，入口卡不得出现说明型标签；页面内不得保留 `data-points-task-detail` 或 `data-points-detail-row`；邀请有礼链接必须直达 `invite.html`，活动详情不得被倾倒进积分中心。</span></div>
         <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付 C 端静态原型中的入口聚合和浏览路径。真实积分账务、奖励结算、防刷、卡密、支付履约、运营配置、接口协议和真实上线工程方案后置。</span></div>
       </div>
     </details>

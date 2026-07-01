@@ -125,6 +125,7 @@
         <div class="v1-rule-section"><strong>状态规则</strong><span>新手任务负责首次激活，七日成长任务负责连续使用；用户首次进入社区后两者可同时开启，新手任务优先展示。</span></div>
         <div class="v1-rule-section"><strong>动作去向</strong><span>完善资料进入资料编辑弹层，浏览进入首页内容区，互动和收藏进入 AIGC 灵感内容详情区，发布进入 AIGC 轻创作弹层，全部完成奖励解锁后进入七日成长任务。</span></div>
         <div class="v1-rule-section"><strong>运营维护</strong><span>运营维护任务动作、奖励数值、完成状态和跳转入口；同一行为默认不重复计入多个任务，避免一次操作领取多份奖励。</span></div>
+        <div class="v1-rule-section"><strong>研发规则</strong><span data-engineering-rule>新手任务固定 6 行：首次访问、完善资料、浏览 3 条内容、首次互动、收藏作品、首次发布 AI 作品；每行必须有任务名、说明、积分、状态和目标 href</span><span data-engineering-rule>积分规则：首次访问 +10，完善资料 +10，浏览 3 条内容 +10，首次互动 +10，收藏作品 +10，首次发布 AI 作品 +30；6 个基础任务全部完成后额外 +30，不作为第 7 条任务行</span><span data-engineering-rule>状态固定为已完成、进行中、待完成、已锁定；已完成任务按钮改为查看记录或保持只读，待完成任务可点击目标入口，已锁定任务不可点击并说明解锁条件</span><span data-engineering-rule>跳转目标：首次访问进入 index.html，完善资料进入 user-center.html#profile-edit 或资料弹层，浏览/互动/收藏进入 AIGC 或内容详情，首次发布进入 aigc.html#quick-create，全部完成提示进入 campaign-seven-day.html</span><span data-engineering-rule>同一用户同一任务只计一次；取消收藏、删除内容或重复互动不重复发奖；任务判定异常时显示处理中，不在任务页展示复核细节</span></div>
         <div class="v1-rule-section"><strong>研发验收</strong><span>页面必须是任务列表优先，不展示大 Hero、旧式进度卡、规则说明区或记录分区；6 个基础任务列表行必须同时具备任务名、积分、状态和目标链接，完成全部奖励不得出现在任务列表中。</span></div>
         <div class="v1-rule-section"><strong>交付边界</strong><span>当前只交付静态高保真任务清单、可点入口、任务状态和积分口径；真实任务判定、奖励核对、异常处理和统一活动管理能力后续再做。</span></div>
       </div>

@@ -430,6 +430,7 @@
         <div class="v1-rule-section"><strong>状态规则</strong><span>闪念按发布时间倒序展示，不提供类型筛选；首屏为单一活动广告位，不承载页面介绍、发布按钮或数据统计；点赞、分享和发布成功是轻状态；评论从右侧抽屉承接，评论支持回复和点赞；独立闪念详情页、关注流和话题聚合后置。</span></div>
         <div class="v1-rule-section"><strong>动作去向</strong><span>发布闪念、评论、回复、点赞和分享保留轻状态。评论抽屉底部固定输入框，发闪念可带媒体，发布后回到内容流或积分提示。</span></div>
         <div class="v1-rule-section"><strong>运营维护</strong><span>首屏活动广告位、右侧发布入口、右侧单个活动广告位和教程入口由运营维护；广告位只展示活动标识、标题、短利益点和一个整卡入口，不展示内部期数、任务编号、进度查询或运营状态标签。</span></div>
+        <div class="v1-rule-section"><strong>研发规则</strong><span data-engineering-rule>发布正文必填，trim 后 1-280 字；超出 280 字时显示计数警告并禁用发布；支持换行，不保留富文本样式，不展示内部审核命中词</span><span data-engineering-rule>媒体附件可选，允许 JPG、PNG、WebP、GIF、MP4、MOV；同一条闪念最多 9 张图片或 1 个视频，不做图文视频混传；每个附件必须有缩略图、删除入口和预览入口</span><span data-engineering-rule>发布按钮状态：正文为空且无媒体时禁用；正文或媒体满足条件后启用；发布中禁用重复点击；发布失败保留正文和附件，发布成功关闭弹层并回到闪念流顶部或展示轻量成功提示</span><span data-engineering-rule>评论规则：评论正文 1-300 字，回复正文 1-200 字；评论抽屉列表内部滚动，底部输入框固定；发送失败保留输入，发送成功追加到当前抽屉并更新评论数</span><span data-engineering-rule>互动状态：点赞按钮本地切换已赞/未赞并更新计数；分享按钮只表达复制链接或轻提示，不打开私信；评论展开进入右侧抽屉，关闭后回到原闪念卡位置</span><span data-engineering-rule>跳转边界：活动广告整卡进入对应活动详情或任务页；教程入口进入 tutorial.html；闪念卡不跳独立详情页，完整评论由右侧抽屉承接</span></div>
         <div class="v1-rule-section"><strong>研发验收</strong><span>发布入口、媒体附件、评论展开、右侧评论抽屉、回复框和分享状态需要可用。发布弹层不展示左上角标题标签，主标题统一为发布一条闪念，关闭入口使用统一图标按钮。审核命中词、内部处理状态、私信、圈子和实时消息流不进入前台。</span></div>
         <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付轻内容 UGC 和反馈入口。圈子、私信、独立详情页、实时流、自动积分结算和复杂推荐排序后置。</span></div>
       </div>

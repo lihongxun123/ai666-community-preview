@@ -252,7 +252,8 @@
         <div class="v1-rule-section"><strong>状态规则</strong><span>筛选表达当前列表状态；搜索表达原型查询状态。复杂排序、跑分榜和实时可用性后置。</span></div>
         <div class="v1-rule-section"><strong>动作去向</strong><span>模型卡在新页打开详情。搜索和类型筛选帮助用户收窄选择，推荐模型入口也进入详情。API 或体验相关动作由详情页或人工灰度承接。</span></div>
         <div class="v1-rule-section"><strong>运营维护</strong><span>模型名称、Logo、介绍、标签和价格来自 `kk2.deepwl.net/pricing` 当前展示。6-7 月人工维护首批 12 张推荐模型和跳转 key。</span></div>
-        <div class="v1-rule-section"><strong>研发验收</strong><span>12 张模型卡需要可点击且 target=_blank；每张卡保留 Logo、计费类型、价格和标签。页面只保留搜索和类型筛选，不露真实 API Key、调用日志或余额。</span></div>
+        <div class="v1-rule-section"><strong>研发规则</strong><span data-engineering-rule>模型卡首批固定 12 张；每张卡必须包含 Logo、模型名、供应商或来源、计费类型、价格、能力标签和详情 href；模型名建议 2-40 个字符，标签 1-4 个</span><span data-engineering-rule>搜索输入建议 1-40 字，按模型名、供应商和标签过滤；清空搜索恢复全部；无结果时展示空态和清空入口，不隐藏顶部筛选</span><span data-engineering-rule>类型筛选固定为全部、文本、图片、视频、音频或当前已确认类型；筛选只改变卡片集合和高亮态，不改变地址栏主路由</span><span data-engineering-rule>详情跳转统一进入 model-detail.html 或具体模型详情地址；外部新页打开时必须带 target=_blank 和 rel=noopener；卡片不得直接展示密钥、调用日志、余额或实时开通按钮</span><span data-engineering-rule>价格字段只表达当前原型价格文案；缺价模型显示“待确认”或隐藏价格，不用 0 误导；价格变化由运营人工更新，不在 C 端承诺实时同步</span></div>
+        <div class="v1-rule-section"><strong>研发验收</strong><span>12 张模型卡需要可点击且 target=_blank；每张卡保留 Logo、计费类型、价格和标签。页面只保留搜索和类型筛选，不露真实密钥、调用日志或余额。</span></div>
         <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付模型供给货架和判断入口。在线调用、自动资格判断、供应商可用性监控、报价合同和跑分榜后置。</span></div>
       </div>
     </details>

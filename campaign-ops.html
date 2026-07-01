@@ -388,11 +388,8 @@
       </section>
     </main>
 
-    <details class="v1-walkthrough" data-walkthrough-panel>
-      <summary>
-        <span>活动预览走查</span>
-        <button type="button" data-walkthrough-close aria-label="关闭走查规则">×</button>
-      </summary>
+    <details class="v1-walkthrough-drawer" data-v1-walkthrough-drawer>
+      <summary>走查</summary>
       <div class="v1-walkthrough-panel">
         <div class="v1-walkthrough-head"><strong>一期活动预览页走查</strong><span>本页用于集中确认活动内容、回流路径和承接逻辑，赚积分入口统一由积分中心承接。</span></div>
         <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>运营关注</span><span>研发关注</span></div>
@@ -402,12 +399,14 @@
         <div class="v1-rule-section"><strong>状态规则</strong><span>活动以进行中、长期、连续、激活和分阶段表达用户侧状态；积分只做原型口径和进度展示，不表达即时结算、系统发放或运营配置。</span></div>
         <div class="v1-rule-section"><strong>动作去向</strong><span>生图挑战进入活动详情和 AIGC；Prompt 共创进入活动详情和投稿编辑页；新手任务和七日成长进入积分中心与用户中心；邀请活动进入邀请页。积分中心只做赚积分入口聚合和记录承接，首页固定入口继续保持漫剧制作、一句话生成、模型体验季和镜像站。</span></div>
         <div class="v1-rule-section"><strong>运营维护</strong><span>本页用于核对一期活动信息架构和逻辑；积分中心固定展示五张赚积分入口卡，每张只保留入口和奖励摘要，详细规则继续由活动预览、活动详情、AIGC、邀请页或商城承接。新手任务当前定版为首次访问、完善资料、浏览 3 条内容、首次互动、收藏作品、首次发布 AI 作品 6 个基础任务，全部完成后单独给完成奖励。</span></div>
-        <div class="v1-rule-section"><strong>研发验收</strong><span>页面需要保留五张活动卡、四个轻规则弹层、活动详情入口、AIGC 入口、积分中心入口、邀请入口、用户中心入口和 AI商城入口；积分中心同步保留五张赚积分入口卡，不保留新手任务明细行；public preview 中以独立预览页打包，不计入正式页面集合。</span></div>
+        <div class="v1-rule-section"><strong>研发规则</strong><span data-engineering-rule>页面必须保留 5 张活动卡：AI 生图创作挑战、Prompt 共创计划、新手任务、七日成长任务、邀请有礼；卡片标题建议 4-24 字，描述建议 8-40 字</span><span data-engineering-rule>活动预览入口必须落到正式承接页或正式模块：campaign-detail.html、campaign-prompt.html、points-center.html、invite.html、member-store.html，不出现空 href 或仅提示型按钮</span><span data-engineering-rule>新手任务口径固定为 6 个基础任务加全完成奖励；七日成长口径固定为 D1-D7、每日任务积分和连续 3/5/7 天奖励，不在本页做明细任务执行</span><span data-engineering-rule>规则弹层只展示用户可读奖励和路径，最多承接轻说明；真实结算、发奖、防刷、运营配置、审核状态和任务判定不出现在 C 端主界面</span><span data-engineering-rule>积分中心在当前口径下只保留 5 张赚积分入口卡和积分记录，不在本页或积分中心重复铺开新手任务明细行</span><span data-engineering-rule>本页作为 standalone preview page 打包，public-preview 可访问但不计入 21 个正式页面集合；正式验收仍以 activity-center.html 和各承接页为准</span></div>
+        <div class="v1-rule-section"><strong>研发验收</strong><span>页面需要保留五张活动卡、四个轻规则弹层、活动详情入口、AIGC 入口、积分中心入口、邀请入口、用户中心入口和 AI商城入口；所有主按钮都有明确 href；积分中心同步保留五张赚积分入口卡，不保留新手任务明细行；public preview 中以独立预览页打包，不计入正式页面集合。</span></div>
         <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付真实 C 端静态原型界面、活动预览入口和积分中心赚积分聚合页。奖励结算、风控策略、积分账务、支付履约、卡密、运营配置、最终接口协议和真实上线工程方案后置。</span></div>
       </div>
     </details>
 
     <div class="footer-space"></div>
   </div>
+  <script src="./walkthrough.js" defer></script>
 </body>
 </html>

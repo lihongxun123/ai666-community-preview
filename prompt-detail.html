@@ -11,12 +11,12 @@
   <div class="page growth-detail-page prompt-detail-page" data-page="prompt-detail">
     <div class="page-bg"><img src="assets/image_assets/15.jpg" alt=""></div>
     <input class="top-campaign-toggle" type="checkbox" id="top-campaign-dismiss-prompt-detail" aria-label="关闭顶部广告">
-    <div class="top-campaign"><span>Prompt 共创计划</span><span class="timer">详情复用</span><span>复制和同款免费，点击生成才消耗次数</span><span>可复用</span><label class="top-campaign-close" for="top-campaign-dismiss-prompt-detail" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
+    <div class="top-campaign"><span>Prompt 共创计划</span><span class="timer">详情复用</span><span>正文内复制，同款带入轻创作</span><span>可复用</span><label class="top-campaign-close" for="top-campaign-dismiss-prompt-detail" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
     <header class="site-header">
       <div class="header-inner wide-container">
         <a class="logo" href="./index.html" aria-label="多元拾光">
           <img class="brand-mark" src="assets/brand/duoyuan-shiguang-logo-mark-reverse.svg" alt="">
-          <span class="brand-copy"><span class="brand-name">多元拾光</span><span class="brand-sub">AI原生实践者社区</span></span>
+          <span class="brand-copy"><span class="brand-name">多元拾光</span><span class="brand-sub">AI原生实战者社区</span></span>
         </a>
         <nav class="nav" aria-label="主导航">
           <a href="./index.html">首页</a>
@@ -37,66 +37,118 @@
     </header>
 
     <main>
-      <section class="prompt-detail-screen section">
+      <section id="prompt-detail-options" class="prompt-detail-screen section">
         <div class="wide-container">
           <div class="prompt-publish-toast" data-prompt-publish-toast="media">
             <strong>发布成功！获得 40 积分</strong>
-            <span>图文案例已进入 Prompt 详情页，可继续查看积分记录或兑换生图次数。</span>
+            <span>图文案例已进入 AIGC 灵感广场 Prompt 详情弹窗；正文块内可复制，一键同款会带入轻创作。</span>
             <a href="./points-center.html">去兑换生图次数</a>
           </div>
 
+          <div class="prompt-submit-head">
+            <div>
+              <a class="prompt-breadcrumb" href="./campaign-prompt.html">Prompt 共创计划</a>
+              <h1>Prompt 详情弹窗</h1>
+              <p>Prompt 作为内容类型进入首页和 AIGC 信息流，详情统一用作品详情弹窗承载。</p>
+            </div>
+            <a class="button secondary" href="./prompt-submit.html">继续投稿</a>
+          </div>
+
           <div class="prompt-detail-layout">
-            <article class="prompt-detail-media">
-              <img src="assets/image_assets/15.jpg" alt="国风神女角色设定效果图">
-              <div class="prompt-detail-media-caption">
-                <strong>国风神女角色设定</strong>
-                <span>Flux Pro 1.1 · 图片 · 入选精选候选</span>
+            <article class="prompt-detail-aside">
+              <div class="prompt-detail-title-row">
+                <div>
+                  <a class="prompt-breadcrumb" href="#prompt-detail-text">无媒资样式</a>
+                  <h1>正文优先</h1>
+                </div>
+              </div>
+              <div class="prompt-detail-block">
+                <strong>Prompt 正文</strong>
+                <p>无图片、无视频的 Prompt，弹窗左侧直接放正文，右侧放适用场景、推荐模型、免费复制和同款动作。</p>
+              </div>
+              <div class="prompt-detail-meta-grid">
+                <div><strong>适用场景</strong><span>标题生成、脚本草稿、教程摘要</span></div>
+                <div><strong>推荐模型</strong><span>GPT-4.1 / Gemini 3 Flash</span></div>
+              </div>
+              <div class="prompt-free-actions">
+                <a href="#prompt-detail-text">查看无媒资详情</a>
+                <a href="./aigc.html">回到 AIGC</a>
               </div>
             </article>
 
-            <aside class="prompt-detail-aside">
-              <div class="prompt-detail-title-row">
-                <div>
-                  <a class="prompt-breadcrumb" href="./campaign-prompt.html">Prompt 共创计划</a>
-                  <h1>国风神女角色设定 Prompt</h1>
-                </div>
-                <a class="button secondary" href="./prompt-submit.html">继续投稿</a>
+            <article class="prompt-detail-media">
+              <img src="assets/image_assets/15.jpg" alt="国风神女角色设定效果图">
+              <div class="prompt-detail-media-caption">
+                <strong>带媒资样式</strong>
+                <span>图片或视频放左侧；Prompt、适用场景、推荐模型和复用动作放右侧。</span>
               </div>
-
-              <div class="detail-tags">
-                <span>适用场景：角色设定</span>
-                <span>推荐模型：Flux Pro 1.1</span>
-                <span>图文案例</span>
-                <span>复用免费</span>
+              <div class="prompt-free-actions">
+                <a href="#prompt-detail-media">查看带媒资详情</a>
+                <a href="./campaign-prompt.html">返回活动详情</a>
               </div>
-
-              <div class="prompt-detail-block" data-prompt-detail>
-                <strong>Prompt 正文</strong>
-                <p>国风神女角色设定，凤冠、金色发饰、白金长裙，站在云海和古建筑之间，柔和逆光，电影级构图，人物面部清晰，服饰纹理精细，画面有轻微风感和神话氛围。适合用于角色海报、封面图和短剧开场视觉。</p>
-              </div>
-
-              <div class="prompt-detail-meta-grid">
-                <div><strong>适用场景</strong><span>角色设定、封面图、漫剧开场</span></div>
-                <div><strong>推荐模型</strong><span>Flux Pro 1.1</span></div>
-                <div><strong>尺寸建议</strong><span>3:4 或 9:16</span></div>
-                <div><strong>奖励状态</strong><span>发布成功！获得 40 积分</span></div>
-              </div>
-
-              <div class="prompt-free-actions" aria-label="Prompt 免费复用动作">
-                <button type="button" data-prompt-free-copy>一键复制（免费）</button>
-                <a href="./aigc.html#quick-create" data-prompt-free-remix>一键同款（免费）</a>
-              </div>
-              <p class="prompt-copy-state" data-prompt-copy-state>复制成功后仅复制 Prompt 文本；一键同款只带入参数，当前还未扣次数。</p>
-
-              <div class="prompt-generate-card">
-                <div>
-                  <strong>生成前确认</strong>
-                  <span>点击生成才消耗生图次数或积分；复制和同款复用本身免费。</span>
-                </div>
-                <a class="button" href="./aigc.html#quick-create" data-prompt-generate-cost>生成 · 消耗 1 次</a>
-              </div>
-            </aside>
+            </article>
           </div>
+
+          <section id="prompt-detail-text" class="case-detail-modal content-format-modal prompt-detail-modal" data-prompt-detail-modal="text" aria-label="无媒资 Prompt 详情">
+            <a class="modal-backdrop" href="#prompt-detail-options" aria-label="关闭 Prompt 详情"></a>
+            <article class="case-detail-dialog">
+              <a class="case-detail-close" href="#prompt-detail-options" aria-label="关闭">×</a>
+              <div class="case-detail-media">
+                <div class="prompt-text-panel" data-prompt-text-left>
+                  <div class="detail-prompt" data-prompt-detail>
+                    <div class="prompt-detail-copy-head">
+                      <strong>Prompt 正文</strong>
+                      <button type="button" data-prompt-free-copy data-prompt-copy-text="请把下面的产品卖点拆成 8 个信息流短视频标题方向。输入包含：产品名称、核心卖点、目标人群、用户痛点、希望传达的语气和不可夸大的边界。输出需要分为痛点型、结果型、对比型、场景型四组，每组给 2 个标题，并为每个标题补一句推荐封面文案。标题要具体、短、容易理解，不使用“全网最强”“唯一”“颠覆”等绝对化表达。"><img src="resources/icons/remixicon/svg/Document/file-copy-line.svg" alt="">复制</button>
+                    </div>
+                    <p>请把下面的产品卖点拆成 8 个信息流短视频标题方向。输入包含：产品名称、核心卖点、目标人群、用户痛点、希望传达的语气和不可夸大的边界。输出需要分为痛点型、结果型、对比型、场景型四组，每组给 2 个标题，并为每个标题补一句推荐封面文案。标题要具体、短、容易理解，不使用“全网最强”“唯一”“颠覆”等绝对化表达。</p>
+                  </div>
+                </div>
+              </div>
+              <aside class="case-detail-aside">
+                <h3>爆款标题拆解 Prompt</h3>
+                <div class="detail-tags"><span>Prompt</span><span>GPT-4.1</span></div>
+                <div class="prompt-modal-summary"><strong>适用场景</strong><span>短视频标题、活动海报标题、教程封面标题</span></div>
+                <div class="prompt-modal-summary"><strong>推荐模型</strong><span>GPT-4.1 / Gemini 3 Flash</span></div>
+                <div class="prompt-modal-actions">
+                  <div class="prompt-free-actions" aria-label="Prompt 免费复用动作">
+                    <a href="./aigc.html#quick-create" data-prompt-free-remix data-prompt-prefill="请把下面的产品卖点拆成 8 个信息流短视频标题方向。输入包含：产品名称、核心卖点、目标人群、用户痛点、希望传达的语气和不可夸大的边界。输出需要分为痛点型、结果型、对比型、场景型四组，每组给 2 个标题，并为每个标题补一句推荐封面文案。标题要具体、短、容易理解，不使用“全网最强”“唯一”“颠覆”等绝对化表达。" data-prompt-model="GPT-4.1">一键同款（免费）</a>
+                  </div>
+                </div>
+              </aside>
+            </article>
+          </section>
+
+          <section id="prompt-detail-media" class="case-detail-modal content-format-modal prompt-detail-modal" data-prompt-detail-modal="media" aria-label="带媒资 Prompt 详情">
+            <a class="modal-backdrop" href="#prompt-detail-options" aria-label="关闭 Prompt 详情"></a>
+            <article class="case-detail-dialog">
+              <a class="case-detail-close" href="#prompt-detail-options" aria-label="关闭">×</a>
+              <div class="case-detail-media" data-prompt-media-left>
+                <div class="case-detail-viewport"><img class="case-gallery-main" src="assets/image_assets/15.jpg" alt=""></div>
+                <div class="case-thumb-strip">
+                  <button class="case-thumb is-active" type="button" data-src="assets/image_assets/15.jpg"><img src="assets/image_assets/15.jpg" alt=""></button>
+                  <button class="case-thumb" type="button" data-src="assets/image_assets/3.png"><img src="assets/image_assets/3.png" alt=""></button>
+                </div>
+              </div>
+              <aside class="case-detail-aside">
+                <h3>国风神女角色设定 Prompt</h3>
+                <div class="detail-tags"><span>Prompt</span><span>Flux Pro 1.1</span></div>
+                <div class="detail-prompt" data-prompt-detail>
+                  <div class="prompt-detail-copy-head">
+                    <strong>Prompt 正文</strong>
+                    <button type="button" data-prompt-free-copy data-prompt-copy-text="国风神女角色设定，凤冠、金色发饰、白金长裙，站在云海和古建筑之间，柔和逆光，电影级构图，人物面部清晰，服饰纹理精细，画面有轻微风感和神话氛围。适合用于角色海报、封面图和短剧开场视觉。"><img src="resources/icons/remixicon/svg/Document/file-copy-line.svg" alt="">复制</button>
+                  </div>
+                  <p>国风神女角色设定，凤冠、金色发饰、白金长裙，站在云海和古建筑之间，柔和逆光，电影级构图，人物面部清晰，服饰纹理精细，画面有轻微风感和神话氛围。适合用于角色海报、封面图和短剧开场视觉。</p>
+                </div>
+                <div class="prompt-modal-summary"><strong>适用场景</strong><span>角色设定、封面图、漫剧开场</span></div>
+                <div class="prompt-modal-summary"><strong>推荐模型</strong><span>Flux Pro 1.1</span></div>
+                <div class="prompt-modal-actions">
+                  <div class="prompt-free-actions" aria-label="Prompt 免费复用动作">
+                    <a href="./aigc.html#quick-create" data-prompt-free-remix data-prompt-prefill="国风神女角色设定，凤冠、金色发饰、白金长裙，站在云海和古建筑之间，柔和逆光，电影级构图，人物面部清晰，服饰纹理精细，画面有轻微风感和神话氛围。适合用于角色海报、封面图和短剧开场视觉。" data-prompt-model="Flux Pro 1.1">一键同款（免费）</a>
+                  </div>
+                </div>
+              </aside>
+            </article>
+          </section>
         </div>
       </section>
     </main>
@@ -111,20 +163,37 @@
     <details class="v1-walkthrough-drawer" data-v1-walkthrough-drawer>
       <summary>走查</summary>
       <div class="v1-walkthrough-panel">
-        <div class="v1-walkthrough-head"><strong>Prompt 详情页走查</strong><span>本页验证 Prompt 投稿成功后的展示、复制、同款和生成消耗边界。</span></div>
+        <div class="v1-walkthrough-head"><strong>Prompt 详情走查</strong><span>本页验证 Prompt 详情统一进入作品详情弹窗后的展示、复制和同款去向。</span></div>
         <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>产品关注</span><span>原型关注</span></div>
-        <div class="v1-rule-section"><strong>页面定位</strong><span>详情页是投稿成功后的落点，也是 AIGC 灵感广场中 Prompt 内容的复用落点。</span></div>
-        <div class="v1-rule-section"><strong>用户主路径</strong><span>发布者从投稿页进入详情页确认发布结果；浏览者从 AIGC Prompt/带提示词卡片进入详情页，先阅读 Prompt，再免费复制或同款复用。</span></div>
-        <div class="v1-rule-section"><strong>关键字段</strong><span>必须展示 Prompt 正文、适用场景、推荐模型、效果图、复制状态、同款入口、生成消耗提示、积分反馈和继续投稿入口。</span></div>
-        <div class="v1-rule-section"><strong>状态规则</strong><span>发布成功反馈展示 40 积分；一键复制和一键同款状态均为免费，生成卡片单独提示“点击生成才消耗”，避免把复用动作误读为扣费。</span></div>
-        <div class="v1-rule-section"><strong>动作去向</strong><span>继续投稿进入 prompt-submit.html；返回活动进入 campaign-prompt.html；生成进入 aigc.html#quick-create；积分兑换进入 points-center.html。</span></div>
-        <div class="v1-rule-section"><strong>运营维护</strong><span>维护优质 Prompt 内容时，需要同步标题、效果图、场景、模型、推荐状态和积分反馈，保证灵感广场卡片与详情页信息一致。</span></div>
-        <div class="v1-rule-section"><strong>研发验收</strong><span>页面必须包含 data-prompt-detail、data-prompt-free-copy、data-prompt-free-remix、data-prompt-copy-state 和 data-prompt-generate-cost；复制、同款和生成三个动作需要在视觉上分层。</span></div>
-        <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付静态高保真 Prompt 详情和复用路径，只表达展示、复制、同款和生成前确认；复制剪贴板、真实生成、积分扣减和推荐排序后续继续细化。</span></div>
+        <div class="v1-rule-section"><strong>页面定位</strong><span>Prompt 详情不再做独立长详情页，而是作为首页和 AIGC 信息流里的内容详情弹窗样式。</span></div>
+        <div class="v1-rule-section"><strong>用户主路径</strong><span>发布者从投稿页确认发布结果；浏览者从首页或 AIGC 的 Prompt 卡片进入详情弹窗，先阅读 Prompt，在正文块内复制，或一键同款带入轻创作。</span></div>
+        <div class="v1-rule-section"><strong>关键字段</strong><span>必须展示 Prompt 正文、适用场景、推荐模型、效果图或视频、正文内复制按钮、同款入口、积分反馈和继续投稿入口。</span></div>
+        <div class="v1-rule-section"><strong>状态规则</strong><span>发布成功反馈展示 40 积分；Prompt 详情弹层不展示生成扣次模块和复制说明，复用动作只表达复制正文或带入轻创作。</span></div>
+        <div class="v1-rule-section"><strong>动作去向</strong><span>继续投稿进入 prompt-submit.html；返回活动进入 campaign-prompt.html；一键同款进入 aigc.html#quick-create 并携带 Prompt 正文和推荐模型；积分兑换进入 points-center.html。</span></div>
+        <div class="v1-rule-section"><strong>运营维护</strong><span>Prompt 卡片、详情标题、正文、媒资、适用场景、推荐模型、奖励反馈和免费复用文案需要由同一组人工内容池维护，保证首页、AIGC、活动详情和投稿成功后的落点一致。</span></div>
+        <div class="v1-rule-section"><strong>研发规则</strong><span data-engineering-rule>Prompt 详情必须支持 text 和 media 两种弹层状态；text 左侧只展示 Prompt 正文，media 左侧展示图片或视频，右侧统一展示正文、适用场景、推荐模型、复制按钮和一键同款</span><span data-engineering-rule>Prompt 正文展示 30-2000 字，超长正文在正文块内部滚动；复制按钮只复制 Prompt 正文，不复制标题、标签、积分或作者信息</span><span data-engineering-rule>媒资允许 JPG、PNG、WebP、MP4、MOV；图片按稳定比例展示，视频展示播放占位；媒资加载失败时仍展示正文和一键同款入口</span><span data-engineering-rule>一键同款进入 aigc.html#quick-create，并携带 Prompt 正文和推荐模型；同款动作免费，不在详情弹层展示生成扣次、账户余额或正式扣费</span><span data-engineering-rule>关闭弹层后回到来源上下文：从 AIGC Prompt 筛选进入时回到 #inspiration-prompt，从投稿成功进入时保持 Prompt 筛选态，从活动详情案例进入时回到活动投稿作品区</span><span data-engineering-rule>继续投稿进入 prompt-submit.html，返回活动进入 campaign-prompt.html，积分兑换进入 points-center.html；所有动作必须有非空 href 或明确页内关闭状态</span></div>
+        <div class="v1-rule-section"><strong>研发验收</strong><span>页面必须包含 data-prompt-detail-modal 的 text 和 media 两种弹窗；text 弹窗左侧只放 Prompt 正文且不放图片或视频；media 弹窗左侧放图片或视频，右侧放 Prompt 正文、适用场景、推荐模型、正文块内复制按钮和同款入口；页面不出现旧复制状态标记、旧生成扣次标记、生成扣次模块、媒资标签或分类标签。</span></div>
+        <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付静态高保真 Prompt 详情和复用路径，只表达展示、复制和同款带入轻创作；复制剪贴板、生成执行、积分扣减和推荐排序后续继续细化。</span></div>
       </div>
     </details>
     <div class="footer-space"></div>
   </div>
+  <script>
+    (() => {
+      document.querySelectorAll(".case-thumb").forEach((button) => {
+        button.addEventListener("click", () => {
+          const dialog = button.closest(".case-detail-dialog");
+          const target = dialog?.querySelector(".case-gallery-main");
+          const nextSrc = button.dataset.src;
+          if (!target || !nextSrc) return;
+          target.src = nextSrc;
+          dialog.querySelectorAll(".case-thumb").forEach((item) => {
+            item.classList.toggle("is-active", item === button);
+          });
+        });
+      });
+    })();
+  </script>
   <script src="./walkthrough.js" defer></script>
 </body>
 </html>

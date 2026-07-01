@@ -36,128 +36,190 @@
       </div>
     </header>
 
-    <main>
-      <section class="prompt-submit-screen section">
-        <div class="wide-container">
-          <div class="prompt-submit-head">
+    <main class="prompt-submit-modal-stage" aria-label="Prompt 投稿编辑入口">
+      <section id="prompt-submit-compose" class="create-modal prompt-submit-modal is-open" data-prompt-submit-modal aria-label="发布 Prompt">
+        <a class="modal-backdrop" href="./campaign-prompt.html" aria-label="关闭发布 Prompt"></a>
+        <div class="create-dialog prompt-submit-dialog">
+          <div class="create-dialog-head prompt-submit-dialog-head">
             <div>
-              <a class="prompt-breadcrumb" href="./campaign-prompt.html">Prompt 共创计划</a>
-              <h1>发布 Prompt</h1>
-              <p>把可复用的提示词写完整，发布后进入详情页展示，其他用户可免费复制或同款复用。</p>
+              <h2>发布 Prompt</h2>
             </div>
-            <a class="button secondary" href="./prompt-detail.html">查看示例详情</a>
+            <a class="modal-close-button modal-close-icon-button" href="./campaign-prompt.html" role="button" aria-label="关闭发布 Prompt"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a>
           </div>
 
           <div class="prompt-submit-layout">
             <article class="prompt-editor-card" aria-label="Prompt 投稿编辑器">
               <div class="prompt-field" data-prompt-submit-field="标题">
                 <label for="prompt-title">标题</label>
-                <input id="prompt-title" value="国风神女角色设定 Prompt" aria-label="Prompt 标题">
-                <span>标题不少于 4 个字，建议直接说明结果和场景。</span>
+                <div class="prompt-input-shell">
+                  <input id="prompt-title" value="国风神女角色设定 Prompt" aria-label="Prompt 标题">
+                  <span class="prompt-field-counter" data-prompt-counter="title">14/4</span>
+                </div>
               </div>
 
               <div class="prompt-field" data-prompt-submit-field="Prompt 正文">
                 <label for="prompt-body">Prompt 正文</label>
-                <textarea id="prompt-body" rows="8" aria-label="Prompt 正文">国风神女角色设定，凤冠、金色发饰、白金长裙，站在云海和古建筑之间，柔和逆光，电影级构图，人物面部清晰，服饰纹理精细，画面有轻微风感和神话氛围。适合用于角色海报、封面图和短剧开场视觉。</textarea>
-                <span>中文正文不少于 30 字；英文或中英混合不少于 20 个英文单词。</span>
+                <div class="prompt-textarea-shell">
+                  <textarea id="prompt-body" rows="8" aria-label="Prompt 正文">国风神女角色设定，凤冠、金色发饰、白金长裙，站在云海和古建筑之间，柔和逆光，电影级构图，人物面部清晰，服饰纹理精细，画面有轻微风感和神话氛围。适合用于角色海报、封面图和短剧开场视觉。</textarea>
+                  <span class="prompt-field-counter" data-prompt-counter="body">88/30</span>
+                </div>
               </div>
 
               <div class="prompt-field-grid">
                 <div class="prompt-field" data-prompt-submit-field="适用场景">
-                  <label for="prompt-scene">适用场景</label>
-                  <input id="prompt-scene" value="角色设定 / 封面图 / 漫剧开场" aria-label="适用场景">
-                  <span>让复用者知道它适合解决什么问题。</span>
+                  <div class="prompt-field-label-row">
+                    <label id="prompt-scene-label">适用场景</label>
+                    <span data-prompt-scene-count>3/3</span>
+                  </div>
+                  <div class="prompt-scene-picker" data-prompt-scene-multiselect data-prompt-scene-limit="3" role="group" aria-labelledby="prompt-scene-label">
+                    <label class="prompt-scene-chip"><input type="checkbox" name="prompt-scene" value="角色设定" data-prompt-scene-option><span>角色设定</span></label>
+                    <label class="prompt-scene-chip"><input type="checkbox" name="prompt-scene" value="封面图" data-prompt-scene-option><span>封面图</span></label>
+                    <label class="prompt-scene-chip"><input type="checkbox" name="prompt-scene" value="漫剧开场" data-prompt-scene-option><span>漫剧开场</span></label>
+                    <label class="prompt-scene-chip"><input type="checkbox" name="prompt-scene" value="产品海报" data-prompt-scene-option checked><span>产品海报</span></label>
+                    <label class="prompt-scene-chip"><input type="checkbox" name="prompt-scene" value="商详头图" data-prompt-scene-option checked><span>商详头图</span></label>
+                    <label class="prompt-scene-chip"><input type="checkbox" name="prompt-scene" value="广告素材" data-prompt-scene-option checked><span>广告素材</span></label>
+                    <label class="prompt-scene-chip"><input type="checkbox" name="prompt-scene" value="教程封面" data-prompt-scene-option><span>教程封面</span></label>
+                    <label class="prompt-scene-chip"><input type="checkbox" name="prompt-scene" value="文章配图" data-prompt-scene-option><span>文章配图</span></label>
+                    <label class="prompt-scene-chip"><input type="checkbox" name="prompt-scene" value="社区内容" data-prompt-scene-option><span>社区内容</span></label>
+                    <label class="prompt-scene-chip"><input type="checkbox" name="prompt-scene" value="分镜脚本" data-prompt-scene-option><span>分镜脚本</span></label>
+                    <label class="prompt-scene-chip"><input type="checkbox" name="prompt-scene" value="视频开场" data-prompt-scene-option><span>视频开场</span></label>
+                    <label class="prompt-scene-chip"><input type="checkbox" name="prompt-scene" value="短剧视觉" data-prompt-scene-option><span>短剧视觉</span></label>
+                    <label class="prompt-scene-chip"><input type="checkbox" name="prompt-scene" value="IP 形象" data-prompt-scene-option><span>IP 形象</span></label>
+                    <label class="prompt-scene-chip"><input type="checkbox" name="prompt-scene" value="表情包" data-prompt-scene-option><span>表情包</span></label>
+                    <label class="prompt-scene-chip"><input type="checkbox" name="prompt-scene" value="社交头像" data-prompt-scene-option><span>社交头像</span></label>
+                  </div>
                 </div>
                 <div class="prompt-field" data-prompt-submit-field="推荐模型">
                   <label for="prompt-model">推荐模型</label>
-                  <input id="prompt-model" value="Flux Pro 1.1" aria-label="推荐模型">
-                  <span>推荐模型会展示在详情页和同款入口。</span>
+                  <div class="prompt-input-shell is-select">
+                    <select id="prompt-model" data-prompt-model-select aria-label="推荐模型">
+                      <optgroup label="图片模型">
+                        <option selected>doubao-seedream-4-5-251128</option>
+                        <option>doubao-seedream-5-0-260128</option>
+                        <option>Nano Banana Pro</option>
+                        <option>gpt-image-2</option>
+                        <option>nano-banana-2</option>
+                      </optgroup>
+                      <optgroup label="文本模型">
+                        <option>gemini-3-flash-preview</option>
+                        <option>kimi-k2.6</option>
+                        <option>gpt-5.5</option>
+                        <option>deepseek-v4-pro</option>
+                      </optgroup>
+                      <optgroup label="视频模型">
+                        <option>doubao-seedance-1-5-pro</option>
+                        <option>doubao-seedance-2-0-5s</option>
+                        <option>kling-3.0-omni-720p-ref-mute</option>
+                      </optgroup>
+                    </select>
+                  </div>
                 </div>
               </div>
 
               <div id="prompt-media-upload" class="prompt-media-upload" data-prompt-submit-field="效果图/视频">
-                <div>
+                <div class="prompt-media-head">
                   <strong>效果图/视频</strong>
-                  <span>上传至少 1 张匹配效果图或 1 段效果视频后，本条投稿可按图文/视频案例计 40 积分。</span>
+                  <span>2 / 6</span>
                 </div>
-                <figure>
-                  <img src="assets/image_assets/15.jpg" alt="国风神女 Prompt 效果图">
-                  <figcaption>已选择：国风神女角色设定效果图</figcaption>
-                </figure>
-              </div>
-
-              <div class="prompt-validation-panel" aria-label="发布前校验">
-                <strong>发布前校验</strong>
-                <span data-prompt-validation-rule>标题不少于 4 个字</span>
-                <span data-prompt-validation-rule>中文正文不少于 30 字，英文或中英混合不少于 20 个英文单词</span>
-                <span data-prompt-validation-rule>适用场景和推荐模型已填写</span>
-                <span data-prompt-validation-rule>未达标时发布按钮置灰，页面内提示缺失项</span>
+                <div class="prompt-upload-strip">
+                  <label class="prompt-upload-dropzone" data-prompt-upload-dropzone aria-label="上传效果图或视频">
+                    <input type="file" accept="image/*,video/*" data-prompt-upload-input aria-label="选择效果图或视频">
+                    <img src="resources/icons/remixicon/svg/Media/image-add-line.svg" alt="">
+                    <strong>上传</strong>
+                  </label>
+                  <div class="prompt-upload-item" data-prompt-upload-item>
+                    <a class="prompt-upload-remove" href="#prompt-media-upload" role="button" aria-label="删除已上传图片" data-prompt-upload-remove><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a>
+                    <a class="prompt-upload-thumb" href="#prompt-media-preview-image" data-prompt-upload-thumb aria-label="预览已上传图片">
+                      <img src="assets/image_assets/15.jpg" alt="">
+                    </a>
+                  </div>
+                  <div class="prompt-upload-item" data-prompt-upload-item>
+                    <a class="prompt-upload-remove" href="#prompt-media-upload" role="button" aria-label="删除已上传视频" data-prompt-upload-remove><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a>
+                    <a class="prompt-upload-thumb is-video" href="#prompt-media-preview-video" data-prompt-upload-thumb aria-label="预览已上传视频">
+                      <video src="assets/video_assets/sd2_gen.mp4" poster="assets/image_assets/17.png" muted playsinline></video>
+                      <span><img src="resources/icons/remixicon/svg/Media/play-circle-line.svg" alt="">视频</span>
+                    </a>
+                  </div>
+                </div>
               </div>
 
               <div class="prompt-submit-actions">
-                <a class="button secondary" href="./campaign-prompt.html">返回活动详情</a>
-                <a class="button" href="./prompt-detail.html" data-prompt-submit-publish>发布纯文字 Prompt</a>
-                <a class="button" href="./prompt-detail.html?toast=media" data-prompt-submit-publish>发布图文案例</a>
+                <a class="button" href="./aigc.html#prompt-detail-media" data-prompt-submit-publish data-prompt-submit-score="40" data-prompt-submit-media-count="2">发布 · +40 积分</a>
               </div>
             </article>
-
-            <aside class="prompt-submit-rail" aria-label="投稿状态与奖励预览">
-              <section class="prompt-state-list">
-                <div class="prompt-state-card is-muted" data-prompt-submit-state="invalid">
-                  <strong>未达标</strong>
-                  <p>缺少标题、正文、场景或模型时，发布按钮置灰。</p>
-                </div>
-                <div class="prompt-state-card" data-prompt-submit-state="pure-text">
-                  <strong>纯文字达标</strong>
-                  <p>发布成功！获得 20 积分。</p>
-                </div>
-                <div class="prompt-state-card is-active" data-prompt-submit-state="media">
-                  <strong>图文/视频达标</strong>
-                  <p>发布成功！获得 40 积分。</p>
-                </div>
-                <div class="prompt-state-card" data-prompt-submit-state="daily-cap">
-                  <strong>每日上限</strong>
-                  <p>发布成功！今日积分已达上限，感谢您的共创。</p>
-                </div>
-              </section>
-
-              <section class="prompt-reward-preview">
-                <h2>奖励预览</h2>
-                <div data-prompt-reward-preview><strong>20 积分</strong><span>发布纯文字 Prompt</span></div>
-                <div data-prompt-reward-preview><strong>40 积分</strong><span>补充图文/视频案例</span></div>
-                <div data-prompt-reward-preview><strong>100 积分</strong><span>入选精选</span></div>
-                <div data-prompt-reward-preview><strong>500 积分</strong><span>首页推荐</span></div>
-              </section>
-            </aside>
           </div>
+        </div>
+      </section>
+
+      <section id="prompt-media-preview-image" class="create-modal prompt-media-preview-modal" data-prompt-media-preview aria-label="图片预览">
+        <a class="modal-backdrop" href="#prompt-media-upload" aria-label="关闭图片预览"></a>
+        <div class="create-dialog prompt-media-preview-dialog">
+          <div class="create-dialog-head">
+            <div><h2>图片预览</h2></div>
+            <a class="modal-close-button modal-close-icon-button" href="#prompt-media-upload" role="button" aria-label="关闭图片预览"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a>
+          </div>
+          <img src="assets/image_assets/15.jpg" alt="">
+        </div>
+      </section>
+
+      <section id="prompt-media-preview-video" class="create-modal prompt-media-preview-modal" data-prompt-media-preview aria-label="视频预览">
+        <a class="modal-backdrop" href="#prompt-media-upload" aria-label="关闭视频预览"></a>
+        <div class="create-dialog prompt-media-preview-dialog">
+          <div class="create-dialog-head">
+            <div><h2>视频预览</h2></div>
+            <a class="modal-close-button modal-close-icon-button" href="#prompt-media-upload" role="button" aria-label="关闭视频预览"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a>
+          </div>
+          <video src="assets/video_assets/sd2_gen.mp4" poster="assets/image_assets/17.png" controls muted playsinline></video>
         </div>
       </section>
     </main>
 
     <div class="activity-config-schema" hidden aria-hidden="true">
       <strong data-activity-field>活动标题：Prompt 共创计划</strong>
-      <strong data-activity-field>关联页面：活动详情、投稿编辑、Prompt 详情、积分中心</strong>
+      <strong data-activity-field>关联页面：活动详情、投稿编辑、AIGC 灵感广场、Prompt 详情弹层、积分中心</strong>
       <strong data-activity-field>CTA 文案：发布 Prompt</strong>
-      <strong data-activity-field>CTA 目标：prompt-detail.html</strong>
+      <strong data-activity-field>CTA 目标：aigc.html#prompt-detail-media</strong>
     </div>
 
     <details class="v1-walkthrough-drawer" data-v1-walkthrough-drawer>
       <summary>走查</summary>
       <div class="v1-walkthrough-panel">
-        <div class="v1-walkthrough-head"><strong>Prompt 投稿页走查</strong><span>本页用于确认投稿编辑、校验、奖励预览和发布后跳转的产品路径。</span></div>
-        <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>产品关注</span><span>原型关注</span></div>
-        <div class="v1-rule-section"><strong>页面定位</strong><span>投稿页承接活动详情 CTA，用户在这里完成标题、Prompt 正文、适用场景、推荐模型和可选案例素材。</span></div>
-        <div class="v1-rule-section"><strong>用户主路径</strong><span>用户从 campaign-prompt.html 进入投稿页，先补齐必填字段，再根据是否上传效果图或视频选择纯文字发布或图文案例发布，发布后进入 prompt-detail.html。</span></div>
-        <div class="v1-rule-section"><strong>关键字段</strong><span>必须展示标题、Prompt 正文、适用场景、推荐模型、效果图/视频、发布前校验、奖励预览和四类发布状态。</span></div>
+        <div class="v1-walkthrough-head"><strong>Prompt 投稿弹层走查</strong><span>投稿编辑按轻创作和发布闪念的弹层承接，避免把发布动作做成独立内容页。</span></div>
+        <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>产品关注</span><span>研发关注</span></div>
+        <div class="v1-rule-section"><strong>页面定位</strong><span>投稿弹层承接活动详情 CTA，用户在这里完成标题、Prompt 正文、适用场景、推荐模型和可选案例素材。</span></div>
+        <div class="v1-rule-section"><strong>用户主路径</strong><span>用户从 campaign-prompt.html 打开投稿弹层，补齐必填字段，点击单个发布按钮；发布成功后进入 AIGC 灵感广场并自动打开对应 Prompt 详情弹层。</span></div>
+        <div class="v1-rule-section"><strong>关键字段</strong><span>必须展示标题、Prompt 正文、适用场景、推荐模型和效果图/视频；弹层头部只保留发布 Prompt 标题，不再叠加活动名。适用场景使用最多 3 个标签的多选控件，推荐模型使用下拉选择，字段解释和校验规则不直接占用 C 端编辑区。</span></div>
         <div class="v1-rule-section"><strong>状态规则</strong><span>标题、正文、场景和模型未达标时发布按钮置灰；纯文字达标显示 20 积分，图文/视频达标显示 40 积分，每日上限只显示感谢共创。</span></div>
-        <div class="v1-rule-section"><strong>动作去向</strong><span>发布动作进入 prompt-detail.html；返回活动进入 campaign-prompt.html；效果图/视频任务可通过 prompt-submit.html#prompt-media-upload 定位到上传区。</span></div>
-        <div class="v1-rule-section"><strong>运营维护</strong><span>维护奖励预览、校验提示、每日上限提示和入选奖励文案时，需要同步活动详情页和 Prompt 详情页，避免入口页与投稿页奖励不一致。</span></div>
-        <div class="v1-rule-section"><strong>研发验收</strong><span>页面必须包含 data-prompt-submit-field、data-prompt-submit-state、data-prompt-validation-rule、data-prompt-reward-preview 和 data-prompt-submit-publish；发布链接必须能进入 Prompt 详情页。</span></div>
+        <div class="v1-rule-section"><strong>动作去向</strong><span>发布动作进入 aigc.html#prompt-detail-media；返回活动进入 campaign-prompt.html；效果图/视频任务可通过 prompt-submit.html#prompt-media-upload 定位到上传区。</span></div>
+        <div class="v1-rule-section"><strong>运营维护</strong><span>维护校验提示、每日上限提示和入选奖励文案时，需要同步活动详情页、AIGC Prompt 详情弹层和积分中心，避免入口页与投稿页奖励不一致。</span></div>
+        <div class="v1-rule-section"><strong>字段校验规则</strong><span data-prompt-validation-rule data-engineering-rule>标题必填，trim 后 4-40 个字；超出时显示计数警告，不自动截断，未达标发布按钮禁用</span><span data-prompt-validation-rule data-engineering-rule>Prompt 正文必填，中文正文 30-2000 字，英文或中英混合不少于 20 个英文单词；只允许纯文本和换行，不保留富文本样式</span><span data-prompt-validation-rule data-engineering-rule>适用场景至少选择 1 个、最多选择 3 个标签；达到 3 个后未选标签禁用，取消已选标签后恢复可选，标签文案不使用斜杠分割</span><span data-prompt-validation-rule data-engineering-rule>推荐模型必选，使用模型下拉项，不支持自由输入；模型为空或被移除时发布按钮禁用并提示重新选择</span><span data-prompt-validation-rule data-engineering-rule>效果图/视频为可选案例素材，允许 JPG、PNG、WebP、MP4、MOV；最多 3 个媒资，单个图片建议不超过 10MB，单个视频建议不超过 100MB；不符合类型或数量时停留在上传区并提示原因</span><span data-prompt-validation-rule data-engineering-rule>发布按钮只有一个：纯文字达标显示“发布 · +20 积分”，存在图片或视频案例且字段达标显示“发布 · +40 积分”；达到每日前 2 条奖励上限后按钮仍可发布，但积分文案改为感谢共创</span><span data-prompt-validation-rule data-engineering-rule>已上传媒资右上角必须提供删除按钮；删除后重新计算媒资数量和积分文案；点击缩略图进入图片或视频预览弹层，关闭预览回到上传区</span><span data-prompt-validation-rule data-engineering-rule>发布成功后按媒资状态进入 aigc.html#prompt-detail-text 或 aigc.html#prompt-detail-media；失败或未达标时保留用户输入、选中标签、模型和已上传媒资，不清空表单</span></div>
+        <div class="v1-rule-section"><strong>研发验收</strong><span>页面必须包含 data-prompt-submit-modal、data-prompt-submit-field、data-prompt-validation-rule、data-prompt-scene-multiselect、data-prompt-scene-option、data-prompt-model-select、data-prompt-upload-dropzone、data-prompt-upload-thumb、data-prompt-upload-remove、data-prompt-media-preview 和单个 data-prompt-submit-publish；适用场景默认选中 3 个标签且上限为 3，标签文案不包含斜杠；弹层头部只保留一个发布 Prompt 标题；发布按钮文案按媒资状态自动计算积分，成功目标必须指向 AIGC Prompt 详情弹层，页面不展示投稿状态与奖励预览右侧面板，弹层底部距离视口底部至少 24px，内容超出时只在弹层内部滚动。</span></div>
         <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付静态高保真投稿编辑原型，只表达字段、校验、状态和跳转；保存草稿、内容判定、奖励结算、素材处理和账号权限在后续规则中继续细化。</span></div>
       </div>
     </details>
     <div class="footer-space"></div>
   </div>
+  <script>
+    document.querySelectorAll("[data-prompt-scene-multiselect]").forEach((group) => {
+      const limit = Number(group.getAttribute("data-prompt-scene-limit")) || 3;
+      const options = Array.from(group.querySelectorAll("[data-prompt-scene-option]"));
+      const counter = group.closest("[data-prompt-submit-field]")?.querySelector("[data-prompt-scene-count]");
+      const sync = () => {
+        const selected = options.filter((option) => option.checked);
+        if (counter) counter.textContent = `${selected.length}/${limit}`;
+        options.forEach((option) => {
+          option.disabled = !option.checked && selected.length >= limit;
+        });
+      };
+      options.forEach((option) => {
+        option.addEventListener("change", () => {
+          if (options.filter((item) => item.checked).length > limit) option.checked = false;
+          sync();
+        });
+      });
+      sync();
+    });
+  </script>
   <script src="./walkthrough.js" defer></script>
 </body>
 </html>

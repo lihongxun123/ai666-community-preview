@@ -437,9 +437,7 @@
                   <aside class="creation-result-body creation-state-aside" data-creation-result-detail>
                     <div class="creation-result-top creation-result-info" aria-label="结果操作栏">
                       <div class="creation-result-status">
-                        <strong class="creation-mode-panel" data-create-mode-panel="image">图片生成</strong>
-                        <strong class="creation-mode-panel" data-create-mode-panel="script">剧本创作</strong>
-                        <strong class="creation-mode-panel" data-create-mode-panel="video">视频生成</strong>
+                        <strong data-result-mode-title>图片生成</strong>
                         <em>刚刚生成 · 内容由 AI 生成</em>
                       </div>
                       <div class="creation-result-toolbar" aria-label="操作栏">
@@ -449,15 +447,15 @@
                       </div>
                     </div>
                     <section class="creation-result-section creation-result-params" aria-label="提示词和参数">
-                      <div class="creation-result-prompt-card">
-                        <div class="creation-result-row-head"><b>提示词</b><button class="creation-copy-button" type="button" data-result-copy-prompt aria-label="复制提示词"><img src="resources/icons/remixicon/svg/Document/file-copy-line.svg" alt=""><span>复制</span></button></div>
-                        <p class="creation-result-prompt-text" data-result-prompt data-creation-prompt-preview>描述你想生成的画面，例如：雨夜霓虹街头，少年回头，电影感构图。</p>
-                      </div>
                       <div class="creation-result-basic" aria-label="基础参数">
                         <div class="creation-result-row-head"><b>基础参数</b></div>
                         <span><b>模型</b><em class="creation-mode-panel" data-create-mode-panel="image"><b class="model-current" data-model-current="doubao-seedream-4-5-251128">doubao-seedream-4-5-251128</b><b class="model-current" data-model-current="doubao-seedream-5-0-260128">doubao-seedream-5-0-260128</b><b class="model-current" data-model-current="nano-banana-pro">Nano Banana Pro</b><b class="model-current" data-model-current="gpt-image-2">gpt-image-2</b><b class="model-current" data-model-current="nano-banana-2">nano-banana-2</b></em><em class="creation-mode-panel" data-create-mode-panel="script"><b class="model-current" data-model-current="gemini-3-flash-preview">gemini-3-flash-preview</b><b class="model-current" data-model-current="kimi-k2-6">kimi-k2.6</b><b class="model-current" data-model-current="gpt-5-5">gpt-5.5</b><b class="model-current" data-model-current="deepseek-v4-pro">deepseek-v4-pro</b></em><em class="creation-mode-panel" data-create-mode-panel="video"><b class="model-current" data-model-current="doubao-seedance-1-5-pro">doubao-seedance-1-5-pro</b><b class="model-current" data-model-current="doubao-seedance-2-0-5s">doubao-seedance-2-0-5s</b><b class="model-current" data-model-current="kling-3-0-omni-720p-ref-mute">kling-3.0-omni-720p-ref-mute</b><b class="model-current" data-model-current="grok-video-3-10s">grok-video-3-10s</b><b class="model-current" data-model-current="omni-fast">omni-fast</b><b class="model-current" data-model-current="doubao-seedance-2-0-10s">doubao-seedance-2-0-10s</b><b class="model-current" data-model-current="doubao-seedance-2-0-15s">doubao-seedance-2-0-15s</b><b class="model-current" data-model-current="kling-2-5-1080p">kling-2.5-1080p</b><b class="model-current" data-model-current="grok-1-5-video-10s">grok-1.5-video-10s</b><b class="model-current" data-model-current="grok-video-3">grok-video-3</b></em></span>
                         <span><b>尺寸</b><em class="creation-mode-panel" data-create-mode-panel="image">1536x864</em><em class="creation-mode-panel" data-create-mode-panel="script">Markdown 文本</em><em class="creation-mode-panel" data-create-mode-panel="video">1280x720</em></span>
                         <span><b>比例</b><em class="creation-mode-panel" data-create-mode-panel="image">16:9</em><em class="creation-mode-panel" data-create-mode-panel="script">文本结构化</em><em class="creation-mode-panel" data-create-mode-panel="video">16:9</em></span>
+                      </div>
+                      <div class="creation-result-prompt-card">
+                        <div class="creation-result-row-head"><b>提示词</b><button class="creation-copy-button" type="button" data-result-copy-prompt aria-label="复制提示词"><img src="resources/icons/remixicon/svg/Document/file-copy-line.svg" alt=""></button></div>
+                        <p class="creation-result-prompt-text" data-result-prompt data-creation-prompt-preview>描述你想生成的画面，例如：雨夜霓虹街头，少年回头，电影感构图。</p>
                       </div>
                     </section>
                     <div class="creation-result-footer" aria-label="下一步">
@@ -576,12 +574,12 @@
               <div class="case-feed-ad-dots"><span></span><span></span><span></span></div>
             </div>
             <a class="case-card prompt-case-card tall" href="#case-detail-prompt-text" data-home-prompt-card>
-              <div class="prompt-card-preview"><strong>爆款标题拆解 Prompt</strong><span>输入产品卖点、人群和场景，输出 8 个短视频标题方向。</span><em>无媒资 · 可复制</em></div>
+              <div class="prompt-card-preview"><strong>爆款标题拆解 Prompt</strong><span>输入产品卖点、人群和场景，输出 8 个短视频标题方向。</span></div>
               <div class="copy"><h3>标题拆解 Prompt</h3><p>无图文版本，先看完整提示词再复用</p><div class="case-hover-meta"><span>GPT-4.1</span><span>Prompt</span></div></div>
             </a>
             <a class="case-card" href="#case-detail-prompt-media" data-home-prompt-card><img src="assets/image_assets/15.jpg" alt=""><div class="copy"><h3>国风神女 Prompt</h3><p>效果图、提示词和同款入口同屏承接</p><div class="case-hover-meta"><span>Flux Pro 1.1</span><span>Prompt</span></div></div></a>
             <a class="case-card short prompt-case-card" href="#case-detail-prompt-text" data-home-prompt-card>
-              <div class="prompt-card-preview"><strong>广告脚本 Prompt</strong><span>把一句卖点扩写成 18 秒口播脚本。</span><em>文本复用</em></div>
+              <div class="prompt-card-preview"><strong>广告脚本 Prompt</strong><span>把一句卖点扩写成 18 秒口播脚本。</span></div>
               <div class="copy"><h3>广告脚本 Prompt</h3><p>适合运营短视频首版草稿</p><div class="case-hover-meta"><span>GPT-4.1</span><span>Prompt</span></div></div>
             </a>
             <a class="case-card" href="#case-detail-prompt-media" data-home-prompt-card><img src="assets/image_assets/3.png" alt=""><div class="copy"><h3>治愈场景 Prompt</h3><p>带示例图，直接复用场景关键词</p><div class="case-hover-meta"><span>Flux Pro 1.1</span><span>Prompt</span></div></div></a>
@@ -813,7 +811,6 @@
               <aside class="case-detail-aside">
                 <h3>金色启航</h3>
                 <div class="detail-tags"><span>文本</span><span>短视频脚本</span><span>约 280 字</span><span>GPT-4.1</span></div>
-                <p>这是一条用于活动推广的短视频脚本，已经按开场、卖点和收口拆成可直接拍摄的段落。</p>
                 <div class="detail-tabs" data-global-comment-component>
                   <input class="detail-tab-radio" type="radio" name="case-detail-text-tabs" id="case-detail-text-tab-prompt" checked>
                   <input class="detail-tab-radio" type="radio" name="case-detail-text-tabs" id="case-detail-text-tab-comments">
@@ -856,8 +853,8 @@
                 <div class="prompt-text-panel" data-prompt-text-left>
                   <div class="detail-prompt" data-prompt-detail>
                     <div class="prompt-detail-copy-head">
-                      <strong>Prompt 正文</strong>
-                      <button type="button" data-prompt-free-copy data-prompt-copy-text="请把下面的产品卖点拆成 8 个信息流短视频标题方向。输入包含：产品名称、核心卖点、目标人群、用户痛点、希望传达的语气和不可夸大的边界。输出需要分为痛点型、结果型、对比型、场景型四组，每组给 2 个标题，并为每个标题补一句推荐封面文案。标题要具体、短、容易理解，不使用“全网最强”“唯一”“颠覆”等绝对化表达。"><img src="resources/icons/remixicon/svg/Document/file-copy-line.svg" alt="">复制</button>
+                      <strong>提示词</strong>
+                      <button type="button" data-prompt-free-copy data-prompt-copy-text="请把下面的产品卖点拆成 8 个信息流短视频标题方向。输入包含：产品名称、核心卖点、目标人群、用户痛点、希望传达的语气和不可夸大的边界。输出需要分为痛点型、结果型、对比型、场景型四组，每组给 2 个标题，并为每个标题补一句推荐封面文案。标题要具体、短、容易理解，不使用“全网最强”“唯一”“颠覆”等绝对化表达。" aria-label="复制提示词"><img src="resources/icons/remixicon/svg/Document/file-copy-line.svg" alt=""></button>
                     </div>
                     <p>请把下面的产品卖点拆成 8 个信息流短视频标题方向。输入包含：产品名称、核心卖点、目标人群、用户痛点、希望传达的语气和不可夸大的边界。输出需要分为痛点型、结果型、对比型、场景型四组，每组给 2 个标题，并为每个标题补一句推荐封面文案。标题要具体、短、容易理解，不使用“全网最强”“唯一”“颠覆”等绝对化表达。</p>
                   </div>
@@ -870,7 +867,7 @@
                 <div class="prompt-modal-summary"><strong>推荐模型</strong><span>GPT-4.1 / Gemini 3 Flash</span></div>
                 <div class="prompt-modal-actions">
                   <div class="prompt-free-actions" aria-label="Prompt 免费复用动作">
-                    <a href="./aigc.html#quick-create" data-prompt-free-remix data-prompt-prefill="请把下面的产品卖点拆成 8 个信息流短视频标题方向。输入包含：产品名称、核心卖点、目标人群、用户痛点、希望传达的语气和不可夸大的边界。输出需要分为痛点型、结果型、对比型、场景型四组，每组给 2 个标题，并为每个标题补一句推荐封面文案。标题要具体、短、容易理解，不使用“全网最强”“唯一”“颠覆”等绝对化表达。" data-prompt-model="GPT-4.1">一键同款（免费）</a>
+                    <a href="./aigc.html#quick-create" data-prompt-free-remix data-prompt-prefill="请把下面的产品卖点拆成 8 个信息流短视频标题方向。输入包含：产品名称、核心卖点、目标人群、用户痛点、希望传达的语气和不可夸大的边界。输出需要分为痛点型、结果型、对比型、场景型四组，每组给 2 个标题，并为每个标题补一句推荐封面文案。标题要具体、短、容易理解，不使用“全网最强”“唯一”“颠覆”等绝对化表达。" data-prompt-model="GPT-4.1">一键同款</a>
                   </div>
                 </div>
               </aside>
@@ -893,8 +890,8 @@
                 <div class="detail-tags"><span>Prompt</span><span>Flux Pro 1.1</span></div>
                 <div class="detail-prompt" data-prompt-detail>
                   <div class="prompt-detail-copy-head">
-                    <strong>Prompt 正文</strong>
-                    <button type="button" data-prompt-free-copy data-prompt-copy-text="国风神女角色设定，凤冠、金色发饰、白金长裙，站在云海和古建筑之间，柔和逆光，电影级构图，人物面部清晰，服饰纹理精细，画面有轻微风感和神话氛围。适合用于角色海报、封面图和短剧开场视觉。"><img src="resources/icons/remixicon/svg/Document/file-copy-line.svg" alt="">复制</button>
+                    <strong>提示词</strong>
+                    <button type="button" data-prompt-free-copy data-prompt-copy-text="国风神女角色设定，凤冠、金色发饰、白金长裙，站在云海和古建筑之间，柔和逆光，电影级构图，人物面部清晰，服饰纹理精细，画面有轻微风感和神话氛围。适合用于角色海报、封面图和短剧开场视觉。" aria-label="复制提示词"><img src="resources/icons/remixicon/svg/Document/file-copy-line.svg" alt=""></button>
                   </div>
                   <p>国风神女角色设定，凤冠、金色发饰、白金长裙，站在云海和古建筑之间，柔和逆光，电影级构图，人物面部清晰，服饰纹理精细，画面有轻微风感和神话氛围。适合用于角色海报、封面图和短剧开场视觉。</p>
                 </div>
@@ -902,7 +899,7 @@
                 <div class="prompt-modal-summary"><strong>推荐模型</strong><span>Flux Pro 1.1</span></div>
                 <div class="prompt-modal-actions">
                   <div class="prompt-free-actions" aria-label="Prompt 免费复用动作">
-                    <a href="./aigc.html#quick-create" data-prompt-free-remix data-prompt-prefill="国风神女角色设定，凤冠、金色发饰、白金长裙，站在云海和古建筑之间，柔和逆光，电影级构图，人物面部清晰，服饰纹理精细，画面有轻微风感和神话氛围。适合用于角色海报、封面图和短剧开场视觉。" data-prompt-model="Flux Pro 1.1">一键同款（免费）</a>
+                    <a href="./aigc.html#quick-create" data-prompt-free-remix data-prompt-prefill="国风神女角色设定，凤冠、金色发饰、白金长裙，站在云海和古建筑之间，柔和逆光，电影级构图，人物面部清晰，服饰纹理精细，画面有轻微风感和神话氛围。适合用于角色海报、封面图和短剧开场视觉。" data-prompt-model="Flux Pro 1.1">一键同款</a>
                   </div>
                 </div>
               </aside>
@@ -930,7 +927,7 @@
         <div class="v1-rule-section"><strong>动作去向</strong><span>首页负责分发。轻创作结果可以继续做成漫剧或发布闪念；生成按钮同时展示动作和当前模型积分，积分图标紧邻数字之前。作品卡只进入详情或当前状态，Prompt 卡进入 Prompt 详情弹窗；提示词与评论在详情右侧 Tab 承接，点赞、收藏和分享沉到底部“一键同款”左侧，以图标加数字展示；固定入口承接漫剧、模型、镜像站和轻创作，内容流广告卡进入活动、创作、AI商城或积分页。</span></div>
         <div class="v1-rule-section"><strong>运营维护</strong><span>首页爆款作品、顶部活动条、固定入口、内容流广告卡、权益、公告和轻创作模型积分来自 P0 内容池、运营维护清单和低风险活动方案。镜像站入口当前指向既有订阅计划页；6-7 月由人工维护排序、文案和目标，暂不接投放系统。</span></div>
         <div class="v1-rule-section"><strong>研发规则</strong><span data-engineering-rule>固定入口必须保留 4 张，顺序为漫剧制作、一句话生成、模型体验季、镜像站；每张入口必须有非空 href，站内入口落到正式页面，镜像站可为外部订阅页</span><span data-engineering-rule>首页内容卡首屏至少展示宽幅广告 1 张和普通作品卡；爆款作品池不少于 50 张，普通作品卡只作为详情入口，不在卡片上直接放点赞、评论、收藏、分享或一键同款按钮</span><span data-engineering-rule>首页任务强引导必须在每次刷新或重新进入首页时自动打开，不受 ai666-task-guide-dismissed-date 当日关闭记录拦截；非首页不自动打开，#quick-create 与 #quick-create-campaign 继续抑制任务弹层，#task-guide、?taskGuide=1 和 taskGuideTest 仍可强制打开</span><span data-engineering-rule>轻创作入口桌面宽度不超过 340px，移动端按视口收窄；点击从底部入口形变打开弹层，关闭后回收到入口，减少动态效果偏好下保留短转场但不强制大幅动画</span><span data-engineering-rule>轻创作输入正文建议 1-1000 字；图片模式上传 JPG、PNG、WebP，视频模式仅表达生成方向不直接上传视频；模型切换后积分数字必须随当前模型变化，生成按钮在输入为空时禁用</span><span data-engineering-rule>作品详情弹层按漫剧、图片、视频、文本、Prompt 五类承接；关闭详情回到原内容流锚点，Prompt 筛选保持 #case-gallery-prompt，高亮态和卡片流不得回退到默认内容流</span><span data-engineering-rule>内容流广告卡必须只有一个主入口；活动广告进入活动详情或任务承接页，AI商城广告进入 member-store.html，积分广告进入 points-center.html，不出现空锚点或仅提示型按钮</span></div>
-        <div class="v1-rule-section"><strong>研发验收</strong><span>固定入口需包含漫剧制作、一句话生成、模型体验季和镜像站四张卡。底部轻创作入口只做轻量唤起，桌面宽度不超过 340px，移动端按视口收窄，并使用软圆角而非满圆胶囊；该入口加载后只做一次轻浮现，斜向扫光由悬停或键盘聚焦触发；点击时胶囊需以底部入口为锚点向上连续形变为轻创作弹层，不强制居中打开；关闭时回收到胶囊，并需尊重减少动态效果偏好。爆款作品不少于 50 张，首位有宽幅轮播广告，中部穿插卡片式广告位，普通内容卡不得展示点赞、评论、收藏或分享动作位；Prompt 筛选需指向 #case-gallery-prompt，Prompt 卡片需进入 Prompt 详情弹窗；作品详情弹层固定按漫剧、图片、视频、文本四类承接，左侧随格式展示单视频、图片变体或 Markdown 预览，右侧统一为标题、标签、说明、提示词/评论 Tab、底部互动统计与一键同款，评论区使用全局评论组件类名。Prompt 详情弹窗额外承接两类状态：无媒资时左侧为 Prompt 正文，带媒资时左侧为图片或视频，右侧展示 Prompt 正文、适用场景、推荐模型、正文块内复制按钮和免费同款入口；详情弹层不展示生成扣次模块、复制状态说明、媒资标签或分类标签。轻创作弹层输入态不展示标题栏和关闭图标，关闭由遮罩承接；生成中、结果和分发态在最外层弹层右侧显示外置关闭按钮，点击后关闭弹层并回收到轻发布入口；三模式 Tab 使用紧凑图标加文字表达，并减少外层分割线；输入态外层容器不再保留边框，实际内容宽度等于原外框宽度；输入态需支持三个模式点击切换、textarea 输入、图片模式上传包裹在输入区内且按钮按内容宽度收拢、按模式显示模型池、图片/视频比例、模型积分和主动生成按钮，按钮内积分图标需位于数字之前；长模型列表需要可滚动且可点击，模型名完整展示，选中态与积分分列不重叠，点击模型选项后下拉自动收起，模式切换时弹层高度保持稳定。点击生成后需使用 GSAP 从输入态扩展到更宽更高的生成中态，生成中进入专属处理场景并隐藏顶部内容类型框体；对话区展示用户输入气泡、AI 处理说明、带进度提示的小尺寸生成预览和底部输入灵感输入区，当前模型放在底部输入区内并跟随生成前选择；点击小预览进入结果态大图预览。生成中、结果和分发阶段仍锁定为发起生成时的类型，返回调整后恢复输入态类型切换且保留原输入内容；结果态和分发态保持与生成中态一致的大框体尺寸，结果态左侧为大结果预览且徽标为 AI 生成，右侧按结果详情侧栏组织，顶部直接以当前内容类型作为主标题并与下载、分享、收藏操作对齐，生成说明保持单行不中断；中部为提示词复制与基础参数；底部不展示额外说明标题，继续调整以独立次级按钮承接，两个下一步动作平铺展示；继续调整返回生成中对话状态，分发态保留继续做成漫剧和发布闪念两个目标，并尊重减少动态效果偏好。站内链接需落到正式页面集合，页面不保留 href=# 空链或 floating-deal。</span></div>
+        <div class="v1-rule-section"><strong>研发验收</strong><span>固定入口需包含漫剧制作、一句话生成、模型体验季和镜像站四张卡。底部轻创作入口只做轻量唤起，桌面宽度不超过 340px，移动端按视口收窄，并使用软圆角而非满圆胶囊；该入口加载后只做一次轻浮现，斜向扫光由悬停或键盘聚焦触发；点击时胶囊需以底部入口为锚点向上连续形变为轻创作弹层，不强制居中打开；关闭时回收到胶囊，并需尊重减少动态效果偏好。爆款作品不少于 50 张，首位有宽幅轮播广告，中部穿插卡片式广告位，普通内容卡不得展示点赞、评论、收藏或分享动作位；Prompt 筛选需指向 #case-gallery-prompt，Prompt 卡片需进入 Prompt 详情弹窗；作品详情弹层固定按漫剧、图片、视频、文本四类承接，左侧随格式展示单视频、图片变体或 Markdown 预览，右侧统一为标题、标签、信息、提示词/评论 Tab、底部互动统计与一键同款，评论区使用全局评论组件类名。Prompt 详情弹窗额外承接两类状态：无媒资时左侧为提示词，带媒资时左侧为图片或视频，右侧展示提示词、适用场景、推荐模型、正文块内复制按钮和同款入口；详情弹层不展示生成扣次模块、复制状态说明、媒资标签或分类标签。轻创作弹层输入态不展示标题栏和关闭图标，关闭由遮罩承接；生成中、结果和分发态在最外层弹层右侧显示外置关闭按钮，点击后关闭弹层并回收到轻发布入口；三模式 Tab 使用紧凑图标加文字表达，并减少外层分割线；输入态外层容器不再保留边框，实际内容宽度等于原外框宽度；输入态需支持三个模式点击切换、textarea 输入、图片模式上传包裹在输入区内且按钮按内容宽度收拢、按模式显示模型池、图片/视频比例、模型积分和主动生成按钮，按钮内积分图标需位于数字之前；长模型列表需要可滚动且可点击，模型名完整展示，选中态与积分分列不重叠，点击模型选项后下拉自动收起，模式切换时弹层高度保持稳定。点击生成后需使用 GSAP 从输入态扩展到更宽更高的生成中态，生成中进入专属处理场景并隐藏顶部内容类型框体；对话区展示用户输入气泡、AI 处理说明、带进度提示的小尺寸生成预览和底部输入灵感输入区，当前模型放在底部输入区内并跟随生成前选择；点击小预览进入结果态大图预览。生成中、结果和分发阶段仍锁定为发起生成时的类型，返回调整后恢复输入态类型切换且保留原输入内容；结果态和分发态保持与生成中态一致的大框体尺寸，结果态左侧为大结果预览且徽标为 AI 生成，右侧按结果详情侧栏组织，顶部只展示当前结果类型一个标题并与下载、分享、收藏操作对齐，生成说明保持单行不中断；中部先展示基础参数，再用提示词卡片承接剩余高度，提示词复制使用无边框图标按钮；底部不展示额外说明标题，继续调整以独立次级按钮承接，两个下一步动作平铺展示；继续调整返回生成中对话状态，分发态保留继续做成漫剧和发布闪念两个目标，并尊重减少动态效果偏好。站内链接需落到正式页面集合，页面不保留 href=# 空链或 floating-deal。</span></div>
         <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付首页聚合分发和人工精选。镜像站作为外部产品线入口处理；订阅购买、权益开通、积分兑换履约、个性化推荐、实时广告、自动奖励、等级权益、任务中心和登录支付留到后续真实系统。</span></div>
       </div>
     </details>

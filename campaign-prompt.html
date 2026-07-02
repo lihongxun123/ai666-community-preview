@@ -73,7 +73,6 @@
 
             <section class="lesson-section campaign-major-block campaign-content-detail-block" data-activity-major-block="content" data-prompt-info-block="活动内容详情" data-prompt-content-block>
               <h3>1）活动内容详情</h3>
-              <div class="campaign-detail-meta-strip" data-activity-time-block><span>活动时间</span><strong>长期开放</strong><em>进行中</em></div>
               <div class="campaign-detail-subsection">
                 <h4>活动概述</h4>
                 <p>Prompt 共创计划面向所有社区用户收集可复用提示词。内容不只看一句提示词本身，还要能说明适用场景、推荐模型、输入变量和复用注意点；有结果图或视频案例时，其他用户更容易判断是否值得收藏和同款复用。</p>
@@ -81,7 +80,7 @@
               <div class="campaign-detail-subsection">
                 <h4>参与路径</h4>
                 <div class="lesson-numbered-steps prompt-path-steps" role="list" aria-label="Prompt 共创计划参与路径" data-prompt-text-steps>
-                  <div role="listitem"><strong>1</strong><span><b>先投稿</b>进入投稿编辑弹层，完成标题、Prompt 正文、适用场景和推荐模型。</span></div>
+                  <div role="listitem"><strong>1</strong><span><b>先投稿</b>进入投稿编辑弹层，完成标题、提示词、适用场景和推荐模型。</span></div>
                   <div role="listitem"><strong>2</strong><span><b>补案例</b>同一条 Prompt 可以补充效果图或视频，让复用结果更可判断。</span></div>
                   <div role="listitem"><strong>3</strong><span><b>被复用</b>发布后的 Prompt 进入 AIGC 灵感广场详情弹层，其他用户可免费复制或一键同款。</span></div>
                 </div>
@@ -105,7 +104,7 @@
                 <h4>活动规则</h4>
                 <p>先保证 Prompt 可读、可复用、可验证，再按内容完整度和推荐结果计算奖励。</p>
                 <ol class="campaign-rule-text-list prompt-rule-text-list">
-                  <li data-prompt-rule="发布入口"><strong>发布入口：</strong><span>从活动详情页进入投稿编辑弹层，完成标题、Prompt 正文、适用场景和推荐模型后提交。</span></li>
+                  <li data-prompt-rule="发布入口"><strong>发布入口：</strong><span>从活动详情页进入投稿编辑弹层，完成标题、提示词、适用场景和推荐模型后提交。</span></li>
                   <li data-prompt-rule="编辑要求"><strong>编辑要求：</strong><span>标题不少于 4 个字；中文正文不少于 30 字；英文或中英混合不少于 20 个英文单词；可选上传效果图或视频。</span></li>
                   <li data-prompt-rule="发布前校验"><strong>发布前校验：</strong><span>未达到标题、正文、场景、模型或案例要求时，发布按钮置灰，并在投稿编辑弹层直接提示缺失项。</span></li>
                   <li data-prompt-rule="发布成功反馈"><strong>发布成功反馈：</strong><span>纯文字 Prompt 发布成功获得 20 积分；带图文/视频案例发布成功获得 40 积分，并跳转到 AIGC 灵感广场自动打开 Prompt 详情弹层。</span></li>
@@ -178,13 +177,13 @@
         <div class="v1-walkthrough-head"><strong>Prompt 共创计划走查</strong><span>本页跟随 AI 生图活动详情，用首屏同一行动区承接发布入口和我的参与状态，正文信息流承接活动内容详情和本期投稿作品。</span></div>
         <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>产品关注</span><span>研发关注</span></div>
         <div class="v1-rule-section"><strong>页面定位</strong><span>Prompt 共创计划是活动中心和积分中心下的内容共创活动承接页，主界面用首屏发布入口和个人参与状态展示下一步动作，用活动内容详情、本期投稿作品解释如何投稿、可得多少积分和案例如何复用。</span></div>
-        <div class="v1-rule-section"><strong>用户主路径</strong><span>用户从活动中心或积分中心进入本页，先在首屏点击发布 Prompt 进入投稿编辑弹层，再查看活动时间、概述、参与路径、奖励任务和活动规则；发布成功后进入 AIGC 灵感广场并自动打开 Prompt 详情弹层，尾部本期投稿继续用同类详情弹层承接复用。</span></div>
-        <div class="v1-rule-section"><strong>关键字段</strong><span>页面必须包含活动标题、标题后状态标签、长期开放状态、首屏主参与入口、首屏我的参与状态、活动时间、活动概述、参与路径、奖励任务、9 条规则、本期投稿作品和 Prompt 详情入口；正文不得回退为独立参与状态大块。</span></div>
+        <div class="v1-rule-section"><strong>用户主路径</strong><span>用户从活动中心或积分中心进入本页，先在首屏点击发布 Prompt 进入投稿编辑弹层，再查看活动概述、参与路径、奖励任务和活动规则；发布成功后进入 AIGC 灵感广场并自动打开 Prompt 详情弹层，尾部本期投稿继续用同类详情弹层承接复用。</span></div>
+        <div class="v1-rule-section"><strong>关键字段</strong><span>页面必须包含活动标题、标题后状态标签、长期开放状态、首屏主参与入口、首屏我的参与状态、活动概述、参与路径、奖励任务、9 条规则、本期投稿作品和 Prompt 详情入口；正文不得回退为独立参与状态大块，也不得重复展示活动时间条。</span></div>
         <div class="v1-rule-section"><strong>状态规则</strong><span>主参与入口和我的参与状态固定在首屏同一行动区。正文不再单独设置我的参与状态大块。首屏文案用短句表达先拿 20 积分、案例 +40、精选 +100 和首页推荐 +500；状态只保留我的进度、今日有效投稿、基础奖励和案例奖励等关键摘要。</span></div>
-        <div class="v1-rule-section"><strong>动作去向</strong><span>主 CTA 和纯文字任务进入 prompt-submit.html；图文/视频任务进入 prompt-submit.html#prompt-media-upload；案例卡和免费复用任务进入 aigc.html#prompt-detail-text 或 aigc.html#prompt-detail-media；Prompt 详情弹层正文块内复制，同款入口携带 Prompt 正文和模型到轻创作。</span></div>
+        <div class="v1-rule-section"><strong>动作去向</strong><span>主 CTA 和纯文字任务进入 prompt-submit.html；图文/视频任务进入 prompt-submit.html#prompt-media-upload；案例卡和免费复用任务进入 aigc.html#prompt-detail-text 或 aigc.html#prompt-detail-media；Prompt 详情弹层正文块内复制，同款入口携带提示词和模型到轻创作。</span></div>
         <div class="v1-rule-section"><strong>运营维护</strong><span>页面只展示用户能理解的奖励、限制和有效规则；本期 Prompt 投稿、奖励文案、每日上限和推荐奖励需要与活动中心、投稿弹层和 AIGC Prompt 详情弹层同步维护。</span></div>
-        <div class="v1-rule-section"><strong>研发规则</strong><span data-engineering-rule>主 CTA 必须进入 ./prompt-submit.html；补充图文/视频案例任务进入 ./prompt-submit.html#prompt-media-upload；本期投稿卡只进入 aigc.html#prompt-detail-text 或 aigc.html#prompt-detail-media</span><span data-engineering-rule>有效 Prompt 投稿要求标题 trim 后 4-40 字，正文中文 30-2000 字或英文/中英混合不少于 20 个英文单词，适用场景 1-3 个，推荐模型必选；无意义堆词、重复搬运或空白正文不计有效</span><span data-engineering-rule>案例素材规则与投稿弹层一致：JPG、PNG、WebP、MP4、MOV；最多 3 个媒资；删除媒资后从 +40 自动回到 +20 口径；媒资失败不影响纯文字投稿，但不能显示案例奖励</span><span data-engineering-rule>奖励状态：每日前 2 条有效纯文字 Prompt 各 +20；带有效图文/视频案例的投稿显示 +40；超过每日奖励上限后仍允许发布，但按钮和成功反馈只显示“感谢共创”，不再新增基础积分</span><span data-engineering-rule>复制和同款复用免费：正文块内复制不扣积分，一键同款只把 Prompt 正文和推荐模型带入 AIGC 轻创作；后续生成消耗由轻创作页自身模型积分规则承接</span><span data-engineering-rule>发布成功后下一步：纯文字成功进入 aigc.html#prompt-detail-text，带媒资成功进入 aigc.html#prompt-detail-media；详情弹层关闭后保持 AIGC Prompt 筛选态，不跳独立详情页</span></div>
-        <div class="v1-rule-section"><strong>研发验收</strong><span>本页必须按 data-activity-major-block 的 content、submissions 两段排序；首屏包含 data-prompt-primary-cta 和 data-prompt-hero-status，且 data-prompt-hero-status 不嵌入 data-prompt-primary-cta 链接内部；第一段包含活动时间、概述、路径、奖励和规则，第二段包含 Prompt 投稿卡流；正文不保留 data-prompt-participation-block，不保留积分记录入口、投稿区说明行、规则卡片或任务卡片墙。</span></div>
+        <div class="v1-rule-section"><strong>研发规则</strong><span data-engineering-rule>主 CTA 必须进入 ./prompt-submit.html；补充图文/视频案例任务进入 ./prompt-submit.html#prompt-media-upload；本期投稿卡只进入 aigc.html#prompt-detail-text 或 aigc.html#prompt-detail-media</span><span data-engineering-rule>有效 Prompt 投稿要求标题 trim 后 4-40 字，正文中文 30-2000 字或英文/中英混合不少于 20 个英文单词，适用场景 1-3 个，推荐模型必选；无意义堆词、重复搬运或空白正文不计有效</span><span data-engineering-rule>案例素材规则与投稿弹层一致：JPG、PNG、WebP、MP4、MOV；最多 3 个媒资；删除媒资后从 +40 自动回到 +20 口径；媒资失败不影响纯文字投稿，但不能显示案例奖励</span><span data-engineering-rule>奖励状态：每日前 2 条有效纯文字 Prompt 各 +20；带有效图文/视频案例的投稿显示 +40；超过每日奖励上限后仍允许发布，但按钮和成功反馈只显示“感谢共创”，不再新增基础积分</span><span data-engineering-rule>复制和同款复用免费：正文块内复制不扣积分，一键同款只把提示词和推荐模型带入 AIGC 轻创作；后续生成消耗由轻创作页自身模型积分规则承接</span><span data-engineering-rule>发布成功后下一步：纯文字成功进入 aigc.html#prompt-detail-text，带媒资成功进入 aigc.html#prompt-detail-media；详情弹层关闭后保持 AIGC Prompt 筛选态，不跳独立详情页</span></div>
+        <div class="v1-rule-section"><strong>研发验收</strong><span>本页必须按 data-activity-major-block 的 content、submissions 两段排序；首屏包含 data-prompt-primary-cta 和 data-prompt-hero-status，且 data-prompt-hero-status 不嵌入 data-prompt-primary-cta 链接内部；第一段包含活动概述、路径、奖励和规则，且不重复展示活动时间条；第二段包含投稿卡流，卡片不展示 Prompt 标签；正文不保留 data-prompt-participation-block，不保留积分记录入口、投稿区说明行、规则卡片或任务卡片墙，活动详情正文需保持高对比可读。</span></div>
         <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付 C 端静态高保真活动承接、投稿入口和复用规则表达；真实发奖判定、内容质量处理、积分追回和活动数据复盘后续进入更细规则。</span></div>
       </div>
     </details>

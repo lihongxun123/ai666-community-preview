@@ -210,6 +210,17 @@
       const currentRadio = () => flow.querySelector(".creation-flow-radio:checked");
       const activeMode = () => dialog?.querySelector("[data-create-mode]:checked")?.value || "image";
       const promptForActiveMode = () => dialog?.querySelector(`[data-create-prompt][data-create-mode-panel="${activeMode()}"]`);
+      const modeTitles = {
+        image: "图片生成",
+        script: "剧本创作",
+        video: "视频生成"
+      };
+      const syncResultModeTitle = () => {
+        const title = modeTitles[activeMode()] || "图片生成";
+        dialog?.querySelectorAll("[data-result-mode-title]").forEach((node) => {
+          node.textContent = title;
+        });
+      };
       const syncPromptPreview = () => {
         const prompt = promptForActiveMode();
         const promptValue = prompt?.value.trim();
@@ -230,6 +241,7 @@
           dialog.querySelectorAll("[data-create-mode-tab]").forEach((tab) => {
             tab.setAttribute("aria-disabled", String(isLocked));
           });
+          syncResultModeTitle();
         }
       };
       const visiblePanel = () => {
@@ -719,22 +731,252 @@
 
       event.preventDefault();
       writeClipboardText(value).finally(() => {
-        const label = button.querySelector("span");
-        const originalLabel = button.dataset.copyLabel || label?.textContent || "复制";
+        const originalLabel = button.dataset.copyLabel || button.getAttribute("aria-label") || "复制提示词";
         button.dataset.copyLabel = originalLabel;
         button.dataset.copyState = "copied";
-        if (label) {
-          label.textContent = "已复制";
-        }
+        button.setAttribute("aria-label", "已复制提示词");
+        button.title = "已复制";
         window.clearTimeout(button.resultCopyTimer);
         button.resultCopyTimer = window.setTimeout(() => {
           button.dataset.copyState = "idle";
-          if (label) {
-            label.textContent = originalLabel;
-          }
+          button.setAttribute("aria-label", originalLabel);
+          button.title = "";
         }, 1200);
       });
     });
+  }
+
+  function getContentCopyIconSrc() {
+    return document.querySelector("[data-prompt-free-copy] img")?.getAttribute("src")
+      || "./resources/icons/remixicon/svg/Document/file-copy-line.svg";
+  }
+
+  function createContentCopyButton(label) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "content-copy-icon-button";
+    button.dataset.contentCopy = "";
+    button.setAttribute("aria-label", `复制${label || "内容"}`);
+    button.title = "复制";
+
+    const icon = document.createElement("img");
+    icon.src = getContentCopyIconSrc();
+    icon.alt = "";
+    button.append(icon);
+
+    return button;
+  }
+
+  function normalizeContentCopyButton(button) {
+    Array.from(button.childNodes).forEach((node) => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        node.remove();
+      }
+    });
+  }
+
+  function removeContentCopyHead(card, label) {
+    const head = card.querySelector(".prompt-detail-copy-head");
+    if (!head) {
+      return;
+    }
+
+    head.querySelectorAll("button").forEach((button) => button.remove());
+    if (label.parentElement === head) {
+      card.insertBefore(label, head);
+    }
+    if (!head.children.length && !head.textContent.trim()) {
+      head.remove();
+    }
+  }
+
+  function ensureContentCopyHead(card) {
+    const label = card.querySelector("strong");
+    if (!label) {
+      return;
+    }
+
+    const labelText = label.textContent.trim();
+    if (card.classList.contains("prompt-modal-summary")) {
+      removeContentCopyHead(card, label);
+      return;
+    }
+
+    let head = card.querySelector(".prompt-detail-copy-head");
+    if (!head) {
+      head = document.createElement("div");
+      head.className = "prompt-detail-copy-head";
+      card.insertBefore(head, label);
+      head.append(label);
+    }
+
+    const button = head.querySelector("button");
+    if (button) {
+      button.classList.add("content-copy-icon-button");
+      button.dataset.contentCopy = "";
+      button.setAttribute("aria-label", button.getAttribute("aria-label") || `复制${labelText || "内容"}`);
+      button.title = button.title || "复制";
+      normalizeContentCopyButton(button);
+      return;
+    }
+
+    head.append(createContentCopyButton(labelText));
+  }
+
+  function getContentCopyValue(button) {
+    const explicitValue = button.dataset.copyText || button.dataset.promptCopyText;
+    if (explicitValue) {
+      return explicitValue.trim();
+    }
+
+    const card = button.closest(".detail-prompt, .prompt-modal-summary");
+    const content = card?.querySelector("p, span");
+    return content?.textContent.trim() || "";
+  }
+
+  function initContentCardCopy() {
+    if (document.documentElement.dataset.contentCardCopyReady === "true") {
+      return;
+    }
+
+    document.documentElement.dataset.contentCardCopyReady = "true";
+    document.querySelectorAll(".case-detail-aside .detail-prompt, .prompt-text-panel .detail-prompt, .case-detail-aside .prompt-modal-summary").forEach(ensureContentCopyHead);
+
+    document.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-content-copy], [data-prompt-free-copy]");
+      if (!button) {
+        return;
+      }
+
+      const value = getContentCopyValue(button);
+      if (!value) {
+        return;
+      }
+
+      event.preventDefault();
+      writeClipboardText(value).finally(() => {
+        button.dataset.copyState = "copied";
+        window.clearTimeout(button.contentCopyTimer);
+        button.contentCopyTimer = window.setTimeout(() => {
+          button.dataset.copyState = "idle";
+        }, 1200);
+      });
+    });
+  }
+
+  function showContentActionToast(message) {
+    let toast = document.querySelector("[data-content-action-toast]");
+    if (!toast) {
+      toast = document.createElement("div");
+      toast.className = "content-action-toast";
+      toast.dataset.contentActionToast = "";
+      toast.setAttribute("role", "status");
+      toast.setAttribute("aria-live", "polite");
+      document.body.append(toast);
+    }
+
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    window.clearTimeout(toast.contentActionToastTimer);
+    toast.contentActionToastTimer = window.setTimeout(() => {
+      toast.classList.remove("is-visible");
+    }, 1400);
+  }
+
+  function getInviteCopyValue(action) {
+    const linkBox = action.closest(".invite-link-box");
+    const scopedLink = linkBox?.querySelector("[data-invite-login-link]")
+      || action.closest(".invite-landing-layout, [data-profile-invite-mirror], [data-page='invite'], main")?.querySelector("[data-invite-login-link]")
+      || document.querySelector("[data-invite-login-link]");
+
+    return (scopedLink?.textContent || scopedLink?.getAttribute("href") || "").trim();
+  }
+
+  function initInviteCopyActions() {
+    if (document.documentElement.dataset.inviteCopyReady === "true") {
+      return;
+    }
+
+    document.documentElement.dataset.inviteCopyReady = "true";
+    document.addEventListener("click", (event) => {
+      const action = event.target.closest("[data-invite-copy]");
+      if (!action) {
+        return;
+      }
+
+      const value = getInviteCopyValue(action);
+      if (!value) {
+        return;
+      }
+
+      event.preventDefault();
+      writeClipboardText(value).finally(() => {
+        action.dataset.copyState = "copied";
+        action.setAttribute("aria-label", "已复制邀请链接");
+        showContentActionToast(action.dataset.inviteCopyMessage || "已复制邀请链接，快起分享给朋友吧");
+        window.clearTimeout(action.inviteCopyTimer);
+        action.inviteCopyTimer = window.setTimeout(() => {
+          action.dataset.copyState = "idle";
+          action.removeAttribute("aria-label");
+        }, 1400);
+      });
+    });
+  }
+
+  function normalizeDetailFavoriteAction(action) {
+    if (action.tagName === "A") {
+      action.removeAttribute("href");
+      action.setAttribute("role", "button");
+      action.tabIndex = 0;
+    }
+    action.setAttribute("aria-pressed", action.dataset.favoriteState === "collected" ? "true" : "false");
+  }
+
+  function updateDetailFavoriteState(action) {
+    const wasCollected = action.dataset.favoriteState === "collected";
+    if (!wasCollected) {
+      const count = action.querySelector("strong");
+      const value = Number.parseInt(count?.textContent.trim() || "", 10);
+      if (count && Number.isFinite(value)) {
+        count.textContent = String(value + 1);
+      }
+    }
+
+    action.dataset.favoriteState = "collected";
+    action.dataset.ctaState = "收藏状态：已收藏";
+    action.setAttribute("aria-pressed", "true");
+    showContentActionToast(wasCollected ? "已收藏" : "收藏成功");
+  }
+
+  function initDetailFavoriteActions() {
+    if (document.documentElement.dataset.detailFavoriteReady === "true") {
+      return;
+    }
+
+    document.documentElement.dataset.detailFavoriteReady = "true";
+    document.querySelectorAll("[data-detail-favorite-action]").forEach(normalizeDetailFavoriteAction);
+
+    document.addEventListener("click", (event) => {
+      const action = event.target.closest("[data-detail-favorite-action]");
+      if (!action) {
+        return;
+      }
+
+      event.preventDefault();
+      event.stopPropagation();
+      updateDetailFavoriteState(action);
+    }, true);
+
+    document.addEventListener("keydown", (event) => {
+      const action = event.target.closest("[data-detail-favorite-action]");
+      if (!action || (event.key !== "Enter" && event.key !== " ")) {
+        return;
+      }
+
+      event.preventDefault();
+      event.stopPropagation();
+      updateDetailFavoriteState(action);
+    }, true);
   }
 
   function closeUserMenus(exceptMenu) {
@@ -1214,6 +1456,9 @@
     enhanceUserMenus();
     initActivityTaskGuide();
     initResultPromptCopy();
+    initContentCardCopy();
+    initInviteCopyActions();
+    initDetailFavoriteActions();
     initCreationFlowMotion(gsap, reduceMotion);
     initFloatingCreateMotion();
   }

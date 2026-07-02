@@ -1200,8 +1200,9 @@
     });
 
     const forceOpen = shouldForceTaskGuideOpen();
-    if (forceOpen || (isTaskGuideHomeSurface() && !shouldSuppressTaskGuideForHash())) {
-      openTaskGuide(modal, forceOpen);
+    const shouldAutoOpenOnHome = isTaskGuideHomeSurface() && !shouldSuppressTaskGuideForHash();
+    if (forceOpen || shouldAutoOpenOnHome) {
+      openTaskGuide(modal, forceOpen || shouldAutoOpenOnHome);
     }
   }
 

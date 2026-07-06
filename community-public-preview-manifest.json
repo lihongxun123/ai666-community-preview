@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-02T18:38:47.921Z",
+  "generatedAt": "2026-07-06T13:08:22.660Z",
   "packageType": "community-public-preview",
   "sourceRoot": "outputs/community-homepage-style-exploration",
   "entry": "index.html",
@@ -156,6 +156,7 @@
   ],
   "copiedResources": [
     "resources/icons/remixicon/svg/Arrows/arrow-up-line.svg",
+    "resources/icons/remixicon/svg/Business/bookmark-fill.svg",
     "resources/icons/remixicon/svg/Business/bookmark-line.svg",
     "resources/icons/remixicon/svg/Business/megaphone-fill.svg",
     "resources/icons/remixicon/svg/Communication/chat-3-line.svg",
@@ -191,8 +192,8 @@
     "resources/icons/remixicon/svg/System/search-line.svg",
     "resources/icons/remixicon/svg/System/share-2-line.svg",
     "resources/icons/remixicon/svg/System/share-forward-line.svg",
+    "resources/icons/remixicon/svg/System/thumb-up-fill.svg",
     "resources/icons/remixicon/svg/System/thumb-up-line.svg",
-    "resources/icons/remixicon/svg/User & Faces/user-3-line.svg",
-    "resources/icons/remixicon/svg/Weather/flashlight-fill.svg"
+    "resources/icons/remixicon/svg/User & Faces/user-3-line.svg"
   ]
 }

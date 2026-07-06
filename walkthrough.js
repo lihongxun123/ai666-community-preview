@@ -759,17 +759,12 @@
     button.setAttribute("aria-label", `复制${label || "内容"}`);
     button.title = "复制";
 
-    const icon = document.createElement("img");
-    icon.src = getContentCopyIconSrc();
-    icon.alt = "";
-    button.append(icon);
-
     return button;
   }
 
   function normalizeContentCopyButton(button) {
     Array.from(button.childNodes).forEach((node) => {
-      if (node.nodeType === Node.TEXT_NODE) {
+      if (node.nodeType === Node.TEXT_NODE || node.nodeName === "IMG") {
         node.remove();
       }
     });
@@ -797,7 +792,7 @@
     }
 
     const labelText = label.textContent.trim();
-    if (card.classList.contains("prompt-modal-summary")) {
+    if (card.classList.contains("prompt-modal-summary") || card.matches("[data-prompt-model-info], .prompt-model-panel")) {
       removeContentCopyHead(card, label);
       return;
     }
@@ -976,6 +971,102 @@
       event.preventDefault();
       event.stopPropagation();
       updateDetailFavoriteState(action);
+    }, true);
+  }
+
+  function normalizeDetailStatAction(action) {
+    if (action.tagName === "A") {
+      action.removeAttribute("href");
+      action.setAttribute("role", "button");
+      action.tabIndex = 0;
+    }
+
+    if (action.matches("[data-detail-like-action]")) {
+      action.setAttribute("aria-pressed", action.dataset.likeState === "liked" ? "true" : "false");
+    } else if (action.matches("[data-detail-favorite-action]")) {
+      action.setAttribute("aria-pressed", action.dataset.favoriteState === "collected" ? "true" : "false");
+    }
+  }
+
+  function incrementDetailStat(action) {
+    const count = action.querySelector("strong");
+    const value = Number.parseInt(count?.textContent.trim() || "", 10);
+    if (count && Number.isFinite(value)) {
+      count.textContent = String(value + 1);
+    }
+  }
+
+  function updateDetailLikeState(action) {
+    const wasLiked = action.dataset.likeState === "liked";
+    if (!wasLiked) {
+      incrementDetailStat(action);
+    }
+
+    action.dataset.likeState = "liked";
+    action.dataset.ctaState = "liked";
+    action.setAttribute("aria-pressed", "true");
+    showContentActionToast(wasLiked ? "\u5df2\u70b9\u8d5e" : "\u70b9\u8d5e\u6210\u529f");
+  }
+
+  function updateUnifiedDetailFavoriteState(action) {
+    const wasCollected = action.dataset.favoriteState === "collected";
+    if (!wasCollected) {
+      incrementDetailStat(action);
+    }
+
+    action.dataset.favoriteState = "collected";
+    action.dataset.ctaState = "collected";
+    action.setAttribute("aria-pressed", "true");
+    showContentActionToast(wasCollected ? "\u5df2\u6536\u85cf" : "\u6536\u85cf\u6210\u529f");
+  }
+
+  function updateDetailShareState(action) {
+    incrementDetailStat(action);
+    action.dataset.shareState = "shared";
+    action.dataset.ctaState = "shared";
+    writeClipboardText(window.location.href).finally(() => {
+      showContentActionToast("\u5df2\u590d\u5236\uff0c\u5feb\u53bb\u5206\u4eab\u7ed9\u597d\u53cb\u5427\u3002");
+    });
+  }
+
+  function updateDetailActionState(action) {
+    if (action.matches("[data-detail-like-action]")) {
+      updateDetailLikeState(action);
+    } else if (action.matches("[data-detail-favorite-action]")) {
+      updateUnifiedDetailFavoriteState(action);
+    } else {
+      updateDetailShareState(action);
+    }
+  }
+
+  function initDetailActions() {
+    if (document.documentElement.dataset.detailActionsReady === "true") {
+      return;
+    }
+
+    document.documentElement.dataset.detailActionsReady = "true";
+    document.querySelectorAll("[data-detail-like-action], [data-detail-favorite-action], [data-detail-share-action]").forEach(normalizeDetailStatAction);
+
+    document.addEventListener("click", (event) => {
+      const action = event.target.closest("[data-detail-like-action], [data-detail-favorite-action], [data-detail-share-action]");
+      if (!action) {
+        return;
+      }
+
+      event.preventDefault();
+      event.stopPropagation();
+      updateDetailActionState(action);
+    }, true);
+
+    document.addEventListener("keydown", (event) => {
+      const action = event.target.closest("[data-detail-like-action], [data-detail-favorite-action], [data-detail-share-action]");
+      if (!action || (event.key !== "Enter" && event.key !== " ")) {
+        return;
+      }
+
+      event.preventDefault();
+      event.stopPropagation();
+      updateDetailActionState(action);
     }, true);
   }
 
@@ -1458,7 +1549,7 @@
     initResultPromptCopy();
     initContentCardCopy();
     initInviteCopyActions();
-    initDetailFavoriteActions();
+    initDetailActions();
     initCreationFlowMotion(gsap, reduceMotion);
     initFloatingCreateMotion();
   }

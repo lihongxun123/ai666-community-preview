@@ -1029,9 +1029,25 @@
     });
   }
 
+  function updateDetailCommentState(action) {
+    const target = action.dataset.commentTabTarget
+      ? document.getElementById(action.dataset.commentTabTarget)
+      : action.closest(".case-detail-aside")?.querySelector(".detail-tab-radio:nth-of-type(2)");
+
+    if (target) {
+      target.checked = true;
+      target.dispatchEvent(new Event("change", { bubbles: true }));
+    }
+
+    action.dataset.commentState = "focused";
+    action.dataset.ctaState = "comment";
+  }
+
   function updateDetailActionState(action) {
     if (action.matches("[data-detail-like-action]")) {
       updateDetailLikeState(action);
+    } else if (action.matches("[data-detail-comment-action]")) {
+      updateDetailCommentState(action);
     } else if (action.matches("[data-detail-favorite-action]")) {
       updateUnifiedDetailFavoriteState(action);
     } else {
@@ -1045,10 +1061,10 @@
     }
 
     document.documentElement.dataset.detailActionsReady = "true";
-    document.querySelectorAll("[data-detail-like-action], [data-detail-favorite-action], [data-detail-share-action]").forEach(normalizeDetailStatAction);
+    document.querySelectorAll("[data-detail-like-action], [data-detail-comment-action], [data-detail-favorite-action], [data-detail-share-action]").forEach(normalizeDetailStatAction);
 
     document.addEventListener("click", (event) => {
-      const action = event.target.closest("[data-detail-like-action], [data-detail-favorite-action], [data-detail-share-action]");
+      const action = event.target.closest("[data-detail-like-action], [data-detail-comment-action], [data-detail-favorite-action], [data-detail-share-action]");
       if (!action) {
         return;
       }
@@ -1059,7 +1075,7 @@
     }, true);
 
     document.addEventListener("keydown", (event) => {
-      const action = event.target.closest("[data-detail-like-action], [data-detail-favorite-action], [data-detail-share-action]");
+      const action = event.target.closest("[data-detail-like-action], [data-detail-comment-action], [data-detail-favorite-action], [data-detail-share-action]");
       if (!action || (event.key !== "Enter" && event.key !== " ")) {
         return;
       }

@@ -483,18 +483,12 @@
             <h1>有什么新的创作灵感？</h1>
           </div>
 
-          <section id="aigc-create-panel" class="aigc-create-panel aigc-hero-composer" aria-label="AIGC 创作输入">
-            <div class="aigc-mode-tabs" role="tablist" aria-label="创作类型">
-              <button class="is-active" type="button">剧本创作</button>
-              <button type="button">图片生成</button>
-              <button type="button">视频生成</button>
-              <button type="button">漫剧制作</button>
-            </div>
-            <div class="aigc-prompt-box">
-              <textarea rows="2" placeholder="输入一句想法，开始剧本、图片、视频或漫剧创作"></textarea>
-              <a class="aigc-hero-submit" href="#quick-create" aria-label="开始创作">↑</a>
-            </div>
-          </section>
+          <a id="aigc-create-panel" class="floating-create-trigger aigc-hero-create-trigger" href="#quick-create" aria-label="打开 AIGC 轻创作" data-gsap-motion="floating-create">
+            <span class="floating-create-input">
+              <strong>输入灵感，即刻体验</strong>
+            </span>
+            <span class="floating-create-cta"><img src="resources/icons/remixicon/svg/Arrows/arrow-up-line.svg" alt=""></span>
+          </a>
         </div>
       </section>
 

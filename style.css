@@ -4915,7 +4915,8 @@ body:has([data-gsap-motion="floating-create"]) #quick-create:target:not(.is-quic
 
 .create-dialog:has([data-create-mode="image"]:checked) .experience-tab[data-create-mode-tab="image"],
 .create-dialog:has([data-create-mode="script"]:checked) .experience-tab[data-create-mode-tab="script"],
-.create-dialog:has([data-create-mode="video"]:checked) .experience-tab[data-create-mode-tab="video"] {
+.create-dialog:has([data-create-mode="video"]:checked) .experience-tab[data-create-mode-tab="video"],
+.create-dialog:has([data-create-mode="manga"]:checked) .experience-tab[data-create-mode-tab="manga"] {
   color: #fffaf0;
   background: linear-gradient(135deg, rgba(244, 201, 93, 0.34), rgba(102, 226, 207, 0.14));
 }
@@ -4923,6 +4924,7 @@ body:has([data-gsap-motion="floating-create"]) #quick-create:target:not(.is-quic
 .create-dialog:has([data-create-mode="image"]:checked) .experience-tab[data-create-mode-tab="image"] img,
 .create-dialog:has([data-create-mode="script"]:checked) .experience-tab[data-create-mode-tab="script"] img,
 .create-dialog:has([data-create-mode="video"]:checked) .experience-tab[data-create-mode-tab="video"] img,
+.create-dialog:has([data-create-mode="manga"]:checked) .experience-tab[data-create-mode-tab="manga"] img,
 .experience-tab.is-active img {
   opacity: 0.92;
 }
@@ -4968,6 +4970,7 @@ body:has([data-gsap-motion="floating-create"]) #quick-create:target:not(.is-quic
 .create-dialog:has([data-create-mode="image"]:checked) .creation-mode-panel[data-create-mode-panel="image"],
 .create-dialog:has([data-create-mode="script"]:checked) .creation-mode-panel[data-create-mode-panel="script"],
 .create-dialog:has([data-create-mode="video"]:checked) .creation-mode-panel[data-create-mode-panel="video"],
+.create-dialog:has([data-create-mode="manga"]:checked) .creation-mode-panel[data-create-mode-panel="manga"],
 .create-dialog:has([data-create-mode="image"]:checked) .creation-media-panel,
 .create-dialog:has([data-create-mode="video"]:checked) .creation-media-panel {
   display: revert;
@@ -4975,13 +4978,15 @@ body:has([data-gsap-motion="floating-create"]) #quick-create:target:not(.is-quic
 
 .create-dialog:has([data-create-mode="image"]:checked) .generation-submit-label[data-submit-label="image"],
 .create-dialog:has([data-create-mode="script"]:checked) .generation-submit-label[data-submit-label="script"],
-.create-dialog:has([data-create-mode="video"]:checked) .generation-submit-label[data-submit-label="video"] {
+.create-dialog:has([data-create-mode="video"]:checked) .generation-submit-label[data-submit-label="video"],
+.create-dialog:has([data-create-mode="manga"]:checked) .generation-submit-label[data-submit-label="manga"] {
   display: inline-flex;
 }
 
 .create-dialog:has([data-create-mode="image"]:checked) textarea.creation-mode-panel[data-create-mode-panel="image"],
 .create-dialog:has([data-create-mode="script"]:checked) textarea.creation-mode-panel[data-create-mode-panel="script"],
-.create-dialog:has([data-create-mode="video"]:checked) textarea.creation-mode-panel[data-create-mode-panel="video"] {
+.create-dialog:has([data-create-mode="video"]:checked) textarea.creation-mode-panel[data-create-mode-panel="video"],
+.create-dialog:has([data-create-mode="manga"]:checked) textarea.creation-mode-panel[data-create-mode-panel="manga"] {
   display: block;
 }
 
@@ -7443,7 +7448,7 @@ textarea.creation-mode-panel {
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: minmax(0, 860px);
+  grid-template-columns: minmax(0, 940px);
   gap: 24px;
   justify-content: center;
   justify-items: center;
@@ -7515,17 +7520,24 @@ textarea.creation-mode-panel {
   backdrop-filter: blur(18px);
 }
 
-.aigc-hero-composer {
-  width: min(780px, 100%);
-  display: grid;
-  gap: 10px;
-  padding: 10px;
-  border-color: rgba(255, 247, 230, 0.36);
-  border-radius: 28px;
-  background:
-    linear-gradient(180deg, rgba(255, 247, 230, 0.16), rgba(255, 247, 230, 0.05)),
-    rgba(13, 15, 18, 0.42);
-  box-shadow: 0 24px 86px rgba(0, 0, 0, 0.32), inset 0 0 0 1px rgba(255, 247, 230, 0.08);
+.aigc-hero-create-trigger {
+  position: relative;
+  left: auto;
+  bottom: auto;
+  width: min(620px, 100%);
+  min-height: 64px;
+  border-radius: 20px;
+  text-decoration: none;
+  transform: none;
+}
+
+.aigc-hero-create-trigger:hover,
+.aigc-hero-create-trigger:focus-visible {
+  transform: translateY(-3px);
+}
+
+.aigc-hero-create-trigger .floating-create-input strong {
+  font-size: 15px;
 }
 
 .aigc-panel-head {

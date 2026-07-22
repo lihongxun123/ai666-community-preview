@@ -165,12 +165,12 @@
         <div class="ai-store-redeem-head"><h2 id="ai-store-records-title">兑换记录</h2><a class="modal-close-icon" href="#ai-store-catalog" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a></div>
         <div class="ai-store-record-summary"><span>本月已兑换 <strong>5</strong> 次</span><span>累计消耗 <strong>1180</strong> 积分</span></div>
         <div class="ai-store-record-table" data-ai-store-record-list>
-          <div class="ai-store-record-row is-head"><span>时间</span><span>兑换商品</span><span>积分变化</span></div>
-          <div class="ai-store-record-row" data-ai-store-record-row><strong>今天 11:40</strong><span>Codex体验卡</span><em>-180</em></div>
-          <div class="ai-store-record-row" data-ai-store-record-row><strong>昨天 16:12</strong><span>闪创AI 体验小时卡</span><em>-180</em></div>
-          <div class="ai-store-record-row" data-ai-store-record-row><strong>06-23 20:18</strong><span>多元探索网页体验卡</span><em>-100</em></div>
-          <div class="ai-store-record-row" data-ai-store-record-row><strong>06-22 14:05</strong><span>gpt-4.1 Token</span><em>-520</em></div>
-          <div class="ai-store-record-row" data-ai-store-record-row><strong>06-21 09:36</strong><span>漫剧制作日卡</span><em>-200</em></div>
+          <div class="ai-store-record-row is-head"><span>时间</span><span>兑换商品</span><span>积分变化</span><span>结果</span></div>
+          <div class="ai-store-record-row" data-ai-store-record-row data-fulfillment-state="delivered"><strong>今天 11:40</strong><span>Codex体验卡</span><em>-180</em><b>已到账</b></div>
+          <div class="ai-store-record-row" data-ai-store-record-row data-fulfillment-state="processing"><strong>昨天 16:12</strong><span>闪创AI 体验小时卡</span><em>-180</em><b>发放中</b></div>
+          <div class="ai-store-record-row" data-ai-store-record-row data-fulfillment-state="delivered"><strong>06-23 20:18</strong><span>多元探索网页体验卡</span><em>-100</em><b>已到账</b></div>
+          <div class="ai-store-record-row" data-ai-store-record-row data-fulfillment-state="failed"><strong>06-22 14:05</strong><span>gpt-4.1 Token</span><em>0</em><b>未扣除</b></div>
+          <div class="ai-store-record-row" data-ai-store-record-row data-fulfillment-state="delivered"><strong>06-21 09:36</strong><span>漫剧制作日卡</span><em>-200</em><b>已到账</b></div>
         </div>
         <div class="ai-store-redeem-actions"><a class="button secondary" href="#ai-store-catalog">关闭</a></div>
       </div>
@@ -307,7 +307,7 @@
       <a class="modal-backdrop" href="#ai-store-catalog" aria-label="关闭兑换结果"></a>
       <div class="create-dialog ai-store-redeem-dialog ai-store-redeem-success" role="dialog" aria-modal="true">
         <div class="ai-store-redeem-head"><h2 id="redeem-success-gpt5-title">兑换成功</h2><a class="modal-close-icon" href="#ai-store-catalog" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a></div>
-        <p>恭喜您兑换【gpt-5-chat-latest Token】成功</p>
+        <p>兑换成功，已扣除 1200 积分，Token 体验额度已发放到当前账号。</p>
         <div class="ai-store-redeem-actions"><a class="button secondary" href="#ai-store-catalog">关闭</a><a class="button" href="./model-plaza.html">前往API中转站</a></div>
       </div>
     </section>
@@ -438,8 +438,8 @@
         <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>运营关注</span><span>研发关注</span></div>
         <div class="v1-rule-section"><strong>页面定位</strong><span>AI商城是积分兑换型产品货架，主界面按 API中转站、镜像站、闪创AI 分组，本轮用 16 张兑换商品观察多商品铺开效果。</span></div>
         <div class="v1-rule-section"><strong>用户主路径</strong><span>用户先按产品线分组识别商品归属 -> 在组内浏览商品名称和积分价格 -> 点击去兑换打开确认弹层 -> 核对商品名称、积分、产品站点和描述 -> 确认兑换；查看历史消耗时通过标题右侧兑换记录打开页内弹层。</span></div>
-        <div class="v1-rule-section"><strong>关键字段</strong><span>主货架字段为产品线分组、商品名称和积分价格。兑换弹层补充商品名称、兑换所需积分、产品站点和商品描述；兑换记录弹层展示时间、兑换商品和积分变化。</span></div>
-        <div class="v1-rule-section"><strong>状态规则</strong><span>兑换状态由弹层承接确认动作，商品卡保持货架信息密度。分组帮助 C端识别产品线，不拆成独立商城频道。商品过多时，每组先展示核心商品，其余进入组内更多入口或二级列表。兑换记录在 AI商城页内弹层查看，不打断商品浏览上下文。</span></div>
+        <div class="v1-rule-section"><strong>关键字段</strong><span>主货架字段为产品线分组、商品名称和积分价格。兑换弹层补充商品名称、兑换所需积分、产品站点和商品描述；兑换结果必须包含成交积分快照、积分是否扣除、权益发放状态和下一步；兑换记录展示时间、商品、积分变化和结果。</span></div>
+        <div class="v1-rule-section"><strong>状态规则</strong><span>兑换结果区分已到账、发放中和失败未扣除；兑换时锁定商品名称与积分价格快照，后续商品改价不回写历史记录。发放失败若未扣积分显示 0，若已扣除则必须给出退回状态和到账时间。</span></div>
         <div class="v1-rule-section"><strong>动作去向</strong><span>商品按钮打开本页兑换确认弹层，不直接跳模型广场、AIGC 或镜像站。确认后进入商品专属兑换成功态，主按钮前往对应产品线，次按钮关闭弹层；标题右侧兑换记录打开页内记录弹层。</span></div>
         <div class="v1-rule-section"><strong>运营维护</strong><span>产品线分组、商品名称、兑换积分、主推排序和弹层描述由运营维护。当前商品名称参考 API中转站定价页模型名、镜像站订阅页商品名；闪创AI按体验小时卡、体验日卡、体验周卡和体验月卡等梯度表达。</span></div>
         <div class="v1-rule-section"><strong>研发规则</strong><span data-engineering-rule>商品卡字段固定为产品线分组、商品名称、积分价格和“去兑换”按钮；商品名称 2-24 字，积分价格为正整数，价格缺失或为 0 时商品不得展示为可兑换</span><span data-engineering-rule>兑换按钮状态：可用积分大于等于商品价格时按钮可点击并打开本页确认弹层；积分不足时按钮禁用或进入积分不足提示，不允许打开成功态；兑换处理中禁用重复点击</span><span data-engineering-rule>确认弹层必须展示商品名称、所需积分、产品站点、商品描述和确认/取消动作；确认成功后进入商品专属成功态，主按钮进入对应产品线，次按钮关闭弹层回到原货架位置</span><span data-engineering-rule>兑换记录使用页内弹层承接，不跳积分中心；记录字段为时间、兑换商品、积分变化和状态，扣减统一显示 -N，处理中状态不得展示为已到账或已发放</span><span data-engineering-rule>库存/权益边界：当前原型不展示卡密、兑换码、订单号、支付流水、真实库存或发票；后续如果需要展示卡密，只能显示脱敏占位和复制状态，不在走查或页面中出现完整卡密</span><span data-engineering-rule>异常状态：兑换失败保留确认弹层并提示原因；关闭失败提示后回到确认态；兑换成功后必须能从兑换记录看到对应消耗记录</span></div>

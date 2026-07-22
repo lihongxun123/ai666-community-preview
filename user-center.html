@@ -76,7 +76,7 @@
           <div class="creation-result-footer" aria-label="下一步">
             <a class="creation-result-adjust" href="./index.html#quick-create">继续调整</a>
             <div class="creation-result-destination-actions" aria-label="这次结果下一步动作">
-              <a class="button" href="./aigc.html#canvas-studio">继续做成漫剧</a>
+              <a class="button" href="./aigc.html#manga-project">继续做成漫剧</a>
               <a class="button secondary" href="./flash.html#compose-flash">发布闪念</a>
             </div>
           </div>
@@ -122,7 +122,7 @@
           <div class="creation-result-footer" aria-label="下一步">
             <a class="creation-result-adjust" href="./index.html#quick-create">继续调整</a>
             <div class="creation-result-destination-actions" aria-label="这次结果下一步动作">
-              <a class="button" href="./aigc.html#canvas-studio">继续做成漫剧</a>
+              <a class="button" href="./aigc.html#manga-project">继续做成漫剧</a>
               <a class="button secondary" href="./flash.html#compose-flash">发布闪念</a>
             </div>
           </div>
@@ -175,7 +175,7 @@
           <div class="creation-result-footer" aria-label="下一步">
             <a class="creation-result-adjust" href="./index.html#quick-create">继续调整</a>
             <div class="creation-result-destination-actions" aria-label="这次结果下一步动作">
-              <a class="button" href="./aigc.html#canvas-studio">继续做成漫剧</a>
+              <a class="button" href="./aigc.html#manga-project">继续做成漫剧</a>
               <a class="button secondary" href="./flash.html#compose-flash">发布闪念</a>
             </div>
           </div>
@@ -248,8 +248,10 @@
             </div>
             <nav class="profile-anchor-nav" aria-label="用户中心导航">
               <a class="is-active" href="#creation-records"><span class="profile-nav-label"><img src="resources/icons/remixicon/svg/Document/draft-line.svg" alt="">创作记录</span></a>
+              <a href="#published"><span class="profile-nav-label"><img src="resources/icons/remixicon/svg/Document/article-line.svg" alt="">我的内容</span></a>
               <a href="#favorites"><span class="profile-nav-label"><img src="resources/icons/remixicon/svg/Business/bookmark-line.svg" alt="">我的收藏</span></a>
               <a href="#likes"><span class="profile-nav-label"><img src="resources/icons/remixicon/svg/System/thumb-up-line.svg" alt="">我的点赞</span></a>
+              <a href="#account-status"><span class="profile-nav-label"><img src="resources/icons/remixicon/svg/System/shield-check-line.svg" alt="">账号状态</span></a>
               <a href="#points" data-profile-points-entry="embedded-center"><span class="profile-nav-label"><img src="resources/icons/remixicon/svg/Finance/coins-fill.svg" alt="">积分中心</span><em>1280</em></a>
               <a href="#invite"><span class="profile-nav-label"><img src="resources/icons/remixicon/svg/Finance/gift-2-fill.svg" alt="">邀请有礼</span></a>
             </nav>
@@ -298,6 +300,29 @@
                   </a>
                 </div>
               </section>
+            </section>
+
+            <section id="published" class="profile-module-panel profile-section" data-user-section="published" data-user-published-center>
+              <div class="profile-section-head">
+                <div><h2>我的内容</h2><p>查看已发布内容与审核结果。</p></div>
+              </div>
+              <div class="profile-state-list">
+                <a class="profile-state-row" href="./aigc.html#case-detail-image" data-user-content-id="AIGC-1005" data-content-state="reviewing">
+                  <img src="assets/image_assets/15.jpg" alt="AI 生图作品预览">
+                  <span><strong>雨夜霓虹街头</strong><em>AI 生图 · 今天 10:26</em></span>
+                  <b class="is-waiting">审核中</b>
+                </a>
+                <a class="profile-state-row" href="./flash.html?flash=FLA-0307#flash-FLA-0307" data-user-content-id="FLA-0307" data-content-state="published">
+                  <img src="assets/image_assets/11.png" alt="漫剧开场闪念预览">
+                  <span><strong>漫剧开场拆解</strong><em>闪念 · 昨天 18:42</em></span>
+                  <b class="is-success">已发布</b>
+                </a>
+                <a class="profile-state-row" href="./aigc.html#prompt-detail-media" data-user-content-id="PROMPT-0218" data-content-state="needs-change">
+                  <img src="assets/image_assets/17.png" alt="国风角色 Prompt 预览">
+                  <span><strong>国风角色设定 Prompt</strong><em>Prompt · 07-13 16:20</em><small>请补充适用场景后重新提交。</small></span>
+                  <b class="is-warning">待修改</b>
+                </a>
+              </div>
             </section>
 
             <section id="favorites" class="profile-module-panel profile-section" data-user-section="favorites">
@@ -378,6 +403,22 @@
                   <div class="copy"><h3>治愈场景 Prompt</h3><p>带示例图，沉淀可复用场景关键词</p><div class="case-hover-meta"><span>Flux Pro 1.1</span><span>Prompt</span></div></div>
                 </a>
               </div>
+            </section>
+
+            <section id="account-status" class="profile-module-panel profile-section" data-user-section="account-status" data-account-status-center>
+              <div class="profile-section-head">
+                <div><h2>账号状态</h2><p>这里只展示影响当前使用的账号结果。</p></div>
+              </div>
+              <div class="account-status-card is-normal">
+                <div><span>当前状态</span><strong>正常</strong><p>创作、发布、评论和积分兑换均可使用。</p></div>
+                <img src="resources/icons/remixicon/svg/System/shield-check-line.svg" alt="">
+              </div>
+              <div class="account-status-facts">
+                <div><span>内容发布</span><strong>可用</strong></div>
+                <div><span>互动评论</span><strong>可用</strong></div>
+                <div><span>积分与兑换</span><strong>可用</strong></div>
+              </div>
+              <p class="account-status-help">如果账号能力发生变化，消息中心会说明影响范围、原因和可恢复方式。</p>
             </section>
 
             <section id="points" class="profile-module-panel profile-points-section" data-user-section="points">
@@ -808,13 +849,13 @@
         <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>运营关注</span><span>研发关注</span></div>
         <div class="v1-rule-section"><strong>页面定位</strong><span>用户中心是个人资产和创作回流工作台，左侧保留用户资料和分区按钮，右侧直接呈现当前模块内容；独立总览横幅已退出。</span></div>
         <div class="v1-rule-section"><strong>用户主路径</strong><span>用户从头像下拉进入个人中心 -> 点击左侧分区 -> 右侧只呈现创作、收藏、点赞、积分或邀请模块；左侧积分中心不跳转，直接在用户中心右侧呈现与积分中心一致的 UI；左侧邀请有礼直接在用户中心右侧呈现与独立邀请页一致的内容，首屏主按钮固定为立即邀请，点击后复制本模块邀请链接并提示已复制，顶部导航邀请入口只是快捷入口。</span></div>
-        <div class="v1-rule-section"><strong>关键字段</strong><span>头像昵称、最近创作卡片、收藏资产、点赞内容卡片、内容分类、积分入口数值、赚积分入口卡、新手/七日/生图/Prompt/邀请活动、邀请码、邀请链接、我的邀请人、邀请码输入框、绑定邀请人按钮、绑定后头像昵称卡片、邀请奖励规则、今日/月度奖励统计、邀请列表、积分记录和邀请阶段。</span></div>
+        <div class="v1-rule-section"><strong>关键字段</strong><span>头像昵称、最近创作卡片、已发布内容与审核状态、收藏资产、点赞内容卡片、内容分类、账号能力状态、积分入口数值、赚积分入口卡、新手/七日/生图/Prompt/邀请活动、邀请码、邀请链接、我的邀请人、邀请码输入框、绑定邀请人按钮、绑定后头像昵称卡片、邀请奖励规则、今日/月度奖励统计、邀请列表、积分记录和邀请阶段。</span></div>
         <div class="v1-rule-section"><strong>状态规则</strong><span>默认显示创作记录卡片网格；创作记录复用首页轻创作结果预览的轻量结果感，不使用独立大卡、堆叠和时间线；卡片只展示生成媒资、AI 生成徽标、结果类型、生成时间和提示词摘要，不在列表内展示模型、尺寸、比例、下载、分享、收藏或继续创作按钮；点击卡片直接打开同一创作结果详情弹层，完整基础参数放到弹层内承接。收藏和点赞都按 AIGC 灵感广场分类承接，固定为全部、短剧漫剧、文本内容、图片生成、视频生成、Prompt；两类资产使用三列内容卡片网格，不使用模板库侧入口或瀑布流窄卡；收藏/点赞列表卡片的信息层级与 AIGC 灵感卡一致，主体展示图片或 Prompt 预览，标题、摘要、模型和内容分类只在 hover/focus 覆盖层出现。标题区不放额外创建入口；左侧不放额外建议卡；资料编辑只保留用户卡右侧图标入口，并在同一弹层承载头像上传、昵称、个人简介、微信绑定和手机号绑定；手机号已绑定时只展示脱敏号码，弹层关闭使用图标按钮，底部操作按钮靠右。</span></div>
         <div class="v1-rule-section"><strong>动作去向</strong><span>左侧创作记录、我的收藏、我的点赞、积分中心和邀请有礼切换右侧模块。创作记录点击后在用户中心本页打开创作结果详情弹层，详情内容与首页轻创作结果预览一致，下载、分享、收藏、继续调整、继续做成漫剧和发布闪念都放在弹层内承接；我的收藏和我的点赞都使用统一内容卡片，只作为详情入口，点击后在用户中心本页打开 AIGC 作品或 Prompt 详情弹层，不跳转到 AIGC 页面；收藏代表主动归档，点赞代表轻互动历史，评论和转发先不扩成独立列表。用户中心积分模块复用独立积分中心的资产卡、赚积分入口和积分记录；用户中心邀请模块复用独立邀请页的邀请码、邀请人、奖励规则摘要、统计和记录；邀请模块首屏最大 CTA 指向本模块邀请链接复制区域，记录由下方列表承接；新手和七日进入对应任务页，生图挑战进入活动详情页，Prompt 共创进入 Prompt 活动详情页；扫码登录后的邀请关系补填在邀请有礼模块内承接。</span></div>
         <div class="v1-rule-section"><strong>运营维护</strong><span>最近创作、收藏资产、点赞资产、活动入口、邀请状态、邀请码和我的邀请人来自用户成长轻路径、AIGC P0 内容池、一期活动需求和人工样例数据。首页爆款作品、AIGC 灵感广场、我的收藏和我的点赞共用同一套内容分类口径；导航栏邀请有礼和我的邀请有礼保持内容一致，避免两套口径；我的邀请人状态只维护填写邀请码和绑定后头像昵称两种展示，默认不同时露出。</span></div>
-        <div class="v1-rule-section"><strong>研发规则</strong><span data-engineering-rule>左侧分区固定为创作记录、我的收藏、我的点赞、积分中心、邀请有礼；点击只切换右侧模块或锚点，不跳出用户中心，除非任务卡明确进入活动承接页</span><span data-engineering-rule>资料编辑弹层字段：头像允许 JPG、PNG、WebP，昵称 2-20 字，个人简介 0-80 字，微信绑定展示绑定状态，手机号只展示脱敏号码；保存失败保留输入并提示原因</span><span data-engineering-rule>创作记录使用 .profile-result-record-card，列表字段只保留 AI 生成徽标、结果类型、生成时间和提示词摘要；列表卡片不放模型、尺寸、比例、下载、分享、收藏、继续调整或发布按钮</span><span data-engineering-rule>创作记录 href 必须指向用户中心本页的 .profile-creation-detail-modal，详情弹层复用 .case-detail-modal.content-format-modal 外壳，内部字段与首页轻创作结果预览一致，关闭后回到 #creation-records</span><span data-engineering-rule>我的收藏和我的点赞均使用社区通用内容卡片；收藏卡和点赞卡不展示列表内互动按钮，列表卡片复用 AIGC 灵感卡的图片/Prompt 主体、hover/focus 覆盖层、模型和内容分类信息结构</span><span data-engineering-rule>收藏卡和点赞卡 href 必须指向用户中心本页的 .profile-content-detail-modal，详情弹层复用 .case-detail-modal.content-format-modal 结构，关闭后回到 #favorites 或 #likes</span><span data-engineering-rule>收藏和点赞分类必须使用 data-content-taxonomy=aigc-inspiration-v1，分类键固定为 all、manga、text、image、video、prompt，显示文案与首页爆款作品和 AIGC 灵感广场一致</span><span data-engineering-rule>积分模块复用积分中心规则：资产为非负整数，赚积分入口固定 5 张，目标为 campaign-new-user.html、campaign-seven-day.html、campaign-detail.html、campaign-prompt.html、invite.html</span><span data-engineering-rule>邀请模块复用邀请页规则：邀请码 6-12 位大写字母或数字；未绑定只展示输入框和绑定按钮，绑定成功后只展示头像昵称卡片，不同时展示两种状态</span><span data-engineering-rule>邀请记录不少于 4 条样例，字段为邀请时间、好友脱敏昵称、注册/互动/发布三阶段节点和累计积分；点击记录进入对应业务上下文，不展示复核证据或完整联系方式</span></div>
+        <div class="v1-rule-section"><strong>研发规则</strong><span data-engineering-rule>左侧分区固定为创作记录、我的内容、我的收藏、我的点赞、账号状态、积分中心、邀请有礼；点击只切换右侧模块或锚点，不跳出用户中心，除非内容对象或任务卡明确进入业务承接页</span><span data-engineering-rule>我的内容锚点固定为 #published，每条内容必须有稳定内容编号、内容类型、提交时间、用户可读状态和准确内容落点；审核中、已发布、待修改等状态不得展示内部命中标签</span><span data-engineering-rule>账号状态锚点固定为 #account-status；正常状态说明可用能力，限制状态必须说明影响范围、用户可理解原因和恢复方式，内部风控原因不得进入 C端</span><span data-engineering-rule>资料编辑弹层字段：头像允许 JPG、PNG、WebP，昵称 2-20 字，个人简介 0-80 字，微信绑定展示绑定状态，手机号只展示脱敏号码；保存失败保留输入并提示原因</span><span data-engineering-rule>创作记录使用 .profile-result-record-card，列表字段只保留 AI 生成徽标、结果类型、生成时间和提示词摘要；列表卡片不放模型、尺寸、比例、下载、分享、收藏、继续调整或发布按钮</span><span data-engineering-rule>创作记录 href 必须指向用户中心本页的 .profile-creation-detail-modal，详情弹层复用 .case-detail-modal.content-format-modal 外壳，内部字段与首页轻创作结果预览一致，关闭后回到 #creation-records</span><span data-engineering-rule>我的收藏和我的点赞均使用社区通用内容卡片；收藏卡和点赞卡不展示列表内互动按钮，列表卡片复用 AIGC 灵感卡的图片/Prompt 主体、hover/focus 覆盖层、模型和内容分类信息结构</span><span data-engineering-rule>收藏卡和点赞卡 href 必须指向用户中心本页的 .profile-content-detail-modal，详情弹层复用 .case-detail-modal.content-format-modal 结构，关闭后回到 #favorites 或 #likes</span><span data-engineering-rule>收藏和点赞分类必须使用 data-content-taxonomy=aigc-inspiration-v1，分类键固定为 all、manga、text、image、video、prompt，显示文案与首页爆款作品和 AIGC 灵感广场一致</span><span data-engineering-rule>积分模块复用积分中心规则：资产为非负整数，赚积分入口固定 5 张，目标为 campaign-new-user.html、campaign-seven-day.html、campaign-detail.html、campaign-prompt.html、invite.html</span><span data-engineering-rule>邀请模块复用邀请页规则：邀请码 6-12 位大写字母或数字；未绑定只展示输入框和绑定按钮，绑定成功后只展示头像昵称卡片，不同时展示两种状态</span><span data-engineering-rule>邀请记录不少于 4 条样例，字段为邀请时间、好友脱敏昵称、注册/互动/发布三阶段节点和累计积分；点击记录进入对应业务上下文，不展示复核证据或完整联系方式</span></div>
         <div class="v1-rule-section"><strong>研发验收</strong><span>左侧不放额外建议卡，右侧不放用户中心总览横幅。左侧入口均带图标，积分值显示在积分中心入口右侧；左侧积分中心为 `#points` 页内模块，积分资产卡通栏且高度压缩，赚积分入口固定 5 张卡且不出现说明型标签；创作记录标题区没有额外创建入口，至少保留 3 张生成结果卡片，列表卡不保留状态标签、卡片 CTA 或旧轻发布结构，卡片点击后必须打开本页创作结果详情弹层；收藏模块不展示模板库入口，收藏和点赞模块均展示统一分类、三列内容卡片网格、不出现列表内互动按钮，卡片宽度不得继承首页瀑布流 5 列窄卡；收藏/点赞卡片点击后必须打开本页详情弹层，URL 不进入 aigc.html；邀请模块标题区不展示眉标或打开独立邀请页入口，必须直接展示我的邀请码、邀请链接、我的邀请人、邀请码输入框、绑定邀请人按钮、绑定后头像昵称卡片、奖励规则摘要、今日/月度奖励统计和不少于 4 条邀请列表；邀请概览首屏左侧入口卡与右侧邀请人/邀请码堆栈顶部和底部对齐；默认不展示未绑定提示，点击绑定邀请人后切换为头像昵称卡片。</span></div>
-        <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付个人工作台、创作回流、积分入口、邀请进展和资料编辑意向。完整账号体系、私信、收益中心、隐私管理能力和正式发布流程后置。</span></div>
+        <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付个人工作台、内容状态、账号状态、创作回流、积分入口、邀请进展和资料编辑意向。私信、收益中心和完整隐私管理能力后置。</span></div>
       </div>
     </details>
     <div class="footer-space"></div>

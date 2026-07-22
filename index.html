@@ -11,7 +11,7 @@
   <div class="page">
     <div class="page-bg"><img src="assets/image_assets/17.png" alt=""></div>
     <input class="top-campaign-toggle" type="checkbox" id="top-campaign-dismiss-index" aria-label="关闭顶部广告">
-    <div class="top-campaign"><span class="top-campaign-tags"><span>一期活动</span><span class="timer">2026.06.27 更新</span></span><span class="top-campaign-copy">AI 生图创作挑战开放，Prompt 共创、新手任务和七日成长同步承接</span><a class="top-campaign-link" href="./activity-center.html">查看活动</a><label class="top-campaign-close" for="top-campaign-dismiss-index" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
+    <div class="top-campaign"><span class="top-campaign-tags"><span>Prompt 共创</span><span class="timer">长期开放</span></span><span class="top-campaign-copy">发布可复用 Prompt，补充案例可获得更多积分</span><a class="top-campaign-link" href="./campaign-prompt.html">去投稿</a><label class="top-campaign-close" for="top-campaign-dismiss-index" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
     <header class="site-header">
       <div class="header-inner wide-container">
         <a class="logo" href="./index.html" aria-label="多元拾光">
@@ -78,7 +78,7 @@
           <div class="member-strip">
             <div><strong>每月积分包</strong><span>创作、模型和模板体验可用</span></div>
             <div><strong>AIGC 折扣</strong><span>图片、视频和漫剧体验优先</span></div>
-            <div><strong>活动专属奖励</strong><span>生图挑战和共创计划加成</span></div>
+            <div><strong>创作权益</strong><span>模型折扣、模板复用和历史 Prompt 案例集中查看</span></div>
           </div>
           <div class="modal-actions">
             <a class="button" href="./member-store.html">进入AI商城</a>
@@ -454,14 +454,14 @@
                         <span><b>比例</b><em class="creation-mode-panel" data-create-mode-panel="image">16:9</em><em class="creation-mode-panel" data-create-mode-panel="script">文本结构化</em><em class="creation-mode-panel" data-create-mode-panel="video">16:9</em></span>
                       </div>
                       <div class="creation-result-prompt-card">
-                        <div class="creation-result-row-head"><b>提示词</b><button class="creation-copy-button" type="button" data-result-copy-prompt aria-label="复制提示词"></button></div>
+                        <div class="creation-result-row-head"><b>提示词</b><button class="creation-copy-button" type="button" data-result-copy-prompt aria-label="复制提示词"><img src="resources/icons/remixicon/svg/Document/file-copy-line.svg" alt=""></button></div>
                         <p class="creation-result-prompt-text" data-result-prompt data-creation-prompt-preview>描述你想生成的画面，例如：雨夜霓虹街头，少年回头，电影感构图。</p>
                       </div>
                     </section>
                     <div class="creation-result-footer" aria-label="下一步">
                       <label class="creation-result-adjust" data-creation-next="generating" for="home-create-step-generating">继续调整</label>
                       <div class="creation-result-destination-actions" aria-label="这次结果下一步动作">
-                        <a class="button" data-result-destination-action="manga" data-creation-action="manga" href="./aigc.html#canvas-studio">继续做成漫剧</a>
+                        <a class="button" data-result-destination-action="manga" data-creation-action="manga" href="./aigc.html#manga-project">继续做成漫剧</a>
                         <a class="button secondary" data-result-destination-action="flash" data-creation-action="flash" href="./flash.html#compose-flash">发布闪念</a>
                       </div>
                     </div>
@@ -485,7 +485,7 @@
                     <article class="creation-destination-card">
                       <span>漫剧项目</span>
                       <strong>进入画布继续拆分脚本、分镜和封面</strong>
-                      <a class="button" data-creation-action="manga" href="./aigc.html#canvas-studio">继续做成漫剧</a>
+                      <a class="button" data-creation-action="manga" href="./aigc.html#manga-project">继续做成漫剧</a>
                     </article>
                     <article class="creation-destination-card">
                       <span>轻内容</span>
@@ -512,10 +512,10 @@
                 <strong>1句话 = 1支广告</strong>
                 <em>电影级质感即刻生成</em>
               </a>
-              <a class="carousel-slide carousel-slide-manga" href="./campaign-detail.html">
-                <span class="slide-kicker">一期活动</span>
-                <strong>AI 生图创作挑战</strong>
-                <em>发布有效作品可查看积分进度</em>
+              <a class="carousel-slide carousel-slide-manga" href="./activity-center.html">
+                <span class="slide-kicker">活动中心</span>
+                <strong>成长任务继续开放</strong>
+                <em>新手、七日和邀请奖励统一查看</em>
               </a>
               <a class="carousel-slide carousel-slide-tools has-video" href="./member-store.html">
                 <video class="carousel-video" src="assets/video_assets/effects_template.mp4" poster="assets/image_assets/3.png" muted loop playsinline aria-hidden="true"></video>
@@ -532,7 +532,7 @@
           </section>
 
           <div class="ad-card-row">
-            <a class="ad-card is-featured ad-card-manga" href="./aigc.html#canvas-studio">
+            <a class="ad-card is-featured ad-card-manga" href="./aigc.html#manga-project">
               <span class="ad-icon ad-icon-green"><img src="resources/icons/remixicon/svg/System/add-line.svg" alt=""></span>
               <span class="ad-copy"><strong>漫剧制作</strong><em>无限画布，释放你的想象力</em></span>
             </a>
@@ -567,7 +567,7 @@
           <div class="masonry">
             <div class="case-feed-ad" aria-label="爆款作品首位运营广告">
               <div class="case-feed-ad-track">
-                <a class="case-feed-ad-slide" href="./campaign-detail.html" style="--ad-image: url('assets/image_assets/11.png')"><span>AI 生图挑战</span><strong>本期优秀作品征集</strong><em>发布有效作品查看积分与推荐进度</em></a>
+                <a class="case-feed-ad-slide" href="./campaign-prompt.html" style="--ad-image: url('assets/image_assets/11.png')"><span>Prompt 共创</span><strong>发布你的可复用 Prompt</strong><em>补充图文或视频案例，获得更多积分</em></a>
                 <a class="case-feed-ad-slide" href="./aigc.html#aigc-create-panel" style="--ad-image: url('assets/image_assets/18.png')"><span>一句话广告片</span><strong>输入灵感，直接出片</strong><em>脚本、画面、分镜同步生成</em></a>
                 <a class="case-feed-ad-slide" href="./member-store.html" style="--ad-image: url('assets/image_assets/17.png')"><span>Seedance 2.0</span><strong>官方35折限时开抢</strong><em>低至￥0.5/s，AI商城加赠积分</em></a>
               </div>

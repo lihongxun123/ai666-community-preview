@@ -771,7 +771,7 @@
   }
 
   function removeContentCopyHead(card, label) {
-    const head = card.querySelector(".prompt-detail-copy-head");
+    const head = card.querySelector(".prompt-detail-copy-head, .detail-prompt-head");
     if (!head) {
       return;
     }
@@ -797,7 +797,7 @@
       return;
     }
 
-    let head = card.querySelector(".prompt-detail-copy-head");
+    let head = card.querySelector(".prompt-detail-copy-head, .detail-prompt-head");
     if (!head) {
       head = document.createElement("div");
       head.className = "prompt-detail-copy-head";
@@ -1224,14 +1224,14 @@
       key: "image",
       datasetKey: "Image",
       label: "AI 生图",
-      state: "可投稿",
-      reward: "最高 1200 积分",
+      state: "进行中",
+      reward: "最高 1000 积分",
       cover: "assets/image_assets/2.png",
-      title: "生图挑战，最高 1200 积分",
-      description: "按主题发布作品，前 2 次有效发布有基础奖励，优质作品争取精选和首页曝光。",
-      href: "./campaign-detail.html#image-challenge-tasks",
-      cta: "去看活动详情",
-      entry: "主题投稿"
+      title: "生图挑战进行中",
+      description: "发布主题 AI 作品，争取精选和首页推荐奖励。",
+      href: "./campaign-detail.html",
+      cta: "查看活动详情",
+      entry: "创作挑战"
     },
     {
       key: "prompt",
@@ -1465,7 +1465,7 @@
     const head = createTaskGuideElement("div", "activity-task-guide-head", "");
     const headingBlock = createTaskGuideElement("div", "", "");
     headingBlock.append(
-      createTaskGuideElement("h1", "", "参与活动，最高赚 2400 积分")
+      createTaskGuideElement("h1", "", "创作活动长期开放，成长任务继续进行")
     );
     const closeButton = createTaskGuideElement("button", "activity-task-guide-close", "");
     closeButton.type = "button";

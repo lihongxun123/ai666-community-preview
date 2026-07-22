@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-09T14:12:12.692Z",
+  "generatedAt": "2026-07-22T07:24:37.146Z",
   "packageType": "community-public-preview",
   "sourceRoot": "outputs/community-homepage-style-exploration",
   "entry": "index.html",
@@ -163,6 +163,7 @@
     "resources/icons/remixicon/svg/Design/edit-2-line.svg",
     "resources/icons/remixicon/svg/Development/terminal-window-line.svg",
     "resources/icons/remixicon/svg/Device/smartphone-line.svg",
+    "resources/icons/remixicon/svg/Document/article-line.svg",
     "resources/icons/remixicon/svg/Document/draft-line.svg",
     "resources/icons/remixicon/svg/Document/file-copy-line.svg",
     "resources/icons/remixicon/svg/Document/file-download-line.svg",
@@ -189,9 +190,11 @@
     "resources/icons/remixicon/svg/System/close-fill.svg",
     "resources/icons/remixicon/svg/System/close-line.svg",
     "resources/icons/remixicon/svg/System/logout-box-r-line.svg",
+    "resources/icons/remixicon/svg/System/question-line.svg",
     "resources/icons/remixicon/svg/System/search-line.svg",
     "resources/icons/remixicon/svg/System/share-2-line.svg",
     "resources/icons/remixicon/svg/System/share-forward-line.svg",
+    "resources/icons/remixicon/svg/System/shield-check-line.svg",
     "resources/icons/remixicon/svg/System/thumb-up-fill.svg",
     "resources/icons/remixicon/svg/System/thumb-up-line.svg",
     "resources/icons/remixicon/svg/User & Faces/user-3-line.svg"

@@ -11,7 +11,7 @@
   <div class="page aigc-page" data-page="community-aigc">
     <div class="page-bg"><img src="assets/image_assets/17.png" alt=""></div>
     <input class="top-campaign-toggle" type="checkbox" id="top-campaign-dismiss-aigc" aria-label="关闭顶部广告">
-    <div class="top-campaign"><span>活动剩余</span><span class="timer">20时 42分 39秒</span><span>AIGC 创作挑战开放中，完成体验可领积分和模板权益</span><span>立即体验</span><label class="top-campaign-close" for="top-campaign-dismiss-aigc" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
+    <div class="top-campaign"><span>Prompt 共创</span><span class="timer">长期开放</span><span>从灵感广场复用 Prompt，也可以发布自己的提示词和案例</span><span>立即体验</span><label class="top-campaign-close" for="top-campaign-dismiss-aigc" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
     <header class="site-header">
       <div class="header-inner wide-container">
         <a class="logo" href="./index.html" aria-label="多元拾光">
@@ -78,7 +78,7 @@
           <div class="member-strip">
             <div><strong>每月积分包</strong><span>创作、模型和模板体验可用</span></div>
             <div><strong>AIGC 折扣</strong><span>图片、视频和漫剧体验优先</span></div>
-            <div><strong>活动专属奖励</strong><span>生图挑战和共创计划加成</span></div>
+            <div><strong>创作权益</strong><span>模型折扣、模板复用和历史 Prompt 案例集中查看</span></div>
           </div>
           <div class="modal-actions">
             <a class="button" href="./member-store.html">进入AI商城</a>
@@ -98,8 +98,6 @@
         <input class="creation-mode-radio" id="aigc-create-mode-image" name="aigc-create-mode" type="radio" value="image" data-create-mode="image" checked>
         <input class="creation-mode-radio" id="aigc-create-mode-script" name="aigc-create-mode" type="radio" value="script" data-create-mode="script">
         <input class="creation-mode-radio" id="aigc-create-mode-video" name="aigc-create-mode" type="radio" value="video" data-create-mode="video">
-        <input class="creation-purpose-radio" id="aigc-create-purpose-normal" name="aigc-create-purpose" type="radio" value="normal" data-create-purpose="normal" checked>
-        <input class="creation-purpose-radio" id="aigc-create-purpose-campaign" name="aigc-create-purpose" type="radio" value="campaign" data-create-purpose="campaign">
         <div class="experience-tabs">
           <label class="experience-tab" for="aigc-create-mode-image" data-create-mode-tab="image">图片生成</label>
           <label class="experience-tab" for="aigc-create-mode-script" data-create-mode-tab="script">剧本创作</label>
@@ -122,25 +120,6 @@
                         <strong>上传图片</strong>
                         <em>用于图生图或局部编辑</em>
                       </button>
-                      <div class="creation-purpose-switch" data-creation-purpose-switch aria-label="活动投稿选择">
-                        <details class="creation-purpose-menu" data-create-purpose-menu>
-                          <summary class="creation-purpose-option" data-create-purpose-trigger>
-                            <span>可参加活动</span>
-                            <strong>选择投稿活动</strong>
-                          </summary>
-                          <div class="creation-purpose-menu-list" data-create-purpose-list>
-                            <label class="creation-purpose-choice" for="aigc-create-purpose-campaign" data-create-purpose-option="campaign">
-                              <span>AIGC 活动投稿</span>
-                              <strong>AI 生图创作挑战 · +50</strong>
-                            </label>
-                          </div>
-                        </details>
-                        <div class="creation-purpose-selected" data-create-purpose-selected="campaign">
-                          <span>AIGC 活动投稿</span>
-                          <strong>AI 生图创作挑战 · +50</strong>
-                          <label class="creation-purpose-clear" for="aigc-create-purpose-normal" aria-label="取消活动投稿">×</label>
-                        </div>
-                      </div>
                     </div>
                     <textarea class="create-input create-textarea creation-mode-panel" data-create-prompt data-create-mode-panel="script" rows="6" placeholder="输入故事设定、人物关系或短片想法，进入画布后继续拆解剧本与分镜。"></textarea>
                     <textarea class="create-input create-textarea creation-mode-panel" data-create-prompt data-create-mode-panel="video" rows="6" placeholder="描述一段视频镜头，例如：镜头缓慢推进，角色穿过未来城市街道，光影流动。"></textarea>
@@ -420,7 +399,6 @@
                     <div class="creation-result-top creation-result-info" aria-label="结果操作栏">
                       <div class="creation-result-status">
                         <strong data-result-mode-title>图片生成</strong>
-                        <span class="creation-result-campaign-tag" data-creation-campaign-tag>AIGC 活动投稿</span>
                         <em>刚刚生成 · 内容由 AI 生成</em>
                       </div>
                       <div class="creation-result-toolbar" aria-label="操作栏">
@@ -437,15 +415,14 @@
                         <span><b>比例</b><em class="creation-mode-panel" data-create-mode-panel="image">16:9</em><em class="creation-mode-panel" data-create-mode-panel="script">文本结构化</em><em class="creation-mode-panel" data-create-mode-panel="video">16:9</em></span>
                       </div>
                       <div class="creation-result-prompt-card">
-                        <div class="creation-result-row-head"><b>提示词</b><button class="creation-copy-button" type="button" data-result-copy-prompt aria-label="复制提示词"></button></div>
+                        <div class="creation-result-row-head"><b>提示词</b><button class="creation-copy-button" type="button" data-result-copy-prompt aria-label="复制提示词"><img src="resources/icons/remixicon/svg/Document/file-copy-line.svg" alt=""></button></div>
                         <p class="creation-result-prompt-text" data-result-prompt data-creation-prompt-preview>描述你想生成的画面，例如：雨夜霓虹街头，少年回头，电影感构图。</p>
                       </div>
                     </section>
                     <div class="creation-result-footer" aria-label="下一步">
                       <label class="creation-result-adjust" data-creation-next="generating" for="aigc-create-step-generating">继续调整</label>
                       <div class="creation-result-destination-actions" aria-label="这次结果下一步动作">
-                        <a class="button" data-result-destination-action="campaign" data-creation-action="campaign" href="./campaign-detail.html?cb=20260701-submissions#campaign-submissions">发布活动作品</a>
-                        <a class="button" data-result-destination-action="manga" data-creation-action="manga" href="#canvas-studio">继续做成漫剧</a>
+                        <a class="button" data-result-destination-action="manga" data-creation-action="manga" href="#manga-project">继续做成漫剧</a>
                         <a class="button secondary" data-result-destination-action="flash" data-creation-action="flash" href="./flash.html#compose-flash">发布闪念</a>
                       </div>
                     </div>
@@ -460,13 +437,35 @@
                     <label class="button subtle" data-creation-next="result" for="aigc-create-step-result">返回结果</label>
                   </aside>
                   <div class="creation-destination-grid">
-                    <article class="creation-destination-card"><span>漫剧项目</span><strong>进入画布继续拆分脚本、分镜和封面</strong><a class="button" data-creation-action="manga" href="#canvas-studio">继续做成漫剧</a></article>
+                    <article class="creation-destination-card"><span>漫剧项目</span><strong>进入项目设置，确认回流发布信息</strong><a class="button" data-creation-action="manga" href="#manga-project">继续做成漫剧</a></article>
                     <article class="creation-destination-card"><span>轻内容</span><strong>把生成过程和想法发布为闪念</strong><a class="button secondary" data-creation-action="flash" href="./flash.html#compose-flash">发布为闪念</a></article>
                   </div>
                 </div>
               </section>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="manga-project" class="create-modal manga-project-modal" aria-labelledby="manga-project-title" data-manga-project-workspace>
+      <a class="modal-backdrop" href="#quick-create" aria-label="关闭漫剧项目设置"></a>
+      <div class="create-dialog manga-project-dialog" role="dialog" aria-modal="true">
+        <div class="create-dialog-head">
+          <div><span>漫剧项目</span><h2 id="manga-project-title">把当前结果继续做成漫剧</h2></div>
+          <a class="modal-close-icon" href="#quick-create" aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a>
+        </div>
+        <div class="manga-project-source" data-manga-source="current-aigc-result">
+          <img src="assets/image_assets/15.jpg" alt="当前 AIGC 结果预览">
+          <div><strong>雨夜霓虹街头</strong><span>已带入当前结果、提示词与所选模型</span><p>后续可继续拆解角色、场景、分镜和封面，不需要重新上传。</p></div>
+        </div>
+        <div class="manga-project-fields">
+          <label><span>项目名称</span><input type="text" value="雨夜霓虹街头漫剧" maxlength="40"></label>
+          <label><span>下一步</span><select><option>先拆角色与场景</option><option>直接生成分镜草稿</option><option>先编辑剧本大纲</option></select></label>
+        </div>
+        <div class="manga-project-actions">
+          <a class="button secondary" href="./user-center.html#published" data-manga-action="save-draft">保存为草稿</a>
+          <a class="button" href="./user-center.html#published" data-manga-action="create-project">创建漫剧项目</a>
         </div>
       </div>
     </section>
@@ -990,14 +989,15 @@
         <div class="v1-walkthrough-head"><strong>AIGC 频道走查</strong><span>用户需要从一句想法进入模板、画布、预览和反馈，不被说明文打断。</span></div>
         <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>运营关注</span><span>研发关注</span></div>
         <div class="v1-rule-section"><strong>页面定位</strong><span>AIGC 是 1.0 最强创作入口，承接一句话创作、模板同款、无限画布、灵感消费和用户反馈。</span></div>
-        <div class="v1-rule-section"><strong>用户主路径</strong><span>输入创意或点击热门模板 -> 进入轻创作 -> 普通入口在上传图片旁用下拉提示可选择活动投稿，活动入口自动带入 AI 生图创作挑战 -> 查看轻创作结果 -> 普通路径继续做成漫剧或发布为闪念，活动路径可发布活动作品；点击灵感广场 Prompt 筛选后，下方切换为 Prompt 卡片，点击卡片用同款内容详情弹窗查看对应提示词、模型信息或评论，或一键同款带入轻创作；Prompt 投稿发布成功也回到灵感广场并自动打开对应 Prompt 详情弹层。</span></div>
-        <div class="v1-rule-section"><strong>关键字段</strong><span>创作 Tab、创作归属、Prompt 输入、模型选择、积分提示、轻创作结果态、下一步动作、画布节点、模板卡、模板详情、灵感卡、Prompt 筛选、Prompt 卡片、Prompt 详情弹窗、模型信息、内容详情互动动作区、提示词和一键同款入口。</span></div>
-        <div class="v1-rule-section"><strong>状态规则</strong><span>轻创作保留输入灵感、生成中、结果预览和下一步分发四个状态。输入态不露步骤条；可点击模式顺序为图片生成、剧本创作、视频生成；普通入口活动投稿默认关闭，上传图片旁展示“可参加活动 / 选择投稿活动”的下拉框，当前下拉只放 AI 生图创作挑战但保留可扩展形态；从 AI 生图活动入口进入时使用 #quick-create-campaign 自动选中活动投稿，选中后显示已选活动和关闭按钮，关闭后回到普通轻创作。图片模型为 doubao-seedream-4-5-251128、doubao-seedream-5-0-260128、Nano Banana Pro、gpt-image-2、nano-banana-2；剧本模型为 gemini-3-flash-preview、kimi-k2.6、gpt-5.5、deepseek-v4-pro；视频模型为 doubao-seedance-1-5-pro、doubao-seedance-2-0-5s、kling-3.0-omni-720p-ref-mute、grok-video-3-10s、omni-fast、doubao-seedance-2-0-10s、doubao-seedance-2-0-15s、kling-2.5-1080p、grok-1.5-video-10s、grok-video-3。图片/视频显示 16:9、9:16、1:1，剧本不显示比例；灵感广场分类固定为全部、短剧漫剧、文本内容、图片生成、视频生成、Prompt，并作为首页爆款作品、我的收藏和我的点赞的同源分类口径；Prompt 作为筛选结果单独切出卡片流。</span></div>
+        <div class="v1-rule-section"><strong>用户主路径</strong><span>输入创意或点击热门模板 -> 进入轻创作 -> 查看轻创作结果 -> 继续做成漫剧、发布为闪念或保存；当前没有开放投稿，轻创作不显示活动选择器，活动结果统一从活动中心查看。点击灵感广场 Prompt 筛选后，下方切换为 Prompt 卡片，点击卡片查看对应提示词、模型信息或评论，或一键同款带入轻创作。</span></div>
+        <div class="v1-rule-section"><strong>关键字段</strong><span>创作 Tab、Prompt 输入、模型选择、积分提示、轻创作结果态、下一步动作、漫剧项目承接、稳定内容编号、模板卡、模板详情、灵感卡、Prompt 筛选、Prompt 卡片、Prompt 详情弹窗、模型信息、内容详情互动动作区、提示词和一键同款入口。</span></div>
+        <div class="v1-rule-section"><strong>状态规则</strong><span>轻创作保留输入灵感、生成中、结果预览和下一步分发四个状态。输入态不露步骤条；可点击模式顺序为图片生成、剧本创作、视频生成；当没有进行中活动时不渲染活动选择器，历史 #quick-create-campaign 路由回退到普通 #quick-create，不保留已结束活动的可选态。图片/视频显示 16:9、9:16、1:1，剧本不显示比例；灵感广场分类固定为全部、短剧漫剧、文本内容、图片生成、视频生成、Prompt，并作为首页爆款作品、我的收藏和我的点赞的同源分类口径。</span></div>
         <div class="v1-rule-section"><strong>复制边界</strong><span>无媒资 Prompt 左侧展示正文，右侧第一 Tab 展示模型信息；带媒资 Prompt 左侧展示图片或视频，右侧第一 Tab 展示提示词；评论由评论 Tab 承接，详情内不展示生成扣次或复制状态说明。</span></div>
-        <div class="v1-rule-section"><strong>动作去向</strong><span>创作入口承接输入灵感、选择模板或模型、选择创作归属、生成中、结果预览和下一步动作。结果可以继续做成漫剧或发布闪念；当创作归属选择 AIGC 活动投稿时，结果态展示发布活动作品入口并回到 AI 生图创作挑战投稿作品区。模板本质是官方或专业人员维护的 AIGC 内容，模板卡只进入内容详情；模板详情和灵感详情共用提示词/评论 Tab，点赞、收藏、分享和一键同款统一沉到底部动作区；点赞和收藏点击后数量加一并切换填充态，分享点击后数量加一并提示已复制。Prompt 投稿发布成功可直达 aigc.html#prompt-detail-media，关闭后停留在 #inspiration-prompt；Prompt 详情的一键同款必须携带提示词和推荐模型到 #quick-create。</span></div>
+        <div class="v1-rule-section"><strong>动作去向</strong><span>创作入口承接输入灵感、选择模板或模型、生成中、结果预览和下一步动作。继续做成漫剧进入 #manga-project，自动带入当前结果、提示词和模型，用户确认项目名与下一步后创建漫剧草稿并回到我的内容；发布闪念进入 flash.html#compose-flash。模板详情和灵感详情共用提示词/评论 Tab，点赞、收藏、分享和一键同款统一沉到底部动作区。</span></div>
         <div class="v1-rule-section"><strong>运营维护</strong><span>重点模板、示例结果、模型积分、任务返还提示、灵感广场案例和首页爆款作品由 AIGC P0 内容、体验目标和低风险活动方案维护。灵感广场、首页爆款作品、我的收藏和我的点赞共用 data-content-taxonomy=aigc-inspiration-v1；6-7 月先用人工内容池，不接在线生成排队或扣费。</span></div>
-        <div class="v1-rule-section"><strong>研发规则</strong><span data-engineering-rule>轻创作输入正文建议 1-1000 字，trim 后为空时生成按钮禁用；返回调整必须保留原输入、所选模式、所选模型、图片比例和活动投稿状态</span><span data-engineering-rule>图片上传只作为图生图或参考图入口，允许 JPG、PNG、WebP，最多 1 张参考图；上传失败时停留在输入态并提示类型或大小原因，不进入生成中态</span><span data-engineering-rule>模式固定为图片生成、剧本创作、视频生成三种；图片和视频显示 16:9、9:16、1:1 比例，剧本不显示比例；切换模式时模型池和积分必须同步切换</span><span data-engineering-rule>普通 #quick-create 默认不选活动；#quick-create-campaign 必须自动选中 AI 生图创作挑战；活动选中态可关闭，关闭后回到普通入口，任务引导不得遮挡弹层</span><span data-engineering-rule>生成中状态禁止切换模式和模型，显示用户输入气泡、进度提示、小预览和当前模型；点击小预览进入结果态，继续调整回到生成中上下文而不是清空输入</span><span data-engineering-rule>普通结果态只保留继续做成漫剧和发布闪念；活动结果态额外展示发布活动作品，目标为 campaign-detail.html#campaign-submissions 或活动投稿承接锚点</span><span data-engineering-rule>灵感卡和模板卡必须先进入详情弹层；模板按官方或专业维护的 AIGC 内容处理，不使用独立模板预览/产出结构块；详情内点赞、收藏、分享和一键同款出现在底部，评论必须由右侧评论 Tab 承接；无媒资 Prompt 右侧第一 Tab 为模型信息，带媒资 Prompt 右侧第一 Tab 为提示词，保留点赞、评论、收藏、分享和同款入口，同款只带入提示词和推荐模型，不在详情内直接生成或扣积分</span></div>
-        <div class="v1-rule-section"><strong>研发验收</strong><span>模板名称、类型、textarea、图片上传、底部模型选择、图片/视频比例、不同模型积分、主动生成按钮、示例结果和任务返还说明需要可读。轻创作弹层输入态不展示标题栏和关闭图标，关闭由遮罩承接；生成中、结果和分发态在最外层弹层右侧显示外置关闭按钮，点击后关闭弹层；输入态外层容器不再保留边框，实际内容宽度等于原外框宽度；输入态需支持图片、剧本、视频三种模式点击切换，图片模式上传包裹在输入区内且按钮按内容宽度收拢，活动投稿入口必须位于上传图片旁，普通入口 #quick-create 下应保持未选中并展示下拉框，打开后可选择 AI 生图创作挑战；活动入口 #quick-create-campaign 应自动选中活动，显示已选活动和关闭按钮，关闭后回到普通轻创作，直达 #quick-create / #quick-create-campaign 时任务强引导不得遮挡轻创作弹层，按钮内积分图标需位于数字之前；选中活动投稿后结果态展示活动投稿标识和发布活动作品入口；长模型列表需要可滚动且可点击，模型名完整展示，选中态与积分分列不重叠，点击模型选项后下拉自动收起，模式切换时弹层高度保持稳定。点击生成后需使用 GSAP 从输入态扩展到更宽更高的生成中态，生成中进入专属处理场景并隐藏顶部内容类型框体；对话区展示用户输入气泡、AI 处理说明、带进度提示的小尺寸生成预览和底部输入灵感输入区，当前模型放在底部输入区内并跟随生成前选择；点击小预览进入结果态大图预览。生成中、结果和分发阶段仍锁定为发起生成时的类型，返回调整后恢复输入态类型切换且保留原输入内容；结果态和分发态保持与生成中态一致的大框体尺寸，结果态左侧为大结果预览且徽标为 AI 生成，右侧按结果详情侧栏组织，顶部只展示当前结果类型一个标题并与下载、分享、收藏操作对齐，生成说明保持单行不中断；中部先展示基础参数，再用提示词卡片承接剩余高度，提示词复制使用无边框图标按钮；底部不展示额外说明标题，继续调整以独立次级按钮承接，普通路径保留继续做成漫剧和发布闪念，活动路径增加发布活动作品入口；继续调整返回生成中对话状态，分发态保留继续做成漫剧和发布闪念两个目标，并尊重减少动态效果偏好。模板卡和灵感卡一样只作为详情入口，不展示列表内一键同款、收藏或分享；模板详情按内容详情左右布局承接，右侧使用提示词/评论 Tab，底部统一点赞、收藏、分享和一键同款，不展示独立模板预览、会生成、需要补充等结构块；模板详情打开时需覆盖顶部活动条、导航和走查入口。灵感卡不得展示点赞、评论、收藏或分享动作位；内容详情使用左右布局，漫剧和视频为单视频，图片支持多图切换，文本以 Markdown 预览呈现且左侧高度需与右侧信息列一致；普通内容右侧不展示无来源说明，提示词与评论用 Tab 承接，点赞、收藏、分享统一沉到详情底部动作区。Prompt 筛选必须指向 #inspiration-prompt，筛选后卡片 href 指向 #prompt-detail-text 或 #prompt-detail-media；直达 #prompt-detail-text 或 #prompt-detail-media 时必须自动打开详情弹层，并保持背景为 Prompt 卡片流和 Prompt 筛选高亮；无媒资 Prompt 详情左侧展示正文、右侧展示模型信息/评论，带媒资 Prompt 详情左侧展示图片或视频、右侧展示提示词/评论，底部保留点赞、收藏、分享和一键同款；详情弹层不展示生成扣次模块、复制状态说明、媒资标签或分类标签。页面不露账户余额、正式额度、供应商成本或正式扣费。</span></div>
+        <div class="v1-rule-section"><strong>研发规则</strong><span data-engineering-rule>轻创作输入正文建议 1-1000 字，trim 后为空时生成按钮禁用；返回调整必须保留原输入、所选模式、所选模型和图片比例</span><span data-engineering-rule>图片上传只作为图生图或参考图入口，允许 JPG、PNG、WebP，最多 1 张参考图；上传失败时停留在输入态并提示类型或大小原因，不进入生成中态</span><span data-engineering-rule>模式固定为图片生成、剧本创作、视频生成三种；图片和视频显示 16:9、9:16、1:1 比例，剧本不显示比例；切换模式时模型池和积分必须同步切换</span><span data-engineering-rule>活动列表必须只出现状态为进行中且处于有效期的活动；当前没有有效活动，#quick-create-campaign 退回普通 #quick-create，不得自动选中已结束活动</span><span data-engineering-rule>生成中状态禁止切换模式和模型，显示用户输入气泡、进度提示、小预览和当前模型；点击小预览进入结果态，继续调整回到生成中上下文而不是清空输入</span><span data-engineering-rule>当前结果态保留继续做成漫剧、发布闪念和保存，不展示已结束活动的发布入口</span><span data-engineering-rule>继续做成漫剧必须进入 #manga-project 并携带 sourceResultId、prompt、model、media、aspectRatio；创建项目后生成可回到 user-center.html#published 的稳定内容对象，不允许只停留在无目标锚点；#canvas-studio 只保留原 AIGC 画布分区</span><span data-engineering-rule>灵感卡和模板卡必须先进入详情弹层；模板按官方或专业维护的 AIGC 内容处理，不使用独立模板预览/产出结构块；详情内点赞、收藏、分享和一键同款出现在底部，评论必须由右侧评论 Tab 承接</span></div>
+        <div class="v1-rule-section"><strong>内容链接规则</strong><span data-engineering-rule>灵感与模板卡在运行时生成稳定 data-content-id，并把 content 参数与详情 hash 一起写入链接；直达链接必须按 content 定位原卡片，将对应标题和媒资带入详情弹层，不能只打开同类型通用详情。</span></div>
+        <div class="v1-rule-section"><strong>研发验收</strong><span>模板名称、类型、textarea、图片上传、底部模型选择、图片/视频比例、不同模型积分、主动生成按钮、示例结果和任务返还说明需要可读。轻创作弹层输入态不展示标题栏和关闭图标，关闭由遮罩承接；生成中、结果和分发态在最外层弹层右侧显示外置关闭按钮，点击后关闭弹层；输入态外层容器不再保留边框，实际内容宽度等于原外框宽度。当前无有效活动时不得出现可选投稿活动。继续做成漫剧必须打开 #manga-project 并能保存为个人内容；每张灵感与模板卡必须具备唯一 data-content-id 和精确对象链接。页面不露账户余额、正式额度、供应商成本或正式扣费。</span></div>
         <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付受控体验入口，只表达轻创作、模板发现和下一步承接。真实出片、自动任务返还、防刷、完整漫剧生产、真实模型调用和配置能力留到后续。</span></div>
       </div>
     </details>
@@ -1039,38 +1039,42 @@
         syncVideoState();
       });
 
-      const normalPurpose = document.querySelector("#aigc-create-purpose-normal");
-      const campaignPurpose = document.querySelector("#aigc-create-purpose-campaign");
-      const purposeMenu = document.querySelector("#quick-create [data-create-purpose-menu]");
-      const purposeCampaignOption = document.querySelector("#quick-create [data-create-purpose-option='campaign']");
-      const purposeClear = document.querySelector("#quick-create .creation-purpose-clear");
       const syncQuickCreatePurposeRoute = () => {
-        if (!normalPurpose || !campaignPurpose) return;
         if (window.location.hash === "#quick-create-campaign") {
-          campaignPurpose.checked = true;
-          if (purposeMenu) purposeMenu.open = false;
-          return;
-        }
-        if (window.location.hash === "#quick-create") {
-          normalPurpose.checked = true;
+          window.history.replaceState(null, "", "#quick-create");
         }
       };
 
       syncQuickCreatePurposeRoute();
       window.addEventListener("hashchange", syncQuickCreatePurposeRoute);
-      purposeCampaignOption?.addEventListener("click", () => {
-        window.requestAnimationFrame(() => {
-          if (purposeMenu) purposeMenu.open = false;
-        });
+
+      const stableContentId = (card) => {
+        const raw = [card.dataset.contentCategory || "content", card.textContent?.replace(/\s+/g, " ").trim() || "untitled", card.querySelector("img")?.getAttribute("src") || "text"].join("|");
+        let hash = 2166136261;
+        for (const char of raw) hash = Math.imul(hash ^ char.charCodeAt(0), 16777619);
+        return `AIGC-${(hash >>> 0).toString(16).toUpperCase().padStart(8, "0")}`;
+      };
+      const contentCards = [...document.querySelectorAll("a.case-card[href^='#']")];
+      contentCards.forEach((card) => {
+        const target = card.getAttribute("href");
+        const contentId = card.dataset.contentId || stableContentId(card);
+        card.dataset.contentId = contentId;
+        card.dataset.contentLinkContract = "exact-object";
+        card.href = `./aigc.html?content=${encodeURIComponent(contentId)}${target}`;
       });
-      purposeClear?.addEventListener("click", () => {
-        window.requestAnimationFrame(() => {
-          if (purposeMenu) purposeMenu.open = false;
-          if (window.location.hash === "#quick-create-campaign") {
-            window.history.replaceState(null, "", "#quick-create");
-          }
-        });
-      });
+      const requestedContentId = new URLSearchParams(location.search).get("content");
+      if (requestedContentId) {
+        const sourceCard = contentCards.find((card) => card.dataset.contentId === requestedContentId);
+        const target = sourceCard?.getAttribute("href")?.match(/(#.+)$/)?.[1];
+        const modal = target ? document.querySelector(target) : null;
+        if (sourceCard && modal) {
+          const title = sourceCard.querySelector("h3")?.textContent?.trim();
+          const image = sourceCard.querySelector("img")?.getAttribute("src");
+          modal.dataset.contentId = requestedContentId;
+          if (title && modal.querySelector("h3")) modal.querySelector("h3").textContent = title;
+          if (image && modal.querySelector(".case-detail-media img")) modal.querySelector(".case-detail-media img").src = image;
+        }
+      }
     })();
   </script>
   <script src="./vendor/gsap.min.js" defer></script>

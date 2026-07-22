@@ -11,7 +11,7 @@
   <div class="page growth-detail-page growth-app-page points-detail-page" data-page="points-center" data-points-entry-surface="unified-center" style="--growth-hero-image: url('assets/image_assets/18.png')">
     <div class="page-bg"><img src="assets/image_assets/18.png" alt=""></div>
     <input class="top-campaign-toggle" type="checkbox" id="top-campaign-dismiss-points" aria-label="关闭顶部广告">
-    <div class="top-campaign"><span>赚积分入口</span><span class="timer">一期活动已聚合</span><span>新手、七日、创作挑战、Prompt 共创和邀请奖励都在这里找入口</span><span>查看入口</span><label class="top-campaign-close" for="top-campaign-dismiss-points" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
+    <div class="top-campaign"><span>积分与任务入口</span><span class="timer">Prompt 共创开放中</span><span>发布 Prompt、完成成长任务和邀请好友都可获得积分</span><span>查看入口</span><label class="top-campaign-close" for="top-campaign-dismiss-points" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
     <header class="site-header">
       <div class="header-inner wide-container">
         <a class="logo" href="./index.html" aria-label="多元拾光">
@@ -61,7 +61,7 @@
           <section class="app-card points-earn-card" data-points-section="earn">
             <div class="app-card-head">
               <div>
-                <h2>赚积分入口</h2>
+                <h2>任务与活动入口</h2>
               </div>
               <a class="section-link" href="#points-records">积分记录</a>
             </div>
@@ -69,62 +69,82 @@
               <a class="points-earn-tile" href="./campaign-new-user.html" data-points-earn-card>
                 <strong>新手任务</strong>
                 <p>完成首次访问、资料、浏览、互动、收藏和首次发布。</p>
-                <em>最高 110 积分</em>
+                <em>进行中 · 最高 110 积分</em>
               </a>
               <a class="points-earn-tile" href="./campaign-seven-day.html" data-points-earn-card>
                 <strong>七日成长任务</strong>
                 <p>连续 7 天完成浏览、收藏、复制、发布、挑战、分享和兑换。</p>
-                <em>每日 140 + 连续 180</em>
+                <em>进行中 · 每日 140 + 连续 180</em>
               </a>
-              <a class="points-earn-tile" href="./campaign-detail.html" data-points-earn-card>
+              <a class="points-earn-tile" href="./campaign-detail.html" data-points-earn-card data-activity-state="running">
                 <strong>AI 生图创作挑战</strong>
-                <p>按主题发布 AI 作品，争取精选候选和首页推荐候选。</p>
-                <em>50 / 100 / 1000 积分</em>
+                <p>发布主题 AI 作品，有效发布、精选和首页推荐分别计奖。</p>
+                <em>进行中 · 最高 1000 积分</em>
               </a>
-              <a class="points-earn-tile" href="./campaign-prompt.html" data-points-earn-card>
+              <a class="points-earn-tile" href="./campaign-prompt.html" data-points-earn-card data-activity-state="running">
                 <strong>Prompt 共创计划</strong>
-                <p>进入共创活动，发布可复用 Prompt 并补充图文案例。</p>
-                <em>20 / 40 / 100 / 500 积分</em>
+                <p>发布可复用 Prompt，补充图文或视频案例并获得积分。</p>
+                <em>长期开放 · 最高 680 积分</em>
               </a>
               <a class="points-earn-tile" href="./invite.html" data-points-earn-card>
                 <strong>邀请有礼</strong>
                 <p>好友完成注册、首次互动和首次发布后累计奖励。</p>
-                <em>单个好友最高 90 积分</em>
+                <em>长期有效 · 单个好友最高 90 积分</em>
               </a>
             </div>
           </section>
 
           <section class="app-card points-record-card" data-points-section="records">
             <div class="app-card-head">
-              <div>
+              <div class="points-record-title">
                 <h2>积分记录</h2>
+                <a class="points-status-help" href="#points-status-help" data-points-status-help-entry aria-label="查看积分状态说明"><img src="resources/icons/remixicon/svg/System/question-line.svg" alt=""></a>
               </div>
             </div>
             <div id="points-records" class="growth-table compact-table points-record-table">
-              <div class="growth-table-row is-head"><span>时间</span><span>动作</span><span>变化</span></div>
-              <div class="growth-table-row" data-points-record><strong>今天 09:12</strong><span>新手首访</span><em>+10</em></div>
-              <div class="growth-table-row" data-points-record><strong>今天 09:28</strong><span>完善资料</span><em>+10</em></div>
-              <div class="growth-table-row" data-points-record><strong>今天 11:40</strong><span>AI商城工具兑换</span><em>-40</em></div>
-              <div class="growth-table-row" data-points-record><strong>昨天 18:06</strong><span>参与生图挑战</span><em>+20</em></div>
-              <div class="growth-table-row" data-points-record><strong>昨天 20:15</strong><span>生图挑战作品发布</span><em>+50</em></div>
+              <div class="growth-table-row is-head"><span>时间</span><span>动作</span><span>变化</span><span>状态</span></div>
+              <div class="growth-table-row" data-points-record data-points-state="arrived"><strong>2026.07.17 09:28</strong><span>邀请好友完成注册</span><em>+20</em><b>已到账</b></div>
+              <div class="growth-table-row" data-points-record data-points-state="arrived"><strong>2026.07.17 09:12</strong><span>新手任务完成</span><em>+30</em><b>已到账</b></div>
+              <div class="growth-table-row" data-points-record data-points-state="deducted"><strong>2026.07.17 11:40</strong><span>AI商城兑换</span><em>-180</em><b>已扣除</b></div>
+              <div class="growth-table-row" data-points-record data-points-state="deducted"><strong>2026.07.17 10:06</strong><span>模型调用</span><em>-12</em><b>已扣除</b></div>
+              <div class="growth-table-row" data-points-record data-points-state="pending"><strong>2026.07.16 23:59</strong><span>AI 生图挑战投稿</span><em>+50</em><b>待到账</b></div>
+              <div class="growth-table-row" data-points-record data-points-state="reversed"><strong>2026.07.15 14:12</strong><span>Prompt 奖励撤回</span><em>-30</em><b>已撤回</b></div>
+              <div class="growth-table-row" data-points-record data-points-state="exception"><strong>2026.07.14 16:22</strong><span>漫剧作品发布奖励</span><em>+50</em><b>处理异常</b></div>
             </div>
           </section>
         </div>
       </section>
     </main>
+    <section id="points-status-help" class="create-modal points-status-modal" data-points-status-modal aria-labelledby="points-status-help-title">
+      <a class="modal-backdrop" href="#points-records" aria-label="关闭积分状态说明"></a>
+      <div class="create-dialog points-status-dialog" role="dialog" aria-modal="true">
+        <div class="create-dialog-head">
+          <div><h2 id="points-status-help-title">积分状态说明（5 种）</h2></div>
+          <a class="modal-close-button modal-close-icon-button" href="#points-records" role="button" aria-label="关闭积分状态说明"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></a>
+        </div>
+        <div class="points-status-list">
+          <div data-points-status-help-item data-points-status="pending"><strong>待到账</strong><span>记录已生成，积分尚未进入可用余额。</span></div>
+          <div data-points-status-help-item data-points-status="arrived"><strong>已到账</strong><span>奖励积分已增加到可用余额。</span></div>
+          <div data-points-status-help-item data-points-status="deducted"><strong>已扣除</strong><span>消费积分已从可用余额扣除。</span></div>
+          <div data-points-status-help-item data-points-status="reversed"><strong>已撤回</strong><span>原积分变动已撤回，记录仍会保留。</span></div>
+          <div data-points-status-help-item data-points-status="exception"><strong>处理异常</strong><span>积分结果暂未完成，请稍后查看或联系平台处理。</span></div>
+        </div>
+        <div class="modal-actions points-status-actions"><a class="button secondary" href="#points-records">知道了</a></div>
+      </div>
+    </section>
     <details class="v1-walkthrough-drawer" data-v1-walkthrough-drawer>
       <summary>走查</summary>
       <div class="v1-walkthrough-panel">
         <div class="v1-walkthrough-head"><strong>积分中心走查</strong><span>本页用于承接赚积分入口、积分资产和最近积分记录。</span></div>
         <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>运营关注</span><span>研发关注</span></div>
-        <div class="v1-rule-section"><strong>页面定位</strong><span>积分中心是用户侧积分资产和赚积分入口聚合页，只承接余额、近期积分状态、入口卡和积分记录；新手、七日、创作挑战、Prompt 共创和邀请有礼进入各自承接页。</span></div>
-        <div class="v1-rule-section"><strong>用户主路径</strong><span>用户先查看可用积分和最近获得情况，再从五张赚积分入口卡进入对应承接页，最后查看最近积分记录。</span></div>
-        <div class="v1-rule-section"><strong>关键字段</strong><span>可用积分、今日获得、近 7 日获得、待到账、AI 商城兑换入口、五张赚积分入口卡、最近积分记录时间和变化值。</span></div>
-        <div class="v1-rule-section"><strong>状态规则</strong><span>积分数值和奖励摘要只表达原型口径；任务完成、积分发放、兑换扣减和异常校验不在本静态原型中执行。</span></div>
+        <div class="v1-rule-section"><strong>页面定位</strong><span>积分中心是用户侧积分资产和任务/活动入口聚合页，只承接余额、近期积分状态、入口卡和积分记录；进行中的任务与 Prompt 共创进入参与页，已结束活动进入结果回顾页。</span></div>
+        <div class="v1-rule-section"><strong>用户主路径</strong><span>用户先查看可用积分和最近获得情况，再从五张任务与活动入口卡进入对应承接页，最后查看最近积分记录。</span></div>
+        <div class="v1-rule-section"><strong>关键字段</strong><span>可用积分、今日获得、近 7 日获得、待到账、AI 商城兑换入口、五张任务与活动入口卡、入口状态、最近积分记录时间、变化值和状态说明入口。</span></div>
+        <div class="v1-rule-section"><strong>状态规则</strong><span>积分记录使用用户侧五种状态：待到账、已到账、已扣除、已撤回、处理异常；问号弹层逐项解释，并与后台待入账、已入账、已扣减、撤回流水、异常一一对应。</span></div>
         <div class="v1-rule-section"><strong>动作去向</strong><span>新手任务进入 `campaign-new-user.html`，七日成长进入 `campaign-seven-day.html`，生图挑战进入 `campaign-detail.html`，Prompt 共创进入 `campaign-prompt.html`，邀请有礼进入 `invite.html`；积分中心不保留已迁出的活动详情锚点。</span></div>
-        <div class="v1-rule-section"><strong>运营维护</strong><span>五张入口卡来自一期活动需求；积分中心只维护入口排序、积分资产展示和记录露出。活动规则、任务节点、邀请规则和拉新转化分别在对应页面维护。</span></div>
-        <div class="v1-rule-section"><strong>研发规则</strong><span data-engineering-rule>积分资产只展示非负整数：可用积分、今日获得、近 7 日获得、待到账；待到账单独展示，不计入可用积分；异常、冻结或追回只在记录里以用户可读文案表达</span><span data-engineering-rule>赚积分入口固定 5 张卡：新手任务、七日成长、AI 生图创作挑战、Prompt 共创计划、邀请有礼；每张卡必须有标题、奖励摘要、状态短文案和非空 href，不在卡片内展开完整活动规则</span><span data-engineering-rule>跳转目标固定：新手任务进入 ./campaign-new-user.html，七日成长进入 ./campaign-seven-day.html，AI 生图进入 ./campaign-detail.html，Prompt 共创进入 ./campaign-prompt.html，邀请有礼进入 ./invite.html</span><span data-engineering-rule>积分记录为只读列表，字段为时间、来源、积分变化和状态；正数使用 +N，扣减使用 -N，处理中或待到账不得伪装成已到账；点击记录优先保持当前页或进入对应业务上下文，不新增独立记录详情页</span><span data-engineering-rule>空态和失败态：无积分记录时展示空态和赚积分入口；资产加载失败时保留页面壳和重试提示，不显示 0 积分误导用户；活动配置缺失时隐藏对应入口并记录为验证失败</span><span data-engineering-rule>积分中心只做入口聚合和记录浏览，不承载活动详情、任务判定、防刷证据、卡密、订单、支付或后台配置说明</span></div>
-        <div class="v1-rule-section"><strong>研发验收</strong><span>积分资产栏必须为通栏短卡，不能回到左右分栏；赚积分入口固定 5 张卡，入口卡不得出现说明型标签；页面内不得保留 `data-points-task-detail` 或 `data-points-detail-row`；邀请有礼链接必须直达 `invite.html`，活动详情不得被倾倒进积分中心。</span></div>
+        <div class="v1-rule-section"><strong>运营维护</strong><span>五张入口卡来自当前活动与成长任务目录；积分中心只维护入口排序、生命周期短状态、积分资产展示和记录露出。活动规则、任务节点、邀请规则和拉新转化分别在对应页面维护。</span></div>
+        <div class="v1-rule-section"><strong>研发规则</strong><span data-engineering-rule>积分资产只展示非负整数：可用积分、今日获得、近 7 日获得、待到账；待到账单独展示，不计入可用积分；异常、冻结或追回只在记录里以用户可读文案表达</span><span data-engineering-rule>任务与活动入口固定 5 张卡：新手任务、七日成长、AI 生图创作挑战、Prompt 共创计划、邀请有礼；每张卡必须有标题、奖励或结果摘要、生命周期短状态和非空 href，不在卡片内展开完整活动规则</span><span data-engineering-rule>生命周期同步：新手、七日和邀请保持进行中或长期有效；Prompt 共创和 AI 生图挑战在原型中默认长期进行中并保留新增投稿入口；暂停或结束后才改为结果回顾</span><span data-engineering-rule>跳转目标固定：新手任务进入 ./campaign-new-user.html，七日成长进入 ./campaign-seven-day.html，AI 生图进入 ./campaign-detail.html，Prompt 共创进入 ./campaign-prompt.html，邀请有礼进入 ./invite.html</span><span data-engineering-rule>积分记录为只读四列：时间、动作、积分变化和用户侧状态；覆盖邀请奖励、任务奖励、活动奖励、模型调用、商城兑换和撤回/异常结果，不展示流水 ID、变动后余额、关联业务编号、记录人或日志编号</span><span data-engineering-rule>状态映射固定为 pending=待到账、arrived=已到账、deducted=已扣除、reversed=已撤回、exception=处理异常；问号弹层必须列出全部五种状态和用户可理解释义</span><span data-engineering-rule>空态和失败态：无积分记录时展示空态和任务入口；资产加载失败时保留页面壳和重试提示，不显示 0 积分误导用户；活动配置缺失时隐藏对应入口并记录为验证失败</span><span data-engineering-rule>积分中心只做入口聚合和记录浏览，不承载活动详情、任务判定、防刷证据、卡密、订单、支付或后台配置说明</span></div>
+        <div class="v1-rule-section"><strong>研发验收</strong><span>积分资产栏必须为通栏短卡，不能回到左右分栏；赚积分入口固定 5 张卡；积分记录保持四列并覆盖 pending、arrived、deducted、reversed、exception 五类结果；状态说明弹层固定 5 项，待到账汇总只统计 pending，不与可用积分相加。</span></div>
         <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付 C 端静态原型中的入口聚合和浏览路径。真实积分账务、奖励结算、防刷、卡密、支付履约、运营配置、接口协议和真实上线工程方案后置。</span></div>
       </div>
     </details>

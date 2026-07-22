@@ -11,7 +11,7 @@
   <div class="page growth-detail-page prompt-submit-page" data-page="prompt-submit">
     <div class="page-bg"><img src="assets/image_assets/15.jpg" alt=""></div>
     <input class="top-campaign-toggle" type="checkbox" id="top-campaign-dismiss-prompt-submit" aria-label="关闭顶部广告">
-    <div class="top-campaign"><span>Prompt 共创计划</span><span class="timer">投稿编辑</span><span>标题、正文、场景和模型达标后即可发布</span><span>进行中</span><label class="top-campaign-close" for="top-campaign-dismiss-prompt-submit" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
+    <div class="top-campaign"><span>Prompt 共创计划</span><span class="timer">长期开放</span><span>完善标题、提示词、场景与模型后即可投稿</span><span>正在投稿</span><label class="top-campaign-close" for="top-campaign-dismiss-prompt-submit" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
     <header class="site-header">
       <div class="header-inner wide-container">
         <a class="logo" href="./index.html" aria-label="多元拾光">
@@ -37,7 +37,7 @@
     </header>
 
     <main class="prompt-submit-modal-stage" aria-label="Prompt 投稿编辑入口">
-      <section id="prompt-submit-compose" class="create-modal prompt-submit-modal is-open" data-prompt-submit-modal aria-label="发布 Prompt">
+      <section id="prompt-submit-compose" class="create-modal prompt-submit-modal is-open" data-prompt-submit-modal data-prompt-submit-state="active" aria-label="发布 Prompt">
         <a class="modal-backdrop" href="./campaign-prompt.html" aria-label="关闭发布 Prompt"></a>
         <div class="create-dialog prompt-submit-dialog">
           <div class="create-dialog-head prompt-submit-dialog-head">
@@ -119,7 +119,7 @@
               <div id="prompt-media-upload" class="prompt-media-upload" data-prompt-submit-field="效果图/视频">
                 <div class="prompt-media-head">
                   <strong>效果图/视频</strong>
-                  <span>2 / 6</span>
+                  <span data-prompt-media-count>2 / 3</span>
                 </div>
                 <div class="prompt-upload-strip">
                   <label class="prompt-upload-dropzone" data-prompt-upload-dropzone aria-label="上传效果图或视频">
@@ -146,8 +146,8 @@
             </article>
           </div>
           <div class="prompt-submit-actions">
-            <a class="button" href="./aigc.html#prompt-detail-media" data-prompt-submit-publish data-prompt-submit-remix-cost data-prompt-submit-score="40" data-prompt-submit-media-count="2" aria-label="一键同款，40 积分">
-              <span>一键同款</span>
+            <a class="button" href="./prompt-detail.html#prompt-detail-media" data-prompt-submit-publish data-prompt-submit-reward data-prompt-submit-score="40" data-prompt-submit-media-count="2" data-validation-state="valid" aria-label="发布 Prompt，预计获得 40 积分">
+              <span>发布 Prompt</span>
               <span class="prompt-submit-cost-badge"><img src="resources/icons/remixicon/svg/Finance/coins-line.svg" alt=""><span data-prompt-submit-cost-value>40</span></span>
             </a>
           </div>
@@ -181,23 +181,23 @@
       <strong data-activity-field>活动标题：Prompt 共创计划</strong>
       <strong data-activity-field>关联页面：活动详情、投稿编辑、AIGC 灵感广场、Prompt 详情弹层、积分中心</strong>
       <strong data-activity-field>CTA 文案：发布 Prompt</strong>
-      <strong data-activity-field>CTA 目标：aigc.html#prompt-detail-media</strong>
+      <strong data-activity-field>CTA 目标：prompt-detail.html#prompt-detail-media</strong>
     </div>
 
     <details class="v1-walkthrough-drawer" data-v1-walkthrough-drawer>
       <summary>走查</summary>
       <div class="v1-walkthrough-panel">
-        <div class="v1-walkthrough-head"><strong>Prompt 投稿弹层走查</strong><span>投稿编辑按轻创作和发布闪念的弹层承接，避免把发布动作做成独立内容页。</span></div>
+        <div class="v1-walkthrough-head"><strong>Prompt 投稿弹层走查</strong><span>投稿编辑保持可进入、可修改、可提交，避免活动日期阻断核心原型体验。</span></div>
         <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>产品关注</span><span>研发关注</span></div>
         <div class="v1-rule-section"><strong>页面定位</strong><span>投稿弹层承接活动详情 CTA，用户在这里完成标题、提示词、适用场景、推荐模型和可选案例素材。</span></div>
-        <div class="v1-rule-section"><strong>用户主路径</strong><span>用户从 campaign-prompt.html 打开投稿弹层，补齐必填字段，点击单个发布按钮；发布成功后进入 AIGC 灵感广场并自动打开对应 Prompt 详情弹层。</span></div>
-        <div class="v1-rule-section"><strong>关键字段</strong><span>必须展示标题、提示词、适用场景、推荐模型和效果图/视频；弹层头部只保留发布 Prompt 标题，不再叠加活动名。适用场景使用最多 3 个标签的多选控件，推荐模型使用下拉选择，字段解释和校验规则不直接占用 C 端编辑区。</span></div>
-        <div class="v1-rule-section"><strong>状态规则</strong><span>标题、正文、场景和模型未达标时主按钮置灰；纯文字达标显示一键同款加 20 积分，图文/视频达标显示一键同款加 40 积分，每日上限只显示感谢共创。</span></div>
-        <div class="v1-rule-section"><strong>动作去向</strong><span>发布动作进入 aigc.html#prompt-detail-media；返回活动进入 campaign-prompt.html；效果图/视频任务可通过 prompt-submit.html#prompt-media-upload 定位到上传区。</span></div>
+        <div class="v1-rule-section"><strong>用户主路径</strong><span>用户从 campaign-prompt.html 打开投稿弹层，编辑并补齐必填字段，点击发布 Prompt；成功后进入对应 Prompt 详情结果。</span></div>
+        <div class="v1-rule-section"><strong>关键字段</strong><span>必须展示标题、提示词、适用场景、推荐模型和效果图/视频；弹层头部只保留发布 Prompt 标题。适用场景最多选择 3 个，推荐模型使用下拉选择。</span></div>
+        <div class="v1-rule-section"><strong>状态规则</strong><span>活动原型默认保持投稿可用；字段有效时主按钮可提交，字段无效时保留输入并标记不可提交，删除全部媒资后奖励从 40 切换为 20。</span></div>
+        <div class="v1-rule-section"><strong>动作去向</strong><span>有媒资投稿进入 prompt-detail.html#prompt-detail-media，无媒资投稿进入 prompt-detail.html#prompt-detail-text；关闭弹层返回 campaign-prompt.html。</span></div>
         <div class="v1-rule-section"><strong>运营维护</strong><span>维护校验提示、每日上限提示和入选奖励文案时，需要同步活动详情页、AIGC Prompt 详情弹层和积分中心，避免入口页与投稿页奖励不一致。</span></div>
-        <div class="v1-rule-section"><strong>字段校验规则</strong><span data-prompt-validation-rule data-engineering-rule>标题必填，trim 后 4-40 个字；超出时显示计数警告，不自动截断，未达标主按钮禁用</span><span data-prompt-validation-rule data-engineering-rule>提示词必填，中文正文 30-2000 字，英文或中英混合不少于 20 个英文单词；只允许纯文本和换行，不保留富文本样式</span><span data-prompt-validation-rule data-engineering-rule>适用场景至少选择 1 个、最多选择 3 个标签；达到 3 个后未选标签禁用，取消已选标签后恢复可选，标签文案不使用斜杠分割</span><span data-prompt-validation-rule data-engineering-rule>推荐模型必选，使用模型下拉项，不支持自由输入；模型为空或被移除时主按钮禁用并提示重新选择</span><span data-prompt-validation-rule data-engineering-rule>效果图/视频为可选案例素材，允许 JPG、PNG、WebP、MP4、MOV；最多 3 个媒资，单个图片建议不超过 10MB，单个视频建议不超过 100MB；不符合类型或数量时停留在上传区并提示原因</span><span data-prompt-validation-rule data-engineering-rule>主按钮只有一个：纯文字达标显示一键同款、积分图标和 20；存在图片或视频案例且字段达标显示一键同款、积分图标和 40；积分图标统一使用 Finance/coins-line.svg；达到每日前 2 条奖励上限后仍可提交，但积分文案改为感谢共创</span><span data-prompt-validation-rule data-engineering-rule>已上传媒资右上角必须提供删除按钮；删除后重新计算媒资数量和积分文案；点击缩略图进入图片或视频预览弹层，关闭预览回到上传区</span><span data-prompt-validation-rule data-engineering-rule>提交成功后按媒资状态进入 aigc.html#prompt-detail-text 或 aigc.html#prompt-detail-media；失败或未达标时保留用户输入、选中标签、模型和已上传媒资，不清空表单</span></div>
-        <div class="v1-rule-section"><strong>研发验收</strong><span>页面必须包含 data-prompt-submit-modal、data-prompt-submit-field、data-prompt-validation-rule、data-prompt-scene-multiselect、data-prompt-scene-option、data-prompt-model-select、data-prompt-upload-dropzone、data-prompt-upload-thumb、data-prompt-upload-remove、data-prompt-media-preview、data-prompt-submit-remix-cost 和单个 data-prompt-submit-publish；适用场景默认选中 3 个标签且上限为 3，标签文案不包含斜杠；弹层头部只保留一个发布 Prompt 标题且高度控制在 58px 内；如弹窗内容需要内部滚动，标题栏保持吸顶，底部主操作栏保持吸底且初始可见；适用场景和推荐模型拆为上下两行；提示词输入区使用紧凑高度；主按钮文案按媒资状态显示一键同款、积分图标和积分数量，积分图标统一使用 Finance/coins-line.svg，成功目标必须指向 AIGC Prompt 详情弹层，页面不展示投稿状态与奖励预览右侧面板，弹层底部距离视口底部至少 24px。</span></div>
-        <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付静态高保真投稿编辑原型，只表达字段、校验、状态和跳转；保存草稿、内容判定、奖励结算、素材处理和账号权限在后续规则中继续细化。</span></div>
+        <div class="v1-rule-section"><strong>字段校验规则</strong><span data-prompt-validation-rule data-engineering-rule>标题必填，trim 后 4-40 个字；输入变化时同步计数，未达标保留输入、显示错误提示并禁用主操作</span><span data-prompt-validation-rule data-engineering-rule>提示词必填，中文正文 30-2000 字，英文或中英混合不少于 20 个英文单词；只保留纯文本和换行</span><span data-prompt-validation-rule data-engineering-rule>适用场景至少选择 1 个、最多选择 3 个标签；达到 3 个后未选标签禁用，取消后恢复可选</span><span data-prompt-validation-rule data-engineering-rule>推荐模型必选并使用模型下拉项；模型为空或被移除时主操作禁用</span><span data-prompt-validation-rule data-engineering-rule>案例素材允许 JPG、PNG、WebP、MP4、MOV，最多 3 个媒资；缩略图支持预览和删除</span><span data-prompt-validation-rule data-engineering-rule>主按钮只有一个：纯文字达标显示发布 Prompt 和 20 积分；存在图片或视频案例且字段达标显示发布 Prompt 和 40 积分；积分图标使用 Finance/coins-line.svg</span><span data-prompt-validation-rule data-engineering-rule>删除媒资后重新计算数量、奖励和结果目标；有媒资进入 media 详情，无媒资进入 text 详情</span><span data-prompt-validation-rule data-engineering-rule>提交失败或字段未达标时保留标题、提示词、场景、模型和媒资，不清空表单</span></div>
+        <div class="v1-rule-section"><strong>研发验收</strong><span>页面必须包含 data-prompt-submit-modal、data-prompt-submit-state=active、data-prompt-submit-field、媒资预览和单个 data-prompt-submit-publish；标题栏显示发布 Prompt；初始字段有效且主操作可点击；主操作目标指向 Prompt 详情结果，关闭弹层返回活动详情。</span></div>
+        <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付可编辑、可校验、可跳转的高保真投稿原型；真实内容审核、奖励结算、素材上传和账号权限由后续系统承接。</span></div>
       </div>
     </details>
     <div class="footer-space"></div>
@@ -207,18 +207,64 @@
       const limit = Number(group.getAttribute("data-prompt-scene-limit")) || 3;
       const options = Array.from(group.querySelectorAll("[data-prompt-scene-option]"));
       const counter = group.closest("[data-prompt-submit-field]")?.querySelector("[data-prompt-scene-count]");
+      const titleInput = document.querySelector("#prompt-title");
+      const bodyInput = document.querySelector("#prompt-body");
+      const modelSelect = document.querySelector("[data-prompt-model-select]");
+      const publishAction = document.querySelector("[data-prompt-submit-publish]");
+      const titleCounter = document.querySelector('[data-prompt-counter="title"]');
+      const bodyCounter = document.querySelector('[data-prompt-counter="body"]');
+      const mediaCount = document.querySelector("[data-prompt-media-count]");
+      const rewardValue = document.querySelector("[data-prompt-submit-cost-value]");
+
+      const syncPublishState = () => {
+        const titleLength = titleInput?.value.trim().length || 0;
+        const bodyLength = bodyInput?.value.trim().length || 0;
+        const selectedCount = options.filter((option) => option.checked).length;
+        const itemCount = document.querySelectorAll("[data-prompt-upload-item]").length;
+        const reward = itemCount > 0 ? 40 : 20;
+        const valid = titleLength >= 4 && titleLength <= 40 && bodyLength >= 30 && bodyLength <= 2000 && selectedCount >= 1 && Boolean(modelSelect?.value);
+
+        if (titleCounter) titleCounter.textContent = `${titleLength}/4`;
+        if (bodyCounter) bodyCounter.textContent = `${bodyLength}/30`;
+        if (mediaCount) mediaCount.textContent = `${itemCount} / 3`;
+        if (rewardValue) rewardValue.textContent = String(reward);
+        if (!publishAction) return;
+
+        publishAction.dataset.promptSubmitScore = String(reward);
+        publishAction.dataset.promptSubmitMediaCount = String(itemCount);
+        publishAction.dataset.validationState = valid ? "valid" : "invalid";
+        publishAction.setAttribute("href", itemCount > 0 ? "./prompt-detail.html#prompt-detail-media" : "./prompt-detail.html#prompt-detail-text");
+        publishAction.setAttribute("aria-label", valid ? `发布 Prompt，预计获得 ${reward} 积分` : "请先补齐标题、提示词、适用场景和推荐模型");
+        publishAction.setAttribute("aria-disabled", valid ? "false" : "true");
+      };
+
       const sync = () => {
         const selected = options.filter((option) => option.checked);
         if (counter) counter.textContent = `${selected.length}/${limit}`;
         options.forEach((option) => {
           option.disabled = !option.checked && selected.length >= limit;
         });
+        syncPublishState();
       };
       options.forEach((option) => {
         option.addEventListener("change", () => {
           if (options.filter((item) => item.checked).length > limit) option.checked = false;
           sync();
         });
+      });
+      [titleInput, bodyInput, modelSelect].filter(Boolean).forEach((control) => {
+        control.addEventListener("input", syncPublishState);
+        control.addEventListener("change", syncPublishState);
+      });
+      document.querySelectorAll("[data-prompt-upload-remove]").forEach((action) => {
+        action.addEventListener("click", (event) => {
+          event.preventDefault();
+          action.closest("[data-prompt-upload-item]")?.remove();
+          syncPublishState();
+        });
+      });
+      publishAction?.addEventListener("click", (event) => {
+        if (publishAction.dataset.validationState !== "valid") event.preventDefault();
       });
       sync();
     });

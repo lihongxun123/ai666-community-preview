@@ -99,6 +99,16 @@
               </div>
             </section>
 
+            <section class="model-detail-panel model-availability-panel" id="availability" data-model-availability="available">
+              <div class="model-detail-panel-head"><h2>当前可用性</h2><span id="modelAvailabilityBadge">可用</span></div>
+              <p id="modelAvailabilityMessage">当前可正常用于体验与选型。</p>
+              <div class="model-alternative" id="modelAlternative" hidden>
+                <span>可替代模型</span>
+                <a href="./model-detail.html?model=grok-video-3">grok-video-3</a>
+                <a href="./model-detail.html?model=grok-video-3-10s">grok-video-3-10s</a>
+              </div>
+            </section>
+
             <section class="model-detail-panel" id="api-access">
               <div class="model-detail-panel-head">
                 <h2>API 接入</h2>
@@ -138,10 +148,6 @@
 
           <aside class="model-detail-rail" aria-label="模型详情侧栏">
             <div class="detail-rail-card">
-              <span>供给结构</span>
-              <strong>98 / 79 / 10 / 2</strong>
-            </div>
-            <div class="detail-rail-card">
               <span>相关模型</span>
               <div class="related-model-links">
                 <a href="./model-detail.html?model=gpt-5-chat-latest">gpt-5-chat-latest</a>
@@ -161,11 +167,11 @@
         <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>运营关注</span><span>研发关注</span></div>
         <div class="v1-rule-section"><strong>页面定位</strong><span>模型详情承接模型广场卡片，提供适用场景、使用前确认、API 接入口径、案例反馈和相关模型。</span></div>
         <div class="v1-rule-section"><strong>用户主路径</strong><span>用户从模型卡进入 -> 阅读适合/暂不适合 -> 查看 API 接入口径 -> 发布模型反馈或进入教程、活动和相关模型。</span></div>
-        <div class="v1-rule-section"><strong>关键字段</strong><span>模型名、类型、供应商、计费类型、价格口径、底部标签、适合场景、暂不适合、接入建议、反馈字段和相关模型。</span></div>
-        <div class="v1-rule-section"><strong>状态规则</strong><span>详情状态只表达学习、选型和反馈口径；模型 ID 是示例字段，不代表真实可调用密钥或生产接入资格。</span></div>
+        <div class="v1-rule-section"><strong>关键字段</strong><span>模型名、类型、供应商、计费类型、价格口径、底部标签、适合场景、当前可用性、用户影响、可替代模型、接入建议、反馈字段和相关模型。</span></div>
+        <div class="v1-rule-section"><strong>状态规则</strong><span>详情明确区分可用、暂时不可用和已下线；暂时不可用说明任务是否扣积分、是否保留输入，并给出同类型替代模型。模型 ID 是示例字段，不代表真实可调用密钥或生产接入资格。</span></div>
         <div class="v1-rule-section"><strong>动作去向</strong><span>详情按钮承接 API 接入意向、案例反馈和相关模型浏览。返回与相关入口保持站内可达，真实控制台和密钥不在详情页露出。</span></div>
         <div class="v1-rule-section"><strong>运营维护</strong><span>模型介绍、Logo、标签、价格和相关模型来自 `kk2.deepwl.net/pricing` 当前展示。正式跳转前需要定期对齐源站价格。</span></div>
-        <div class="v1-rule-section"><strong>研发规则</strong><span data-engineering-rule>模型详情必须展示标题、供应商或来源、能力类型、价格、标签、适用场景、接入说明、案例反馈和相关模型；标题建议 2-40 个字符，标签 1-4 个</span><span data-engineering-rule>价格字段沿用模型广场口径：有价格展示价格，无价格展示待确认；不得在详情页展示账户余额、真实密钥、调用日志、账单或自动开通状态</span><span data-engineering-rule>主动作只表达咨询、接入意向或回到模型广场；如果是外部控制台链接必须新页打开并带 rel=noopener；站内返回保持 model-plaza.html 可达</span><span data-engineering-rule>相关模型不少于 3 个时展示列表；少于 3 个时可隐藏整块；点击相关模型进入对应详情，不在当前详情中展开多层详情</span><span data-engineering-rule>案例反馈只作为人工样例，不展示真实用户联系方式、订单、生产调用结果或 SLA 承诺；加载失败时保留详情基础信息和返回入口</span></div>
+        <div class="v1-rule-section"><strong>研发规则</strong><span data-engineering-rule>模型详情必须展示标题、供应商或来源、能力类型、价格、标签、适用场景、当前可用性、接入说明、案例反馈和相关模型；标题建议 2-40 个字符，标签 1-4 个</span><span data-engineering-rule>可用性值固定为 available、temporarily-unavailable、offline；暂时不可用必须说明本次是否扣积分、输入是否保留，并至少给出一个同类型替代模型</span><span data-engineering-rule>加载失败：保留模型详情页壳、模型名称和返回模型广场入口，显示可重试提示；不得用 0 价格、可用状态或其他模型数据替代失败结果</span><span data-engineering-rule>价格字段沿用模型广场口径：有价格展示价格，无价格展示待确认；不得在详情页展示账户余额、真实密钥、调用日志、账单或自动开通状态</span><span data-engineering-rule>主动作只表达咨询、接入意向或回到模型广场；如果是外部控制台链接必须新页打开并带 rel=noopener；站内返回保持 model-plaza.html 可达</span><span data-engineering-rule>相关模型不少于 3 个时展示列表；少于 3 个时可隐藏整块；点击相关模型进入对应详情，不在当前详情中展开多层详情</span></div>
         <div class="v1-rule-section"><strong>研发验收</strong><span>标题、供应商、类型、价格、标签、适用场景、接入说明、案例反馈和相关模型需要可读。页面不能展示真实密钥、真实余额或调用日志。</span></div>
         <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付选型说明和转化入口。在线调试台、实时 SLA、自动开通、生产调用和商用授权履约后置。</span></div>
       </div>
@@ -306,6 +312,19 @@
         tagSummary: "视频 / 参考生视频",
         uses: ["10s 视频生成", "音画同出", "参考生视频", "动态片段预览"],
         costNote: "模型价格 $0.158 / 次"
+      },
+      "seedance-2.0": {
+        type: "视频模型",
+        provider: "Doubao",
+        billing: "按次计费",
+        summary: "Seedance 2.0 适合多镜头视频、参考生视频和漫剧片段创作。",
+        primaryUse: "多镜头视频",
+        price: "暂不可用",
+        tagSummary: "视频 / 漫剧 / 多镜头",
+        uses: ["漫剧片段", "多镜头叙事", "参考生视频", "动态广告"],
+        costNote: "当前任务不扣积分",
+        availability: "temporarily-unavailable",
+        availabilityMessage: "当前服务暂时不可用，本次任务未扣除积分，已保留输入内容。你可以先改用下方视频模型。"
       }
     };
 
@@ -326,6 +345,12 @@
     document.getElementById("modelUseCases").innerHTML = current.uses
       .map((item) => `<div><strong>${item}</strong></div>`)
       .join("");
+    const availabilityPanel = document.querySelector("[data-model-availability]");
+    const availability = current.availability || "available";
+    availabilityPanel.dataset.modelAvailability = availability;
+    document.getElementById("modelAvailabilityBadge").textContent = availability === "available" ? "可用" : availability === "offline" ? "已下线" : "暂时不可用";
+    document.getElementById("modelAvailabilityMessage").textContent = current.availabilityMessage || "当前可正常用于体验与选型。";
+    document.getElementById("modelAlternative").hidden = availability === "available";
   </script>
   <script src="./walkthrough.js" defer></script>
 </body>

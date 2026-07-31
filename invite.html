@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
@@ -11,7 +11,7 @@
   <div class="page growth-detail-page growth-app-page invite-detail-page" data-page="invite" style="--growth-hero-image: url('assets/image_assets/15.jpg')">
     <div class="page-bg"><img src="assets/image_assets/15.jpg" alt=""></div>
     <input class="top-campaign-toggle" type="checkbox" id="top-campaign-dismiss-invite" aria-label="关闭顶部广告">
-    <div class="top-campaign"><span>邀请有礼</span><span class="timer">一期活动</span><span>好友注册、首次互动和首次发布作品分阶段记录奖励</span><span>分阶段积分</span><label class="top-campaign-close" for="top-campaign-dismiss-invite" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
+    <div class="top-campaign"><span>邀请有礼</span><span class="timer">一期活动</span><span>好友注册、首次互动和首次发布作品分阶段记录奖励</span><span>分阶段限时积分</span><label class="top-campaign-close" for="top-campaign-dismiss-invite" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
     <header class="site-header">
       <div class="header-inner wide-container">
         <a class="logo" href="./index.html" aria-label="多元拾光">
@@ -32,7 +32,7 @@
           <a class="action-link activity-center-link" href="./activity-center.html" data-nav-action="activity-center" data-action-label="活动中心">活动中心</a>
           <a class="action-link" href="./invite.html" data-nav-action="invite">邀请有礼</a>
           <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a>
-          <a class="action-link points-link" href="./points-center.html" data-nav-action="points">积分 1280</a>
+          <a class="action-link points-link" href="./points-center.html" data-nav-action="points">限时积分 1280</a>
           <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
           <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="用户头像"><img src="assets/image_assets/1.png" alt=""></a>
         </div>
@@ -43,8 +43,8 @@
       <section class="invite-landing-screen section" data-invite-section="overview">
         <div class="wide-container invite-landing-layout">
           <div class="invite-hero-copy">
-            <h1>邀好友来创作，最高拿 90 积分</h1>
-            <p>好友注册、互动、首次发布都能解锁奖励。越早带朋友开始创作，越快把积分攒起来。</p>
+            <h1>邀好友来创作，最高拿 90 限时积分</h1>
+            <p>好友注册、互动、首次发布都能解锁奖励。越早带朋友开始创作，越快把限时积分攒起来。</p>
             <div class="invite-primary-actions">
               <a class="button" href="#invite-link" data-invite-copy data-invite-copy-message="已复制邀请链接，快起分享给朋友吧">立即邀请</a>
             </div>
@@ -86,7 +86,7 @@
             <div class="invite-progress-head">
               <div>
                 <h2>邀请奖励规则</h2>
-                <p>好友完成对应动作后，奖励进入邀请记录和积分中心。</p>
+                <p>好友完成对应动作后，奖励进入邀请记录和限时积分中心。</p>
               </div>
               <a class="invite-rule-head-link" href="#invite-rules-modal" data-invite-rule-modal-entry>完整规则</a>
             </div>
@@ -112,18 +112,18 @@
             <div class="invite-stat-strip invite-overview-stats">
               <div data-invite-stat><span>总邀请人数</span><strong>18</strong></div>
               <div data-invite-stat><span>已激活好友</span><strong>11</strong></div>
-              <div data-invite-stat><span>累计获得积分</span><strong>620</strong></div>
-              <div data-invite-stat><span>处理中积分</span><strong>40</strong></div>
+              <div data-invite-stat><span>累计获得限时积分</span><strong>620</strong></div>
+              <div data-invite-stat><span>处理中限时积分</span><strong>40</strong></div>
             </div>
             <div class="invite-period-summary" aria-label="今日和本月邀请奖励统计">
               <div class="invite-period-record" data-invite-limit-hint data-invite-period-record>
                 <strong>今日邀请奖励</strong>
-                <span>180/300 积分</span>
+                <span>180/300 限时积分</span>
                 <em>注册 3/5 · 互动 2/5 · 发布 1/3</em>
               </div>
               <div class="invite-period-record" data-invite-limit-hint data-invite-period-record>
                 <strong>本月邀请奖励</strong>
-                <span>620/2000 积分</span>
+                <span>620/2000 限时积分</span>
                 <em>注册 18/50 · 互动 11/30 · 发布 6/20</em>
               </div>
             </div>
@@ -152,23 +152,23 @@
             <h3>分阶段奖励</h3>
             <div class="invite-rule-detail-table is-rewards" aria-label="邀请分阶段奖励规则">
               <div class="invite-rule-detail-row is-head"><span>好友行为阶段</span><span>邀请人奖励</span><span>奖励发放触发条件</span></div>
-              <div class="invite-rule-detail-row" data-invite-modal-tier><strong>阶段一：好友完成注册</strong><span>+20 积分</span><span>好友通过邀请链接/邀请码成功注册</span></div>
-              <div class="invite-rule-detail-row" data-invite-modal-tier><strong>阶段二：好友首次互动</strong><span>+20 积分</span><span>好友完成首次点赞、收藏、评论任一行为</span></div>
-              <div class="invite-rule-detail-row" data-invite-modal-tier><strong>阶段三：好友首次发布</strong><span>+50 积分</span><span>好友首次成功发布有效 AI 作品</span></div>
+              <div class="invite-rule-detail-row" data-invite-modal-tier><strong>阶段一：好友完成注册</strong><span>+20 限时积分</span><span>好友通过邀请链接/邀请码成功注册</span></div>
+              <div class="invite-rule-detail-row" data-invite-modal-tier><strong>阶段二：好友首次互动</strong><span>+20 限时积分</span><span>好友完成首次点赞、收藏、评论任一行为</span></div>
+              <div class="invite-rule-detail-row" data-invite-modal-tier><strong>阶段三：好友首次发布</strong><span>+50 限时积分</span><span>好友首次成功发布有效 AI 作品</span></div>
             </div>
           </div>
           <div class="invite-rule-block">
             <h3>每日/月限额</h3>
             <div class="invite-rule-detail-table is-limits" aria-label="邀请奖励每日每月限制规则">
               <div class="invite-rule-detail-row is-head"><span>限制维度</span><span>限制项</span><span>限制额度</span><span>超限处理规则</span></div>
-              <div class="invite-rule-detail-row" data-invite-limit-row><strong>每日限制</strong><span>每日可获得注册奖励好友数</span><span>5 人</span><span>超过人数限制后，当天不再发放该阶段积分</span></div>
-              <div class="invite-rule-detail-row" data-invite-limit-row><strong>每日限制</strong><span>每日可获得互动奖励好友数</span><span>5 人</span><span>超过人数限制后，当天不再发放该阶段积分</span></div>
-              <div class="invite-rule-detail-row" data-invite-limit-row><strong>每日限制</strong><span>每日可获得发布奖励好友数</span><span>3 人</span><span>超过人数限制后，当天不再发放该阶段积分</span></div>
-              <div class="invite-rule-detail-row" data-invite-limit-row><strong>每日上限</strong><span>每日邀请奖励积分上限</span><span>300 积分</span><span>达到 300 后当天停止发放邀请积分</span></div>
-              <div class="invite-rule-detail-row" data-invite-limit-row><strong>每月限制</strong><span>每月可获得注册奖励好友数</span><span>50 人</span><span>超过人数限制后，当月不再发放该阶段积分</span></div>
-              <div class="invite-rule-detail-row" data-invite-limit-row><strong>每月限制</strong><span>每月可获得互动奖励好友数</span><span>30 人</span><span>超过人数限制后，当月不再发放该阶段积分</span></div>
-              <div class="invite-rule-detail-row" data-invite-limit-row><strong>每月限制</strong><span>每月可获得发布奖励好友数</span><span>20 人</span><span>超过人数限制后，当月不再发放该阶段积分</span></div>
-              <div class="invite-rule-detail-row" data-invite-limit-row><strong>每月上限</strong><span>每月邀请奖励积分上限</span><span>2000 积分</span><span>当月累计达到 2000 后停止发放邀请积分</span></div>
+              <div class="invite-rule-detail-row" data-invite-limit-row><strong>每日限制</strong><span>每日可获得注册奖励好友数</span><span>5 人</span><span>超过人数限制后，当天不再发放该阶段限时积分</span></div>
+              <div class="invite-rule-detail-row" data-invite-limit-row><strong>每日限制</strong><span>每日可获得互动奖励好友数</span><span>5 人</span><span>超过人数限制后，当天不再发放该阶段限时积分</span></div>
+              <div class="invite-rule-detail-row" data-invite-limit-row><strong>每日限制</strong><span>每日可获得发布奖励好友数</span><span>3 人</span><span>超过人数限制后，当天不再发放该阶段限时积分</span></div>
+              <div class="invite-rule-detail-row" data-invite-limit-row><strong>每日上限</strong><span>每日邀请奖励限时积分上限</span><span>300 限时积分</span><span>达到 300 后当天停止发放邀请限时积分</span></div>
+              <div class="invite-rule-detail-row" data-invite-limit-row><strong>每月限制</strong><span>每月可获得注册奖励好友数</span><span>50 人</span><span>超过人数限制后，当月不再发放该阶段限时积分</span></div>
+              <div class="invite-rule-detail-row" data-invite-limit-row><strong>每月限制</strong><span>每月可获得互动奖励好友数</span><span>30 人</span><span>超过人数限制后，当月不再发放该阶段限时积分</span></div>
+              <div class="invite-rule-detail-row" data-invite-limit-row><strong>每月限制</strong><span>每月可获得发布奖励好友数</span><span>20 人</span><span>超过人数限制后，当月不再发放该阶段限时积分</span></div>
+              <div class="invite-rule-detail-row" data-invite-limit-row><strong>每月上限</strong><span>每月邀请奖励限时积分上限</span><span>2000 限时积分</span><span>当月累计达到 2000 后停止发放邀请限时积分</span></div>
             </div>
           </div>
           <div class="invite-rule-block">
@@ -179,7 +179,7 @@
               <div class="invite-rule-detail-row" data-invite-single-rule><strong>单次发奖</strong><span>单个被邀请好友的每个阶段奖励，邀请人仅限获得 1 次</span></div>
               <div class="invite-rule-detail-row" data-invite-single-rule><strong>去重防刷</strong><span>好友取消行为后再次完成同类行为，不重复触发奖励判定</span></div>
               <div class="invite-rule-detail-row" data-invite-single-rule><strong>内容审核</strong><span>好友发布的 AI 作品需符合社区规范，低质灌水或下架作品会扣回发布奖励</span></div>
-              <div class="invite-rule-detail-row" data-invite-single-rule><strong>追回机制</strong><span>被邀请人后续被判定为异常账号时，已发放邀请积分会扣除或追回</span></div>
+              <div class="invite-rule-detail-row" data-invite-single-rule><strong>追回机制</strong><span>被邀请人后续被判定为异常账号时，已发放邀请限时积分会扣除或追回</span></div>
             </div>
           </div>
           <div class="invite-rule-block">
@@ -188,9 +188,9 @@
               <div class="invite-rule-detail-row is-head"><span>风险类型</span><span>触发条件</span><span>处理动作</span></div>
               <div class="invite-rule-detail-row" data-invite-risk-rule><strong>设备异常</strong><span>同一设备注册多个账号</span><span>不计入邀请奖励，直接拦截</span></div>
               <div class="invite-rule-detail-row" data-invite-risk-rule><strong>IP 异常</strong><span>同一 IP 高频注册多个账号</span><span>暂停发放奖励，标记异常并进入复核</span></div>
-              <div class="invite-rule-detail-row" data-invite-risk-rule><strong>裂变异常</strong><span>新注册用户立即高频邀请大量新账号</span><span>触发预警，限制该链条积分兑换</span></div>
-              <div class="invite-rule-detail-row" data-invite-risk-rule><strong>无效用户</strong><span>被邀请好友注册后无任何社区行为</span><span>仅保留注册阶段积分，后续行为奖励不继续发放</span></div>
-              <div class="invite-rule-detail-row" data-invite-risk-rule><strong>灌水作弊</strong><span>被邀请好友发布低质、重复或违规图片</span><span>不发放发布奖励，下架作品并扣回积分</span></div>
+              <div class="invite-rule-detail-row" data-invite-risk-rule><strong>裂变异常</strong><span>新注册用户立即高频邀请大量新账号</span><span>触发预警，限制该链条限时积分兑换</span></div>
+              <div class="invite-rule-detail-row" data-invite-risk-rule><strong>无效用户</strong><span>被邀请好友注册后无任何社区行为</span><span>仅保留注册阶段限时积分，后续行为奖励不继续发放</span></div>
+              <div class="invite-rule-detail-row" data-invite-risk-rule><strong>灌水作弊</strong><span>被邀请好友发布低质、重复或违规图片</span><span>不发放发布奖励，下架作品并扣回限时积分</span></div>
               <div class="invite-rule-detail-row" data-invite-risk-rule><strong>邀请人违规</strong><span>邀请人通过模拟器或脚本刷邀请</span><span>暂停该邀请人奖励发放，封禁兑换权限</span></div>
             </div>
           </div>
@@ -202,16 +202,16 @@
       <div class="v1-walkthrough-panel">
         <div class="v1-walkthrough-head"><strong>邀请有礼走查</strong><span>邀请页要让用户快速复制邀请链接、看懂奖励规则和邀请记录。</span></div>
         <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>运营关注</span><span>研发关注</span></div>
-        <div class="v1-rule-section"><strong>页面定位</strong><span>邀请页承接右上角入口和积分任务，是拉新入口，奖励结算进入积分体系。</span></div>
+        <div class="v1-rule-section"><strong>页面定位</strong><span>邀请页承接右上角入口和限时积分任务，是拉新入口，奖励结算进入限时积分体系。</span></div>
         <div class="v1-rule-section"><strong>用户主路径</strong><span>首屏完成活动感知、我的邀请人状态确认、邀请码查看、邀请链接复制和分阶段奖励理解；首屏主按钮固定为立即邀请，点击后复制邀请链接并提示已复制，不把最大引导位留给邀请记录；邀请链接进入登录承接页；手机号登录可直接带入邀请码，扫码登录后的邀请关系在邀请模块补绑定；完整奖励、限额、有效判定和异常处理进入规则弹层；邀请记录承接统计平铺、今日/月度奖励进度、邀请时间、关键动作进度和累计奖励。</span></div>
-        <div class="v1-rule-section"><strong>关键字段</strong><span>邀请码、登录承接链接、复制按钮、我的邀请人、邀请码输入框、绑定邀请人按钮、绑定后头像昵称卡片、登录页邀请码字段、用户中心邀请人绑定入口、邀请数据概览、奖励摘要、完整规则弹层、今日/月度奖励数据、邀请时间、好友关键动作 timeline、阶段积分、当前步骤和邀请记录。</span></div>
-        <div class="v1-rule-section"><strong>状态规则</strong><span>邀请记录面向用户用邀请时间、注册/互动/发布三个动作节点、每步积分和当前步骤表达进展；记录行不展示解释性阶段文案或到账说明小字。内部复核类状态不进入 C端主界面。好友信息必须脱敏。唯一绑定按首次输入邀请码、点击邀请链接或用户中心补填邀请码为准，单个好友每个阶段单次发奖。</span></div>
-        <div class="v1-rule-section"><strong>限额规则</strong><span>每日注册 5 人、每日互动 5 人、每日发布 3 人；每日积分上限 300。每月注册 50 人、每月互动 30 人、每月发布 20 人；每月积分上限 2000。达到限额后只做页面提示，引导明日继续完成。</span></div>
+        <div class="v1-rule-section"><strong>关键字段</strong><span>邀请码、登录承接链接、复制按钮、我的邀请人、邀请码输入框、绑定邀请人按钮、绑定后头像昵称卡片、登录页邀请码字段、用户中心邀请人绑定入口、邀请数据概览、奖励摘要、完整规则弹层、今日/月度奖励数据、邀请时间、好友关键动作 timeline、阶段限时积分、当前步骤和邀请记录。</span></div>
+        <div class="v1-rule-section"><strong>状态规则</strong><span>邀请记录面向用户用邀请时间、注册/互动/发布三个动作节点、每步限时积分和当前步骤表达进展；记录行不展示解释性阶段文案或到账说明小字。内部复核类状态不进入 C端主界面。好友信息必须脱敏。唯一绑定按首次输入邀请码、点击邀请链接或用户中心补填邀请码为准，单个好友每个阶段单次发奖。</span></div>
+        <div class="v1-rule-section"><strong>限额规则</strong><span>每日注册 5 人、每日互动 5 人、每日发布 3 人；每日限时积分上限 300。每月注册 50 人、每月互动 30 人、每月发布 20 人；每月限时积分上限 2000。达到限额后只做页面提示，引导明日继续完成。</span></div>
         <div class="v1-rule-section"><strong>风控规则</strong><span>去重防刷包括取消互动后再次互动不重复发奖；内容审核要求 AI 作品符合社区规范；追回机制用于异常账号或低质违规作品；设备作弊、IP作弊、裂变异常、无效用户、灌水作弊和邀请人违规不进入 C端主记录明细。</span></div>
-        <div class="v1-rule-section"><strong>展示边界</strong><span>C端主界面展示邀请码、链接、我的邀请人、奖励摘要、记录区平铺统计、今日/月度奖励进度、邀请时间、三阶段积分节点和记录累计奖励；我的邀请人位于右侧邀请码上方，默认只展示邀请码输入框和绑定按钮，不展示未绑定提示，点击绑定邀请人后切换为头像昵称卡片，不同时展示两种状态，也不展示额外说明字段；完整规则由弹层收纳，周期进度归入邀请记录统计；结算反馈和详细复核证据不进入主界面记录明细。</span></div>
+        <div class="v1-rule-section"><strong>展示边界</strong><span>C端主界面展示邀请码、链接、我的邀请人、奖励摘要、记录区平铺统计、今日/月度奖励进度、邀请时间、三阶段限时积分节点和记录累计奖励；我的邀请人位于右侧邀请码上方，默认只展示邀请码输入框和绑定按钮，不展示未绑定提示，点击绑定邀请人后切换为头像昵称卡片，不同时展示两种状态，也不展示额外说明字段；完整规则由弹层收纳，周期进度归入邀请记录统计；结算反馈和详细复核证据不进入主界面记录明细。</span></div>
         <div class="v1-rule-section"><strong>动作去向</strong><span>邀请页承接邀请码复制、奖励规则浏览、好友进度查看和邀请记录；首屏最大 CTA 直接复制邀请链接并显示“已复制邀请链接，快起分享给朋友吧”，记录通过下方邀请记录区自然承接；邀请链接进入登录页，手机号登录在登录页填邀请码，扫码登录后的邀请关系回到邀请模块补绑定。奖励只展示可读进度，不承诺即时结算。</span></div>
-        <div class="v1-rule-section"><strong>运营维护</strong><span>邀请奖励、有效动作、每日上限、每月上限、好友进度、处理中的积分和记录样例来自一期邀请活动需求。名单与回访状态由人工维护。</span></div>
-        <div class="v1-rule-section"><strong>研发规则</strong><span data-engineering-rule>邀请码展示为 6-12 位大写字母或数字，前端输入时 trim 并转大写；空值、少于 6 位、超过 12 位或包含空格/特殊字符时绑定按钮禁用并提示格式不正确</span><span data-engineering-rule>邀请关系只允许绑定一次：未绑定态展示邀请码输入框和绑定按钮；绑定成功后切换为头像昵称卡片；两种状态不得同时出现，已绑定后不再显示二次改绑入口</span><span data-engineering-rule>复制规则：复制邀请码只复制 code；复制邀请链接只复制登录承接链接和 invite 参数；复制成功显示轻提示，失败时保留文本可手动选中，不暴露完整手机号、邮箱或内部用户 ID</span><span data-engineering-rule>奖励阶段：注册 +20、首次互动 +20、首次发布有效 AI 作品 +50，单个好友最高 90；每个好友每个阶段只计一次，取消互动后再次互动不重复发奖，违规或异常账号的已发积分可追回</span><span data-engineering-rule>限额状态：每日注册 5 人、互动 5 人、发布 3 人且总积分上限 300；每月注册 50 人、互动 30 人、发布 20 人且总积分上限 2000；达到上限后对应阶段展示已达上限或处理中，不继续累计可得积分</span><span data-engineering-rule>跳转规则：邀请链接进入 login.html?invite=邀请码；扫码登录后未绑定关系回到用户中心或邀请页补填；邀请记录中注册/互动/发布节点分别指向用户中心、AIGC 内容详情或 AI 生图活动详情等业务落点</span></div>
+        <div class="v1-rule-section"><strong>运营维护</strong><span>邀请奖励、有效动作、每日上限、每月上限、好友进度、处理中的限时积分和记录样例来自一期邀请活动需求。名单与回访状态由人工维护。</span></div>
+        <div class="v1-rule-section"><strong>研发规则</strong><span data-engineering-rule>邀请码展示为 6-12 位大写字母或数字，前端输入时 trim 并转大写；空值、少于 6 位、超过 12 位或包含空格/特殊字符时绑定按钮禁用并提示格式不正确</span><span data-engineering-rule>邀请关系只允许绑定一次：未绑定态展示邀请码输入框和绑定按钮；绑定成功后切换为头像昵称卡片；两种状态不得同时出现，已绑定后不再显示二次改绑入口</span><span data-engineering-rule>复制规则：复制邀请码只复制 code；复制邀请链接只复制登录承接链接和 invite 参数；复制成功显示轻提示，失败时保留文本可手动选中，不暴露完整手机号、邮箱或内部用户 ID</span><span data-engineering-rule>奖励阶段：注册 +20、首次互动 +20、首次发布有效 AI 作品 +50，单个好友最高 90；每个好友每个阶段只计一次，取消互动后再次互动不重复发奖，违规或异常账号的已发限时积分可追回</span><span data-engineering-rule>限额状态：每日注册 5 人、互动 5 人、发布 3 人且总限时积分上限 300；每月注册 50 人、互动 30 人、发布 20 人且总限时积分上限 2000；达到上限后对应阶段展示已达上限或处理中，不继续累计可得限时积分</span><span data-engineering-rule>跳转规则：邀请链接进入 login.html?invite=邀请码；扫码登录后未绑定关系回到用户中心或邀请页补填；邀请记录中注册/互动/发布节点分别指向用户中心、AIGC 内容详情或 AI 生图活动详情等业务落点</span></div>
         <div class="v1-rule-section"><strong>研发验收</strong><span>标题、副标题、邀请码、邀请链接、行内复制、我的邀请人卡片、奖励摘要、今日/月度奖励数据、完整规则弹层和记录需要可读。手机号、邮箱等敏感信息必须脱敏；完整联系方式、资金类奖励、内部复核证据和作弊判定细节不进入前台。</span></div>
         <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付拉新意向和有效动作验证。完整分销、返佣、异常拦截和支付履约后置；奖励发放以人工核对记录为准。</span></div>
       </div>

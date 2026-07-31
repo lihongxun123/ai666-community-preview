@@ -29,7 +29,7 @@
           <a class="action-link activity-center-link" href="./activity-center.html" data-nav-action="activity-center" data-action-label="活动中心">活动中心</a>
           <a class="action-link" href="./invite.html" data-nav-action="invite">邀请有礼</a>
           <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a>
-          <a class="action-link points-link" href="./points-center.html" data-nav-action="points">积分 1280</a>
+          <a class="action-link points-link" href="./points-center.html" data-nav-action="points">限时积分 1280</a>
           <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
           <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="用户头像"><img src="assets/image_assets/1.png" alt=""></a>
         </div>
@@ -146,7 +146,7 @@
             </article>
           </div>
           <div class="prompt-submit-actions">
-            <a class="button" href="./prompt-detail.html#prompt-detail-media" data-prompt-submit-publish data-prompt-submit-reward data-prompt-submit-score="40" data-prompt-submit-media-count="2" data-validation-state="valid" aria-label="发布 Prompt，预计获得 40 积分">
+            <a class="button" href="./prompt-detail.html#prompt-detail-media" data-prompt-submit-publish data-prompt-submit-reward data-prompt-submit-score="40" data-prompt-submit-media-count="2" data-validation-state="valid" aria-label="发布 Prompt，预计获得 40 限时积分">
               <span>发布 Prompt</span>
               <span class="prompt-submit-cost-badge"><img src="resources/icons/remixicon/svg/Finance/coins-line.svg" alt=""><span data-prompt-submit-cost-value>40</span></span>
             </a>
@@ -179,7 +179,7 @@
 
     <div class="activity-config-schema" hidden aria-hidden="true">
       <strong data-activity-field>活动标题：Prompt 共创计划</strong>
-      <strong data-activity-field>关联页面：活动详情、投稿编辑、AIGC 灵感广场、Prompt 详情弹层、积分中心</strong>
+      <strong data-activity-field>关联页面：活动详情、投稿编辑、AIGC 灵感广场、Prompt 详情弹层、限时积分中心</strong>
       <strong data-activity-field>CTA 文案：发布 Prompt</strong>
       <strong data-activity-field>CTA 目标：prompt-detail.html#prompt-detail-media</strong>
     </div>
@@ -194,8 +194,8 @@
         <div class="v1-rule-section"><strong>关键字段</strong><span>必须展示标题、提示词、适用场景、推荐模型和效果图/视频；弹层头部只保留发布 Prompt 标题。适用场景最多选择 3 个，推荐模型使用下拉选择。</span></div>
         <div class="v1-rule-section"><strong>状态规则</strong><span>活动原型默认保持投稿可用；字段有效时主按钮可提交，字段无效时保留输入并标记不可提交，删除全部媒资后奖励从 40 切换为 20。</span></div>
         <div class="v1-rule-section"><strong>动作去向</strong><span>有媒资投稿进入 prompt-detail.html#prompt-detail-media，无媒资投稿进入 prompt-detail.html#prompt-detail-text；关闭弹层返回 campaign-prompt.html。</span></div>
-        <div class="v1-rule-section"><strong>运营维护</strong><span>维护校验提示、每日上限提示和入选奖励文案时，需要同步活动详情页、AIGC Prompt 详情弹层和积分中心，避免入口页与投稿页奖励不一致。</span></div>
-        <div class="v1-rule-section"><strong>字段校验规则</strong><span data-prompt-validation-rule data-engineering-rule>标题必填，trim 后 4-40 个字；输入变化时同步计数，未达标保留输入、显示错误提示并禁用主操作</span><span data-prompt-validation-rule data-engineering-rule>提示词必填，中文正文 30-2000 字，英文或中英混合不少于 20 个英文单词；只保留纯文本和换行</span><span data-prompt-validation-rule data-engineering-rule>适用场景至少选择 1 个、最多选择 3 个标签；达到 3 个后未选标签禁用，取消后恢复可选</span><span data-prompt-validation-rule data-engineering-rule>推荐模型必选并使用模型下拉项；模型为空或被移除时主操作禁用</span><span data-prompt-validation-rule data-engineering-rule>案例素材允许 JPG、PNG、WebP、MP4、MOV，最多 3 个媒资；缩略图支持预览和删除</span><span data-prompt-validation-rule data-engineering-rule>主按钮只有一个：纯文字达标显示发布 Prompt 和 20 积分；存在图片或视频案例且字段达标显示发布 Prompt 和 40 积分；积分图标使用 Finance/coins-line.svg</span><span data-prompt-validation-rule data-engineering-rule>删除媒资后重新计算数量、奖励和结果目标；有媒资进入 media 详情，无媒资进入 text 详情</span><span data-prompt-validation-rule data-engineering-rule>提交失败或字段未达标时保留标题、提示词、场景、模型和媒资，不清空表单</span></div>
+        <div class="v1-rule-section"><strong>运营维护</strong><span>维护校验提示、每日上限提示和入选奖励文案时，需要同步活动详情页、AIGC Prompt 详情弹层和限时积分中心，避免入口页与投稿页奖励不一致。</span></div>
+        <div class="v1-rule-section"><strong>字段校验规则</strong><span data-prompt-validation-rule data-engineering-rule>标题必填，trim 后 4-40 个字；输入变化时同步计数，未达标保留输入、显示错误提示并禁用主操作</span><span data-prompt-validation-rule data-engineering-rule>提示词必填，中文正文 30-2000 字，英文或中英混合不少于 20 个英文单词；只保留纯文本和换行</span><span data-prompt-validation-rule data-engineering-rule>适用场景至少选择 1 个、最多选择 3 个标签；达到 3 个后未选标签禁用，取消后恢复可选</span><span data-prompt-validation-rule data-engineering-rule>推荐模型必选并使用模型下拉项；模型为空或被移除时主操作禁用</span><span data-prompt-validation-rule data-engineering-rule>案例素材允许 JPG、PNG、WebP、MP4、MOV，最多 3 个媒资；缩略图支持预览和删除</span><span data-prompt-validation-rule data-engineering-rule>主按钮只有一个：纯文字达标显示发布 Prompt 和 20 限时积分；存在图片或视频案例且字段达标显示发布 Prompt 和 40 限时积分；限时积分图标使用 Finance/coins-line.svg</span><span data-prompt-validation-rule data-engineering-rule>删除媒资后重新计算数量、奖励和结果目标；有媒资进入 media 详情，无媒资进入 text 详情</span><span data-prompt-validation-rule data-engineering-rule>提交失败或字段未达标时保留标题、提示词、场景、模型和媒资，不清空表单</span></div>
         <div class="v1-rule-section"><strong>研发验收</strong><span>页面必须包含 data-prompt-submit-modal、data-prompt-submit-state=active、data-prompt-submit-field、媒资预览和单个 data-prompt-submit-publish；标题栏显示发布 Prompt；初始字段有效且主操作可点击；主操作目标指向 Prompt 详情结果，关闭弹层返回活动详情。</span></div>
         <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付可编辑、可校验、可跳转的高保真投稿原型；真实内容审核、奖励结算、素材上传和账号权限由后续系统承接。</span></div>
       </div>
@@ -234,7 +234,7 @@
         publishAction.dataset.promptSubmitMediaCount = String(itemCount);
         publishAction.dataset.validationState = valid ? "valid" : "invalid";
         publishAction.setAttribute("href", itemCount > 0 ? "./prompt-detail.html#prompt-detail-media" : "./prompt-detail.html#prompt-detail-text");
-        publishAction.setAttribute("aria-label", valid ? `发布 Prompt，预计获得 ${reward} 积分` : "请先补齐标题、提示词、适用场景和推荐模型");
+        publishAction.setAttribute("aria-label", valid ? `发布 Prompt，预计获得 ${reward} 限时积分` : "请先补齐标题、提示词、适用场景和推荐模型");
         publishAction.setAttribute("aria-disabled", valid ? "false" : "true");
       };
 

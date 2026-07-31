@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-22T07:24:37.146Z",
+  "generatedAt": "2026-07-31T16:08:26.297Z",
   "packageType": "community-public-preview",
   "sourceRoot": "outputs/community-homepage-style-exploration",
   "entry": "index.html",
@@ -89,7 +89,7 @@
     },
     {
       "slug": "points-center",
-      "label": "积分中心",
+      "label": "限时积分中心",
       "path": "points-center.html"
     },
     {

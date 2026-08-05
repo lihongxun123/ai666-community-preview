@@ -1326,7 +1326,9 @@
   ];
 
   function getTaskGuideIndex(params, key, fallback, max) {
-    const value = Number(params.get(key));
+    const rawValue = params.get(key);
+    if (rawValue === null || rawValue.trim() === "") return fallback;
+    const value = Number(rawValue);
     return Number.isInteger(value) ? Math.max(1, Math.min(value, max)) : fallback;
   }
 

@@ -1,0 +1,437 @@
+/* C-02D: align the flash feed with the current C-end route and components. */
+
+.flash-page .page-bg {
+  opacity: 0.12;
+}
+
+.flash-page main {
+  min-height: calc(100vh - 72px);
+}
+
+.flash-main-section {
+  padding: 28px 0 72px;
+}
+
+.flash-layout {
+  grid-template-columns: minmax(0, 836px) minmax(300px, 380px);
+  gap: 28px;
+}
+
+.flash-feed-column {
+  gap: 14px;
+}
+
+.flash-post-card,
+.flash-rail-card {
+  border-color: rgba(255, 247, 230, 0.1);
+  border-radius: 16px;
+  background: rgba(12, 16, 22, 0.88);
+  box-shadow: 0 18px 54px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(14px);
+}
+
+.flash-post-card {
+  padding: 22px;
+  transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.flash-post-card:hover,
+.flash-post-card:focus-visible,
+.flash-post-card.is-post-previewed {
+  border-color: rgba(244, 201, 93, 0.34);
+  background: rgba(16, 20, 27, 0.94);
+  outline: 0;
+}
+
+.flash-post-card:focus-visible {
+  transform: translateY(-1px);
+}
+
+.flash-avatar {
+  width: 48px;
+  height: 48px;
+  border-color: rgba(255, 247, 230, 0.16);
+}
+
+.flash-post-head {
+  grid-template-columns: 48px minmax(0, 1fr) auto;
+  gap: 12px;
+}
+
+.flash-post-head strong {
+  font-size: 15px;
+  font-weight: 850;
+}
+
+.flash-post-head span {
+  color: rgba(255, 247, 230, 0.46);
+  font-weight: 700;
+}
+
+.flash-post-card > p {
+  margin: 15px 0 0 60px;
+  max-width: 680px;
+  color: rgba(255, 247, 230, 0.8);
+  line-height: 1.78;
+}
+
+.flash-media-grid {
+  margin: 16px 0 0 60px;
+  max-width: 628px;
+}
+
+.flash-media-grid figure {
+  border-color: rgba(255, 247, 230, 0.08);
+  border-radius: 12px;
+}
+
+.flash-post-actions {
+  margin: 15px 0 0 60px;
+  gap: 22px;
+}
+
+.flash-post-actions a {
+  min-width: 56px;
+  color: rgba(255, 247, 230, 0.54);
+  font-weight: 750;
+  transition: color 160ms ease;
+}
+
+.flash-post-actions a:hover,
+.flash-post-actions a:focus-visible,
+.flash-post-actions a[aria-pressed="true"] {
+  color: var(--gold);
+  outline: 0;
+}
+
+.flash-post-actions a[aria-pressed="true"] img {
+  filter: brightness(0) saturate(100%) invert(83%) sepia(49%) saturate(664%) hue-rotate(356deg) brightness(103%);
+  opacity: 1;
+}
+
+.flash-comments-inline {
+  margin-left: 60px;
+}
+
+.flash-right-rail {
+  top: 88px;
+  gap: 14px;
+}
+
+.flash-rail-card {
+  padding: 18px;
+}
+
+.flash-quick-compose {
+  gap: 11px;
+  padding: 22px;
+  background:
+    radial-gradient(circle at 90% 4%, rgba(244, 201, 93, 0.14), transparent 33%),
+    rgba(10, 13, 18, 0.94);
+}
+
+.flash-rail-overline {
+  color: rgba(244, 201, 93, 0.78);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+}
+
+.flash-quick-title {
+  max-width: 270px;
+  font-size: 23px;
+  line-height: 1.2;
+}
+
+.flash-quick-compose p {
+  color: rgba(255, 247, 230, 0.58);
+  font-weight: 700;
+}
+
+.flash-quick-compose .button {
+  min-height: 42px;
+  justify-content: space-between;
+  padding-inline: 16px;
+  border-radius: 9px;
+}
+
+.flash-quick-compose .button img {
+  width: 16px;
+  height: 16px;
+  filter: brightness(0);
+}
+
+.flash-rail-campaign {
+  min-height: 174px;
+  display: block;
+  padding: 0;
+  border-radius: 16px;
+  background: #090c12;
+  box-shadow: 0 18px 54px rgba(0, 0, 0, 0.22);
+}
+
+.flash-rail-campaign::before {
+  display: none;
+}
+
+.flash-rail-campaign-image,
+.flash-rail-campaign-shade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.flash-rail-campaign-image {
+  object-fit: cover;
+  transition: transform 300ms ease;
+}
+
+.flash-rail-campaign:hover .flash-rail-campaign-image,
+.flash-rail-campaign:focus-visible .flash-rail-campaign-image {
+  transform: scale(1.025);
+}
+
+.flash-rail-ad .flash-rail-campaign-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: block;
+  padding: 0;
+  background: linear-gradient(90deg, rgba(4, 6, 10, 0.92) 0%, rgba(4, 6, 10, 0.6) 58%, rgba(4, 6, 10, 0.18) 100%);
+}
+
+.flash-rail-ad .flash-rail-campaign-copy {
+  position: relative;
+  z-index: 2;
+  width: min(78%, 275px);
+  min-height: 174px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 7px;
+  padding: 20px;
+  color: inherit;
+  background: transparent;
+}
+
+.flash-rail-campaign .flash-rail-campaign-badge {
+  min-height: 22px;
+  padding: 0 8px;
+  border: 1px solid rgba(244, 201, 93, 0.34);
+  border-radius: 999px;
+  color: rgba(255, 222, 137, 0.92);
+  background: rgba(7, 9, 14, 0.36);
+  font-size: 10px;
+}
+
+.flash-rail-campaign-copy strong {
+  font-size: 20px;
+}
+
+.flash-rail-campaign-copy small {
+  width: 100%;
+  color: rgba(255, 247, 230, 0.68);
+  line-height: 1.45;
+  font-weight: 700;
+}
+
+.flash-rail-campaign-copy em {
+  margin-top: 2px;
+  color: var(--gold);
+  font-size: 12px;
+}
+
+.flash-rail-head {
+  margin-bottom: 8px;
+}
+
+.rail-link-row {
+  min-height: 60px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 5px;
+}
+
+.rail-link-row em {
+  color: rgba(255, 247, 230, 0.42);
+  font-size: 11px;
+}
+
+.flash-compose-dialog {
+  width: min(760px, calc(100vw - 40px));
+  border-color: rgba(255, 247, 230, 0.12);
+  border-radius: 16px;
+  background: rgba(11, 15, 21, 0.98);
+}
+
+.flash-editor {
+  gap: 18px;
+}
+
+.flash-field-label {
+  display: block;
+  padding: 15px 18px 0;
+  color: rgba(255, 247, 230, 0.82);
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.flash-editor-shell {
+  border-radius: 12px;
+  background: rgba(4, 7, 11, 0.58);
+}
+
+.flash-editor-field {
+  min-height: 174px;
+  padding-top: 12px;
+}
+
+.flash-media-head > div {
+  display: grid;
+  gap: 4px;
+}
+
+.flash-media-head small {
+  color: rgba(255, 247, 230, 0.4);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.flash-media-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.flash-media-strip {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.flash-media-add,
+.flash-media-item {
+  border-radius: 10px;
+}
+
+.flash-media-add {
+  min-height: 108px;
+  align-content: center;
+  gap: 5px;
+  color: rgba(255, 247, 230, 0.48);
+  cursor: pointer;
+}
+
+.flash-media-add strong {
+  color: rgba(255, 247, 230, 0.72);
+  font-size: 12px;
+}
+
+.flash-media-add small {
+  font-size: 10px;
+}
+
+.flash-media-remove {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  z-index: 2;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(4, 6, 10, 0.76);
+  cursor: pointer;
+}
+
+.flash-media-remove img {
+  width: 14px;
+  height: 14px;
+  filter: brightness(0) invert(1);
+}
+
+.flash-editor-actions .button:disabled {
+  color: rgba(13, 16, 21, 0.46);
+  background: rgba(244, 201, 93, 0.42);
+  cursor: not-allowed;
+}
+
+.flash-editor-footer [data-flash-publish-message].is-error {
+  color: #ff9f9f;
+}
+
+.flash-editor-footer [data-flash-publish-message].is-success {
+  color: #78e2c9;
+}
+
+@media (max-width: 1120px) {
+  .flash-layout {
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .flash-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .flash-right-rail {
+    position: static;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .flash-right-rail > :last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .flash-main-section {
+    padding-top: 18px;
+  }
+
+  .flash-post-card {
+    padding: 16px;
+  }
+
+  .flash-post-card > p,
+  .flash-media-grid,
+  .flash-post-actions,
+  .flash-comments-inline {
+    margin-left: 0;
+  }
+
+  .flash-media-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .flash-right-rail {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .flash-right-rail > :last-child {
+    grid-column: auto;
+  }
+
+  .flash-media-strip {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .flash-editor-footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .flash-editor-actions {
+    justify-content: flex-end;
+  }
+}

@@ -3,355 +3,48 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>模型详情 - 多元拾光</title>
+  <title>模型服务详情 - 多元拾光</title>
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./style.css?v=20260805-c02b1">
+  <link rel="stylesheet" href="./c02c-alignment.css?v=20260805-c02c1">
 </head>
 <body>
-  <div class="page model-detail-page" data-model-detail-page>
-    <div class="page-bg"><img src="assets/image_assets/18.png" alt=""></div>
-    <input class="top-campaign-toggle" type="checkbox" id="top-campaign-dismiss-model-detail" aria-label="关闭顶部广告">
-    <div class="top-campaign"><span>Prompt 共创计划</span><span class="timer">详情页开放</span><span>复制 Prompt 后回到 AIGC 生成</span><label class="top-campaign-close" for="top-campaign-dismiss-model-detail" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
-
+  <div class="page model-detail-page c02c-page" data-page="community-model-detail-compatibility">
     <header class="site-header">
       <div class="header-inner wide-container">
-        <a class="logo" href="./index.html" aria-label="多元拾光">
-          <img class="brand-mark" src="assets/brand/duoyuan-shiguang-logo-mark-reverse.svg" alt="">
-          <span class="brand-copy">
-            <span class="brand-name">多元拾光</span>
-            <span class="brand-sub">AI原生实践者社区</span>
-          </span>
-        </a>
-        <nav class="nav" aria-label="主导航">
-          <a href="./index.html">首页</a>
-          <a href="./aigc.html">AIGC</a>
-          <a class="is-active" href="./model-plaza.html">模型广场</a>
-          <a href="./flash.html">闪念</a>
-          <a href="./tutorial.html">官方教程</a>
-        </nav>
-        <div class="header-actions">
-          <a class="action-link activity-center-link" href="./activity-center.html" data-nav-action="activity-center" data-action-label="活动中心">活动中心</a>
-          <a class="action-link" href="./invite.html" data-nav-action="invite">邀请有礼</a>
-          <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a>
-          <a class="action-link points-link" href="./points-center.html" data-nav-action="points">限时积分 1280</a>
-          <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
-          <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="用户头像"><img src="assets/image_assets/1.png" alt=""></a>
-        </div>
+        <a class="logo" href="./index.html" aria-label="多元拾光"><img class="brand-mark" src="assets/brand/duoyuan-shiguang-logo-mark-reverse.svg" alt=""><span class="brand-copy"><span class="brand-name">多元拾光</span><span class="brand-sub">AI原生实践者社区</span></span></a>
+        <nav class="nav" aria-label="主导航"><a href="./index.html">首页</a><a href="./aigc.html">AIGC</a><a class="is-active" href="./model-plaza.html">模型广场</a><a href="./flash.html">闪念</a><a href="./tutorial.html">官方教程</a></nav>
+        <div class="header-actions"><a class="action-link activity-center-link" href="./activity-center.html" data-nav-action="activity-center" data-action-label="活动中心">活动中心</a><a class="action-link" href="./invite.html" data-nav-action="invite">邀请有礼</a><a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a><a class="action-link points-link" href="./points-center.html" data-nav-action="points" data-action-label="积分 1280"><span>积分</span><strong>1280</strong></a><a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a><a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="用户头像"><img src="assets/image_assets/1.png" alt=""></a></div>
       </div>
     </header>
 
-    <main>
-      <section class="section model-detail-hero">
-        <div class="wide-container model-detail-hero-grid">
-          <article class="model-detail-copy">
-            <a class="detail-back-link" href="./model-plaza.html#model-list">返回模型广场</a>
-            <div class="detail-model-meta">
-              <span id="modelType">文本模型</span>
-              <span id="modelProvider">OpenAI</span>
-              <span id="modelCost">低成本优先</span>
-            </div>
-            <h1 id="modelName">gpt-4.1</h1>
-            <p id="modelSummary">复杂写作、代码生成、产品分析和多轮推理。</p>
-            <div class="hero-actions">
-              <a class="button" href="#api-access">查看 API 接入</a>
-              <a class="button secondary" href="#model-cases">看案例反馈</a>
-            </div>
-          </article>
-
-          <aside class="model-detail-scoreboard" aria-label="模型详情摘要">
-            <div>
-              <span>推荐用途</span>
-              <strong id="modelPrimaryUse">长文与方案</strong>
-            </div>
-            <div>
-              <span>价格口径</span>
-              <strong id="modelPrice">输入 $0.4000</strong>
-            </div>
-            <div>
-              <span>底部标签</span>
-              <strong id="modelTagSummary">工具 / 对话 / 识图</strong>
-            </div>
-          </aside>
-        </div>
-      </section>
-
-      <section class="section model-detail-body-section">
-        <div class="wide-container model-detail-layout">
-          <article class="model-detail-main" aria-label="模型详情正文">
-            <section class="model-detail-panel">
-              <div class="model-detail-panel-head">
-                <h2>适用场景</h2>
-              </div>
-              <div class="model-detail-use-grid" id="modelUseCases"></div>
-              <div class="model-decision-grid">
-                <div class="model-decision-card">
-                  <strong>适合优先试</strong>
-                  <span>有明确输入样例、需要比较输出质量、能接受小样本试跑成本的任务。</span>
-                </div>
-                <div class="model-decision-card">
-                  <strong>暂不适合</strong>
-                  <span>需要生产级 SLA、完整商用授权、私有数据接入或自动化结算的场景。</span>
-                </div>
-              </div>
-              <div class="model-commercial-note">
-                <strong>商业规则与 AI 生成声明</strong>
-                <span>模型案例、样例结果和反馈内容可能包含 AI 生成或 AI 辅助整理内容；本页只表达体验、学习和选型口径，具体商用授权暂不在 1.0 展开。</span>
-              </div>
-            </section>
-
-            <section class="model-detail-panel model-availability-panel" id="availability" data-model-availability="available">
-              <div class="model-detail-panel-head"><h2>当前可用性</h2><span id="modelAvailabilityBadge">可用</span></div>
-              <p id="modelAvailabilityMessage">当前可正常用于体验与选型。</p>
-              <div class="model-alternative" id="modelAlternative" hidden>
-                <span>可替代模型</span>
-                <a href="./model-detail.html?model=grok-video-3">grok-video-3</a>
-                <a href="./model-detail.html?model=grok-video-3-10s">grok-video-3-10s</a>
-              </div>
-            </section>
-
-            <section class="model-detail-panel" id="api-access">
-              <div class="model-detail-panel-head">
-                <h2>API 接入</h2>
-              </div>
-              <div class="api-access-grid">
-                <div>
-                  <strong>模型 ID</strong>
-                  <span id="modelId">gpt-4.1</span>
-                </div>
-                <div>
-                  <strong>成本口径</strong>
-                  <span id="modelCostNote">小样本试跑</span>
-                </div>
-                <div>
-                  <strong>接入建议</strong>
-                  <span>测试任务 / 脱敏样例</span>
-                </div>
-              </div>
-            </section>
-
-            <section class="model-detail-panel" id="model-cases">
-              <div class="model-detail-panel-head">
-                <h2>案例反馈</h2>
-              </div>
-              <div class="model-feedback-template" aria-label="模型反馈字段">
-                <div><strong>使用目标</strong><span>写作、代码、图片、视频、知识库或客服等明确任务。</span></div>
-                <div><strong>关键输入</strong><span>记录脱敏 Prompt、参数或素材类型，便于复现判断。</span></div>
-                <div><strong>结果判断</strong><span>写清楚可用点、不稳定点、成本和下一步建议。</span></div>
-              </div>
-              <div class="model-case-list">
-                <a href="./flash.html"><strong>发布模型反馈</strong><span>闪念反馈</span></a>
-                <a href="./tutorial.html"><strong>查看接入教程</strong><span>教程入口</span></a>
-                <a href="./campaign-detail.html"><strong>参加 AI 生图挑战</strong><span>活动入口</span></a>
-              </div>
-            </section>
-          </article>
-
-          <aside class="model-detail-rail" aria-label="模型详情侧栏">
-            <div class="detail-rail-card">
-              <span>相关模型</span>
-              <div class="related-model-links">
-                <a href="./model-detail.html?model=gpt-5-chat-latest">gpt-5-chat-latest</a>
-                <a href="./model-detail.html?model=o4-mini">o4-mini</a>
-                <a href="./model-detail.html?model=gemini-2.5-pro">gemini-2.5-pro</a>
-                <a href="./model-detail.html?model=gpt-image-2">gpt-image-2</a>
-              </div>
-            </div>
-          </aside>
-        </div>
+    <main class="c02c-handoff">
+      <section class="c02c-handoff-card" aria-labelledby="handoff-title">
+        <span class="c02c-kicker">MODEL SERVICE</span>
+        <h1 id="handoff-title" data-handoff-model-name>model</h1>
+        <p>该模型的实时价格、能力、可用分组和接口信息由模型服务站点维护。社区不再保存一份容易过期的详情副本。</p>
+        <div class="c02c-actions"><a class="c02c-primary" href="https://ai.ai666.net/pricing/model" target="_blank" rel="noopener noreferrer" data-handoff-model-link>查看模型服务详情</a><a class="c02c-secondary" href="./model-plaza.html">返回模型广场</a></div>
       </section>
     </main>
+
     <details class="v1-walkthrough-drawer" data-v1-walkthrough-drawer>
       <summary>走查</summary>
       <div class="v1-walkthrough-panel">
-        <div class="v1-walkthrough-head"><strong>模型详情走查</strong><span>模型详情要讲清适合什么、暂不适合什么、怎么反馈、下一步去哪。</span></div>
-        <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>运营关注</span><span>研发关注</span></div>
-        <div class="v1-rule-section"><strong>页面定位</strong><span>模型详情承接模型广场卡片，提供适用场景、使用前确认、API 接入口径、案例反馈和相关模型。</span></div>
-        <div class="v1-rule-section"><strong>用户主路径</strong><span>用户从模型卡进入 -> 阅读适合/暂不适合 -> 查看 API 接入口径 -> 发布模型反馈或进入教程、活动和相关模型。</span></div>
-        <div class="v1-rule-section"><strong>关键字段</strong><span>模型名、类型、供应商、计费类型、价格口径、底部标签、适合场景、当前可用性、用户影响、可替代模型、接入建议、反馈字段和相关模型。</span></div>
-        <div class="v1-rule-section"><strong>状态规则</strong><span>详情明确区分可用、暂时不可用和已下线；暂时不可用说明任务是否扣限时积分、是否保留输入，并给出同类型替代模型。模型 ID 是示例字段，不代表真实可调用密钥或生产接入资格。</span></div>
-        <div class="v1-rule-section"><strong>动作去向</strong><span>详情按钮承接 API 接入意向、案例反馈和相关模型浏览。返回与相关入口保持站内可达，真实控制台和密钥不在详情页露出。</span></div>
-        <div class="v1-rule-section"><strong>运营维护</strong><span>模型介绍、Logo、标签、价格和相关模型来自 `kk2.deepwl.net/pricing` 当前展示。正式跳转前需要定期对齐源站价格。</span></div>
-        <div class="v1-rule-section"><strong>研发规则</strong><span data-engineering-rule>模型详情必须展示标题、供应商或来源、能力类型、价格、标签、适用场景、当前可用性、接入说明、案例反馈和相关模型；标题建议 2-40 个字符，标签 1-4 个</span><span data-engineering-rule>可用性值固定为 available、temporarily-unavailable、offline；暂时不可用必须说明本次是否扣限时积分、输入是否保留，并至少给出一个同类型替代模型</span><span data-engineering-rule>加载失败：保留模型详情页壳、模型名称和返回模型广场入口，显示可重试提示；不得用 0 价格、可用状态或其他模型数据替代失败结果</span><span data-engineering-rule>价格字段沿用模型广场口径：有价格展示价格，无价格展示待确认；不得在详情页展示账户余额、真实密钥、调用日志、账单或自动开通状态</span><span data-engineering-rule>主动作只表达咨询、接入意向或回到模型广场；如果是外部控制台链接必须新页打开并带 rel=noopener；站内返回保持 model-plaza.html 可达</span><span data-engineering-rule>相关模型不少于 3 个时展示列表；少于 3 个时可隐藏整块；点击相关模型进入对应详情，不在当前详情中展开多层详情</span></div>
-        <div class="v1-rule-section"><strong>研发验收</strong><span>标题、供应商、类型、价格、标签、适用场景、接入说明、案例反馈和相关模型需要可读。页面不能展示真实密钥、真实余额或调用日志。</span></div>
-        <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付选型说明和转化入口。在线调试台、实时 SLA、自动开通、生产调用和商用授权履约后置。</span></div>
+        <div class="v1-walkthrough-head"><strong>模型详情兼容页走查</strong><span>旧地址保留可达，但真实 C 端直接打开模型服务详情。</span></div>
+        <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>产品关注</span><span>研发关注</span></div>
+        <div class="v1-rule-section"><strong>页面定位</strong><span>真实 C 端没有社区内模型详情路由；本页只承接旧地址并引导用户前往模型服务的实时详情。</span></div>
+        <div class="v1-rule-section"><strong>用户主路径</strong><span>用户从历史链接进入后核对模型名，选择查看模型服务详情，或返回社区模型广场继续筛选。</span></div>
+        <div class="v1-rule-section"><strong>关键字段</strong><span>兼容页只读取 model 查询参数并生成外部 pricing 地址，不承载模型价格、能力、供应商和接口信息。</span></div>
+        <div class="v1-rule-section"><strong>状态规则</strong><span>缺少 model 参数时展示通用 model 名称并保持外部入口可用；不使用其他模型数据填充缺失内容。</span></div>
+        <div class="v1-rule-section"><strong>动作去向</strong><span>主动作新页打开 ai.ai666.net 的 pricing 详情，次动作返回 model-plaza.html，不在当前页展开详情。</span></div>
+        <div class="v1-rule-section"><strong>运营维护</strong><span>本页没有模型运营字段；外部模型服务负责价格、供应商、标签、能力、可用分组与接入信息的维护。</span></div>
+        <div class="v1-rule-section"><strong>研发验收</strong><span data-engineering-rule>页面只读取 model 查询参数并拼接 https://ai.ai666.net/pricing/{model_name}，外部链接必须新页打开并隔离 opener；不得恢复社区内价格、能力、SLA、接入示例、相关模型和可用性副本。</span></div>
+        <div class="v1-rule-section"><strong>交付边界</strong><span data-engineering-rule>旧链接迁移完成前保持兼容页可达，完成后再按 public-preview 清单、历史分享链接和验收脚本统一删除；社区始终不展示密钥、余额、调用日志、账户分组和实时可用性。</span></div>
       </div>
     </details>
     <div class="footer-space"></div>
   </div>
-
-  <script>
-    const modelData = {
-      "gpt-4.1": {
-        type: "文本模型",
-        provider: "OpenAI",
-        billing: "按量计费",
-        summary: "GPT-4.1 是由 openai 提供的人工智能模型。",
-        primaryUse: "工具对话",
-        price: "输入 $0.4000",
-        tagSummary: "工具 / 对话 / 识图",
-        uses: ["工具调用对话", "视觉输入理解", "复杂任务拆解", "产品方案审校"],
-        costNote: "输入 $0.4000 / 1M Tokens；补全 $0.8000 / 1M Tokens"
-      },
-      "gpt-5-chat-latest": {
-        type: "文本模型",
-        provider: "OpenAI",
-        billing: "按量计费",
-        summary: "GPT-5 Chat 指向当前 ChatGPT 所使用的 GPT-5 快照版本。",
-        primaryUse: "ChatGPT 快照",
-        price: "输入 $0.2500",
-        tagSummary: "对话 / 识图",
-        uses: ["通用对话", "图文理解", "内容改写", "复杂问答"],
-        costNote: "输入 $0.2500 / 1M Tokens；补全 $2.0000 / 1M Tokens"
-      },
-      "claude-sonnet-4-6": {
-        type: "文本模型",
-        provider: "Anthropic",
-        billing: "按量计费",
-        summary: "Claude Sonnet 4.6 可大规模提供前沿智能，专为编码、代理和企业工作流而打造。",
-        primaryUse: "编码与代理",
-        price: "输入 $1.5000",
-        tagSummary: "对话 / 识图 / 工具",
-        uses: ["编码任务", "代理流程", "企业工作流", "复杂文档处理"],
-        costNote: "输入 $1.5000 / 1M Tokens；补全 $7.5000 / 1M Tokens"
-      },
-      "gemini-3-pro-preview": {
-        type: "文本模型",
-        provider: "Google",
-        billing: "按量计费",
-        summary: "Gemini 3 以先进推理能力为基础，适合复杂任务和多模态任务。",
-        primaryUse: "复杂多模态",
-        price: "输入 $1.4000",
-        tagSummary: "对话 / 思考 / 多模态",
-        uses: ["复杂推理", "多模态理解", "自主编码", "跨模态资料整理"],
-        costNote: "输入 $1.4000 / 1M Tokens；补全 $8.4000 / 1M Tokens"
-      },
-      "gemini-2.5-pro": {
-        type: "文本模型",
-        provider: "Google",
-        billing: "按量计费",
-        summary: "Gemini 2.5 Pro 擅长编码和复杂提示，支持文本、图像、音频、视频及代码的多模态输入。",
-        primaryUse: "编码与思考",
-        price: "输入 $0.8750",
-        tagSummary: "对话 / 识图 / 思考",
-        uses: ["编码任务", "复杂提示", "图文理解", "资料整合"],
-        costNote: "输入 $0.8750 / 1M Tokens；补全 $7.0000 / 1M Tokens"
-      },
-      "o4-mini": {
-        type: "文本模型",
-        provider: "OpenAI",
-        billing: "按量计费",
-        summary: "o4-mini 偏轻量推理，适合需要较快响应的推理任务，支持多模态输入。",
-        primaryUse: "轻量推理",
-        price: "输入 $0.5000",
-        tagSummary: "对话 / 识图",
-        uses: ["低延迟问答", "轻量推理", "视觉输入", "批量草稿"],
-        costNote: "输入 $0.5000 / 1M Tokens；补全 $0.5000 / 1M Tokens"
-      },
-      "text-embedding-3-large": {
-        type: "Embedding",
-        provider: "OpenAI",
-        billing: "按量计费",
-        summary: "OpenAI 第三代嵌入模型，比 small 版本更强大，适用于需要最高性能的检索任务。",
-        primaryUse: "文本嵌入",
-        price: "输入 $0.0260",
-        tagSummary: "文本嵌入",
-        uses: ["RAG 检索", "相似内容召回", "证据链匹配", "知识库问答"],
-        costNote: "输入 $0.0260 / 1M Tokens；补全 $0.1040 / 1M Tokens"
-      },
-      "gpt-image-2": {
-        type: "图像模型",
-        provider: "OpenAI",
-        billing: "按次计费",
-        summary: "GPT Image 2 支持快速、高质量的图像生成和编辑。",
-        primaryUse: "图像生成",
-        price: "$0.056 / 次",
-        tagSummary: "绘画 / dall-e-3格式",
-        uses: ["高质量出图", "图像编辑", "封面生成", "视觉素材测试"],
-        costNote: "模型价格 $0.056 / 次"
-      },
-      "doubao-seedream-4-5-251128": {
-        type: "图像模型",
-        provider: "Doubao (豆包)",
-        billing: "按次计费",
-        summary: "Seedream 4.5 支持文本、单图和多图输入，适合主体一致性的多图融合创作。",
-        primaryUse: "多图融合",
-        price: "$0.150 / 次",
-        tagSummary: "绘画 / dall-e-3格式",
-        uses: ["多图融合", "图像编辑", "组图生成", "角色一致性创作"],
-        costNote: "模型价格 $0.150 / 次"
-      },
-      "gemini-3.1-flash-image": {
-        type: "图像模型",
-        provider: "Google",
-        billing: "按次计费",
-        summary: "Gemini 图像模型，适合快速图片生成、提示词测试和教程封面。",
-        primaryUse: "快速出图",
-        price: "$0.175 / 次",
-        tagSummary: "绘画 / 快速",
-        uses: ["快速图片生成", "提示词测试", "教程封面", "创作样片"],
-        costNote: "模型价格 $0.175 / 次"
-      },
-      "grok-video-3": {
-        type: "视频模型",
-        provider: "Grok (xAI)",
-        billing: "按次计费",
-        summary: "grok 的最新视频模型，6S。",
-        primaryUse: "6S 视频",
-        price: "$0.158 / 次",
-        tagSummary: "视频 / 参考生视频",
-        uses: ["短视频生成", "参考生视频", "动态广告预览", "漫剧镜头测试"],
-        costNote: "模型价格 $0.158 / 次"
-      },
-      "grok-video-3-10s": {
-        type: "视频模型",
-        provider: "Grok (xAI)",
-        billing: "按次计费",
-        summary: "grok 的最新视频模型，10s，支持音画同出。",
-        primaryUse: "10S 视频",
-        price: "$0.158 / 次",
-        tagSummary: "视频 / 参考生视频",
-        uses: ["10s 视频生成", "音画同出", "参考生视频", "动态片段预览"],
-        costNote: "模型价格 $0.158 / 次"
-      },
-      "seedance-2.0": {
-        type: "视频模型",
-        provider: "Doubao",
-        billing: "按次计费",
-        summary: "Seedance 2.0 适合多镜头视频、参考生视频和漫剧片段创作。",
-        primaryUse: "多镜头视频",
-        price: "暂不可用",
-        tagSummary: "视频 / 漫剧 / 多镜头",
-        uses: ["漫剧片段", "多镜头叙事", "参考生视频", "动态广告"],
-        costNote: "当前任务不扣限时积分",
-        availability: "temporarily-unavailable",
-        availabilityMessage: "当前服务暂时不可用，本次任务未扣除限时积分，已保留输入内容。你可以先改用下方视频模型。"
-      }
-    };
-
-    const params = new URLSearchParams(window.location.search);
-    const modelId = params.get("model") || "gpt-4.1";
-    const current = modelData[modelId] || modelData["gpt-4.1"];
-    document.title = `${modelId} 模型详情 - 多元拾光`;
-    document.getElementById("modelName").textContent = modelId;
-    document.getElementById("modelId").textContent = modelId;
-    document.getElementById("modelType").textContent = current.type;
-    document.getElementById("modelProvider").textContent = current.provider;
-    document.getElementById("modelCost").textContent = current.billing;
-    document.getElementById("modelSummary").textContent = current.summary;
-    document.getElementById("modelPrimaryUse").textContent = current.primaryUse;
-    document.getElementById("modelPrice").textContent = current.price;
-    document.getElementById("modelTagSummary").textContent = current.tagSummary;
-    document.getElementById("modelCostNote").textContent = current.costNote;
-    document.getElementById("modelUseCases").innerHTML = current.uses
-      .map((item) => `<div><strong>${item}</strong></div>`)
-      .join("");
-    const availabilityPanel = document.querySelector("[data-model-availability]");
-    const availability = current.availability || "available";
-    availabilityPanel.dataset.modelAvailability = availability;
-    document.getElementById("modelAvailabilityBadge").textContent = availability === "available" ? "可用" : availability === "offline" ? "已下线" : "暂时不可用";
-    document.getElementById("modelAvailabilityMessage").textContent = current.availabilityMessage || "当前可正常用于体验与选型。";
-    document.getElementById("modelAlternative").hidden = availability === "available";
-  </script>
+  <script src="./c02c-alignment.js?v=20260805-c02c1" defer></script>
   <script src="./walkthrough.js" defer></script>
 </body>
 </html>

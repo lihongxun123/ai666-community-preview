@@ -194,6 +194,65 @@
     document.addEventListener("click", closeCreationModelSelect);
   }
 
+  function initCreationCampaignPurpose() {
+    const modal = document.querySelector("#quick-create");
+    const dialog = modal?.querySelector(".create-dialog");
+    const normalPurpose = dialog?.querySelector('[data-create-purpose="normal"]');
+    const campaignPurpose = dialog?.querySelector('[data-create-purpose="campaign"]');
+    const imageMode = dialog?.querySelector('[data-create-mode="image"]');
+    const purposeMenu = dialog?.querySelector("[data-create-purpose-menu]");
+    const purposeCampaignOption = dialog?.querySelector('[data-create-purpose-option="campaign"]');
+    const purposeClear = dialog?.querySelector(".creation-purpose-clear");
+    if (!modal || !dialog || !normalPurpose || !campaignPurpose || !imageMode || dialog.dataset.creationCampaignPurposeReady === "true") {
+      return;
+    }
+
+    dialog.dataset.creationCampaignPurposeReady = "true";
+    const closePurposeMenu = () => {
+      if (purposeMenu instanceof HTMLDetailsElement) {
+        purposeMenu.open = false;
+      }
+    };
+    const selectCampaign = () => {
+      imageMode.checked = true;
+      campaignPurpose.checked = true;
+      closePurposeMenu();
+    };
+    const clearCampaign = () => {
+      normalPurpose.checked = true;
+      closePurposeMenu();
+      if (window.location.hash === "#quick-create-campaign") {
+        window.history.replaceState(null, "", "#quick-create");
+      }
+    };
+    const syncPurposeRoute = () => {
+      if (window.location.hash === "#quick-create-campaign") {
+        selectCampaign();
+        return;
+      }
+      if (window.location.hash === "#quick-create") {
+        normalPurpose.checked = true;
+        closePurposeMenu();
+      }
+    };
+
+    purposeCampaignOption?.addEventListener("click", () => {
+      window.requestAnimationFrame(selectCampaign);
+    });
+    purposeClear?.addEventListener("click", () => {
+      window.requestAnimationFrame(clearCampaign);
+    });
+    dialog.querySelectorAll("[data-create-mode]").forEach((mode) => {
+      mode.addEventListener("change", () => {
+        if (mode.checked && mode.value !== "image") {
+          clearCampaign();
+        }
+      });
+    });
+    window.addEventListener("hashchange", syncPurposeRoute);
+    syncPurposeRoute();
+  }
+
   function initCreationFlowMotion(gsap, reduceMotion) {
     document.querySelectorAll("[data-creation-flow]").forEach((flow) => {
       if (flow.dataset.creationFlowMotionReady === "true") {
@@ -396,7 +455,9 @@
 
     const setQuickCreateHash = (isOpen) => {
       const nextUrl = new URL(window.location.href);
-      nextUrl.hash = isOpen ? "quick-create" : "";
+      nextUrl.hash = isOpen
+        ? (window.location.hash === "#quick-create-campaign" ? "quick-create-campaign" : "quick-create")
+        : "";
       window.history.replaceState(null, "", nextUrl.href);
     };
 
@@ -566,12 +627,12 @@
         .to(trigger, { autoAlpha: 1, duration: motionDuration(0.14), ease: "power1.out" }, motionDuration(0.4));
     };
 
-    const startsOpen = window.location.hash === "#quick-create";
+    const startsOpen = window.location.hash === "#quick-create" || window.location.hash === "#quick-create-campaign";
     modal.classList.remove("is-quick-create-morph-open", "is-quick-create-morphing");
     setMorphState("closed");
     trigger.dataset.quickCreateHashOpenPending = startsOpen ? "true" : "false";
     const requestHashOpen = () => {
-      if (window.location.hash !== "#quick-create" || root.dataset.quickCreateMorphState !== "closed") {
+      if (!["#quick-create", "#quick-create-campaign"].includes(window.location.hash) || root.dataset.quickCreateMorphState !== "closed") {
         return;
       }
       trigger.dispatchEvent(new CustomEvent("quick-create:morph-open", { cancelable: true }));
@@ -1135,9 +1196,9 @@
 
     document.documentElement.dataset.userMenuReady = "true";
     const items = [
-      { key: "profile", label: "我的主页", href: "./user-center.html", icon: "resources/icons/remixicon/svg/User & Faces/user-3-line.svg" },
+      { key: "profile", label: "个人中心", href: "./user-center.html", icon: "resources/icons/remixicon/svg/User & Faces/user-3-line.svg" },
       { key: "invite", label: "邀请有礼", href: "./invite.html", icon: "resources/icons/remixicon/svg/Finance/gift-2-line.svg" },
-      { key: "points", label: "限时积分中心", href: "./points-center.html", icon: "resources/icons/remixicon/svg/Finance/coins-line.svg" },
+      { key: "points", label: "积分中心", href: "./points-center.html", icon: "resources/icons/remixicon/svg/Finance/coins-line.svg" },
       { key: "logout", label: "退出登录", href: "./login.html?logout=1", icon: "resources/icons/remixicon/svg/System/logout-box-r-line.svg", logout: true },
     ];
 
@@ -1555,12 +1616,124 @@
     }
   }
 
+  function initLoginPrototype() {
+    const root = document.querySelector("[data-login-modal-root]");
+    const form = root?.querySelector("[data-login-form]");
+    if (!root || !form || root.dataset.loginPrototypeReady === "true") {
+      return;
+    }
+
+    root.dataset.loginPrototypeReady = "true";
+    const phoneInput = form.elements.phone;
+    const codeInput = form.elements["verification-code"];
+    const inviteInput = form.elements["invite-code"];
+    const sendCodeButton = root.querySelector("[data-send-code]");
+    const submitButton = root.querySelector("[data-login-complete-target]");
+    const message = root.querySelector("[data-login-message]");
+    let cooldownTimer = 0;
+    let cooldownActive = false;
+
+    const setMessage = (text, type = "") => {
+      if (!message) return;
+      message.textContent = text;
+      message.dataset.type = type;
+    };
+
+    const phoneIsValid = () => /^1[3-9]\d{9}$/.test(phoneInput?.value.trim() || "");
+
+    const syncSendCodeState = () => {
+      if (!sendCodeButton || cooldownActive) return;
+      const disabled = !phoneIsValid();
+      sendCodeButton.disabled = disabled;
+      sendCodeButton.setAttribute("aria-disabled", String(disabled));
+    };
+
+    if (inviteInput) {
+      const inviteCode = new URLSearchParams(window.location.search).get("invite");
+      if (inviteCode) inviteInput.value = inviteCode;
+    }
+
+    phoneInput?.addEventListener("input", () => {
+      phoneInput.value = phoneInput.value.replace(/\D/g, "").slice(0, 11);
+      phoneInput.closest(".login-field")?.classList.remove("is-invalid");
+      if (message?.dataset.type === "error") setMessage("");
+      syncSendCodeState();
+    });
+
+    codeInput?.addEventListener("input", () => {
+      codeInput.value = codeInput.value.replace(/\D/g, "").slice(0, 6);
+      codeInput.closest(".login-field")?.classList.remove("is-invalid");
+      if (message?.dataset.type === "error") setMessage("");
+    });
+
+    sendCodeButton?.addEventListener("click", () => {
+      if (!phoneIsValid()) {
+        phoneInput?.closest(".login-field")?.classList.add("is-invalid");
+        phoneInput?.focus();
+        setMessage("请输入正确的 11 位手机号", "error");
+        return;
+      }
+
+      setMessage("验证码发送状态仅用于原型走查", "success");
+      let remaining = 60;
+      cooldownActive = true;
+      sendCodeButton.disabled = true;
+      sendCodeButton.setAttribute("aria-disabled", "true");
+      sendCodeButton.textContent = `${remaining}s 后重试`;
+      window.clearInterval(cooldownTimer);
+      cooldownTimer = window.setInterval(() => {
+        remaining -= 1;
+        sendCodeButton.textContent = remaining > 0 ? `${remaining}s 后重试` : "获取验证码";
+        if (remaining <= 0) {
+          window.clearInterval(cooldownTimer);
+          cooldownActive = false;
+          syncSendCodeState();
+        }
+      }, 1000);
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      form.querySelectorAll(".is-invalid").forEach((field) => field.classList.remove("is-invalid"));
+      if (!phoneIsValid()) {
+        phoneInput?.closest(".login-field")?.classList.add("is-invalid");
+        phoneInput?.focus();
+        setMessage("请输入正确的 11 位手机号", "error");
+        return;
+      }
+      if (!/^\d{6}$/.test(codeInput?.value.trim() || "")) {
+        codeInput?.closest(".login-field")?.classList.add("is-invalid");
+        codeInput?.focus();
+        setMessage("请输入 6 位验证码", "error");
+        return;
+      }
+
+      submitButton.disabled = true;
+      submitButton.textContent = "登录中…";
+      window.setTimeout(() => {
+        submitButton.textContent = "登录成功";
+        setMessage("登录成功，正式产品将返回登录前页面", "success");
+      }, 480);
+    });
+
+    root.querySelectorAll("[data-login-agreement]").forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        setMessage("协议内容由正式页面承接");
+      });
+    });
+
+    syncSendCodeState();
+  }
+
   function init() {
     const gsap = window.gsap;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     document.querySelectorAll("[data-v1-walkthrough-drawer]").forEach(enhanceDrawer);
     enhanceCreationModelSelects();
+    initCreationCampaignPurpose();
     enhanceUserMenus();
+    initLoginPrototype();
     initActivityTaskGuide();
     initResultPromptCopy();
     initContentCardCopy();

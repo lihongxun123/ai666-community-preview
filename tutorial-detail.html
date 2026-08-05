@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>教程详情 - 多元拾光</title>
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./style.css?v=20260805-c02a2">
 </head>
 <body>
   <div class="page tutorial-page tutorial-detail-page" data-page="community-tutorial-detail">
@@ -30,7 +30,7 @@
           <a class="action-link activity-center-link" href="./activity-center.html" data-nav-action="activity-center" data-action-label="活动中心">活动中心</a>
           <a class="action-link" href="./invite.html" data-nav-action="invite">邀请有礼</a>
           <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a>
-          <a class="action-link points-link" href="./points-center.html" data-nav-action="points">限时积分 1280</a>
+          <a class="action-link points-link" href="./points-center.html" data-nav-action="points" data-action-label="积分 1280"><span>积分</span><strong>1280</strong></a>
           <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
           <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="用户头像"><img src="assets/image_assets/1.png" alt=""></a>
         </div>
@@ -38,105 +38,194 @@
     </header>
 
     <main class="tutorial-detail-main">
-      <section class="wide-container tutorial-detail-page-shell" data-tutorial-detail="video" data-detail-page="video">
-        <div class="tutorial-detail-page-head">
-          <h1>12 分钟完成第一条漫剧分镜</h1>
-        </div>
-        <div class="lesson-reference-layout">
-          <article class="lesson-reference-article">
-            <div class="lesson-meta-row"><span>漫剧生成</span><span>视频教程</span><span>12 分钟</span></div>
-            <p class="lesson-lead">先把一句创意拆成冲突、角色、场景和镜头，再进入 AIGC 画布生成分镜与封面提示词。</p>
-            <a class="lesson-direct-link" href="./aigc.html#aigc-create-panel"><span>直达</span><strong>AIGC 漫剧生成画布</strong></a>
-            <section class="lesson-section">
-              <h3>1）功能概述</h3>
-              <p>这个教程帮助你把一个短剧开场想法变成 9 格分镜草案，先确定主角关系和第一场冲突，再补齐关键镜头、情绪节奏和封面提示词。</p>
-            </section>
-            <section class="lesson-section">
-              <h3>2）适用场景</h3>
-              <p>适合短剧漫剧开场、角色设定预演、活动短片脚本和广告分镜草案。先拿到可继续细化的画面结构，再进入后续制作。</p>
-            </section>
-            <section class="lesson-section">
-              <h3>3）使用方法</h3>
-              <div class="lesson-numbered-steps">
-                <div><strong>1</strong><span>进入 AIGC 页面，选择短剧漫剧或一句话生成入口。</span></div>
-                <div><strong>2</strong><span>输入主角、冲突、场景和情绪关键词，先生成分镜草案。</span></div>
-                <div><strong>3</strong><span>保留可用镜头，再用图片生成补齐封面、角色和关键场景。</span></div>
-              </div>
-            </section>
-            <div class="lesson-media-block">
-              <img src="assets/image_assets/11.png" alt="">
-              <span><img src="resources/icons/remixicon/svg/Media/play-circle-line.svg" alt="">12:08 视频演示</span>
+      <section class="wide-container tutorial-detail-index" data-tutorial-detail="article" data-tutorial-no="TU000101">
+        <a class="tutorial-detail-back" href="./tutorial.html">
+          <img src="resources/icons/remixicon/svg/Arrows/arrow-left-line.svg" alt="">
+          返回列表
+        </a>
+
+        <div class="tutorial-detail-layout">
+          <aside class="tutorial-detail-actions" aria-label="互动操作">
+            <div class="tutorial-detail-action is-view">
+              <img src="resources/icons/remixicon/svg/System/eye-line.svg" alt="">
+              <span data-tutorial-view-count>14</span>
             </div>
-            <section class="lesson-section">
-              <h3>4）完成后怎么继续</h3>
-              <p>如果第一版分镜可用，继续进入图片生成做角色定妆和封面主视觉；如果镜头节奏不稳，先回到脚本输入区补充角色动作和镜头推进方式。</p>
+            <button class="tutorial-detail-action" type="button" data-detail-like aria-label="点赞教程" aria-pressed="false">
+              <img src="resources/icons/remixicon/svg/System/thumb-up-line.svg" alt="">
+              <span data-tutorial-like-count>0</span>
+            </button>
+            <button class="tutorial-detail-action" type="button" data-detail-comments-jump aria-label="查看评论">
+              <img src="resources/icons/remixicon/svg/Communication/chat-3-line.svg" alt="">
+              <span data-tutorial-comment-count>0</span>
+            </button>
+          </aside>
+
+          <div class="tutorial-detail-content-column">
+            <article class="tutorial-detail-article">
+              <section class="tutorial-detail-hero" aria-labelledby="tutorial-detail-title">
+                <figure class="tutorial-detail-cover">
+                  <img data-tutorial-media src="assets/image_assets/tutorial-cover-TU000101.jpg" alt="第十五期：OMate API配置教程封面">
+                </figure>
+                <div class="tutorial-detail-summary">
+                  <div class="tutorial-detail-meta">
+                    <span data-tutorial-section>官方教程</span>
+                    <span data-tutorial-format>图文教程</span>
+                    <span data-tutorial-duration>未标注</span>
+                  </div>
+                  <h1 id="tutorial-detail-title" data-tutorial-title>第十五期：OMate API配置教程</h1>
+                  <p data-tutorial-summary>介绍 OMate 的 API 配置入口、必要参数和连接检查方法。</p>
+                  <div class="tutorial-detail-object-meta">
+                    <span data-tutorial-no-label>TU000101</span>
+                    <span data-tutorial-source>官方发布</span>
+                  </div>
+                </div>
+              </section>
+
+              <div class="tutorial-detail-body" data-tutorial-body>
+                <section>
+                  <h2>开始前先确认配置范围</h2>
+                  <p>本教程介绍对应工具的模型连接配置流程。请使用测试凭据完成首次连接，不要在公开内容、截图或评论中粘贴真实密钥。</p>
+                </section>
+                <section>
+                  <h2>按三步完成连接检查</h2>
+                  <ol>
+                    <li><strong>找到配置入口</strong><span>打开工具的模型或连接设置，确认当前使用的服务类型。</span></li>
+                    <li><strong>填写必要信息</strong><span>按教程正文填写地址、模型和测试凭据，保存前检查字段是否对应。</span></li>
+                    <li><strong>执行最小测试</strong><span>发起一次低成本请求，根据返回结果确认连接、模型和响应格式。</span></li>
+                  </ol>
+                </section>
+                <section>
+                  <h2>连接失败时怎么排查</h2>
+                  <p>先核对地址、模型名称和凭据状态，再保留错误提示逐项检查。不要反复更换多个条件，否则很难定位真实原因。</p>
+                </section>
+              </div>
+            </article>
+
+            <section class="tutorial-detail-comments" data-tutorial-comments aria-label="评论区">
+              <div class="tutorial-comments-head">
+                <div><strong>评论</strong><span data-comment-summary>还没有任何评论</span></div>
+              </div>
+              <div class="tutorial-comment-list" data-comment-list>
+                <button class="tutorial-comment-empty" type="button" data-comment-empty>
+                  <img src="resources/icons/remixicon/svg/Communication/chat-3-line.svg" alt="">
+                  <span>还没有任何评论，点击评论</span>
+                </button>
+              </div>
+              <form class="tutorial-comment-composer" data-comment-form>
+                <label class="sr-only" for="tutorial-comment-input">发表评论</label>
+                <input id="tutorial-comment-input" name="comment" type="text" maxlength="500" placeholder="说点什么" autocomplete="off">
+                <button type="submit">发送</button>
+              </form>
             </section>
-          </article>
+            <p class="tutorial-detail-feedback" data-detail-feedback aria-live="polite"></p>
+          </div>
         </div>
       </section>
 
-      <section class="wide-container tutorial-detail-page-shell" data-tutorial-detail="article" data-detail-page="article" hidden>
-        <div class="tutorial-detail-page-head">
-          <h1>图片生成封面提示词怎么写</h1>
-        </div>
-        <div class="lesson-reference-layout">
-          <article class="lesson-reference-article">
-            <div class="lesson-meta-row"><span>图片生成</span><span>图文教程</span><span>入门</span></div>
-            <p class="lesson-lead">把“想要一张好看的封面”改写成模型能理解的画面描述，减少反复试错。</p>
-            <a class="lesson-direct-link" href="./aigc.html#aigc-create-panel"><span>直达</span><strong>AIGC 图片生成入口</strong></a>
-            <section class="lesson-section">
-              <h3>1）功能概述</h3>
-              <p>封面提示词要先说明用途，再补齐主体、场景、风格、构图和限制词。重点是服务可发布封面、角色定妆和关键场景，少堆抽象形容词。</p>
-            </section>
-            <section class="lesson-section">
-              <h3>2）适用场景</h3>
-              <p>适合漫剧封面、活动海报、角色定妆、场景氛围图和视频首帧。需要一眼看懂主体、情绪和画面用途的内容，都应该先用这个结构起稿。</p>
-            </section>
-            <section class="lesson-section">
-              <h3>3）使用方法</h3>
-              <div class="lesson-numbered-steps">
-                <div><strong>1</strong><span>先写图片用途，比如封面、角色定妆或关键场景。</span></div>
-                <div><strong>2</strong><span>补齐主体、动作、环境、光线、风格和画面比例。</span></div>
-                <div><strong>3</strong><span>保存可复用提示词，下次只替换角色、场景和情绪。</span></div>
-              </div>
-            </section>
-            <div class="lesson-media-block">
-              <img src="assets/image_assets/18.png" alt="">
-              <span>封面提示词示例</span>
-            </div>
-            <section class="lesson-section">
-              <h3>4）完成后怎么继续</h3>
-              <p>生成第一张可用图后，继续用同一套主体和风格词做角色定妆、场景延展和视频首帧，避免每一步都重新定义视觉。</p>
-            </section>
-          </article>
-        </div>
+      <section class="wide-container tutorial-detail-not-found" data-tutorial-not-found hidden>
+        <strong>教程不存在或已下架</strong>
+        <span>请返回官方教程列表重新选择。</span>
+        <a href="./tutorial.html">返回官方教程</a>
       </section>
     </main>
     <details class="v1-walkthrough-drawer" data-v1-walkthrough-drawer>
       <summary>走查</summary>
       <div class="v1-walkthrough-panel">
-        <div class="v1-walkthrough-head"><strong>教程详情走查</strong><span>单篇教程要讲清方法，并给用户一个自然的创作入口。</span></div>
+        <div class="v1-walkthrough-head"><strong>教程详情走查</strong><span>单篇教程按教程编号展示正文、互动与评论。</span></div>
         <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>运营关注</span><span>研发关注</span></div>
-        <div class="v1-rule-section"><strong>页面定位</strong><span>教程详情承接功能概述、适用场景、使用方法、示例素材和直达入口，是学习到上手的最后一步。</span></div>
-        <div class="v1-rule-section"><strong>用户主路径</strong><span>用户从教程列表进入 -> 阅读步骤 -> 查看示例图/视频 -> 通过直达入口回到 AIGC。</span></div>
-        <div class="v1-rule-section"><strong>关键字段</strong><span>教程类型、标题、功能概述、适用场景、使用方法、示例媒体和直达入口。</span></div>
-        <div class="v1-rule-section"><strong>状态规则</strong><span>详情页重点展示教程正文和 AIGC 画布直达。学习进度、测验、证书和完成限时积分后置。</span></div>
-        <div class="v1-rule-section"><strong>动作去向</strong><span>正文内的直达入口进入 AIGC 或模板方向。阅读完成后只保留轻回流，右侧不放完成任务或同款按钮。</span></div>
-        <div class="v1-rule-section"><strong>运营维护</strong><span>教程标题、摘要、步骤、媒体和直达目标由官方教程内容池人工维护。关联模板和同款动作放到正文入口或目标频道。</span></div>
-        <div class="v1-rule-section"><strong>研发规则</strong><span data-engineering-rule>教程详情字段固定为类型、标题、功能概述、适用场景、步骤正文、示例媒体和直达入口；标题建议 4-40 字，步骤建议 3-8 条，每条步骤 8-80 字</span><span data-engineering-rule>媒体允许图片 JPG、PNG、WebP 或视频 MP4、MOV；视频必须有稳定容器和播放占位，媒体加载失败时展示占位和文字步骤，不影响直达入口</span><span data-engineering-rule>正文单列阅读，不放右侧完成任务、同款按钮或学习进度；长正文只随页面滚动，不在正文内部再套滚动容器</span><span data-engineering-rule>直达入口最多 2 个，目标只允许 AIGC、模板库、模型广场或闪念等正式页面；点击后进入目标页面或锚点，不做弹层二次解释</span><span data-engineering-rule>教程详情不产生自动限时积分，不展示完成证书、测验、真实扣费或课程购买状态；阅读失败时保留返回教程列表入口</span></div>
-        <div class="v1-rule-section"><strong>研发验收</strong><span>正文需要单列可读，视频或图文媒体尺寸稳定，直达入口可达。页面不能出现本节完成后、关联模板右栏、开始同款右栏、学习进度或完成限时积分。</span></div>
+        <div class="v1-rule-section"><strong>页面定位</strong><span>教程详情承接标题、板块、内容格式、时长或难度、摘要、正文、封面、互动数据和评论。</span></div>
+        <div class="v1-rule-section"><strong>用户主路径</strong><span>用户从教程列表进入 -> 按教程编号读取详情 -> 阅读正文 -> 点赞或参与评论。</span></div>
+        <div class="v1-rule-section"><strong>关键字段</strong><span>教程编号、标题、板块、内容格式、时长或难度、摘要、正文、封面、浏览数、点赞数和评论数。</span></div>
+        <div class="v1-rule-section"><strong>状态规则</strong><span>详情只展示接口返回的当前可见教程；编号不存在或内容不可见时进入空状态。</span></div>
+        <div class="v1-rule-section"><strong>动作去向</strong><span>返回列表、点赞和评论均在当前教程上下文中完成；当前 B 端没有维护独立跳转目标，正文外不增加直达按钮。</span></div>
+        <div class="v1-rule-section"><strong>运营维护</strong><span>教程标题、摘要、正文和媒体由教程管理维护；发布后才进入 C 端公开列表和详情。</span></div>
+        <div class="v1-rule-section"><strong>研发规则</strong><span data-engineering-rule>详情必须使用 tutorial_no 请求单个教程，并在页面状态中保留当前对象身份，不得用内容格式代替对象编号</span><span data-engineering-rule>正文优先读取 content，兼容当前代码的 content_md；content_format 与 content_html 只按接口约定处理，不从列表推断</span><span data-engineering-rule>点赞沿用真实 C 端乐观更新，失败时回滚；评论列表 page_size=10，新增评论后更新列表与教程评论数</span><span data-engineering-rule>媒体加载失败时保留标题、摘要和文字正文；详情正文不套内部滚动容器</span><span data-engineering-rule>当前不消费 target_url；恢复独立直达入口前必须先补齐 B 端维护路径和允许跳转范围</span><span data-engineering-rule>显式教程编号不存在或不可见时展示空状态，不继承默认教程或上一条内容</span></div>
+        <div class="v1-rule-section"><strong>研发验收</strong><span>有效教程编号显示对应对象，未知编号进入空状态；返回、浏览、点赞、评论跳转和评论输入可用，封面和正文尺寸稳定，无独立直达按钮和后台治理信息。</span></div>
         <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付教程阅读页。真实收藏扣费、学习进度、自动限时积分、模板调用、生产生成和自动推荐后置；正文由人工发布。</span></div>
       </div>
     </details>
     <div class="footer-space"></div>
   </div>
   <script>
-    const lessonType = new URLSearchParams(window.location.search).get("lesson") === "article" ? "article" : "video";
-    document.querySelectorAll("[data-detail-page]").forEach((section) => {
-      section.hidden = section.dataset.detailPage !== lessonType;
-    });
-    const title = lessonType === "article" ? "图片生成封面提示词怎么写" : "12 分钟完成第一条漫剧分镜";
-    document.title = `${title} - 多元拾光`;
+    const tutorials = {
+      TU000101: { title: "第十五期：OMate API配置教程", summary: "介绍 OMate 的 API 配置入口、必要参数和连接检查方法。", media: "assets/image_assets/tutorial-cover-TU000101.jpg", views: 14 },
+      TU000102: { title: "第十四期：LobeChat API配置教程", summary: "介绍 LobeChat 的 API 配置入口和连接检查方法。", media: "assets/image_assets/tutorial-cover-TU000102.jpg", views: 32 },
+      TU000103: { title: "第十三期：SillyTavern（酒馆）API配置教程", summary: "介绍 SillyTavern 的 API 配置入口和基础连接方法。", media: "assets/image_assets/tutorial-cover-TU000103.jpg", views: 7 },
+      TU000104: { title: "第十二期：zen-mcp API配置教程", summary: "介绍 zen-mcp 的 API 配置步骤和测试方法。", media: "assets/image_assets/tutorial-cover-TU000104.jpg", views: 4 },
+      TU000105: { title: "Open WebUI 下载方式", summary: "整理 Open WebUI 的下载入口和开始使用前的准备事项。", media: "assets/image_assets/tutorial-cover-TU000105.jpg", views: 4 },
+      TU000106: { title: "第十一期：OpenWebUI API配置教程", summary: "介绍 OpenWebUI 的 API 配置入口和连接检查方法。", media: "assets/image_assets/tutorial-cover-TU000106.jpg", views: 1 },
+      TU000107: { title: "第十期：coze API配置教程", summary: "介绍 coze 的 API 配置入口和最小连接测试。", media: "assets/image_assets/tutorial-cover-TU000107.jpg", views: 12 },
+      TU000108: { title: "第九期：Trae API 配置教程", summary: "介绍 Trae 的 API 配置入口和连接检查方法。", media: "assets/image_assets/tutorial-cover-TU000108.jpg", views: 3 },
+      TU000109: { title: "第八期：Claude Code接入模型API教程", summary: "介绍 Claude Code 接入模型 API 的基础配置和测试方法。", media: "assets/image_assets/tutorial-cover-TU000109.jpg", views: 6 },
+    };
+    const explicitTutorialNo = new URLSearchParams(window.location.search).get("tutorial_no");
+    const requestedTutorialNo = explicitTutorialNo || "TU000101";
+    const tutorial = tutorials[requestedTutorialNo];
+    if (!tutorial) {
+      document.querySelector("[data-tutorial-detail]").hidden = true;
+      document.querySelector("[data-tutorial-not-found]").hidden = false;
+      document.title = "未找到该教程 - 多元拾光";
+    } else {
+      const detail = document.querySelector("[data-tutorial-detail]");
+      detail.dataset.tutorialNo = requestedTutorialNo;
+      detail.querySelector("[data-tutorial-title]").textContent = tutorial.title;
+      detail.querySelector("[data-tutorial-summary]").textContent = tutorial.summary;
+      detail.querySelector("[data-tutorial-media]").src = tutorial.media;
+      detail.querySelector("[data-tutorial-media]").alt = `${tutorial.title}封面`;
+      detail.querySelector("[data-tutorial-no-label]").textContent = requestedTutorialNo;
+      detail.querySelector("[data-tutorial-view-count]").textContent = String(tutorial.views);
+      document.title = `${tutorial.title} - 多元拾光`;
+
+      const feedback = detail.querySelector("[data-detail-feedback]");
+      const likeButton = detail.querySelector("[data-detail-like]");
+      const likeCount = detail.querySelector("[data-tutorial-like-count]");
+      const commentCountNodes = Array.from(detail.querySelectorAll("[data-tutorial-comment-count]"));
+      const commentSummary = detail.querySelector("[data-comment-summary]");
+      const commentList = detail.querySelector("[data-comment-list]");
+      const commentEmpty = detail.querySelector("[data-comment-empty]");
+      const commentInput = detail.querySelector("#tutorial-comment-input");
+      let isLiked = false;
+      let comments = 0;
+
+      const updateCommentCount = () => {
+        commentCountNodes.forEach((node) => { node.textContent = String(comments); });
+        commentSummary.textContent = comments > 0 ? `共 ${comments} 条评论` : "还没有任何评论";
+      };
+
+      likeButton.addEventListener("click", () => {
+        isLiked = !isLiked;
+        likeButton.classList.toggle("is-active", isLiked);
+        likeButton.setAttribute("aria-pressed", String(isLiked));
+        likeCount.textContent = isLiked ? "1" : "0";
+        feedback.textContent = isLiked ? "已点赞" : "已取消点赞";
+      });
+
+      detail.querySelector("[data-detail-comments-jump]").addEventListener("click", () => {
+        detail.querySelector("[data-tutorial-comments]").scrollIntoView({ behavior: "smooth", block: "start" });
+        window.setTimeout(() => commentInput.focus(), 280);
+      });
+      commentEmpty.addEventListener("click", () => commentInput.focus());
+
+      detail.querySelector("[data-comment-form]").addEventListener("submit", (event) => {
+        event.preventDefault();
+        const content = commentInput.value.trim();
+        if (!content) return;
+        commentEmpty.hidden = true;
+        const item = document.createElement("article");
+        item.className = "tutorial-comment-item";
+        item.innerHTML = `<img src="assets/image_assets/1.png" alt=""><div><strong>拾光用户</strong><p></p><span>刚刚</span></div>`;
+        item.querySelector("p").textContent = content;
+        commentList.prepend(item);
+        comments += 1;
+        updateCommentCount();
+        commentInput.value = "";
+        feedback.textContent = "评论已发布";
+      });
+
+      detail.querySelector("[data-tutorial-media]").addEventListener("error", (event) => {
+        event.currentTarget.closest(".tutorial-detail-cover")?.classList.add("is-broken");
+      });
+    }
   </script>
   <script src="./walkthrough.js" defer></script>
 </body>

@@ -5,180 +5,102 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>活动中心 - 多元拾光</title>
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./style.css?v=20260805-c02b">
+  <link rel="stylesheet" href="./c02e-alignment.css?v=20260805-code-contract-1">
 </head>
 <body>
-  <div class="page activity-center-page" data-page="activity-center">
-    <div class="page-bg"><img src="assets/image_assets/11.png" alt=""></div>
-    <input class="top-campaign-toggle" type="checkbox" id="top-campaign-dismiss-activity-center" aria-label="关闭顶部广告">
-    <div class="top-campaign"><span>活动中心</span><span class="timer">当前活动</span><span>当前活动、限时积分任务和往期回顾统一在这里查看</span><span>查看活动</span><label class="top-campaign-close" for="top-campaign-dismiss-activity-center" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
+  <div class="page c02e-page activity-center-page" data-page="activity-center">
     <header class="site-header">
       <div class="header-inner wide-container">
         <a class="logo" href="./index.html" aria-label="多元拾光">
           <img class="brand-mark" src="assets/brand/duoyuan-shiguang-logo-mark-reverse.svg" alt="">
-          <span class="brand-copy">
-            <span class="brand-name">多元拾光</span>
-            <span class="brand-sub">AI原生实践者社区</span>
-          </span>
+          <span class="brand-copy"><span class="brand-name">多元拾光</span><span class="brand-sub">AI原生实践者社区</span></span>
         </a>
         <nav class="nav" aria-label="主导航">
-          <a href="./index.html">首页</a>
-          <a href="./aigc.html">AIGC</a>
-          <a href="./model-plaza.html">模型广场</a>
-          <a href="./flash.html">闪念</a>
-          <a href="./tutorial.html">官方教程</a>
+          <a href="./index.html">首页</a><a href="./aigc.html">AIGC</a><a href="./model-plaza.html">模型广场</a><a href="./flash.html">闪念</a><a href="./tutorial.html">官方教程</a>
         </nav>
         <div class="header-actions">
           <a class="action-link activity-center-link is-active" href="./activity-center.html" data-nav-action="activity-center" data-action-label="活动中心" aria-current="page">活动中心</a>
-          <a class="action-link" href="./invite.html" data-nav-action="invite">邀请有礼</a>
-          <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a>
-          <a class="action-link points-link" href="./points-center.html" data-nav-action="points">限时积分 1280</a>
+          <a class="action-link" href="./invite.html" data-nav-action="invite" data-action-label="邀请有礼">邀请有礼</a>
+          <a class="action-link" href="./member-store.html" data-nav-action="member" data-action-label="AI商城">AI商城</a>
+          <a class="action-link points-link" href="./points-center.html" data-nav-action="points" data-action-label="积分 1280"><span>积分</span><strong>1280</strong></a>
           <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
           <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="用户头像"><img src="assets/image_assets/1.png" alt=""></a>
         </div>
       </div>
     </header>
 
-    <main>
-      <section class="section activity-list-section" aria-label="当前活动">
-        <div class="wide-container">
-          <div class="section-head activity-section-head">
-            <div>
-              <h2>本期活动与任务</h2>
+    <main class="c02e-activity-main">
+      <div class="c02e-shell">
+        <section class="c02e-activity-banner" aria-label="活动中心">
+          <img src="assets/image_assets/activity-center-banner-c02e.webp" alt="">
+          <div class="c02e-activity-banner-content">
+            <div class="c02e-activity-banner-title">
+              <img src="resources/icons/remixicon/svg/Weather/sparkling-2-fill.svg" alt="">
+              <strong>活动中心</strong><span>发现正在发生的创作挑战与社区计划</span>
             </div>
+            <span class="c02e-activity-banner-count"><strong>05</strong><small>场正在进行</small></span>
           </div>
-          <div class="activity-card-grid">
-            <article class="activity-card" data-activity-card data-activity-status="进行中">
-              <span class="activity-card-status" data-activity-card-field="活动状态">进行中</span>
-              <img src="assets/image_assets/2.png" alt="">
-              <div class="activity-card-body">
-                <h3>AI 生图创作挑战</h3>
-                <p>发布主题 AI 作品，争取精选和首页推荐。</p>
-                <span class="activity-card-date" data-activity-card-field="活动时间">长期开放</span>
-                <strong class="activity-card-reward" data-activity-card-field="奖励摘要">最高可得 1000 限时积分</strong>
-                <a class="button secondary" href="./campaign-detail.html">查看详情</a>
-              </div>
-            </article>
-            <article class="activity-card" data-activity-card data-activity-status="进行中">
-              <span class="activity-card-status" data-activity-card-field="活动状态">进行中</span>
-              <img src="assets/image_assets/4.png" alt="">
-              <div class="activity-card-body">
-                <h3>Prompt 共创计划</h3>
-                <p>发布可复用 Prompt，补充图文或视频案例。</p>
-                <span class="activity-card-date" data-activity-card-field="活动时间">长期开放</span>
-                <strong class="activity-card-reward" data-activity-card-field="奖励摘要">最高可得 680 限时积分</strong>
-                <a class="button secondary" href="./campaign-prompt.html">查看详情</a>
-              </div>
-            </article>
-            <article class="activity-card" data-activity-card data-activity-status="进行中">
-              <span class="activity-card-status" data-activity-card-field="活动状态">进行中</span>
-              <img src="assets/image_assets/17.png" alt="">
-              <div class="activity-card-body">
-                <h3>新手任务</h3>
-                <p>完成基础任务，快速熟悉社区玩法。</p>
-                <span class="activity-card-date" data-activity-card-field="活动时间">新用户首周</span>
-                <strong class="activity-card-reward" data-activity-card-field="奖励摘要">最高可得 110 限时积分</strong>
-                <a class="button secondary" href="./campaign-new-user.html">查看详情</a>
-              </div>
-            </article>
-            <article class="activity-card" data-activity-card data-activity-status="进行中">
-              <span class="activity-card-status" data-activity-card-field="活动状态">进行中</span>
-              <img src="assets/image_assets/18.png" alt="">
-              <div class="activity-card-body">
-                <h3>七日成长任务</h3>
-                <p>每天完成小任务，持续领取成长限时积分。</p>
-                <span class="activity-card-date" data-activity-card-field="活动时间">连续 7 天</span>
-                <strong class="activity-card-reward" data-activity-card-field="奖励摘要">最高可得 320 限时积分</strong>
-                <a class="button secondary" href="./campaign-seven-day.html">查看详情</a>
-              </div>
-            </article>
-            <article class="activity-card" data-activity-card data-activity-status="进行中">
-              <span class="activity-card-status" data-activity-card-field="活动状态">进行中</span>
-              <img src="assets/image_assets/3.png" alt="">
-              <div class="activity-card-body">
-                <h3>邀请有礼</h3>
-                <p>邀请好友加入，一起完成任务拿限时积分。</p>
-                <span class="activity-card-date" data-activity-card-field="活动时间">长期开放</span>
-                <strong class="activity-card-reward" data-activity-card-field="奖励摘要">最高可得 90 限时积分</strong>
-                <a class="button secondary" href="./invite.html">查看详情</a>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <div class="activity-config-schema" hidden aria-hidden="true">
-        <em data-activity-field>活动标题</em>
-        <em data-activity-field>活动副标题</em>
-        <em data-activity-field>活动类型</em>
-        <em data-activity-field>活动状态</em>
-        <em data-activity-field>开始时间</em>
-        <em data-activity-field>结束时间</em>
-        <em data-activity-field>参与条件</em>
-        <em data-activity-field>参与动作</em>
-        <em data-activity-field>奖励摘要</em>
-        <em data-activity-field>奖励确认方式</em>
-        <em data-activity-field>关联页面</em>
-        <em data-activity-field>CTA 文案</em>
-        <em data-activity-field>CTA 目标</em>
-        <em data-activity-field>活动封面</em>
-        <em data-activity-field>活动卡片描述</em>
-        <em data-activity-field>历史回顾内容</em>
+        <section class="c02e-activity-section" aria-label="正在进行的活动">
+          <div class="c02e-activity-grid">
+            <article class="c02e-activity-card activity-card" data-activity-card data-activity-status="进行中">
+              <div class="c02e-activity-card-media"><img src="assets/image_assets/activity-image-challenge-cover-c02e.png" alt="AI 生图创作挑战"><time data-activity-card-field="活动时间">长期开放</time><span class="c02e-activity-card-status" data-activity-card-field="活动状态">进行中</span></div>
+              <div class="c02e-activity-card-body"><h3 class="c02e-sr-title">AI 生图创作挑战</h3><p>AI 生图创作挑战</p><div class="c02e-activity-card-footer"><strong data-activity-card-field="奖励摘要">最高可得 1000 限时积分</strong><a href="./campaign-detail.html">查看详情<img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></a></div></div>
+            </article>
+            <article class="c02e-activity-card activity-card" data-activity-card data-activity-status="进行中">
+              <div class="c02e-activity-card-media"><img src="assets/image_assets/activity-prompt-cocreate-cover-c02e.png" alt="Prompt 共创计划"><time data-activity-card-field="活动时间">长期开放</time><span class="c02e-activity-card-status" data-activity-card-field="活动状态">进行中</span></div>
+              <div class="c02e-activity-card-body"><h3 class="c02e-sr-title">Prompt 共创计划</h3><p>Prompt 共创计划</p><div class="c02e-activity-card-footer"><strong data-activity-card-field="奖励摘要">最高可得 680 限时积分</strong><a href="./campaign-prompt.html">查看详情<img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></a></div></div>
+            </article>
+            <article class="c02e-activity-card activity-card" data-activity-card data-activity-status="进行中">
+              <div class="c02e-activity-card-media"><img src="assets/image_assets/activity-new-user-c02e.png" alt="新手任务"><time data-activity-card-field="活动时间">新用户首周</time><span class="c02e-activity-card-status" data-activity-card-field="活动状态">进行中</span></div>
+              <div class="c02e-activity-card-body"><h3 class="c02e-sr-title">新手任务</h3><p>新手任务</p><div class="c02e-activity-card-footer"><strong data-activity-card-field="奖励摘要">最高可得 110 限时积分</strong><a href="./campaign-new-user.html">查看详情<img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></a></div></div>
+            </article>
+            <article class="c02e-activity-card activity-card" data-activity-card data-activity-status="进行中">
+              <div class="c02e-activity-card-media"><img src="assets/image_assets/activity-seven-day-c02e.webp" alt="七日成长任务"><time data-activity-card-field="活动时间">连续 7 天</time><span class="c02e-activity-card-status" data-activity-card-field="活动状态">进行中</span></div>
+              <div class="c02e-activity-card-body"><h3 class="c02e-sr-title">七日成长任务</h3><p>七日成长任务</p><div class="c02e-activity-card-footer"><strong data-activity-card-field="奖励摘要">最高可得 320 限时积分</strong><a href="./campaign-seven-day.html">查看详情<img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></a></div></div>
+            </article>
+            <article class="c02e-activity-card activity-card" data-activity-card data-activity-status="进行中">
+              <div class="c02e-activity-card-media"><img src="assets/image_assets/activity-invite-c02e.png" alt="邀请有礼"><time data-activity-card-field="活动时间">长期开放</time><span class="c02e-activity-card-status" data-activity-card-field="活动状态">进行中</span></div>
+              <div class="c02e-activity-card-body"><h3 class="c02e-sr-title">邀请有礼</h3><p>邀请有礼</p><div class="c02e-activity-card-footer"><strong data-activity-card-field="奖励摘要">最高可得 90 限时积分</strong><a href="./invite.html">查看详情<img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></a></div></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="c02e-activity-section" aria-label="往期回顾">
+          <header class="c02e-activity-section-head"><h2><span>往期</span>回顾</h2><em>过往精选</em></header>
+          <div class="c02e-activity-grid">
+            <article class="c02e-activity-card activity-card is-ended" data-activity-card data-activity-status="已结束">
+              <div class="c02e-activity-card-media"><img src="assets/image_assets/11.png" alt="模型体验季回顾"><time data-activity-card-field="活动时间">往期回顾</time><span class="c02e-activity-card-status" data-activity-card-field="活动状态">已结束</span></div>
+              <div class="c02e-activity-card-body"><h3 class="c02e-sr-title">模型体验季回顾</h3><p>模型体验季回顾</p><div class="c02e-activity-card-footer"><strong data-activity-card-field="历史回顾内容">优秀作品与反馈</strong><a href="./campaign-detail.html#activity-status">查看详情<img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></a></div></div>
+            </article>
+            <article class="c02e-activity-card activity-card is-ended" data-activity-card data-activity-status="已结束">
+              <div class="c02e-activity-card-media"><img src="assets/image_assets/18.png" alt="闪念共创周回顾"><time data-activity-card-field="活动时间">往期回顾</time><span class="c02e-activity-card-status" data-activity-card-field="活动状态">已结束</span></div>
+              <div class="c02e-activity-card-body"><h3 class="c02e-sr-title">闪念共创周回顾</h3><p>闪念共创周回顾</p><div class="c02e-activity-card-footer"><strong data-activity-card-field="历史回顾内容">闪念与 Prompt</strong><a href="./flash.html">查看详情<img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></a></div></div>
+            </article>
+          </div>
+        </section>
       </div>
-
-      <section class="section activity-history-section" aria-label="历史活动">
-        <div class="wide-container">
-          <div class="section-head activity-section-head">
-            <div>
-              <h2>往期活动回顾</h2>
-            </div>
-          </div>
-          <div class="activity-card-grid activity-history-grid">
-            <article class="activity-card activity-card-ended" data-activity-card data-activity-status="已结束">
-              <span class="activity-card-status" data-activity-card-field="活动状态">已结束</span>
-              <img src="assets/image_assets/11.png" alt="">
-              <div class="activity-card-body">
-                <h3>模型体验季回顾</h3>
-                <p>回看优秀作品和模型体验反馈。</p>
-                <span class="activity-card-date" data-activity-card-field="活动时间">往期回顾</span>
-                <strong class="activity-card-summary" data-activity-card-field="历史回顾内容">优秀作品与反馈</strong>
-                <a class="button secondary" href="./campaign-detail.html#activity-status">查看回顾</a>
-              </div>
-            </article>
-            <article class="activity-card activity-card-ended" data-activity-card data-activity-status="已结束">
-              <span class="activity-card-status" data-activity-card-field="活动状态">已结束</span>
-              <img src="assets/image_assets/18.png" alt="">
-              <div class="activity-card-body">
-                <h3>闪念共创周回顾</h3>
-                <p>回看高质量闪念和 Prompt 复用案例。</p>
-                <span class="activity-card-date" data-activity-card-field="活动时间">往期回顾</span>
-                <strong class="activity-card-summary" data-activity-card-field="历史回顾内容">闪念与 Prompt</strong>
-                <a class="button secondary" href="./flash.html">查看回顾</a>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
     </main>
 
     <details class="v1-walkthrough-drawer" data-v1-walkthrough-drawer>
       <summary>走查</summary>
       <div class="v1-walkthrough-panel">
-        <div class="v1-walkthrough-head"><strong>活动中心走查</strong><span>活动中心是固定活动模块，负责当前活动入口和历史活动归档。</span></div>
+        <div class="v1-walkthrough-head"><strong>活动中心走查</strong><span>列表结构由真实 C 端活动列表和 Apifox 列表响应共同约束。</span></div>
         <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>运营关注</span><span>研发关注</span></div>
-        <div class="v1-rule-section"><strong>页面定位</strong><span>活动中心承接用户主动找活动的固定入口；首页、闪念、AIGC、消息和限时积分中心中的活动位继续作为导流入口。</span></div>
-        <div class="v1-rule-section"><strong>用户主路径</strong><span>用户从顶部特殊入口进入活动中心，平铺查看当前活动，进入对应活动详情或业务承接页；结束活动只能查看回顾。</span></div>
-        <div class="v1-rule-section"><strong>关键字段</strong><span>活动卡片展示活动名称、状态值、单行 C 端描述、时间值、奖励或回顾摘要和目标入口；状态固定在卡片左上角，时间放在描述下方，参与动作和完整奖励规则由活动详情、隐藏结构和走查规则承接，不进入卡片主内容。</span></div>
-        <div class="v1-rule-section"><strong>状态规则</strong><span>活动状态包括进行中、奖励待确认、已完成和已结束；历史活动不展示继续参与动作。</span></div>
-        <div class="v1-rule-section"><strong>动作去向</strong><span>生图挑战进入活动详情，Prompt 共创进入活动说明页，新手与七日进入对应任务详情页，邀请有礼进入邀请页；当前活动卡片不直接跳功能页。</span></div>
-        <div class="v1-rule-section"><strong>运营维护</strong><span>活动中心维护活动排序、状态、时间、入口、奖励摘要、卡片短描述和回顾内容；当前活动卡片描述只写用户能理解的一句话，不写沉淀、回流、路径或配置类表达；限时积分中心只维护限时积分资产、赚限时积分入口和限时积分记录。</span></div>
-        <div class="v1-rule-section"><strong>研发规则</strong><span data-engineering-rule>当前活动卡片必须包含活动名称、状态、单行描述、时间、奖励摘要和查看详情 href；标题建议 4-24 字，描述建议 8-32 字，奖励摘要只显示最高可得或核心奖励</span><span data-engineering-rule>状态值固定为进行中、奖励待确认、已完成、已结束；进行中卡片按钮为查看详情，已结束卡片按钮为查看回顾，不展示继续参与动作</span><span data-engineering-rule>当前活动按 3 列平铺，不设置主推大卡；少于 3 个时保持同一网格节奏，多于 6 个时按运营排序分页或进入更多活动，不在首屏堆长列表</span><span data-engineering-rule>跳转目标固定：AI 生图进入 campaign-detail.html，Prompt 共创进入 campaign-prompt.html，新手任务进入 campaign-new-user.html，七日成长进入 campaign-seven-day.html，邀请有礼进入 invite.html</span><span data-engineering-rule>往期活动复用同一活动卡片结构，只读展示状态、时间、回顾摘要和查看回顾；不使用字段表，不在活动中心展示限时积分记录或个人任务进度</span><span data-engineering-rule>活动中心只做活动入口聚合；完整规则、投稿要求、限时积分上限和邀请限制必须进入对应承接页，不倾倒到活动中心主内容</span></div>
-        <div class="v1-rule-section"><strong>研发验收</strong><span>顶部活动中心必须是 header actions 内的特殊胶囊入口，不进入普通主导航；活动中心不再展示独立 Hero 卡片，当前活动作为首屏主体直接出现；当前活动按 3 列松弛卡片平铺，不设置主推卡，标题行不放限时积分记录旁路入口；活动卡片不展示参与动作，描述必须是单行 C 端短句；进行中任务奖励只显示最高可得限时积分，已结束活动只展示本期历史奖励摘要；往期活动必须复用同一张活动卡片结构，不使用中部字段表；进行中按钮为查看详情，已结束按钮为查看回顾；主内容不得展示标题标签、字段配置说明或运营配置口径。</span></div>
-        <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付 C 端静态高保真活动中心、当前活动列表、历史活动回顾和字段规则；正式活动配置、奖励结算、风控策略和履约规则后置。</span></div>
+        <div class="v1-rule-section"><strong>页面定位</strong><span>真实路由为 /activity/list/listIndex，接口返回 current 与 archive 两组数据；邀请类活动进入邀请详情，其余活动按 code 进入通用活动详情。</span></div>
+        <div class="v1-rule-section"><strong>字段映射</strong><span data-engineering-rule>卡片从 cover_url、name、time_label、max_points、summary、status 与 type 渲染；当前列表不在前端固化活动数量、积分上限或时间。</span></div>
+        <div class="v1-rule-section"><strong>列表结构</strong><span data-engineering-rule>current 直接显示，archive 使用往期回顾分区；桌面端保持 3 列，窄屏降为 2 列或 1 列，空数组显示对应空态。</span></div>
+        <div class="v1-rule-section"><strong>状态规则</strong><span data-engineering-rule>status 为 0/1/2，用户文案取 status_text；进行中数量由 current.length 计算并补齐两位，不由原型写死。</span></div>
+        <div class="v1-rule-section"><strong>跳转规则</strong><span data-engineering-rule>type=referral 进入 invite.html；其他活动使用 code 进入通用详情兼容页，当前静态映射保留 campaign-detail.html、campaign-prompt.html、campaign-new-user.html 与 campaign-seven-day.html。</span></div>
+        <div class="v1-rule-section"><strong>文本约束</strong><span data-engineering-rule>name 建议 4-24 字，活动摘要建议 8-32 字；列表只展示接口已有字段，不展开任务、投稿或奖励结算规则。</span></div>
+        <div class="v1-rule-section"><strong>历史兼容</strong><span data-engineering-rule>结束活动使用同一卡片骨架并展示查看回顾；静态预览仍保留 5 个当前活动与 2 个往期对象，用于和当前 B 端投放目录交叉验收。</span></div>
       </div>
     </details>
     <div class="footer-space"></div>
   </div>
   <script src="./walkthrough.js" defer></script>
+  <script src="./c02e-alignment.js?v=20260805-code-contract-1" defer></script>
 </body>
 </html>

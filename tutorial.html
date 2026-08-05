@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>官方教程 - 多元拾光</title>
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./style.css?v=20260805-c02a2">
 </head>
 <body>
   <div class="page tutorial-page" data-page="community-tutorial">
@@ -30,7 +30,7 @@
           <a class="action-link activity-center-link" href="./activity-center.html" data-nav-action="activity-center" data-action-label="活动中心">活动中心</a>
           <a class="action-link" href="./invite.html" data-nav-action="invite">邀请有礼</a>
           <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a>
-          <a class="action-link points-link" href="./points-center.html" data-nav-action="points">限时积分 1280</a>
+          <a class="action-link points-link" href="./points-center.html" data-nav-action="points" data-action-label="积分 1280"><span>积分</span><strong>1280</strong></a>
           <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
           <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="用户头像"><img src="assets/image_assets/1.png" alt=""></a>
         </div>
@@ -122,124 +122,119 @@
       </div>
     </section>
 
-    <main>
-      <section id="tutorial-list" class="section tutorial-main-section">
-        <div class="wide-container tutorial-feed tutorial-feed-simple">
-          <div class="filter-row" data-tutorial-filters>
-            <button class="filter-chip is-active" type="button" data-filter="all">全部</button>
-            <button class="filter-chip" type="button" data-filter="漫剧生成">漫剧生成</button>
-            <button class="filter-chip" type="button" data-filter="图片生成">图片生成</button>
-            <button class="filter-chip" type="button" data-filter="视频生成">视频生成</button>
+    <main class="tutorial-discover-main">
+      <section id="tutorial-list" class="wide-container tutorial-discover-shell">
+        <section class="tutorial-discover-banner" aria-labelledby="tutorial-discover-title">
+          <img src="assets/image_assets/tutorial-official-banner-v3.webp" alt="" aria-hidden="true">
+          <div class="tutorial-discover-copy">
+            <span class="tutorial-discover-kicker">OFFICIAL TUTORIALS</span>
+            <h1 id="tutorial-discover-title">跟着官方教程<br><em>开始你的创作</em></h1>
+            <p>跟练真实案例，逐步掌握常用 AI 工具与模型配置。</p>
           </div>
+        </section>
 
-          <div class="tutorial-course-grid" data-tutorial-grid>
-                <a class="tutorial-course-card" data-tutorial-card data-tutorial-type="漫剧生成" href="./tutorial-detail.html?lesson=video" target="_blank" rel="noopener" aria-label="打开教程：12 分钟完成第一条漫剧分镜">
-                  <div class="tutorial-cover"><img src="assets/image_assets/11.png" alt=""><span>视频 · 12 分钟</span></div>
-                  <div class="tutorial-card-copy">
-                    <span>漫剧生成</span>
-                    <h3>12 分钟完成第一条漫剧分镜</h3>
-                    <p>从一句创意拆到角色、场景、镜头和封面提示词。</p>
-                  </div>
-                </a>
-                <a class="tutorial-course-card" data-tutorial-card data-tutorial-type="漫剧生成" href="./tutorial-detail.html?lesson=video" target="_blank" rel="noopener" aria-label="打开教程：国风角色设定怎么保持一致">
-                  <div class="tutorial-cover"><img src="assets/image_assets/1.png" alt=""><span>视频 · 8 分钟</span></div>
-                  <div class="tutorial-card-copy">
-                    <span>漫剧生成</span>
-                    <h3>国风角色设定怎么保持一致</h3>
-                    <p>先锁角色关键词，再补服饰、表情和镜头风格。</p>
-                  </div>
-                </a>
-                <a class="tutorial-course-card" data-tutorial-card data-tutorial-type="漫剧生成" href="./tutorial-detail.html?lesson=video" target="_blank" rel="noopener" aria-label="打开教程：一句话变成 9 格分镜">
-                  <div class="tutorial-cover"><img src="assets/image_assets/17.png" alt=""><span>图文 · 入门</span></div>
-                  <div class="tutorial-card-copy">
-                    <span>漫剧生成</span>
-                    <h3>一句话变成 9 格分镜</h3>
-                    <p>把开场冲突、人物动作和画面节奏拆成可生成镜头。</p>
-                  </div>
-                </a>
-
-                <a class="tutorial-course-card" data-tutorial-card data-tutorial-type="图片生成" href="./tutorial-detail.html?lesson=article" target="_blank" rel="noopener" aria-label="打开教程：封面主视觉提示词怎么写">
-                  <div class="tutorial-cover"><img src="assets/image_assets/18.png" alt=""><span>图文 · 入门</span></div>
-                  <div class="tutorial-card-copy">
-                    <span>图片生成</span>
-                    <h3>封面主视觉提示词怎么写</h3>
-                    <p>从标题、主体、背景和氛围词生成一张可用封面。</p>
-                  </div>
-                </a>
-                <a class="tutorial-course-card" data-tutorial-card data-tutorial-type="图片生成" href="./tutorial-detail.html?lesson=article" target="_blank" rel="noopener" aria-label="打开教程：角色定妆图如何保持一致">
-                  <div class="tutorial-cover"><img src="assets/image_assets/4.png" alt=""><span>图文 · 进阶</span></div>
-                  <div class="tutorial-card-copy">
-                    <span>图片生成</span>
-                    <h3>角色定妆图如何保持一致</h3>
-                    <p>用固定描述、服饰细节和镜头距离稳定角色形象。</p>
-                  </div>
-                </a>
-                <a class="tutorial-course-card" data-tutorial-card data-tutorial-type="图片生成" href="./tutorial-detail.html?lesson=article" target="_blank" rel="noopener" aria-label="打开教程：场景图从空画面到有故事">
-                  <div class="tutorial-cover"><img src="assets/image_assets/2.png" alt=""><span>视频 · 7 分钟</span></div>
-                  <div class="tutorial-card-copy">
-                    <span>图片生成</span>
-                    <h3>场景图从空画面到有故事</h3>
-                    <p>用前景、主体和远景关系，让图片更像一个可延展片段。</p>
-                  </div>
-                </a>
-
-                <a class="tutorial-course-card" data-tutorial-card data-tutorial-type="视频生成" href="./tutorial-detail.html?lesson=video" target="_blank" rel="noopener" aria-label="打开教程：图生视频的镜头描述怎么写">
-                  <div class="tutorial-cover"><img src="assets/image_assets/3.png" alt=""><span>视频 · 6 分钟</span></div>
-                  <div class="tutorial-card-copy">
-                    <span>视频生成</span>
-                    <h3>图生视频的镜头描述怎么写</h3>
-                    <p>把主体、运动、景别和转场拆开写，减少返工。</p>
-                  </div>
-                </a>
-                <a class="tutorial-course-card" data-tutorial-card data-tutorial-type="视频生成" href="./tutorial-detail.html?lesson=video" target="_blank" rel="noopener" aria-label="打开教程：短视频开场 3 秒怎么做">
-                  <div class="tutorial-cover"><img src="assets/image_assets/11.png" alt=""><span>视频 · 5 分钟</span></div>
-                  <div class="tutorial-card-copy">
-                    <span>视频生成</span>
-                    <h3>短视频开场 3 秒怎么做</h3>
-                    <p>先写主体入场、镜头推进和第一帧吸引点。</p>
-                  </div>
-                </a>
-                <a class="tutorial-course-card" data-tutorial-card data-tutorial-type="视频生成" href="./tutorial-detail.html?lesson=video" target="_blank" rel="noopener" aria-label="打开教程：分镜到动态预览怎么串起来">
-                  <div class="tutorial-cover"><img src="assets/image_assets/17.png" alt=""><span>图文 · 进阶</span></div>
-                  <div class="tutorial-card-copy">
-                    <span>视频生成</span>
-                    <h3>分镜到动态预览怎么串起来</h3>
-                    <p>把关键帧、运动方向和转场要求写成连续镜头。</p>
-                  </div>
-                </a>
-          </div>
+        <div class="tutorial-discover-filters" data-tutorial-filters role="tablist" aria-label="筛选官方教程">
+          <button class="tutorial-discover-chip is-active" type="button" data-filter="all" role="tab" aria-selected="true">全部</button>
+          <button class="tutorial-discover-chip" type="button" data-filter="暂无归属板块" role="tab" aria-selected="false">官方教程</button>
         </div>
+
+        <div class="tutorial-discover-grid" data-tutorial-grid>
+          <a class="tutorial-course-card tutorial-discover-card" data-tutorial-card data-tutorial-no="TU000101" data-tutorial-type="暂无归属板块" href="./tutorial-detail.html?tutorial_no=TU000101" aria-label="打开教程：第十五期：OMate API配置教程">
+            <div class="tutorial-cover"><img src="assets/image_assets/tutorial-cover-TU000101.jpg" alt="第十五期：OMate API配置教程封面"><span>官方教程</span></div>
+            <div class="tutorial-card-copy"><span>官方教程</span><h3>第十五期：OMate API配置教程</h3></div>
+          </a>
+          <a class="tutorial-course-card tutorial-discover-card" data-tutorial-card data-tutorial-no="TU000102" data-tutorial-type="暂无归属板块" href="./tutorial-detail.html?tutorial_no=TU000102" aria-label="打开教程：第十四期：LobeChat API配置教程">
+            <div class="tutorial-cover"><img src="assets/image_assets/tutorial-cover-TU000102.jpg" alt="第十四期：LobeChat API配置教程封面"><span>官方教程</span></div>
+            <div class="tutorial-card-copy"><span>官方教程</span><h3>第十四期：LobeChat API配置教程</h3></div>
+          </a>
+          <a class="tutorial-course-card tutorial-discover-card" data-tutorial-card data-tutorial-no="TU000103" data-tutorial-type="暂无归属板块" href="./tutorial-detail.html?tutorial_no=TU000103" aria-label="打开教程：第十三期：SillyTavern（酒馆）API配置教程">
+            <div class="tutorial-cover"><img src="assets/image_assets/tutorial-cover-TU000103.jpg" alt="第十三期：SillyTavern（酒馆）API配置教程封面"><span>官方教程</span></div>
+            <div class="tutorial-card-copy"><span>官方教程</span><h3>第十三期：SillyTavern（酒馆）API配置教程</h3></div>
+          </a>
+          <a class="tutorial-course-card tutorial-discover-card" data-tutorial-card data-tutorial-no="TU000104" data-tutorial-type="暂无归属板块" href="./tutorial-detail.html?tutorial_no=TU000104" aria-label="打开教程：第十二期：zen-mcp API配置教程">
+            <div class="tutorial-cover"><img src="assets/image_assets/tutorial-cover-TU000104.jpg" alt="第十二期：zen-mcp API配置教程封面"><span>官方教程</span></div>
+            <div class="tutorial-card-copy"><span>官方教程</span><h3>第十二期：zen-mcp API配置教程</h3></div>
+          </a>
+          <a class="tutorial-course-card tutorial-discover-card" data-tutorial-card data-tutorial-no="TU000105" data-tutorial-type="暂无归属板块" href="./tutorial-detail.html?tutorial_no=TU000105" aria-label="打开教程：Open WebUI 下载方式">
+            <div class="tutorial-cover"><img src="assets/image_assets/tutorial-cover-TU000105.jpg" alt="Open WebUI 下载方式封面"><span>官方教程</span></div>
+            <div class="tutorial-card-copy"><span>官方教程</span><h3>Open WebUI 下载方式</h3></div>
+          </a>
+          <a class="tutorial-course-card tutorial-discover-card" data-tutorial-card data-tutorial-no="TU000106" data-tutorial-type="暂无归属板块" href="./tutorial-detail.html?tutorial_no=TU000106" aria-label="打开教程：第十一期：OpenWebUI API配置教程">
+            <div class="tutorial-cover"><img src="assets/image_assets/tutorial-cover-TU000106.jpg" alt="第十一期：OpenWebUI API配置教程封面"><span>官方教程</span></div>
+            <div class="tutorial-card-copy"><span>官方教程</span><h3>第十一期：OpenWebUI API配置教程</h3></div>
+          </a>
+          <a class="tutorial-course-card tutorial-discover-card" data-tutorial-card data-tutorial-no="TU000107" data-tutorial-type="暂无归属板块" href="./tutorial-detail.html?tutorial_no=TU000107" aria-label="打开教程：第十期：coze API配置教程">
+            <div class="tutorial-cover"><img src="assets/image_assets/tutorial-cover-TU000107.jpg" alt="第十期：coze API配置教程封面"><span>官方教程</span></div>
+            <div class="tutorial-card-copy"><span>官方教程</span><h3>第十期：coze API配置教程</h3></div>
+          </a>
+          <a class="tutorial-course-card tutorial-discover-card" data-tutorial-card data-tutorial-no="TU000108" data-tutorial-type="暂无归属板块" href="./tutorial-detail.html?tutorial_no=TU000108" aria-label="打开教程：第九期：Trae API 配置教程">
+            <div class="tutorial-cover"><img src="assets/image_assets/tutorial-cover-TU000108.jpg" alt="第九期：Trae API 配置教程封面"><span>官方教程</span></div>
+            <div class="tutorial-card-copy"><span>官方教程</span><h3>第九期：Trae API 配置教程</h3></div>
+          </a>
+          <a class="tutorial-course-card tutorial-discover-card" data-tutorial-card data-tutorial-no="TU000109" data-tutorial-type="暂无归属板块" href="./tutorial-detail.html?tutorial_no=TU000109" aria-label="打开教程：第八期：Claude Code接入模型API教程">
+            <div class="tutorial-cover"><img src="assets/image_assets/tutorial-cover-TU000109.jpg" alt="第八期：Claude Code接入模型API教程封面"><span>官方教程</span></div>
+            <div class="tutorial-card-copy"><span>官方教程</span><h3>第八期：Claude Code接入模型API教程</h3></div>
+          </a>
+        </div>
+
+        <div class="tutorial-discover-empty" data-tutorial-empty hidden>
+          <strong>暂无教程</strong>
+          <span>换个板块看看，或返回全部教程。</span>
+          <button type="button" data-tutorial-reset>查看全部</button>
+        </div>
+        <p class="tutorial-discover-status" data-tutorial-status>没有更多了</p>
       </section>
     </main>
     <details class="v1-walkthrough-drawer" data-v1-walkthrough-drawer>
       <summary>走查</summary>
       <div class="v1-walkthrough-panel">
-        <div class="v1-walkthrough-head"><strong>官方教程走查</strong><span>教程要让用户学完后能回到模板、创作或反馈入口。</span></div>
+        <div class="v1-walkthrough-head"><strong>官方教程走查</strong><span>列表沿用真实 C 端发现页骨架，帮助用户按板块找到公开教程。</span></div>
         <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>运营关注</span><span>研发关注</span></div>
         <div class="v1-rule-section"><strong>页面定位</strong><span>官方教程服务 AIGC、模型广场、活动玩法和限时积分任务，是转化辅助页，不进入首页信息流铺开。</span></div>
-        <div class="v1-rule-section"><strong>用户主路径</strong><span>用户按分类浏览教程 -> 点击教程卡进入详情 -> 看完后去模板库、AIGC 输入区、模型广场或闪念反馈。</span></div>
-        <div class="v1-rule-section"><strong>关键字段</strong><span>教程分类、封面、内容类型、时长/难度、教程标题、教程卡、回流 CTA、关联模板和 AI 生成声明。</span></div>
+        <div class="v1-rule-section"><strong>用户主路径</strong><span>用户按板块浏览教程 -> 点击整张教程卡 -> 以教程编号进入对应详情。</span></div>
+        <div class="v1-rule-section"><strong>关键字段</strong><span>教程编号、板块、封面、标题、来源、浏览数和发布时间；摘要、内容格式、时长或难度只在详情展示。</span></div>
         <div class="v1-rule-section"><strong>状态规则</strong><span>教程页只表达内容消费和继续上手。学习进度、完成教程限时积分、证书、测验和付费课程后置。</span></div>
-        <div class="v1-rule-section"><strong>动作去向</strong><span>教程卡整卡新页面打开教程详情。详情内承接 AIGC 直达、模板或反馈入口；列表页不放多按钮，避免教程卡变成操作面板。</span></div>
-        <div class="v1-rule-section"><strong>运营维护</strong><span>教程列表、分类、封面和推荐顺序来自官方教程内容池与 P0 教程素材。运营人工维护重点教程和目标模块，学习系统维护能力后置。</span></div>
-        <div class="v1-rule-section"><strong>研发规则</strong><span data-engineering-rule>教程列表首批固定 9 张卡；每张卡必须包含分类、封面、标题、摘要、时长或难度、详情 href；标题建议 4-32 字，摘要建议 12-60 字</span><span data-engineering-rule>分类筛选只改变教程卡集合和高亮态；无结果时展示空态和返回全部入口，不展示旧锚点详情层</span><span data-engineering-rule>教程卡整卡进入 tutorial-detail.html 或明确详情页；卡片内不得放多个操作按钮，避免和详情页直达入口重复</span><span data-engineering-rule>封面加载失败时保留标题、摘要和详情入口；教程列表不得展示学习进度、完成限时积分、证书、付费课履约或自动生成承诺</span><span data-engineering-rule>回流 CTA 只进入 AIGC、模板库、模型广场或闪念反馈等正式页面；所有站内链接必须非空且通过整包断链检查</span></div>
-        <div class="v1-rule-section"><strong>研发验收</strong><span>9 张教程卡需要可点击或键盘新页面进入详情。页面不能残留旧锚点详情层和卡内动作按钮，也不露学习进度、完成限时积分、真实扣费或自动生成承诺。</span></div>
-        <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付官方内容消费和创作回流。完整课程系统、学习打卡、证书、自动限时积分和付费课履约后置；教程发布前需人工确认目标频道和回流入口。</span></div>
+        <div class="v1-rule-section"><strong>动作去向</strong><span>教程卡整卡进入 `tutorial-detail.html?tutorial_no={tutorial_no}`；沿用真实 C 端同页路由语义，列表页不放次级按钮。</span></div>
+        <div class="v1-rule-section"><strong>运营维护</strong><span>教程内容、板块和发布状态由教程管理维护；当前卡片来自 2026-08-05 测试环境可见记录，只作跨端核对证据，不固化为长期目录。</span></div>
+        <div class="v1-rule-section"><strong>研发规则</strong><span data-engineering-rule>首屏请求 page=1、page_size=12；板块变化后回到第一页，后续批次按真实 C 端滚动加载语义追加</span><span data-engineering-rule>公开列表只使用 tutorial_no、section_code、cover_url、title、source、互动数和时间字段，不读取详情摘要、内容格式、时长或难度</span><span data-engineering-rule>板块名称来自板块树 code/name 映射；不读取列表接口未返回的 section_name、category_name 或 type_name</span><span data-engineering-rule>官方来源需由 source=official 或服务端公开路由约束保证，不能用页面标题替代数据范围</span><span data-engineering-rule>每张卡必须携带唯一 tutorial_no，整卡进入对应详情；不得用内容格式代替对象编号</span><span data-engineering-rule>封面加载失败时保留来源、标题和详情入口；空列表保留筛选与明确空状态，不回填本地样例或已下架教程</span></div>
+        <div class="v1-rule-section"><strong>研发验收</strong><span>9 张当前公开卡的教程编号唯一，标题、封面和详情目标与 B 端已发布目录一致；Hero、三列内容流、筛选、空态和键盘打开可用，页面无摘要、格式或时长标签。</span></div>
+        <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付官方教程发现和阅读，并覆盖公开列表、板块筛选和详情打开；学习进度、测验、证书、自动限时积分和付费课履约后置。</span></div>
       </div>
     </details>
     <div class="footer-space"></div>
   </div>
   <script>
-    document.querySelectorAll("[data-tutorial-filters] .filter-chip").forEach((button) => {
-      button.addEventListener("click", () => {
+    const tutorialFilterButtons = Array.from(document.querySelectorAll("[data-tutorial-filters] [data-filter]"));
+    const tutorialCards = Array.from(document.querySelectorAll("[data-tutorial-card]"));
+    const tutorialEmpty = document.querySelector("[data-tutorial-empty]");
+    const tutorialStatus = document.querySelector("[data-tutorial-status]");
+
+    const setTutorialFilter = (button) => {
         const type = button.dataset.filter;
-        document.querySelectorAll("[data-tutorial-filters] .filter-chip").forEach((item) => {
+        tutorialFilterButtons.forEach((item) => {
           item.classList.toggle("is-active", item === button);
+          item.setAttribute("aria-selected", String(item === button));
         });
-        document.querySelectorAll("[data-tutorial-card]").forEach((card) => {
+        let visibleCount = 0;
+        tutorialCards.forEach((card) => {
           card.hidden = type !== "all" && card.dataset.tutorialType !== type;
+          if (!card.hidden) visibleCount += 1;
         });
-      });
+        tutorialEmpty.hidden = visibleCount !== 0;
+        tutorialStatus.hidden = visibleCount === 0;
+    };
+
+    tutorialFilterButtons.forEach((button) => {
+      button.addEventListener("click", () => setTutorialFilter(button));
+    });
+
+    document.querySelector("[data-tutorial-reset]")?.addEventListener("click", () => {
+      const allButton = tutorialFilterButtons.find((button) => button.dataset.filter === "all");
+      if (allButton) setTutorialFilter(allButton);
+    });
+
+    document.querySelectorAll("[data-tutorial-card] .tutorial-cover img").forEach((image) => {
+      image.addEventListener("error", () => image.closest(".tutorial-cover")?.classList.add("is-broken"));
     });
   </script>
   <script src="./walkthrough.js" defer></script>

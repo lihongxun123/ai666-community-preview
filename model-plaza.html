@@ -5,269 +5,75 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>多元拾光 模型广场</title>
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./style.css?v=20260805-c02b1">
+  <link rel="stylesheet" href="./c02c-alignment.css?v=20260805-c02c1">
 </head>
 <body>
-  <div class="page model-plaza-page">
-    <div class="page-bg"><img src="assets/image_assets/2.png" alt=""></div>
-    <input class="top-campaign-toggle" type="checkbox" id="top-campaign-dismiss-model-plaza" aria-label="关闭顶部广告">
-    <div class="top-campaign"><span>Prompt 共创专区</span><span class="timer">持续开放</span><span>既可发布 Prompt，也可浏览案例、免费复制和一键同款</span><label class="top-campaign-close" for="top-campaign-dismiss-model-plaza" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
+  <div class="page model-plaza-page c02c-page" data-page="community-model-plaza">
     <header class="site-header">
       <div class="header-inner wide-container">
-        <a class="logo" href="./index.html" aria-label="多元拾光">
-          <img class="brand-mark" src="assets/brand/duoyuan-shiguang-logo-mark-reverse.svg" alt="">
-          <span class="brand-copy">
-            <span class="brand-name">多元拾光</span>
-            <span class="brand-sub">AI原生实践者社区</span>
-          </span>
-        </a>
-        <nav class="nav" aria-label="主导航">
-          <a href="./index.html">首页</a>
-          <a href="./aigc.html">AIGC</a>
-          <a class="is-active" href="./model-plaza.html">模型广场</a>
-          <a href="./flash.html">闪念</a>
-          <a href="./tutorial.html">官方教程</a>
-        </nav>
-        <div class="header-actions">
-          <a class="action-link activity-center-link" href="./activity-center.html" data-nav-action="activity-center" data-action-label="活动中心">活动中心</a>
-          <a class="action-link" href="./invite.html" data-nav-action="invite">邀请有礼</a>
-          <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a>
-          <a class="action-link points-link" href="./points-center.html" data-nav-action="points">限时积分 1280</a>
-          <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
-          <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="用户头像"><img src="assets/image_assets/1.png" alt=""></a>
-        </div>
+        <a class="logo" href="./index.html" aria-label="多元拾光"><img class="brand-mark" src="assets/brand/duoyuan-shiguang-logo-mark-reverse.svg" alt=""><span class="brand-copy"><span class="brand-name">多元拾光</span><span class="brand-sub">AI原生实践者社区</span></span></a>
+        <nav class="nav" aria-label="主导航"><a href="./index.html">首页</a><a href="./aigc.html">AIGC</a><a class="is-active" href="./model-plaza.html">模型广场</a><a href="./flash.html">闪念</a><a href="./tutorial.html">官方教程</a></nav>
+        <div class="header-actions"><a class="action-link activity-center-link" href="./activity-center.html" data-nav-action="activity-center" data-action-label="活动中心">活动中心</a><a class="action-link" href="./invite.html" data-nav-action="invite">邀请有礼</a><a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a><a class="action-link points-link" href="./points-center.html" data-nav-action="points" data-action-label="积分 1280"><span>积分</span><strong>1280</strong></a><a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a><a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="用户头像"><img src="assets/image_assets/1.png" alt=""></a></div>
       </div>
     </header>
-    <section id="nav-invite" class="create-modal nav-action-modal" aria-label="邀请有礼">
-      <a class="modal-backdrop" href="#" aria-label="关闭邀请有礼"></a>
-      <div class="create-dialog nav-action-dialog">
-        <div class="create-dialog-head">
-          <div>
-            <h2>邀请好友一起试模型，双方都拿创作限时积分</h2>
-          </div>
-          <a class="section-link" href="#">关闭</a>
-        </div>
-        <div class="nav-action-body">
-          <div class="nav-action-hero invite">
-            <img src="assets/image_assets/11.png" alt="">
-            <div><span>我的邀请码</span><strong>SG2026</strong><em>好友注册、首次互动、首次发布 AI 作品后，奖励进入限时积分体系。</em></div>
-          </div>
-          <div class="nav-reward-grid">
-            <div><strong>注册</strong><span>邀请人 +20 限时积分</span></div>
-            <div><strong>首次互动</strong><span>邀请人 +20 限时积分</span></div>
-            <div><strong>首次发布</strong><span>邀请人 +50 限时积分</span></div>
-          </div>
-          <div class="modal-actions">
-            <a class="button" href="./invite.html">生成邀请卡</a>
-            <a class="button secondary" href="./invite.html">查看邀请记录</a>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section id="nav-member" class="create-modal nav-action-modal" aria-label="AI商城">
-      <a class="modal-backdrop" href="#" aria-label="关闭AI商城"></a>
-      <div class="create-dialog nav-action-dialog">
-        <div class="create-dialog-head">
-          <div>
-            <h2>先看清权益，再决定是否进入AI商城</h2>
-          </div>
-          <a class="section-link" href="#">关闭</a>
-        </div>
-        <div class="nav-action-body">
-          <div class="member-strip">
-            <div><strong>每月限时积分包</strong><span>创作、模型和模板体验可用</span></div>
-            <div><strong>AIGC 折扣</strong><span>图片、视频和漫剧体验优先</span></div>
-            <div><strong>创作权益</strong><span>模型、模板和历史 Prompt 复用</span></div>
-          </div>
-          <div class="modal-actions">
-            <a class="button" href="./member-store.html">进入AI商城</a>
-            <a class="button secondary" href="./points-center.html">先做任务攒限时积分</a>
-          </div>
-        </div>
-      </div>
-    </section>
+    <main class="c02c-model-page">
+      <div class="c02c-wide">
+        <section class="c02c-model-banners" aria-label="模型广场 Banner">
+          <a class="c02c-model-banner" href="https://ai.ai666.net/pricing/%E6%96%87%E5%BF%83%E4%B8%80%E8%A8%80" target="_blank" rel="noopener noreferrer" data-model-banner><img src="assets/image_assets/model-square-banner-1.png" alt="文心一言"><h2>文心一言</h2><p>文心一言既是你的智能伙伴，可以陪你聊天、回答问题、画图识图。</p></a>
+          <a class="c02c-model-banner" href="https://ai.ai666.net/pricing/%E6%96%87%E5%BF%83%E4%B8%80%E8%A8%80" target="_blank" rel="noopener noreferrer" data-model-banner><img src="assets/image_assets/model-square-banner-2.png" alt="文心一言"><h2>文心一言</h2><p>文心一言既是你的智能伙伴，可以陪你聊天、回答问题、画图识图。</p></a>
+          <a class="c02c-model-banner" href="https://ai.ai666.net/pricing/%E6%96%87%E5%BF%83%E4%B8%80%E8%A8%80" target="_blank" rel="noopener noreferrer" data-model-banner><img src="assets/image_assets/model-square-banner-3.png" alt="文心一言"><h2>文心一言</h2><p>文心一言既是你的智能伙伴，可以陪你聊天、回答问题、画图识图。</p></a>
+        </section>
 
-
-
-    <main>
-      <section class="section model-plaza-hero">
-        <div class="wide-container">
-          <div class="model-hero-shell">
-            <div class="model-hero-copy">
-              <h1>按场景选择适合你的 AI 模型</h1>
-              <div class="hero-actions">
-                <a class="button" href="#model-list">查看模型</a>
-                <a class="button secondary" href="#api-trial">申请体验</a>
-              </div>
+        <section id="model-list" aria-label="模型列表">
+          <div class="c02c-model-toolbar">
+            <div class="c02c-model-tabs" role="tablist" aria-label="模型类型">
+              <button class="c02c-model-tab is-active" type="button" data-model-tab="all">ALL <small>(94)</small></button>
+              <button class="c02c-model-tab" type="button" data-model-tab="text">Text <small>(51)</small></button>
+              <button class="c02c-model-tab" type="button" data-model-tab="image">Image <small>(19)</small></button>
+              <button class="c02c-model-tab" type="button" data-model-tab="audio">Audio <small>(0)</small></button>
+              <button class="c02c-model-tab" type="button" data-model-tab="video">Video <small>(24)</small></button>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section model-ops-section" id="api-trial">
-        <div class="wide-container">
-          <div class="model-ops-grid">
-            <a class="model-op-card model-op-season" href="./aigc.html#inspiration-gallery" data-model-operation>
-              <span>复用专区</span>
-              <strong>Prompt 案例库</strong>
-              <em>从历史提示词和案例回到创作</em>
-            </a>
-            <a class="model-op-card model-op-guide" href="./tutorial.html" data-model-operation>
-              <span>新手入口</span>
-              <strong>API 接入指南</strong>
-              <em>选型、调用、反馈一步看懂</em>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section class="section model-filter-section" id="model-list">
-        <div class="wide-container">
-          <div class="model-search-band">
-            <form class="model-search-form" action="#model-list" aria-label="搜索模型">
-              <label class="model-search-box">
-                <img src="resources/icons/remixicon/svg/System/search-line.svg" alt="">
-                <input type="search" name="q" placeholder="搜索模型名称" aria-label="搜索模型名称">
-              </label>
-              <button class="button secondary" type="submit">搜索</button>
-            </form>
-            <div class="model-filter-toolbar" aria-label="模型筛选">
-              <div class="model-filter-group" aria-label="模型类型">
-                <span>模型类型</span>
-                <div class="model-filter-tabs">
-                  <a class="is-active" href="#" data-model-filter data-cta-state="筛选全部模型">全部</a>
-                  <a href="#" data-model-filter data-cta-state="筛选文本模型">文本</a>
-                  <a href="#" data-model-filter data-cta-state="筛选图像模型">图像</a>
-                  <a href="#" data-model-filter data-cta-state="筛选视频模型">视频</a>
-                </div>
-              </div>
-            </div>
+            <label><span class="sr-only">搜索模型</span><input class="c02c-search" type="search" maxlength="40" placeholder="搜索模型" data-model-search></label>
           </div>
 
-          <div class="model-shelf-grid">
-            <a class="plaza-model-card is-hot" href="./model-detail.html?model=gpt-4.1" target="_blank" rel="noopener" data-model-card data-pricing-model="gpt-4.1" aria-label="查看 gpt-4.1 模型详情">
-              <div class="model-card-top"><div class="model-card-brand"><span class="model-logo logo-openai">O</span><em>OpenAI</em></div><span class="model-card-type">文本</span></div>
-              <h3>gpt-4.1</h3>
-              <p>GPT-4.1 是由 openai 提供的人工智能模型。</p>
-              <div class="model-card-price"><span>按量计费</span><strong>输入 $0.4000 / 1M Tokens</strong><em>补全 $0.8000 / 1M Tokens</em></div>
-              <div class="model-card-tags"><span>工具</span><span>对话</span><span>识图</span></div>
-            </a>
-            <a class="plaza-model-card" href="./model-detail.html?model=gpt-5-chat-latest" target="_blank" rel="noopener" data-model-card data-pricing-model="gpt-5-chat-latest" aria-label="查看 gpt-5-chat-latest 模型详情">
-              <div class="model-card-top"><div class="model-card-brand"><span class="model-logo logo-openai">O</span><em>OpenAI</em></div><span class="model-card-type">文本</span></div>
-              <h3>gpt-5-chat-latest</h3>
-              <p>GPT-5 Chat 指向当前 ChatGPT 所使用的 GPT-5 快照版本。</p>
-              <div class="model-card-price"><span>按量计费</span><strong>输入 $0.2500 / 1M Tokens</strong><em>补全 $2.0000 / 1M Tokens</em></div>
-              <div class="model-card-tags"><span>对话</span><span>识图</span></div>
-            </a>
-            <a class="plaza-model-card" href="./model-detail.html?model=claude-sonnet-4-6" target="_blank" rel="noopener" data-model-card data-pricing-model="claude-sonnet-4-6" aria-label="查看 claude-sonnet-4-6 模型详情">
-              <div class="model-card-top"><div class="model-card-brand"><span class="model-logo logo-claude">C</span><em>Anthropic</em></div><span class="model-card-type">文本</span></div>
-              <h3>claude-sonnet-4-6</h3>
-              <p>Claude Sonnet 4.6 可大规模提供前沿智能，专为编码、代理和企业工作流而打造。</p>
-              <div class="model-card-price"><span>按量计费</span><strong>输入 $1.5000 / 1M Tokens</strong><em>补全 $7.5000 / 1M Tokens</em></div>
-              <div class="model-card-tags"><span>对话</span><span>识图</span><span>工具</span></div>
-            </a>
-            <a class="plaza-model-card" href="./model-detail.html?model=gemini-3-pro-preview" target="_blank" rel="noopener" data-model-card data-pricing-model="gemini-3-pro-preview" aria-label="查看 gemini-3-pro-preview 模型详情">
-              <div class="model-card-top"><div class="model-card-brand"><span class="model-logo logo-gemini">G</span><em>Google</em></div><span class="model-card-type">文本</span></div>
-              <h3>gemini-3-pro-preview</h3>
-              <p>Gemini 3 以先进推理能力为基础，适合复杂任务和多模态任务。</p>
-              <div class="model-card-price"><span>按量计费</span><strong>输入 $1.4000 / 1M Tokens</strong><em>补全 $8.4000 / 1M Tokens</em></div>
-              <div class="model-card-tags"><span>对话</span><span>思考</span><span>多模态</span></div>
-            </a>
-            <a class="plaza-model-card" href="./model-detail.html?model=gemini-2.5-pro" target="_blank" rel="noopener" data-model-card data-pricing-model="gemini-2.5-pro" aria-label="查看 gemini-2.5-pro 模型详情">
-              <div class="model-card-top"><div class="model-card-brand"><span class="model-logo logo-gemini">G</span><em>Google</em></div><span class="model-card-type">文本</span></div>
-              <h3>gemini-2.5-pro</h3>
-              <p>Gemini 2.5 Pro 擅长编码和复杂提示，支持多模态输入。</p>
-              <div class="model-card-price"><span>按量计费</span><strong>输入 $0.8750 / 1M Tokens</strong><em>补全 $7.0000 / 1M Tokens</em></div>
-              <div class="model-card-tags"><span>对话</span><span>识图</span><span>思考</span></div>
-            </a>
-            <a class="plaza-model-card" href="./model-detail.html?model=o4-mini" target="_blank" rel="noopener" data-model-card data-pricing-model="o4-mini" aria-label="查看 o4-mini 模型详情">
-              <div class="model-card-top"><div class="model-card-brand"><span class="model-logo logo-openai">O</span><em>OpenAI</em></div><span class="model-card-type">文本</span></div>
-              <h3>o4-mini</h3>
-              <p>o4-mini 偏轻量推理，适合需要较快响应的推理任务，支持多模态输入。</p>
-              <div class="model-card-price"><span>按量计费</span><strong>输入 $0.5000 / 1M Tokens</strong><em>补全 $0.5000 / 1M Tokens</em></div>
-              <div class="model-card-tags"><span>对话</span><span>识图</span></div>
-            </a>
-            <a class="plaza-model-card" href="./model-detail.html?model=text-embedding-3-large" target="_blank" rel="noopener" data-model-card data-pricing-model="text-embedding-3-large" aria-label="查看 text-embedding-3-large 模型详情">
-              <div class="model-card-top"><div class="model-card-brand"><span class="model-logo logo-openai">O</span><em>OpenAI</em></div><span class="model-card-type">Embedding</span></div>
-              <h3>text-embedding-3-large</h3>
-              <p>OpenAI 第三代嵌入模型，适用于需要最高性能的检索任务。</p>
-              <div class="model-card-price"><span>按量计费</span><strong>输入 $0.0260 / 1M Tokens</strong><em>补全 $0.1040 / 1M Tokens</em></div>
-              <div class="model-card-tags"><span>文本嵌入</span></div>
-            </a>
-            <a class="plaza-model-card media-model" href="./model-detail.html?model=gpt-image-2" target="_blank" rel="noopener" data-model-card data-pricing-model="gpt-image-2" aria-label="查看 gpt-image-2 模型详情">
-              <div class="model-card-top"><div class="model-card-brand"><span class="model-logo logo-openai">O</span><em>OpenAI</em></div><span class="model-card-type">图像</span></div>
-              <h3>gpt-image-2</h3>
-              <p>GPT Image 2 支持快速、高质量的图像生成和编辑。</p>
-              <div class="model-card-price"><span>按次计费</span><strong>模型价格 $0.056 / 次</strong></div>
-              <div class="model-card-tags"><span>绘画</span><span>dall-e-3格式</span></div>
-            </a>
-            <a class="plaza-model-card media-model" href="./model-detail.html?model=doubao-seedream-4-5-251128" target="_blank" rel="noopener" data-model-card data-pricing-model="doubao-seedream-4-5-251128" aria-label="查看 doubao-seedream-4-5-251128 模型详情">
-              <div class="model-card-top"><div class="model-card-brand"><span class="model-logo logo-doubao">豆</span><em>Doubao</em></div><span class="model-card-type">图像</span></div>
-              <h3>doubao-seedream-4-5-251128</h3>
-              <p>Seedream 4.5 支持文本、单图和多图输入，适合多图融合创作。</p>
-              <div class="model-card-price"><span>按次计费</span><strong>模型价格 $0.150 / 次</strong></div>
-              <div class="model-card-tags"><span>绘画</span><span>dall-e-3格式</span></div>
-            </a>
-            <a class="plaza-model-card media-model" href="./model-detail.html?model=gemini-3.1-flash-image" target="_blank" rel="noopener" data-model-card data-pricing-model="gemini-3.1-flash-image" aria-label="查看 gemini-3.1-flash-image 模型详情">
-              <div class="model-card-top"><div class="model-card-brand"><span class="model-logo logo-gemini">G</span><em>Google</em></div><span class="model-card-type">图像</span></div>
-              <h3>gemini-3.1-flash-image</h3>
-              <p>Gemini 图像模型，适合快速图片生成、提示词测试和教程封面。</p>
-              <div class="model-card-price"><span>按次计费</span><strong>模型价格 $0.175 / 次</strong></div>
-              <div class="model-card-tags"><span>绘画</span><span>快速</span></div>
-            </a>
-            <a class="plaza-model-card video-model" href="./model-detail.html?model=grok-video-3" target="_blank" rel="noopener" data-model-card data-pricing-model="grok-video-3" aria-label="查看 grok-video-3 模型详情">
-              <div class="model-card-top"><div class="model-card-brand"><span class="model-logo logo-grok">G</span><em>Grok</em></div><span class="model-card-type">视频</span></div>
-              <h3>grok-video-3</h3>
-              <p>grok 的最新视频模型，6S。</p>
-              <div class="model-card-price"><span>按次计费</span><strong>模型价格 $0.158 / 次</strong></div>
-              <div class="model-card-tags"><span>视频</span><span>参考生视频</span></div>
-            </a>
-            <a class="plaza-model-card video-model" href="./model-detail.html?model=grok-video-3-10s" target="_blank" rel="noopener" data-model-card data-pricing-model="grok-video-3-10s" aria-label="查看 grok-video-3-10s 模型详情">
-              <div class="model-card-top"><div class="model-card-brand"><span class="model-logo logo-grok">G</span><em>Grok</em></div><span class="model-card-type">视频</span></div>
-              <h3>grok-video-3-10s</h3>
-              <p>grok 的最新视频模型，10s，支持音画同出。</p>
-              <div class="model-card-price"><span>按次计费</span><strong>模型价格 $0.158 / 次</strong></div>
-              <div class="model-card-tags"><span>视频</span><span>参考生视频</span></div>
-            </a>
-          </div>
-        </div>
-      </section>
+          <div class="c02c-model-grid">
+            <a class="c02c-model-card" href="https://ai.ai666.net/pricing/gemini-3.1-pro-preview" target="_blank" rel="noopener noreferrer" data-model-card data-model-type="text" data-model-name="gemini-3.1-pro-preview"><div class="c02c-model-head"><strong>Google</strong><span>Text ↗</span></div><h3>gemini-3.1-pro-preview</h3><p>适合需要广泛世界知识和跨模态高级推理的复杂任务。</p><div class="c02c-model-tags"><span>对话</span><span>思考</span><span>多模态</span></div><div class="c02c-model-price">Input price $1.6000 / 1M Tokens<br>Completion Price $9.6000 / 1M Tokens</div></a>
+            <a class="c02c-model-card" href="https://ai.ai666.net/pricing/claude-opus-4-8" target="_blank" rel="noopener noreferrer" data-model-card data-model-type="text" data-model-name="claude-opus-4-8"><div class="c02c-model-head"><strong>Anthropic</strong><span>Text ↗</span></div><h3>claude-opus-4-8</h3><p>适合长时间复杂工作、开发项目和 Agent 任务。</p><div class="c02c-model-tags"><span>对话</span><span>识图</span><span>工具</span></div><div class="c02c-model-price">Input price $1.5000 / 1M Tokens<br>Completion Price $7.5000 / 1M Tokens</div></a>
+            <a class="c02c-model-card" href="https://ai.ai666.net/pricing/qwen3.6-plus" target="_blank" rel="noopener noreferrer" data-model-card data-model-type="text" data-model-name="qwen3.6-plus"><div class="c02c-model-head"><strong>阿里巴巴</strong><span>Text ↗</span></div><h3>qwen3.6-plus</h3><p>模型说明由模型服务目录返回；当前记录未提供描述与标签。</p><div class="c02c-model-tags"><span>文本</span></div><div class="c02c-model-price">Input price $0.7200 / 1M Tokens<br>Completion Price $5.0400 / 1M Tokens</div></a>
 
+            <a class="c02c-model-card" href="https://ai.ai666.net/pricing/gemini-3-pro-image-preview-4K" target="_blank" rel="noopener noreferrer" data-model-card data-model-type="image" data-model-name="gemini-3-pro-image-preview-4K"><div class="c02c-model-head"><strong>Google</strong><span>Image ↗</span></div><h3>gemini-3-pro-image-preview-4K</h3><p>专业级多模态图像生成与编辑模型，支持 4K 输出与文字渲染。</p><div class="c02c-model-tags"><span>图像</span><span>4K</span></div><div class="c02c-model-price">Price $0.2400 / call</div></a>
+            <a class="c02c-model-card" href="https://ai.ai666.net/pricing/gemini-3.1-flash-image-preview" target="_blank" rel="noopener noreferrer" data-model-card data-model-type="image" data-model-name="gemini-3.1-flash-image-preview"><div class="c02c-model-head"><strong>Google</strong><span>Image ↗</span></div><h3>gemini-3.1-flash-image-preview</h3><p>以主流价格提供高质量图片生成和对话式编辑，延迟较短。</p><div class="c02c-model-tags"><span>绘画</span></div><div class="c02c-model-price">Price $0.1600 / call</div></a>
+            <a class="c02c-model-card" href="https://ai.ai666.net/pricing/midjourney" target="_blank" rel="noopener noreferrer" data-model-card data-model-type="image" data-model-name="midjourney"><div class="c02c-model-head"><strong>Midjourney</strong><span>Image ↗</span></div><h3>midjourney</h3><p>通过文字指令生成图像，可调整分辨率与风格参数。</p><div class="c02c-model-tags"><span>图像</span><span>风格</span></div><div class="c02c-model-price">Price $0.2500 / call</div></a>
+
+            <a class="c02c-model-card" href="https://ai.ai666.net/pricing/viduq3-pro" target="_blank" rel="noopener noreferrer" data-model-card data-model-type="video" data-model-name="viduq3-pro"><div class="c02c-model-head"><strong>Vidu</strong><span>Video ↗</span></div><h3>viduq3-pro</h3><p>支持多图参考、首尾帧、音画同步和 1080P 输出。</p><div class="c02c-model-tags"><span>视频</span><span>1080P</span></div><div class="c02c-model-price">Price $1.0000 / call</div></a>
+            <a class="c02c-model-card" href="https://ai.ai666.net/pricing/grok-video-3-15s" target="_blank" rel="noopener noreferrer" data-model-card data-model-type="video" data-model-name="grok-video-3-15s"><div class="c02c-model-head"><strong>Grok (xAI)</strong><span>Video ↗</span></div><h3>grok-video-3-15s</h3><p>主打 15 秒原生音频输出、快速生成与多模态指令遵循。</p><div class="c02c-model-tags"><span>视频</span><span>15 秒</span></div><div class="c02c-model-price">Price $0.8000 / call</div></a>
+            <a class="c02c-model-card" href="https://ai.ai666.net/pricing/kling-3.0-omni" target="_blank" rel="noopener noreferrer" data-model-card data-model-type="video" data-model-name="kling-3.0-omni"><div class="c02c-model-head"><strong>Kling (可灵)</strong><span>Video ↗</span></div><h3>kling-3.0-omni</h3><p>统一多模态视频模型，支持音画同步、角色一致性和多镜头叙事。</p><div class="c02c-model-tags"><span>视频</span><span>多模态</span></div><div class="c02c-model-price">Price $0.8500 / sec</div></a>
+          </div>
+          <div class="c02c-model-empty" data-model-empty>未找到相关模型</div>
+        </section>
+      </div>
     </main>
+
     <details class="v1-walkthrough-drawer" data-v1-walkthrough-drawer>
       <summary>走查</summary>
       <div class="v1-walkthrough-panel">
-        <div class="v1-walkthrough-head"><strong>模型广场走查</strong><span>模型广场要让用户能发现模型、缩小选择范围，并进入详情或体验季。</span></div>
-        <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>运营关注</span><span>研发关注</span></div>
-        <div class="v1-rule-section"><strong>页面定位</strong><span>模型广场是模型供给和 API 转化主阵地，前台只表达用户能理解的模型能力、价格口径、适用场景和下一步反馈。</span></div>
-        <div class="v1-rule-section"><strong>用户主路径</strong><span>用户按场景识别模型供给 -> 搜索或按模型类型筛选 -> 点击模型卡 -> 浏览器新页打开模型详情、教程或活动反馈。</span></div>
-        <div class="v1-rule-section"><strong>关键字段</strong><span>供给概览、搜索框、模型类型、模型 Logo、模型名、供应商、介绍、计费类型、价格、底部标签和详情入口。</span></div>
-        <div class="v1-rule-section"><strong>状态规则</strong><span>筛选表达当前列表状态；搜索表达原型查询状态。未获得统一模型目录事实前不在 C端展示 98、109 等全量数字；模型可用性与替代建议进入模型详情。</span></div>
-        <div class="v1-rule-section"><strong>动作去向</strong><span>模型卡在新页打开详情。搜索和类型筛选帮助用户收窄选择，推荐模型入口也进入详情。API 或体验相关动作由详情页或人工灰度承接。</span></div>
-        <div class="v1-rule-section"><strong>运营维护</strong><span>模型名称、Logo、介绍、标签和价格来自 `kk2.deepwl.net/pricing` 当前展示。6-7 月人工维护首批 12 张推荐模型和跳转 key。</span></div>
-        <div class="v1-rule-section"><strong>研发规则</strong><span data-engineering-rule>模型卡首批固定 12 张；每张卡必须包含 Logo、模型名、供应商或来源、计费类型、价格、能力标签和详情 href；模型名建议 2-40 个字符，标签 1-4 个</span><span data-engineering-rule>搜索输入建议 1-40 字，按模型名、供应商和标签过滤；清空搜索恢复全部；无结果时展示空态和清空入口，不隐藏顶部筛选</span><span data-engineering-rule>类型筛选固定为全部、文本、图片、视频、音频或当前已确认类型；筛选只改变卡片集合和高亮态，不改变地址栏主路由</span><span data-engineering-rule>详情跳转统一进入 model-detail.html 或具体模型详情地址；外部新页打开时必须带 target=_blank 和 rel=noopener；卡片不得直接展示密钥、调用日志、余额或实时开通按钮</span><span data-engineering-rule>价格字段只表达当前原型价格文案；缺价模型显示“待确认”或隐藏价格，不用 0 误导；价格变化由运营人工更新，不在 C 端承诺实时同步</span></div>
-        <div class="v1-rule-section"><strong>研发验收</strong><span>12 张模型卡需要可点击且 target=_blank；每张卡保留 Logo、计费类型、价格和标签。页面只保留搜索和类型筛选，不露真实密钥、调用日志或余额。</span></div>
-        <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付模型供给货架和判断入口。在线调用、自动资格判断、供应商可用性监控、报价合同和跑分榜后置。</span></div>
+        <div class="v1-walkthrough-head"><strong>模型广场对齐走查</strong><span>页面只保留真实 C 端的 Banner、类型/搜索和模型卡路径。</span></div>
+        <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>产品关注</span><span>研发关注</span></div>
+        <div class="v1-rule-section"><strong>页面定位</strong><span>模型广场是外部模型服务目录的社区入口，不在社区内复制模型详情、开通与 API 控制台。</span></div>
+        <div class="v1-rule-section"><strong>用户主路径</strong><span>用户先浏览 Banner，再按 ALL、Text、Image、Audio、Video 或关键词筛选，点击卡片后新页打开模型服务详情。</span></div>
+        <div class="v1-rule-section"><strong>关键字段</strong><span>Banner 使用图片、标题、说明和链接；模型卡使用模型名、供应商、描述、标签、模型类型、计费模式与计算价格。</span></div>
+        <div class="v1-rule-section"><strong>状态规则</strong><span>页面保留 Banner 与模型列表加载态、空数据态和搜索无结果态；Audio 数量为零时筛选后展示空态。</span></div>
+        <div class="v1-rule-section"><strong>动作去向</strong><span>Banner 有 link_url 时打开配置链接，否则按标题进入模型详情；模型卡按 model_name 打开外部 pricing 地址。</span></div>
+        <div class="v1-rule-section"><strong>运营维护</strong><span>Banner 来自 /api/model_square/banners，模型、供应商和 group_ratio 来自 /api/pricing；当前数量和卡片为 2026-08-05 只读快照。</span></div>
+        <div class="v1-rule-section"><strong>研发验收</strong><span data-engineering-rule>类型固定为 ALL、Text、Image、Audio、Video，数量由完整列表计算，搜索覆盖 model_name、description、tags 与供应商；价格严格复用 modelPricingUtils，Token 使用倍率与最低分组倍率，固定价格按次或按秒。</span></div>
+        <div class="v1-rule-section"><strong>交付边界</strong><span data-engineering-rule>模型服务接口不属于当前 AI666 Apifox 项目，契约以真实 C 端 off_site/transfer_site 与在线只读响应为准；社区不维护模型详情、密钥、余额、日志、开通和可用性监控。</span></div>
       </div>
     </details>
     <div class="footer-space"></div>
   </div>
-  <script>
-    document.querySelectorAll("[data-model-card]").forEach((card) => {
-      const href = card.getAttribute("href");
-      if (!href || !href.includes("model-detail.html?model=")) return;
-
-      const detailUrl = new URL(href, window.location.href).href;
-      card.dataset.detailUrl = detailUrl;
-
-      card.addEventListener("click", (event) => {
-        if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) return;
-        event.preventDefault();
-        window.open(detailUrl, "_blank", "noopener");
-      });
-    });
-  </script>
+  <script src="./c02c-alignment.js?v=20260805-c02c1" defer></script>
   <script src="./walkthrough.js" defer></script>
 </body>
 </html>

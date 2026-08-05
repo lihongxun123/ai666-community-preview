@@ -6,12 +6,11 @@
   <title>闪念 - 多元拾光</title>
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
   <link rel="stylesheet" href="./style.css?v=20260715-comment-deeplink">
+  <link rel="stylesheet" href="./c02d-alignment.css?v=20260805-code-contract-3">
 </head>
 <body>
   <div class="page flash-page">
     <div class="page-bg"><img src="assets/image_assets/17.png" alt=""></div>
-    <input class="top-campaign-toggle" type="checkbox" id="top-campaign-dismiss-flash" aria-label="关闭顶部广告">
-    <div class="top-campaign"><span>活动中心</span><span class="timer">成长任务</span><span>记录 AI 实战过程，也能完成日常互动任务</span><span>查看活动</span><label class="top-campaign-close" for="top-campaign-dismiss-flash" aria-label="关闭顶部广告"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></label></div>
     <header class="site-header">
       <div class="header-inner wide-container">
         <a class="logo" href="./index.html" aria-label="多元拾光">
@@ -32,7 +31,7 @@
           <a class="action-link activity-center-link" href="./activity-center.html" data-nav-action="activity-center" data-action-label="活动中心">活动中心</a>
           <a class="action-link" href="./invite.html" data-nav-action="invite">邀请有礼</a>
           <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a>
-          <a class="action-link points-link" href="./points-center.html" data-nav-action="points">限时积分 1280</a>
+          <a class="action-link points-link" href="./points-center.html" data-nav-action="points" data-action-label="积分 1280"><span>积分</span><strong>1280</strong></a>
           <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
           <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="用户头像"><img src="assets/image_assets/1.png" alt=""></a>
         </div>
@@ -100,45 +99,29 @@
         </div>
         <div class="flash-editor">
           <div class="flash-editor-shell">
-            <textarea class="flash-editor-field" maxlength="600" aria-label="闪念内容">今天测试 gemini-3-flash-preview 做 2 分钟短片脚本，先把角色关系压成三句，再让模型拆镜头，结果比直接写长 Prompt 稳定很多。</textarea>
-            <div class="flash-editor-bar">
-              <div class="flash-compose-toolbar" aria-label="编辑工具">
-                <button class="flash-tool-button" type="button" title="二级标题" aria-label="二级标题"><img src="resources/icons/remixicon/svg/Editor/h-2.svg" alt=""></button>
-                <button class="flash-tool-button" type="button" title="加粗" aria-label="加粗"><img src="resources/icons/remixicon/svg/Editor/bold.svg" alt=""></button>
-                <button class="flash-tool-button" type="button" title="斜体" aria-label="斜体"><img src="resources/icons/remixicon/svg/Editor/italic.svg" alt=""></button>
-                <button class="flash-tool-button" type="button" title="引用" aria-label="引用"><img src="resources/icons/remixicon/svg/Editor/double-quotes-l.svg" alt=""></button>
-                <button class="flash-tool-button" type="button" title="无序列表" aria-label="无序列表"><img src="resources/icons/remixicon/svg/Editor/list-unordered.svg" alt=""></button>
-                <button class="flash-tool-button" type="button" title="有序列表" aria-label="有序列表"><img src="resources/icons/remixicon/svg/Editor/list-ordered.svg" alt=""></button>
-              </div>
-              <span class="flash-compose-counter">96 / 600</span>
-            </div>
+            <label class="flash-field-label" for="flash-compose-content">闪念内容</label>
+            <textarea id="flash-compose-content" class="flash-editor-field" maxlength="600" rows="7" aria-describedby="flash-compose-counter" placeholder="写下此刻的想法…" data-flash-compose-content></textarea>
+            <div class="flash-editor-bar"><span id="flash-compose-counter" class="flash-compose-counter" data-flash-compose-counter>0 / 600</span></div>
           </div>
           <div class="flash-media-section">
             <div class="flash-media-head">
-              <strong>媒体文件</strong>
-              <span>2 / 6</span>
+              <div><strong>媒体文件</strong><small>图片最大 32MB，视频最大 200MB</small></div>
+              <span data-flash-media-counter>0 / 4</span>
             </div>
-            <div class="flash-media-strip">
-              <button class="flash-media-add" type="button" aria-label="添加媒体文件">
+            <input class="flash-media-input" type="file" accept="image/png,image/jpeg,image/webp,video/mp4,video/webm,video/quicktime" multiple data-flash-media-input>
+            <div class="flash-media-strip" data-flash-media-strip>
+              <button class="flash-media-add" type="button" aria-label="添加媒体文件" data-flash-media-add>
                 <img src="resources/icons/remixicon/svg/Media/image-add-line.svg" alt="">
+                <strong>添加媒体</strong>
+                <small>最多 4 个</small>
               </button>
-              <div class="flash-media-item">
-                <img class="flash-media-preview" src="assets/image_assets/11.png" alt="">
-                <span class="flash-media-drag"><img src="resources/icons/remixicon/svg/Editor/draggable.svg" alt=""></span>
-                <span class="flash-media-type">1 / 6</span>
-              </div>
-              <div class="flash-media-item is-video">
-                <img class="flash-media-preview" src="assets/image_assets/18.png" alt="">
-                <span class="flash-media-drag"><img src="resources/icons/remixicon/svg/Editor/draggable.svg" alt=""></span>
-                <span class="flash-media-type">视频</span>
-              </div>
             </div>
           </div>
           <div class="flash-editor-footer">
-            <span>发布后可获得 30 限时积分，好的经验会被更多人看到</span>
+            <span data-flash-publish-message>正文或媒体至少填写一项</span>
             <div class="flash-editor-actions">
               <a class="button secondary" href="./flash.html">取消</a>
-              <a class="button" href="#" data-cta-state="闪念发布状态：发布成功后留在闪念流">发布</a>
+              <button class="button" type="button" disabled data-flash-publish>发布闪念</button>
             </div>
           </div>
         </div>
@@ -289,21 +272,10 @@
     </section>
 
     <main>
-      <section class="flash-hero section">
-        <a class="wide-container flash-hero-grid flash-hero-ad" href="./activity-center.html" data-ad-slot="flash-hero-activity" data-ad-campaign="growth-tasks" aria-label="成长任务活动广告">
-          <div class="flash-hero-copy">
-            <span class="flash-ad-kicker">活动广告</span>
-            <h1>成长任务继续开放</h1>
-            <p>从浏览、互动到发布，按自己的节奏完成。</p>
-            <span class="flash-hero-cta">查看活动</span>
-          </div>
-        </a>
-      </section>
-
       <section id="flash-timeline" class="section flash-main-section">
         <div class="wide-container flash-layout">
-          <div class="flash-feed-column">
-            <article id="flash-FLA-0307" class="flash-post-card" data-flash-card data-flash-id="FLA-0307">
+          <div class="flash-feed-column" data-flash-feed>
+            <article id="flash-FLA-0307" class="flash-post-card" data-flash-card data-flash-id="FLA-0307" data-post-no="AIP202608050307">
               <div class="flash-post-head">
                 <img class="flash-avatar" src="assets/image_assets/3.png" alt="">
                 <div>
@@ -317,9 +289,9 @@
                 <figure><a class="flash-image-thumb" href="#flash-image-preview-2" aria-label="预览角色与场景氛围"><img src="assets/image_assets/17.png" alt=""></a></figure>
               </div>
               <div class="flash-post-actions">
-                <a href="#" data-cta-state="点赞状态：切换喜欢并更新计数"><img src="resources/icons/remixicon/svg/Health & Medical/heart-line.svg" alt="">186</a>
+                <a href="#" data-like-action data-cta-state="点赞状态：切换点赞并更新计数" aria-pressed="false"><img src="resources/icons/remixicon/svg/System/thumb-up-line.svg" alt="">186</a>
                 <a href="#all-comments"><img src="resources/icons/remixicon/svg/Communication/chat-3-line.svg" alt="">24</a>
-                <a href="#" data-cta-state="分享状态：打开分享卡片"><img src="resources/icons/remixicon/svg/System/share-forward-line.svg" alt="">分享</a>
+                <a href="#" data-share-action data-cta-state="分享状态：复制带 post_no 的帖子链接"><img src="resources/icons/remixicon/svg/System/share-forward-line.svg" alt="">分享</a>
               </div>
               <details class="flash-comments-inline">
                 <summary>展开 3 条评论</summary>
@@ -339,7 +311,7 @@
               </details>
             </article>
 
-            <article class="flash-post-card" data-flash-card data-flash-id="FLA-0308">
+            <article class="flash-post-card" data-flash-card data-flash-id="FLA-0308" data-post-no="AIP202608050308">
               <div class="flash-post-head">
                 <img class="flash-avatar" src="assets/image_assets/4.png" alt="">
                 <div>
@@ -349,13 +321,13 @@
               </div>
               <p>试了 3 个文本模型写 API 错误复盘，最后选了能把复现步骤压成清单的模型，公开分享时更容易被照着排查。</p>
               <div class="flash-post-actions">
-                <a href="#" data-cta-state="点赞状态：切换喜欢并更新计数"><img src="resources/icons/remixicon/svg/Health & Medical/heart-line.svg" alt="">142</a>
+                <a href="#" data-like-action data-cta-state="点赞状态：切换点赞并更新计数" aria-pressed="false"><img src="resources/icons/remixicon/svg/System/thumb-up-line.svg" alt="">142</a>
                 <a href="#all-comments"><img src="resources/icons/remixicon/svg/Communication/chat-3-line.svg" alt="">18</a>
-                <a href="#" data-cta-state="分享状态：打开分享卡片"><img src="resources/icons/remixicon/svg/System/share-forward-line.svg" alt="">分享</a>
+                <a href="#" data-share-action data-cta-state="分享状态：复制带 post_no 的帖子链接"><img src="resources/icons/remixicon/svg/System/share-forward-line.svg" alt="">分享</a>
               </div>
             </article>
 
-            <article class="flash-post-card" data-flash-card data-flash-id="FLA-0309">
+            <article class="flash-post-card" data-flash-card data-flash-id="FLA-0309" data-post-no="AIP202608050309">
               <div class="flash-post-head">
                 <img class="flash-avatar" src="assets/image_assets/15.jpg" alt="">
                 <div>
@@ -375,13 +347,13 @@
                 </figure>
               </div>
               <div class="flash-post-actions">
-                <a href="#" data-cta-state="点赞状态：切换喜欢并更新计数"><img src="resources/icons/remixicon/svg/Health & Medical/heart-line.svg" alt="">88</a>
+                <a href="#" data-like-action data-cta-state="点赞状态：切换点赞并更新计数" aria-pressed="false"><img src="resources/icons/remixicon/svg/System/thumb-up-line.svg" alt="">88</a>
                 <a href="#all-comments"><img src="resources/icons/remixicon/svg/Communication/chat-3-line.svg" alt="">11</a>
-                <a href="#" data-cta-state="分享状态：打开分享卡片"><img src="resources/icons/remixicon/svg/System/share-forward-line.svg" alt="">分享</a>
+                <a href="#" data-share-action data-cta-state="分享状态：复制带 post_no 的帖子链接"><img src="resources/icons/remixicon/svg/System/share-forward-line.svg" alt="">分享</a>
               </div>
             </article>
 
-            <article class="flash-post-card" data-flash-card data-flash-id="FLA-0310">
+            <article class="flash-post-card" data-flash-card data-flash-id="FLA-0310" data-post-no="AIP202608050310">
               <div class="flash-post-head">
                 <img class="flash-avatar" src="assets/image_assets/2.png" alt="">
                 <div>
@@ -391,37 +363,37 @@
               </div>
               <p>遇到 429 不要急着换模型。先看请求频率、上下文长度和是否重复提交，再决定是降并发还是换更轻的文本模型。</p>
               <div class="flash-post-actions">
-                <a href="#" data-cta-state="点赞状态：切换喜欢并更新计数"><img src="resources/icons/remixicon/svg/Health & Medical/heart-line.svg" alt="">97</a>
+                <a href="#" data-like-action data-cta-state="点赞状态：切换点赞并更新计数" aria-pressed="false"><img src="resources/icons/remixicon/svg/System/thumb-up-line.svg" alt="">97</a>
                 <a href="#all-comments"><img src="resources/icons/remixicon/svg/Communication/chat-3-line.svg" alt="">15</a>
-                <a href="#" data-cta-state="分享状态：打开分享卡片"><img src="resources/icons/remixicon/svg/System/share-forward-line.svg" alt="">分享</a>
+                <a href="#" data-share-action data-cta-state="分享状态：复制带 post_no 的帖子链接"><img src="resources/icons/remixicon/svg/System/share-forward-line.svg" alt="">分享</a>
               </div>
             </article>
           </div>
 
           <aside class="flash-right-rail" aria-label="闪念右侧运营栏">
             <section class="flash-rail-card flash-quick-compose" data-rail-module="quick-compose">
-              <strong class="flash-quick-title">记录刚刚的 AI 实战过程</strong>
-              <p>刚跑通的灵感，发出来就领限时积分。</p>
+              <span class="flash-rail-overline">QUICK NOTE</span>
+              <strong class="flash-quick-title">留下刚刚发生的灵感</strong>
+              <p>一个方法、一次试错，都值得被看见。</p>
               <div class="flash-compose-bottom">
-                <a class="button" href="#compose-flash" data-cta-state="打开发闪念编辑弹层">发布闪念 + 30限时积分</a>
+                <a class="button" href="#compose-flash" data-cta-state="打开发闪念编辑弹层">发布闪念 <img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></a>
               </div>
             </section>
 
-            <a class="flash-rail-ad model-season" href="./activity-center.html" data-rail-module="ad" data-ad-slot="flash-right-activity" data-ad-campaign="growth-tasks" aria-label="成长任务活动广告">
-              <span>活动广告</span>
-              <strong>七日成长任务</strong>
-              <em>完成互动、创作与兑换，领取成长限时积分</em>
-              <small>持续开放</small>
+            <a class="flash-rail-ad flash-rail-campaign" href="./activity-center.html" data-rail-module="ad" data-display-slot-type="flash_side" aria-label="打开 AI 生图创作挑战">
+              <img class="flash-rail-campaign-image" src="assets/image_assets/flash-campaign-ringed-planet-c02d.webp" alt="金色环形行星">
+              <span class="flash-rail-campaign-shade" aria-hidden="true"></span>
+              <span class="flash-rail-campaign-copy"><span class="flash-rail-campaign-badge">推荐指引</span><strong>AI 生图创作挑战</strong><small>分享作品或 Prompt，看看其他创作者如何拆解灵感。</small><em>了解详情</em></span>
             </a>
 
             <section class="flash-rail-card" data-rail-module="tutorial">
               <div class="flash-rail-head">
                 <strong>官方教程</strong>
-                <a href="./tutorial.html">进入</a>
+                <a href="./tutorial.html">查看全部</a>
               </div>
-              <a class="rail-link-row" href="./tutorial-detail.html?lesson=article"><span>文本模型体验怎么写</span><em>图文</em></a>
-              <a class="rail-link-row" href="./tutorial-detail.html?lesson=article"><span>用闪念沉淀 API 排错经验</span><em>图文</em></a>
-              <a class="rail-link-row" href="./tutorial-detail.html?lesson=video"><span>漫剧片段从 Prompt 到封面</span><em>视频</em></a>
+              <a class="rail-link-row" href="./tutorial-detail.html?tutorial_no=TU000101"><span>12 分钟完成第一条漫剧分镜</span><em>入门 · 12 分钟</em></a>
+              <a class="rail-link-row" href="./tutorial-detail.html?tutorial_no=TU000102"><span>封面主视觉提示词怎么写</span><em>图片生成</em></a>
+              <a class="rail-link-row" href="./tutorial-detail.html?tutorial_no=TU000103"><span>图生视频的镜头描述怎么写</span><em>视频生成</em></a>
             </section>
 
           </aside>
@@ -431,17 +403,16 @@
     <details class="v1-walkthrough-drawer" data-v1-walkthrough-drawer>
       <summary>走查</summary>
       <div class="v1-walkthrough-panel">
-        <div class="v1-walkthrough-head"><strong>闪念频道走查</strong><span>闪念负责低门槛发布、评论互动、模型反馈和右栏运营入口。</span></div>
+        <div class="v1-walkthrough-head"><strong>闪念频道走查</strong><span>闪念负责公开帖子发现、轻量发布、评论互动和右栏推荐入口。</span></div>
         <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>运营关注</span><span>研发关注</span></div>
-        <div class="v1-rule-section"><strong>页面定位</strong><span>闪念是轻内容和模型体验反馈入口，不承担完整内容社区、圈子或话题体系。</span></div>
-        <div class="v1-rule-section"><strong>用户主路径</strong><span>用户浏览轻内容 -> 打开发闪念 -> 填写正文并上传媒体 -> 发布后回到闪念流或候选精选。</span></div>
-        <div class="v1-rule-section"><strong>关键字段</strong><span>稳定闪念编号、稳定评论编号、首屏活动广告、闪念正文、媒体、作者、发布时间、相对时间、评论状态、点赞、分享和右侧运营位。</span></div>
-        <div class="v1-rule-section"><strong>状态规则</strong><span>闪念按发布时间倒序展示，不提供类型筛选；首屏为单一活动广告位，不承载页面介绍、发布按钮或数据统计；点赞、分享和发布成功是轻状态；评论从右侧抽屉承接，评论支持回复和点赞；独立闪念详情页、关注流和话题聚合后置。</span></div>
-        <div class="v1-rule-section"><strong>动作去向</strong><span>发布闪念、评论、回复、点赞和分享保留轻状态。评论抽屉底部固定输入框，发闪念可带媒体，发布后回到内容流或限时积分提示。</span></div>
-        <div class="v1-rule-section"><strong>运营维护</strong><span>首屏活动广告位、右侧发布入口、右侧单个活动广告位和教程入口由运营维护；广告位只展示活动标识、标题、短利益点和一个整卡入口，不展示内部期数、任务编号、进度查询或运营状态标签。</span></div>
-        <div class="v1-rule-section"><strong>研发规则</strong><span data-engineering-rule>发布正文必填，trim 后 1-280 字；超出 280 字时显示计数警告并禁用发布；支持换行，不保留富文本样式，不展示内部审核命中词</span><span data-engineering-rule>媒体附件可选，允许 JPG、PNG、WebP、GIF、MP4、MOV；同一条闪念最多 9 张图片或 1 个视频，不做图文视频混传；每个附件必须有缩略图、删除入口和预览入口</span><span data-engineering-rule>发布按钮状态：正文为空且无媒体时禁用；正文或媒体满足条件后启用；发布中禁用重复点击；发布失败保留正文和附件，发布成功关闭弹层并回到闪念流顶部或展示轻量成功提示</span><span data-engineering-rule>评论规则：评论正文 1-300 字，回复正文 1-200 字；评论抽屉列表内部滚动，底部输入框固定；发送失败保留输入，发送成功追加到当前抽屉并更新评论数</span><span data-engineering-rule>审核结果：未发布评论只对作者显示原文、用户可理解原因和修改入口；不展示内部命中词、复核证据或审核人员信息</span><span data-engineering-rule>精确回链：每条闪念保留 data-flash-id，每条评论保留 data-comment-id；消息链接携带 flash 与 comment 参数并以 #comment-{id} 定位，打开全部评论抽屉后聚焦原评论</span><span data-engineering-rule>时间规则：列表保留不可变发布时间 data-published-at，相对时间在页面加载时计算；缺少可靠发布时间时显示日期，不根据卡片顺序虚构时间</span><span data-engineering-rule>互动状态：点赞按钮本地切换已赞/未赞并更新计数；分享按钮只表达复制链接或轻提示，不打开私信；评论展开进入右侧抽屉，关闭后回到原闪念卡位置</span><span data-engineering-rule>跳转边界：活动广告整卡进入对应活动详情或任务页；教程入口进入 tutorial.html；闪念卡不跳独立详情页，完整评论由右侧抽屉承接</span></div>
-        <div class="v1-rule-section"><strong>研发验收</strong><span>发布入口、媒体附件、评论展开、右侧评论抽屉、回复框和分享状态需要可用。发布弹层不展示左上角标题标签，主标题统一为发布一条闪念，关闭入口使用统一图标按钮。审核命中词、内部处理状态、私信、圈子和实时消息流不进入前台。</span></div>
-        <div class="v1-rule-section"><strong>交付边界</strong><span>当前交付轻内容 UGC 和反馈入口。圈子、私信、独立详情页、实时流、自动限时积分结算和复杂推荐排序后置。</span></div>
+        <div class="v1-rule-section"><strong>页面定位</strong><span>真实路由为 /idea/post/postIndex，当前代码展示发现流、右栏发布入口、flash_side 推荐位、三条官方教程和帖子预览弹层；搜索与分类工具栏仍在代码中注释，不提前展示。</span></div>
+        <div class="v1-rule-section"><strong>用户主路径</strong><span>用户浏览公开帖子 -> 展开评论或打开帖子预览 -> 点赞、分享或评论；登录用户可从右栏发布入口填写正文并添加媒体，提交后等待审核。</span></div>
+        <div class="v1-rule-section"><strong>关键字段</strong><span>post_no、content/content_md、content_type、medias、topics、categories、作者、published_at、like_count、comment_count、is_liked 与右栏 flash_side 展示位是当前页面核心字段。</span></div>
+        <div class="v1-rule-section"><strong>状态规则</strong><span>发现流当前请求固定 come=discover、sort_by=default、content_type=0、time_range=0；匿名帖子不展示昵称头像；发布成功文案为“已提交，正在审核中，通过后即可查看”。</span></div>
+        <div class="v1-rule-section"><strong>动作去向</strong><span>帖子评论在卡片下展开，卡片点击按 post_no 打开预览；点赞乐观更新并支持回滚；分享复制带 post_no 的链接；发布入口打开当前页模态框，推荐位和教程进入各自真实落点。</span></div>
+        <div class="v1-rule-section"><strong>运营维护</strong><span>右栏推荐卡来自 flash_side 展示位并按 sort_order 倒序；官方教程读取公开教程列表前三条。当前代码没有闪念首屏广告位，原型不再保留旧首屏活动 Banner。</span></div>
+        <div class="v1-rule-section"><strong>研发验收</strong><span data-engineering-rule>发布正文 maxlength=600，正文或媒体至少一项；当前 UI 从正文首个非空行截取最多 50 字作为标题，纯媒体时回退“闪念”。</span><span data-engineering-rule>当前代码限制最多 4 个媒体；图片支持 png、jpg、jpeg、webp 且单个不超过 32MB，视频支持 mp4、webm、mov 且单个不超过 200MB。Apifox 请求上限为 9，属于待研发统一差异，本原型服从当前代码 UI 的 4 个。</span><span data-engineering-rule>发布请求 content_type=1 表示图文，全部媒体均为视频时为 2；当前发布设置中的话题、分类、匿名、回复和转发控件在真实代码中暂隐，原型也不展示。</span><span data-engineering-rule>评论、回复、评论点赞和取消点赞使用帖子评论接口；公开帖子详情按 post_no 读取，列表点赞状态与详情状态保持同步。</span></div>
+        <div class="v1-rule-section"><strong>交付边界</strong><span>静态原型只演示文件校验、发布状态、点赞、分享和评论展开，不调用真实写接口；真实审核、文件上传、关注、收藏、草稿和个人中心帖子管理由后续对应模块与研发环境验证。</span></div>
       </div>
     </details>
     <div class="footer-space"></div>
@@ -482,6 +453,7 @@
       requestAnimationFrame(() => document.querySelector(location.hash)?.focus({ preventScroll: false }));
     }
   </script>
+  <script src="./c02d-alignment.js" defer></script>
   <script src="./walkthrough.js" defer></script>
 </body>
 </html>

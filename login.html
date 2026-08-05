@@ -38,7 +38,7 @@
     </header>
 
     <main id="auth" class="login-prototype-stage" data-login-section="auth">
-      <section class="login-prototype-modal" data-login-modal-root aria-label="登录">
+      <section class="login-prototype-modal" data-login-modal-root aria-label="登录或注册">
         <a class="login-prototype-backdrop" href="./index.html" aria-label="关闭登录弹层"></a>
         <section class="login-dialog c02b-login-dialog" data-login-modal role="dialog" aria-modal="true" aria-labelledby="login-title">
           <img class="login-space-background" src="assets/image_assets/login-space-bg-v6.png" alt="">
@@ -48,8 +48,8 @@
             <section class="login-pane phone-login-pane" data-login-mode="phone" aria-label="手机验证码登录">
               <div class="login-pane-content">
                 <header class="login-pane-heading">
-                  <h1 id="login-title">手机验证码<span>登录</span></h1>
-                  <p>输入手机号、验证码和邀请码即可登录</p>
+                  <h1 id="login-title">手机验证码<span>登录 / 注册</span></h1>
+                  <p>未注册手机号验证后将自动完成注册并登录</p>
                 </header>
                 <form class="login-form" data-login-form novalidate>
                   <div class="login-field-stack">
@@ -67,7 +67,7 @@
                       <input name="invite-code" type="text" autocomplete="off" placeholder="请输入邀请码（选填）" aria-label="请输入邀请码，可选填" data-invite-code-field>
                     </label>
                   </div>
-                  <button class="button login-submit" type="submit" data-login-complete-target>登录</button>
+                  <button class="button login-submit" type="submit" data-login-complete-target>继续</button>
                   <p class="login-message" data-login-message aria-live="polite"></p>
                 </form>
               </div>
@@ -101,11 +101,11 @@
       <div class="v1-walkthrough-panel">
         <div class="v1-walkthrough-head"><strong>登录弹层走查</strong><span>真实 C 端没有独立登录路由；本页只用于展示全局登录弹层状态。</span></div>
         <div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>运营关注</span><span>研发关注</span></div>
-        <div class="v1-rule-section"><strong>页面定位</strong><span>`login.html` 是全局 `loginPanel` 的静态走查状态，不作为真实 C 端独立路由；普通登录、未登录点击积分/邀请/消息和带 invite 参数进入都打开同一弹层。</span></div>
-        <div class="v1-rule-section"><strong>用户主路径</strong><span>手机号与 6 位验证码登录；邀请码可选并可由 URL 的 invite 参数带入。微信扫码获取二维码后按 scene_id 轮询状态，成功后结束登录，过期后提示重新获取。</span></div>
+        <div class="v1-rule-section"><strong>页面定位</strong><span>`login.html` 是全局 `loginPanel` 的静态走查状态，不作为真实 C 端独立路由；普通登录、游客注册引导、未登录点击活动/积分/邀请/消息和带 invite 参数进入都打开同一弹层。</span></div>
+        <div class="v1-rule-section"><strong>用户主路径</strong><span>手机号与 6 位验证码完成登录；未注册手机号验证后自动注册并登录，邀请码可选并可由 URL 的 invite 参数带入。微信扫码获取二维码后按 scene_id 轮询状态。</span></div>
         <div class="v1-rule-section"><strong>关键字段</strong><span>手机号 phone、6 位验证码 code、可选 invite_code；二维码 qrcode_url、scene_id、expire_time；轮询状态 state、remark。任何 token 都不得出现在原型和走查证据中。</span></div>
         <div class="v1-rule-section"><strong>状态规则</strong><span>二维码状态 0 为未扫码、1 为成功、2 为过期；只有 state=1 时接口返回 token。手机号无效时不发送验证码，验证码不足 6 位时不提交；登录失败保留手机号和邀请码、清空验证码。</span></div>
-        <div class="v1-rule-section"><strong>动作去向</strong><span>登录成功回到触发登录前页面；本独立走查页用首页代替来源页。未登录点击积分、邀请和消息只打开登录弹层，不提前进入受限页面。</span></div>
+        <div class="v1-rule-section"><strong>动作去向</strong><span>登录成功回到触发登录前页面；注册成功同时完成“首次访问多元拾光”，自动登录后先展示 +20 积分 Toast，再由活动中心气泡提示“浏览AIGC作品”。未登录点击受限活动、积分、邀请和消息只打开登录弹层，不提前进入目标页面。</span></div>
         <div class="v1-rule-section"><strong>运营维护</strong><span>登录弹层不承接活动奖励、积分赠送或营销规则；协议文案由正式协议页维护，二维码过期和接口失败提示使用服务端 remark 的用户可读内容。</span></div>
         <div class="v1-rule-section"><strong>接口依据</strong><span>`GET /api/user/login/get_wechat_qrcode`、`GET /api/user/login/get_wechat_qrcode_state`、`POST /api/user/login/send_code_for_login`、`POST /api/user/login/login_by_phone`。</span></div>
         <div class="v1-rule-section"><strong>研发规则</strong><span data-engineering-rule>phone 必须通过大陆手机号校验；code 按 Apifox 当前契约固定为 6 位，不再写成 4-6 位或建议值</span><span data-engineering-rule>invite_code 仅为可选字段，Apifox 当前没有 6-12 位大写字母或数字约束，原型不得自行增加该规则</span><span data-engineering-rule>扫码轮询只显示未扫码、成功、过期和 remark；token、scene_id 等内部值不直接展示给用户或写入证据</span><span data-engineering-rule>验证码发送需要客户端 IP 频率限制；原型 60 秒倒计时只表达前端防重复点击，不替代服务端限制</span><span data-engineering-rule>登录成功后由用户 store 更新身份、积分和通知数据，并关闭全局弹层；失败时保留 phone 与 invite_code，清空 code</span></div>

@@ -1252,77 +1252,210 @@
     });
   }
 
-  const taskGuideStorageKey = "ai666-task-guide-dismissed-date";
-  const taskGuideDefaultOrder = "new-user,seven-day,image,prompt,invite";
-  const taskGuideTasks = [
+  const taskGuideDailyStoragePrefix = "ai666-task-guide-daily";
+  const taskGuideEventStoragePrefix = "ai666-task-guide-event";
+  const taskGuideTestStateKeys = [
+    "guest-registration",
+    "registration-success",
+    "new-user-pending",
+    "new-user-task-complete",
+    "new-user-complete",
+    "seven-day-pending",
+    "seven-day-task-complete",
+    "seven-day-waiting",
+    "seven-day-complete-more",
+    "seven-day-complete-empty",
+    "reward-processing",
+    "data-unavailable"
+  ];
+  const taskGuideFormalNewUserTasks = [
     {
-      key: "new-user",
-      datasetKey: "NewUser",
-      label: "新手任务",
-      state: "未完成",
-      reward: "110 限时积分",
-      cover: "assets/image_assets/18.png",
-      title: "新手任务，先拿 110 限时积分",
-      description: "几分钟完成基础动作，建立账号信用，解锁后续活动承接。",
-      href: "./campaign-new-user.html",
-      cta: "查看新手任务",
-      entry: "成长入口"
+      taskCode: "first_visit",
+      taskName: "首次访问多元拾光",
+      description: "首次进入多元拾光并完成注册",
+      rewardPoints: 20,
+      progressTarget: 1,
+      ctaText: "注册并领取 20 积分",
+      ctaRoute: "./login.html?taskGuideScenario=registration#auth"
     },
     {
-      key: "seven-day",
-      datasetKey: "SevenDay",
-      label: "七日任务",
-      state: "今日待做",
-      reward: "320 限时积分",
-      cover: "assets/image_assets/11.png",
-      title: "七日成长，最高 320 限时积分",
-      description: "每天完成一个关键动作，把浏览、收藏、发布和兑换串成稳定习惯。",
-      href: "./campaign-seven-day.html",
-      cta: "查看七日任务",
-      entry: "连续成长"
+      taskCode: "browse_aigc_work",
+      taskName: "浏览AIGC作品",
+      description: "浏览任意一篇 AIGC 作品详情",
+      rewardPoints: 30,
+      progressTarget: 1,
+      ctaText: "去浏览作品",
+      ctaRoute: "./aigc.html"
     },
     {
-      key: "image",
-      datasetKey: "Image",
-      label: "AI 生图",
-      state: "进行中",
-      reward: "最高 1000 限时积分",
-      cover: "assets/image_assets/2.png",
-      title: "生图挑战进行中",
-      description: "发布主题 AI 作品，争取精选和首页推荐奖励。",
-      href: "./campaign-detail.html",
-      cta: "查看活动详情",
-      entry: "创作挑战"
+      taskCode: "edit_profile",
+      taskName: "完善资料",
+      description: "完善个人资料信息",
+      rewardPoints: 30,
+      progressTarget: 1,
+      ctaText: "去完善资料",
+      ctaRoute: "./user-center.html#edit-profile"
     },
     {
-      key: "prompt",
-      datasetKey: "Prompt",
-      label: "Prompts",
-      state: "可投稿",
-      reward: "最高 680 限时积分",
-      cover: "assets/image_assets/4.png",
-      title: "Prompt 共创，最高 680 限时积分",
-      description: "发布可复用提示词，补充图文案例后更容易获得复用、精选和首页推荐。",
-      href: "./campaign-prompt.html",
-      cta: "去看活动详情",
-      entry: "Prompt 投稿"
+      taskCode: "first_interaction",
+      taskName: "首次互动",
+      description: "完成首次点赞、评论、收藏等互动",
+      rewardPoints: 30,
+      progressTarget: 1,
+      ctaText: "去完成互动",
+      ctaRoute: "./aigc.html"
     },
     {
-      key: "invite",
-      datasetKey: "Invite",
-      label: "邀请",
-      state: "长期有效",
-      reward: "单人最高 90 限时积分",
-      cover: "assets/image_assets/15.jpg",
-      title: "邀请好友，单人最高 90 限时积分",
-      description: "把社区发给合适的创作者，好友注册、互动和首次发布后分阶段解锁奖励。",
-      href: "./invite.html",
-      cta: "查看邀请详情",
-      entry: "邀请增长",
-      inviteUrl: "duoyuan-shiguang.local/login?invite=SG2026",
-      inviteLabel: "邀请链接"
+      taskCode: "share_work",
+      taskName: "分享一条作品",
+      description: "浏览最新作品并复制分享链接给好友",
+      rewardPoints: 40,
+      progressTarget: 1,
+      ctaText: "去分享作品",
+      ctaRoute: "./aigc.html"
     }
   ];
+  const taskGuideFormalSevenDayTasks = [
+    { taskCode: "growth_day_1", taskName: "浏览 3 条 AIGC 内容", description: "第 1 天：浏览 3 条 AIGC 内容", rewardPoints: 20, progressTarget: 3, ctaRoute: "./aigc.html" },
+    { taskCode: "growth_day_2", taskName: "复制 1 条 Prompt", description: "第 2 天：复制 1 条 Prompt", rewardPoints: 30, progressTarget: 1, ctaRoute: "./aigc.html#case-gallery-prompt" },
+    { taskCode: "growth_day_3", taskName: "收藏 1 条 AI 作品", description: "第 3 天：收藏 1 条 AI 作品", rewardPoints: 30, progressTarget: 1, ctaRoute: "./aigc.html" },
+    { taskCode: "growth_day_4", taskName: "点赞或评论 1 条内容", description: "第 4 天：点赞或评论 1 条内容", rewardPoints: 40, progressTarget: 1, ctaRoute: "./aigc.html" },
+    { taskCode: "growth_day_5", taskName: "转发 1 个 AI 作品", description: "第 5 天：转发 1 个 AI 作品", rewardPoints: 50, progressTarget: 1, ctaRoute: "./aigc.html" },
+    { taskCode: "growth_day_6", taskName: "转发 1 条闪念", description: "第 6 天：转发 1 条社区闪念", rewardPoints: 60, progressTarget: 1, ctaRoute: "./flash.html" },
+    { taskCode: "growth_day_7", taskName: "发布 1 个 AI 作品", description: "第 7 天：发布 1 个 AI 作品", rewardPoints: 70, progressTarget: 1, ctaRoute: "./aigc.html#quick-create" }
+  ];
+
+  function getTaskGuideIndex(params, key, fallback, max) {
+    const value = Number(params.get(key));
+    return Number.isInteger(value) ? Math.max(1, Math.min(value, max)) : fallback;
+  }
+
+  function createNewUserPendingState(taskIndex = 2) {
+    const safeIndex = Math.max(1, Math.min(taskIndex, taskGuideFormalNewUserTasks.length));
+    const task = taskGuideFormalNewUserTasks[safeIndex - 1];
+    const isRegistration = safeIndex === 1;
+    return {
+      stateKey: isRegistration ? "guest-registration" : "new-user-pending",
+      surface: "bubble",
+      variant: isRegistration ? "onboarding" : "",
+      frequency: isRegistration ? "daily" : "persistent",
+      phaseLabel: `新人任务 · ${safeIndex}/${taskGuideFormalNewUserTasks.length}`,
+      title: isRegistration ? "完成注册，领取新人第一笔积分" : `继续完成第 ${safeIndex} 项新人任务`,
+      description: task.description,
+      taskName: task.taskName,
+      progressCurrent: 0,
+      progressTarget: task.progressTarget,
+      rewardPoints: task.rewardPoints,
+      ctaText: task.ctaText,
+      ctaRoute: task.ctaRoute,
+      secondaryText: isRegistration ? "已有账号，去登录" : "查看全部新手任务",
+      secondaryRoute: isRegistration ? "./login.html#auth" : "./campaign-new-user.html",
+      icon: isRegistration
+        ? "resources/icons/remixicon/svg/Map/rocket-2-line.svg"
+        : "resources/icons/remixicon/svg/Document/task-line.svg"
+    };
+  }
+
+  function createSevenDayPendingState(dayIndex = 2) {
+    const safeDay = Math.max(1, Math.min(dayIndex, taskGuideFormalSevenDayTasks.length));
+    const task = taskGuideFormalSevenDayTasks[safeDay - 1];
+    return {
+      stateKey: "seven-day-pending",
+      surface: "bubble",
+      frequency: "persistent",
+      phaseLabel: `七日任务 · D${safeDay}`,
+      title: `今天完成 D${safeDay} 任务`,
+      description: task.description,
+      taskName: task.taskName,
+      progressCurrent: 0,
+      progressTarget: task.progressTarget,
+      rewardPoints: task.rewardPoints,
+      ctaText: `去完成 D${safeDay}`,
+      ctaRoute: task.ctaRoute,
+      secondaryText: "查看七日任务",
+      secondaryRoute: "./campaign-seven-day.html",
+      icon: "resources/icons/remixicon/svg/Document/task-line.svg"
+    };
+  }
+
+  function createSevenDayWaitingState(dayIndex = 1) {
+    const safeDay = Math.max(1, Math.min(dayIndex, taskGuideFormalSevenDayTasks.length));
+    const isFinalDay = safeDay === taskGuideFormalSevenDayTasks.length;
+    return {
+      stateKey: "seven-day-waiting",
+      surface: "bubble",
+      frequency: "daily",
+      phaseLabel: isFinalDay ? "七日任务完成" : `七日任务 · D${safeDay} 已完成`,
+      title: isFinalDay ? "七日成长已经全部完成" : "今天的成长任务已完成",
+      description: isFinalDay
+        ? "继续去活动中心看看其他可以获得积分的任务。"
+        : `D${safeDay + 1} 将在明日解锁，现在可以去活动中心看看其他积分任务。`,
+      ctaText: "查看其他积分任务",
+      ctaRoute: "./activity-center.html",
+      icon: "resources/icons/remixicon/svg/Business/calendar-check-line.svg"
+    };
+  }
+
+  function createTaskCompletionState(track, taskIndex) {
+    const isNewUser = track === "new-user";
+    const tasks = isNewUser ? taskGuideFormalNewUserTasks : taskGuideFormalSevenDayTasks;
+    const safeIndex = Math.max(1, Math.min(taskIndex, tasks.length));
+    const task = tasks[safeIndex - 1];
+    const newUserFinished = isNewUser && safeIndex === tasks.length;
+    const followupState = isNewUser
+      ? (newUserFinished ? createSevenDayPendingState(1) : createNewUserPendingState(safeIndex + 1))
+      : createSevenDayWaitingState(safeIndex);
+    return {
+      stateKey: isNewUser
+        ? (safeIndex === 1 ? "registration-success" : (newUserFinished ? "new-user-complete" : "new-user-task-complete"))
+        : "seven-day-task-complete",
+      surface: "toast",
+      frequency: "event",
+      eventId: `${task.taskCode}-complete`,
+      phaseLabel: isNewUser ? "新人任务完成" : `七日任务 · D${safeIndex} 完成`,
+      title: newUserFinished ? "新手任务已经全部完成" : `“${task.taskName}”已完成`,
+      description: isNewUser
+        ? (newUserFinished ? "新人主线已完成，接下来完成 D1 任务。" : `下一项：${tasks[safeIndex].taskName}`)
+        : (safeIndex === tasks.length ? "七日成长已完成，继续探索其他积分任务。" : `D${safeIndex + 1} 将在明日解锁。`),
+      rewardStatusText: `+${task.rewardPoints} 积分已到账`,
+      followupState,
+      autoAdvanceMs: 2600,
+      icon: "resources/icons/remixicon/svg/System/checkbox-circle-fill.svg"
+    };
+  }
+
+  const taskGuideDemoStates = {
+    "reward-processing": {
+      stateKey: "reward-processing",
+      surface: "toast",
+      frequency: "event",
+      eventId: "reward-processing",
+      phaseLabel: "奖励处理中",
+      title: "任务已完成，奖励发放中",
+      description: "积分正在处理中，到账后会在积分记录中显示。",
+      rewardStatusText: "奖励发放中",
+      ctaText: "查看任务记录",
+      ctaRoute: "./activity-center.html",
+      icon: "resources/icons/remixicon/svg/Finance/coins-line.svg"
+    },
+    "data-unavailable": {
+      stateKey: "data-unavailable",
+      surface: "none",
+      frequency: "none"
+    }
+  };
+
+  function resolveTaskGuideDemoState(stateKey, params = new URLSearchParams(window.location.search)) {
+    if (stateKey === "guest-registration") return createNewUserPendingState(1);
+    if (stateKey === "registration-success") return createTaskCompletionState("new-user", 1);
+    if (stateKey === "new-user-pending") return createNewUserPendingState(getTaskGuideIndex(params, "task", 2, taskGuideFormalNewUserTasks.length));
+    if (stateKey === "new-user-task-complete") return createTaskCompletionState("new-user", getTaskGuideIndex(params, "task", 2, taskGuideFormalNewUserTasks.length));
+    if (stateKey === "new-user-complete") return createTaskCompletionState("new-user", taskGuideFormalNewUserTasks.length);
+    if (stateKey === "seven-day-pending") return createSevenDayPendingState(getTaskGuideIndex(params, "day", 2, taskGuideFormalSevenDayTasks.length));
+    if (stateKey === "seven-day-task-complete" || stateKey === "seven-day-complete-more") return createTaskCompletionState("seven-day", getTaskGuideIndex(params, "day", 1, taskGuideFormalSevenDayTasks.length));
+    if (stateKey === "seven-day-waiting" || stateKey === "seven-day-complete-empty") return createSevenDayWaitingState(getTaskGuideIndex(params, "day", 1, taskGuideFormalSevenDayTasks.length));
+    return taskGuideDemoStates[stateKey] ? { ...taskGuideDemoStates[stateKey] } : null;
+  }
 
   function getTodayKey() {
     const date = new Date();
@@ -1331,64 +1464,12 @@
     return `${date.getFullYear()}-${month}-${day}`;
   }
 
-  function getTaskGuideDatasetValue(task, suffix) {
-    const key = `taskGuide${task.datasetKey}${suffix}`;
-    return document.documentElement.dataset[key] || document.body?.dataset[key] || "";
-  }
-
-  function getTaskGuideStoredValue(task, suffix) {
-    try {
-      return window.localStorage.getItem(`ai666-task-guide-${task.key}-${suffix}`) || "";
-    } catch (error) {
-      return "";
-    }
-  }
-
-  function isTaskGuideTaskComplete(task) {
-    const explicit = getTaskGuideDatasetValue(task, "Complete") || getTaskGuideStoredValue(task, "complete");
-    return explicit === "true";
-  }
-
-  function isTaskGuideTaskAvailable(task) {
-    const explicit = getTaskGuideDatasetValue(task, "Available") || getTaskGuideStoredValue(task, "available");
-    return explicit === "" || explicit === "true";
-  }
-
-  function selectDefaultTaskGuideTask() {
-    return taskGuideTasks.find((task) => isTaskGuideTaskAvailable(task) && !isTaskGuideTaskComplete(task)) || taskGuideTasks[0];
-  }
-
-  function hasDismissedTaskGuideToday() {
-    try {
-      return window.localStorage.getItem(taskGuideStorageKey) === getTodayKey();
-    } catch (error) {
-      return false;
-    }
-  }
-
-  function dismissTaskGuideForToday() {
-    try {
-      window.localStorage.setItem(taskGuideStorageKey, getTodayKey());
-    } catch (error) {
-      // Static prototype: storage can be unavailable in privacy modes.
-    }
-  }
-
-  function shouldForceTaskGuideOpen() {
-    const params = new URLSearchParams(window.location.search);
-    return window.location.hash === "#task-guide" || params.get("taskGuide") === "1" || params.has("taskGuideTest");
-  }
-
-  function shouldSuppressTaskGuideForHash() {
-    return window.location.hash === "#quick-create" || window.location.hash === "#quick-create-campaign";
-  }
-
   function isTaskGuideHomeSurface() {
     const path = window.location.pathname.replace(/\\/g, "/");
     return path.endsWith("/") || path.endsWith("/index.html") || path === "index.html";
   }
 
-  function createTaskGuideElement(tag, className, text) {
+  function createTaskGuideElement(tag, className, text = "") {
     const node = document.createElement(tag);
     if (className) {
       node.className = className;
@@ -1399,221 +1480,368 @@
     return node;
   }
 
-  function createTaskGuideInviteLink(task) {
-    if (!task.inviteUrl) {
+  function cloneTaskGuideState(stateKey, params = new URLSearchParams(window.location.search)) {
+    const state = resolveTaskGuideDemoState(stateKey, params);
+    return state ? { ...state } : null;
+  }
+
+  function getRequestedTaskGuideState() {
+    const params = new URLSearchParams(window.location.search);
+    const explicitState = params.get("taskGuideTest") || params.get("taskGuideState");
+    if (explicitState) {
+      return {
+        stateKey: taskGuideTestStateKeys.includes(explicitState) ? explicitState : "data-unavailable",
+        isTest: params.has("taskGuideTest")
+      };
+    }
+    if (params.get("taskGuide") === "1" || window.location.hash === "#task-guide") {
+      return { stateKey: "guest-registration", isTest: true };
+    }
+    return null;
+  }
+
+  function resolveTaskGuideState() {
+    const requested = getRequestedTaskGuideState();
+    if (requested) {
+      return { ...cloneTaskGuideState(requested.stateKey), ...requested };
+    }
+
+    const injected = window.ai666TaskGuideState;
+    if (injected && typeof injected === "object") {
+      if (injected.available === false) {
+        return cloneTaskGuideState("data-unavailable");
+      }
+      const stateKey = taskGuideTestStateKeys.includes(injected.stateKey) ? injected.stateKey : "data-unavailable";
+      return { ...cloneTaskGuideState(stateKey), ...injected, stateKey, isTest: false };
+    }
+
+    const datasetState = document.documentElement.dataset.taskGuideState || document.body?.dataset.taskGuideState;
+    if (datasetState) {
+      const stateKey = taskGuideTestStateKeys.includes(datasetState) ? datasetState : "data-unavailable";
+      return { ...cloneTaskGuideState(stateKey), stateKey, isTest: false };
+    }
+
+    // 首页静态原型默认展示游客注册主线，已登录用户由任务结果注入下一项新手或当天七日任务。
+    if (isTaskGuideHomeSurface()) {
+      return { ...cloneTaskGuideState("guest-registration"), isPrototypeFallback: true, isTest: false };
+    }
+    return null;
+  }
+
+  function getTaskGuideFrequencyKey(state) {
+    if (state.frequency === "daily") {
+      return `${taskGuideDailyStoragePrefix}-${state.stateKey}-${getTodayKey()}`;
+    }
+    if (state.frequency === "event" && state.eventId) {
+      return `${taskGuideEventStoragePrefix}-${state.eventId}`;
+    }
+    return "";
+  }
+
+  function hasSeenTaskGuideState(state) {
+    if (state.isTest) {
+      return false;
+    }
+    const key = getTaskGuideFrequencyKey(state);
+    if (!key) {
+      return false;
+    }
+    try {
+      return window.localStorage.getItem(key) === "seen";
+    } catch (error) {
+      return false;
+    }
+  }
+
+  function markTaskGuideStateSeen(state) {
+    const key = getTaskGuideFrequencyKey(state);
+    if (!key || state.isTest) {
+      return;
+    }
+    try {
+      window.localStorage.setItem(key, "seen");
+    } catch (error) {
+      // Static prototype: storage can be unavailable in privacy modes.
+    }
+  }
+
+  function shouldSuppressTaskGuide() {
+    if (window.location.hash === "#quick-create" || window.location.hash === "#quick-create-campaign") {
+      return true;
+    }
+    return Boolean(document.querySelector('[aria-modal="true"]:not([aria-hidden="true"]):not([data-task-guide-dialog])'));
+  }
+
+  function createTaskGuideIcon(src, className = "task-guide-icon") {
+    const icon = document.createElement("img");
+    icon.className = className;
+    icon.src = src || "resources/icons/remixicon/svg/Document/task-line.svg";
+    icon.alt = "";
+    return icon;
+  }
+
+  function createTaskGuideCloseButton() {
+    const button = createTaskGuideElement("button", "task-guide-close");
+    button.type = "button";
+    button.dataset.taskGuideDismiss = "true";
+    button.setAttribute("aria-label", "关闭任务提示");
+    button.append(createTaskGuideIcon("resources/icons/remixicon/svg/System/close-line.svg", ""));
+    return button;
+  }
+
+  function createTaskGuideProgress(state) {
+    const target = Number(state.progressTarget || 0);
+    if (target <= 0) {
       return null;
     }
-
-    const box = createTaskGuideElement("div", "activity-task-guide-invite-link", "");
-    const caption = createTaskGuideElement("span", "", task.inviteLabel || "邀请链接");
-    const link = createTaskGuideElement("a", "", task.inviteUrl);
-    link.href = "./login.html?invite=SG2026";
-    link.dataset.taskGuideLink = "true";
-    const button = createTaskGuideElement("button", "", "复制");
-    button.type = "button";
-    button.dataset.taskGuideCopy = "true";
-    button.dataset.copyValue = task.inviteUrl;
-    box.append(caption, link, button);
-    return box;
-  }
-
-  function createTaskGuideMetric(label, value) {
-    const item = createTaskGuideElement("div", "activity-task-guide-metric", "");
-    item.append(createTaskGuideElement("span", "", label), createTaskGuideElement("strong", "", value));
-    return item;
-  }
-
-  function createTaskGuideVisualPanel(task) {
-    const visual = createTaskGuideElement("div", "activity-task-guide-visual", "");
-    visual.style.setProperty("--task-guide-cover", `url("${task.cover}")`);
-
-    const content = createTaskGuideElement("div", "activity-task-guide-visual-content", "");
-    const title = createTaskGuideElement("h2", "", task.title);
-    const description = createTaskGuideElement("p", "activity-task-guide-description", task.description);
-
-    const metrics = createTaskGuideElement("div", "activity-task-guide-metrics", "");
-    metrics.append(
-      createTaskGuideMetric("奖励", task.reward)
+    const current = Math.max(0, Math.min(Number(state.progressCurrent || 0), target));
+    const progress = createTaskGuideElement("div", "task-guide-progress");
+    const meta = createTaskGuideElement("div", "task-guide-progress-meta");
+    meta.append(
+      createTaskGuideElement("span", "", "任务进度"),
+      createTaskGuideElement("strong", "", `${current}/${target}`)
     );
-
-    const actionRow = createTaskGuideElement("div", "activity-task-guide-actions", "");
-    const primary = createTaskGuideElement("a", "activity-task-guide-primary", task.cta);
-    primary.href = task.href;
-    primary.dataset.taskGuideLink = "true";
-    actionRow.append(primary);
-
-    const inviteLink = createTaskGuideInviteLink(task);
-    content.append(title, description, metrics);
-    if (inviteLink) {
-      content.append(inviteLink);
-    }
-    content.append(actionRow);
-    visual.append(content);
-    return visual;
+    const track = createTaskGuideElement("div", "task-guide-progress-track");
+    track.setAttribute("role", "progressbar");
+    track.setAttribute("aria-valuemin", "0");
+    track.setAttribute("aria-valuemax", String(target));
+    track.setAttribute("aria-valuenow", String(current));
+    const bar = createTaskGuideElement("span", "task-guide-progress-bar");
+    bar.style.width = `${Math.round((current / target) * 100)}%`;
+    track.append(bar);
+    progress.append(meta, track);
+    return progress;
   }
 
-  async function copyTaskGuideValue(button) {
-    const value = button.dataset.copyValue || "";
-    if (!value) {
-      return;
+  function createTaskGuideTaskRow(state) {
+    if (!state.taskName) {
+      return null;
     }
-
-    try {
-      await navigator.clipboard?.writeText(value);
-      button.textContent = "已复制";
-    } catch (error) {
-      button.textContent = "已选中";
-    }
-
-    window.setTimeout(() => {
-      button.textContent = "复制";
-    }, 1600);
-  }
-
-  function setActiveTaskGuideTask(modal, key) {
-    const task = taskGuideTasks.find((item) => item.key === key) || selectDefaultTaskGuideTask();
-    modal.dataset.taskGuideActive = task.key;
-
-    modal.querySelectorAll("[data-task-guide-tab]").forEach((tab) => {
-      const isActive = tab.dataset.taskGuideTab === task.key;
-      tab.classList.toggle("is-active", isActive);
-      tab.setAttribute("aria-selected", String(isActive));
-    });
-
-    const panel = modal.querySelector("[data-task-guide-panel]");
-    if (!panel) {
-      return;
-    }
-
-    panel.replaceChildren();
-    panel.append(createTaskGuideVisualPanel(task));
-  }
-
-  function closeTaskGuide(modal, persist = true) {
-    if (persist) {
-      dismissTaskGuideForToday();
-    }
-    modal.classList.remove("is-open");
-    modal.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("activity-task-guide-open");
-  }
-
-  function openTaskGuide(modal, force = false) {
-    if (!force && hasDismissedTaskGuideToday()) {
-      return;
-    }
-    setActiveTaskGuideTask(modal, selectDefaultTaskGuideTask().key);
-    modal.classList.add("is-open");
-    modal.setAttribute("aria-hidden", "false");
-    document.body.classList.add("activity-task-guide-open");
-    window.requestAnimationFrame(() => {
-      modal.querySelector(".activity-task-guide-primary")?.focus();
-    });
-  }
-
-  function createTaskGuideModal() {
-    const modal = createTaskGuideElement("section", "activity-task-guide", "");
-    modal.setAttribute("data-task-guide-modal", "true");
-    modal.setAttribute("data-task-guide-default-order", taskGuideDefaultOrder);
-    modal.setAttribute("role", "dialog");
-    modal.setAttribute("aria-modal", "true");
-    modal.setAttribute("aria-hidden", "true");
-    modal.setAttribute("aria-label", "任务强引导");
-
-    const backdrop = createTaskGuideElement("div", "activity-task-guide-backdrop", "");
-    const dialog = createTaskGuideElement("div", "activity-task-guide-dialog", "");
-
-    const head = createTaskGuideElement("div", "activity-task-guide-head", "");
-    const headingBlock = createTaskGuideElement("div", "", "");
-    headingBlock.append(
-      createTaskGuideElement("h1", "", "创作活动长期开放，成长任务继续进行")
+    const row = createTaskGuideElement("div", "task-guide-task-row");
+    const copy = createTaskGuideElement("div", "");
+    copy.append(
+      createTaskGuideElement("span", "", "当前任务"),
+      createTaskGuideElement("strong", "", state.taskName)
     );
-    const closeButton = createTaskGuideElement("button", "activity-task-guide-close", "");
-    closeButton.type = "button";
-    closeButton.dataset.taskGuideDismiss = "true";
-    closeButton.setAttribute("aria-label", "关闭任务引导");
-    const closeIcon = document.createElement("img");
-    closeIcon.src = "resources/icons/remixicon/svg/System/close-line.svg";
-    closeIcon.alt = "";
-    closeButton.append(closeIcon);
-    head.append(headingBlock, closeButton);
-
-    const body = createTaskGuideElement("div", "activity-task-guide-body", "");
-    const tabs = createTaskGuideElement("div", "activity-task-guide-tabs", "");
-    tabs.setAttribute("role", "tablist");
-    tabs.setAttribute("aria-label", "可切换任务");
-    taskGuideTasks.forEach((task) => {
-      const tab = createTaskGuideElement("button", "activity-task-guide-tab", "");
-      tab.type = "button";
-      tab.dataset.taskGuideTab = task.key;
-      tab.setAttribute("role", "tab");
-      tab.append(
-        createTaskGuideElement("span", "", task.label),
-        createTaskGuideElement("em", "", task.reward)
-      );
-      tabs.append(tab);
-    });
-
-    const panel = createTaskGuideElement("article", "activity-task-guide-panel", "");
-    panel.dataset.taskGuidePanel = "true";
-    panel.setAttribute("role", "tabpanel");
-    body.append(tabs, panel);
-
-    dialog.append(head, body);
-    modal.append(backdrop, dialog);
-    return modal;
+    row.append(createTaskGuideIcon("resources/icons/remixicon/svg/Document/task-line.svg", "task-guide-task-icon"), copy);
+    if (Number(state.rewardPoints || 0) > 0) {
+      row.append(createTaskGuideElement("em", "task-guide-reward-chip", `+${Number(state.rewardPoints)} 积分`));
+    }
+    return row;
   }
 
-  function initActivityTaskGuide() {
-    if (document.documentElement.dataset.taskGuideReady === "true") {
+  function createTaskGuideStatus(state) {
+    if (!state.rewardStatusText) {
+      return null;
+    }
+    const status = createTaskGuideElement("div", "task-guide-status", state.rewardStatusText);
+    status.prepend(createTaskGuideIcon("resources/icons/remixicon/svg/Finance/coins-line.svg", ""));
+    return status;
+  }
+
+  function createTaskGuideActions(state) {
+    if (!state.ctaText && !state.secondaryText) {
+      return null;
+    }
+    const actions = createTaskGuideElement("div", "task-guide-actions");
+    if (state.ctaText && state.ctaRoute) {
+      const primary = createTaskGuideElement("a", "task-guide-primary", state.ctaText);
+      primary.href = state.ctaRoute;
+      primary.dataset.taskGuideAction = "primary";
+      primary.append(createTaskGuideIcon("resources/icons/remixicon/svg/Arrows/arrow-right-line.svg", ""));
+      actions.append(primary);
+    }
+    if (state.secondaryText && state.secondaryRoute) {
+      const secondary = createTaskGuideElement("a", "task-guide-secondary", state.secondaryText);
+      secondary.href = state.secondaryRoute;
+      secondary.dataset.taskGuideAction = "secondary";
+      actions.append(secondary);
+    }
+    return actions;
+  }
+
+  function createTaskGuideContent(state, compact = false) {
+    const content = createTaskGuideElement("div", compact ? "task-guide-content is-compact" : "task-guide-content");
+    const head = createTaskGuideElement("div", "task-guide-content-head");
+    const iconWrap = createTaskGuideElement("span", "task-guide-icon-wrap");
+    iconWrap.append(createTaskGuideIcon(state.icon));
+    const copy = createTaskGuideElement("div", "task-guide-copy");
+    copy.append(
+      createTaskGuideElement("span", "task-guide-phase", state.phaseLabel || "成长任务"),
+      createTaskGuideElement("h2", "", state.title || "继续完成成长任务")
+    );
+    if (state.description) {
+      copy.append(createTaskGuideElement("p", "", state.description));
+    }
+    head.append(iconWrap, copy);
+    content.append(head);
+
+    const taskRow = createTaskGuideTaskRow(state);
+    const progress = createTaskGuideProgress(state);
+    const status = createTaskGuideStatus(state);
+    const actions = createTaskGuideActions(state);
+    if (taskRow) content.append(taskRow);
+    if (progress) content.append(progress);
+    if (status) content.append(status);
+    if (actions) content.append(actions);
+    return content;
+  }
+
+  function createTaskGuideModal(state) {
+    const layer = createTaskGuideElement("div", "task-guide-surface task-guide-modal-layer");
+    layer.dataset.taskGuideSurface = "modal";
+    layer.dataset.taskGuideState = state.stateKey;
+    const backdrop = createTaskGuideElement("div", "task-guide-modal-backdrop");
+    const dialog = createTaskGuideElement("section", "task-guide-modal");
+    dialog.dataset.taskGuideDialog = "true";
+    dialog.setAttribute("role", "dialog");
+    dialog.setAttribute("aria-modal", "true");
+    dialog.setAttribute("aria-labelledby", `task-guide-title-${state.stateKey}`);
+    const close = createTaskGuideCloseButton();
+    const content = createTaskGuideContent(state);
+    content.querySelector("h2").id = `task-guide-title-${state.stateKey}`;
+    dialog.append(close, content);
+    layer.append(backdrop, dialog);
+    return layer;
+  }
+
+  function createTaskGuideBubble(state) {
+    const bubble = createTaskGuideElement("aside", "task-guide-surface task-guide-bubble");
+    if (state.variant === "onboarding") {
+      bubble.classList.add("is-onboarding");
+    }
+    bubble.dataset.taskGuideSurface = "bubble";
+    bubble.dataset.taskGuideState = state.stateKey;
+    bubble.setAttribute("role", "status");
+    bubble.setAttribute("aria-live", "polite");
+    bubble.append(createTaskGuideCloseButton(), createTaskGuideContent(state, true));
+    return bubble;
+  }
+
+  function createTaskGuideToast(state) {
+    const toast = createTaskGuideElement("aside", "task-guide-surface task-guide-toast");
+    toast.dataset.taskGuideSurface = "toast";
+    toast.dataset.taskGuideState = state.stateKey;
+    toast.setAttribute("role", "status");
+    toast.setAttribute("aria-live", "polite");
+    toast.append(createTaskGuideCloseButton(), createTaskGuideContent(state, true));
+    return toast;
+  }
+
+  function positionTaskGuideBubble(bubble, anchor) {
+    if (window.matchMedia("(max-width: 820px)").matches) {
+      bubble.style.removeProperty("left");
+      bubble.style.removeProperty("top");
+      bubble.style.removeProperty("--task-guide-arrow-left");
       return;
     }
-    if (document.querySelector('[data-page="login"]')) {
+    const anchorRect = anchor.getBoundingClientRect();
+    const bubbleRect = bubble.getBoundingClientRect();
+    const left = Math.max(12, Math.min(window.innerWidth - bubbleRect.width - 12, anchorRect.right - bubbleRect.width));
+    const top = Math.min(window.innerHeight - bubbleRect.height - 12, anchorRect.bottom + 12);
+    bubble.style.left = `${left}px`;
+    bubble.style.top = `${Math.max(12, top)}px`;
+    bubble.style.setProperty("--task-guide-arrow-left", `${Math.max(20, Math.min(bubbleRect.width - 20, anchorRect.left + anchorRect.width / 2 - left))}px`);
+  }
+
+  function mountTaskGuideSurface(state) {
+    const anchor = document.querySelector('[data-nav-action="activity-center"], .activity-center-link');
+    const followupState = state.followupState ? { ...state.followupState, isTest: state.isTest } : null;
+    let surface = null;
+    if (state.surface === "modal") {
+      surface = createTaskGuideModal(state);
+    } else if (state.surface === "bubble" && anchor) {
+      surface = createTaskGuideBubble(state);
+    } else if (state.surface === "toast") {
+      surface = createTaskGuideToast(state);
+    }
+    if (!surface) {
       return;
     }
 
-    document.documentElement.dataset.taskGuideReady = "true";
-    const modal = createTaskGuideModal();
-    document.body.append(modal);
+    const focusReturn = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    let autoDismissTimer = 0;
+    let positionHandler = null;
+    const close = (persist = true, revealFollowup = false) => {
+      if (!surface.isConnected) {
+        return;
+      }
+      if (persist) {
+        markTaskGuideStateSeen(state);
+      }
+      if (autoDismissTimer) {
+        window.clearTimeout(autoDismissTimer);
+      }
+      if (positionHandler) {
+        window.removeEventListener("resize", positionHandler);
+        window.removeEventListener("scroll", positionHandler, true);
+      }
+      surface.classList.add("is-leaving");
+      document.body.classList.remove("task-guide-modal-open");
+      window.setTimeout(() => {
+        surface.remove();
+        if (revealFollowup && followupState && !shouldSuppressTaskGuide()) {
+          mountTaskGuideSurface(followupState);
+        }
+      }, 180);
+      focusReturn?.focus?.();
+    };
 
-    modal.addEventListener("click", (event) => {
+    surface.addEventListener("click", (event) => {
       const target = event.target;
       if (!(target instanceof Element)) {
         return;
       }
-      const tab = target.closest("[data-task-guide-tab]");
-      if (tab) {
-        event.preventDefault();
-        setActiveTaskGuideTask(modal, tab.dataset.taskGuideTab);
-        return;
-      }
-      const copyButton = target.closest("[data-task-guide-copy]");
-      if (copyButton) {
-        event.preventDefault();
-        copyTaskGuideValue(copyButton);
-        return;
-      }
       if (target.closest("[data-task-guide-dismiss]")) {
         event.preventDefault();
-        closeTaskGuide(modal, true);
+        close(true, state.surface === "toast" && Boolean(followupState));
         return;
       }
-      if (target.closest("[data-task-guide-link]")) {
-        dismissTaskGuideForToday();
+      if (target.closest("[data-task-guide-action]")) {
+        markTaskGuideStateSeen(state);
+      }
+    });
+    document.addEventListener("keydown", function handleTaskGuideEscape(event) {
+      if (event.key === "Escape" && surface.isConnected) {
+        close(true, state.surface === "toast" && Boolean(followupState));
+        document.removeEventListener("keydown", handleTaskGuideEscape);
       }
     });
 
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && modal.classList.contains("is-open")) {
-        closeTaskGuide(modal, true);
-      }
-    });
-
-    const forceOpen = shouldForceTaskGuideOpen();
-    const shouldAutoOpenOnHome = isTaskGuideHomeSurface() && !shouldSuppressTaskGuideForHash();
-    if (forceOpen || shouldAutoOpenOnHome) {
-      openTaskGuide(modal, forceOpen || shouldAutoOpenOnHome);
+    document.body.append(surface);
+    window.requestAnimationFrame(() => surface.classList.add("is-open"));
+    if (state.surface === "modal") {
+      document.body.classList.add("task-guide-modal-open");
+      window.requestAnimationFrame(() => surface.querySelector(".task-guide-primary")?.focus());
     }
+    if (state.surface === "bubble" && anchor) {
+      positionHandler = () => positionTaskGuideBubble(surface, anchor);
+      positionHandler();
+      if (state.variant === "onboarding") {
+        anchor.classList.add("is-task-guide-highlighted");
+        window.setTimeout(() => anchor.classList.remove("is-task-guide-highlighted"), 2600);
+      }
+      window.addEventListener("resize", positionHandler);
+      window.addEventListener("scroll", positionHandler, true);
+    }
+    if (state.surface === "toast" && followupState) {
+      autoDismissTimer = window.setTimeout(() => close(true, true), Number(state.autoAdvanceMs || 2600));
+    } else if (state.surface === "toast" && !state.isTest) {
+      autoDismissTimer = window.setTimeout(() => close(true), 6500);
+    }
+  }
+
+  function initActivityTaskGuide() {
+    if (document.documentElement.dataset.taskGuideReady === "true" || document.querySelector('[data-page="login"]')) {
+      return;
+    }
+    document.documentElement.dataset.taskGuideReady = "true";
+    const state = resolveTaskGuideState();
+    document.documentElement.dataset.taskGuideResolvedState = state?.stateKey || "none";
+    if (!state || state.surface === "none" || shouldSuppressTaskGuide() || hasSeenTaskGuideState(state)) {
+      return;
+    }
+    mountTaskGuideSurface(state);
   }
 
   function initLoginPrototype() {
@@ -1630,6 +1858,7 @@
     const sendCodeButton = root.querySelector("[data-send-code]");
     const submitButton = root.querySelector("[data-login-complete-target]");
     const message = root.querySelector("[data-login-message]");
+    const registrationScenario = new URLSearchParams(window.location.search).get("taskGuideScenario") === "registration";
     let cooldownTimer = 0;
     let cooldownActive = false;
 
@@ -1709,10 +1938,18 @@
       }
 
       submitButton.disabled = true;
-      submitButton.textContent = "登录中…";
+      submitButton.textContent = registrationScenario ? "注册并登录中…" : "登录中…";
       window.setTimeout(() => {
-        submitButton.textContent = "登录成功";
-        setMessage("登录成功，正式产品将返回登录前页面", "success");
+        submitButton.textContent = registrationScenario ? "注册成功" : "登录成功";
+        setMessage(
+          registrationScenario ? "注册成功，正在自动登录并返回首页" : "登录成功，正式产品将返回登录前页面",
+          "success"
+        );
+        if (registrationScenario) {
+          window.setTimeout(() => {
+            window.location.href = "./index.html?taskGuideTest=registration-success";
+          }, 720);
+        }
       }, 480);
     });
 

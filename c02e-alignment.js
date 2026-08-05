@@ -71,7 +71,7 @@
     homepage_work: '完成任务后会更新状态与对应奖励。',
     add_case: '按活动要求补充能够说明 Prompt 效果的案例媒体。',
     prompt_selected: '优秀作品将进入活动精选或推荐候选。',
-    growth_day_7: '完成本期最终任务后领取对应奖励。',
+    growth_day_7: '第 7 天：发布 1 个 AI 作品',
   };
   Object.entries(taskDescriptions).forEach(([taskCode, value]) => {
     const task = document.querySelector(`[data-task-code="${taskCode}"]`);

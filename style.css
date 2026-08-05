@@ -490,6 +490,25 @@ input {
   display: none;
 }
 
+.header-actions a[data-nav-action="activity-center"].is-task-guide-highlighted {
+  animation: task-guide-anchor-pulse 860ms ease-in-out 3;
+}
+
+@keyframes task-guide-anchor-pulse {
+  0%,
+  100% {
+    transform: translateY(0);
+    box-shadow: var(--growth-action-shadow);
+  }
+  50% {
+    transform: translateY(-2px);
+    box-shadow:
+      0 0 0 4px rgba(244, 201, 93, 0.12),
+      0 14px 38px rgba(255, 102, 110, 0.24),
+      inset 0 1px 0 rgba(255, 255, 255, 0.24);
+  }
+}
+
 .header-actions a[data-nav-action="invite"] {
   --growth-action-icon: url("resources/icons/remixicon/svg/Finance/gift-2-fill.svg");
   --growth-action-badge: "+30";
@@ -1278,6 +1297,467 @@ body.activity-task-guide-open {
 
   .activity-task-guide-metric {
     min-height: 0;
+  }
+}
+
+body.task-guide-modal-open {
+  overflow: hidden;
+}
+
+.task-guide-surface {
+  --task-guide-surface-bg: rgba(11, 16, 23, 0.97);
+  color: var(--paper);
+  font-family: inherit;
+}
+
+.task-guide-modal-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 220;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.task-guide-modal-layer.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.task-guide-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 5, 8, 0.58);
+  backdrop-filter: blur(4px);
+}
+
+.task-guide-modal {
+  position: relative;
+  width: min(100%, 500px);
+  border: 1px solid rgba(244, 201, 93, 0.32);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(145deg, rgba(244, 201, 93, 0.08), transparent 42%),
+    var(--task-guide-surface-bg);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.56), 0 0 0 1px rgba(102, 226, 207, 0.06) inset;
+  transform: translateY(12px) scale(0.98);
+  transition: transform 180ms ease;
+  overflow: hidden;
+}
+
+.task-guide-modal-layer.is-open .task-guide-modal {
+  transform: translateY(0) scale(1);
+}
+
+.task-guide-bubble,
+.task-guide-toast {
+  position: fixed;
+  z-index: 210;
+  width: 340px;
+  border: 1px solid rgba(244, 201, 93, 0.28);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(135deg, rgba(102, 226, 207, 0.08), transparent 48%),
+    var(--task-guide-surface-bg);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.44), 0 0 0 1px rgba(255, 247, 230, 0.04) inset;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.task-guide-bubble.is-open,
+.task-guide-toast.is-open {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.task-guide-bubble.is-onboarding {
+  width: 368px;
+  border-color: rgba(244, 201, 93, 0.46);
+  background:
+    linear-gradient(135deg, rgba(244, 201, 93, 0.1), rgba(102, 226, 207, 0.07) 52%, transparent 76%),
+    var(--task-guide-surface-bg);
+  box-shadow: 0 20px 56px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(244, 201, 93, 0.08) inset;
+}
+
+.task-guide-bubble.is-leaving,
+.task-guide-toast.is-leaving,
+.task-guide-modal-layer.is-leaving {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.task-guide-bubble::before {
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: var(--task-guide-arrow-left, calc(100% - 48px));
+  width: 12px;
+  height: 12px;
+  border-top: 1px solid rgba(244, 201, 93, 0.28);
+  border-left: 1px solid rgba(244, 201, 93, 0.28);
+  background: #0b1118;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.task-guide-toast {
+  top: 76px;
+  right: 24px;
+  width: 368px;
+}
+
+.task-guide-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  color: var(--muted);
+  background: transparent;
+  cursor: pointer;
+  transition: color 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.task-guide-close img {
+  width: 16px;
+  height: 16px;
+  opacity: 0.72;
+  filter: invert(95%) sepia(12%) saturate(334%) hue-rotate(333deg) brightness(105%);
+}
+
+.task-guide-close:hover,
+.task-guide-close:focus-visible {
+  color: var(--paper);
+  border-color: rgba(255, 247, 230, 0.16);
+  background: rgba(255, 247, 230, 0.06);
+  outline: none;
+}
+
+.task-guide-content {
+  display: grid;
+  gap: 18px;
+  padding: 28px;
+}
+
+.task-guide-content.is-compact {
+  gap: 14px;
+  padding: 20px;
+}
+
+.task-guide-content-head {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+  padding-right: 28px;
+}
+
+.is-compact .task-guide-content-head {
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: 12px;
+}
+
+.task-guide-icon-wrap {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(102, 226, 207, 0.24);
+  border-radius: var(--radius);
+  background: rgba(102, 226, 207, 0.1);
+}
+
+.is-compact .task-guide-icon-wrap {
+  width: 40px;
+  height: 40px;
+}
+
+.task-guide-icon {
+  width: 24px;
+  height: 24px;
+  opacity: 0.94;
+  filter: invert(88%) sepia(22%) saturate(791%) hue-rotate(117deg) brightness(95%);
+}
+
+.is-compact .task-guide-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.task-guide-copy {
+  min-width: 0;
+}
+
+.task-guide-phase {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--mint);
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+}
+
+.task-guide-copy h2 {
+  margin: 0;
+  color: var(--paper);
+  font-family: "SF Pro Display", "PingFang SC", "Microsoft YaHei UI", sans-serif;
+  font-size: 24px;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.is-compact .task-guide-copy h2 {
+  font-size: 17px;
+  line-height: 1.38;
+}
+
+.task-guide-copy p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.is-compact .task-guide-copy p {
+  margin-top: 5px;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.task-guide-task-row {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  min-height: 58px;
+  padding: 11px 12px;
+  border: 1px solid rgba(255, 247, 230, 0.1);
+  border-radius: var(--radius);
+  background: rgba(255, 247, 230, 0.035);
+}
+
+.task-guide-task-icon {
+  width: 20px;
+  height: 20px;
+  padding: 6px;
+  box-sizing: content-box;
+  border-radius: 50%;
+  background: rgba(244, 201, 93, 0.1);
+  opacity: 0.88;
+  filter: invert(84%) sepia(71%) saturate(405%) hue-rotate(351deg) brightness(103%);
+}
+
+.task-guide-task-row div span {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--faint);
+  font-size: 11px;
+}
+
+.task-guide-task-row div strong {
+  display: block;
+  color: var(--paper);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.task-guide-reward-chip {
+  padding: 4px 8px;
+  border: 1px solid rgba(244, 201, 93, 0.24);
+  border-radius: 999px;
+  color: var(--gold);
+  background: rgba(244, 201, 93, 0.08);
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.task-guide-progress {
+  display: grid;
+  gap: 7px;
+}
+
+.task-guide-progress-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--faint);
+  font-size: 11px;
+}
+
+.task-guide-progress-meta strong {
+  color: var(--paper);
+  font-size: 12px;
+}
+
+.task-guide-progress-track {
+  height: 5px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 247, 230, 0.08);
+}
+
+.task-guide-progress-bar {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--gold), var(--mint));
+}
+
+.task-guide-status {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.task-guide-status img {
+  width: 16px;
+  height: 16px;
+  opacity: 0.92;
+  filter: invert(84%) sepia(71%) saturate(405%) hue-rotate(351deg) brightness(103%);
+}
+
+.task-guide-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.task-guide-primary,
+.task-guide-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-weight: 760;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.task-guide-primary {
+  gap: 7px;
+  padding: 0 15px;
+  border: 1px solid rgba(244, 201, 93, 0.52);
+  color: var(--ink);
+  background: var(--gold);
+}
+
+.task-guide-primary img {
+  width: 15px;
+  height: 15px;
+}
+
+.task-guide-secondary {
+  padding: 0 4px;
+  color: var(--mint);
+}
+
+.task-guide-primary:hover,
+.task-guide-primary:focus-visible,
+.task-guide-secondary:hover,
+.task-guide-secondary:focus-visible {
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.task-guide-primary:focus-visible,
+.task-guide-secondary:focus-visible {
+  box-shadow: 0 0 0 3px rgba(102, 226, 207, 0.2);
+}
+
+@media (max-width: 820px) {
+  .task-guide-modal-layer {
+    padding: 12px;
+  }
+
+  .task-guide-bubble,
+  .task-guide-toast {
+    top: 72px;
+    right: 12px;
+    left: 12px;
+    width: auto;
+  }
+
+  .task-guide-bubble::before {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .task-guide-content {
+    gap: 15px;
+    padding: 22px 18px;
+  }
+
+  .task-guide-content.is-compact {
+    padding: 18px;
+  }
+
+  .task-guide-content-head {
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 11px;
+  }
+
+  .task-guide-icon-wrap {
+    width: 40px;
+    height: 40px;
+  }
+
+  .task-guide-copy h2 {
+    font-size: 20px;
+  }
+
+  .is-compact .task-guide-copy h2 {
+    font-size: 16px;
+  }
+
+  .task-guide-task-row {
+    grid-template-columns: 30px minmax(0, 1fr);
+  }
+
+  .task-guide-reward-chip {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .task-guide-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .task-guide-primary,
+  .task-guide-secondary {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header-actions a[data-nav-action="activity-center"].is-task-guide-highlighted {
+    animation: none;
+  }
+
+  .task-guide-modal-layer,
+  .task-guide-modal,
+  .task-guide-bubble,
+  .task-guide-toast,
+  .task-guide-primary,
+  .task-guide-secondary {
+    transition: none;
   }
 }
 

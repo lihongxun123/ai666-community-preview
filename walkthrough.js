@@ -1266,6 +1266,7 @@
     "seven-day-complete-more",
     "seven-day-complete-empty",
     "reward-processing",
+    "reward-unknown",
     "data-unavailable"
   ];
   const taskGuideFormalNewUserTasks = [
@@ -1340,7 +1341,7 @@
       stateKey: isRegistration ? "guest-registration" : "new-user-pending",
       surface: "bubble",
       variant: isRegistration ? "onboarding" : "",
-      frequency: isRegistration ? "daily" : "persistent",
+      frequency: "persistent",
       phaseLabel: `新人任务 · ${safeIndex}/${taskGuideFormalNewUserTasks.length}`,
       title: isRegistration ? "完成注册，领取新人第一笔积分" : `继续完成第 ${safeIndex} 项新人任务`,
       description: task.description,
@@ -1426,6 +1427,26 @@
     };
   }
 
+  function createSevenDayCompletionBranchState(dayIndex, branch = "default") {
+    const state = createTaskCompletionState("seven-day", dayIndex);
+    if (branch === "empty") {
+      return {
+        ...state,
+        stateKey: "seven-day-complete-empty",
+        eventId: `${state.eventId}-empty`,
+        followupState: null
+      };
+    }
+    if (branch === "more") {
+      return {
+        ...state,
+        stateKey: "seven-day-complete-more",
+        eventId: `${state.eventId}-more`
+      };
+    }
+    return state;
+  }
+
   const taskGuideDemoStates = {
     "reward-processing": {
       stateKey: "reward-processing",
@@ -1439,6 +1460,17 @@
       ctaText: "查看任务记录",
       ctaRoute: "./activity-center.html",
       icon: "resources/icons/remixicon/svg/Finance/coins-line.svg"
+    },
+    "reward-unknown": {
+      stateKey: "reward-unknown",
+      surface: "toast",
+      frequency: "event",
+      eventId: "reward-unknown",
+      phaseLabel: "奖励结果待确认",
+      title: "任务已完成，奖励结果请稍后查看",
+      description: "可以稍后在积分记录中查看最终结果。",
+      rewardStatusText: "奖励结果待确认",
+      icon: "resources/icons/remixicon/svg/System/information-line.svg"
     },
     "data-unavailable": {
       stateKey: "data-unavailable",
@@ -1454,8 +1486,10 @@
     if (stateKey === "new-user-task-complete") return createTaskCompletionState("new-user", getTaskGuideIndex(params, "task", 2, taskGuideFormalNewUserTasks.length));
     if (stateKey === "new-user-complete") return createTaskCompletionState("new-user", taskGuideFormalNewUserTasks.length);
     if (stateKey === "seven-day-pending") return createSevenDayPendingState(getTaskGuideIndex(params, "day", 2, taskGuideFormalSevenDayTasks.length));
-    if (stateKey === "seven-day-task-complete" || stateKey === "seven-day-complete-more") return createTaskCompletionState("seven-day", getTaskGuideIndex(params, "day", 1, taskGuideFormalSevenDayTasks.length));
-    if (stateKey === "seven-day-waiting" || stateKey === "seven-day-complete-empty") return createSevenDayWaitingState(getTaskGuideIndex(params, "day", 1, taskGuideFormalSevenDayTasks.length));
+    if (stateKey === "seven-day-task-complete") return createSevenDayCompletionBranchState(getTaskGuideIndex(params, "day", 1, taskGuideFormalSevenDayTasks.length));
+    if (stateKey === "seven-day-complete-more") return createSevenDayCompletionBranchState(getTaskGuideIndex(params, "day", 1, taskGuideFormalSevenDayTasks.length), "more");
+    if (stateKey === "seven-day-complete-empty") return createSevenDayCompletionBranchState(getTaskGuideIndex(params, "day", 1, taskGuideFormalSevenDayTasks.length), "empty");
+    if (stateKey === "seven-day-waiting") return createSevenDayWaitingState(getTaskGuideIndex(params, "day", 1, taskGuideFormalSevenDayTasks.length));
     return taskGuideDemoStates[stateKey] ? { ...taskGuideDemoStates[stateKey] } : null;
   }
 
@@ -1689,6 +1723,23 @@
     return content;
   }
 
+  function createTaskGuideToastContent(state) {
+    const content = createTaskGuideElement("div", "task-guide-toast-content");
+    const iconWrap = createTaskGuideElement("span", "task-guide-toast-icon-wrap");
+    iconWrap.append(createTaskGuideIcon(state.icon, "task-guide-toast-icon"));
+    const copy = createTaskGuideElement("div", "task-guide-toast-copy");
+    const primaryText = state.rewardStatusText || state.title || "任务状态已更新";
+    const secondaryText = state.title && state.title !== primaryText && !state.title.includes(primaryText)
+      ? state.title
+      : state.description;
+    copy.append(createTaskGuideElement("strong", "", primaryText));
+    if (secondaryText) {
+      copy.append(createTaskGuideElement("span", "", secondaryText));
+    }
+    content.append(iconWrap, copy);
+    return content;
+  }
+
   function createTaskGuideModal(state) {
     const layer = createTaskGuideElement("div", "task-guide-surface task-guide-modal-layer");
     layer.dataset.taskGuideSurface = "modal";
@@ -1726,7 +1777,7 @@
     toast.dataset.taskGuideState = state.stateKey;
     toast.setAttribute("role", "status");
     toast.setAttribute("aria-live", "polite");
-    toast.append(createTaskGuideCloseButton(), createTaskGuideContent(state, true));
+    toast.append(createTaskGuideToastContent(state));
     return toast;
   }
 
@@ -1803,12 +1854,14 @@
         markTaskGuideStateSeen(state);
       }
     });
-    document.addEventListener("keydown", function handleTaskGuideEscape(event) {
-      if (event.key === "Escape" && surface.isConnected) {
-        close(true, state.surface === "toast" && Boolean(followupState));
-        document.removeEventListener("keydown", handleTaskGuideEscape);
-      }
-    });
+    if (state.surface !== "toast") {
+      document.addEventListener("keydown", function handleTaskGuideEscape(event) {
+        if (event.key === "Escape" && surface.isConnected) {
+          close(true, false);
+          document.removeEventListener("keydown", handleTaskGuideEscape);
+        }
+      });
+    }
 
     document.body.append(surface);
     window.requestAnimationFrame(() => surface.classList.add("is-open"));
@@ -1826,10 +1879,11 @@
       window.addEventListener("resize", positionHandler);
       window.addEventListener("scroll", positionHandler, true);
     }
-    if (state.surface === "toast" && followupState) {
-      autoDismissTimer = window.setTimeout(() => close(true, true), Number(state.autoAdvanceMs || 2600));
-    } else if (state.surface === "toast" && !state.isTest) {
-      autoDismissTimer = window.setTimeout(() => close(true), 6500);
+    if (state.surface === "toast") {
+      autoDismissTimer = window.setTimeout(
+        () => close(true, Boolean(followupState)),
+        Number(state.autoAdvanceMs || 2600)
+      );
     }
   }
 

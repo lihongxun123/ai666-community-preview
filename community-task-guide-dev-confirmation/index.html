@@ -26,7 +26,7 @@
       --danger: #ff8b8b;
       --radius: 18px;
       --shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
-      --max: 1440px;
+      --max: 1600px;
     }
 
     * {
@@ -649,20 +649,23 @@
 
     .preview-layout {
       display: grid;
-      grid-template-columns: 360px minmax(0, 1fr);
+      grid-template-columns: 320px minmax(0, 1fr);
       min-height: 720px;
     }
 
     .state-nav {
+      min-height: 0;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr);
       border-right: 1px solid var(--line);
       background: #0a0f16;
     }
 
     .state-filters {
       display: flex;
+      flex-wrap: wrap;
       gap: 7px;
       padding: 14px;
-      overflow-x: auto;
       border-bottom: 1px solid var(--line);
     }
 
@@ -684,7 +687,7 @@
     }
 
     .state-list {
-      max-height: 665px;
+      max-height: 612px;
       padding: 10px;
       overflow-y: auto;
     }
@@ -761,6 +764,7 @@
     }
 
     .state-meta-item {
+      min-width: 0;
       min-height: 82px;
       padding: 13px 14px;
       background: var(--panel);
@@ -784,21 +788,32 @@
       font-size: 11px;
       font-weight: 600;
       line-height: 1.5;
+      overflow-wrap: anywhere;
     }
 
     .frame-wrap {
       position: relative;
+      height: 638px;
       min-height: 638px;
+      overflow: auto;
       background: #05070a;
     }
 
+    .frame-canvas {
+      position: relative;
+      min-width: 100%;
+      min-height: 100%;
+      overflow: hidden;
+    }
+
     .frame-wrap iframe {
-      width: 100%;
-      height: 100%;
-      min-height: 638px;
+      position: absolute;
+      top: 0;
+      left: 0;
       display: block;
       border: 0;
       background: #070a0f;
+      transform-origin: top left;
     }
 
     .frame-hint {
@@ -898,7 +913,7 @@
       }
 
       .preview-layout {
-        grid-template-columns: 310px minmax(0, 1fr);
+        grid-template-columns: 280px minmax(0, 1fr);
       }
 
       .state-meta {
@@ -957,8 +972,8 @@
         max-height: 330px;
       }
 
-      .frame-wrap,
-      .frame-wrap iframe {
+      .frame-wrap {
+        height: 720px;
         min-height: 720px;
       }
     }
@@ -1003,8 +1018,8 @@
         min-height: 0;
       }
 
-      .frame-wrap,
-      .frame-wrap iframe {
+      .frame-wrap {
+        height: 680px;
         min-height: 680px;
       }
     }
@@ -1278,8 +1293,10 @@
               <div class="state-meta-item"><span>下一状态</span><strong id="meta-next">注册成功后进入奖励 Toast</strong></div>
             </div>
             <div class="frame-wrap">
-              <iframe id="prototype-frame" title="游客注册引导真实原型" src="about:blank"></iframe>
-              <span class="frame-hint">Toast 会在约 2.6 秒后自动进入下一状态；点击“重新播放”可重置</span>
+              <div class="frame-canvas" id="prototype-canvas">
+                <iframe id="prototype-frame" title="游客注册引导真实原型" src="about:blank"></iframe>
+              </div>
+              <span class="frame-hint">桌面原型按 1440px 等比缩放；Toast 约 2.6 秒后进入下一状态</span>
             </div>
           </div>
         </div>
@@ -1485,6 +1502,8 @@
     const groupOrder = ["全部", "注册", "新手未完成", "新手完成", "七日未完成", "七日完成", "等待解锁", "奖励状态", "分支与兜底"];
     const filterRoot = document.getElementById("state-filters");
     const listRoot = document.getElementById("state-list");
+    const previewFrameWrap = document.querySelector(".frame-wrap");
+    const previewFrameCanvas = document.getElementById("prototype-canvas");
     const previewFrame = document.getElementById("prototype-frame");
     const previewHeading = document.getElementById("preview-heading");
     const previewSubheading = document.getElementById("preview-subheading");
@@ -1499,8 +1518,39 @@
     let activeFilter = "全部";
     let activeStateIndex = 0;
     let activeURL = `${prototypePath}?${states[0].query}`;
+    const previewBaseWidth = 1440;
 
     stateCount.textContent = String(states.length);
+
+    function syncPreviewScale() {
+      const availableWidth = previewFrameWrap.clientWidth;
+      const availableHeight = previewFrameWrap.clientHeight;
+      const minimumScale = window.matchMedia("(max-width: 820px)").matches ? 0.55 : 0.7;
+      const scale = Math.min(1, Math.max(minimumScale, availableWidth / previewBaseWidth));
+      const renderedWidth = Math.round(previewBaseWidth * scale);
+
+      previewFrameCanvas.style.width = `${Math.max(availableWidth, renderedWidth)}px`;
+      previewFrameCanvas.style.height = `${availableHeight}px`;
+      previewFrame.style.width = `${previewBaseWidth}px`;
+      previewFrame.style.height = `${Math.ceil(availableHeight / scale)}px`;
+      previewFrame.style.transform = `scale(${scale})`;
+      previewFrame.dataset.previewScale = scale.toFixed(3);
+    }
+
+    const previewResizeObserver = new ResizeObserver(syncPreviewScale);
+    previewResizeObserver.observe(previewFrameWrap);
+
+    function alignHashTarget() {
+      if (!window.location.hash) return;
+      const target = document.getElementById(window.location.hash.slice(1));
+      if (!target) return;
+      const topbarHeight = document.querySelector(".topbar")?.offsetHeight || 0;
+      const targetTop = target.getBoundingClientRect().top + window.scrollY - topbarHeight - 24;
+      window.scrollTo({ top: Math.max(0, targetTop), behavior: "auto" });
+    }
+
+    window.addEventListener("hashchange", () => window.requestAnimationFrame(alignHashTarget));
+    window.addEventListener("load", () => window.setTimeout(alignHashTarget, 80));
 
     function renderFilters() {
       filterRoot.innerHTML = "";
@@ -1572,6 +1622,8 @@
 
     renderFilters();
     selectState(0);
+    syncPreviewScale();
+    window.setTimeout(alignHashTarget, 120);
   </script>
 </body>
 </html>

@@ -125,13 +125,13 @@
           <div class="c02c-generator-form">
             <div class="c02c-output-tabs" aria-label="输出类型"><button class="c02c-output-tab is-active" type="button" data-output-tab="image">图片</button><button class="c02c-output-tab" type="button" data-output-tab="text">文本</button><button class="c02c-output-tab" type="button" data-output-tab="video">视频</button></div>
             <input type="hidden" value="image" data-output-value>
-            <label class="c02c-field"><span>可用模型</span><select aria-label="可用模型"><option value="gemini-flash">Gemini Flash（接口示例）</option></select></label>
+            <label class="c02c-field"><span>可用模型</span><select aria-label="可用模型"><option value="gemini-flash">Gemini Flash</option></select></label>
             <label class="c02c-field"><span>创作内容</span><textarea data-generate-prompt maxlength="1000" placeholder="描述你想生成的内容"></textarea></label>
             <div class="c02c-form-row"><label class="c02c-field"><span>画面比例</span><select><option>1:1</option><option>16:9</option><option>9:16</option></select></label><label class="c02c-field"><span>分辨率</span><select><option>1k</option><option>2k</option><option>4k</option></select></label></div>
             <p class="c02c-form-note" data-generate-message></p>
-            <button class="c02c-primary" type="button" data-generate-demo>发起生成 · 示例 20 积分</button>
+            <button class="c02c-primary" type="button" data-generate-demo>发起生成 · 预计 20 积分</button>
           </div>
-          <aside class="c02c-generator-history"><span class="c02c-kicker">GENERATION</span><h3><span data-current-output>图片</span>生成记录</h3><div class="c02c-history-item"><strong>当前原型任务</strong><span class="c02c-history-status" data-generation-status>等待输入</span><span>真实状态：0 处理中 / 1 成功 / 2 失败 / 3 已退款。</span></div></aside>
+          <aside class="c02c-generator-history"><span class="c02c-kicker">GENERATION</span><h3><span data-current-output>图片</span>生成记录</h3><div class="c02c-history-item"><strong>本次生成</strong><span class="c02c-history-status" data-generation-status>等待创作内容</span><span>生成开始后可在这里查看处理进度和结果。</span></div></aside>
         </div>
       </div>
     </section>
@@ -162,7 +162,7 @@
     </details>
     <div class="footer-space"></div>
   </div>
-  <script src="./c02c-alignment.js?v=20260805-c02c1" defer></script>
-  <script src="./walkthrough.js" defer></script>
+  <script src="./c02c-alignment.js?v=20260809-c02b2" defer></script>
+  <script src="./walkthrough.js?v=20260809-c02b2" defer></script>
 </body>
 </html>

@@ -115,10 +115,68 @@
     });
   });
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') closeChoice();
+    if (event.key === 'Escape') {
+      closeChoice();
+      closeSubmission();
+    }
   });
 
   const promptBody = document.querySelector('[data-c02e-prompt-body]');
+  const promptRemix = document.querySelector('[data-c02e-prompt-remix]');
+  if (promptRemix && promptBody) {
+    promptRemix.href = `./aigc.html?prompt=${encodeURIComponent(promptBody.textContent.trim())}#quick-create`;
+  }
+
+  const submissionModal = document.querySelector('[data-c02e-submission-modal]');
+  const submissionMedia = submissionModal?.querySelector('[data-c02e-submission-media]');
+  const submissionTitle = submissionModal?.querySelector('[data-c02e-submission-title]');
+  const submissionMeta = submissionModal?.querySelector('[data-c02e-submission-meta]');
+  const submissionBody = submissionModal?.querySelector('[data-c02e-submission-body]');
+  const submissionWorkNo = submissionModal?.querySelector('[data-c02e-submission-work-no]');
+  const submissionCopy = submissionModal?.querySelector('[data-c02e-submission-copy]');
+  const submissionRemix = submissionModal?.querySelector('[data-c02e-submission-remix]');
+  const openSubmission = (card) => {
+    if (!submissionModal || !card) return;
+    const workTitle = card.dataset.workTitle || card.querySelector('h3')?.textContent.trim() || '活动作品';
+    const workMeta = card.dataset.workMeta || card.querySelector('p')?.textContent.trim() || '';
+    const workCopy = card.dataset.workCopy || '';
+    const workNo = card.dataset.workNo || '';
+    const media = card.dataset.workMedia || card.querySelector('img')?.getAttribute('src') || '';
+    const kind = card.dataset.workKind || 'image';
+    if (submissionTitle) submissionTitle.textContent = workTitle;
+    if (submissionMeta) submissionMeta.textContent = workMeta;
+    if (submissionBody) submissionBody.textContent = workCopy;
+    if (submissionWorkNo) submissionWorkNo.textContent = workNo ? `作品编号 ${workNo}` : '';
+    if (submissionMedia) {
+      submissionMedia.src = media;
+      submissionMedia.alt = workTitle;
+    }
+    if (submissionCopy) {
+      submissionCopy.hidden = kind !== 'prompt';
+      submissionCopy.textContent = '复制 Prompt';
+    }
+    if (submissionRemix) {
+      submissionRemix.href = `./aigc.html?prompt=${encodeURIComponent(workCopy)}#quick-create`;
+    }
+    submissionModal.classList.add('is-open');
+    submissionModal.setAttribute('aria-hidden', 'false');
+    submissionModal.querySelector('[data-c02e-submission-close]')?.focus();
+  };
+  function closeSubmission() {
+    if (!submissionModal) return;
+    submissionModal.classList.remove('is-open');
+    submissionModal.setAttribute('aria-hidden', 'true');
+  }
+  document.querySelectorAll('[data-c02e-submission-open]').forEach((card) => {
+    card.addEventListener('click', () => openSubmission(card));
+  });
+  submissionModal?.querySelector('[data-c02e-submission-close]')?.addEventListener('click', closeSubmission);
+  submissionCopy?.addEventListener('click', async () => {
+    const value = submissionBody?.textContent.trim() || '';
+    submissionCopy.textContent = '已复制 Prompt';
+    try { await navigator.clipboard?.writeText(value); } catch {}
+  });
+
   document.querySelectorAll('[data-c02e-copy-prompt]').forEach((node) => {
     node.addEventListener('click', async () => {
       const value = promptBody?.textContent.trim() || '';

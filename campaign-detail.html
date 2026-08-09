@@ -41,15 +41,17 @@
 
         <section data-c02e-submissions><header class="c02e-section-head"><h2><span>活动</span>投稿</h2><em>SUBMISSIONS</em></header>
           <div class="c02e-work-grid">
-            <article id="campaign-submission-detail-1" class="c02e-work-card" data-work-no="WK20260805001"><img src="assets/image_assets/7.png" alt="海风车站"><div><h3>海风车站</h3><p>图像作品 · 青屿</p></div></article>
-            <article class="c02e-work-card" data-work-no="WK20260805002"><img src="assets/image_assets/11.png" alt="橙色光影练习"><div><h3>橙色光影练习</h3><p>图像作品 · 北辰</p></div></article>
-            <article class="c02e-work-card" data-work-no="WK20260805003"><img src="assets/image_assets/18.png" alt="涂鸦世界"><div><h3>涂鸦世界</h3><p>图像作品 · 林间</p></div></article>
+            <button id="campaign-submission-detail-1" class="c02e-work-card" type="button" data-c02e-submission-open data-work-no="WK20260805001" data-work-kind="image" data-work-title="海风车站" data-work-meta="图像作品 · 青屿" data-work-copy="傍晚海边车站，微风吹动站牌与衣角，暖色电影光。" data-work-media="assets/image_assets/7.png" aria-label="查看作品：海风车站"><img src="assets/image_assets/7.png" alt="海风车站"><div><h3>海风车站</h3><p>图像作品 · 青屿</p></div></button>
+            <button class="c02e-work-card" type="button" data-c02e-submission-open data-work-no="WK20260805002" data-work-kind="image" data-work-title="橙色光影练习" data-work-meta="图像作品 · 北辰" data-work-copy="橙色主光与深蓝阴影交错的城市人物练习。" data-work-media="assets/image_assets/11.png" aria-label="查看作品：橙色光影练习"><img src="assets/image_assets/11.png" alt="橙色光影练习"><div><h3>橙色光影练习</h3><p>图像作品 · 北辰</p></div></button>
+            <button class="c02e-work-card" type="button" data-c02e-submission-open data-work-no="WK20260805003" data-work-kind="image" data-work-title="涂鸦世界" data-work-meta="图像作品 · 林间" data-work-copy="高饱和涂鸦街区，夸张透视与年轻角色组合。" data-work-media="assets/image_assets/18.png" aria-label="查看作品：涂鸦世界"><img src="assets/image_assets/18.png" alt="涂鸦世界"><div><h3>涂鸦世界</h3><p>图像作品 · 林间</p></div></button>
           </div>
         </section>
       </article>
     </div></main>
 
     <section class="c02e-choice-modal" data-c02e-choice-modal aria-hidden="true" aria-label="选择创作方式"><div class="c02e-choice-dialog"><div class="c02e-choice-head"><div><h2>选择创作方式</h2><p>参与成功后，活动编码与发布配置会带入后续组件。</p></div><button class="c02e-choice-close" type="button" data-c02e-choice-close aria-label="关闭">×</button></div><div class="c02e-choice-options"><button class="c02e-choice-option" type="button" data-c02e-create-mode="aigc"><strong>AIGC 生成</strong><span>打开生成组件并带入本次活动配置</span></button><button class="c02e-choice-option" type="button" data-c02e-create-mode="direct"><strong>直接发布</strong><span>打开作品发布组件并带入参与上下文</span></button></div><p class="c02e-choice-result" data-c02e-choice-result aria-live="polite"></p></div></section>
+
+    <section class="c02e-choice-modal c02e-submission-modal" data-c02e-submission-modal aria-hidden="true" aria-label="活动作品详情"><div class="c02e-submission-dialog" role="dialog" aria-modal="true" aria-labelledby="c02e-submission-title"><button class="c02e-choice-close" type="button" data-c02e-submission-close aria-label="关闭">×</button><img data-c02e-submission-media src="assets/image_assets/7.png" alt=""><div class="c02e-submission-copy"><span>ACTIVITY WORK</span><h2 id="c02e-submission-title" data-c02e-submission-title>活动作品</h2><p data-c02e-submission-meta></p><p data-c02e-submission-body></p><div class="c02e-submission-actions"><button class="c02e-secondary" type="button" data-c02e-submission-copy hidden>复制 Prompt</button><a class="c02e-primary" data-c02e-submission-remix href="./aigc.html#quick-create">一键同款</a></div><small data-c02e-submission-work-no></small></div></div></section>
 
     <details class="v1-walkthrough-drawer" data-v1-walkthrough-drawer><summary>走查</summary><div class="v1-walkthrough-panel"><div class="v1-walkthrough-head"><strong>通用活动详情走查</strong><span>本页映射真实 /activity/detail/:activityId 路由与活动接口。</span></div><div class="v1-walkthrough-tabs" aria-label="走查规则分区"><span>产品关注</span><span>研发关注</span></div>
       <div class="v1-rule-section"><strong>详情来源</strong><span data-engineering-rule>页面按 activityId 请求 /api/activities/detail?code=ai_image_challenge；标题、封面、状态、时间、最高积分、说明与 tasks 均由响应渲染。</span></div>
@@ -62,5 +64,5 @@
     </div></details>
     <div class="footer-space"></div>
   </div>
-  <script src="./walkthrough.js" defer></script><script src="./c02e-alignment.js?v=20260805-code-contract-1" defer></script>
+    <script src="./walkthrough.js" defer></script><script src="./c02e-alignment.js?v=20260809-c02c1" defer></script>
 </body></html>

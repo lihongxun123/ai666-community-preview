@@ -34,12 +34,20 @@
   const detailIntro = document.querySelector("[data-work-detail-intro]");
   const detailMeta = document.querySelector("[data-work-detail-meta]");
   const detailMedia = document.querySelector("[data-work-detail-media]");
-  workCards.forEach((card) => card.addEventListener("click", () => {
+  const applyWorkDetail = (card) => {
+    if (!card) return;
     if (detailTitle) detailTitle.textContent = card.dataset.title || "作品详情";
     if (detailIntro) detailIntro.textContent = card.dataset.intro || "";
     if (detailMeta) detailMeta.textContent = card.dataset.detailMeta || "";
     if (detailMedia) detailMedia.src = card.querySelector("img")?.src || "";
-  }));
+  };
+  workCards.forEach((card) => card.addEventListener("click", () => applyWorkDetail(card)));
+
+  const pageParams = new URLSearchParams(window.location.search);
+  const selectedWorkTitle = pageParams.get("work");
+  if (selectedWorkTitle) {
+    applyWorkDetail(workCards.find((card) => card.dataset.title === selectedWorkTitle));
+  }
 
   const outputTabs = [...document.querySelectorAll("[data-output-tab]")];
   const outputInput = document.querySelector("[data-output-value]");
@@ -55,6 +63,11 @@
   const prompt = document.querySelector("[data-generate-prompt]");
   const message = document.querySelector("[data-generate-message]");
   const status = document.querySelector("[data-generation-status]");
+  const seededPrompt = pageParams.get("prompt");
+  if (seededPrompt && prompt) {
+    prompt.value = seededPrompt.slice(0, Number(prompt.maxLength || 1000));
+    if (message) message.textContent = "已带入同款创作方向，可继续补充细节。";
+  }
   generateButton?.addEventListener("click", () => {
     const value = String(prompt?.value || "").trim();
     if (!value) {
@@ -63,9 +76,9 @@
       return;
     }
     if (message) message.textContent = "";
-    if (status) status.textContent = "处理中（status 0）";
+    if (status) status.textContent = "生成中";
     window.setTimeout(() => {
-      if (status) status.textContent = "原型演示完成（status 1）";
+      if (status) status.textContent = "生成完成";
     }, 650);
   });
 

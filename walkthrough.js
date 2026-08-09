@@ -1564,6 +1564,40 @@
     return null;
   }
 
+  function syncTaskGuideAccountState() {
+    if (!isTaskGuideHomeSurface()) {
+      return;
+    }
+
+    const state = resolveTaskGuideState();
+    if (state?.stateKey !== "guest-registration") {
+      return;
+    }
+
+    const pointsLink = document.querySelector('.site-header [data-nav-action="points"]');
+    if (pointsLink) {
+      pointsLink.href = "./login.html#auth";
+      pointsLink.dataset.actionLabel = "积分 --";
+      pointsLink.setAttribute("aria-label", "积分 --");
+      const pointsValue = pointsLink.querySelector("strong");
+      if (pointsValue) {
+        pointsValue.textContent = "--";
+      }
+    }
+
+    const profileLink = document.querySelector('.site-header [data-nav-action="profile"]');
+    if (profileLink) {
+      profileLink.href = "./login.html#auth";
+      profileLink.classList.remove("user-avatar-link");
+      profileLink.classList.add("guest-account-link");
+      profileLink.dataset.actionLabel = "登录";
+      profileLink.setAttribute("aria-label", "登录");
+      profileLink.textContent = "登录";
+    }
+
+    document.documentElement.dataset.taskGuideAccountState = "guest";
+  }
+
   function getTaskGuideFrequencyKey(state) {
     if (state.frequency === "daily") {
       return `${taskGuideDailyStoragePrefix}-${state.stateKey}-${getTodayKey()}`;
@@ -1605,7 +1639,23 @@
     if (window.location.hash === "#quick-create" || window.location.hash === "#quick-create-campaign") {
       return true;
     }
+    const hashTarget = window.location.hash ? document.querySelector(window.location.hash) : null;
+    if (hashTarget?.matches(".case-detail-modal, .create-modal, .c02c-modal")) {
+      return true;
+    }
     return Boolean(document.querySelector('[aria-modal="true"]:not([aria-hidden="true"]):not([data-task-guide-dialog])'));
+  }
+
+  function syncMountedTaskGuideSuppression() {
+    const suppressed = shouldSuppressTaskGuide();
+    document.querySelectorAll("[data-task-guide-surface]").forEach((surface) => {
+      surface.hidden = suppressed;
+      if (suppressed) {
+        surface.setAttribute("aria-hidden", "true");
+      } else {
+        surface.removeAttribute("aria-hidden");
+      }
+    });
   }
 
   function createTaskGuideIcon(src, className = "task-guide-icon") {
@@ -1898,6 +1948,8 @@
       return;
     }
     mountTaskGuideSurface(state);
+    window.addEventListener("hashchange", syncMountedTaskGuideSuppression);
+    syncMountedTaskGuideSuppression();
   }
 
   function initLoginPrototype() {
@@ -2025,6 +2077,7 @@
     document.querySelectorAll("[data-v1-walkthrough-drawer]").forEach(enhanceDrawer);
     enhanceCreationModelSelects();
     initCreationCampaignPurpose();
+    syncTaskGuideAccountState();
     enhanceUserMenus();
     initLoginPrototype();
     initActivityTaskGuide();

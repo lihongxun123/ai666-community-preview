@@ -39,12 +39,16 @@
               <img src="resources/icons/remixicon/svg/Weather/sparkling-2-fill.svg" alt="">
               <strong>活动中心</strong><span>发现正在发生的创作挑战与社区计划</span>
             </div>
-            <span class="c02e-activity-banner-count"><strong>05</strong><small>场正在进行</small></span>
+            <span class="c02e-activity-banner-count"><strong>06</strong><small>场正在进行</small></span>
           </div>
         </section>
 
         <section class="c02e-activity-section" aria-label="正在进行的活动">
           <div class="c02e-activity-grid">
+            <article class="c02e-activity-card activity-card" data-activity-card data-activity-type="competition" data-activity-status="作品征集">
+              <div class="c02e-activity-card-media"><img src="assets/competition/aigc-competition-hero-ocean-pod.png" alt="AIGC 创作挑战赛"><time data-activity-card-field="活动时间">赛事进行中</time><span class="c02e-activity-card-status" data-activity-card-field="活动状态">作品征集</span></div>
+              <div class="c02e-activity-card-body"><h3 class="c02e-sr-title">AIGC 创作挑战赛</h3><p>AIGC 创作挑战赛</p><div class="c02e-activity-card-footer"><strong data-activity-card-field="活动摘要">报名、投稿、评审与榜单</strong><a href="./competition-detail.html" target="_blank" rel="noopener">进入赛事<img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></a></div></div>
+            </article>
             <article class="c02e-activity-card activity-card" data-activity-card data-activity-status="进行中">
               <div class="c02e-activity-card-media"><img src="assets/image_assets/activity-image-challenge-cover-c02e.png" alt="AI 生图创作挑战"><time data-activity-card-field="活动时间">长期开放</time><span class="c02e-activity-card-status" data-activity-card-field="活动状态">进行中</span></div>
               <div class="c02e-activity-card-body"><h3 class="c02e-sr-title">AI 生图创作挑战</h3><p>AI 生图创作挑战</p><div class="c02e-activity-card-footer"><strong data-activity-card-field="奖励摘要">最高可得 1000 限时积分</strong><a href="./campaign-detail.html">查看详情<img src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></a></div></div>
@@ -93,9 +97,9 @@
         <div class="v1-rule-section"><strong>字段映射</strong><span data-engineering-rule>卡片从 cover_url、name、time_label、max_points、summary、status 与 type 渲染；当前列表不在前端固化活动数量、积分上限或时间。</span></div>
         <div class="v1-rule-section"><strong>列表结构</strong><span data-engineering-rule>current 直接显示，archive 使用往期回顾分区；桌面端保持 3 列，窄屏降为 2 列或 1 列，空数组显示对应空态。</span></div>
         <div class="v1-rule-section"><strong>状态规则</strong><span data-engineering-rule>status 为 0/1/2，用户文案取 status_text；进行中数量由 current.length 计算并补齐两位，不由原型写死。</span></div>
-        <div class="v1-rule-section"><strong>跳转规则</strong><span data-engineering-rule>type=referral 进入 invite.html；其他活动使用 code 进入通用详情兼容页，当前静态映射保留 campaign-detail.html、campaign-prompt.html、campaign-new-user.html 与 campaign-seven-day.html。</span></div>
+        <div class="v1-rule-section"><strong>跳转规则</strong><span data-engineering-rule>type=competition 在浏览器新页打开独立赛事页面组 competition-detail.html；type=referral 进入 invite.html；其他活动使用 code 进入通用详情兼容页。活动中心只提供赛事入口，不复用常规活动任务和积分模型。</span></div>
         <div class="v1-rule-section"><strong>文本约束</strong><span data-engineering-rule>name 建议 4-24 字，活动摘要建议 8-32 字；列表只展示接口已有字段，不展开任务、投稿或奖励结算规则。</span></div>
-        <div class="v1-rule-section"><strong>历史兼容</strong><span data-engineering-rule>结束活动使用同一卡片骨架并展示查看回顾；静态预览仍保留 5 个当前活动与 2 个往期对象，用于和当前 B 端投放目录交叉验收。</span></div>
+        <div class="v1-rule-section"><strong>历史兼容</strong><span data-engineering-rule>结束活动使用同一卡片骨架并展示查看回顾；静态预览保留 5 个常规活动、1 个独立赛事与 2 个往期对象，用于和当前 B 端投放目录交叉验收。</span></div>
       </div>
     </details>
     <div class="footer-space"></div>

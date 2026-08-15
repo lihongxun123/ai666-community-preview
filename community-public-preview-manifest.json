@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-08-09T09:17:08.262Z",
+  "generatedAt": "2026-08-15T03:33:40.160Z",
   "packageType": "community-public-preview",
   "sourceRoot": "outputs/community-homepage-style-exploration",
   "entry": "index.html",
   "homepage": "index.html",
   "publishBasePath": "/ai666-community-preview",
-  "pageCount": 21,
+  "pageCount": 29,
   "pages": [
     {
       "slug": "index",
@@ -51,6 +51,46 @@
       "slug": "activity-center",
       "label": "活动中心",
       "path": "activity-center.html"
+    },
+    {
+      "slug": "competition-detail",
+      "label": "赛事活动说明",
+      "path": "competition-detail.html"
+    },
+    {
+      "slug": "competition-works",
+      "label": "赛事参赛作品 · 作品广场",
+      "path": "competition-works.html"
+    },
+    {
+      "slug": "competition-my-submissions",
+      "label": "赛事我的投稿",
+      "path": "competition-my-submissions.html"
+    },
+    {
+      "slug": "competition-submit",
+      "label": "赛事投稿",
+      "path": "competition-submit.html"
+    },
+    {
+      "slug": "competition-work",
+      "label": "赛事作品详情",
+      "path": "competition-work.html"
+    },
+    {
+      "slug": "competition-ranking",
+      "label": "赛事参赛作品 · 排行榜",
+      "path": "competition-ranking.html"
+    },
+    {
+      "slug": "competition-guide",
+      "label": "赛事指南兼容页",
+      "path": "competition-guide.html"
+    },
+    {
+      "slug": "competition-rules",
+      "label": "赛事参赛规则",
+      "path": "competition-rules.html"
     },
     {
       "slug": "campaign-detail",
@@ -115,6 +155,11 @@
   ],
   "standalonePages": [
     {
+      "slug": "competition-state-preview",
+      "label": "赛事 C 端状态预览台",
+      "path": "competition-state-preview.html"
+    },
+    {
       "slug": "content-detail-modals",
       "label": "内容详情弹层调试台",
       "path": "content-detail-modals.html"
@@ -123,6 +168,11 @@
       "slug": "campaign-ops",
       "label": "一期活动预览入口",
       "path": "campaign-ops.html"
+    },
+    {
+      "slug": "manga-handoff",
+      "label": "漫剧创作转场页",
+      "path": "manga-handoff.html"
     }
   ],
   "copiedRuntimeRoots": [
@@ -139,6 +189,7 @@
     "assets/brand",
     "assets/image_assets",
     "assets/video_assets",
+    "assets/competition",
     "resources/icons/remixicon/svg"
   ],
   "runtimeScripts": [
@@ -150,19 +201,28 @@
     "c02f-alignment.js"
   ],
   "copiedAssets": [
+    "assets/competition/aigc-competition-hero-ocean-pod.png",
+    "assets/competition/featured-ancient-tree.png",
+    "assets/competition/featured-light-library.png",
+    "assets/competition/featured-sky-whale-city.png",
     "assets/image_assets/1.png",
     "assets/image_assets/11.png",
     "assets/image_assets/12.png",
+    "assets/image_assets/13.png",
+    "assets/image_assets/14.png",
     "assets/image_assets/15.jpg",
     "assets/image_assets/16.png",
     "assets/image_assets/17.png",
     "assets/image_assets/18.png",
+    "assets/image_assets/19.png",
     "assets/image_assets/2.png",
     "assets/image_assets/20.png",
     "assets/image_assets/21.png",
     "assets/image_assets/3.png",
     "assets/image_assets/4.png",
+    "assets/image_assets/5.png",
     "assets/image_assets/7.png",
+    "assets/image_assets/9.png",
     "assets/image_assets/activity-center-banner-c02e.webp",
     "assets/image_assets/activity-image-challenge-c02e.webp",
     "assets/image_assets/activity-image-challenge-cover-c02e.png",
@@ -208,15 +268,19 @@
     "resources/icons/remixicon/svg/Arrows/arrow-left-line.svg",
     "resources/icons/remixicon/svg/Arrows/arrow-right-line.svg",
     "resources/icons/remixicon/svg/Arrows/arrow-up-line.svg",
+    "resources/icons/remixicon/svg/Buildings/community-line.svg",
     "resources/icons/remixicon/svg/Business/archive-drawer-line.svg",
     "resources/icons/remixicon/svg/Business/bookmark-fill.svg",
     "resources/icons/remixicon/svg/Business/bookmark-line.svg",
     "resources/icons/remixicon/svg/Business/calendar-check-line.svg",
+    "resources/icons/remixicon/svg/Business/medal-2-line.svg",
+    "resources/icons/remixicon/svg/Business/medal-line.svg",
     "resources/icons/remixicon/svg/Business/megaphone-fill.svg",
     "resources/icons/remixicon/svg/Communication/chat-3-line.svg",
     "resources/icons/remixicon/svg/Communication/chat-follow-up-line.svg",
     "resources/icons/remixicon/svg/Communication/message-2-line.svg",
     "resources/icons/remixicon/svg/Design/edit-2-line.svg",
+    "resources/icons/remixicon/svg/Development/code-box-line.svg",
     "resources/icons/remixicon/svg/Development/terminal-window-line.svg",
     "resources/icons/remixicon/svg/Device/smartphone-line.svg",
     "resources/icons/remixicon/svg/Document/article-line.svg",
@@ -230,20 +294,29 @@
     "resources/icons/remixicon/svg/Finance/copper-coin-line.svg",
     "resources/icons/remixicon/svg/Finance/gift-2-fill.svg",
     "resources/icons/remixicon/svg/Finance/gift-2-line.svg",
+    "resources/icons/remixicon/svg/Finance/gift-line.svg",
+    "resources/icons/remixicon/svg/Finance/trophy-line.svg",
     "resources/icons/remixicon/svg/Finance/vip-crown-2-fill.svg",
     "resources/icons/remixicon/svg/Logos/wechat-line.svg",
     "resources/icons/remixicon/svg/Map/rocket-2-line.svg",
+    "resources/icons/remixicon/svg/Media/film-ai-line.svg",
     "resources/icons/remixicon/svg/Media/image-add-line.svg",
     "resources/icons/remixicon/svg/Media/image-edit-line.svg",
     "resources/icons/remixicon/svg/Media/image-line.svg",
     "resources/icons/remixicon/svg/Media/notification-3-line.svg",
     "resources/icons/remixicon/svg/Media/play-circle-line.svg",
     "resources/icons/remixicon/svg/Media/play-fill.svg",
+    "resources/icons/remixicon/svg/Media/video-add-line.svg",
+    "resources/icons/remixicon/svg/Media/video-line.svg",
+    "resources/icons/remixicon/svg/Media/video-upload-line.svg",
+    "resources/icons/remixicon/svg/System/alarm-warning-line.svg",
     "resources/icons/remixicon/svg/System/checkbox-circle-fill.svg",
     "resources/icons/remixicon/svg/System/close-fill.svg",
     "resources/icons/remixicon/svg/System/close-line.svg",
+    "resources/icons/remixicon/svg/System/error-warning-line.svg",
     "resources/icons/remixicon/svg/System/eye-line.svg",
     "resources/icons/remixicon/svg/System/information-line.svg",
+    "resources/icons/remixicon/svg/System/lock-line.svg",
     "resources/icons/remixicon/svg/System/logout-box-r-line.svg",
     "resources/icons/remixicon/svg/System/refresh-line.svg",
     "resources/icons/remixicon/svg/System/search-line.svg",
@@ -252,6 +325,8 @@
     "resources/icons/remixicon/svg/System/shield-check-line.svg",
     "resources/icons/remixicon/svg/System/thumb-up-fill.svg",
     "resources/icons/remixicon/svg/System/thumb-up-line.svg",
+    "resources/icons/remixicon/svg/System/time-line.svg",
+    "resources/icons/remixicon/svg/User & Faces/group-line.svg",
     "resources/icons/remixicon/svg/User & Faces/user-3-line.svg",
     "resources/icons/remixicon/svg/User & Faces/user-follow-line.svg",
     "resources/icons/remixicon/svg/User & Faces/user-line.svg",

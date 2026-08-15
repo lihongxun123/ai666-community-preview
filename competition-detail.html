@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AIGC 创作挑战赛 - 多元拾光</title>
+  <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
+  <link rel="stylesheet" href="./style.css?v=20260805-c02b">
+  <link rel="stylesheet" href="./competition.css?v=20260814-hero-status">
+  <link rel="stylesheet" href="./competition-state-gates.css?v=20260814-state-matrix">
+  <style>
+    @media (min-width: 901px) {
+      .competition-hero-details.is-unopened-single {
+        grid-template-columns: minmax(0, 1.5fr) minmax(280px, .72fr);
+      }
+      .competition-hero-details.is-unopened-single > .competition-hero-details-main {
+        grid-column: 1;
+      }
+      .competition-hero-details.is-unopened-single > .competition-hero-detail-card:not([hidden]) {
+        grid-column: 2;
+        width: 100%;
+        justify-self: stretch;
+      }
+    }
+  </style>
+  <style>
+    .competition-event-state {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+<div class="competition-page" data-page="competition-detail" data-competition-id="COMP-2026-AIGC-01" data-auth-default="user">
+  <header class="competition-header">
+    <div class="competition-header-inner">
+      <a class="competition-platform-brand" href="./index.html" aria-label="返回多元拾光社区"><img src="assets/brand/duoyuan-shiguang-logo-mark-reverse.svg" alt=""><strong>多元拾光</strong></a>
+      <a class="competition-brand" href="./competition-detail.html" data-competition-brand-lockup data-competition-link aria-label="AIGC 创作挑战赛活动介绍"><span class="competition-brand-copy"><strong data-competition-event-name>AIGC 创作挑战赛</strong></span></a>
+      <nav class="competition-site-nav" aria-label="赛事导航"><a href="./competition-detail.html" data-competition-link class="is-active" aria-current="page">活动介绍</a><a href="./competition-rules.html" data-competition-link>参赛规则</a><a href="./competition-ranking.html" data-competition-link>参赛作品</a><a href="./competition-my-submissions.html" data-competition-link>我的投稿</a></nav>
+      <div class="competition-header-right"><button class="competition-auth competition-auth--guest" type="button" data-competition-login-open>登录</button><div class="competition-auth competition-auth--logged" aria-label="当前登录用户"><img src="assets/image_assets/1.png" alt=""><span data-auth-name title="空镜">空镜</span></div></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="competition-home-hero competition-home-hero--cinematic" aria-labelledby="competition-title" data-competition-hero-media data-video-src="assets/video_assets/aigc-hero-c02c.mp4" data-media-state="poster">
+      <video class="competition-hero-video" muted loop playsinline preload="metadata" poster="assets/competition/aigc-competition-hero-ocean-pod.png" data-competition-hero-video hidden aria-hidden="true"></video>
+      <img class="competition-hero-poster" src="assets/competition/aigc-competition-hero-ocean-pod.png" alt="漂浮在海面上的未来影像舱" data-competition-hero-poster>
+      <div class="competition-hero-scrim" data-competition-hero-overlay aria-hidden="true"></div>
+      <div class="competition-hero-inner">
+        <div class="competition-hero-copy">
+          <span class="competition-hero-kicker">MAKE ANYTHING. NOW.</span>
+          <div class="competition-hero-title-row">
+            <img src="resources/icons/remixicon/svg/Weather/sparkling-2-line.svg" alt="">
+            <h1 id="competition-title"><strong>AIGC</strong><span>创作挑战赛</span></h1>
+            <img src="resources/icons/remixicon/svg/Weather/sparkling-2-line.svg" alt="">
+          </div>
+          <p class="competition-hero-slogan">让想象被看见</p>
+          <p class="competition-hero-lifecycle-message" data-competition-lifecycle-message role="status" hidden><strong></strong><span></span></p>
+          <div class="competition-hero-actions" aria-label="赛事主要操作">
+            <button class="competition-btn primary" type="button" data-competition-hero-action="register" data-competition-register-open>立即报名</button>
+            <a class="competition-btn primary" href="./competition-submit.html" data-competition-link data-competition-hero-action="submit">投稿作品</a>
+            <a class="competition-btn primary" href="./competition-ranking.html?board=result" data-competition-link data-competition-hero-action="result">查看获奖名单</a>
+            <a class="competition-btn secondary" href="./competition-my-submissions.html" data-competition-link data-competition-hero-action="mine">我的投稿</a>
+          </div>
+        </div>
+        <section class="competition-hero-details" aria-label="赛事详情">
+          <div class="competition-hero-details-main">
+            <div class="competition-hero-details-head">
+              <span>竞技奖池</span>
+              <strong class="competition-hero-phase-pill" data-current-phase-label>作品火热征集中</strong>
+            </div>
+            <strong>76,000 <em>积分</em></strong>
+            <p>四条赛道 · 共 12 个竞技奖项</p>
+          </div>
+          <div class="competition-hero-detail-card">
+            <span><img src="resources/icons/remixicon/svg/User &amp; Faces/group-line.svg" alt="">参赛作品</span>
+            <div class="competition-hero-participants"><span><img src="assets/image_assets/1.png" alt=""><img src="assets/image_assets/7.png" alt=""><img src="assets/image_assets/13.png" alt=""></span><strong>80 件作品</strong></div>
+            <small>来自 4 条创作赛道</small>
+          </div>
+          <div class="competition-hero-detail-card">
+            <span><img src="resources/icons/remixicon/svg/System/time-line.svg" alt="">征集截止</span>
+            <strong class="competition-hero-deadline">2026.09.10 23:59</strong>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <div class="competition-page-shell">
+      <section class="competition-event-notice" data-event-banner hidden role="status"></section>
+
+      <section class="competition-section competition-about" id="about" data-competition-about aria-labelledby="about-title">
+        <div class="competition-section-head"><div><h2 id="about-title">活动介绍</h2></div></div>
+        <article class="competition-about-markdown" data-competition-about-markdown data-body-format="markdown">
+          <p>多元拾光 AIGC 创作挑战赛鼓励创作者从一个明确的创意出发，用 AI 影像完成一段可观看、可交流、可被记住的作品。</p>
+          <p>无论是短促有力的视觉瞬间，还是拥有完整人物与世界观的连续叙事，都可以在对应赛道中找到表达空间。我们不以工具堆叠为目标，更关注作品是否形成独立、清晰且具有辨识度的表达。</p>
+          <p>选择适合你的赛道，让想象被看见。</p>
+        </article>
+      </section>
+
+      <section class="competition-section competition-section-anchor" id="process" data-competition-process data-home-section="process" aria-labelledby="process-title">
+        <div class="competition-section-head"><div><h2 id="process-title">赛事日程</h2></div></div>
+        <ol class="competition-stage-timeline" aria-label="赛事四阶段日程">
+          <li data-phase="preheat"><span>01</span><div><strong>预热报名</strong></div></li>
+          <li data-phase="collecting"><span>02</span><div><strong>作品征集</strong></div></li>
+          <li data-phase="judging"><span>03</span><div><strong>作品评审</strong></div></li>
+          <li data-phase="result"><span>04</span><div><strong>结果公示与领奖</strong></div></li>
+        </ol>
+      </section>
+
+      <section class="competition-section competition-section-anchor competition-tracks" id="tracks" data-competition-tracks data-home-section="tracks" aria-labelledby="tracks-title">
+        <div class="competition-section-head competition-section-head--editorial">
+          <div><h2 id="tracks-title">赛道与赛题</h2></div>
+          <a href="./competition-rules.html#submission" data-competition-link>查看投稿规格</a>
+        </div>
+        <div class="competition-track-grid">
+          <article data-competition-track="short" data-track-index="01"><div class="competition-track-top"><span>01</span><em>8–30s</em></div><div class="competition-track-copy"><small>极短叙事</small><h3>瞬间成境</h3><p>用一个核心画面完成短促而清晰的表达，让情绪在第一眼发生。</p><dl class="competition-track-notes"><div><dt>创作切口</dt><dd>聚焦一种情绪或一个视觉奇观</dd></div><div><dt>表达提示</dt><dd>3 秒进入主题，结尾留下记忆点</dd></div></dl></div><a href="./competition-works.html?track=short" data-competition-link data-competition-track-action data-track="short">查看本赛道作品 <span aria-hidden="true">→</span></a></article>
+          <article data-competition-track="medium" data-track-index="02"><div class="competition-track-top"><span>02</span><em>30–90s</em></div><div class="competition-track-copy"><small>完整段落</small><h3>未来来信</h3><p>从一个具体变化出发，讲述一封来自未来、回应当下的影像来信。</p><dl class="competition-track-notes"><div><dt>创作切口</dt><dd>未来生活中的一次相遇或选择</dd></div><div><dt>表达提示</dt><dd>建立起承转合，让想象落到人物</dd></div></dl></div><a href="./competition-works.html?track=medium" data-competition-link data-competition-track-action data-track="medium">查看本赛道作品 <span aria-hidden="true">→</span></a></article>
+          <article data-competition-track="long" data-track-index="03"><div class="competition-track-top"><span>03</span><em>90s+</em></div><div class="competition-track-copy"><small>连续叙事</small><h3>世界之外</h3><p>建立人物、世界与转折，用连续叙事带观众走进未知边界。</p><dl class="competition-track-notes"><div><dt>创作切口</dt><dd>完整世界观与鲜明角色关系</dd></div><div><dt>表达提示</dt><dd>用冲突推动变化，收束清晰结局</dd></div></dl></div><a href="./competition-works.html?track=long" data-competition-link data-competition-track-action data-track="long">查看本赛道作品 <span aria-hidden="true">→</span></a></article>
+          <article data-competition-track="free" data-track-index="04"><div class="competition-track-top"><span>04</span><em>自由创作</em></div><div class="competition-track-copy"><small>自由命题</small><h3>留下你的辨识度</h3><p>不限定主题与叙事方式，用作品建立只属于你的视觉表达。</p><dl class="competition-track-notes"><div><dt>创作切口</dt><dd>个人风格、实验影像或混合媒介</dd></div><div><dt>表达提示</dt><dd>形式可以自由，核心表达需要完整</dd></div></dl></div><a href="./competition-works.html?track=free" data-competition-link data-competition-track-action data-track="free">查看本赛道作品 <span aria-hidden="true">→</span></a></article>
+        </div>
+      </section>
+
+      <section class="competition-section competition-section-anchor" id="awards" data-competition-awards data-home-section="awards" aria-labelledby="awards-title">
+        <div class="competition-section-head"><div><h2 id="awards-title">赛事奖励</h2></div></div>
+        <div class="competition-award-grid">
+          <article class="is-primary" data-competition-award="champion"><div class="competition-award-rank"><span>01</span><img src="resources/icons/remixicon/svg/Finance/trophy-line.svg" alt=""></div><div class="competition-award-copy"><h3>赛道冠军</h3><small>每赛道 1 名</small><strong>10,000 <em>积分</em></strong><p>专题推荐</p></div></article>
+          <article data-competition-award="runner-up"><div class="competition-award-rank"><span>02</span><img src="resources/icons/remixicon/svg/Business/medal-line.svg" alt=""></div><div class="competition-award-copy"><h3>赛道亚军</h3><small>每赛道 1 名</small><strong>6,000 <em>积分</em></strong><p>专题推荐</p></div></article>
+          <article data-competition-award="third"><div class="competition-award-rank"><span>03</span><img src="resources/icons/remixicon/svg/Business/medal-2-line.svg" alt=""></div><div class="competition-award-copy"><h3>赛道季军</h3><small>每赛道 1 名</small><strong>3,000 <em>积分</em></strong><p>专题推荐</p></div></article>
+        </div>
+        <div class="competition-participation-reward" data-competition-participation-reward>
+          <div class="competition-participation-reward-copy"><img src="resources/icons/remixicon/svg/Finance/gift-line.svg" alt=""><div><strong data-participation-reward-field="name">有效参赛奖励</strong><p data-participation-reward-field="eligibility">至少 1 件作品审核通过并公开展示</p></div></div>
+          <div class="competition-participation-reward-benefit"><strong data-participation-reward-field="benefit">500 积分</strong><small data-participation-reward-field="limit">每个账号限领 1 次；获竞技奖项时积分不叠加，按较高项发放</small></div>
+        </div>
+      </section>
+
+      <footer class="competition-organizer-note" id="organizers" data-competition-organizers aria-label="主办与联系">
+        <p>主办：多元拾光社区 <span aria-hidden="true">·</span> 创作支持：MakeNow</p>
+        <button class="competition-assistant-link" type="button" data-competition-assistant aria-haspopup="dialog">联系赛事助手</button>
+      </footer>
+
+    </div>
+  </main>
+
+  <div class="competition-modal" data-competition-modal="register" hidden>
+    <section class="competition-modal-card" role="dialog" aria-modal="true" aria-labelledby="register-title">
+      <button class="competition-modal-close" type="button" data-competition-modal-close aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></button>
+      <span class="competition-modal-kicker">报名参赛</span>
+      <h2 id="register-title">选择你的首选赛道</h2>
+      <p>本届面向持有效社区账号的个人用户，不设年龄与地区限制；报名后仍可在投稿时选择其他赛道。</p>
+      <label class="competition-field"><span>首选赛道</span><select data-registration-track><option value="short">8–30s · 瞬间成境</option><option value="medium">30–90s · 未来来信</option><option value="long">90s+ · 世界之外</option><option value="free">自由创作</option></select></label>
+      <label class="competition-check"><input type="checkbox" data-registration-agreement><span>我已阅读并同意<a href="./competition-rules.html" data-competition-link>《赛事规则》</a></span></label>
+      <p class="competition-inline-message" data-registration-message aria-live="polite"></p>
+      <button class="competition-btn primary full" type="button" data-registration-confirm data-competition-register-confirm>确认报名</button>
+    </section>
+  </div>
+</div>
+<script src="./walkthrough.js?v=20260805-c02b"></script>
+<script src="./competition.js?v=20260813-submit-modal"></script>
+<script src="./competition-state-gates.js?v=20260814-state-matrix"></script>
+  <script>
+    (() => {
+      const applyHeroLifecycleState = () => {
+        const params = new URLSearchParams(location.search);
+        const eventKey = params.get("event") || "running";
+        const phaseKey = params.get("phase") || "collecting";
+        const lifecycleStates = {
+          upcoming: { title: "8月20日 10:00", note: "开放，敬请期待", tone: "upcoming" },
+          registration: { title: "报名进行中", note: "8月25日 23:59 截止", tone: "active" },
+          preheat: { title: "报名进行中", note: "8月25日 23:59 截止", tone: "active" },
+          collecting: { title: "作品征集中", note: "9月10日 23:59 截止", tone: "active" },
+          judging: { title: "作品评审中", note: "9月20日公布结果", tone: "waiting" },
+          "result-pending": { title: "结果即将公布", note: "9月20日公布获奖名单", tone: "waiting" },
+          result: { title: "获奖结果已公布", note: "查看获奖名单与优秀作品", tone: "result" },
+          ended: { title: "本届赛事已结束", note: "获奖作品持续开放浏览", tone: "ended" },
+          paused: { title: "赛事暂时暂停", note: "请关注后续恢复通知", tone: "paused" }
+        };
+        const lifecycle = eventKey === "paused"
+          ? lifecycleStates.paused
+          : eventKey === "ended"
+            ? lifecycleStates.ended
+            : lifecycleStates[phaseKey] || lifecycleStates.collecting;
+        const lifecycleMessage = document.querySelector("[data-competition-lifecycle-message]");
+        if (lifecycleMessage) {
+          lifecycleMessage.querySelector("strong").textContent = lifecycle.title;
+          lifecycleMessage.querySelector("span").textContent = lifecycle.note;
+          lifecycleMessage.dataset.tone = lifecycle.tone;
+          lifecycleMessage.hidden = false;
+        }
+
+        if (eventKey !== "upcoming" && phaseKey !== "upcoming") return;
+
+        const details = document.querySelector(".competition-hero-details");
+        if (!details) return;
+
+        const visibleCards = [...details.querySelectorAll(".competition-hero-detail-card")]
+          .filter(card => !card.hidden && getComputedStyle(card).display !== "none");
+        const timeCard = visibleCards.at(-1);
+        if (!timeCard) return;
+
+        details.classList.add("is-unopened-single");
+        timeCard.setAttribute("aria-label", "赛事开放时间");
+
+        const label = timeCard.querySelector("span");
+        const value = timeCard.querySelector("strong");
+        const note = timeCard.querySelector("small");
+        if (label) label.textContent = "开放时间";
+        if (value) value.textContent = "2026.08.20 10:00";
+        if (note) note.remove();
+      };
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", () => requestAnimationFrame(applyHeroLifecycleState), { once: true });
+      } else {
+        requestAnimationFrame(applyHeroLifecycleState);
+      }
+    })();
+  </script>
+  <script>
+    (() => {
+      const applyLifecyclePrimaryAction = () => {
+        const params = new URLSearchParams(window.location.search);
+        const eventState = (params.get("event") || "running").toLowerCase();
+        let phase = (params.get("phase") || "collecting").toLowerCase();
+        const auth = (params.get("auth") || "guest").toLowerCase();
+        const registration = (params.get("registration") || "unregistered").toLowerCase();
+        const submission = (params.get("submission") || "none").toLowerCase();
+
+        if (phase === "preheat") phase = "registration";
+        if (phase === "judging") phase = "review";
+        if (eventState === "upcoming") phase = "upcoming";
+        if (eventState === "ended") phase = "ended";
+
+        const actionElements = Object.fromEntries(
+          [...document.querySelectorAll("[data-competition-hero-action]")].map((element) => [
+            element.dataset.competitionHeroAction,
+            element
+          ])
+        );
+
+        const lifecycleMessage = document.querySelector("[data-competition-lifecycle-message]");
+        const lifecycleCopy = {
+          upcoming: ["8月20日 10:00 开放", "敬请期待"],
+          registration: ["报名进行中", "8月25日 23:59 截止"],
+          collecting: ["作品征集中", "9月10日 23:59 截止"],
+          review: ["作品评审中", "9月20日 10:00 公布结果"],
+          "result-pending": ["结果整理中", "名单公布后可查看名次"],
+          result: ["获奖结果已公布", "查看获奖名单与优秀作品"],
+          ended: ["本届赛事已结束", "获奖作品持续开放浏览"],
+          paused: ["赛事暂时暂停", "恢复时间请留意通知"]
+        };
+
+        if (lifecycleMessage && lifecycleCopy[phase]) {
+          const [title, description] = lifecycleCopy[phase];
+          const strong = lifecycleMessage.querySelector("strong");
+          const span = lifecycleMessage.querySelector("span");
+          if (strong) strong.textContent = title;
+          if (span) span.textContent = description;
+          lifecycleMessage.hidden = false;
+        }
+
+        const makeHref = (page, updates = {}, hash = "") => {
+          const next = new URLSearchParams(params);
+          Object.entries(updates).forEach(([key, value]) => next.set(key, value));
+          const target = new URL(page, window.location.href);
+          target.search = next.toString();
+          target.hash = hash;
+          return target.href;
+        };
+
+        Object.values(actionElements).forEach((element) => {
+          element.hidden = true;
+          element.setAttribute("aria-hidden", "true");
+          element.classList.add("competition-state-hidden");
+          element.classList.remove("competition-lifecycle-action-visible");
+        });
+
+        const showAction = (key, { text, href, tone = "primary", intent = "" }) => {
+          const element = actionElements[key];
+          if (!element) return;
+          element.textContent = text;
+          element.hidden = false;
+          element.removeAttribute("aria-hidden");
+          element.classList.remove("competition-state-hidden", "primary", "secondary");
+          element.classList.add(tone, "competition-lifecycle-action-visible");
+          if (element.tagName === "A" && href) element.href = href;
+          if (intent) element.dataset.ctaState = intent;
+          else delete element.dataset.ctaState;
+          if (intent === "login" && element.dataset.lifecycleLoginBound !== "true") {
+            element.dataset.lifecycleLoginBound = "true";
+            element.addEventListener("click", (event) => {
+              event.preventDefault();
+              document.querySelector(".competition-auth--guest")?.click();
+            });
+          }
+        };
+
+        const showRegisterAction = () => {
+          if (auth === "guest") {
+            showAction("result", { text: "登录后报名", href: "#login", intent: "login" });
+            return;
+          }
+          showAction("mine", { text: "立即报名", href: makeHref("competition-my-submissions.html"), intent: "register" });
+        };
+
+        if (phase === "upcoming") {
+          showAction("result", { text: "查看参赛规则", href: makeHref("competition-rules.html") });
+        } else if (phase === "registration") {
+          if (registration === "registered") {
+            showAction("result", {
+              text: "查看投稿要求",
+              href: makeHref("competition-rules.html", {}, "submission")
+            });
+          } else {
+            showRegisterAction();
+          }
+        } else if (phase === "collecting") {
+          if (registration !== "registered") {
+            showRegisterAction();
+          } else if (submission === "none") {
+            showAction("submit", { text: "投稿作品", href: makeHref("competition-submit.html") });
+          } else if (["draft", "v2-edit", "returned"].includes(submission)) {
+            showAction("submit", { text: "继续编辑", href: makeHref("competition-submit.html") });
+          } else {
+            showAction("mine", { text: "查看我的投稿", href: makeHref("competition-my-submissions.html") });
+          }
+        } else if (["review", "result-pending"].includes(phase)) {
+          if (auth === "user" && registration === "registered") {
+            showAction("mine", { text: "查看我的投稿", href: makeHref("competition-my-submissions.html") });
+          } else {
+            showAction("result", { text: "浏览参赛作品", href: makeHref("competition-works.html") });
+          }
+        } else if (["result", "ended"].includes(phase)) {
+          showAction("result", {
+            text: "查看获奖名单",
+            href: makeHref("competition-ranking.html", { board: "result", ranking: "published-result" })
+          });
+          if (auth === "user" && registration === "registered") {
+            showAction("mine", {
+              text: "我的投稿",
+              href: makeHref("competition-my-submissions.html"),
+              tone: "secondary"
+            });
+          }
+        } else {
+          showAction("result", { text: "查看参赛规则", href: makeHref("competition-rules.html") });
+        }
+      };
+
+      const scheduleLifecycleAction = () => window.setTimeout(applyLifecyclePrimaryAction, 0);
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", scheduleLifecycleAction, { once: true });
+      } else {
+        scheduleLifecycleAction();
+      }
+    })();
+  </script>
+</body>
+</html>

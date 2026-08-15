@@ -1,6 +1,6 @@
 # AI666 社区模块公网静态预览包
 
-生成时间：2026-08-09T09:17:08.262Z
+生成时间：2026-08-15T03:33:40.160Z
 
 ## 用途
 
@@ -36,6 +36,14 @@ npm.cmd run validate:community:public-preview
 - 官方教程: tutorial.html
 - 教程详情: tutorial-detail.html
 - 活动中心: activity-center.html
+- 赛事活动说明: competition-detail.html
+- 赛事参赛作品 · 作品广场: competition-works.html
+- 赛事我的投稿: competition-my-submissions.html
+- 赛事投稿: competition-submit.html
+- 赛事作品详情: competition-work.html
+- 赛事参赛作品 · 排行榜: competition-ranking.html
+- 赛事指南兼容页: competition-guide.html
+- 赛事参赛规则: competition-rules.html
 - 活动详情: campaign-detail.html
 - Prompt 共创计划: campaign-prompt.html
 - Prompt 投稿: prompt-submit.html
@@ -51,8 +59,10 @@ npm.cmd run validate:community:public-preview
 
 ## 调试页
 
+- 赛事 C 端状态预览台: competition-state-preview.html
 - 内容详情弹层调试台: content-detail-modals.html
 - 一期活动预览入口: campaign-ops.html
+- 漫剧创作转场页: manga-handoff.html
 
 ## 边界
 

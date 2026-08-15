@@ -1,0 +1,231 @@
+:root {
+  --state-gold: #f2c94c;
+  --state-cream: #f4efe2;
+  --state-mint: #67d9a2;
+  --state-warn: #ff8b6b;
+  --state-panel: #0b1118;
+  --state-panel-soft: #101821;
+  --state-line: rgba(255, 255, 255, .12);
+  --state-muted: rgba(244, 239, 226, .62);
+}
+
+.competition-state-gate-shell--designed {
+  display: grid;
+  min-height: calc(100vh - 64px);
+  padding: clamp(28px, 5vw, 76px);
+  place-items: center;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(242, 201, 76, .08), transparent 34%),
+    linear-gradient(135deg, #05080c, #081018 62%, #05080c);
+}
+
+.competition-state-scene {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(260px, .75fr);
+  width: min(1040px, 100%);
+  min-height: 430px;
+  overflow: hidden;
+  border: 1px solid var(--state-line);
+  border-radius: 24px;
+  background: linear-gradient(145deg, rgba(16, 24, 33, .96), rgba(7, 11, 16, .98));
+  box-shadow: 0 30px 90px rgba(0, 0, 0, .42);
+}
+
+.competition-state-scene::before {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: linear-gradient(90deg, var(--state-gold), transparent 72%);
+  content: '';
+}
+
+.competition-state-scene.is-attention::before { background: linear-gradient(90deg, var(--state-warn), transparent 72%); }
+.competition-state-scene.is-qualification::before { background: linear-gradient(90deg, var(--state-mint), transparent 72%); }
+
+.competition-state-scene-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(36px, 6vw, 78px);
+}
+
+.competition-state-eyebrow {
+  margin-bottom: 18px;
+  color: var(--state-gold);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.competition-state-scene h1 {
+  max-width: 680px;
+  margin: 0;
+  color: var(--state-cream);
+  font-size: clamp(34px, 4.2vw, 62px);
+  line-height: 1.02;
+  letter-spacing: -.05em;
+}
+
+.competition-state-scene-copy > p {
+  max-width: 620px;
+  margin: 22px 0 0;
+  color: var(--state-muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.competition-state-scene-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 34px;
+}
+
+.competition-state-scene-actions > span { color: rgba(244, 239, 226, .44); font-size: 12px; }
+
+.competition-state-scene-progress {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 42px;
+  border-left: 1px solid var(--state-line);
+  background: rgba(255, 255, 255, .018);
+}
+
+.competition-state-scene-progress > span {
+  margin-bottom: 22px;
+  color: rgba(244, 239, 226, .42);
+  font-size: 11px;
+  letter-spacing: .12em;
+}
+
+.competition-state-timeline { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+.competition-state-timeline li { position: relative; display: grid; grid-template-columns: 34px 1fr; gap: 12px; min-height: 66px; color: rgba(244, 239, 226, .28); }
+.competition-state-timeline li:not(:last-child)::after { position: absolute; top: 27px; bottom: -2px; left: 13px; width: 1px; background: rgba(255,255,255,.1); content: ''; }
+.competition-state-timeline li > span { display: grid; width: 28px; height: 28px; border: 1px solid rgba(255,255,255,.14); border-radius: 50%; place-items: center; font-size: 10px; }
+.competition-state-timeline li > b { padding-top: 5px; font-size: 13px; font-weight: 600; }
+.competition-state-timeline li.is-active { color: var(--state-cream); }
+.competition-state-timeline li.is-active > span { border-color: var(--state-gold); color: var(--state-gold); box-shadow: 0 0 0 5px rgba(242,201,76,.08); }
+.competition-state-timeline li.is-done { color: rgba(103,217,162,.7); }
+.competition-state-timeline li.is-done > span { border-color: rgba(103,217,162,.5); color: var(--state-mint); }
+
+.competition-state-statusline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 26px;
+  margin: 8px 0 24px;
+  padding: 16px 20px;
+  border: 1px solid var(--state-line);
+  border-left: 3px solid var(--state-gold);
+  border-radius: 4px 14px 14px 4px;
+  background: linear-gradient(90deg, rgba(242,201,76,.07), rgba(255,255,255,.015));
+}
+
+.competition-state-statusline.is-attention { border-left-color: var(--state-warn); background: linear-gradient(90deg, rgba(255,139,107,.08), transparent); }
+.competition-state-statusline.is-success { border-left-color: var(--state-mint); background: linear-gradient(90deg, rgba(103,217,162,.08), transparent); }
+.competition-state-statusline > div { display: grid; grid-template-columns: auto auto; align-items: baseline; gap: 5px 14px; }
+.competition-state-statusline span { color: var(--state-gold); font-size: 11px; font-weight: 800; letter-spacing: .08em; }
+.competition-state-statusline strong { color: var(--state-cream); font-size: 16px; }
+.competition-state-statusline p { grid-column: 1 / -1; margin: 0; color: var(--state-muted); font-size: 12px; }
+.competition-state-statusline > a { flex: 0 0 auto; color: var(--state-gold); font-size: 13px; font-weight: 700; text-decoration: none; }
+
+.competition-native-state {
+  display: grid;
+  grid-template-columns: 86px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 26px;
+  min-height: 220px;
+  margin: 26px 0;
+  padding: clamp(28px, 4vw, 54px);
+  border: 1px solid var(--state-line);
+  border-radius: 20px;
+  background: radial-gradient(circle at 8% 50%, rgba(242,201,76,.08), transparent 24%), var(--state-panel);
+}
+
+.competition-native-state.is-attention { background: radial-gradient(circle at 8% 50%, rgba(255,139,107,.09), transparent 24%), var(--state-panel); }
+.competition-native-state-mark { position: relative; width: 72px; height: 72px; }
+.competition-native-state-mark span, .competition-native-state-mark i, .competition-native-state-mark b { position: absolute; border: 1px solid rgba(242,201,76,.45); border-radius: 50%; }
+.competition-native-state-mark span { inset: 0; }
+.competition-native-state-mark i { inset: 13px; }
+.competition-native-state-mark b { inset: 28px; background: var(--state-gold); box-shadow: 0 0 24px rgba(242,201,76,.35); }
+.competition-native-state-copy > span { color: var(--state-gold); font-size: 11px; font-weight: 800; letter-spacing: .12em; }
+.competition-native-state-copy h2 { margin: 7px 0 8px; color: var(--state-cream); font-size: clamp(22px, 3vw, 34px); }
+.competition-native-state-copy p { max-width: 580px; margin: 0; color: var(--state-muted); line-height: 1.7; }
+.competition-native-state-copy small { display: block; margin-top: 12px; color: rgba(244,239,226,.38); }
+.competition-native-state-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+.competition-native-state-actions > a:not(.competition-btn) { color: var(--state-muted); font-size: 12px; text-decoration: none; }
+
+.competition-state-skeleton-grid { columns: 4 220px; column-gap: 16px; padding-top: 24px; }
+.competition-state-skeleton-grid i { display: block; height: calc(180px + var(--row) * 52px); margin: 0 0 16px; break-inside: avoid; border-radius: 16px; background: linear-gradient(105deg, rgba(255,255,255,.035) 20%, rgba(255,255,255,.09) 40%, rgba(255,255,255,.035) 60%); background-size: 220% 100%; animation: competition-state-shimmer 1.5s linear infinite; }
+@keyframes competition-state-shimmer { to { background-position-x: -220%; } }
+
+.competition-upload-card--state { position: relative; }
+.competition-upload-state { position: absolute; right: 12px; bottom: 12px; display: flex; align-items: center; gap: 8px; padding: 7px 10px; border-radius: 999px; background: rgba(3,8,12,.76); }
+.competition-upload-state b { color: var(--state-mint); font-size: 11px; }
+.competition-upload-state small { color: var(--state-muted); font-size: 10px; }
+.competition-upload-card--state.is-attention { border-color: rgba(255,139,107,.55) !important; }
+.competition-upload-card--state.is-attention .competition-upload-state b { color: var(--state-warn); }
+.competition-upload-card--state.is-processing .competition-upload-state b { color: var(--state-gold); }
+.competition-submit-form.is-readonly { opacity: .78; }
+.competition-submit-form.is-readonly input, .competition-submit-form.is-readonly textarea, .competition-submit-form.is-readonly select { cursor: not-allowed; }
+
+.competition-claim-panel--designed {
+  display: grid !important;
+  grid-template-columns: 1fr 1.3fr .9fr auto;
+  align-items: center;
+  gap: 26px;
+  padding: 26px !important;
+  border: 1px solid var(--state-line) !important;
+  border-left: 3px solid var(--state-gold) !important;
+  border-radius: 4px 18px 18px 4px !important;
+  background: linear-gradient(90deg, rgba(242,201,76,.055), rgba(255,255,255,.012)) !important;
+}
+.competition-claim-panel--designed > div { display: grid; gap: 5px; }
+.competition-claim-panel--designed span { color: rgba(244,239,226,.45); font-size: 11px; }
+.competition-claim-panel--designed strong { color: var(--state-cream); font-size: 16px; }
+.competition-claim-panel--designed p, .competition-claim-panel--designed small { margin: 0; color: var(--state-muted); font-size: 11px; }
+.competition-claim-status strong, .competition-claim-reward strong { color: var(--state-gold); }
+.competition-claim-reward strong { font-size: 24px; }
+.competition-claim-reward strong small { color: inherit; }
+
+.competition-work-detail-dialog--loading { display: grid; grid-template-columns: minmax(0,1.5fr) minmax(320px,.8fr); min-height: 650px; }
+.competition-work-state-media, .competition-work-detail-dialog--loading aside > i, .competition-work-detail-dialog--loading aside > div { border-radius: 16px; background: linear-gradient(105deg, rgba(255,255,255,.035), rgba(255,255,255,.08), rgba(255,255,255,.035)); background-size: 220% 100%; animation: competition-state-shimmer 1.5s linear infinite; }
+.competition-work-state-media { min-height: 620px; }
+.competition-work-detail-dialog--loading aside { display: grid; align-content: start; gap: 18px; padding: 34px; }
+.competition-work-detail-dialog--loading aside > i { display: block; width: 70%; height: 34px; }
+.competition-work-detail-dialog--loading aside > i:nth-child(2) { width: 100%; height: 18px; }
+.competition-work-detail-dialog--loading aside > i:nth-child(3) { width: 46%; height: 28px; }
+.competition-work-detail-dialog--loading aside > div { height: 260px; }
+.competition-work-review-chip { position: absolute; z-index: 4; top: 18px; left: 18px; padding: 8px 12px; border: 1px solid rgba(242,201,76,.35); border-radius: 999px; color: var(--state-gold); background: rgba(4,8,12,.82); font-size: 11px; }
+.competition-my-submission-state { display: inline-flex; margin: -18px 0 20px; padding: 7px 11px; border: 1px solid var(--state-line); border-radius: 999px; color: var(--state-gold); font-size: 11px; }
+
+@media (max-width: 900px) {
+  .competition-state-scene { grid-template-columns: 1fr; }
+  .competition-state-scene-progress { border-top: 1px solid var(--state-line); border-left: 0; }
+  .competition-state-timeline { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .competition-state-timeline li { grid-template-columns: 1fr; min-height: 0; text-align: center; }
+  .competition-state-timeline li::after { display: none; }
+  .competition-state-timeline li > span { margin: auto; }
+  .competition-native-state { grid-template-columns: 64px 1fr; }
+  .competition-native-state-actions { grid-column: 1 / -1; align-items: flex-start; }
+  .competition-claim-panel--designed { grid-template-columns: 1fr 1fr !important; }
+  .competition-work-detail-dialog--loading { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .competition-state-gate-shell--designed { padding: 16px; }
+  .competition-state-scene-copy, .competition-state-scene-progress { padding: 28px 22px; }
+  .competition-state-scene-actions, .competition-state-statusline { align-items: flex-start; flex-direction: column; }
+  .competition-state-statusline > div { grid-template-columns: 1fr; }
+  .competition-state-statusline p { grid-column: auto; }
+  .competition-native-state { grid-template-columns: 1fr; padding: 26px 22px; }
+  .competition-state-skeleton-grid { columns: 2 140px; }
+  .competition-claim-panel--designed { grid-template-columns: 1fr !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .competition-state-skeleton-grid i, .competition-work-state-media, .competition-work-detail-dialog--loading aside > * { animation: none !important; }
+}

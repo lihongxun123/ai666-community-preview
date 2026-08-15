@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>提交作品 - AIGC 创作挑战赛</title>
+  <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg"><link rel="stylesheet" href="./style.css?v=20260805-c02b"><link rel="stylesheet" href="./competition.css?v=20260813-submit-auto-height">
+  <link rel="stylesheet" href="./competition-state-gates.css?v=20260814-state-matrix">
+</head>
+<body>
+<div class="competition-page" data-page="competition-submit" data-competition-id="COMP-2026-AIGC-01" data-auth-default="user">
+  <header class="competition-header">
+    <div class="competition-header-inner">
+      <a class="competition-platform-brand" href="./index.html" data-leave-link aria-label="返回多元拾光社区"><img src="assets/brand/duoyuan-shiguang-logo-mark-reverse.svg" alt=""><strong>多元拾光</strong></a>
+      <a class="competition-brand" href="./competition-detail.html" data-competition-brand-lockup data-competition-link data-leave-link aria-label="AIGC 创作挑战赛活动介绍"><span class="competition-brand-copy"><strong data-competition-event-name>AIGC 创作挑战赛</strong></span></a>
+      <nav class="competition-site-nav" aria-label="赛事导航"><a href="./competition-detail.html" data-competition-link data-leave-link>活动介绍</a><a href="./competition-rules.html" data-competition-link data-leave-link>参赛规则</a><a href="./competition-ranking.html" data-competition-link data-leave-link>参赛作品</a><a href="./competition-my-submissions.html" data-competition-link data-leave-link class="is-active" aria-current="page">我的投稿</a></nav>
+      <div class="competition-header-right"><button class="competition-auth competition-auth--guest" type="button" data-competition-login-open>登录</button><div class="competition-auth competition-auth--logged" aria-label="当前登录用户"><img src="assets/image_assets/1.png" alt=""><span data-auth-name title="空镜">空镜</span></div></div>
+    </div>
+  </header>
+
+  <main class="competition-page-shell competition-subpage">
+    <section class="competition-event-notice" data-event-banner hidden role="status"></section>
+    <section class="competition-subpage-hero competition-subpage-hero--tight"><div><h1>提交作品</h1></div></section>
+    <section class="competition-submission-gate" data-submission-gate hidden></section>
+
+    <div class="competition-form-layout">
+      <form class="competition-submit-form" data-submission-form novalidate>
+        <section class="competition-form-section">
+          <div class="competition-form-section-head"><div><h2>作品信息</h2></div></div>
+          <label class="competition-field"><span>作品标题</span><input type="text" maxlength="40" value="光之门" placeholder="为作品起一个容易记住的名字" data-submission-title></label>
+          <label class="competition-field"><span>参赛赛道</span><select data-submission-track><option value="short">8–30s · 瞬间成境</option><option value="medium">30–90s · 未来来信</option><option value="long">90s+ · 世界之外</option><option value="free">自由创作</option></select></label>
+          <label class="competition-field"><span>作品简介</span><textarea rows="5" maxlength="300" placeholder="介绍你的创意、故事或想表达的内容" data-submission-description>旅人穿过无尽书库，向光照进来的门扉前行。</textarea></label>
+        </section>
+
+        <section class="competition-form-section">
+          <div class="competition-form-section-head"><div><h2>上传作品</h2></div></div>
+          <div class="competition-upload-grid">
+            <label class="competition-upload-slot" data-upload-slot="edited" data-upload-state="idle" tabindex="0">
+              <input type="file" accept="video/mp4,video/quicktime,.mp4,.mov" data-upload-input="edited">
+              <img src="resources/icons/remixicon/svg/Media/video-upload-line.svg" alt=""><strong>后期成片</strong><span data-upload-label>MP4 / MOV · 不超过 500MB</span><small>通过审核后公开展示</small>
+            </label>
+            <label class="competition-upload-slot" data-upload-slot="original" data-upload-state="idle" tabindex="0">
+              <input type="file" accept="video/mp4,video/quicktime,.mp4,.mov" data-upload-input="original">
+              <img src="resources/icons/remixicon/svg/Media/video-add-line.svg" alt=""><strong>生成原片</strong><span data-upload-label>上传 AI 生成原始视频</span><small>仅用于参赛资格确认</small>
+            </label>
+          </div>
+          <aside class="competition-submit-side">
+            <section class="competition-side-card"><h3>作品规格</h3><ul><li>16:9 横屏，建议 1920×1080，H.264 MP4 / MOV</li><li>单文件不超过 500MB，赛道与成片时长匹配</li><li>非中文对白配中文字幕，不带其他平台推广水印</li><li>生成原片与成片主要内容对应</li></ul></section>
+          </aside>
+        </section>
+
+        <section class="competition-form-section">
+          <label class="competition-check competition-check--card"><input type="checkbox" data-submission-agreement><span>我确认拥有作品及所用素材的合法使用权，并同意作品按<a href="./competition-rules.html" data-competition-link data-leave-link>《赛事规则》</a>参与展示、互动与评选。</span></label>
+          <p class="competition-inline-message" data-submit-message aria-live="polite"></p>
+          <div class="competition-form-actions"><button class="competition-btn secondary" type="button" data-save-draft>保存草稿</button><button class="competition-btn primary" type="button" data-submit-confirm data-competition-submit>提交审核</button></div>
+        </section>
+      </form>
+      <section class="competition-rejection" data-rejection-reason hidden><strong>需要修改</strong><p>成片中的部分素材来源不清晰，请补充对应生成原片后再次提交。</p></section>
+    </div>
+  </main>
+
+  <div class="competition-modal" data-competition-modal="leave" hidden><section class="competition-modal-card" role="dialog" aria-modal="true" aria-labelledby="leave-title"><button class="competition-modal-close" type="button" data-competition-modal-close aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></button><span class="competition-modal-kicker">尚未保存</span><h2 id="leave-title">要离开当前页面吗？</h2><p>未保存的修改会丢失，已上传文件也需要重新选择。</p><div class="competition-modal-actions"><button class="competition-btn secondary" type="button" data-competition-modal-close>继续编辑</button><button class="competition-btn primary" type="button" data-leave-discard>放弃修改</button></div></section></div>
+</div>
+<script src="./walkthrough.js?v=20260805-c02b"></script><script src="./competition.js?v=20260813-submit-no-stage-result"></script>
+<script src="./competition-state-gates.js?v=20260814-state-matrix"></script>
+</body>
+</html>

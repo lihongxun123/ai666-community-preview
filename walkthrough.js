@@ -6,6 +6,40 @@
     return section.querySelector("strong")?.textContent.trim() || "";
   }
 
+  function normalizeCompactCompetitionDrawer(drawer) {
+    if (drawer.querySelector(".v1-rule-section")) {
+      return;
+    }
+
+    const panel = drawer.querySelector(".competition-walkthrough-grid");
+    const rows = Array.from(panel?.querySelectorAll(":scope > p") || []);
+    if (!panel || rows.length === 0) {
+      return;
+    }
+
+    panel.classList.add("v1-walkthrough-panel");
+    const tabs = document.createElement("div");
+    tabs.className = "v1-walkthrough-tabs";
+    tabs.innerHTML = "<span>运营关注</span><span>研发关注</span>";
+    panel.prepend(tabs);
+
+    rows.forEach((row) => {
+      const label = row.querySelector("strong");
+      if (!label) {
+        return;
+      }
+      const detail = Array.from(row.childNodes)
+        .filter((node) => node !== label)
+        .map((node) => node.textContent || "")
+        .join("")
+        .trim();
+      const detailNode = document.createElement("span");
+      detailNode.textContent = detail;
+      row.replaceChildren(label, detailNode);
+      row.classList.add("v1-rule-section");
+    });
+  }
+
   function classifySections(drawer) {
     return Array.from(drawer.querySelectorAll(".v1-rule-section")).map((section, index) => {
       const label = getSectionLabel(section);
@@ -158,6 +192,7 @@
     }
 
     drawer.dataset.walkthroughReady = "true";
+    normalizeCompactCompetitionDrawer(drawer);
     classifySections(drawer);
     enhanceClose(drawer);
     enhanceTabs(drawer);
@@ -1966,7 +2001,25 @@
     const sendCodeButton = root.querySelector("[data-send-code]");
     const submitButton = root.querySelector("[data-login-complete-target]");
     const message = root.querySelector("[data-login-message]");
-    const registrationScenario = new URLSearchParams(window.location.search).get("taskGuideScenario") === "registration";
+    const routeParams = new URLSearchParams(window.location.search);
+    const registrationScenario = routeParams.get("taskGuideScenario") === "registration";
+    const resolveSameOriginTarget = (key) => {
+      const value = routeParams.get(key);
+      if (!value) return "";
+      try {
+        const target = new URL(value, window.location.href);
+        return target.origin === window.location.origin ? target.href : "";
+      } catch {
+        return "";
+      }
+    };
+    const cancelTarget = resolveSameOriginTarget("cancelTo");
+    const returnTarget = resolveSameOriginTarget("returnTo");
+    if (cancelTarget) {
+      root.querySelectorAll(".login-prototype-backdrop, .login-close").forEach((link) => {
+        link.href = cancelTarget;
+      });
+    }
     let cooldownTimer = 0;
     let cooldownActive = false;
 
@@ -2050,12 +2103,16 @@
       window.setTimeout(() => {
         submitButton.textContent = registrationScenario ? "注册成功" : "登录成功";
         setMessage(
-          registrationScenario ? "注册成功，正在自动登录并返回首页" : "登录成功，正式产品将返回登录前页面",
+          returnTarget
+            ? "登录成功，正在返回登录前页面"
+            : registrationScenario
+              ? "注册成功，正在自动登录并返回首页"
+              : "登录成功，正式产品将返回登录前页面",
           "success"
         );
-        if (registrationScenario) {
+        if (returnTarget || registrationScenario) {
           window.setTimeout(() => {
-            window.location.href = "./index.html?taskGuideTest=registration-success";
+            window.location.href = returnTarget || "./index.html?taskGuideTest=registration-success";
           }, 720);
         }
       }, 480);

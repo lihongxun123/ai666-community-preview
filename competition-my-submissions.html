@@ -1,37 +1,257 @@
 <!doctype html>
 <html lang="zh-CN">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>我的投稿 - AIGC 创作挑战赛</title><link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg"><link rel="stylesheet" href="./style.css?v=20260805-c02b"><link rel="stylesheet" href="./competition.css?v=20260814-my-submissions-actions">
-  <link rel="stylesheet" href="./competition-state-gates.css?v=20260814-state-matrix"></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>我的投稿 - AIGC 创作挑战赛</title><link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg"><link rel="stylesheet" href="./style.css?v=20260805-c02b"><link rel="stylesheet" href="./competition.css?v=20260817-my-submissions-state-source">
+  <link rel="stylesheet" href="./competition-state-gates.css?v=20260814-state-matrix">
+  <script>
+  (() => {
+    const url = new URL(window.location.href);
+    if (url.searchParams.get('view') !== 'all' || url.searchParams.get('preview') !== 'states') {
+      url.searchParams.set('view', 'all');
+      url.searchParams.set('preview', 'states');
+      window.history.replaceState(null, '', url);
+    }
+  })();
+  </script>
+</head>
 <body>
 <div class="competition-page" data-page="competition-my-submissions" data-competition-id="COMP-2026-AIGC-01" data-auth-default="user">
   <header class="competition-header"><div class="competition-header-inner">
     <a class="competition-platform-brand" href="./index.html" aria-label="返回多元拾光社区"><img src="assets/brand/duoyuan-shiguang-logo-mark-reverse.svg" alt=""><strong>多元拾光</strong></a>
-    <a class="competition-brand" href="./competition-detail.html" data-competition-brand-lockup data-competition-link aria-label="AIGC 创作挑战赛活动介绍"><span class="competition-brand-copy"><strong data-competition-event-name>AIGC 创作挑战赛</strong></span></a>
-    <nav class="competition-site-nav" aria-label="赛事导航"><a href="./competition-detail.html" data-competition-link>活动介绍</a><a href="./competition-rules.html" data-competition-link>参赛规则</a><a href="./competition-ranking.html" data-competition-link>参赛作品</a><a href="./competition-my-submissions.html" data-competition-link class="is-active" aria-current="page">我的投稿</a></nav>
+    <a class="competition-brand" href="./competition-detail.html" data-competition-brand-lockup data-competition-link aria-label="AIGC 创作挑战赛赛事主页"><span class="competition-brand-copy"><strong data-competition-event-name>AIGC 创作挑战赛</strong></span></a>
+    <nav class="competition-site-nav" aria-label="赛事导航"><a href="./competition-detail.html" data-competition-link>赛事主页</a><a href="./competition-rules.html" data-competition-link>参赛规则</a><a href="./competition-works.html" data-competition-link>参赛作品</a><a href="./competition-ranking.html" data-competition-link data-competition-ranking-nav>排行榜</a><a href="./competition-my-submissions.html" data-competition-link class="is-active" aria-current="page">我的投稿</a></nav>
     <div class="competition-header-right"><button class="competition-auth competition-auth--guest" type="button" data-competition-login-open>登录</button><div class="competition-auth competition-auth--logged" aria-label="当前登录用户"><img src="assets/image_assets/1.png" alt=""><span data-auth-name title="空镜">空镜</span></div></div>
   </div></header>
   <main class="competition-page-shell competition-subpage">
     <section class="competition-event-notice" data-event-banner hidden role="status"></section>
-    <section class="competition-my-submissions-head"><h1>我的投稿</h1><a class="competition-btn primary" href="./competition-submit.html" data-competition-link data-my-submission-primary>投稿新作品</a></section>
-    <section class="competition-my-submission-summary" aria-label="投稿概览"><div><span>已投稿</span><strong>1 <small>/ 3</small></strong></div><div><span>已公开</span><strong>1</strong></div><div><span>当前结果</span><strong data-my-submission-result>热度榜 01</strong></div></section>
+    <section class="competition-my-submissions-head"><div><span>个人参赛管理</span><h1>我的投稿</h1></div><a class="competition-btn primary" href="./competition-submit.html" data-competition-link data-my-submission-primary>投稿新作品</a></section>
     <section class="competition-my-submission-list" aria-label="我的投稿记录">
-      <article class="competition-my-submission-card">
-        <a class="competition-my-submission-cover" href="./competition-work.html?submission_id=S-001" data-competition-link><img src="assets/competition/featured-light-library.png" alt="作品《光之门》"><span data-my-submission-state>已公开</span></a>
+      <article class="competition-my-submission-card" data-submission-status="public">
+        <a class="competition-my-submission-cover" href="./competition-work.html?work_id=AIGC-2001&amp;submission_id=S-001" data-competition-link data-community-work-id="AIGC-2001" data-competition-submission-id="S-001"><img src="assets/competition/featured-light-library.png" alt="作品《光之门》"><span data-my-submission-state>已公开</span></a>
         <div class="competition-my-submission-copy">
-          <div><h2>光之门</h2><span>8–30s · 瞬间成境</span></div>
+          <div class="competition-my-submission-title-row"><h2>光之门</h2><span>8–30s · 瞬间成境</span></div>
           <p>旅人穿过无尽书库，向光照进来的门扉前行。</p>
-          <div class="competition-my-submission-meta-line"><span data-my-submission-status>已公开</span><time datetime="2026-09-08T18:32:00+08:00">数据更新于 09.08 18:32</time></div>
-          <dl class="competition-my-submission-metrics" aria-label="作品数据">
+          <p class="competition-my-submission-lifecycle-note" data-my-submission-lifecycle-note hidden></p>
+          <dl class="competition-my-submission-metrics" aria-label="作品赛事数据">
             <div class="is-primary"><dt>热度</dt><dd>9,840</dd></div>
             <div class="competition-my-submission-score"><dt>评委评分</dt><dd>91.4</dd></div>
+            <div class="competition-my-submission-rank"><dt>最终名次</dt><dd>冠军</dd></div>
           </dl>
         </div>
-        <div class="competition-my-submission-actions"><a class="competition-btn secondary" href="./competition-work.html?submission_id=S-001" data-competition-link data-my-submission-view>查看作品</a><a class="competition-btn text" href="./competition-submit.html?submission_id=S-001" data-competition-link data-my-submission-edit>编辑投稿</a><button class="competition-btn text competition-my-submission-delete" type="button" data-my-submission-delete hidden>删除草稿</button></div>
+        <div class="competition-my-submission-actions" data-my-submission-actions></div>
       </article>
     </section>
   </main>
 </div>
-<script src="./walkthrough.js?v=20260805-c02b"></script><script src="./competition.js?v=20260814-my-submissions-actions"></script>
+<script src="./walkthrough.js?v=20260805-c02b"></script><script src="./competition.js?v=20260816-submission-lifecycle"></script>
 <script src="./competition-state-gates.js?v=20260814-state-cleanup"></script>
+<script>
+(() => {
+  const params = new URLSearchParams(window.location.search);
+  const phase = params.get('phase') || 'collecting';
+  const eventState = params.get('event') || 'running';
+  const rawSubmission = params.get('submission') || 'none';
+  const editablePhase = phase === 'collecting' && eventState === 'running';
+  const resultPhase = phase === 'result' || eventState === 'ended';
+  const quotaAvailable = params.get('quota') !== 'full';
+  const showStateCollection = params.get('view') === 'all';
+  const normalizedSubmission = ['rejected', 'returned'].includes(rawSubmission) ? 'failed' : rawSubmission;
+  const supportedStates = ['draft', 'review', 'failed', 'down', 'public'];
+  const submissionState = supportedStates.includes(normalizedSubmission) ? normalizedSubmission : 'none';
+  const stateCopy = {
+    draft: { label: '草稿', note: '尚未提交，不参与审核与榜单。' },
+    review: { label: '审核中', note: '作品已提交，正在等待赛事方审核。' },
+    failed: { label: '未通过', note: '未通过原因：作品时长不符合所选赛道要求。作品征集期间可修改并重新提交。' },
+    down: { label: '已下架', note: '作品当前不再公开展示，可查看处理说明。' },
+    public: { label: '已公开', note: '' }
+  };
+  const records = {
+    draft: { workId: 'AIGC-DRAFT-01', submissionId: 'S-DRAFT-01', title: '光之门', track: '8–30s · 瞬间成境', summary: '旅人穿过无尽书库，向光照进来的门扉前行。', cover: 'assets/competition/featured-light-library.png' },
+    review: { workId: 'AIGC-REVIEW-02', submissionId: 'S-REVIEW-02', title: '回声停在清晨', track: '8–30s · 瞬间成境', summary: '以影像记录一段被忽略的时间与情绪。', cover: 'assets/image_assets/20.png' },
+    failed: { workId: 'AIGC-FAILED-04', submissionId: 'S-FAILED-04', title: '纸上星河', track: '90s+ · 世界之外', summary: '一封没有寄出的信，在纸页之间展开星河。', cover: 'assets/image_assets/15.jpg' },
+    public: { workId: 'AIGC-2001', submissionId: 'S-001', title: '人间有味', track: '8–30s · 瞬间成境', summary: '从一顿晚饭看见人与城市之间的温度。', cover: 'assets/image_assets/20.png' },
+    down: { workId: 'AIGC-DOWN-06', submissionId: 'S-DOWN-06', title: '风的切片', track: '自由创作', summary: '风穿过旧街，将零散记忆重新拼接。', cover: 'assets/image_assets/21.png' }
+  };
+
+  const hrefFor = (page, changes = {}) => {
+    const next = new URLSearchParams(params);
+    Object.entries(changes).forEach(([key, value]) => value === null ? next.delete(key) : next.set(key, value));
+    return `${page}?${next.toString()}`;
+  };
+  const actionLink = (label, href, tone = 'secondary') => `<a class="competition-btn ${tone}" href="${href}">${label}</a>`;
+  const actionFor = (state, record) => {
+    const submitHref = hrefFor('competition-submit.html', { work_id: record.workId, submission_id: record.submissionId, submission: state, work: 'private' });
+    const workHref = hrefFor('competition-work.html', { work_id: record.workId, submission_id: record.submissionId, submission: 'public', work: 'public' });
+    if (state === 'public') return actionLink('查看作品', workHref);
+    if (state === 'draft' && editablePhase) return `${actionLink('编辑草稿', submitHref, 'primary')}<button class="competition-btn text competition-my-submission-delete" type="button" data-my-submission-delete>删除草稿</button>`;
+    if (state === 'failed' && editablePhase) return `${actionLink('修改并重新提交', submitHref, 'primary')}<button class="competition-btn text competition-my-submission-delete" type="button" data-my-submission-delete>删除投稿</button>`;
+    if (state === 'failed') return '';
+    if (state === 'down') return actionLink('查看处理说明', hrefFor('competition-rules.html'));
+    return '';
+  };
+  const metricsFor = (state) => state === 'public' ? `<dl class="competition-my-submission-metrics" aria-label="作品赛事数据"><div class="is-primary"><dt>热度</dt><dd>9,840</dd></div><div class="competition-my-submission-score"${resultPhase ? '' : ' hidden'}><dt>评委评分</dt><dd>91.4</dd></div><div class="competition-my-submission-rank"${resultPhase ? '' : ' hidden'}><dt>最终名次</dt><dd>冠军</dd></div></dl>` : '';
+  const cardFor = (state) => {
+    const record = records[state];
+    const config = stateCopy[state];
+    const action = actionFor(state, record);
+    const coverHref = state === 'public'
+      ? hrefFor('competition-work.html', { work_id: record.workId, submission_id: record.submissionId, submission: 'public', work: 'public' })
+      : hrefFor('competition-submit.html', { work_id: record.workId, submission_id: record.submissionId, submission: state, work: 'private' });
+    return `<article class="competition-my-submission-card" data-community-work-id="${record.workId}" data-competition-submission-id="${record.submissionId}" data-submission-status="${state}"><a class="competition-my-submission-cover" href="${coverHref}" data-community-work-id="${record.workId}" data-competition-submission-id="${record.submissionId}"><img src="${record.cover}" alt="作品《${record.title}》"><span data-my-submission-state>${config.label}</span></a><div class="competition-my-submission-copy"><div class="competition-my-submission-title-row"><h2>${record.title}</h2><span>${record.track}</span></div><p>${record.summary}</p>${config.note ? `<p class="competition-my-submission-lifecycle-note">${config.note}</p>` : ''}${metricsFor(state)}</div><div class="competition-my-submission-actions" data-my-submission-actions${action ? '' : ' hidden'}>${action}</div></article>`;
+  };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const head = document.querySelector('.competition-my-submissions-head');
+    const list = document.querySelector('.competition-my-submission-list');
+    head?.querySelectorAll('[data-my-submission-primary], .competition-my-submission-closed').forEach((node) => node.remove());
+    if (editablePhase && quotaAvailable && head) {
+      head.insertAdjacentHTML('beforeend', `<a class="competition-btn primary" href="${hrefFor('competition-submit.html', { submission: 'new', work: 'private', content: 'normal' })}" data-my-submission-primary>投稿新作品</a>`);
+    }
+    if (!list) return;
+
+    const visibleStates = showStateCollection
+      ? ['draft', 'review', 'failed', 'public', 'down']
+      : (submissionState === 'none' ? [] : [submissionState]);
+    if (!visibleStates.length) {
+      const emptyTitle = editablePhase ? '还没有投稿记录' : '本届赛事暂无投稿记录';
+      const emptyText = editablePhase ? '新建投稿或保存草稿后，记录会显示在这里。' : '当前阶段不再开放新投稿。';
+      list.innerHTML = `<div class="competition-empty-state competition-my-submission-empty" data-my-submission-empty><strong>${emptyTitle}</strong><p>${emptyText}</p></div>`;
+      return;
+    }
+    list.innerHTML = visibleStates.map(cardFor).join('');
+    list.querySelectorAll('[data-my-submission-delete]').forEach((button) => {
+      button.addEventListener('click', () => {
+        if (!window.confirm('确认删除这条投稿记录吗？删除后无法恢复。')) return;
+        const card = button.closest('.competition-my-submission-card');
+        if (showStateCollection) {
+          card?.remove();
+          return;
+        }
+        const next = new URLSearchParams(params);
+        next.set('submission', 'none');
+        next.set('work', 'private');
+        next.set('content', 'empty');
+        window.location.replace(`competition-my-submissions.html?${next.toString()}`);
+      });
+    });
+  });
+})();
+</script>
+<script>
+(() => {
+  const normalizeNewSubmissionLink = () => {
+    document.querySelectorAll('a').forEach((link) => {
+      if (link.textContent.trim() !== '投稿新作品') return;
+      const target = new URL(link.getAttribute('href') || '', window.location.href);
+      target.searchParams.delete('work_id');
+      target.searchParams.delete('submission_id');
+      target.searchParams.set('submission', 'new');
+      target.searchParams.set('work', 'private');
+      target.searchParams.set('view', 'all');
+      target.searchParams.set('preview', 'states');
+      link.setAttribute('href', `${target.pathname.split('/').pop()}?${target.searchParams.toString()}`);
+    });
+  };
+
+  const replacePortraitCovers = () => {
+    const sceneCovers = [
+      'assets/competition/aigc-competition-hero-ocean-pod.png',
+      'assets/competition/featured-ancient-tree.png',
+      'assets/competition/featured-light-library.png',
+      'assets/competition/featured-sky-whale-city.png'
+    ];
+    document.querySelectorAll('.competition-my-submission-cover img').forEach((image, index) => {
+      image.src = sceneCovers[index % sceneCovers.length];
+    });
+  };
+
+  const applyLifecycleMetrics = () => {
+    const params = new URLSearchParams(window.location.search);
+    const isStatePreview = params.get('preview') === 'states' && params.get('view') === 'all';
+    const canShowResult = params.get('phase') === 'result'
+      || params.get('event') === 'ended'
+      || params.get('ranking') === 'published-result'
+      || isStatePreview;
+
+    const removeMetric = (metrics, labels) => {
+      metrics.querySelectorAll('dt').forEach((term) => {
+        if (!labels.includes(term.textContent.trim())) return;
+        const value = term.nextElementSibling;
+        const item = term.parentElement !== metrics ? term.parentElement : null;
+        if (item) {
+          item.remove();
+          return;
+        }
+        term.remove();
+        if (value?.tagName === 'DD') value.remove();
+      });
+    };
+
+    const appendMetric = (metrics, label, value, className) => {
+      const existingTerm = [...metrics.querySelectorAll('dt')].find((term) => term.textContent.trim() === label);
+      if (existingTerm) {
+        const existingItem = existingTerm.parentElement !== metrics ? existingTerm.parentElement : null;
+        existingItem?.removeAttribute('hidden');
+        if (existingItem && className) existingItem.classList.add(className);
+        const existingValue = existingTerm.nextElementSibling;
+        if (existingValue?.tagName === 'DD') existingValue.textContent = value;
+        return;
+      }
+      const item = document.createElement('div');
+      item.className = className;
+      const term = document.createElement('dt');
+      const description = document.createElement('dd');
+      term.textContent = label;
+      description.textContent = value;
+      item.append(term, description);
+      metrics.append(item);
+    };
+
+    document.querySelectorAll('.competition-my-submission-card').forEach((card) => {
+      const metrics = card.querySelector('.competition-my-submission-metrics');
+      if (!metrics) return;
+      const isPublic = card.dataset.submissionStatus === 'public';
+      if (!isPublic) {
+        removeMetric(metrics, ['互动', '互动数据', '评委评分', '最终名次']);
+        return;
+      }
+      removeMetric(metrics, ['互动']);
+      appendMetric(metrics, '互动数据', '1,679 次', 'competition-my-submission-interaction');
+      removeMetric(metrics, ['最终名次']);
+      if (canShowResult) {
+        appendMetric(metrics, '评委评分', '91.4', 'competition-my-submission-score');
+      } else {
+        removeMetric(metrics, ['评委评分']);
+      }
+    });
+  };
+
+  const appendLifecycleRule = () => {
+    const grid = document.querySelector('[data-competition-walkthrough] .competition-walkthrough-grid');
+    if (!grid || grid.querySelector('[data-my-submission-lifecycle-rule]')) return;
+    const rule = document.createElement('p');
+    rule.dataset.mySubmissionLifecycleRule = '';
+    rule.innerHTML = '<strong>状态与预览边界</strong>当前原型默认展示投稿全状态。仅已公开作品展示热度与互动数据；评委评分只在结果公布后展示。多状态预览会同时呈现互动与评分样式，真实页面仍按赛事阶段控制。';
+    grid.appendChild(rule);
+  };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    normalizeNewSubmissionLink();
+    replacePortraitCovers();
+    applyLifecycleMetrics();
+    appendLifecycleRule();
+  });
+
+  window.addEventListener('message', (event) => {
+    if (event.origin !== window.location.origin) return;
+    const payload = event.data;
+    if (!payload || payload.type !== 'competition:submission-complete' || !payload.href) return;
+    const target = new URL(payload.href, window.location.href);
+    target.searchParams.delete('embed');
+    target.searchParams.set('view', 'all');
+    target.searchParams.set('preview', 'states');
+    window.location.href = target.href;
+  });
+})();
+</script>
 </body>
 </html>

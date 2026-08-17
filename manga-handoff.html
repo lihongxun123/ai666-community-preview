@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="robots" content="noindex,nofollow">
+  <title>正在进入 MakeNow - 多元拾光</title>
+  <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
+  <style>
+    :root{
+      --bg:#05070b;
+      --surface:#080b11;
+      --line:rgba(255,250,240,.12);
+      --line-strong:rgba(255,250,240,.2);
+      --text:#fffaf0;
+      --muted:#8f949d;
+      --muted-strong:#c3c5c8;
+      --gold:#f4c95d;
+      --gold-soft:rgba(244,201,93,.14);
+      --cyan:#38d7f3;
+      --blue:#4d87ff;
+      --danger:#ff8c7d;
+      --warning:#f2b86b;
+    }
+    *{box-sizing:border-box}
+    html,body{min-width:320px;min-height:100%}
+    body{margin:0;color:var(--text);background:var(--bg);font-family:"MiSans","HarmonyOS Sans SC","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased}
+    a,button{font:inherit}
+    button{color:inherit}
+    .page{min-height:100vh;display:grid;grid-template-rows:auto 1fr;overflow:hidden;background:radial-gradient(circle at 88% 18%,rgba(56,215,243,.07),transparent 24%),var(--bg)}
+    .top{position:relative;z-index:5;width:min(calc(100% - 64px),1440px);min-height:84px;display:flex;align-items:center;justify-content:space-between;gap:24px;margin:0 auto}
+    .brand-lockup{display:flex;align-items:center;gap:14px;min-width:0}
+    .community-brand{display:flex;align-items:center;gap:10px;white-space:nowrap}
+    .community-brand img{width:32px;height:32px;display:block}
+    .community-brand strong{font-size:15px;letter-spacing:.04em}
+    .brand-cross{color:rgba(255,250,240,.34);font-size:18px;font-weight:300}
+    .makenow-wordmark{width:146px;height:34px;display:block;overflow:hidden;background:#070707 url("./_assets/makenow-home-reference.png") no-repeat -22px -24px;background-size:1170px 930px;border-radius:6px}
+    .secure-note{display:flex;align-items:center;gap:8px;color:rgba(255,250,240,.48);font-size:12px;letter-spacing:.08em}
+    .secure-note:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 14px rgba(244,201,93,.55)}
+    .main{width:min(calc(100% - 48px),1488px);min-height:0;display:grid;grid-template-columns:minmax(0,8fr) minmax(440px,4fr);margin:0 auto 24px;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:var(--surface);box-shadow:0 34px 110px rgba(0,0,0,.44)}
+    .cinema{position:relative;min-height:calc(100vh - 108px);overflow:hidden;background:#090b0e}
+    .cinema:before{content:"";position:absolute;inset:0;background:url("./_assets/makenow-handoff-cinematic.png") left center/180% 100% no-repeat;transform:scale(1.01);animation:scene-in 1.1s cubic-bezier(.2,.75,.25,1) both}
+    .cinema:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 58%,rgba(5,7,11,.62) 87%,var(--surface) 100%),linear-gradient(180deg,rgba(5,7,11,.05),rgba(5,7,11,.2))}
+    .cinema-copy{position:absolute;z-index:2;left:48px;right:48px;bottom:42px;display:flex;align-items:flex-end;justify-content:space-between;gap:28px}
+    .cinema-caption{max-width:520px}
+    .cinema-kicker{display:block;margin-bottom:10px;color:var(--gold);font-size:11px;font-weight:800;letter-spacing:.18em}
+    .cinema-caption h2{max-width:500px;margin:0 0 12px;font:800 clamp(30px,3.4vw,52px)/1.12 "Source Han Serif SC","Noto Serif SC","STSong",serif;letter-spacing:-.035em;text-wrap:balance}
+    .cinema-caption p{max-width:430px;margin:0;color:rgba(255,250,240,.62);font-size:14px;line-height:1.8}
+    .cinema-tag{flex:none;padding:9px 12px;border:1px solid rgba(244,201,93,.24);border-radius:999px;color:#efd78c;background:rgba(5,7,11,.55);font-size:11px;backdrop-filter:blur(12px)}
+    .handoff{position:relative;display:grid;align-content:center;min-width:0;padding:72px 64px 64px;border-left:1px solid var(--line);background:linear-gradient(180deg,rgba(9,12,18,.98),rgba(5,7,11,.98))}
+    .handoff:before{content:"";position:absolute;top:0;left:0;width:1px;height:36%;background:linear-gradient(180deg,var(--cyan),transparent);opacity:.55}
+    .eyebrow{margin:0 0 20px;color:var(--cyan);font-size:11px;font-weight:800;letter-spacing:.16em}
+    h1{margin:0 0 18px;font:800 clamp(40px,4.5vw,64px)/1.08 "Source Han Serif SC","Noto Serif SC","STSong",serif;letter-spacing:-.045em;text-wrap:balance}
+    h1 span{color:var(--cyan)}
+    .copy{min-height:58px;margin:0 0 42px;color:var(--muted-strong);font-size:15px;line-height:1.85}
+    .progress{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:0 0 34px;padding:0;list-style:none}
+    .step{position:relative;padding-top:34px;color:rgba(255,250,240,.32);font-size:12px;white-space:nowrap}
+    .step:before{content:"";position:absolute;top:2px;left:0;width:18px;height:18px;border:1px solid rgba(255,250,240,.24);border-radius:50%;background:var(--surface);z-index:2}
+    .step:not(:last-child):after{content:"";position:absolute;top:11px;left:18px;right:0;height:1px;background:rgba(255,250,240,.15)}
+    .step.done,.step.active{color:var(--text)}
+    .step.done:before{border-color:var(--blue);background:var(--blue);box-shadow:0 0 0 5px rgba(77,135,255,.12)}
+    .step.done:not(:last-child):after{background:linear-gradient(90deg,var(--blue),var(--cyan))}
+    .step.active:before{border-color:var(--cyan);background:var(--cyan);box-shadow:0 0 0 5px rgba(56,215,243,.12);animation:status-pulse 1.8s ease-in-out infinite}
+    .handoff[data-state="failure"] .eyebrow,.handoff[data-state="failure"] h1 span{color:var(--danger)}
+    .handoff[data-state="failure"] .step.active:before{border-color:var(--danger);background:var(--danger);box-shadow:0 0 0 5px rgba(255,140,125,.12);animation:none}
+    .countdown{min-height:22px;margin:0 0 18px;color:#d4b963;font-size:12px;font-weight:700}
+    .actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+    .primary,.secondary{min-height:48px;display:inline-flex;align-items:center;justify-content:center;padding:0 22px;border-radius:999px;text-decoration:none;font-size:13px;font-weight:800;transition:transform .18s ease,border-color .18s ease,background .18s ease}
+    .primary{border:1px solid transparent;color:#080b0d;background:linear-gradient(95deg,var(--cyan),#6aa8ff)}
+    .primary:hover{transform:translateY(-1px)}
+    .primary[aria-disabled="true"]{color:rgba(255,250,240,.45);background:rgba(255,250,240,.08);pointer-events:none}
+    .secondary{border:1px solid var(--line);color:rgba(255,250,240,.7);background:transparent}
+    .secondary:hover{border-color:var(--line-strong);background:rgba(255,255,255,.03)}
+    .service-note{margin:34px 0 0;color:rgba(255,250,240,.3);font-size:10px;letter-spacing:.08em}
+    @keyframes scene-in{from{opacity:0;transform:scale(1.045)}to{opacity:1;transform:scale(1.01)}}
+    @keyframes status-pulse{50%{box-shadow:0 0 0 9px rgba(56,215,243,.04)}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+    @media(max-width:1120px){
+      .main{grid-template-columns:minmax(0,7fr) minmax(390px,5fr)}
+      .handoff{padding:60px 42px}
+      .cinema-copy{left:34px;right:34px;bottom:34px}
+      .cinema-tag{display:none}
+    }
+    @media(max-width:900px){
+      .page{overflow:visible}
+      .top{width:min(calc(100% - 32px),720px);min-height:70px}
+      .main{width:min(calc(100% - 24px),720px);grid-template-columns:1fr;margin-bottom:16px;border-radius:20px}
+      .cinema{min-height:390px}
+      .cinema:before{background-size:182% 100%}
+      .cinema:after{background:linear-gradient(180deg,rgba(5,7,11,.04) 50%,var(--surface) 100%)}
+      .cinema-copy{left:28px;right:28px;bottom:28px}
+      .handoff{padding:48px 34px 42px;border-left:0;border-top:1px solid var(--line)}
+    }
+    @media(max-width:560px){
+      .top{width:calc(100% - 28px);min-height:64px}
+      .community-brand strong,.secure-note{display:none}
+      .brand-lockup{gap:9px}
+      .brand-cross{font-size:15px}
+      .makenow-wordmark{width:132px;height:32px;background-position:-22px -23px}
+      .main{width:calc(100% - 16px);border-radius:18px}
+      .cinema{min-height:290px}
+      .cinema:before{background-size:205% 100%}
+      .cinema-copy{left:22px;right:22px;bottom:20px}
+      .cinema-caption h2{font-size:31px}
+      .cinema-caption p{display:none}
+      .handoff{padding:38px 24px 30px}
+      h1{font-size:40px}
+      .copy{min-height:0;margin-bottom:34px;font-size:14px}
+      .progress{margin-bottom:28px}
+      .step{font-size:11px}
+      .actions{display:grid}
+      .primary,.secondary{width:100%}
+      .service-note{margin-top:26px;text-align:center}
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="top">
+      <div class="brand-lockup" aria-label="多元拾光与 MakeNow 账号互通">
+        <span class="community-brand">
+          <img src="assets/brand/duoyuan-shiguang-logo-mark-reverse.svg" alt="多元拾光 Logo">
+          <strong>多元拾光</strong>
+        </span>
+        <span class="brand-cross" aria-hidden="true">×</span>
+        <span class="makenow-wordmark" role="img" aria-label="MakeNow Logo"></span>
+      </div>
+      <span class="secure-note">账号安全连接</span>
+    </header>
+
+    <main class="main">
+      <section class="cinema" aria-label="从社区灵感到 MakeNow 创作现场">
+        <div class="cinema-copy">
+          <div class="cinema-caption">
+            <span class="cinema-kicker">FROM IDEA TO CREATION</span>
+            <h2>灵感不断线，创作继续发生。</h2>
+            <p>从多元拾光发现灵感，在 MakeNow 把故事变成画面。</p>
+          </div>
+          <span class="cinema-tag">社区灵感 · AI 创作</span>
+        </div>
+      </section>
+
+      <section class="handoff" id="handoff-status" data-state="loading" aria-live="polite" aria-labelledby="handoff-title">
+        <p class="eyebrow" id="handoff-eyebrow">账号连接中</p>
+        <h1 id="handoff-title">正在进入 <span>MakeNow</span></h1>
+        <p class="copy" id="handoff-copy">正在确认你的账号信息，完成后将自动进入 MakeNow 首页。</p>
+
+        <ol class="progress" aria-label="账号互通进度">
+          <li class="step done">确认身份</li>
+          <li class="step active">同步账号</li>
+          <li class="step">进入首页</li>
+        </ol>
+
+        <p class="countdown" id="handoff-countdown"></p>
+        <div class="actions">
+          <a class="primary" id="handoff-primary" href="#" aria-disabled="true">正在连接</a>
+          <a class="secondary" id="handoff-secondary" href="./aigc.html#canvas-studio">返回多元拾光</a>
+        </div>
+        <p class="service-note">多元拾光 × MakeNow 账号互通服务</p>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    (() => {
+      const params = new URLSearchParams(location.search);
+      const explicitStatus = (params.get("status") || "").trim().toLowerCase();
+      const previewMode = params.get("preview") === "1";
+      const returnUrl = safeReturn(params.get("return")) || "./aigc.html#canvas-studio";
+      const homeUrl = "https://dream.ai666.net/";
+      const root = document.getElementById("handoff-status");
+      const eyebrow = document.getElementById("handoff-eyebrow");
+      const title = document.getElementById("handoff-title");
+      const copy = document.getElementById("handoff-copy");
+      const countdown = document.getElementById("handoff-countdown");
+      const primary = document.getElementById("handoff-primary");
+      const secondary = document.getElementById("handoff-secondary");
+      const steps = [...document.querySelectorAll(".step")];
+      const state = explicitStatus === "failure" || explicitStatus === "fail" || explicitStatus === "error" ? "failure" : "loading";
+
+      secondary.href = returnUrl;
+      render(state);
+
+      function setTitle(prefix, accent) {
+        title.textContent = prefix + " ";
+        const span = document.createElement("span");
+        span.textContent = accent;
+        title.append(span);
+      }
+
+      function setSteps(doneCount, activeIndex) {
+        steps.forEach((step, index) => {
+          step.className = "step";
+          if (index < doneCount) step.classList.add("done");
+          if (index === activeIndex) step.classList.add("active");
+        });
+      }
+
+      function render(next) {
+        root.dataset.state = next;
+        countdown.textContent = "";
+        primary.removeAttribute("aria-disabled");
+        secondary.textContent = "返回多元拾光";
+        secondary.href = returnUrl;
+
+        if (next === "failure") {
+          eyebrow.textContent = "登录失败";
+          setTitle("暂时无法进入", "MakeNow");
+          copy.textContent = params.get("message") || "账号登录失败，请返回多元拾光后重新进入。";
+          setSteps(1, 1);
+          primary.textContent = "返回多元拾光重试";
+          primary.href = returnUrl;
+          secondary.textContent = "刷新页面";
+          secondary.href = location.href;
+          return;
+        }
+
+        eyebrow.textContent = "账号连接中";
+        setTitle("正在进入", "MakeNow");
+        copy.textContent = "正在确认你的账号信息，完成后将自动进入 MakeNow 首页。";
+        setSteps(1, 1);
+        primary.textContent = "正在连接";
+        primary.href = "#";
+        primary.setAttribute("aria-disabled", "true");
+      }
+
+      function safeReturn(raw) {
+        if (!raw) return "";
+        const value = raw.trim();
+        if (!value || /^javascript:/i.test(value) || /^[a-z][a-z0-9+.-]*:\/\//i.test(value)) return "";
+        return value;
+      }
+    })();
+  </script>
+</body>
+</html>

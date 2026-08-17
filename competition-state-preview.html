@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>赛事运营预览台</title>
+  <title>赛事运营走查</title>
   <style>
     :root {
       color-scheme: dark;
@@ -114,6 +114,20 @@
     .phase-button.is-active .phase-index { border-color: var(--gold); color: var(--gold); }
     .phase-copy strong { display: block; font-size: 14px; }
     .phase-copy span { display: block; margin-top: 3px; color: var(--muted); font-size: 11px; }
+    .sidebar-map-link {
+      display: grid;
+      gap: 4px;
+      margin: 18px 8px 0;
+      padding: 13px 14px;
+      border: 1px solid rgba(244,201,93,.28);
+      border-radius: 12px;
+      color: var(--text);
+      background: linear-gradient(135deg, rgba(244,201,93,.1), rgba(255,255,255,.025));
+      text-decoration: none;
+    }
+    .sidebar-map-link:hover, .sidebar-map-link:focus-visible { border-color: rgba(244,201,93,.62); outline: none; }
+    .sidebar-map-link span { color: var(--gold); font-size: 11px; font-weight: 700; }
+    .sidebar-map-link strong { font-size: 13px; line-height: 1.45; }
     .ops-main { display: flex; min-width: 0; padding: 12px; flex-direction: column; }
     .scenario-head { display: none; align-items: flex-end; justify-content: space-between; gap: 20px; }
     .scenario-head h1 { margin: 0; font-size: clamp(22px,2.6vw,34px); }
@@ -249,6 +263,10 @@
       <aside class="ops-sidebar">
         <h2>赛事生命周期</h2>
         <nav class="phase-list" aria-label="赛事生命周期" data-phase-list></nav>
+        <a class="sidebar-map-link" href="competition-experience-map.html">
+          <span>体验地图</span>
+          <strong>查看用户旅程与运营联动</strong>
+        </a>
       </aside>
 
       <main class="ops-main">
@@ -308,11 +326,11 @@
         scenario("registration-done", "registration", "已报名", "资格已建立，尚未进入作品征集。", "已报名结果、赛道和开赛时间", "查看规则与准备作品", "作品征集开启", { phase: "registration", submission: "none", ranking: "hidden", work: "private", board: "hidden", claim: "locked" }),
 
         scenario("collecting-empty", "collecting", "已报名未投稿", "用户可以创建第一件参赛作品。", "投稿入口、剩余额度、作品规格", "投稿作品", "保存草稿或提交审核", { submission: "none", work: "private" }),
-        scenario("collecting-draft", "collecting", "已保存草稿", "草稿仍在征集期内，可继续编辑或删除。", "草稿内容、剩余额度、截止时间", "继续投稿或删除草稿", "提交审核", { submission: "draft", work: "private" }),
-        scenario("collecting-review", "collecting", "作品审核中", "作品已提交，等待赛事审核。", "审核状态、作品摘要", "查看投稿，暂不可修改", "审核通过或退回", { submission: "submitted", work: "private", review: "1", interaction: "disabled" }),
-        scenario("collecting-returned", "collecting", "审核退回", "征集未截止，用户可以修改后重新提交。", "退回原因、修改入口、截止时间", "修改并重新提交", "再次进入审核", { submission: "returned", work: "private", review: "0", interaction: "disabled" }),
-        scenario("collecting-public", "collecting", "作品已公开", "审核通过，作品参与发现与榜单。", "公开作品、热度、互动和榜单", "查看作品或继续投稿", "征集结束进入评审", { submission: "v2-edit", work: "public" }),
-        scenario("collecting-full", "collecting", "投稿额度已满", "用户已用完投稿额度。", "全部投稿及其状态", "查看作品，不可新增投稿", "等待征集结束", { submission: "v2-edit", work: "public", quota: "full" }),
+        scenario("collecting-draft", "collecting", "已保存草稿", "草稿仍在征集期内，可继续编辑或删除。", "草稿内容、剩余额度、截止时间", "继续编辑或删除草稿", "提交审核", { submission: "draft", work: "private" }),
+        scenario("collecting-review", "collecting", "作品审核中", "作品已提交，等待后台审核。", "审核状态、作品摘要", "查看投稿，暂不可修改", "审核通过或退回", { submission: "review", work: "private", review: "1", interaction: "disabled" }),
+        scenario("collecting-returned", "collecting", "作品需修改", "征集未截止，用户可以修改后重新提交。", "退回原因、修改入口、截止时间", "修改并重新提交", "再次进入审核", { submission: "rejected", work: "private", review: "0", interaction: "disabled" }),
+        scenario("collecting-public", "collecting", "作品已公开", "审核通过，作品参与发现与榜单。", "公开作品、热度、互动和榜单", "查看作品或投稿新作品", "征集结束进入评审", { submission: "public", work: "public" }),
+        scenario("collecting-full", "collecting", "投稿额度已满", "用户已用完投稿额度。", "全部投稿及其状态", "查看作品，不可新增投稿", "等待征集结束", { submission: "public", work: "public", quota: "full" }),
 
         scenario("review-submitted", "review", "作品评审中", "征集已结束，生产动作关闭。", "参赛作品、评审状态、预计公布时间", "查看作品，不可投稿或修改", "结果公示", { phase: "review", submission: "submitted", work: "public", review: "1", ranking: "locked", interaction: "enabled", board: "heat", quota: "locked", claim: "locked" }),
         scenario("review-public", "review", "公开作品参与评审", "作品保持公开展示，等待最终结果。", "公开作品、热度和评审提示", "浏览与互动", "结果公示", { phase: "review", submission: "v2-edit", work: "public", ranking: "locked", quota: "locked", claim: "locked" }),
@@ -325,12 +343,12 @@
       ];
 
       const pages = [
-        { id: "detail", label: "活动介绍", file: "competition-detail.html" },
+        { id: "detail", label: "赛事主页", file: "competition-detail.html" },
         { id: "rules", label: "参赛规则", file: "competition-rules.html" },
         { id: "works", label: "参赛作品", file: "competition-works.html" },
         { id: "mine", label: "我的投稿", file: "competition-my-submissions.html" },
         { id: "ranking", label: "排行榜", file: "competition-ranking.html" },
-        { id: "work", label: "作品详情", file: "competition-work.html", extra: { submission_id: "S-001" } }
+        { id: "work", label: "作品详情", file: "competition-work.html", extra: { work_id: "AIGC-2001", submission_id: "S-001" } }
       ];
 
       const els = {

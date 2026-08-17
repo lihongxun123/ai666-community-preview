@@ -172,25 +172,6 @@
 .competition-submit-form.is-readonly { opacity: .78; }
 .competition-submit-form.is-readonly input, .competition-submit-form.is-readonly textarea, .competition-submit-form.is-readonly select { cursor: not-allowed; }
 
-.competition-claim-panel--designed {
-  display: grid !important;
-  grid-template-columns: 1fr 1.3fr .9fr auto;
-  align-items: center;
-  gap: 26px;
-  padding: 26px !important;
-  border: 1px solid var(--state-line) !important;
-  border-left: 3px solid var(--state-gold) !important;
-  border-radius: 4px 18px 18px 4px !important;
-  background: linear-gradient(90deg, rgba(242,201,76,.055), rgba(255,255,255,.012)) !important;
-}
-.competition-claim-panel--designed > div { display: grid; gap: 5px; }
-.competition-claim-panel--designed span { color: rgba(244,239,226,.45); font-size: 11px; }
-.competition-claim-panel--designed strong { color: var(--state-cream); font-size: 16px; }
-.competition-claim-panel--designed p, .competition-claim-panel--designed small { margin: 0; color: var(--state-muted); font-size: 11px; }
-.competition-claim-status strong, .competition-claim-reward strong { color: var(--state-gold); }
-.competition-claim-reward strong { font-size: 24px; }
-.competition-claim-reward strong small { color: inherit; }
-
 .competition-work-detail-dialog--loading { display: grid; grid-template-columns: minmax(0,1.5fr) minmax(320px,.8fr); min-height: 650px; }
 .competition-work-state-media, .competition-work-detail-dialog--loading aside > i, .competition-work-detail-dialog--loading aside > div { border-radius: 16px; background: linear-gradient(105deg, rgba(255,255,255,.035), rgba(255,255,255,.08), rgba(255,255,255,.035)); background-size: 220% 100%; animation: competition-state-shimmer 1.5s linear infinite; }
 .competition-work-state-media { min-height: 620px; }
@@ -211,7 +192,6 @@
   .competition-state-timeline li > span { margin: auto; }
   .competition-native-state { grid-template-columns: 64px 1fr; }
   .competition-native-state-actions { grid-column: 1 / -1; align-items: flex-start; }
-  .competition-claim-panel--designed { grid-template-columns: 1fr 1fr !important; }
   .competition-work-detail-dialog--loading { grid-template-columns: 1fr; }
 }
 
@@ -223,7 +203,6 @@
   .competition-state-statusline p { grid-column: auto; }
   .competition-native-state { grid-template-columns: 1fr; padding: 26px 22px; }
   .competition-state-skeleton-grid { columns: 2 140px; }
-  .competition-claim-panel--designed { grid-template-columns: 1fr !important; }
 }
 
 @media (prefers-reduced-motion: reduce) {

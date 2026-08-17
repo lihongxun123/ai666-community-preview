@@ -50,7 +50,7 @@
   const buildHref = (path) => {
     const url = new URL(path, window.location.href);
     params.forEach((value, key) => {
-      if (key !== 'submission_id') url.searchParams.set(key, value);
+      if (!['work_id', 'submission_id'].includes(key)) url.searchParams.set(key, value);
     });
     return `${url.pathname.split('/').pop()}${url.search}`;
   };
@@ -130,7 +130,7 @@
       } else if (state.submission === 'draft' || state.submission === 'rejected') {
         type = 'submit';
         label = state.phase === 'collecting'
-          ? (state.submission === 'draft' ? '继续投稿' : '修改后重新提交')
+          ? (state.submission === 'draft' ? '继续编辑' : '修改后重新提交')
           : '查看作品';
         action = 'submit';
         actionState = state.submission === 'draft' ? 'edit-draft' : 'revise-rejected';

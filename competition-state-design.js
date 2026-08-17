@@ -262,28 +262,6 @@
     nodes[0].parentElement.insertAdjacentHTML('afterbegin', nativeState(model));
   };
 
-  const claimStates = {
-    publicity: ['公示中', '获奖结果正在公示', '公示结束且结果无调整后开放领奖信息确认。', '等待公示结束'],
-    'claim-required': ['待确认', '请确认领奖信息', '确认收款与联系信息后，赛事方将进入人工核验。', '确认领奖信息'],
-    verification: ['核验中', '领奖信息正在核验', '赛事方正在核对获奖资格与领奖信息，无需重复提交。', '等待核验结果'],
-    'pending-delivery': ['发放中', '奖励正在安排发放', '领奖信息已确认，奖励发放完成后会更新记录。', '查看发放记录'],
-    completed: ['已完成', '奖励已发放', '本次获奖权益已完成发放，可在记录中查看详情。', '查看领奖记录'],
-    'appeal-pending': ['处理中', '结果异议正在处理', '处理期间领奖流程暂停，结论确认后会同步更新。', '查看处理进度']
-  };
-
-  const renderClaim = () => {
-    const panel = $('.competition-claim-panel');
-    const config = claimStates[state.claim];
-    if (!panel || !config) return;
-    const actionable = ['claim-required', 'pending-delivery', 'completed', 'appeal-pending'].includes(state.claim);
-    panel.classList.add('competition-claim-panel--designed', `is-${state.claim}`);
-    panel.innerHTML = `
-      <div class="competition-claim-rank"><span>我的获奖</span><strong>8–30s 赛道冠军</strong><small>作品 · 光之门</small></div>
-      <div class="competition-claim-status"><span>${config[0]}</span><strong>${config[1]}</strong><p>${config[2]}</p></div>
-      <div class="competition-claim-reward"><span>获奖权益</span><strong>10,000 <small>积分</small></strong><p>冠军徽章 · 专题推荐</p></div>
-      <button class="competition-btn ${actionable ? 'primary' : 'secondary'}" ${actionable ? '' : 'disabled'}>${config[3]}</button>`;
-  };
-
   const renderWorkState = () => {
     const detail = $('.competition-work-detail-dialog');
     if (!detail) return;
@@ -334,7 +312,7 @@
     if (renderGate(resolveGate())) return;
     if (pageType === 'submit') designSubmit();
     if (pageType === 'works') renderCollectionState();
-    if (pageType === 'ranking') { renderRankingState(); renderClaim(); }
+    if (pageType === 'ranking') renderRankingState();
     if (pageType === 'work') renderWorkState();
     renderMySubmissions();
   };

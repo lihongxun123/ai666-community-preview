@@ -11,8 +11,8 @@
   <header class="competition-header">
     <div class="competition-header-inner">
       <a class="competition-platform-brand" href="./index.html" data-leave-link aria-label="返回多元拾光社区"><img src="assets/brand/duoyuan-shiguang-logo-mark-reverse.svg" alt=""><strong>多元拾光</strong></a>
-      <a class="competition-brand" href="./competition-detail.html" data-competition-brand-lockup data-competition-link data-leave-link aria-label="AIGC 创作挑战赛活动介绍"><span class="competition-brand-copy"><strong data-competition-event-name>AIGC 创作挑战赛</strong></span></a>
-      <nav class="competition-site-nav" aria-label="赛事导航"><a href="./competition-detail.html" data-competition-link data-leave-link>活动介绍</a><a href="./competition-rules.html" data-competition-link data-leave-link>参赛规则</a><a href="./competition-ranking.html" data-competition-link data-leave-link>参赛作品</a><a href="./competition-my-submissions.html" data-competition-link data-leave-link class="is-active" aria-current="page">我的投稿</a></nav>
+      <a class="competition-brand" href="./competition-detail.html" data-competition-brand-lockup data-competition-link data-leave-link aria-label="AIGC 创作挑战赛赛事主页"><span class="competition-brand-copy"><strong data-competition-event-name>AIGC 创作挑战赛</strong></span></a>
+      <nav class="competition-site-nav" aria-label="赛事导航"><a href="./competition-detail.html" data-competition-link data-leave-link>赛事主页</a><a href="./competition-rules.html" data-competition-link data-leave-link>参赛规则</a><a href="./competition-works.html" data-competition-link data-leave-link>参赛作品</a><a href="./competition-ranking.html" data-competition-link data-competition-ranking-nav data-leave-link>排行榜</a><a href="./competition-my-submissions.html" data-competition-link data-leave-link class="is-active" aria-current="page">我的投稿</a></nav>
       <div class="competition-header-right"><button class="competition-auth competition-auth--guest" type="button" data-competition-login-open>登录</button><div class="competition-auth competition-auth--logged" aria-label="当前登录用户"><img src="assets/image_assets/1.png" alt=""><span data-auth-name title="空镜">空镜</span></div></div>
     </div>
   </header>
@@ -32,20 +32,37 @@
         </section>
 
         <section class="competition-form-section">
-          <div class="competition-form-section-head"><div><h2>上传作品</h2></div></div>
-          <div class="competition-upload-grid">
-            <label class="competition-upload-slot" data-upload-slot="edited" data-upload-state="idle" tabindex="0">
-              <input type="file" accept="video/mp4,video/quicktime,.mp4,.mov" data-upload-input="edited">
-              <img src="resources/icons/remixicon/svg/Media/video-upload-line.svg" alt=""><strong>后期成片</strong><span data-upload-label>MP4 / MOV · 不超过 500MB</span><small>通过审核后公开展示</small>
-            </label>
-            <label class="competition-upload-slot" data-upload-slot="original" data-upload-state="idle" tabindex="0">
-              <input type="file" accept="video/mp4,video/quicktime,.mp4,.mov" data-upload-input="original">
-              <img src="resources/icons/remixicon/svg/Media/video-add-line.svg" alt=""><strong>生成原片</strong><span data-upload-label>上传 AI 生成原始视频</span><small>仅用于参赛资格确认</small>
-            </label>
+          <div class="competition-form-section-head"><div><h2>投稿内容</h2></div></div>
+          <div class="competition-submission-material-panel" data-submission-material-panel="video">
+            <div class="competition-upload-grid">
+              <label class="competition-upload-slot" data-upload-slot="video-original" data-upload-state="idle" data-submission-material-key="video-source" tabindex="0">
+                <input type="file" accept="video/mp4,video/quicktime,.mp4,.mov" data-upload-input="video-original">
+                <img src="resources/icons/remixicon/svg/Media/video-add-line.svg" alt=""><strong>生成原片</strong><span data-upload-label>上传 AI 生成原始视频</span><small>用于确认创作来源</small>
+              </label>
+              <label class="competition-upload-slot" data-upload-slot="video-final" data-upload-state="idle" data-submission-material-key="video-final" tabindex="0">
+                <input type="file" accept="video/mp4,video/quicktime,.mp4,.mov" data-upload-input="video-final">
+                <img src="resources/icons/remixicon/svg/Media/video-upload-line.svg" alt=""><strong>最终成片</strong><span data-upload-label>MP4 / MOV · 不超过 500MB</span><small>通过审核后公开展示</small>
+              </label>
+            </div>
+            <aside class="competition-submit-side"><section class="competition-side-card" data-submission-material-help="video"><h3>视频材料</h3><ul><li>原片与最终成片的主要内容需对应</li><li>最终成片时长需符合所选赛道</li></ul></section></aside>
           </div>
-          <aside class="competition-submit-side">
-            <section class="competition-side-card"><h3>作品规格</h3><ul><li>16:9 横屏，建议 1920×1080，H.264 MP4 / MOV</li><li>单文件不超过 500MB，赛道与成片时长匹配</li><li>非中文对白配中文字幕，不带其他平台推广水印</li><li>生成原片与成片主要内容对应</li></ul></section>
-          </aside>
+          <div class="competition-submission-material-panel" data-submission-material-panel="image" hidden>
+            <div class="competition-upload-grid">
+              <label class="competition-upload-slot" data-upload-slot="image-originals" data-upload-state="idle" data-submission-material-key="image-source" tabindex="0">
+                <input type="file" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" multiple data-upload-input="image-originals">
+                <img src="resources/icons/remixicon/svg/Media/image-add-line.svg" alt=""><strong>参考原图</strong><span data-upload-label>可一次选择多张图片</span><small>用于确认创作参考</small>
+              </label>
+              <label class="competition-upload-slot" data-upload-slot="image-final" data-upload-state="idle" data-submission-material-key="image-final" tabindex="0">
+                <input type="file" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" data-upload-input="image-final">
+                <img src="resources/icons/remixicon/svg/Media/image-upload-line.svg" alt=""><strong>最终作品图</strong><span data-upload-label>JPG / PNG / WebP</span><small>通过审核后公开展示</small>
+              </label>
+            </div>
+            <aside class="competition-submit-side"><section class="competition-side-card" data-submission-material-help="image"><h3>图片材料</h3><ul><li>参考原图支持多张，最终作品图提交 1 张</li><li>最终作品图需与参考原图具有清晰关联</li></ul></section></aside>
+          </div>
+          <div class="competition-submission-material-panel competition-submission-text-materials" data-submission-material-panel="text" hidden>
+            <label class="competition-field" data-submission-material-key="text-source"><span>提示词</span><textarea rows="6" maxlength="2000" placeholder="填写创作这篇内容时使用的提示词" data-submission-prompt></textarea></label>
+            <label class="competition-field" data-submission-material-key="text-final"><span>成文内容</span><textarea rows="12" maxlength="20000" placeholder="填写最终参赛正文" data-submission-article></textarea></label>
+          </div>
         </section>
 
         <section class="competition-form-section">
@@ -54,13 +71,59 @@
           <div class="competition-form-actions"><button class="competition-btn secondary" type="button" data-save-draft>保存草稿</button><button class="competition-btn primary" type="button" data-submit-confirm data-competition-submit>提交审核</button></div>
         </section>
       </form>
-      <section class="competition-rejection" data-rejection-reason hidden><strong>需要修改</strong><p>成片中的部分素材来源不清晰，请补充对应生成原片后再次提交。</p></section>
+      <section class="competition-rejection" data-rejection-reason hidden><strong>需要修改</strong><p>部分投稿材料尚不能确认创作来源，请按当前作品类型补充后再次提交。</p></section>
     </div>
   </main>
 
   <div class="competition-modal" data-competition-modal="leave" hidden><section class="competition-modal-card" role="dialog" aria-modal="true" aria-labelledby="leave-title"><button class="competition-modal-close" type="button" data-competition-modal-close aria-label="关闭"><img src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></button><span class="competition-modal-kicker">尚未保存</span><h2 id="leave-title">要离开当前页面吗？</h2><p>未保存的修改会丢失，已上传文件也需要重新选择。</p><div class="competition-modal-actions"><button class="competition-btn secondary" type="button" data-competition-modal-close>继续编辑</button><button class="competition-btn primary" type="button" data-leave-discard>放弃修改</button></div></section></div>
 </div>
-<script src="./walkthrough.js?v=20260805-c02b"></script><script src="./competition.js?v=20260813-submit-no-stage-result"></script>
+<script src="./walkthrough.js?v=20260805-c02b"></script><script src="./competition.js?v=20260816-submission-lifecycle"></script>
 <script src="./competition-state-gates.js?v=20260814-state-matrix"></script>
+<script>
+(() => {
+  const params = new URLSearchParams(window.location.search);
+  const phase = params.get('phase') || 'collecting';
+
+  const goToMine = (submission) => {
+    const next = new URLSearchParams(params);
+    if (params.get('submission') === 'new') {
+      const identityToken = Date.now().toString(36).toUpperCase();
+      next.set('work_id', `AIGC-${identityToken}`);
+      next.set('submission_id', `S-${identityToken}`);
+    }
+    next.set('submission', submission);
+    next.set('work', 'private');
+    next.set('review', submission === 'review' ? '1' : '0');
+    next.set('content', 'normal');
+    next.set('view', 'mine');
+    next.delete('embed');
+    const href = `competition-my-submissions.html?${next.toString()}`;
+    if (params.get('embed') === '1' && window.parent !== window) {
+      window.parent.postMessage({
+        type: 'competition:submission-complete',
+        status: submission,
+        href
+      }, window.location.origin);
+      return;
+    }
+    window.location.href = href;
+  };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const agreement = document.querySelector('[data-submission-agreement]');
+    const saveDraft = document.querySelector('[data-save-draft]');
+    const submitReview = document.querySelector('[data-submit-confirm]');
+    if (saveDraft && phase === 'collecting') {
+      saveDraft.addEventListener('click', () => window.setTimeout(() => goToMine('draft'), 360));
+    }
+    if (submitReview && phase === 'collecting') {
+      submitReview.addEventListener('click', () => {
+        if (submitReview.disabled || !agreement?.checked) return;
+        window.setTimeout(() => goToMine('review'), 360);
+      });
+    }
+  });
+})();
+</script>
 </body>
 </html>

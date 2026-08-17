@@ -3258,6 +3258,16 @@ body.task-guide-modal-open {
   transform: translateY(-1px);
 }
 
+.detail-action-stat--metric {
+  cursor: default;
+}
+
+.detail-action-stat--metric:hover {
+  color: rgba(255, 247, 230, 0.92);
+  background: transparent;
+  transform: none;
+}
+
 .detail-action-stat:focus-visible {
   outline: 2px solid rgba(246, 201, 86, 0.82);
   outline-offset: 2px;
@@ -3292,6 +3302,10 @@ body.task-guide-modal-open {
 
 .detail-action-icon.is-like {
   background-image: url("resources/icons/remixicon/svg/System/thumb-up-line.svg");
+}
+
+.detail-action-icon.is-view {
+  background-image: url("resources/icons/remixicon/svg/System/eye-line.svg");
 }
 
 .detail-action-icon.is-comment {

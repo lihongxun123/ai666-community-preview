@@ -96,7 +96,7 @@
     const coverHref = state === 'public'
       ? hrefFor('competition-work.html', { work_id: record.workId, submission_id: record.submissionId, submission: 'public', work: 'public' })
       : hrefFor('competition-submit.html', { work_id: record.workId, submission_id: record.submissionId, submission: state, work: 'private' });
-    return `<article class="competition-my-submission-card" data-community-work-id="${record.workId}" data-competition-submission-id="${record.submissionId}" data-submission-status="${state}"><a class="competition-my-submission-cover" href="${coverHref}" data-community-work-id="${record.workId}" data-competition-submission-id="${record.submissionId}"><img src="${record.cover}" alt="作品《${record.title}》"><span data-my-submission-state>${config.label}</span></a><div class="competition-my-submission-copy"><div class="competition-my-submission-title-row"><h2>${record.title}</h2><span>${record.track}</span></div><p>${record.summary}</p>${config.note ? `<p class="competition-my-submission-lifecycle-note">${config.note}</p>` : ''}${metricsFor(state)}</div><div class="competition-my-submission-actions" data-my-submission-actions${action ? '' : ' hidden'}>${action}</div></article>`;
+    return `<article class="competition-my-submission-card" data-community-work-id="${record.workId}" data-competition-submission-id="${record.submissionId}" data-submission-status="${state}"><a class="competition-my-submission-cover" href="${coverHref}" data-community-work-id="${record.workId}" data-competition-submission-id="${record.submissionId}"><img src="${record.cover}" alt="作品《${record.title}》" loading="lazy" decoding="async"><span data-my-submission-state>${config.label}</span></a><div class="competition-my-submission-copy"><div class="competition-my-submission-title-row"><h2>${record.title}</h2><span>${record.track}</span></div><p>${record.summary}</p>${config.note ? `<p class="competition-my-submission-lifecycle-note">${config.note}</p>` : ''}${metricsFor(state)}</div><div class="competition-my-submission-actions" data-my-submission-actions${action ? '' : ' hidden'}>${action}</div></article>`;
   };
 
   document.addEventListener('DOMContentLoaded', () => {
@@ -155,9 +155,9 @@
   const replacePortraitCovers = () => {
     const sceneCovers = [
       'assets/competition/aigc-competition-hero-ocean-pod.png',
-      'assets/competition/featured-ancient-tree.png',
+        'assets/competition/featured-ancient-tree.png',
       'assets/competition/featured-light-library.png',
-      'assets/competition/featured-sky-whale-city.png'
+        'assets/competition/featured-sky-whale-city.png'
     ];
     document.querySelectorAll('.competition-my-submission-cover img').forEach((image, index) => {
       image.src = sceneCovers[index % sceneCovers.length];

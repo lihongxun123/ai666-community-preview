@@ -125,6 +125,13 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .competition-brand::before { width: 1px; height: 24px; margin-right: clamp(14px, 2vw, 28px); background: rgba(255,247,230,.12); content: ""; }
 .competition-brand-copy { display: block; min-width: 0; }
 .competition-brand-copy strong { margin: 0; font-size: 15px; font-weight: 720; line-height: 1.08; letter-spacing: -.025em; }
+.competition-platform-brand img {
+  display: block;
+  width: 31px;
+  height: 18px;
+  flex: 0 0 31px;
+  object-fit: contain;
+}
 
 .competition-site-nav {
   display: flex;

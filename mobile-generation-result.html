@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#05070b">
   <title>生成结果 - 多元拾光</title>
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
-  <link rel="stylesheet" href="./mobile-h5.css?v=20260820-p6">
-  <script src="./mobile-h5.js?v=20260820-p6" defer></script>
+  <link rel="stylesheet" href="./mobile-h5.css?v=20260820-p9">
+  <script src="./mobile-h5.js?v=20260820-p9" defer></script>
 </head>
 <body class="mobile-h5-body" data-mobile-page="generation-result">
   <div class="mobile-shell has-action-bar" data-mobile-result-screen>
@@ -29,6 +29,15 @@
         <div class="mobile-result-media">
           <img data-mobile-result-image src="assets/image_assets/15-mobile-result-v2.png" alt="凤冠神女生成结果">
           <video data-mobile-result-video controls playsinline poster="assets/image_assets/4.png" hidden><source src="assets/video_assets/sd2_gen.mp4" type="video/mp4"></video>
+          <article class="mobile-result-script" data-mobile-result-script hidden>
+            <span>Markdown 预览</span>
+            <h2>雨夜霓虹街头 · 分镜设定</h2>
+            <p>主角在霓虹雨幕中回头，镜头从街面水光推到眼神特写，随后切入手部道具和追踪者剪影。</p>
+            <h3>第一幕 · 被跟踪的人</h3>
+            <ul><li>人物：少年主角、隐藏追踪者、远处路人。</li><li>冲突：主角确认自己被跟踪，却不能暴露手中的关键道具。</li><li>节奏：慢推进、强反差光、结尾留悬念。</li></ul>
+            <h3>分镜建议</h3>
+            <ol><li>街面水光与鞋步特写，建立雨夜压迫感。</li><li>镜头抬升到主角回头，霓虹在眼神中闪过。</li><li>切入手部道具，再带出远处追踪者剪影。</li></ol>
+          </article>
         </div>
       </section>
 
@@ -67,12 +76,12 @@
   <aside id="mobile-walkthrough" class="mobile-walkthrough" data-mobile-walkthrough aria-hidden="true">
     <div class="mobile-walkthrough-head"><h2>生成结果走查规则</h2><button class="mobile-icon-button" type="button" data-mobile-walkthrough-close aria-label="关闭走查规则"><img class="mobile-icon" src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></button></div>
     <div class="mobile-rule-grid">
-      <section class="mobile-rule-card"><strong>页面目的</strong><p>展示完整生成结果与创作信息；再次生成和后续分发统一从底部发起。</p></section>
+      <section class="mobile-rule-card"><strong>页面目的</strong><p>展示完整图片、Markdown 剧本或视频结果与创作信息；再次生成和后续分发统一从底部发起。</p></section>
       <section class="mobile-rule-card"><strong>入口与返回</strong><p>从同一生成任务的成功状态进入；生成结果自动进入生成记录，无需用户再次保存，未发布、未投稿也可稍后找回。</p></section>
       <section class="mobile-rule-card"><strong>状态边界</strong><p>生成记录只承接生成任务与结果；用户选择发布社区或活动投稿时，系统再自动创建或引用对应作品，两个分发状态分别记录、互不覆盖。</p></section>
       <section class="mobile-rule-card"><strong>主动作</strong><p>底部“发布 / 投稿”打开去向选择层，普通结果可选择发布社区或参与活动投稿；存在活动来源时优先展示“提交到当前活动”。再次生成保持次级，不在正文重复展示作品去向卡片。</p></section>
       <section class="mobile-rule-card"><strong>异常状态</strong><p>生成记录留存失败、发布失败和投稿资格不满足分别显示在对应动作附近，不能合并成一个失败。</p></section>
-      <section class="mobile-rule-card"><strong>验收</strong><p>长创作描述随页面自然滚动，固定底部动作不遮挡正文；无需保存即可分别发布社区或进入活动投稿，关闭页面后仍可从生成记录找回；视频结果可播放。</p></section>
+      <section class="mobile-rule-card"><strong>验收</strong><p>长创作描述和 Markdown 剧本随页面自然滚动，固定底部动作不遮挡正文；无需保存即可分别发布社区或进入活动投稿，关闭页面后仍可从生成记录找回；视频结果可播放。</p></section>
     </div>
   </aside>
   <div class="mobile-toast" data-mobile-toast role="status" aria-live="polite"></div>

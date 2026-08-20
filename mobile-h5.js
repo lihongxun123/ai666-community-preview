@@ -89,6 +89,28 @@
     });
   });
 
+  document.querySelectorAll("[data-mobile-copy-invite-code]").forEach((button) => {
+    button.addEventListener("click", async () => {
+      const code = document.querySelector("[data-mobile-invite-code]")?.textContent.trim();
+      if (!code) return;
+      try {
+        await navigator.clipboard.writeText(code);
+        showToast("邀请码已复制");
+      } catch (error) {
+        showToast("复制失败，请长按邀请码复制");
+      }
+    });
+  });
+
+  const inviteRulesSheet = document.querySelector("[data-mobile-invite-rules-sheet]");
+  const setInviteRulesSheet = (open) => {
+    if (!inviteRulesSheet) return;
+    inviteRulesSheet.classList.toggle("is-open", open);
+    inviteRulesSheet.setAttribute("aria-hidden", open ? "false" : "true");
+  };
+  document.querySelectorAll("[data-mobile-invite-rules-open]").forEach((button) => button.addEventListener("click", () => setInviteRulesSheet(true)));
+  inviteRulesSheet?.querySelectorAll("[data-mobile-invite-rules-close]").forEach((button) => button.addEventListener("click", () => setInviteRulesSheet(false)));
+
   const bannerTrack = document.querySelector("[data-mobile-banner-track]");
   const bannerSlides = [...document.querySelectorAll("[data-mobile-banner-slide]")];
   const bannerDots = [...document.querySelectorAll("[data-mobile-banner-dot]")];
@@ -370,9 +392,13 @@
 
   const myContentTabs = [...document.querySelectorAll("[data-mobile-my-tab]")];
   const myContentPanels = [...document.querySelectorAll("[data-mobile-my-panel]")];
+  const myContentTitle = document.querySelector("[data-mobile-my-content-title]");
+  const myFlashTab = document.querySelector('[data-mobile-my-tab="flash"]');
   const setMyContentTab = (tabName, updateHash = false) => {
     if (!myContentTabs.length || !myContentPanels.length) return;
     const next = myContentTabs.some((tab) => tab.dataset.mobileMyTab === tabName) ? tabName : "works";
+    if (myContentTitle) myContentTitle.textContent = next === "favorites" ? "我的收藏" : "我的内容";
+    if (myFlashTab) myFlashTab.hidden = next === "favorites";
     myContentTabs.forEach((tab) => {
       const active = tab.dataset.mobileMyTab === next;
       tab.classList.toggle("is-active", active);
@@ -382,7 +408,10 @@
     if (updateHash) history.replaceState(null, "", next === "works" ? window.location.pathname : `#${next}`);
   };
   myContentTabs.forEach((tab) => tab.addEventListener("click", () => setMyContentTab(tab.dataset.mobileMyTab, true)));
-  if (myContentTabs.length) setMyContentTab(window.location.hash.slice(1) || "works");
+  if (myContentTabs.length) {
+    setMyContentTab(window.location.hash.slice(1) || "works");
+    window.addEventListener("hashchange", () => setMyContentTab(window.location.hash.slice(1) || "works"));
+  }
 
   document.querySelector("[data-mobile-profile-form]")?.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -429,6 +458,14 @@
       },
     };
     const data = activityData[activityKey] || activityData.prompt;
+    const promptChoiceSheet = document.querySelector("[data-mobile-prompt-choice-sheet]");
+    const promptPublishSheet = document.querySelector("[data-mobile-prompt-publish-sheet]");
+    const promptPublishForm = document.querySelector("[data-mobile-prompt-publish-form]");
+    const setPromptSheet = (sheet, open) => {
+      if (!sheet) return;
+      sheet.classList.toggle("is-open", open);
+      sheet.setAttribute("aria-hidden", open ? "false" : "true");
+    };
     const bindings = {
       "[data-mobile-activity-title]": data.title,
       "[data-mobile-activity-status]": data.status,
@@ -448,12 +485,214 @@
       action.textContent = "";
       if (icon) action.append(icon);
       action.append(data.actionLabel);
+      if (activityKey === "prompt") {
+        action.addEventListener("click", (event) => {
+          event.preventDefault();
+          setPromptSheet(promptChoiceSheet, true);
+        });
+      }
     });
     const taskList = document.querySelector("[data-mobile-activity-task-list]");
     if (taskList) {
       taskList.innerHTML = data.tasks.map((task) => `<article><span class="mobile-status-badge">待完成</span><div><h3>${task.name}</h3><p>${task.description}</p></div><strong>${task.reward}</strong></article>`).join("");
     }
+    if (promptChoiceSheet && promptPublishSheet && promptPublishForm) {
+      promptChoiceSheet.querySelectorAll("[data-mobile-prompt-choice-close]").forEach((button) => button.addEventListener("click", () => setPromptSheet(promptChoiceSheet, false)));
+      promptChoiceSheet.querySelector("[data-mobile-prompt-direct-publish]")?.addEventListener("click", () => {
+        setPromptSheet(promptChoiceSheet, false);
+        setPromptSheet(promptPublishSheet, true);
+      });
+      promptPublishSheet.querySelectorAll("[data-mobile-prompt-publish-close]").forEach((button) => button.addEventListener("click", () => setPromptSheet(promptPublishSheet, false)));
+      const promptTitle = promptPublishForm.querySelector("[data-mobile-prompt-publish-title-input]");
+      const promptContent = promptPublishForm.querySelector("[data-mobile-prompt-publish-content]");
+      const promptModel = promptPublishForm.querySelector("[data-mobile-prompt-publish-model]");
+      const promptMedia = promptPublishForm.querySelector("[data-mobile-prompt-publish-media]");
+      const promptMediaLabel = promptPublishForm.querySelector("[data-mobile-prompt-publish-media-label]");
+      const promptError = promptPublishForm.querySelector("[data-mobile-prompt-publish-error]");
+      promptMedia?.addEventListener("change", () => {
+        const file = promptMedia.files?.[0];
+        if (promptMediaLabel && file) promptMediaLabel.textContent = file.name;
+        if (promptError && file) promptError.textContent = "";
+      });
+      promptPublishForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        if (!promptTitle?.value.trim()) {
+          if (promptError) promptError.textContent = "请填写作品标题";
+          promptTitle?.focus();
+          return;
+        }
+        if (!promptContent?.value.trim()) {
+          if (promptError) promptError.textContent = "请填写 Prompt 内容";
+          promptContent?.focus();
+          return;
+        }
+        if (!promptModel?.value) {
+          if (promptError) promptError.textContent = "请选择关联模型";
+          promptModel?.focus();
+          return;
+        }
+        if (!promptMedia?.files?.[0]) {
+          if (promptError) promptError.textContent = "请上传案例图片或视频";
+          promptMedia?.focus();
+          return;
+        }
+        setPromptSheet(promptPublishSheet, false);
+        showToast("Prompt 作品已提交审核");
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape") return;
+        setPromptSheet(promptChoiceSheet, false);
+        setPromptSheet(promptPublishSheet, false);
+      });
+    }
     document.title = `${data.title} - 多元拾光`;
+  }
+
+  const exchangePage = document.querySelector("[data-mobile-exchange-page]");
+  if (exchangePage) {
+    const balanceNode = exchangePage.querySelector("[data-mobile-store-balance]");
+    const productCards = [...exchangePage.querySelectorAll("[data-mobile-redeem-product]")];
+    const confirmSheet = document.querySelector("[data-mobile-exchange-confirm-sheet]");
+    const successSheet = document.querySelector("[data-mobile-exchange-success-sheet]");
+    const confirmButton = document.querySelector("[data-mobile-exchange-confirm]");
+    const confirmLabel = document.querySelector("[data-mobile-exchange-confirm-label]");
+    const error = document.querySelector("[data-mobile-exchange-error]");
+    let availablePoints = Number(balanceNode?.dataset.balance || balanceNode?.textContent || 0);
+    let selectedProduct = null;
+    let selectedTrigger = null;
+    let redeeming = false;
+
+    const setExchangeSheet = (sheet, open) => {
+      if (!sheet) return;
+      sheet.classList.toggle("is-open", open);
+      sheet.setAttribute("aria-hidden", open ? "false" : "true");
+    };
+    const productFromCard = (card) => ({
+      id: card?.dataset.productId || "",
+      name: card?.dataset.productName || "商品权益",
+      price: Number(card?.dataset.productPrice || 0),
+      site: card?.dataset.productSite || "其他商品",
+      description: card?.dataset.productDescription || "--",
+    });
+    const updateProductAvailability = () => {
+      productCards.forEach((card) => {
+        const button = card.querySelector("[data-mobile-redeem-open]");
+        const product = productFromCard(card);
+        const disabled = !product.id || product.price > availablePoints;
+        if (button) {
+          button.disabled = disabled;
+          button.textContent = disabled ? "积分不足" : "兑换";
+        }
+      });
+    };
+    const updateBalance = () => {
+      if (balanceNode) {
+        balanceNode.textContent = String(availablePoints);
+        balanceNode.dataset.balance = String(availablePoints);
+      }
+      updateProductAvailability();
+    };
+    const closeConfirm = () => {
+      if (redeeming) return;
+      setExchangeSheet(confirmSheet, false);
+      if (error) error.textContent = "";
+      selectedTrigger?.focus();
+    };
+    const closeSuccess = () => {
+      setExchangeSheet(successSheet, false);
+      selectedTrigger?.focus();
+    };
+    const openConfirm = (card, trigger) => {
+      const product = productFromCard(card);
+      if (!product.id) {
+        showToast("商品信息不完整，暂时无法兑换");
+        return;
+      }
+      if (product.price > availablePoints) {
+        showToast(`还差 ${product.price - availablePoints} 积分`);
+        return;
+      }
+      selectedProduct = product;
+      selectedTrigger = trigger;
+      const bindings = {
+        "[data-mobile-exchange-confirm-site]": product.site,
+        "[data-mobile-exchange-confirm-name]": product.name,
+        "[data-mobile-exchange-confirm-description]": product.description,
+        "[data-mobile-exchange-current-balance]": `${availablePoints} 积分`,
+        "[data-mobile-exchange-price]": `${product.price} 积分`,
+        "[data-mobile-exchange-after-balance]": `${availablePoints - product.price} 积分`,
+      };
+      Object.entries(bindings).forEach(([selector, value]) => {
+        const node = confirmSheet?.querySelector(selector);
+        if (node) node.textContent = value;
+      });
+      if (error) error.textContent = "";
+      setExchangeSheet(confirmSheet, true);
+      window.setTimeout(() => confirmButton?.focus(), 80);
+    };
+
+    productCards.forEach((card) => {
+      const trigger = card.querySelector("[data-mobile-redeem-open]");
+      trigger?.addEventListener("click", () => openConfirm(card, trigger));
+    });
+    confirmSheet?.querySelectorAll("[data-mobile-exchange-confirm-close]").forEach((button) => button.addEventListener("click", closeConfirm));
+    successSheet?.querySelectorAll("[data-mobile-exchange-success-close]").forEach((button) => button.addEventListener("click", closeSuccess));
+    confirmButton?.addEventListener("click", () => {
+      if (!selectedProduct || redeeming) return;
+      if (selectedProduct.price > availablePoints) {
+        if (error) error.textContent = `积分不足，还差 ${selectedProduct.price - availablePoints} 积分`;
+        return;
+      }
+      redeeming = true;
+      confirmButton.disabled = true;
+      if (confirmLabel) confirmLabel.textContent = "兑换中…";
+      window.setTimeout(() => {
+        availablePoints = Math.max(0, availablePoints - selectedProduct.price);
+        updateBalance();
+        const successName = successSheet?.querySelector("[data-mobile-exchange-success-product]");
+        const successSummary = successSheet?.querySelector("[data-mobile-exchange-success-summary]");
+        if (successName) successName.textContent = selectedProduct.name;
+        if (successSummary) successSummary.textContent = `已扣除 ${selectedProduct.price} 积分，剩余 ${availablePoints} 积分。`;
+        sessionStorage.setItem("mobile-exchange:recent", JSON.stringify({
+          id: selectedProduct.id,
+          name: selectedProduct.name,
+          price: selectedProduct.price,
+        }));
+        setExchangeSheet(confirmSheet, false);
+        setExchangeSheet(successSheet, true);
+        redeeming = false;
+        confirmButton.disabled = false;
+        if (confirmLabel) confirmLabel.textContent = "确认兑换";
+      }, 520);
+    });
+    window.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape" || redeeming) return;
+      if (successSheet?.classList.contains("is-open")) closeSuccess();
+      else if (confirmSheet?.classList.contains("is-open")) closeConfirm();
+    });
+    updateProductAvailability();
+  }
+
+  const exchangeRecordList = document.querySelector("[data-mobile-exchange-record-list]");
+  if (exchangeRecordList) {
+    try {
+      const recentRecord = JSON.parse(sessionStorage.getItem("mobile-exchange:recent") || "null");
+      if (recentRecord?.id && recentRecord?.name && Number(recentRecord.price) > 0) {
+        const card = document.createElement("article");
+        card.className = "mobile-exchange-record-card is-recent";
+        card.dataset.mobileExchangeRecord = "";
+        card.dataset.mobileExchangeStatus = "success";
+        card.dataset.mobileExchangeProductId = String(recentRecord.id);
+        card.innerHTML = `<div class="mobile-exchange-record-head"><h2></h2><span class="mobile-status-badge is-success">兑换成功</span></div><div class="mobile-exchange-record-meta"><span>刚刚</span><span>积分兑换</span><strong></strong></div>`;
+        const name = card.querySelector("h2");
+        const points = card.querySelector("strong");
+        if (name) name.textContent = recentRecord.name;
+        if (points) points.textContent = `−${Number(recentRecord.price)} 积分`;
+        exchangeRecordList.prepend(card);
+      }
+    } catch (error) {
+      console.warn("Unable to restore the latest exchange record", error);
+    }
   }
 
   document.querySelectorAll("[data-mobile-toast-message]").forEach((button) => {
@@ -544,6 +783,7 @@
     setCommentSheet(false);
     setWalkthrough(false);
     setCreateActionSheet(false);
+    setInviteRulesSheet(false);
     document.querySelector("[data-mobile-flash-compose-sheet]")?.querySelector("[data-mobile-flash-compose-close]")?.click();
     setTutorialSheet(false);
   });
@@ -553,18 +793,22 @@
   if (createWorkspace && createComposer) {
     const createPrompt = createComposer.querySelector("[data-mobile-create-prompt]");
     const createCount = createComposer.querySelector("[data-mobile-create-prompt-count]");
+    const createLimit = createComposer.querySelector("[data-mobile-create-prompt-limit]");
     const createError = createComposer.querySelector("[data-mobile-create-error]");
     const createModeInput = createComposer.querySelector("[data-mobile-create-mode-input]");
     const createAttachment = createComposer.querySelector("[data-mobile-create-attachment]");
+    const createInputRow = createComposer.querySelector(".mobile-create-input-row");
     const createSettingsSummary = createComposer.querySelector("[data-mobile-create-settings-summary]");
     const createSettingsCost = createComposer.querySelector("[data-mobile-create-settings-cost]");
     const createEmpty = createWorkspace.querySelector("[data-mobile-create-empty]");
     const createSource = createWorkspace.querySelector("[data-mobile-create-source]");
     const settingsSheet = document.querySelector("[data-mobile-create-settings-sheet]");
     const historySheet = document.querySelector("[data-mobile-create-history-sheet]");
+    const requestedCreateMode = params.get("mode");
     const createState = {
-      mode: params.get("mode") === "video" ? "video" : "image",
+      mode: ["image", "script", "video"].includes(requestedCreateMode) ? requestedCreateMode : "image",
       image: { model: "Flux Pro 1.1", cost: 20, ratio: "1:1" },
+      script: { model: "gemini-3-flash-preview", cost: 8, format: "Markdown 文本" },
       video: { model: "Seedance 2.0", cost: 64, ratio: "16:9", duration: "8 秒" },
     };
     const sourceType = params.get("source") || "";
@@ -604,6 +848,13 @@
         cover: "assets/image_assets/activity-prompt-cocreate-cover-c02e.png",
         prompt: "",
       },
+      "prompt:script": {
+        kind: "Prompt 共创",
+        title: "Prompt 共创计划",
+        meta: "剧本创作 · Prompt 投稿",
+        cover: "assets/image_assets/activity-prompt-cocreate-cover-c02e.png",
+        prompt: "",
+      },
     };
 
     const setCreateSheet = (sheet, open) => {
@@ -623,21 +874,36 @@
       if (createSettingsSummary) {
         createSettingsSummary.textContent = createState.mode === "video"
           ? `${state.model} · ${state.ratio} · ${state.duration}`
-          : `${state.model} · ${state.ratio}`;
+          : createState.mode === "script"
+            ? `${state.model} · ${state.format}`
+            : `${state.model} · ${state.ratio}`;
       }
       if (createSettingsCost) createSettingsCost.textContent = `预计消耗 ${state.cost} 积分`;
     };
     const syncCreateMode = (mode) => {
-      createState.mode = mode === "video" ? "video" : "image";
+      createState.mode = ["image", "script", "video"].includes(mode) ? mode : "image";
       if (createModeInput) createModeInput.value = createState.mode;
-      if (createPrompt) createPrompt.placeholder = createState.mode === "video" ? "描述你想生成的视频" : "描述你想生成的图片";
+      if (createPrompt) {
+        const promptConfig = {
+          image: { placeholder: "描述你想生成的图片", limit: 1000 },
+          script: { placeholder: "输入故事设定、人物关系或短片想法", limit: 5000 },
+          video: { placeholder: "描述你想生成的视频", limit: 1000 },
+        }[createState.mode];
+        createPrompt.placeholder = promptConfig.placeholder;
+        createPrompt.maxLength = promptConfig.limit;
+        if (createPrompt.value.length > promptConfig.limit) createPrompt.value = createPrompt.value.slice(0, promptConfig.limit);
+        if (createLimit) createLimit.textContent = String(promptConfig.limit);
+        syncCreatePrompt();
+      }
       if (createAttachment) {
+        createAttachment.hidden = createState.mode === "script";
         const attachmentLabel = createAttachment.classList.contains("is-selected")
           ? (createState.mode === "video" ? "移除首帧图片" : "移除参考图")
           : (createState.mode === "video" ? "添加首帧图片" : "添加参考图");
         createAttachment.setAttribute("aria-label", attachmentLabel);
         createAttachment.setAttribute("title", attachmentLabel);
       }
+      createInputRow?.classList.toggle("is-script", createState.mode === "script");
       createComposer.querySelectorAll("[data-mobile-create-mode]").forEach((button) => {
         const selected = button.dataset.mobileCreateMode === createState.mode;
         button.classList.toggle("is-selected", selected);
@@ -726,8 +992,9 @@
       failed: { status: "生成失败", title: () => "请调整提示词后重试", meta: () => "本次未生成作品", action: "返回修改" },
       unknown: { status: "状态待确认", title: (kind) => `${kind}任务仍在处理`, meta: (model) => `${model} · 可稍后刷新`, action: "刷新状态" },
     };
-    const createResultUrl = (mode) => {
+    const createResultUrl = (mode, model) => {
       const query = new URLSearchParams({ mode });
+      if (model) query.set("model", model);
       if (sourceType) query.set("source", sourceType);
       return `./mobile-generation-result.html?${query.toString()}`;
     };
@@ -738,7 +1005,7 @@
     };
     const appendCreateTask = (submittedPrompt, initialState = "running", { scroll = false, restored = false } = {}) => {
       const taskMode = createState.mode;
-      const taskKind = taskMode === "video" ? "视频" : "图片";
+      const taskKind = taskMode === "video" ? "视频" : taskMode === "script" ? "剧本" : "图片";
       const taskModel = restored && params.get("model") ? params.get("model") : createState[taskMode].model;
       let taskState = createTaskStates[initialState] ? initialState : "running";
       const createThread = createWorkspace.querySelector(".mobile-create-thread");
@@ -747,19 +1014,24 @@
       const userPrompt = document.createElement("p");
       userPrompt.textContent = submittedPrompt;
       const userMeta = document.createElement("small");
-      userMeta.textContent = `${taskKind}生成`;
+      userMeta.textContent = taskMode === "script" ? "剧本创作" : `${taskKind}生成`;
       userTurn.append(userPrompt, userMeta);
 
       const taskTurn = document.createElement("article");
       taskTurn.className = "mobile-create-turn is-task";
       taskTurn.dataset.mobileCreateTask = "";
       const taskPreview = document.createElement("button");
-      taskPreview.className = `mobile-create-task-preview${taskMode === "video" ? " is-video" : ""}`;
+      taskPreview.className = `mobile-create-task-preview${taskMode === "video" ? " is-video" : taskMode === "script" ? " is-script" : ""}`;
       taskPreview.type = "button";
       taskPreview.hidden = true;
-      const taskPreviewImage = document.createElement("img");
-      taskPreviewImage.src = taskMode === "video" ? "assets/image_assets/4.png" : "assets/image_assets/15.jpg";
-      taskPreviewImage.alt = `${taskKind}生成结果预览`;
+      const taskPreviewContent = document.createElement(taskMode === "script" ? "article" : "img");
+      if (taskMode === "script") {
+        taskPreviewContent.className = "mobile-create-script-preview";
+        taskPreviewContent.innerHTML = "<span>Markdown 预览</span><strong>雨夜霓虹街头 · 分镜设定</strong><p>主角在雨幕中确认追踪者，镜头切入手部道具和远处剪影。</p><ul><li>人物与冲突已拆解</li><li>三段分镜节奏已生成</li></ul>";
+      } else {
+        taskPreviewContent.src = taskMode === "video" ? "assets/image_assets/4.png" : "assets/image_assets/15.jpg";
+        taskPreviewContent.alt = `${taskKind}生成结果预览`;
+      }
       const taskPreviewLabel = document.createElement("span");
       taskPreviewLabel.className = "mobile-create-task-preview-label";
       const taskPreviewIcon = document.createElement("img");
@@ -767,7 +1039,7 @@
       taskPreviewIcon.src = "resources/icons/remixicon/svg/System/eye-line.svg";
       taskPreviewIcon.alt = "";
       taskPreviewLabel.append(taskPreviewIcon, document.createTextNode("查看结果"));
-      taskPreview.append(taskPreviewImage, taskPreviewLabel);
+      taskPreview.append(taskPreviewContent, taskPreviewLabel);
 
       const taskIcon = document.createElement("span");
       taskIcon.className = "mobile-create-task-icon";
@@ -797,13 +1069,20 @@
           showToast("生成完成后可查看结果");
           return;
         }
-        window.location.href = createResultUrl(taskMode);
+        window.location.href = createResultUrl(taskMode, taskModel);
       };
       const renderCreateTask = () => {
         const state = createTaskStates[taskState];
         taskTurn.dataset.state = taskState;
         taskStatus.textContent = state.status;
-        taskTitle.textContent = state.title(taskKind);
+        const scriptStateTitles = {
+          queue: "正在等待剧本创作",
+          running: "正在拆解故事与分镜",
+          success: "剧本已生成",
+          failed: "请调整故事设定后重试",
+          unknown: "剧本任务仍在处理",
+        };
+        taskTitle.textContent = taskMode === "script" ? scriptStateTitles[taskState] : state.title(taskKind);
         taskMeta.textContent = state.meta(taskModel);
         taskPreview.hidden = taskState !== "success";
         taskActionIcon.src = taskState === "success"
@@ -849,17 +1128,39 @@
       }
       const submittedPrompt = createPrompt.value.trim();
       appendCreateTask(submittedPrompt, "running", { scroll: true });
-      showToast("生成任务已创建");
+      showToast(createState.mode === "script" ? "剧本创作任务已创建" : "生成任务已创建");
     });
     document.addEventListener("keydown", (event) => {
       if (event.key !== "Escape") return;
       setCreateSheet(settingsSheet, false);
       setCreateSheet(historySheet, false);
     });
+    const restoredModel = params.get("model");
+    if (restoredModel) {
+      const restoredPanel = [...document.querySelectorAll("[data-mobile-create-setting-panel]")]
+        .find((panel) => panel.dataset.mobileCreateSettingPanel === createState.mode);
+      const restoredModelButton = [...(restoredPanel?.querySelectorAll("[data-mobile-create-model]") || [])]
+        .find((button) => button.dataset.mobileCreateModel === restoredModel);
+      if (restoredModelButton) {
+        createState[createState.mode].model = restoredModel;
+        createState[createState.mode].cost = Number(restoredModelButton.dataset.mobileCreateCost);
+        restoredPanel.querySelectorAll("[data-mobile-create-model]").forEach((button) => {
+          const selected = button === restoredModelButton;
+          button.classList.toggle("is-selected", selected);
+          button.setAttribute("aria-pressed", selected ? "true" : "false");
+          const stateIcon = button.querySelector(":scope > .mobile-icon");
+          if (stateIcon) stateIcon.alt = selected ? "已选择" : "";
+        });
+      }
+    }
     syncCreateMode(createState.mode);
     renderCreateSource();
     const restoredPrompt = params.get("prompt") || (params.get("state")
-      ? (createState.mode === "video" ? "雷云中金龙与白虎对峙，镜头环绕战场。" : "凤冠神女站在金色逆光中，电影感人物海报。")
+      ? (createState.mode === "video"
+        ? "雷云中金龙与白虎对峙，镜头环绕战场。"
+        : createState.mode === "script"
+          ? "雨夜霓虹街头，少年发现自己被跟踪，手中藏着一件不能暴露的关键道具。"
+          : "凤冠神女站在金色逆光中，电影感人物海报。")
       : "");
     if (restoredPrompt) {
       createPrompt.value = restoredPrompt;
@@ -1099,12 +1400,16 @@
   const resultScreen = document.querySelector("[data-mobile-result-screen]");
   if (resultScreen) {
     document.documentElement.classList.add("mobile-result-document");
-    const resultMode = params.get("mode") === "video" ? "video" : "image";
+    const requestedResultMode = params.get("mode");
+    const resultMode = ["image", "script", "video"].includes(requestedResultMode) ? requestedResultMode : "image";
     const resultSource = params.get("source") || "";
+    const resultModel = params.get("model") || "";
     const activitySources = new Set(["campaign", "competition", "prompt"]);
     const activityResult = activitySources.has(resultSource);
     const image = document.querySelector("[data-mobile-result-image]");
     const video = document.querySelector("[data-mobile-result-video]");
+    const script = document.querySelector("[data-mobile-result-script]");
+    const resultMedia = document.querySelector(".mobile-result-media");
     const title = document.querySelector("[data-mobile-result-title]");
     const meta = document.querySelector("[data-mobile-result-meta]");
     const prompt = document.querySelector("[data-mobile-result-prompt]");
@@ -1112,15 +1417,26 @@
     const promptToggle = document.querySelector("[data-mobile-result-prompt-toggle]");
     const promptToggleLabel = document.querySelector("[data-mobile-result-prompt-toggle-label]");
     const retry = document.querySelector("[data-mobile-result-retry]");
+    if (resultMode === "image" && resultModel && meta) meta.textContent = `${resultModel} · 3:4`;
     if (resultMode === "video") {
       if (image) image.hidden = true;
       if (video) video.hidden = false;
       if (title) title.textContent = "海灯守望";
-      if (meta) meta.textContent = "Seedance 2.0 · 16:9 · 8 秒";
+      if (meta) meta.textContent = `${resultModel || "Seedance 2.0"} · 16:9 · 8 秒`;
       if (prompt) prompt.textContent = "暮色中的海边灯塔被潮湿薄雾包围，远处海浪反射出零碎的冷蓝色月光。镜头从礁石与翻涌浪花开始，缓慢向上抬升并绕过塔身，掠过被海风吹动的旧旗与斑驳墙面。最后灯塔暖黄色光束点亮，在雾中旋转扫过海面，画面停留在光束与远方船影交汇的瞬间，整体保持克制、孤独又温暖的电影质感。";
+    }
+    if (resultMode === "script") {
+      if (image) image.hidden = true;
+      if (video) video.hidden = true;
+      if (script) script.hidden = false;
+      resultMedia?.classList.add("is-script");
+      if (title) title.textContent = "雨夜霓虹街头 · 分镜设定";
+      if (meta) meta.textContent = `${resultModel || "gemini-3-flash-preview"} · Markdown 文本`;
+      if (prompt) prompt.textContent = "雨夜霓虹街头，少年发现自己被跟踪，手中藏着一件不能暴露的关键道具。请拆解人物关系、核心冲突、三幕节奏和可执行分镜，并保留悬念式结尾。";
     }
     if (retry) {
       const retryQuery = new URLSearchParams({ mode: resultMode });
+      if (resultModel) retryQuery.set("model", resultModel);
       if (resultSource) retryQuery.set("source", resultSource);
       retry.href = `./mobile-create.html?${retryQuery.toString()}`;
     }

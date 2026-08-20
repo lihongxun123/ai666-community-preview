@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#05070b">
   <title>多元拾光 · AIGC 生成</title>
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
-  <link rel="stylesheet" href="./mobile-h5.css?v=20260820-p6">
-  <script src="./mobile-h5.js?v=20260820-p6" defer></script>
+  <link rel="stylesheet" href="./mobile-h5.css?v=20260820-p9">
+  <script src="./mobile-h5.js?v=20260820-p9" defer></script>
 </head>
 <body class="mobile-h5-body" data-mobile-page="create">
   <div class="mobile-shell mobile-primary-shell mobile-create-shell has-bottom-nav">
@@ -36,6 +36,7 @@
           <h2>输入提示词开始创作</h2>
           <div class="mobile-create-empty-modes" aria-hidden="true">
             <span><img class="mobile-icon" src="resources/icons/remixicon/svg/Media/image-line.svg" alt="">图片</span>
+            <span><img class="mobile-icon" src="resources/icons/remixicon/svg/Document/draft-line.svg" alt="">剧本</span>
             <span><img class="mobile-icon" src="resources/icons/remixicon/svg/Media/video-line.svg" alt="">视频</span>
           </div>
         </div>
@@ -49,6 +50,7 @@
       <div class="mobile-create-composer-tools">
         <div class="mobile-create-mode-switch" aria-label="创作类型">
           <button class="is-selected" type="button" data-mobile-create-mode="image" aria-pressed="true">图片</button>
+          <button type="button" data-mobile-create-mode="script" aria-pressed="false">剧本创作</button>
           <button type="button" data-mobile-create-mode="video" aria-pressed="false">视频</button>
         </div>
         <button class="mobile-create-settings-button" type="button" data-mobile-create-settings-open aria-controls="mobile-create-settings-sheet">
@@ -70,7 +72,7 @@
       </div>
       <div class="mobile-create-composer-meta">
         <span class="mobile-field-error" data-mobile-create-error aria-live="polite"></span>
-        <span><b data-mobile-create-prompt-count>0</b>/1000</span>
+        <span><b data-mobile-create-prompt-count>0</b>/<span data-mobile-create-prompt-limit>1000</span></span>
       </div>
     </form>
 
@@ -100,6 +102,16 @@
             <button class="is-selected" type="button" data-mobile-create-choice="1:1">1:1</button><button type="button" data-mobile-create-choice="16:9">16:9</button><button type="button" data-mobile-create-choice="9:16">9:16</button>
           </div>
         </section>
+        <section class="mobile-create-setting-panel" data-mobile-create-setting-panel="script" hidden>
+          <div class="mobile-form-heading"><h3>剧本模型</h3></div>
+          <div class="mobile-model-list" role="group" aria-label="剧本创作模型">
+            <button class="mobile-model-card is-selected" type="button" data-mobile-create-model="gemini-3-flash-preview" data-mobile-create-cost="8" aria-pressed="true"><img src="assets/image_assets/17.png" alt=""><span class="mobile-model-card-copy"><strong>gemini-3-flash-preview</strong><span>故事设定 / 分镜大纲 · 预计消耗 8 积分</span></span><img class="mobile-icon" src="resources/icons/remixicon/svg/System/checkbox-circle-fill.svg" alt="已选择"></button>
+            <button class="mobile-model-card" type="button" data-mobile-create-model="kimi-k2.6" data-mobile-create-cost="10" aria-pressed="false"><img src="assets/image_assets/18.png" alt=""><span class="mobile-model-card-copy"><strong>kimi-k2.6</strong><span>长文本梳理 · 预计消耗 10 积分</span></span><img class="mobile-icon" src="resources/icons/remixicon/svg/System/checkbox-circle-fill.svg" alt=""></button>
+            <button class="mobile-model-card" type="button" data-mobile-create-model="gpt-5.5" data-mobile-create-cost="12" aria-pressed="false"><img src="assets/image_assets/3.png" alt=""><span class="mobile-model-card-copy"><strong>gpt-5.5</strong><span>对白和节奏优化 · 预计消耗 12 积分</span></span><img class="mobile-icon" src="resources/icons/remixicon/svg/System/checkbox-circle-fill.svg" alt=""></button>
+            <button class="mobile-model-card" type="button" data-mobile-create-model="deepseek-v4-pro" data-mobile-create-cost="9" aria-pressed="false"><img src="assets/image_assets/11.png" alt=""><span class="mobile-model-card-copy"><strong>deepseek-v4-pro</strong><span>剧情拆解 · 预计消耗 9 积分</span></span><img class="mobile-icon" src="resources/icons/remixicon/svg/System/checkbox-circle-fill.svg" alt=""></button>
+          </div>
+          <div class="mobile-create-script-note"><img class="mobile-icon" src="resources/icons/remixicon/svg/Document/draft-line.svg" alt=""><span>输出为 Markdown 文本，可继续拆解人物、冲突和分镜节奏。</span></div>
+        </section>
         <section class="mobile-create-setting-panel" data-mobile-create-setting-panel="video" hidden>
           <div class="mobile-form-heading"><h3>模型</h3></div>
           <div class="mobile-model-list" role="group" aria-label="视频生成模型">
@@ -128,6 +140,7 @@
       <div class="mobile-sheet-scroll">
         <div class="mobile-history-list">
           <a class="mobile-history-row" href="./mobile-image-detail.html"><img src="assets/image_assets/15.jpg" alt=""><span class="mobile-history-copy"><strong>凤冠神女</strong><small>图片生成</small></span><span class="mobile-history-state">已完成</span></a>
+          <a class="mobile-history-row" href="./mobile-generation-result.html?mode=script"><img src="assets/image_assets/17.png" alt=""><span class="mobile-history-copy"><strong>雨夜霓虹街头 · 分镜设定</strong><small>剧本创作</small></span><span class="mobile-history-state">已完成</span></a>
           <a class="mobile-history-row" href="./mobile-video-detail.html"><img src="assets/image_assets/4.png" alt=""><span class="mobile-history-copy"><strong>海灯守望</strong><small>视频生成</small></span><span class="mobile-history-state">已完成</span></a>
           <a class="mobile-history-row" href="./mobile-create.html?mode=video&amp;state=running&amp;prompt=%E9%9B%B7%E4%BA%91%E4%B8%AD%E9%87%91%E9%BE%99%E4%B8%8E%E7%99%BD%E8%99%8E%E5%AF%B9%E5%B3%99%EF%BC%8C%E9%95%9C%E5%A4%B4%E7%8E%AF%E7%BB%95%E6%88%98%E5%9C%BA%E3%80%82&amp;model=Seedance+2.0"><img src="assets/image_assets/11.png" alt=""><span class="mobile-history-copy"><strong>龙虎天劫</strong><small>视频生成</small></span><span class="mobile-history-state is-running">生成中</span></a>
         </div>
@@ -139,15 +152,15 @@
   <aside id="mobile-walkthrough" class="mobile-walkthrough" data-mobile-walkthrough aria-hidden="true">
     <div class="mobile-walkthrough-head"><h2>创作工作台走查规则</h2><button class="mobile-icon-button" type="button" data-mobile-walkthrough-close aria-label="关闭走查规则"><img class="mobile-icon" src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></button></div>
     <div class="mobile-rule-grid">
-      <section class="mobile-rule-card"><strong>页面目的</strong><p>用同一对话式工作台承接图片与视频生成；提示词是主输入，模式、参考素材、模型和参数作为就近设置。</p></section>
-      <section class="mobile-rule-card"><strong>同款上下文</strong><p>从图片或视频详情进入时展示来源作品，带入媒体类型、提示词、模型与允许复用的参数；用户确认后才发起生成。</p></section>
-      <section class="mobile-rule-card"><strong>输入层级</strong><p>生成记录固定在标题右侧；参考图或首帧入口位于提示词输入框最左侧；模型、预计积分、比例和视频时长归为同一组生成配置。</p></section>
+      <section class="mobile-rule-card"><strong>页面目的</strong><p>用同一对话式工作台承接图片生成、剧本创作与视频生成；灵感输入是主入口，模式、参考素材、模型和参数作为就近设置。</p></section>
+      <section class="mobile-rule-card"><strong>同款上下文</strong><p>从图片或视频详情进入时展示来源作品，带入媒体类型、提示词、模型与允许复用的参数；剧本创作从故事设定开始，用户确认后才发起创作。</p></section>
+      <section class="mobile-rule-card"><strong>输入层级</strong><p>生成记录固定在标题右侧；图片和视频的参考素材入口位于输入框最左侧，剧本模式隐藏附件入口；模型、预计积分及各模式参数归为同一组设置。</p></section>
       <section class="mobile-rule-card"><strong>图片参数</strong><p>图片生成仅展示当前真实支持的模型与画面比例；当前不提供分辨率选择，也不在设置摘要中展示分辨率。</p></section>
-      <section class="mobile-rule-card"><strong>模型与积分</strong><p>图片和视频模型均可单选；每个模型直接展示预计积分，切换后同步更新输入区设置摘要。实际模型、可用状态和积分成本读取可用模型接口。</p></section>
+      <section class="mobile-rule-card"><strong>模型与积分</strong><p>图片、剧本和视频模型均可单选；每个模型直接展示预计积分，切换后同步更新输入区设置摘要。实际模型、可用状态和积分成本读取可用模型接口。</p></section>
       <section class="mobile-rule-card"><strong>全局创作入口</strong><p>底部创作入口是全局发布动作，点击后先选择 AIGC 生成或发布闪念；当前页承接 AIGC 生成，发布闪念进入社区闪念频道的编辑层。</p></section>
       <section class="mobile-rule-card"><strong>记录承接</strong><p>生成记录从标题右侧入口打开底部层；进行中记录恢复原任务，成功记录进入对应结果或作品详情。</p></section>
-      <section class="mobile-rule-card"><strong>状态承接</strong><p>发起生成后在当前对话中加入用户提示词与生成任务卡；生成中不离开创作页，成功后在卡片内展开结果预览，点击预览再进入结果页。</p></section>
-      <section class="mobile-rule-card"><strong>验收</strong><p>360/390/430 宽度下输入区不被五导航或键盘遮挡；图片与视频切换、设置、参考素材、记录和同款预填均可操作；不自动生成或扣减积分。</p></section>
+      <section class="mobile-rule-card"><strong>状态承接</strong><p>发起创作后在当前对话中加入用户输入与任务卡；处理中不离开创作页，成功后在卡片内展开图片、Markdown 剧本或视频预览，点击预览再进入结果页。</p></section>
+      <section class="mobile-rule-card"><strong>验收</strong><p>360/390/430 宽度下输入区不被五导航或键盘遮挡；图片、剧本、视频三模式切换，模型设置、参考素材、记录和结果回流均可操作；不自动生成或扣减积分。</p></section>
     </div>
   </aside>
   <div class="mobile-toast" data-mobile-toast role="status" aria-live="polite"></div>

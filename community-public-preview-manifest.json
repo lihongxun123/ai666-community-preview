@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-20T08:49:57.292Z",
+  "generatedAt": "2026-08-20T14:53:45.745Z",
   "packageType": "community-public-preview",
   "sourceRoot": "outputs/community-homepage-style-exploration",
   "entry": "index.html",
@@ -310,6 +310,7 @@
     "assets/image_assets",
     "assets/video_assets",
     "assets/competition",
+    "assets/mobile",
     "resources/icons/remixicon/svg"
   ],
   "runtimeScripts": [
@@ -390,6 +391,7 @@
     "assets/image_assets/tutorial-cover-TU000108.jpg",
     "assets/image_assets/tutorial-cover-TU000109.jpg",
     "assets/image_assets/tutorial-official-banner-v3.webp",
+    "assets/mobile/invite-pass-background.webp",
     "assets/video_assets/aigc-hero-c02c.mp4",
     "assets/video_assets/nine_grid.mp4",
     "assets/video_assets/sd2_gen.mp4"
@@ -413,6 +415,7 @@
     "resources/icons/remixicon/svg/Business/megaphone-fill.svg",
     "resources/icons/remixicon/svg/Business/send-plane-2-fill.svg",
     "resources/icons/remixicon/svg/Business/send-plane-2-line.svg",
+    "resources/icons/remixicon/svg/Business/send-plane-line.svg",
     "resources/icons/remixicon/svg/Communication/chat-3-line.svg",
     "resources/icons/remixicon/svg/Communication/chat-follow-up-line.svg",
     "resources/icons/remixicon/svg/Communication/message-2-line.svg",

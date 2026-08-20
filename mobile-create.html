@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#05070b">
   <title>多元拾光 · AIGC 生成</title>
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
-  <link rel="stylesheet" href="./mobile-h5.css?v=20260820-p0b14">
-  <script src="./mobile-h5.js?v=20260820-p0b14" defer></script>
+  <link rel="stylesheet" href="./mobile-h5.css?v=20260820-p6">
+  <script src="./mobile-h5.js?v=20260820-p6" defer></script>
 </head>
 <body class="mobile-h5-body" data-mobile-page="create">
   <div class="mobile-shell mobile-primary-shell mobile-create-shell has-bottom-nav">
@@ -43,7 +43,7 @@
       </section>
     </main>
 
-    <form class="mobile-create-composer" data-mobile-create-composer action="./mobile-generation-progress.html" method="get">
+    <form class="mobile-create-composer" data-mobile-create-composer action="./mobile-create.html" method="get">
       <input type="hidden" name="mode" value="image" data-mobile-create-mode-input>
       <input type="hidden" name="state" value="running">
       <div class="mobile-create-composer-tools">
@@ -129,7 +129,7 @@
         <div class="mobile-history-list">
           <a class="mobile-history-row" href="./mobile-image-detail.html"><img src="assets/image_assets/15.jpg" alt=""><span class="mobile-history-copy"><strong>凤冠神女</strong><small>图片生成</small></span><span class="mobile-history-state">已完成</span></a>
           <a class="mobile-history-row" href="./mobile-video-detail.html"><img src="assets/image_assets/4.png" alt=""><span class="mobile-history-copy"><strong>海灯守望</strong><small>视频生成</small></span><span class="mobile-history-state">已完成</span></a>
-          <a class="mobile-history-row" href="./mobile-generation-progress.html?mode=video&amp;state=running"><img src="assets/image_assets/11.png" alt=""><span class="mobile-history-copy"><strong>龙虎天劫</strong><small>视频生成</small></span><span class="mobile-history-state is-running">生成中</span></a>
+          <a class="mobile-history-row" href="./mobile-create.html?mode=video&amp;state=running&amp;prompt=%E9%9B%B7%E4%BA%91%E4%B8%AD%E9%87%91%E9%BE%99%E4%B8%8E%E7%99%BD%E8%99%8E%E5%AF%B9%E5%B3%99%EF%BC%8C%E9%95%9C%E5%A4%B4%E7%8E%AF%E7%BB%95%E6%88%98%E5%9C%BA%E3%80%82&amp;model=Seedance+2.0"><img src="assets/image_assets/11.png" alt=""><span class="mobile-history-copy"><strong>龙虎天劫</strong><small>视频生成</small></span><span class="mobile-history-state is-running">生成中</span></a>
         </div>
       </div>
     </div>
@@ -146,7 +146,7 @@
       <section class="mobile-rule-card"><strong>模型与积分</strong><p>图片和视频模型均可单选；每个模型直接展示预计积分，切换后同步更新输入区设置摘要。实际模型、可用状态和积分成本读取可用模型接口。</p></section>
       <section class="mobile-rule-card"><strong>全局创作入口</strong><p>底部创作入口是全局发布动作，点击后先选择 AIGC 生成或发布闪念；当前页承接 AIGC 生成，发布闪念进入社区闪念频道的编辑层。</p></section>
       <section class="mobile-rule-card"><strong>记录承接</strong><p>生成记录从标题右侧入口打开底部层；进行中记录恢复原任务，成功记录进入对应结果或作品详情。</p></section>
-      <section class="mobile-rule-card"><strong>状态承接</strong><p>发起生成后在当前对话中加入用户提示词与生成任务卡；任务卡进入原生成进度和结果链路，保存、发布社区与活动投稿继续在结果后分别完成。</p></section>
+      <section class="mobile-rule-card"><strong>状态承接</strong><p>发起生成后在当前对话中加入用户提示词与生成任务卡；生成中不离开创作页，成功后在卡片内展开结果预览，点击预览再进入结果页。</p></section>
       <section class="mobile-rule-card"><strong>验收</strong><p>360/390/430 宽度下输入区不被五导航或键盘遮挡；图片与视频切换、设置、参考素材、记录和同款预填均可操作；不自动生成或扣减积分。</p></section>
     </div>
   </aside>

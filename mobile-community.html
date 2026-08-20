@@ -6,18 +6,70 @@
   <meta name="theme-color" content="#05070b">
   <title>多元拾光 · 移动社区</title>
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
-  <link rel="stylesheet" href="./mobile-h5.css?v=20260820-p0b13">
-  <script src="./mobile-h5.js?v=20260820-p0b13" defer></script>
+  <link rel="stylesheet" href="./mobile-h5.css?v=20260820-p6">
+  <script src="./mobile-h5.js?v=20260820-p6" defer></script>
 </head>
 <body class="mobile-h5-body" data-mobile-page="community">
   <div class="mobile-shell mobile-primary-shell has-bottom-nav">
-    <main id="main" class="mobile-content mobile-community-content">
+    <main id="main" class="mobile-content mobile-community-content mobile-community-hub">
+      <header class="mobile-community-hub-head"><h1>社区</h1></header>
       <div class="mobile-community-module-tabs" role="tablist" aria-label="社区频道">
-        <button id="mobile-community-tab-aigc" class="mobile-community-module-tab is-active" type="button" role="tab" data-mobile-community-tab="aigc" aria-controls="mobile-community-panel-aigc" aria-selected="true">AIGC</button>
+        <button id="mobile-community-tab-recommend" class="mobile-community-module-tab is-active" type="button" role="tab" data-mobile-community-tab="recommend" aria-controls="mobile-community-panel-recommend" aria-selected="true">推荐</button>
+        <button id="mobile-community-tab-aigc" class="mobile-community-module-tab" type="button" role="tab" data-mobile-community-tab="aigc" aria-controls="mobile-community-panel-aigc" aria-selected="false">AIGC</button>
         <button id="mobile-community-tab-flash" class="mobile-community-module-tab" type="button" role="tab" data-mobile-community-tab="flash" aria-controls="mobile-community-panel-flash" aria-selected="false">闪念</button>
+        <button id="mobile-community-tab-tutorial" class="mobile-community-module-tab" type="button" role="tab" data-mobile-community-tab="tutorial" aria-controls="mobile-community-panel-tutorial" aria-selected="false">教程</button>
       </div>
 
-      <section id="mobile-community-panel-aigc" class="mobile-community-panel" role="tabpanel" aria-labelledby="mobile-community-tab-aigc" data-mobile-community-panel="aigc">
+      <section id="mobile-community-panel-recommend" class="mobile-community-panel mobile-community-recommend" role="tabpanel" aria-labelledby="mobile-community-tab-recommend" data-mobile-community-panel="recommend">
+        <article class="mobile-community-feature" aria-labelledby="mobile-community-feature-title">
+          <img src="assets/image_assets/community-hub-featured-v1.png" alt="凤冠神女站在青蓝盘龙背景前">
+          <div class="mobile-community-feature-shade" aria-hidden="true"></div>
+          <div class="mobile-community-feature-copy">
+            <span class="mobile-community-feature-eyebrow">今日精选</span>
+            <h2 id="mobile-community-feature-title">凤冠神女</h2>
+            <p class="mobile-community-feature-meta">阿念 · Flux Pro 1.1</p>
+            <p class="mobile-community-feature-summary">东方美学与奇幻光影交织，<br>每一帧都如诗如画。</p>
+            <a class="mobile-community-feature-action" href="./mobile-image-detail.html">查看作品<img class="mobile-icon" src="resources/icons/remixicon/svg/Arrows/arrow-right-s-line.svg" alt=""></a>
+          </div>
+          <div class="mobile-community-feature-dots" aria-label="精选作品第 1 项，共 4 项"><span class="is-active"></span><span></span><span></span><span></span></div>
+        </article>
+
+        <section class="mobile-community-recommend-section mobile-community-recommend-flash" aria-labelledby="mobile-community-hot-title">
+          <header class="mobile-community-recommend-head">
+            <div><h2 id="mobile-community-hot-title">闪念正在热议</h2><span>最新讨论</span></div>
+            <button class="mobile-community-outline-action" type="button" data-mobile-flash-compose-open>发闪念</button>
+          </header>
+          <article class="mobile-community-hot-post">
+            <header class="mobile-flash-post-head"><img src="assets/image_assets/1.png" alt=""><div><strong>南舟</strong><span>18 分钟前</span></div></header>
+            <p>今天把漫剧开场拆成三段，人物冲突、场景气氛、镜头推进，再让模型分别补细节，生成结果比直接长 Prompt 更稳定。</p>
+            <div class="mobile-community-hot-media">
+              <img src="assets/image_assets/11.png" alt="漫剧开场镜头">
+              <img src="assets/image_assets/17.png" alt="角色与场景氛围">
+              <img src="assets/image_assets/3.png" alt="东方云海镜头">
+              <img src="assets/image_assets/4.png" alt="海灯场景镜头">
+            </div>
+            <footer class="mobile-community-hot-meta">
+              <span><img class="mobile-icon" src="resources/icons/remixicon/svg/Communication/chat-3-line.svg" alt="">24</span>
+              <span><img class="mobile-icon" src="resources/icons/remixicon/svg/Health & Medical/heart-3-line.svg" alt="">186</span>
+              <button type="button" data-mobile-community-open-module="flash">查看全部<img class="mobile-icon" src="resources/icons/remixicon/svg/Arrows/arrow-right-s-line.svg" alt=""></button>
+            </footer>
+          </article>
+        </section>
+
+        <section class="mobile-community-recommend-section mobile-community-recommend-tutorial" aria-labelledby="mobile-community-tutorial-title">
+          <header class="mobile-community-recommend-head">
+            <div><img class="mobile-icon" src="resources/icons/remixicon/svg/Document/book-open-line.svg" alt=""><h2 id="mobile-community-tutorial-title">官方教程推荐</h2><span>最新教程</span></div>
+            <button class="mobile-community-text-action" type="button" data-mobile-community-open-module="tutorial">全部教程<img class="mobile-icon" src="resources/icons/remixicon/svg/Arrows/arrow-right-s-line.svg" alt=""></button>
+          </header>
+          <button class="mobile-community-tutorial-feature" type="button" data-mobile-tutorial-open data-tutorial-title="第十五期：OMate API 配置教程" data-tutorial-meta="官方教程 · 8 分钟" data-tutorial-image="assets/image_assets/tutorial-cover-TU000101.jpg">
+            <img src="assets/image_assets/tutorial-cover-TU000101.jpg" alt="OMate API 配置教程封面">
+            <span><strong>第十五期：<br>OMate API 配置教程</strong><small>官方教程</small></span>
+            <img class="mobile-icon" src="resources/icons/remixicon/svg/Arrows/arrow-right-s-line.svg" alt="">
+          </button>
+        </section>
+      </section>
+
+      <section id="mobile-community-panel-aigc" class="mobile-community-panel mobile-community-inner-panel" role="tabpanel" aria-labelledby="mobile-community-tab-aigc" data-mobile-community-panel="aigc" hidden>
         <div class="mobile-home-filter-tabs mobile-community-tabs" aria-label="AIGC 内容类型筛选">
           <button class="mobile-home-filter-tab is-active" type="button" data-mobile-filter="all" aria-pressed="true">全部</button>
           <button class="mobile-home-filter-tab" type="button" data-mobile-filter="image" aria-pressed="false">图片</button>
@@ -26,29 +78,29 @@
 
         <div class="mobile-community-grid" data-mobile-community-masonry aria-label="AIGC 作品流">
           <article class="mobile-community-card" data-mobile-content-type="image">
-            <a class="mobile-community-media is-portrait" href="./mobile-image-detail.html"><img src="assets/image_assets/15.jpg" alt="凤冠神女"></a>
+            <a class="mobile-community-media is-portrait" href="./mobile-image-detail.html" aria-label="查看作品：凤冠神女"><img src="assets/image_assets/15.jpg" alt="凤冠神女"></a>
             <div class="mobile-community-card-copy"><h2>凤冠神女</h2><div class="mobile-community-meta-row"><div class="mobile-community-author"><img src="assets/image_assets/1.png" alt=""><span>阿念</span></div><p>Flux Pro 1.1</p></div></div>
           </article>
 
           <article class="mobile-community-card" data-mobile-content-type="video">
-            <a class="mobile-community-media" href="./mobile-video-detail.html"><img src="assets/image_assets/4.png" alt="海灯守望"><span class="mobile-community-play"><img class="mobile-icon" src="resources/icons/remixicon/svg/Media/play-circle-line.svg" alt=""></span></a>
+            <a class="mobile-community-media" href="./mobile-video-detail.html" aria-label="查看作品：海灯守望"><img src="assets/image_assets/4.png" alt="海灯守望"><span class="mobile-community-play"><img class="mobile-icon" src="resources/icons/remixicon/svg/Media/play-circle-line.svg" alt=""></span></a>
             <div class="mobile-community-card-copy"><h2>海灯守望</h2><div class="mobile-community-meta-row"><div class="mobile-community-author"><img src="assets/image_assets/4.png" alt=""><span>海雾</span></div><p>Seedance 2.0</p></div></div>
           </article>
 
           <article class="mobile-community-card" data-mobile-content-type="image">
-            <a class="mobile-community-media" href="./mobile-image-detail.html"><img src="assets/image_assets/3.png" alt="竹泉秘境"></a>
+            <a class="mobile-community-media" href="./mobile-image-detail.html" aria-label="查看作品：竹泉秘境"><img src="assets/image_assets/3.png" alt="竹泉秘境"></a>
             <div class="mobile-community-card-copy"><h2>竹泉秘境</h2><div class="mobile-community-meta-row"><div class="mobile-community-author"><img src="assets/image_assets/3.png" alt=""><span>竹影</span></div><p>Flux Pro 1.1</p></div></div>
           </article>
 
           <article class="mobile-community-card" data-mobile-content-type="video">
-            <a class="mobile-community-media is-portrait" href="./mobile-video-detail.html"><img src="assets/image_assets/18.png" alt="镜域漂移"><span class="mobile-community-play"><img class="mobile-icon" src="resources/icons/remixicon/svg/Media/play-circle-line.svg" alt=""></span></a>
+            <a class="mobile-community-media is-portrait" href="./mobile-video-detail.html" aria-label="查看作品：镜域漂移"><img src="assets/image_assets/18.png" alt="镜域漂移"><span class="mobile-community-play"><img class="mobile-icon" src="resources/icons/remixicon/svg/Media/play-circle-line.svg" alt=""></span></a>
             <div class="mobile-community-card-copy"><h2>镜域漂移</h2><div class="mobile-community-meta-row"><div class="mobile-community-author"><img src="assets/image_assets/2.png" alt=""><span>星野</span></div><p>Seedance 2.0</p></div></div>
           </article>
         </div>
         <div class="mobile-empty-filter" data-mobile-filter-empty>暂无匹配内容</div>
       </section>
 
-      <section id="mobile-community-panel-flash" class="mobile-community-panel" role="tabpanel" aria-labelledby="mobile-community-tab-flash" data-mobile-community-panel="flash" hidden>
+      <section id="mobile-community-panel-flash" class="mobile-community-panel mobile-community-inner-panel" role="tabpanel" aria-labelledby="mobile-community-tab-flash" data-mobile-community-panel="flash" hidden>
         <div class="mobile-flash-feed" aria-label="闪念内容流">
           <article class="mobile-flash-post-card">
             <header class="mobile-flash-post-head"><img src="assets/image_assets/1.png" alt=""><div><strong>南舟</strong><span>18 分钟前</span></div></header>
@@ -69,6 +121,20 @@
             <div class="mobile-flash-media-grid is-single"><span class="mobile-flash-video-cover"><img src="assets/image_assets/18.png" alt="九宫格视频生成片段"><span class="mobile-community-play"><img class="mobile-icon" src="resources/icons/remixicon/svg/Media/play-circle-line.svg" alt=""></span></span></div>
             <footer class="mobile-flash-post-meta"><span class="mobile-community-topic">#视频生成</span><span>88 赞 · 11 评论</span></footer>
           </article>
+        </div>
+      </section>
+
+      <section id="mobile-community-panel-tutorial" class="mobile-community-panel mobile-community-inner-panel" role="tabpanel" aria-labelledby="mobile-community-tab-tutorial" data-mobile-community-panel="tutorial" hidden>
+        <div class="mobile-community-tutorial-list" aria-label="官方教程列表">
+          <button class="mobile-community-tutorial-row" type="button" data-mobile-tutorial-open data-tutorial-title="第十五期：OMate API 配置教程" data-tutorial-meta="官方教程 · 8 分钟" data-tutorial-image="assets/image_assets/tutorial-cover-TU000101.jpg">
+            <img src="assets/image_assets/tutorial-cover-TU000101.jpg" alt="OMate API 配置教程封面"><span><small>官方教程</small><strong>第十五期：OMate API 配置教程</strong><em>快速完成模型 API 接入与常用参数配置</em></span><img class="mobile-icon" src="resources/icons/remixicon/svg/Arrows/arrow-right-s-line.svg" alt="">
+          </button>
+          <button class="mobile-community-tutorial-row" type="button" data-mobile-tutorial-open data-tutorial-title="第十四期：LobeChat API 配置教程" data-tutorial-meta="官方教程 · 10 分钟" data-tutorial-image="assets/image_assets/tutorial-cover-TU000102.jpg">
+            <img src="assets/image_assets/tutorial-cover-TU000102.jpg" alt="LobeChat API 配置教程封面"><span><small>官方教程</small><strong>第十四期：LobeChat API 配置教程</strong><em>从模型选择到首次对话的完整配置步骤</em></span><img class="mobile-icon" src="resources/icons/remixicon/svg/Arrows/arrow-right-s-line.svg" alt="">
+          </button>
+          <button class="mobile-community-tutorial-row" type="button" data-mobile-tutorial-open data-tutorial-title="第十三期：SillyTavern API 配置教程" data-tutorial-meta="官方教程 · 12 分钟" data-tutorial-image="assets/image_assets/tutorial-cover-TU000103.jpg">
+            <img src="assets/image_assets/tutorial-cover-TU000103.jpg" alt="SillyTavern API 配置教程封面"><span><small>官方教程</small><strong>第十三期：SillyTavern API 配置教程</strong><em>配置角色对话并完成连接检查</em></span><img class="mobile-icon" src="resources/icons/remixicon/svg/Arrows/arrow-right-s-line.svg" alt="">
+          </button>
         </div>
       </section>
     </main>
@@ -105,16 +171,30 @@
     </div>
   </section>
 
+  <section id="mobile-tutorial-detail-sheet" class="mobile-bottom-sheet mobile-tutorial-detail-sheet" data-mobile-tutorial-sheet aria-hidden="true">
+    <button class="mobile-sheet-backdrop" type="button" data-mobile-tutorial-close aria-label="关闭教程预览"></button>
+    <div class="mobile-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="mobile-tutorial-detail-title">
+      <header class="mobile-sheet-head"><h2 id="mobile-tutorial-detail-title" data-mobile-tutorial-title>教程预览</h2><button class="mobile-icon-button" type="button" data-mobile-tutorial-close aria-label="关闭教程预览"><img class="mobile-icon" src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></button></header>
+      <div class="mobile-sheet-scroll mobile-tutorial-detail-scroll">
+        <img data-mobile-tutorial-image src="assets/image_assets/tutorial-cover-TU000101.jpg" alt="教程封面">
+        <p data-mobile-tutorial-meta>官方教程</p>
+        <h3>本节你将完成</h3>
+        <ol><li>确认模型服务地址和可用模型。</li><li>在目标工具中填写 API 地址与访问凭证。</li><li>发起测试对话并处理常见连接错误。</li></ol>
+        <p class="mobile-tutorial-detail-note">教程内容在当前页面内预览，关闭后会回到刚才的社区位置。</p>
+      </div>
+    </div>
+  </section>
+
   <button class="mobile-walkthrough-trigger" type="button" data-mobile-walkthrough-open aria-controls="mobile-walkthrough">走查</button>
   <aside id="mobile-walkthrough" class="mobile-walkthrough" data-mobile-walkthrough aria-hidden="true">
     <div class="mobile-walkthrough-head"><h2>移动社区走查规则</h2><button class="mobile-icon-button" type="button" data-mobile-walkthrough-close aria-label="关闭走查规则"><img class="mobile-icon" src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></button></div>
     <div class="mobile-rule-grid">
-      <section class="mobile-rule-card"><strong>页面目的</strong><p>社区以 AIGC 和闪念两个频道承接不同的内容消费方式，继续使用 Web 端同一作品与帖子对象。</p></section>
-      <section class="mobile-rule-card"><strong>页面骨架</strong><p>社区不设置顶部应用栏和搜索框；首层切换 AIGC 与闪念，AIGC 内再筛选图片和视频，底部五项承担一级导航。</p></section>
-      <section class="mobile-rule-card"><strong>内容一致</strong><p>AIGC 使用双列瀑布流展示标题、作者和模型，作者与模型同排呈现；图片与视频通过筛选和播放控件区分，不在封面重复显示类型标识；闪念使用单列帖子流展示作者、时间、正文、媒体与轻量热度。</p></section>
+      <section class="mobile-rule-card"><strong>页面目的</strong><p>社区推荐页聚合作品、闪念和官方教程，帮助用户先发现内容，再进入对应频道继续浏览、讨论或学习；继续使用 Web 端同一作品、帖子与教程对象。</p></section>
+      <section class="mobile-rule-card"><strong>页面骨架</strong><p>社区首层为推荐、AIGC、闪念、教程四个频道；推荐页只承担聚合分发，AIGC、闪念和教程仍维护各自完整列表与详情上下文，底部五项承担一级导航。</p></section>
+      <section class="mobile-rule-card"><strong>内容一致</strong><p>推荐页按精选作品、热议闪念、最新教程组织首屏；AIGC 使用双列瀑布流，闪念使用单列帖子流，教程使用连续列表并在原页打开预览层，不回落桌面页面。</p></section>
       <section class="mobile-rule-card"><strong>状态</strong><p>频道和 AIGC 类型筛选均在当前页完成；地址参数记录当前频道，返回时恢复频道、筛选与列表位置。</p></section>
       <section class="mobile-rule-card"><strong>发布闪念</strong><p>底部创作入口先选择创作方式；发布闪念进入闪念频道并打开编辑层，正文最多 600 字、媒体最多 4 个，正文或媒体至少填写一项。静态原型只演示提交状态，不写入真实内容。</p></section>
-      <section class="mobile-rule-card"><strong>验收</strong><p>两个频道切换后只展示对应内容流；AIGC 首屏双列对齐并按列高连续排列，作者与模型保持同排；类型筛选不影响闪念；底部导航不遮挡内容；360/390/430 无横向溢出。</p></section>
+      <section class="mobile-rule-card"><strong>验收</strong><p>四个频道切换后只展示对应内容；推荐页三类入口均可到达其频道或详情；教程预览关闭后保留社区位置；AIGC 筛选不影响其他频道；底部导航不遮挡内容；360/390/430 无横向溢出。</p></section>
     </div>
   </aside>
   <div class="mobile-toast" data-mobile-toast role="status" aria-live="polite"></div>

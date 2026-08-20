@@ -1,7 +1,16 @@
 (() => {
   const body = document.body;
   const params = new URLSearchParams(window.location.search);
+  document.querySelectorAll("[data-mobile-walkthrough-review-only]").forEach((trigger) => {
+    trigger.hidden = params.get("review") !== "1";
+  });
   body.dataset.mobileClean = params.get("clean") === "1" ? "true" : "false";
+  if (body.dataset.mobileClean === "true") document.documentElement.classList.add("mobile-clean-document");
+
+  if (body.dataset.mobilePage === "generation-progress") {
+    window.location.replace(`./mobile-create.html${params.toString() ? `?${params.toString()}` : ""}`);
+    return;
+  }
 
   const showToast = (message) => {
     const toast = document.querySelector("[data-mobile-toast]");
@@ -196,7 +205,7 @@
   const communityPanels = [...document.querySelectorAll("[data-mobile-community-panel]")];
   const setCommunityModule = (moduleName, updateUrl = false) => {
     if (!communityTabs.length || !communityPanels.length) return;
-    const next = communityTabs.some((tab) => tab.dataset.mobileCommunityTab === moduleName) ? moduleName : "aigc";
+    const next = communityTabs.some((tab) => tab.dataset.mobileCommunityTab === moduleName) ? moduleName : "recommend";
     communityTabs.forEach((tab) => {
       const active = tab.dataset.mobileCommunityTab === next;
       tab.classList.toggle("is-active", active);
@@ -222,7 +231,13 @@
       nextTab.focus();
     });
   });
-  if (communityTabs.length) setCommunityModule(params.get("compose") === "1" ? "flash" : (params.get("module") || "aigc"));
+  document.querySelectorAll("[data-mobile-community-open-module]").forEach((button) => {
+    button.addEventListener("click", () => {
+      setCommunityModule(button.dataset.mobileCommunityOpenModule, true);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  });
+  if (communityTabs.length) setCommunityModule(params.get("compose") === "1" ? "flash" : (params.get("module") || "recommend"));
 
   const flashComposeSheet = document.querySelector("[data-mobile-flash-compose-sheet]");
   const flashComposeForm = document.querySelector("[data-mobile-flash-compose]");
@@ -249,6 +264,12 @@
       }
       if (open) window.setTimeout(() => flashContent?.focus(), 180);
     };
+    document.querySelectorAll("[data-mobile-flash-compose-open]").forEach((button) => button.addEventListener("click", () => {
+      const url = new URL(window.location.href);
+      url.searchParams.set("compose", "1");
+      history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+      setFlashComposeSheet(true, false);
+    }));
     const canPublishFlash = () => Boolean(flashContent?.value.trim() || flashMediaFiles.length);
     const refreshFlashCompose = () => {
       if (flashCounter && flashContent) flashCounter.textContent = `${flashContent.value.length}/600`;
@@ -323,6 +344,29 @@
     window.addEventListener("beforeunload", () => flashMediaFiles.forEach((item) => URL.revokeObjectURL(item.url)));
     refreshFlashCompose();
   }
+
+  const tutorialSheet = document.querySelector("[data-mobile-tutorial-sheet]");
+  const setTutorialSheet = (open, sourceButton = null) => {
+    if (!tutorialSheet) return;
+    tutorialSheet.classList.toggle("is-open", open);
+    tutorialSheet.setAttribute("aria-hidden", open ? "false" : "true");
+    if (open && sourceButton) {
+      const title = sourceButton.dataset.tutorialTitle || "教程预览";
+      const meta = sourceButton.dataset.tutorialMeta || "官方教程";
+      const image = sourceButton.dataset.tutorialImage || "assets/image_assets/tutorial-cover-TU000101.jpg";
+      const titleNode = tutorialSheet.querySelector("[data-mobile-tutorial-title]");
+      const metaNode = tutorialSheet.querySelector("[data-mobile-tutorial-meta]");
+      const imageNode = tutorialSheet.querySelector("[data-mobile-tutorial-image]");
+      if (titleNode) titleNode.textContent = title;
+      if (metaNode) metaNode.textContent = meta;
+      if (imageNode) {
+        imageNode.src = image;
+        imageNode.alt = `${title}封面`;
+      }
+    }
+  };
+  document.querySelectorAll("[data-mobile-tutorial-open]").forEach((button) => button.addEventListener("click", () => setTutorialSheet(true, button)));
+  tutorialSheet?.querySelectorAll("[data-mobile-tutorial-close]").forEach((button) => button.addEventListener("click", () => setTutorialSheet(false)));
 
   const myContentTabs = [...document.querySelectorAll("[data-mobile-my-tab]")];
   const myContentPanels = [...document.querySelectorAll("[data-mobile-my-panel]")];
@@ -501,6 +545,7 @@
     setWalkthrough(false);
     setCreateActionSheet(false);
     document.querySelector("[data-mobile-flash-compose-sheet]")?.querySelector("[data-mobile-flash-compose-close]")?.click();
+    setTutorialSheet(false);
   });
 
   const createWorkspace = document.querySelector("[data-mobile-create-workspace]");
@@ -674,28 +719,56 @@
     document.querySelector("[data-mobile-create-history-open]")?.addEventListener("click", () => setCreateSheet(historySheet, true));
     document.querySelectorAll("[data-mobile-create-history-close]").forEach((button) => button.addEventListener("click", () => setCreateSheet(historySheet, false)));
     createPrompt?.addEventListener("input", syncCreatePrompt);
-    createComposer.addEventListener("submit", (event) => {
-      event.preventDefault();
-      if (!createPrompt?.value.trim()) {
-        if (createError) createError.textContent = "请输入提示词";
-        createPrompt?.focus();
-        return;
-      }
-      const submittedPrompt = createPrompt.value.trim();
-      const query = new URLSearchParams({ mode: createState.mode, state: "running", prompt: submittedPrompt, model: createState[createState.mode].model });
+    const createTaskStates = {
+      queue: { status: "排队中 · 18%", title: (kind) => `正在等待${kind}生成`, meta: (model) => `${model} · 任务后台继续`, action: "刷新状态" },
+      running: { status: "生成中 · 68%", title: (kind) => `正在生成${kind}`, meta: (model) => `${model} · 任务后台继续`, action: "刷新状态" },
+      success: { status: "生成成功", title: (kind) => `${kind}已生成`, meta: (model) => `${model} · 点击预览查看结果`, action: "查看结果" },
+      failed: { status: "生成失败", title: () => "请调整提示词后重试", meta: () => "本次未生成作品", action: "返回修改" },
+      unknown: { status: "状态待确认", title: (kind) => `${kind}任务仍在处理`, meta: (model) => `${model} · 可稍后刷新`, action: "刷新状态" },
+    };
+    const createResultUrl = (mode) => {
+      const query = new URLSearchParams({ mode });
       if (sourceType) query.set("source", sourceType);
-      const taskUrl = `./mobile-generation-progress.html?${query.toString()}`;
+      return `./mobile-generation-result.html?${query.toString()}`;
+    };
+    const syncCreateTaskUrl = ({ mode, state, prompt, model }) => {
+      const query = new URLSearchParams({ mode, state, prompt, model });
+      if (sourceType) query.set("source", sourceType);
+      window.history.replaceState(null, "", `${window.location.pathname}?${query.toString()}`);
+    };
+    const appendCreateTask = (submittedPrompt, initialState = "running", { scroll = false, restored = false } = {}) => {
+      const taskMode = createState.mode;
+      const taskKind = taskMode === "video" ? "视频" : "图片";
+      const taskModel = restored && params.get("model") ? params.get("model") : createState[taskMode].model;
+      let taskState = createTaskStates[initialState] ? initialState : "running";
       const createThread = createWorkspace.querySelector(".mobile-create-thread");
       const userTurn = document.createElement("article");
       userTurn.className = "mobile-create-turn is-user";
       const userPrompt = document.createElement("p");
       userPrompt.textContent = submittedPrompt;
       const userMeta = document.createElement("small");
-      userMeta.textContent = createState.mode === "video" ? "视频生成" : "图片生成";
+      userMeta.textContent = `${taskKind}生成`;
       userTurn.append(userPrompt, userMeta);
-      const taskTurn = document.createElement("a");
+
+      const taskTurn = document.createElement("article");
       taskTurn.className = "mobile-create-turn is-task";
-      taskTurn.href = taskUrl;
+      taskTurn.dataset.mobileCreateTask = "";
+      const taskPreview = document.createElement("button");
+      taskPreview.className = `mobile-create-task-preview${taskMode === "video" ? " is-video" : ""}`;
+      taskPreview.type = "button";
+      taskPreview.hidden = true;
+      const taskPreviewImage = document.createElement("img");
+      taskPreviewImage.src = taskMode === "video" ? "assets/image_assets/4.png" : "assets/image_assets/15.jpg";
+      taskPreviewImage.alt = `${taskKind}生成结果预览`;
+      const taskPreviewLabel = document.createElement("span");
+      taskPreviewLabel.className = "mobile-create-task-preview-label";
+      const taskPreviewIcon = document.createElement("img");
+      taskPreviewIcon.className = "mobile-icon";
+      taskPreviewIcon.src = "resources/icons/remixicon/svg/System/eye-line.svg";
+      taskPreviewIcon.alt = "";
+      taskPreviewLabel.append(taskPreviewIcon, document.createTextNode("查看结果"));
+      taskPreview.append(taskPreviewImage, taskPreviewLabel);
+
       const taskIcon = document.createElement("span");
       taskIcon.className = "mobile-create-task-icon";
       const taskIconImage = document.createElement("img");
@@ -707,17 +780,56 @@
       taskCopy.className = "mobile-create-task-copy";
       const taskStatus = document.createElement("small");
       taskStatus.className = "mobile-create-task-status";
-      taskStatus.textContent = "生成中 · 68%";
       const taskTitle = document.createElement("strong");
-      taskTitle.textContent = createState.mode === "video" ? "正在生成视频" : "正在生成图片";
       const taskMeta = document.createElement("span");
-      taskMeta.textContent = `${createState[createState.mode].model} · 查看进度`;
       taskCopy.append(taskStatus, taskTitle, taskMeta);
-      const taskArrow = document.createElement("img");
-      taskArrow.className = "mobile-icon";
-      taskArrow.src = "resources/icons/remixicon/svg/Arrows/arrow-right-s-line.svg";
-      taskArrow.alt = "";
-      taskTurn.append(taskIcon, taskCopy, taskArrow);
+      const taskAction = document.createElement("button");
+      taskAction.className = "mobile-create-task-action";
+      taskAction.type = "button";
+      const taskActionIcon = document.createElement("img");
+      taskActionIcon.className = "mobile-icon";
+      taskActionIcon.alt = "";
+      taskAction.append(taskActionIcon);
+      taskTurn.append(taskPreview, taskIcon, taskCopy, taskAction);
+
+      const openTaskResult = () => {
+        if (taskState !== "success") {
+          showToast("生成完成后可查看结果");
+          return;
+        }
+        window.location.href = createResultUrl(taskMode);
+      };
+      const renderCreateTask = () => {
+        const state = createTaskStates[taskState];
+        taskTurn.dataset.state = taskState;
+        taskStatus.textContent = state.status;
+        taskTitle.textContent = state.title(taskKind);
+        taskMeta.textContent = state.meta(taskModel);
+        taskPreview.hidden = taskState !== "success";
+        taskActionIcon.src = taskState === "success"
+          ? "resources/icons/remixicon/svg/System/eye-line.svg"
+          : "resources/icons/remixicon/svg/System/refresh-line.svg";
+        taskAction.setAttribute("aria-label", state.action);
+        syncCreateTaskUrl({ mode: taskMode, state: taskState, prompt: submittedPrompt, model: taskModel });
+      };
+      taskPreview.addEventListener("click", openTaskResult);
+      taskAction.addEventListener("click", () => {
+        if (taskState === "success") {
+          openTaskResult();
+          return;
+        }
+        if (taskState === "failed") {
+          createPrompt.value = submittedPrompt;
+          syncCreatePrompt();
+          createPrompt.focus();
+          showToast("已恢复原提示词");
+          return;
+        }
+        taskState = "success";
+        renderCreateTask();
+        showToast("生成完成，可点击结果预览");
+      });
+      renderCreateTask();
       if (createEmpty) createEmpty.hidden = true;
       if (createThread) {
         const turnAnchor = createThread.querySelector("[data-mobile-create-empty]");
@@ -726,7 +838,17 @@
       }
       createPrompt.value = "";
       syncCreatePrompt();
-      taskTurn.scrollIntoView({ behavior: "smooth", block: "center" });
+      if (scroll) taskTurn.scrollIntoView({ behavior: "smooth", block: "center" });
+    };
+    createComposer.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!createPrompt?.value.trim()) {
+        if (createError) createError.textContent = "请输入提示词";
+        createPrompt?.focus();
+        return;
+      }
+      const submittedPrompt = createPrompt.value.trim();
+      appendCreateTask(submittedPrompt, "running", { scroll: true });
       showToast("生成任务已创建");
     });
     document.addEventListener("keydown", (event) => {
@@ -736,7 +858,80 @@
     });
     syncCreateMode(createState.mode);
     renderCreateSource();
-    syncCreatePrompt();
+    const restoredPrompt = params.get("prompt") || (params.get("state")
+      ? (createState.mode === "video" ? "雷云中金龙与白虎对峙，镜头环绕战场。" : "凤冠神女站在金色逆光中，电影感人物海报。")
+      : "");
+    if (restoredPrompt) {
+      createPrompt.value = restoredPrompt;
+      syncCreatePrompt();
+      appendCreateTask(restoredPrompt, params.get("state") || "running", { restored: true });
+    } else {
+      syncCreatePrompt();
+    }
+  }
+
+  const campaignChoiceSheet = document.querySelector("[data-mobile-campaign-choice-sheet]");
+  const campaignUploadSheet = document.querySelector("[data-mobile-campaign-upload-sheet]");
+  const campaignUploadForm = document.querySelector("[data-mobile-campaign-upload-form]");
+  if (campaignChoiceSheet && campaignUploadSheet && campaignUploadForm) {
+    const campaignUploadInput = campaignUploadForm.querySelector("[data-mobile-campaign-upload-input]");
+    const campaignUploadPreview = campaignUploadForm.querySelector("[data-mobile-campaign-upload-preview]");
+    const campaignUploadLabel = campaignUploadForm.querySelector("[data-mobile-campaign-upload-label]");
+    const campaignUploadTitle = campaignUploadForm.querySelector("[data-mobile-campaign-upload-title]");
+    const campaignUploadDescription = campaignUploadForm.querySelector("[data-mobile-campaign-upload-description]");
+    const campaignUploadError = campaignUploadForm.querySelector("[data-mobile-campaign-upload-error]");
+    let campaignUploadObjectUrl = "";
+    const setCampaignSheet = (sheet, open) => {
+      sheet.classList.toggle("is-open", open);
+      sheet.setAttribute("aria-hidden", open ? "false" : "true");
+    };
+    document.querySelectorAll("[data-mobile-campaign-participate]").forEach((button) => button.addEventListener("click", () => setCampaignSheet(campaignChoiceSheet, true)));
+    campaignChoiceSheet.querySelectorAll("[data-mobile-campaign-choice-close]").forEach((button) => button.addEventListener("click", () => setCampaignSheet(campaignChoiceSheet, false)));
+    campaignChoiceSheet.querySelector("[data-mobile-campaign-direct-upload]")?.addEventListener("click", () => {
+      setCampaignSheet(campaignChoiceSheet, false);
+      setCampaignSheet(campaignUploadSheet, true);
+    });
+    campaignUploadSheet.querySelectorAll("[data-mobile-campaign-upload-close]").forEach((button) => button.addEventListener("click", () => setCampaignSheet(campaignUploadSheet, false)));
+    campaignUploadInput?.addEventListener("change", () => {
+      const file = campaignUploadInput.files?.[0];
+      if (!file) return;
+      if (campaignUploadObjectUrl) URL.revokeObjectURL(campaignUploadObjectUrl);
+      campaignUploadObjectUrl = URL.createObjectURL(file);
+      if (campaignUploadPreview) {
+        campaignUploadPreview.src = campaignUploadObjectUrl;
+        campaignUploadPreview.hidden = false;
+      }
+      if (campaignUploadLabel) campaignUploadLabel.textContent = file.name;
+      if (campaignUploadError) campaignUploadError.textContent = "";
+    });
+    campaignUploadForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const title = campaignUploadTitle?.value.trim() || "";
+      const description = campaignUploadDescription?.value.trim() || "";
+      const file = campaignUploadInput?.files?.[0];
+      if (!file) {
+        if (campaignUploadError) campaignUploadError.textContent = "请选择要投稿的原创图片";
+        campaignUploadInput?.focus();
+        return;
+      }
+      if (title.length < 4) {
+        if (campaignUploadError) campaignUploadError.textContent = "作品标题不少于 4 个字";
+        campaignUploadTitle?.focus();
+        return;
+      }
+      if (description.length < 30) {
+        if (campaignUploadError) campaignUploadError.textContent = "作品说明不少于 30 个字";
+        campaignUploadDescription?.focus();
+        return;
+      }
+      setCampaignSheet(campaignUploadSheet, false);
+      showToast("作品已提交活动审核");
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") return;
+      setCampaignSheet(campaignChoiceSheet, false);
+      setCampaignSheet(campaignUploadSheet, false);
+    });
   }
 
   document.querySelectorAll("[data-mobile-choice-group]").forEach((group) => {
@@ -776,7 +971,9 @@
     const syncCount = () => {
       if (count) count.textContent = String(input.value.length);
     };
-    if (params.get("source") === "same-work") {
+    if (params.get("prompt")) {
+      input.value = params.get("prompt");
+    } else if (params.get("source") === "same-work") {
       input.value = body.dataset.mobilePage === "create-video"
         ? "海边灯塔被薄雾包围，镜头缓慢抬升，最后停在灯塔亮起的瞬间。"
         : "凤冠神女站在暗红色殿堂入口，金色逆光勾勒轮廓，电影感人物海报。";
@@ -786,6 +983,84 @@
   });
 
   document.querySelectorAll("[data-mobile-generator-form]").forEach((form) => {
+    const generationMode = form.dataset.generatorMode === "video" ? "video" : "image";
+    const generationKind = generationMode === "video" ? "视频" : "图片";
+    const generationModel = generationMode === "video" ? "Seedance 2.0" : "Flux Pro 1.1";
+    const generationSource = params.get("source") || "";
+    const taskCard = document.querySelector("[data-mobile-inline-generation]");
+    const badge = taskCard?.querySelector("[data-mobile-inline-generation-badge]");
+    const stateTitle = taskCard?.querySelector("[data-mobile-inline-generation-state]");
+    const stateMessage = taskCard?.querySelector("[data-mobile-inline-generation-message]");
+    const progress = taskCard?.querySelector("[data-mobile-inline-generation-progress]");
+    const preview = taskCard?.querySelector("[data-mobile-inline-generation-preview]");
+    const previewLabel = taskCard?.querySelector("[data-mobile-inline-generation-preview-label]");
+    const spinner = taskCard?.querySelector("[data-mobile-inline-generation-spinner]");
+    const model = taskCard?.querySelector("[data-mobile-inline-generation-model]");
+    const taskAction = taskCard?.querySelector("[data-mobile-inline-generation-action]");
+    const taskActionLabel = taskCard?.querySelector("[data-mobile-inline-generation-action-label]");
+    const submitButton = document.querySelector(`[data-mobile-generator-submit][form="${form.id}"]`);
+    const submitLabel = submitButton?.querySelector("[data-mobile-generator-submit-label]");
+    const costLabel = submitButton?.closest(".mobile-form-action-bar")?.querySelector(".mobile-cost span");
+    let generationState = params.get("state") || "";
+    const stateMap = {
+      queue: { badge: "排队中", badgeClass: "is-running", title: `正在等待${generationKind}生成`, message: "当前进度 18%", progress: 18, action: "刷新状态" },
+      running: { badge: "生成中", badgeClass: "is-running", title: `正在生成${generationKind}`, message: "已完成 68%", progress: 68, action: "刷新状态" },
+      success: { badge: "生成成功", badgeClass: "is-success", title: `${generationKind}已生成`, message: "点击结果预览进入结果页", progress: 100, action: "查看结果" },
+      failed: { badge: "生成失败", badgeClass: "is-warning", title: "生成失败", message: "内容未通过安全校验，请调整提示词", progress: 100, action: "返回修改" },
+      unknown: { badge: "状态未知", badgeClass: "is-warning", title: "状态暂不可确认", message: "任务仍在后台处理，可稍后刷新", progress: 42, action: "刷新状态" },
+    };
+    const resultUrl = () => {
+      const query = new URLSearchParams({ mode: generationMode });
+      if (generationSource) query.set("source", generationSource);
+      return `./mobile-generation-result.html?${query.toString()}`;
+    };
+    const syncTaskUrl = () => {
+      const query = new URLSearchParams(new FormData(form));
+      if (generationState) query.set("state", generationState);
+      query.set("model", generationModel);
+      if (generationSource) query.set("source", generationSource);
+      window.history.replaceState(null, "", `${window.location.pathname}?${query.toString()}`);
+    };
+    const renderTask = ({ focus = false } = {}) => {
+      if (!taskCard || !generationState) {
+        if (taskCard) taskCard.hidden = true;
+        if (submitButton) submitButton.disabled = false;
+        if (submitLabel) submitLabel.textContent = "发起生成";
+        if (costLabel) costLabel.textContent = "预计 20 积分";
+        return;
+      }
+      const data = stateMap[generationState] || stateMap.running;
+      taskCard.hidden = false;
+      taskCard.dataset.state = generationState;
+      if (badge) {
+        badge.textContent = data.badge;
+        badge.className = `mobile-status-badge ${data.badgeClass}`;
+      }
+      if (stateTitle) stateTitle.textContent = data.title;
+      if (stateMessage) stateMessage.textContent = data.message;
+      if (progress) progress.style.width = `${data.progress}%`;
+      if (model) model.textContent = `${params.get("model") || generationModel} · ${generationKind}生成`;
+      if (taskActionLabel) taskActionLabel.textContent = data.action;
+      if (spinner) spinner.hidden = generationState === "success" || generationState === "failed";
+      if (previewLabel) previewLabel.hidden = generationState !== "success";
+      if (preview) {
+        const ready = generationState === "success";
+        preview.setAttribute("aria-disabled", ready ? "false" : "true");
+        preview.setAttribute("aria-label", ready ? `查看${generationKind}生成结果` : `${generationKind}生成中，结果暂不可查看`);
+      }
+      if (submitButton) submitButton.disabled = generationState === "running" || generationState === "queue" || generationState === "unknown";
+      if (submitLabel) submitLabel.textContent = generationState === "success" ? "再次生成" : generationState === "failed" ? "调整后重试" : "生成中";
+      if (costLabel) costLabel.textContent = generationState === "success" ? "结果已生成" : generationState === "failed" ? "本次未生成" : "任务生成中";
+      if (focus) taskCard.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+    const openResult = () => {
+      if (generationState !== "success") {
+        showToast("生成完成后可查看结果");
+        return;
+      }
+      window.location.href = resultUrl();
+    };
+    if (generationState) renderTask();
     form.addEventListener("submit", (event) => {
       event.preventDefault();
       const prompt = form.querySelector("[data-mobile-prompt]");
@@ -796,113 +1071,106 @@
         return;
       }
       if (error) error.textContent = "";
-      const query = new URLSearchParams(new FormData(form));
-      query.set("state", "running");
-      window.location.href = `./mobile-generation-progress.html?${query.toString()}`;
+      generationState = "running";
+      syncTaskUrl();
+      renderTask({ focus: true });
+      showToast("生成任务已创建，可留在当前页查看进度");
     });
-  });
-
-  const generationScreen = document.querySelector("[data-mobile-generation-screen]");
-  if (generationScreen) {
-    const generationMode = params.get("mode") === "video" ? "video" : "image";
-    let generationState = params.get("state") || "running";
-    const stateMap = {
-      queue: { badge: "排队中", badgeClass: "is-running", title: `正在等待${generationMode === "video" ? "视频" : "图片"}生成`, message: "当前进度 18%", progress: 18, action: "刷新状态" },
-      running: { badge: "生成中", badgeClass: "is-running", title: `正在生成${generationMode === "video" ? "视频" : "图片"}`, message: "已完成 68%", progress: 68, action: "刷新状态" },
-      success: { badge: "生成成功", badgeClass: "is-success", title: `${generationMode === "video" ? "视频" : "图片"}已生成`, message: "可查看生成结果", progress: 100, action: "查看结果" },
-      failed: { badge: "生成失败", badgeClass: "is-warning", title: "生成失败", message: "内容未通过安全校验，请调整提示词", progress: 100, action: "调整后重试" },
-      unknown: { badge: "状态未知", badgeClass: "is-warning", title: "状态暂不可确认", message: "请稍后刷新或查看生成记录", progress: 42, action: "刷新状态" },
-    };
-    const renderGeneration = () => {
-      const data = stateMap[generationState] || stateMap.running;
-      const badge = document.querySelector("[data-mobile-generation-badge]");
-      const title = document.querySelector("[data-mobile-generation-state]");
-      const pageTitle = document.querySelector("[data-mobile-generation-title]");
-      const message = document.querySelector("[data-mobile-generation-message]");
-      const progress = document.querySelector("[data-mobile-generation-progress]");
-      const action = document.querySelector("[data-mobile-generation-action]");
-      const spinner = document.querySelector(".mobile-generation-spinner");
-      if (badge) {
-        badge.textContent = data.badge;
-        badge.className = `mobile-status-badge ${data.badgeClass}`;
-      }
-      if (title) title.textContent = data.title;
-      if (pageTitle) pageTitle.textContent = generationState === "success" ? "生成成功" : generationState === "failed" ? "生成失败" : "生成中";
-      if (message) message.textContent = data.message;
-      if (progress) progress.style.width = `${data.progress}%`;
-      if (action) action.textContent = data.action;
-      if (spinner) spinner.hidden = generationState === "success" || generationState === "failed";
-    };
-    const image = document.querySelector("[data-mobile-generation-image]");
-    if (generationMode === "video" && image) image.src = "assets/image_assets/4.png";
-    const kind = document.querySelector("[data-mobile-generation-kind]");
-    const model = document.querySelector("[data-mobile-generation-model]");
-    if (kind) kind.textContent = generationMode === "video" ? "视频生成" : "图片生成";
-    if (model) model.textContent = generationMode === "video" ? "Seedance 2.0" : "Flux Pro 1.1";
-    renderGeneration();
-    document.querySelector("[data-mobile-generation-refresh]")?.addEventListener("click", () => {
+    preview?.addEventListener("click", openResult);
+    taskAction?.addEventListener("click", () => {
       if (generationState === "success") {
-        window.location.href = `./mobile-generation-result.html?mode=${generationMode}`;
+        openResult();
         return;
       }
       if (generationState === "failed") {
-        window.location.href = `./mobile-create.html?mode=${generationMode}`;
+        generationState = "";
+        syncTaskUrl();
+        renderTask();
+        form.querySelector("[data-mobile-prompt]")?.focus();
         return;
       }
-      generationState = generationState === "running" ? "success" : "running";
-      renderGeneration();
-      showToast(generationState === "success" ? "生成完成" : "任务状态已更新");
+      generationState = "success";
+      syncTaskUrl();
+      renderTask();
+      showToast("生成完成，可点击结果预览");
     });
-  }
+  });
 
   const resultScreen = document.querySelector("[data-mobile-result-screen]");
   if (resultScreen) {
+    document.documentElement.classList.add("mobile-result-document");
     const resultMode = params.get("mode") === "video" ? "video" : "image";
+    const resultSource = params.get("source") || "";
+    const activitySources = new Set(["campaign", "competition", "prompt"]);
+    const activityResult = activitySources.has(resultSource);
     const image = document.querySelector("[data-mobile-result-image]");
     const video = document.querySelector("[data-mobile-result-video]");
     const title = document.querySelector("[data-mobile-result-title]");
     const meta = document.querySelector("[data-mobile-result-meta]");
     const prompt = document.querySelector("[data-mobile-result-prompt]");
-    const retry = resultScreen.querySelector(".mobile-dual-action-bar > a");
+    const promptRegion = document.querySelector("[data-mobile-result-prompt-region]");
+    const promptToggle = document.querySelector("[data-mobile-result-prompt-toggle]");
+    const promptToggleLabel = document.querySelector("[data-mobile-result-prompt-toggle-label]");
+    const retry = document.querySelector("[data-mobile-result-retry]");
     if (resultMode === "video") {
       if (image) image.hidden = true;
       if (video) video.hidden = false;
       if (title) title.textContent = "海灯守望";
       if (meta) meta.textContent = "Seedance 2.0 · 16:9 · 8 秒";
-      if (prompt) prompt.textContent = "海边灯塔被薄雾包围，镜头缓慢抬升，最后停在灯塔亮起的瞬间。";
-      if (retry) retry.href = "./mobile-create.html?mode=video";
+      if (prompt) prompt.textContent = "暮色中的海边灯塔被潮湿薄雾包围，远处海浪反射出零碎的冷蓝色月光。镜头从礁石与翻涌浪花开始，缓慢向上抬升并绕过塔身，掠过被海风吹动的旧旗与斑驳墙面。最后灯塔暖黄色光束点亮，在雾中旋转扫过海面，画面停留在光束与远方船影交汇的瞬间，整体保持克制、孤独又温暖的电影质感。";
     }
-    const saveButton = document.querySelector("[data-mobile-save-result]");
-    const publishButton = document.querySelector("[data-mobile-publish]");
-    const submitLink = document.querySelector("[data-mobile-submit-activity]");
-    saveButton?.addEventListener("click", () => {
-      const saved = saveButton.dataset.saved === "true";
-      if (saved) {
-        showToast("作品已保存");
+    if (retry) {
+      const retryQuery = new URLSearchParams({ mode: resultMode });
+      if (resultSource) retryQuery.set("source", resultSource);
+      retry.href = `./mobile-create.html?${retryQuery.toString()}`;
+    }
+    promptToggle?.addEventListener("click", () => {
+      const expanded = promptToggle.getAttribute("aria-expanded") === "true";
+      promptToggle.setAttribute("aria-expanded", expanded ? "false" : "true");
+      promptRegion?.setAttribute("aria-expanded", expanded ? "false" : "true");
+      if (promptToggleLabel) promptToggleLabel.textContent = expanded ? "展开创作信息" : "收起创作信息";
+    });
+    const resultPrimary = document.querySelector("[data-mobile-result-primary]");
+    const resultPrimaryLabel = document.querySelector("[data-mobile-result-primary-label]");
+    const resultPrimaryIcon = document.querySelector("[data-mobile-result-primary-icon]");
+    const destinationSheet = document.querySelector("[data-mobile-result-destination-sheet]");
+    const destinationList = document.querySelector("[data-mobile-result-destination-list]");
+    const communityDestination = document.querySelector('[data-mobile-result-destination="community"]');
+    const activityDestination = document.querySelector('[data-mobile-result-destination="activity"]');
+    const activityDestinationLabel = document.querySelector("[data-mobile-result-activity-label]");
+    const setDestinationSheet = (open) => {
+      if (!destinationSheet) return;
+      destinationSheet.classList.toggle("is-open", open);
+      destinationSheet.setAttribute("aria-hidden", open ? "false" : "true");
+    };
+    if (activityResult) {
+      if (activityDestinationLabel) activityDestinationLabel.textContent = "提交到当前活动";
+      if (destinationList && activityDestination) destinationList.prepend(activityDestination);
+      if (resultPrimaryIcon) resultPrimaryIcon.src = "resources/icons/remixicon/svg/Document/file-check-line.svg";
+    }
+    destinationSheet?.querySelectorAll("[data-mobile-result-destination-close]").forEach((button) => button.addEventListener("click", () => setDestinationSheet(false)));
+    const publishResult = () => {
+      if (!resultPrimary || resultPrimary.getAttribute("aria-disabled") === "true") return;
+      setDestinationSheet(false);
+      resultPrimary.setAttribute("aria-disabled", "true");
+      if (resultPrimaryLabel) resultPrimaryLabel.textContent = "发布审核中";
+      showToast("作品已提交发布");
+    };
+    communityDestination?.addEventListener("click", publishResult);
+    activityDestination?.addEventListener("click", () => {
+      setDestinationSheet(false);
+      if (resultSource === "prompt") {
+        window.location.assign("./mobile-activity-detail.html#mobile-activity-participation");
         return;
       }
-      saveButton.dataset.saved = "true";
-      const label = saveButton.querySelector("span");
-      if (label) label.textContent = "已保存";
-      const state = document.querySelector("[data-mobile-save-state]");
-      if (state) state.textContent = "已保存";
-      const feedback = document.querySelector("[data-mobile-save-feedback]");
-      if (feedback) feedback.hidden = false;
-      if (publishButton) publishButton.disabled = false;
-      if (submitLink) submitLink.setAttribute("aria-disabled", "false");
-      showToast("已保存为作品");
+      window.location.assign("./mobile-campaign-detail.html#mobile-campaign-participation");
     });
-    publishButton?.addEventListener("click", () => {
-      if (publishButton.disabled) return;
-      publishButton.disabled = true;
-      publishButton.querySelector("strong").textContent = "发布审核中";
-      showToast("作品已提交发布");
-    });
-    submitLink?.addEventListener("click", (event) => {
-      if (submitLink.getAttribute("aria-disabled") === "true") {
-        event.preventDefault();
-        showToast("请先保存作品");
+    resultPrimary?.addEventListener("click", () => {
+      if (resultPrimary.getAttribute("aria-disabled") === "true") {
+        showToast("作品已提交发布");
+        return;
       }
+      setDestinationSheet(true);
     });
   }
 

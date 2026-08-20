@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#05070b">
   <title>生图挑战 - 多元拾光</title>
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
-  <link rel="stylesheet" href="./mobile-h5.css?v=20260820-p0b6">
-  <script src="./mobile-h5.js?v=20260820-p0b6" defer></script>
+  <link rel="stylesheet" href="./mobile-h5.css?v=20260820-p6">
+  <script src="./mobile-h5.js?v=20260820-p6" defer></script>
 </head>
 <body class="mobile-h5-body" data-mobile-page="campaign-detail">
   <div class="mobile-shell has-action-bar">
@@ -28,7 +28,7 @@
 
       <section id="mobile-campaign-participation" class="mobile-participation-card mobile-anchor-section">
         <div><h2>我的参与状态</h2><p><strong>0/2</strong> 项任务</p></div>
-        <a class="mobile-button primary compact" href="./mobile-create.html?source=campaign&amp;mode=image">立即参与</a>
+        <button class="mobile-button primary compact" type="button" data-mobile-campaign-participate>立即参与</button>
       </section>
 
       <section class="mobile-section" aria-labelledby="mobile-campaign-description">
@@ -79,9 +79,36 @@
     </main>
 
     <div class="mobile-action-bar mobile-single-action-bar">
-      <a class="mobile-action-primary" href="./mobile-create.html?source=campaign&amp;mode=image"><img class="mobile-icon" src="resources/icons/remixicon/svg/Design/magic-line.svg" alt="">立即参与</a>
+      <button class="mobile-action-primary" type="button" data-mobile-campaign-participate><img class="mobile-icon" src="resources/icons/remixicon/svg/Design/magic-line.svg" alt="">立即参与</button>
     </div>
   </div>
+
+  <section id="mobile-campaign-choice-sheet" class="mobile-bottom-sheet mobile-create-action-sheet" data-mobile-campaign-choice-sheet aria-hidden="true">
+    <button class="mobile-sheet-backdrop" type="button" data-mobile-campaign-choice-close aria-label="关闭参与方式选择"></button>
+    <div class="mobile-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="mobile-campaign-choice-title">
+      <header class="mobile-sheet-head"><h2 id="mobile-campaign-choice-title">选择参与方式</h2><button class="mobile-icon-button" type="button" data-mobile-campaign-choice-close aria-label="关闭参与方式选择"><img class="mobile-icon" src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></button></header>
+      <p class="mobile-result-destination-note">继续生成新作品，或直接上传已经准备好的原创图片；两种方式都会保留本次活动上下文。</p>
+      <div class="mobile-create-action-list">
+        <a class="mobile-create-action-option" href="./mobile-create.html?source=campaign&amp;mode=image"><span><img class="mobile-icon" src="resources/icons/remixicon/svg/Design/magic-line.svg" alt=""></span><strong>AIGC 生成</strong><img class="mobile-icon" src="resources/icons/remixicon/svg/Arrows/arrow-right-s-line.svg" alt=""></a>
+        <button class="mobile-create-action-option" type="button" data-mobile-campaign-direct-upload><span><img class="mobile-icon" src="resources/icons/remixicon/svg/System/upload-2-line.svg" alt=""></span><strong>直接上传已有作品</strong><img class="mobile-icon" src="resources/icons/remixicon/svg/Arrows/arrow-right-s-line.svg" alt=""></button>
+      </div>
+    </div>
+  </section>
+
+  <section id="mobile-campaign-upload-sheet" class="mobile-bottom-sheet mobile-campaign-upload-sheet" data-mobile-campaign-upload-sheet aria-hidden="true">
+    <button class="mobile-sheet-backdrop" type="button" data-mobile-campaign-upload-close aria-label="关闭已有作品上传"></button>
+    <form class="mobile-sheet-panel" data-mobile-campaign-upload-form aria-labelledby="mobile-campaign-upload-title">
+      <header class="mobile-sheet-head"><h2 id="mobile-campaign-upload-title">上传已有作品</h2><button class="mobile-icon-button" type="button" data-mobile-campaign-upload-close aria-label="关闭已有作品上传"><img class="mobile-icon" src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></button></header>
+      <div class="mobile-sheet-scroll mobile-campaign-upload-scroll">
+        <label class="mobile-campaign-upload-control" for="mobile-campaign-upload-file"><img class="mobile-icon" src="resources/icons/remixicon/svg/System/upload-2-line.svg" alt=""><strong data-mobile-campaign-upload-label>选择原创图片</strong><span>支持 JPG、PNG、WebP，单张不超过 20 MB</span><input id="mobile-campaign-upload-file" class="mobile-flash-media-input" type="file" accept="image/png,image/jpeg,image/webp" data-mobile-campaign-upload-input></label>
+        <img class="mobile-campaign-upload-preview" data-mobile-campaign-upload-preview alt="已选择的活动作品预览" hidden>
+        <label class="mobile-field" for="mobile-campaign-upload-work-title"><span>作品标题</span><input id="mobile-campaign-upload-work-title" type="text" maxlength="40" placeholder="不少于 4 个字" data-mobile-campaign-upload-title></label>
+        <label class="mobile-field" for="mobile-campaign-upload-description"><span>作品说明</span><textarea id="mobile-campaign-upload-description" maxlength="600" rows="4" placeholder="介绍创作想法、创作场景与使用模型" data-mobile-campaign-upload-description></textarea></label>
+        <p class="mobile-field-error" data-mobile-campaign-upload-error aria-live="polite"></p>
+      </div>
+      <div class="mobile-flash-compose-action"><button class="mobile-button primary" type="submit">提交到生图挑战</button></div>
+    </form>
+  </section>
 
   <button class="mobile-walkthrough-trigger" type="button" data-mobile-walkthrough-open aria-controls="mobile-walkthrough">走查</button>
   <aside id="mobile-walkthrough" class="mobile-walkthrough" data-mobile-walkthrough aria-hidden="true">
@@ -89,7 +116,7 @@
     <div class="mobile-rule-grid">
       <section class="mobile-rule-card"><strong>页面目的</strong><p>移动端按 2026-08-20 线上生图挑战快照复现标题、封面、状态、奖励说明、两项任务和投稿样例。</p></section>
       <section class="mobile-rule-card"><strong>入口与返回</strong><p>从活动中心进入，返回活动中心；我的投稿进入投稿详情，活动作品进入统一作品详情。</p></section>
-      <section class="mobile-rule-card"><strong>主动作</strong><p>进行中且可参与时进入图片生成并携带活动上下文；活动报名、生成和投稿保持独立状态。</p></section>
+      <section class="mobile-rule-card"><strong>主动作</strong><p>进行中且可参与时先选择 AIGC 生成或直接上传已有作品；两条路径都携带活动上下文，活动报名、生成和投稿保持独立状态。</p></section>
       <section class="mobile-rule-card"><strong>边界状态</strong><p>需覆盖未开始、已截止、未参加、额度已满和对象失效，主动作随状态变化。</p></section>
       <section class="mobile-rule-card"><strong>验收</strong><p>页面名称为生图挑战，最高 5,100 积分，任务为发布图片作品与首页推荐奖励；C端正文不出现配置或审核内部字段。</p></section>
     </div>

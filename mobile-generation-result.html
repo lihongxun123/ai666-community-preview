@@ -6,8 +6,8 @@
   <meta name="theme-color" content="#05070b">
   <title>生成结果 - 多元拾光</title>
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
-  <link rel="stylesheet" href="./mobile-h5.css?v=20260820-p0b1">
-  <script src="./mobile-h5.js?v=20260820-p0b1" defer></script>
+  <link rel="stylesheet" href="./mobile-h5.css?v=20260820-p6">
+  <script src="./mobile-h5.js?v=20260820-p6" defer></script>
 </head>
 <body class="mobile-h5-body" data-mobile-page="generation-result">
   <div class="mobile-shell has-action-bar" data-mobile-result-screen>
@@ -17,50 +17,62 @@
       <span class="mobile-topbar-placeholder" aria-hidden="true"></span>
     </header>
 
-    <main id="main" class="mobile-task-content">
+    <main id="main" class="mobile-result-content">
+      <section class="mobile-result-status-line" aria-label="生成结果状态">
+        <img class="mobile-icon" src="resources/icons/remixicon/svg/System/checkbox-circle-line.svg" alt="">
+        <strong>生成成功</strong>
+        <span aria-hidden="true">·</span>
+        <span>已自动存入生成记录</span>
+      </section>
+
       <section class="mobile-result-hero" aria-labelledby="mobile-result-title">
-        <span class="mobile-status-badge is-success">生成成功</span>
-        <h1 id="mobile-result-title" data-mobile-result-title>凤冠神女</h1>
         <div class="mobile-result-media">
-          <img data-mobile-result-image src="assets/image_assets/15.jpg" alt="凤冠神女生成结果">
+          <img data-mobile-result-image src="assets/image_assets/15-mobile-result-v2.png" alt="凤冠神女生成结果">
           <video data-mobile-result-video controls playsinline poster="assets/image_assets/4.png" hidden><source src="assets/video_assets/sd2_gen.mp4" type="video/mp4"></video>
         </div>
       </section>
 
-      <section class="mobile-prompt-card" aria-label="创作信息">
-        <header><strong>创作信息</strong><span data-mobile-result-meta>Flux Pro 1.1 · 3:4</span></header>
-        <p data-mobile-result-prompt>凤冠神女站在暗红色殿堂入口，金色逆光勾勒轮廓，电影感人物海报。</p>
-      </section>
-
-      <section class="mobile-result-flow" aria-labelledby="mobile-result-flow-title">
-        <div class="mobile-form-heading"><h2 id="mobile-result-flow-title">作品去向</h2><span data-mobile-save-state>未保存</span></div>
-        <div class="mobile-result-action-list">
-          <button type="button" data-mobile-publish disabled><span><img class="mobile-icon" src="resources/icons/remixicon/svg/Business/send-plane-2-line.svg" alt=""><strong>发布到社区</strong></span><img class="mobile-icon" src="resources/icons/remixicon/svg/Arrows/arrow-right-s-line.svg" alt=""></button>
-          <a href="./mobile-campaign-detail.html#mobile-campaign-participation" data-mobile-submit-activity aria-disabled="true"><span><img class="mobile-icon" src="resources/icons/remixicon/svg/Document/file-check-line.svg" alt=""><strong>提交到活动</strong></span><img class="mobile-icon" src="resources/icons/remixicon/svg/Arrows/arrow-right-s-line.svg" alt=""></a>
+      <section class="mobile-result-details" aria-label="创作信息">
+        <h1 id="mobile-result-title" data-mobile-result-title>凤冠神女</h1>
+        <p class="mobile-result-meta" data-mobile-result-meta>Flux Pro 1.1 · 3:4</p>
+        <div id="mobile-result-prompt-region" class="mobile-result-prompt-region" data-mobile-result-prompt-region aria-expanded="false">
+          <p data-mobile-result-prompt>凤冠神女立于深红宫门前，繁复凤冠由金色花丝、珍珠与流苏层层构成，金色逆光沿人物轮廓向外扩散。她身着白金刺绣长袍，衣摆垂落在青蓝石阶上，背后盘龙浮雕与冷色宫墙形成强烈对比。画面采用低机位全身构图，保留衣料纹理、金属高光和轻微薄雾，整体呈现庄重、神秘且具有东方史诗感的电影人物海报。</p>
         </div>
-      </section>
-
-      <section class="mobile-inline-state" data-mobile-save-feedback hidden>
-        <img class="mobile-icon" src="resources/icons/remixicon/svg/System/checkbox-circle-line.svg" alt="">
-        <div><strong>已保存为作品</strong><span>可继续发布到社区或提交到活动。</span></div>
+        <button class="mobile-result-prompt-toggle" type="button" data-mobile-result-prompt-toggle aria-expanded="false" aria-controls="mobile-result-prompt-region">
+          <span data-mobile-result-prompt-toggle-label>展开创作信息</span>
+          <img class="mobile-icon" src="resources/icons/remixicon/svg/Arrows/arrow-down-s-line.svg" alt="">
+        </button>
       </section>
     </main>
 
-    <div class="mobile-action-bar mobile-dual-action-bar">
-      <a class="mobile-button secondary" href="./mobile-create.html?mode=image">再次生成</a>
-      <button class="mobile-action-primary" type="button" data-mobile-save-result><img class="mobile-icon" src="resources/icons/remixicon/svg/Device/save-line.svg" alt=""><span>保存作品</span></button>
+    <div class="mobile-action-bar mobile-result-action-bar">
+      <a class="mobile-action-button mobile-result-retry" href="./mobile-create.html?mode=image" data-mobile-result-retry aria-label="再次生成"><img class="mobile-icon" src="resources/icons/remixicon/svg/Device/restart-line.svg" alt=""><span>再次生成</span></a>
+      <button class="mobile-action-primary" type="button" data-mobile-result-primary><img class="mobile-icon" data-mobile-result-primary-icon src="resources/icons/remixicon/svg/Business/send-plane-2-line.svg" alt=""><span data-mobile-result-primary-label>发布 / 投稿</span></button>
     </div>
   </div>
 
-  <button class="mobile-walkthrough-trigger" type="button" data-mobile-walkthrough-open aria-controls="mobile-walkthrough">走查</button>
+  <section id="mobile-result-destination-sheet" class="mobile-bottom-sheet mobile-create-action-sheet mobile-result-destination-sheet" data-mobile-result-destination-sheet aria-hidden="true">
+    <button class="mobile-sheet-backdrop" type="button" data-mobile-result-destination-close aria-label="关闭作品去向"></button>
+    <div class="mobile-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="mobile-result-destination-title">
+      <header class="mobile-sheet-head"><h2 id="mobile-result-destination-title">选择作品去向</h2><button class="mobile-icon-button" type="button" data-mobile-result-destination-close aria-label="关闭作品去向"><img class="mobile-icon" src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></button></header>
+      <p class="mobile-result-destination-note">生成结果已自动保留在生成记录；发布社区和活动投稿是两个独立动作。</p>
+      <div class="mobile-create-action-list" data-mobile-result-destination-list>
+        <button class="mobile-create-action-option" type="button" data-mobile-result-destination="community" aria-label="发布到社区，进入社区内容审核"><span><img class="mobile-icon" src="resources/icons/remixicon/svg/Business/send-plane-2-line.svg" alt=""></span><strong>发布到社区</strong><img class="mobile-icon" src="resources/icons/remixicon/svg/Arrows/arrow-right-s-line.svg" alt=""></button>
+        <button class="mobile-create-action-option" type="button" data-mobile-result-destination="activity" aria-label="参与活动投稿，选择符合要求的活动"><span><img class="mobile-icon" src="resources/icons/remixicon/svg/Document/file-check-line.svg" alt=""></span><strong data-mobile-result-activity-label>参与活动投稿</strong><img class="mobile-icon" src="resources/icons/remixicon/svg/Arrows/arrow-right-s-line.svg" alt=""></button>
+      </div>
+    </div>
+  </section>
+
+  <button class="mobile-walkthrough-trigger" type="button" data-mobile-walkthrough-open data-mobile-walkthrough-review-only aria-controls="mobile-walkthrough">走查</button>
   <aside id="mobile-walkthrough" class="mobile-walkthrough" data-mobile-walkthrough aria-hidden="true">
     <div class="mobile-walkthrough-head"><h2>生成结果走查规则</h2><button class="mobile-icon-button" type="button" data-mobile-walkthrough-close aria-label="关闭走查规则"><img class="mobile-icon" src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></button></div>
     <div class="mobile-rule-grid">
-      <section class="mobile-rule-card"><strong>页面目的</strong><p>生成成功、保存作品、发布社区和提交活动为四个独立状态与动作。</p></section>
-      <section class="mobile-rule-card"><strong>入口与返回</strong><p>从同一生成任务的成功状态进入；返回生成记录不丢失结果。</p></section>
-      <section class="mobile-rule-card"><strong>主动作</strong><p>先保存为稳定作品，再开放发布社区与活动投稿；发布不自动形成活动投稿。</p></section>
-      <section class="mobile-rule-card"><strong>异常状态</strong><p>保存失败、发布失败和投稿资格不满足分别显示在对应动作附近，不能合并成一个失败。</p></section>
-      <section class="mobile-rule-card"><strong>验收</strong><p>保存前分流动作禁用；保存后可达社区发布和活动承接页；视频结果可播放。</p></section>
+      <section class="mobile-rule-card"><strong>页面目的</strong><p>展示完整生成结果与创作信息；再次生成和后续分发统一从底部发起。</p></section>
+      <section class="mobile-rule-card"><strong>入口与返回</strong><p>从同一生成任务的成功状态进入；生成结果自动进入生成记录，无需用户再次保存，未发布、未投稿也可稍后找回。</p></section>
+      <section class="mobile-rule-card"><strong>状态边界</strong><p>生成记录只承接生成任务与结果；用户选择发布社区或活动投稿时，系统再自动创建或引用对应作品，两个分发状态分别记录、互不覆盖。</p></section>
+      <section class="mobile-rule-card"><strong>主动作</strong><p>底部“发布 / 投稿”打开去向选择层，普通结果可选择发布社区或参与活动投稿；存在活动来源时优先展示“提交到当前活动”。再次生成保持次级，不在正文重复展示作品去向卡片。</p></section>
+      <section class="mobile-rule-card"><strong>异常状态</strong><p>生成记录留存失败、发布失败和投稿资格不满足分别显示在对应动作附近，不能合并成一个失败。</p></section>
+      <section class="mobile-rule-card"><strong>验收</strong><p>长创作描述随页面自然滚动，固定底部动作不遮挡正文；无需保存即可分别发布社区或进入活动投稿，关闭页面后仍可从生成记录找回；视频结果可播放。</p></section>
     </div>
   </aside>
   <div class="mobile-toast" data-mobile-toast role="status" aria-live="polite"></div>

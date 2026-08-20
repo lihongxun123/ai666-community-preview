@@ -6,22 +6,43 @@
   <meta name="theme-color" content="#05070b">
   <title>图片生成 - 多元拾光</title>
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
-  <link rel="stylesheet" href="./mobile-h5.css?v=20260820-p0b14">
-  <script src="./mobile-h5.js?v=20260820-p0b14" defer></script>
+  <link rel="stylesheet" href="./mobile-h5.css?v=20260820-p6">
+  <script src="./mobile-h5.js?v=20260820-p6" defer></script>
 </head>
 <body class="mobile-h5-body" data-mobile-page="create-image">
   <div class="mobile-shell has-action-bar">
     <header class="mobile-topbar mobile-topbar-detail" data-mobile-appbar>
       <button class="mobile-back-button" type="button" data-mobile-back data-fallback="./mobile-create.html" aria-label="返回创作"><img class="mobile-icon" src="resources/icons/remixicon/svg/Arrows/arrow-left-s-line.svg" alt=""></button>
-      <span class="mobile-page-title">图片生成</span>
+      <h1 class="mobile-page-title">图片生成</h1>
       <span class="mobile-topbar-placeholder" aria-hidden="true"></span>
     </header>
 
     <main id="main" class="mobile-task-content">
-      <form id="mobile-image-generator" class="mobile-generator-form" data-mobile-generator-form data-generator-mode="image" action="./mobile-generation-progress.html" method="get">
+      <section class="mobile-inline-generation" data-mobile-inline-generation hidden aria-labelledby="mobile-image-generation-state">
+        <header class="mobile-inline-generation-head">
+          <div>
+            <span class="mobile-status-badge is-running" data-mobile-inline-generation-badge>生成中</span>
+            <h2 id="mobile-image-generation-state" data-mobile-inline-generation-state>正在生成图片</h2>
+            <p data-mobile-inline-generation-message>已完成 68%</p>
+          </div>
+          <a href="./mobile-create.html#recent">生成记录</a>
+        </header>
+        <button class="mobile-inline-generation-preview" type="button" data-mobile-inline-generation-preview aria-disabled="true" aria-label="图片生成中，结果暂不可查看">
+          <img src="assets/image_assets/15.jpg" alt="图片生成结果预览">
+          <span class="mobile-generation-spinner" data-mobile-inline-generation-spinner><img class="mobile-icon" src="resources/icons/remixicon/svg/System/loader-4-line.svg" alt=""></span>
+          <span class="mobile-inline-generation-preview-label" data-mobile-inline-generation-preview-label hidden><img class="mobile-icon" src="resources/icons/remixicon/svg/System/eye-line.svg" alt="">查看结果</span>
+        </button>
+        <div class="mobile-progress-track is-large"><span data-mobile-inline-generation-progress style="width:68%"></span></div>
+        <footer class="mobile-inline-generation-foot">
+          <span data-mobile-inline-generation-model>Flux Pro 1.1 · 图片生成</span>
+          <button class="mobile-inline-generation-action" type="button" data-mobile-inline-generation-action><img class="mobile-icon" src="resources/icons/remixicon/svg/System/refresh-line.svg" alt=""><span data-mobile-inline-generation-action-label>刷新状态</span></button>
+        </footer>
+      </section>
+
+      <form id="mobile-image-generator" class="mobile-generator-form" data-mobile-generator-form data-generator-mode="image" action="./mobile-create-image.html" method="get">
         <input type="hidden" name="mode" value="image">
         <section class="mobile-form-section" aria-labelledby="mobile-image-reference-title">
-          <div class="mobile-form-heading"><h1 id="mobile-image-reference-title">参考图</h1><span>选填</span></div>
+          <div class="mobile-form-heading"><h2 id="mobile-image-reference-title">参考图</h2><span>选填</span></div>
           <button class="mobile-upload-card" type="button" data-mobile-upload aria-label="上传参考图">
             <img class="mobile-icon" src="resources/icons/remixicon/svg/Media/image-add-line.svg" alt="">
             <span data-mobile-upload-label>上传图片</span>
@@ -30,7 +51,7 @@
 
         <section class="mobile-form-section" aria-labelledby="mobile-image-prompt-title">
           <div class="mobile-form-heading"><h2 id="mobile-image-prompt-title">提示词</h2><span><b data-mobile-prompt-count>0</b>/1000</span></div>
-          <textarea class="mobile-prompt-input" name="prompt" maxlength="1000" data-mobile-prompt placeholder="描述你想生成的内容" required></textarea>
+          <textarea class="mobile-prompt-input" name="prompt" maxlength="1000" data-mobile-prompt placeholder="描述你想生成的内容" aria-labelledby="mobile-image-prompt-title" required></textarea>
           <p class="mobile-field-error" data-mobile-generator-error aria-live="polite"></p>
         </section>
 
@@ -57,7 +78,7 @@
 
     <div class="mobile-action-bar mobile-form-action-bar">
       <div class="mobile-cost"><img class="mobile-icon" src="resources/icons/remixicon/svg/Finance/coins-line.svg" alt=""><span>预计 20 积分</span></div>
-      <button class="mobile-action-primary" type="submit" form="mobile-image-generator" data-mobile-generator-submit><img class="mobile-icon" src="resources/icons/remixicon/svg/Design/magic-line.svg" alt="">发起生成</button>
+      <button class="mobile-action-primary" type="submit" form="mobile-image-generator" data-mobile-generator-submit><img class="mobile-icon" src="resources/icons/remixicon/svg/Design/magic-line.svg" alt=""><span data-mobile-generator-submit-label>发起生成</span></button>
     </div>
   </div>
 
@@ -68,7 +89,8 @@
       <section class="mobile-rule-card"><strong>页面目的</strong><p>承接移动端图片生成输入，沿用 AIGC 的模型、提示词、输入图片、画面比例和积分成本字段。</p></section>
       <section class="mobile-rule-card"><strong>图片参数</strong><p>当前不支持分辨率选择，页面不展示分辨率字段或选项；后续以真实可用模型能力为准。</p></section>
       <section class="mobile-rule-card"><strong>入口与返回</strong><p>从创作首页、图片详情一键同款或活动创作进入；返回创作首页，未提交输入需保留或确认离开。</p></section>
-      <section class="mobile-rule-card"><strong>主动作</strong><p>校验提示词后创建一条图片生成任务，进入生成中与恢复页；不得把发起生成写成保存作品。</p></section>
+      <section class="mobile-rule-card"><strong>主动作</strong><p>校验提示词后在当前创作页创建生成任务卡；生成中保留原参数，生成成功后点击结果预览进入独立结果页。</p></section>
+      <section class="mobile-rule-card"><strong>任务恢复</strong><p>离开页面后由生成记录承接；重新打开任务时回到对应图片/视频创作页并恢复任务卡，不再使用独立生成中页面。</p></section>
       <section class="mobile-rule-card"><strong>异常状态</strong><p>需覆盖输入错误、余额不足、模型不可用和上传失败；失败时保留已输入内容。</p></section>
       <section class="mobile-rule-card"><strong>验收</strong><p>键盘不遮挡字段和主动作；参数选择可操作；360/390/430 无横向溢出。</p></section>
     </div>

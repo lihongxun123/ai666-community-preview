@@ -6,21 +6,21 @@
   <meta name="theme-color" content="#05070b">
   <title>编辑个人资料 - 多元拾光</title>
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
-  <link rel="stylesheet" href="./mobile-h5.css?v=20260820-p0b2">
-  <script src="./mobile-h5.js?v=20260820-p0b2" defer></script>
+  <link rel="stylesheet" href="./mobile-h5.css?v=20260820-p6">
+  <script src="./mobile-h5.js?v=20260820-p6" defer></script>
 </head>
 <body class="mobile-h5-body" data-mobile-page="profile-edit">
   <div class="mobile-shell">
     <header class="mobile-topbar mobile-topbar-detail" data-mobile-appbar>
       <button class="mobile-back-button" type="button" data-mobile-back data-fallback="./mobile-my.html" aria-label="返回我的"><img class="mobile-icon" src="resources/icons/remixicon/svg/Arrows/arrow-left-s-line.svg" alt=""></button>
-      <span class="mobile-page-title">编辑个人资料</span><span class="mobile-topbar-placeholder" aria-hidden="true"></span>
+      <h1 class="mobile-page-title">编辑个人资料</h1><span class="mobile-topbar-placeholder" aria-hidden="true"></span>
     </header>
     <main id="main" class="mobile-task-content">
       <form class="mobile-profile-form" data-mobile-profile-form>
         <section class="mobile-form-section mobile-avatar-edit"><img src="assets/image_assets/c02f-user-avatar.webp" alt="拾光创作者头像"><button type="button" data-mobile-toast-message="请选择新的头像">更换头像</button></section>
         <section class="mobile-form-section">
-          <label class="mobile-field"><span>昵称</span><input type="text" value="拾光创作者" maxlength="20"></label>
-          <label class="mobile-field" style="margin-top:12px"><span>个人简介</span><textarea maxlength="80">用 AI 记录每一次灵感。</textarea></label>
+          <label class="mobile-field" for="mobile-profile-nickname"><span>昵称</span><input id="mobile-profile-nickname" type="text" value="拾光创作者" maxlength="20"></label>
+          <label class="mobile-field" for="mobile-profile-bio" style="margin-top:12px"><span>个人简介</span><textarea id="mobile-profile-bio" maxlength="80">用 AI 记录每一次灵感。</textarea></label>
         </section>
         <button class="mobile-button primary" type="submit">保存</button>
       </form>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#05070b">
+  <title>积分记录 - 多元拾光</title>
+  <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
+  <link rel="stylesheet" href="./mobile-h5.css?v=20260820-p0b7">
+  <script src="./mobile-h5.js?v=20260820-p0b7" defer></script>
+</head>
+<body class="mobile-h5-body" data-mobile-page="points-records">
+  <div class="mobile-shell">
+    <header class="mobile-topbar mobile-topbar-detail" data-mobile-appbar>
+      <button class="mobile-back-button" type="button" data-mobile-back data-fallback="./mobile-points.html" aria-label="返回积分中心">
+        <img class="mobile-icon" src="resources/icons/remixicon/svg/Arrows/arrow-left-s-line.svg" alt="">
+      </button>
+      <span class="mobile-page-title">积分记录</span>
+      <span class="mobile-topbar-placeholder" aria-hidden="true"></span>
+    </header>
+
+    <main id="main" class="mobile-task-content mobile-points-records-content">
+      <section class="mobile-points-record-summary">
+        <span>可用积分</span>
+        <strong>1280</strong>
+      </section>
+
+      <div class="mobile-points-filter" role="tablist" aria-label="积分记录筛选">
+        <button class="is-active" type="button" role="tab" aria-selected="true" data-mobile-points-filter="all">全部</button>
+        <button type="button" role="tab" aria-selected="false" data-mobile-points-filter="income">收入</button>
+        <button type="button" role="tab" aria-selected="false" data-mobile-points-filter="cost">支出</button>
+      </div>
+
+      <section class="mobile-points-record-list" aria-label="积分明细">
+        <article class="mobile-points-row" data-mobile-points-record="cost"><div><strong>AI商城兑换</strong><small>今天 11:40</small></div><b class="is-cost">−180</b></article>
+        <article class="mobile-points-row" data-mobile-points-record="income"><div><strong>邀请好友完成注册</strong><small>今天 09:28</small></div><b>+20</b></article>
+        <article class="mobile-points-row" data-mobile-points-record="income"><div><strong>新手任务完成</strong><small>今天 09:12</small></div><b>+30</b></article>
+        <article class="mobile-points-row" data-mobile-points-record="income"><div><strong>AI 生图创作挑战投稿</strong><small>昨天 23:59</small></div><b>+50</b></article>
+        <article class="mobile-points-row" data-mobile-points-record="income"><div><strong>签到奖励</strong><small>8 月 3 日 18:16</small></div><b>+10</b></article>
+        <article class="mobile-points-row" data-mobile-points-record="cost"><div><strong>模型调用</strong><small>8 月 2 日 10:06</small></div><b class="is-cost">−12</b></article>
+      </section>
+
+      <p class="mobile-points-record-empty" data-mobile-points-record-empty hidden>暂无记录</p>
+    </main>
+  </div>
+
+  <button class="mobile-walkthrough-trigger" type="button" data-mobile-walkthrough-open aria-controls="mobile-walkthrough">走查</button>
+  <aside id="mobile-walkthrough" class="mobile-walkthrough" data-mobile-walkthrough aria-hidden="true">
+    <div class="mobile-walkthrough-head"><h2>积分记录走查规则</h2><button class="mobile-icon-button" type="button" data-mobile-walkthrough-close aria-label="关闭走查规则"><img class="mobile-icon" src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></button></div>
+    <div class="mobile-rule-grid">
+      <section class="mobile-rule-card"><strong>页面目的</strong><p>独立承接完整积分流水，积分中心只保留余额与业务入口。</p></section>
+      <section class="mobile-rule-card"><strong>字段</strong><p>每条记录只展示动作、时间和积分变化；收入与支出由变化值正负区分，不展示内部业务号或伪造状态。</p></section>
+      <section class="mobile-rule-card"><strong>排序</strong><p>全部积分记录合并为单一列表，按发生时间从新到旧排列，不使用“今天”“更早”等时间分组标题。</p></section>
+      <section class="mobile-rule-card"><strong>筛选</strong><p>全部、收入和支出只在当前页面切换记录，不改变积分账本，也不触发领取或扣减。</p></section>
+      <section class="mobile-rule-card"><strong>验收</strong><p>返回进入积分中心；筛选状态和空态明确；360、390、430 宽度无横向溢出。</p></section>
+    </div>
+  </aside>
+  <div class="mobile-toast" data-mobile-toast role="status" aria-live="polite"></div>
+</body>
+</html>

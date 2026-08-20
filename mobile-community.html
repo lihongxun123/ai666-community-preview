@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#05070b">
+  <title>多元拾光 · 移动社区</title>
+  <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
+  <link rel="stylesheet" href="./mobile-h5.css?v=20260820-p0b13">
+  <script src="./mobile-h5.js?v=20260820-p0b13" defer></script>
+</head>
+<body class="mobile-h5-body" data-mobile-page="community">
+  <div class="mobile-shell mobile-primary-shell has-bottom-nav">
+    <main id="main" class="mobile-content mobile-community-content">
+      <div class="mobile-community-module-tabs" role="tablist" aria-label="社区频道">
+        <button id="mobile-community-tab-aigc" class="mobile-community-module-tab is-active" type="button" role="tab" data-mobile-community-tab="aigc" aria-controls="mobile-community-panel-aigc" aria-selected="true">AIGC</button>
+        <button id="mobile-community-tab-flash" class="mobile-community-module-tab" type="button" role="tab" data-mobile-community-tab="flash" aria-controls="mobile-community-panel-flash" aria-selected="false">闪念</button>
+      </div>
+
+      <section id="mobile-community-panel-aigc" class="mobile-community-panel" role="tabpanel" aria-labelledby="mobile-community-tab-aigc" data-mobile-community-panel="aigc">
+        <div class="mobile-home-filter-tabs mobile-community-tabs" aria-label="AIGC 内容类型筛选">
+          <button class="mobile-home-filter-tab is-active" type="button" data-mobile-filter="all" aria-pressed="true">全部</button>
+          <button class="mobile-home-filter-tab" type="button" data-mobile-filter="image" aria-pressed="false">图片</button>
+          <button class="mobile-home-filter-tab" type="button" data-mobile-filter="video" aria-pressed="false">视频</button>
+        </div>
+
+        <div class="mobile-community-grid" data-mobile-community-masonry aria-label="AIGC 作品流">
+          <article class="mobile-community-card" data-mobile-content-type="image">
+            <a class="mobile-community-media is-portrait" href="./mobile-image-detail.html"><img src="assets/image_assets/15.jpg" alt="凤冠神女"></a>
+            <div class="mobile-community-card-copy"><h2>凤冠神女</h2><div class="mobile-community-meta-row"><div class="mobile-community-author"><img src="assets/image_assets/1.png" alt=""><span>阿念</span></div><p>Flux Pro 1.1</p></div></div>
+          </article>
+
+          <article class="mobile-community-card" data-mobile-content-type="video">
+            <a class="mobile-community-media" href="./mobile-video-detail.html"><img src="assets/image_assets/4.png" alt="海灯守望"><span class="mobile-community-play"><img class="mobile-icon" src="resources/icons/remixicon/svg/Media/play-circle-line.svg" alt=""></span></a>
+            <div class="mobile-community-card-copy"><h2>海灯守望</h2><div class="mobile-community-meta-row"><div class="mobile-community-author"><img src="assets/image_assets/4.png" alt=""><span>海雾</span></div><p>Seedance 2.0</p></div></div>
+          </article>
+
+          <article class="mobile-community-card" data-mobile-content-type="image">
+            <a class="mobile-community-media" href="./mobile-image-detail.html"><img src="assets/image_assets/3.png" alt="竹泉秘境"></a>
+            <div class="mobile-community-card-copy"><h2>竹泉秘境</h2><div class="mobile-community-meta-row"><div class="mobile-community-author"><img src="assets/image_assets/3.png" alt=""><span>竹影</span></div><p>Flux Pro 1.1</p></div></div>
+          </article>
+
+          <article class="mobile-community-card" data-mobile-content-type="video">
+            <a class="mobile-community-media is-portrait" href="./mobile-video-detail.html"><img src="assets/image_assets/18.png" alt="镜域漂移"><span class="mobile-community-play"><img class="mobile-icon" src="resources/icons/remixicon/svg/Media/play-circle-line.svg" alt=""></span></a>
+            <div class="mobile-community-card-copy"><h2>镜域漂移</h2><div class="mobile-community-meta-row"><div class="mobile-community-author"><img src="assets/image_assets/2.png" alt=""><span>星野</span></div><p>Seedance 2.0</p></div></div>
+          </article>
+        </div>
+        <div class="mobile-empty-filter" data-mobile-filter-empty>暂无匹配内容</div>
+      </section>
+
+      <section id="mobile-community-panel-flash" class="mobile-community-panel" role="tabpanel" aria-labelledby="mobile-community-tab-flash" data-mobile-community-panel="flash" hidden>
+        <div class="mobile-flash-feed" aria-label="闪念内容流">
+          <article class="mobile-flash-post-card">
+            <header class="mobile-flash-post-head"><img src="assets/image_assets/1.png" alt=""><div><strong>南舟</strong><span>18 分钟前</span></div></header>
+            <p>今天把漫剧开场拆成“人物冲突、场景气氛、镜头推进”三段，再让模型分别补细节，生成结果比直接长 Prompt 更稳定。</p>
+            <div class="mobile-flash-media-grid"><img src="assets/image_assets/11.png" alt="漫剧开场镜头"><img src="assets/image_assets/17.png" alt="角色与场景氛围"></div>
+            <footer class="mobile-flash-post-meta"><span class="mobile-community-topic">#漫剧拆解</span><span>186 赞 · 24 评论</span></footer>
+          </article>
+
+          <article class="mobile-flash-post-card">
+            <header class="mobile-flash-post-head"><img src="assets/image_assets/4.png" alt=""><div><strong>木辛</strong><span>42 分钟前</span></div></header>
+            <p>试了 3 个文本模型写 API 错误复盘，最后选了能把复现步骤压成清单的模型，公开分享时更容易被照着排查。</p>
+            <footer class="mobile-flash-post-meta"><span class="mobile-community-topic">#模型实测</span><span>142 赞 · 18 评论</span></footer>
+          </article>
+
+          <article class="mobile-flash-post-card">
+            <header class="mobile-flash-post-head"><img src="assets/image_assets/15.jpg" alt=""><div><strong>星野</strong><span>1 小时前</span></div></header>
+            <p>把同一段角色设定拆成 9 个小镜头后，视频生成更容易保持动作连续，尤其适合先看节奏再补画面细节。</p>
+            <div class="mobile-flash-media-grid is-single"><span class="mobile-flash-video-cover"><img src="assets/image_assets/18.png" alt="九宫格视频生成片段"><span class="mobile-community-play"><img class="mobile-icon" src="resources/icons/remixicon/svg/Media/play-circle-line.svg" alt=""></span></span></div>
+            <footer class="mobile-flash-post-meta"><span class="mobile-community-topic">#视频生成</span><span>88 赞 · 11 评论</span></footer>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <nav class="mobile-bottom-nav" aria-label="移动端一级导航">
+      <a class="mobile-nav-item" href="./mobile-home.html"><img class="mobile-icon" src="resources/icons/remixicon/svg/Buildings/home-5-line.svg" alt=""><span>首页</span></a>
+      <a class="mobile-nav-item is-active" href="./mobile-community.html" aria-current="page"><img class="mobile-icon" src="resources/icons/remixicon/svg/Map/compass-3-line.svg" alt=""><span>社区</span></a>
+      <a class="mobile-nav-item mobile-nav-create" href="./mobile-create.html"><span class="mobile-nav-create-icon"><img class="mobile-icon" src="resources/icons/remixicon/svg/System/add-line.svg" alt=""></span><span>创作</span></a>
+      <a class="mobile-nav-item" href="./mobile-activity.html"><img class="mobile-icon" src="resources/icons/remixicon/svg/Business/calendar-event-line.svg" alt=""><span>活动</span></a>
+      <a class="mobile-nav-item" href="./mobile-my.html"><img class="mobile-icon" src="resources/icons/remixicon/svg/User & Faces/user-line.svg" alt=""><span>我的</span></a>
+    </nav>
+  </div>
+
+  <section id="mobile-flash-compose-sheet" class="mobile-bottom-sheet mobile-flash-compose-sheet" data-mobile-flash-compose-sheet aria-hidden="true">
+    <button class="mobile-sheet-backdrop" type="button" data-mobile-flash-compose-close aria-label="关闭发布闪念"></button>
+    <div class="mobile-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="mobile-flash-compose-title">
+      <header class="mobile-sheet-head"><h2 id="mobile-flash-compose-title">发布闪念</h2><button class="mobile-icon-button" type="button" data-mobile-flash-compose-close aria-label="关闭发布闪念"><img class="mobile-icon" src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></button></header>
+      <form class="mobile-flash-compose-form" data-mobile-flash-compose>
+        <div class="mobile-sheet-scroll mobile-flash-compose-scroll">
+          <div class="mobile-flash-compose-editor">
+            <textarea maxlength="600" rows="7" data-mobile-flash-compose-content placeholder="写下此刻的想法…" aria-label="闪念内容"></textarea>
+            <span data-mobile-flash-compose-counter>0/600</span>
+          </div>
+          <div class="mobile-flash-compose-media-bar">
+            <button type="button" data-mobile-flash-media-add><img class="mobile-icon" src="resources/icons/remixicon/svg/Media/image-add-line.svg" alt=""><span>添加图片或视频</span></button>
+            <span data-mobile-flash-media-counter>0/4</span>
+          </div>
+          <input class="mobile-flash-media-input" type="file" accept="image/png,image/jpeg,image/webp,video/mp4,video/webm,video/quicktime" multiple data-mobile-flash-media-input>
+          <div class="mobile-flash-compose-media-list" data-mobile-flash-media-list></div>
+          <p class="mobile-field-error" data-mobile-flash-compose-status aria-live="polite"></p>
+        </div>
+        <div class="mobile-flash-compose-action"><button class="mobile-button primary" type="submit" data-mobile-flash-publish disabled>发布闪念</button></div>
+      </form>
+    </div>
+  </section>
+
+  <button class="mobile-walkthrough-trigger" type="button" data-mobile-walkthrough-open aria-controls="mobile-walkthrough">走查</button>
+  <aside id="mobile-walkthrough" class="mobile-walkthrough" data-mobile-walkthrough aria-hidden="true">
+    <div class="mobile-walkthrough-head"><h2>移动社区走查规则</h2><button class="mobile-icon-button" type="button" data-mobile-walkthrough-close aria-label="关闭走查规则"><img class="mobile-icon" src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></button></div>
+    <div class="mobile-rule-grid">
+      <section class="mobile-rule-card"><strong>页面目的</strong><p>社区以 AIGC 和闪念两个频道承接不同的内容消费方式，继续使用 Web 端同一作品与帖子对象。</p></section>
+      <section class="mobile-rule-card"><strong>页面骨架</strong><p>社区不设置顶部应用栏和搜索框；首层切换 AIGC 与闪念，AIGC 内再筛选图片和视频，底部五项承担一级导航。</p></section>
+      <section class="mobile-rule-card"><strong>内容一致</strong><p>AIGC 使用双列瀑布流展示标题、作者和模型，作者与模型同排呈现；图片与视频通过筛选和播放控件区分，不在封面重复显示类型标识；闪念使用单列帖子流展示作者、时间、正文、媒体与轻量热度。</p></section>
+      <section class="mobile-rule-card"><strong>状态</strong><p>频道和 AIGC 类型筛选均在当前页完成；地址参数记录当前频道，返回时恢复频道、筛选与列表位置。</p></section>
+      <section class="mobile-rule-card"><strong>发布闪念</strong><p>底部创作入口先选择创作方式；发布闪念进入闪念频道并打开编辑层，正文最多 600 字、媒体最多 4 个，正文或媒体至少填写一项。静态原型只演示提交状态，不写入真实内容。</p></section>
+      <section class="mobile-rule-card"><strong>验收</strong><p>两个频道切换后只展示对应内容流；AIGC 首屏双列对齐并按列高连续排列，作者与模型保持同排；类型筛选不影响闪念；底部导航不遮挡内容；360/390/430 无横向溢出。</p></section>
+    </div>
+  </aside>
+  <div class="mobile-toast" data-mobile-toast role="status" aria-live="polite"></div>
+</body>
+</html>

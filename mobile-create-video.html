@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#05070b">
+  <title>视频生成 - 多元拾光</title>
+  <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
+  <link rel="stylesheet" href="./mobile-h5.css?v=20260820-p0b1">
+  <script src="./mobile-h5.js?v=20260820-p0b1" defer></script>
+</head>
+<body class="mobile-h5-body" data-mobile-page="create-video">
+  <div class="mobile-shell has-action-bar">
+    <header class="mobile-topbar mobile-topbar-detail" data-mobile-appbar>
+      <button class="mobile-back-button" type="button" data-mobile-back data-fallback="./mobile-create.html" aria-label="返回创作"><img class="mobile-icon" src="resources/icons/remixicon/svg/Arrows/arrow-left-s-line.svg" alt=""></button>
+      <span class="mobile-page-title">视频生成</span>
+      <span class="mobile-topbar-placeholder" aria-hidden="true"></span>
+    </header>
+
+    <main id="main" class="mobile-task-content">
+      <form id="mobile-video-generator" class="mobile-generator-form" data-mobile-generator-form data-generator-mode="video" action="./mobile-generation-progress.html" method="get">
+        <input type="hidden" name="mode" value="video">
+        <section class="mobile-form-section" aria-labelledby="mobile-video-reference-title">
+          <div class="mobile-form-heading"><h1 id="mobile-video-reference-title">首帧图片</h1><span>选填</span></div>
+          <button class="mobile-upload-card" type="button" data-mobile-upload aria-label="上传首帧图片">
+            <img class="mobile-icon" src="resources/icons/remixicon/svg/Media/video-upload-line.svg" alt="">
+            <span data-mobile-upload-label>上传图片</span>
+          </button>
+        </section>
+
+        <section class="mobile-form-section" aria-labelledby="mobile-video-prompt-title">
+          <div class="mobile-form-heading"><h2 id="mobile-video-prompt-title">提示词</h2><span><b data-mobile-prompt-count>0</b>/1000</span></div>
+          <textarea class="mobile-prompt-input" name="prompt" maxlength="1000" data-mobile-prompt placeholder="描述画面和镜头运动" required></textarea>
+          <p class="mobile-field-error" data-mobile-generator-error aria-live="polite"></p>
+        </section>
+
+        <section class="mobile-form-section" aria-labelledby="mobile-video-model-title">
+          <div class="mobile-form-heading"><h2 id="mobile-video-model-title">可用模型</h2></div>
+          <div class="mobile-model-card is-selected">
+            <img src="assets/image_assets/4.png" alt="">
+            <div><strong>Seedance 2.0</strong><span>视频生成</span></div>
+            <img class="mobile-icon" src="resources/icons/remixicon/svg/System/checkbox-circle-fill.svg" alt="已选择">
+          </div>
+        </section>
+
+        <section class="mobile-form-section" aria-labelledby="mobile-video-ratio-title">
+          <div class="mobile-form-heading"><h2 id="mobile-video-ratio-title">画面比例</h2></div>
+          <div class="mobile-choice-row" data-mobile-choice-group data-choice-name="ratio">
+            <button type="button" data-mobile-choice="1:1">1:1</button>
+            <button class="is-selected" type="button" data-mobile-choice="16:9">16:9</button>
+            <button type="button" data-mobile-choice="9:16">9:16</button>
+          </div>
+        </section>
+
+        <section class="mobile-form-section" aria-labelledby="mobile-video-duration-title">
+          <div class="mobile-form-heading"><h2 id="mobile-video-duration-title">视频时长</h2></div>
+          <div class="mobile-choice-row" data-mobile-choice-group data-choice-name="duration">
+            <button class="is-selected" type="button" data-mobile-choice="8">8 秒</button>
+          </div>
+        </section>
+      </form>
+    </main>
+
+    <div class="mobile-action-bar mobile-form-action-bar">
+      <div class="mobile-cost"><img class="mobile-icon" src="resources/icons/remixicon/svg/Finance/coins-line.svg" alt=""><span>预计 20 积分</span></div>
+      <button class="mobile-action-primary" type="submit" form="mobile-video-generator" data-mobile-generator-submit><img class="mobile-icon" src="resources/icons/remixicon/svg/Design/magic-line.svg" alt="">发起生成</button>
+    </div>
+  </div>
+
+  <button class="mobile-walkthrough-trigger" type="button" data-mobile-walkthrough-open aria-controls="mobile-walkthrough">走查</button>
+  <aside id="mobile-walkthrough" class="mobile-walkthrough" data-mobile-walkthrough aria-hidden="true">
+    <div class="mobile-walkthrough-head"><h2>视频生成走查规则</h2><button class="mobile-icon-button" type="button" data-mobile-walkthrough-close aria-label="关闭走查规则"><img class="mobile-icon" src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></button></div>
+    <div class="mobile-rule-grid">
+      <section class="mobile-rule-card"><strong>页面目的</strong><p>视频生成与图片生成同属 P0；本页承接首帧、提示词、模型、比例、时长和积分成本。</p></section>
+      <section class="mobile-rule-card"><strong>入口与返回</strong><p>从创作首页或视频作品一键同款进入；返回创作首页，未提交输入需保留或确认离开。</p></section>
+      <section class="mobile-rule-card"><strong>主动作</strong><p>校验输入后创建一条视频生成任务，进入生成中与恢复页；长等待由生成记录承接。</p></section>
+      <section class="mobile-rule-card"><strong>异常状态</strong><p>需覆盖模型不可用、参数错误、上传失败和余额不足，失败时保留已输入内容。</p></section>
+      <section class="mobile-rule-card"><strong>验收</strong><p>键盘不遮挡字段和主动作；视频参数可操作；360/390/430 无横向溢出。</p></section>
+    </div>
+  </aside>
+  <div class="mobile-toast" data-mobile-toast role="status" aria-live="polite"></div>
+</body>
+</html>

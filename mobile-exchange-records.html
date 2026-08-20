@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#05070b">
+  <title>兑换记录 - 多元拾光</title>
+  <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
+  <link rel="stylesheet" href="./mobile-h5.css?v=20260820-p0b8">
+  <script src="./mobile-h5.js?v=20260820-p0b8" defer></script>
+</head>
+<body class="mobile-h5-body" data-mobile-page="exchange-records">
+  <div class="mobile-shell">
+    <header class="mobile-topbar mobile-topbar-detail" data-mobile-appbar>
+      <button class="mobile-back-button" type="button" data-mobile-back data-fallback="./mobile-exchange.html" aria-label="返回AI商城">
+        <img class="mobile-icon" src="resources/icons/remixicon/svg/Arrows/arrow-left-s-line.svg" alt="">
+      </button>
+      <span class="mobile-page-title">兑换记录</span>
+      <span class="mobile-topbar-placeholder" aria-hidden="true"></span>
+    </header>
+
+    <main id="main" class="mobile-task-content mobile-exchange-records-content" data-mobile-exchange-records>
+      <section class="mobile-exchange-record-list" aria-label="全部兑换记录">
+        <article class="mobile-exchange-record-card" data-mobile-exchange-record data-mobile-exchange-status="success">
+          <div class="mobile-exchange-record-head">
+            <h2>闪创AI 体验小时卡</h2>
+            <span class="mobile-status-badge is-success">兑换成功</span>
+          </div>
+          <div class="mobile-exchange-record-meta">
+            <span>今天 11:40</span>
+            <span>积分兑换</span>
+            <strong>−180 积分</strong>
+          </div>
+        </article>
+
+        <article class="mobile-exchange-record-card" data-mobile-exchange-record data-mobile-exchange-status="processing">
+          <div class="mobile-exchange-record-head">
+            <h2>Codex体验卡</h2>
+            <span class="mobile-status-badge is-running">处理中</span>
+          </div>
+          <div class="mobile-exchange-record-meta">
+            <span>昨天 16:12</span>
+            <span>积分兑换</span>
+            <strong>−200 积分</strong>
+          </div>
+        </article>
+
+        <article class="mobile-exchange-record-card" data-mobile-exchange-record data-mobile-exchange-status="exception">
+          <div class="mobile-exchange-record-head">
+            <h2>多元探索网页体验卡</h2>
+            <span class="mobile-status-badge is-warning">异常待处理</span>
+          </div>
+          <div class="mobile-exchange-record-meta">
+            <span>8 月 1 日 20:18</span>
+            <span>积分兑换</span>
+            <strong>−100 积分</strong>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <button class="mobile-walkthrough-trigger" type="button" data-mobile-walkthrough-open aria-controls="mobile-walkthrough">走查</button>
+  <aside id="mobile-walkthrough" class="mobile-walkthrough" data-mobile-walkthrough aria-hidden="true">
+    <div class="mobile-walkthrough-head"><h2>兑换记录走查规则</h2><button class="mobile-icon-button" type="button" data-mobile-walkthrough-close aria-label="关闭走查规则"><img class="mobile-icon" src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></button></div>
+    <div class="mobile-rule-grid">
+      <section class="mobile-rule-card"><strong>页面目的</strong><p>独立承接用户的商城兑换结果，不与积分收支流水合并。</p></section>
+      <section class="mobile-rule-card"><strong>字段</strong><p>每条记录展示商品名称、兑换时间、兑换方式、消耗积分和用户可读状态。</p></section>
+      <section class="mobile-rule-card"><strong>状态</strong><p>移动端至少区分处理中、兑换成功和异常待处理；状态来源与 Web 端及后台兑换订单一致。</p></section>
+      <section class="mobile-rule-card"><strong>敏感信息</strong><p>列表不展示完整卡密、Token、内部订单号或处理日志；异常结果通过消息中心回访。</p></section>
+      <section class="mobile-rule-card"><strong>原型边界</strong><p>当前数据只用于验证页面信息层级，不代表已产生真实兑换、扣分或权益发放。</p></section>
+      <section class="mobile-rule-card"><strong>验收</strong><p>从 AI 商城进入本页并可返回；三种状态可辨；360、390、430 宽度无横向溢出。</p></section>
+    </div>
+  </aside>
+  <div class="mobile-toast" data-mobile-toast role="status" aria-live="polite"></div>
+</body>
+</html>

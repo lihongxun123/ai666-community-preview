@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#05070b">
+  <title>多元拾光 · AIGC 生成</title>
+  <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
+  <link rel="stylesheet" href="./mobile-h5.css?v=20260820-p0b14">
+  <script src="./mobile-h5.js?v=20260820-p0b14" defer></script>
+</head>
+<body class="mobile-h5-body" data-mobile-page="create">
+  <div class="mobile-shell mobile-primary-shell mobile-create-shell has-bottom-nav">
+    <main id="main" class="mobile-create-workspace" data-mobile-create-workspace>
+      <section class="mobile-create-thread" aria-labelledby="mobile-create-title">
+        <div class="mobile-create-workspace-title">
+          <h1 id="mobile-create-title">AIGC 生成</h1>
+          <button class="mobile-create-history-trigger" type="button" data-mobile-create-history-open aria-controls="mobile-create-history-sheet">
+            <img class="mobile-icon" src="resources/icons/remixicon/svg/System/history-line.svg" alt="">
+            <span>生成记录</span>
+          </button>
+        </div>
+
+        <article class="mobile-create-source" data-mobile-create-source hidden>
+          <img data-mobile-create-source-cover src="assets/image_assets/15.jpg" alt="">
+          <div>
+            <span data-mobile-create-source-kind>同款来源</span>
+            <strong data-mobile-create-source-title>凤冠神女</strong>
+            <small data-mobile-create-source-meta>Flux Pro 1.1 · 1:1</small>
+          </div>
+          <img class="mobile-icon" src="resources/icons/remixicon/svg/System/checkbox-circle-line.svg" alt="已带入">
+        </article>
+
+        <div class="mobile-create-empty" data-mobile-create-empty>
+          <span class="mobile-create-empty-icon"><img class="mobile-icon" src="resources/icons/remixicon/svg/Design/magic-line.svg" alt=""></span>
+          <h2>输入提示词开始创作</h2>
+          <div class="mobile-create-empty-modes" aria-hidden="true">
+            <span><img class="mobile-icon" src="resources/icons/remixicon/svg/Media/image-line.svg" alt="">图片</span>
+            <span><img class="mobile-icon" src="resources/icons/remixicon/svg/Media/video-line.svg" alt="">视频</span>
+          </div>
+        </div>
+
+      </section>
+    </main>
+
+    <form class="mobile-create-composer" data-mobile-create-composer action="./mobile-generation-progress.html" method="get">
+      <input type="hidden" name="mode" value="image" data-mobile-create-mode-input>
+      <input type="hidden" name="state" value="running">
+      <div class="mobile-create-composer-tools">
+        <div class="mobile-create-mode-switch" aria-label="创作类型">
+          <button class="is-selected" type="button" data-mobile-create-mode="image" aria-pressed="true">图片</button>
+          <button type="button" data-mobile-create-mode="video" aria-pressed="false">视频</button>
+        </div>
+        <button class="mobile-create-settings-button" type="button" data-mobile-create-settings-open aria-controls="mobile-create-settings-sheet">
+          <span class="mobile-create-settings-copy">
+            <strong data-mobile-create-settings-summary>Flux Pro 1.1 · 1:1</strong>
+            <small><img class="mobile-icon" src="resources/icons/remixicon/svg/Finance/coins-line.svg" alt=""><span data-mobile-create-settings-cost>预计消耗 20 积分</span></small>
+          </span>
+          <img class="mobile-icon" src="resources/icons/remixicon/svg/System/settings-3-line.svg" alt="">
+        </button>
+      </div>
+      <div class="mobile-create-input-row">
+        <button class="mobile-create-attachment-button" type="button" data-mobile-create-attachment aria-label="添加参考图" aria-pressed="false" title="添加参考图">
+          <img class="mobile-icon" src="resources/icons/remixicon/svg/Editor/attachment-2.svg" alt="">
+        </button>
+        <textarea name="prompt" rows="1" maxlength="1000" data-mobile-create-prompt placeholder="描述你想生成的图片" aria-label="提示词"></textarea>
+        <button class="mobile-create-send" type="submit" aria-label="发起生成">
+          <img class="mobile-icon" src="resources/icons/remixicon/svg/Business/send-plane-2-fill.svg" alt="">
+        </button>
+      </div>
+      <div class="mobile-create-composer-meta">
+        <span class="mobile-field-error" data-mobile-create-error aria-live="polite"></span>
+        <span><b data-mobile-create-prompt-count>0</b>/1000</span>
+      </div>
+    </form>
+
+    <nav class="mobile-bottom-nav" aria-label="移动端一级导航">
+      <a class="mobile-nav-item" href="./mobile-home.html"><img class="mobile-icon" src="resources/icons/remixicon/svg/Buildings/home-5-line.svg" alt=""><span>首页</span></a>
+      <a class="mobile-nav-item" href="./mobile-community.html"><img class="mobile-icon" src="resources/icons/remixicon/svg/Map/compass-3-line.svg" alt=""><span>社区</span></a>
+      <a class="mobile-nav-item mobile-nav-create is-active" href="./mobile-create.html" aria-current="page"><span class="mobile-nav-create-icon"><img class="mobile-icon" src="resources/icons/remixicon/svg/System/add-line.svg" alt=""></span><span>创作</span></a>
+      <a class="mobile-nav-item" href="./mobile-activity.html"><img class="mobile-icon" src="resources/icons/remixicon/svg/Business/calendar-event-line.svg" alt=""><span>活动</span></a>
+      <a class="mobile-nav-item" href="./mobile-my.html"><img class="mobile-icon" src="resources/icons/remixicon/svg/User & Faces/user-line.svg" alt=""><span>我的</span></a>
+    </nav>
+  </div>
+
+  <section id="mobile-create-settings-sheet" class="mobile-bottom-sheet mobile-create-sheet" data-mobile-create-settings-sheet aria-hidden="true">
+    <button class="mobile-sheet-backdrop" type="button" data-mobile-create-settings-close aria-label="关闭生成设置"></button>
+    <div class="mobile-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="mobile-create-settings-title">
+      <header class="mobile-sheet-head"><h2 id="mobile-create-settings-title">生成设置</h2><button class="mobile-icon-button" type="button" data-mobile-create-settings-close aria-label="关闭生成设置"><img class="mobile-icon" src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></button></header>
+      <div class="mobile-sheet-scroll mobile-create-settings-scroll">
+        <section class="mobile-create-setting-panel" data-mobile-create-setting-panel="image">
+          <div class="mobile-form-heading"><h3>模型</h3></div>
+          <div class="mobile-model-list" role="group" aria-label="图片生成模型">
+            <button class="mobile-model-card is-selected" type="button" data-mobile-create-model="Flux Pro 1.1" data-mobile-create-cost="20" aria-pressed="true"><img src="assets/image_assets/15.jpg" alt=""><span class="mobile-model-card-copy"><strong>Flux Pro 1.1</strong><span>预计消耗 20 积分</span></span><img class="mobile-icon" src="resources/icons/remixicon/svg/System/checkbox-circle-fill.svg" alt="已选择"></button>
+            <button class="mobile-model-card" type="button" data-mobile-create-model="GPT Image 2" data-mobile-create-cost="35" aria-pressed="false"><img src="assets/image_assets/3.png" alt=""><span class="mobile-model-card-copy"><strong>GPT Image 2</strong><span>预计消耗 35 积分</span></span><img class="mobile-icon" src="resources/icons/remixicon/svg/System/checkbox-circle-fill.svg" alt=""></button>
+            <button class="mobile-model-card" type="button" data-mobile-create-model="Nano Banana Pro" data-mobile-create-cost="18" aria-pressed="false"><img src="assets/image_assets/18.png" alt=""><span class="mobile-model-card-copy"><strong>Nano Banana Pro</strong><span>预计消耗 18 积分</span></span><img class="mobile-icon" src="resources/icons/remixicon/svg/System/checkbox-circle-fill.svg" alt=""></button>
+          </div>
+          <div class="mobile-form-heading"><h3>画面比例</h3></div>
+          <div class="mobile-choice-row" data-mobile-create-choice-group="ratio">
+            <button class="is-selected" type="button" data-mobile-create-choice="1:1">1:1</button><button type="button" data-mobile-create-choice="16:9">16:9</button><button type="button" data-mobile-create-choice="9:16">9:16</button>
+          </div>
+        </section>
+        <section class="mobile-create-setting-panel" data-mobile-create-setting-panel="video" hidden>
+          <div class="mobile-form-heading"><h3>模型</h3></div>
+          <div class="mobile-model-list" role="group" aria-label="视频生成模型">
+            <button class="mobile-model-card is-selected" type="button" data-mobile-create-model="Seedance 2.0" data-mobile-create-cost="64" aria-pressed="true"><img src="assets/image_assets/4.png" alt=""><span class="mobile-model-card-copy"><strong>Seedance 2.0</strong><span>预计消耗 64 积分</span></span><img class="mobile-icon" src="resources/icons/remixicon/svg/System/checkbox-circle-fill.svg" alt="已选择"></button>
+            <button class="mobile-model-card" type="button" data-mobile-create-model="Kling 3.0" data-mobile-create-cost="48" aria-pressed="false"><img src="assets/image_assets/17.png" alt=""><span class="mobile-model-card-copy"><strong>Kling 3.0</strong><span>预计消耗 48 积分</span></span><img class="mobile-icon" src="resources/icons/remixicon/svg/System/checkbox-circle-fill.svg" alt=""></button>
+            <button class="mobile-model-card" type="button" data-mobile-create-model="Grok Video 3" data-mobile-create-cost="36" aria-pressed="false"><img src="assets/image_assets/11.png" alt=""><span class="mobile-model-card-copy"><strong>Grok Video 3</strong><span>预计消耗 36 积分</span></span><img class="mobile-icon" src="resources/icons/remixicon/svg/System/checkbox-circle-fill.svg" alt=""></button>
+          </div>
+          <div class="mobile-form-heading"><h3>画面比例</h3></div>
+          <div class="mobile-choice-row" data-mobile-create-choice-group="video-ratio">
+            <button type="button" data-mobile-create-choice="1:1">1:1</button><button class="is-selected" type="button" data-mobile-create-choice="16:9">16:9</button><button type="button" data-mobile-create-choice="9:16">9:16</button>
+          </div>
+          <div class="mobile-form-heading"><h3>视频时长</h3></div>
+          <div class="mobile-choice-row" data-mobile-create-choice-group="duration">
+            <button type="button" data-mobile-create-choice="5 秒">5 秒</button><button class="is-selected" type="button" data-mobile-create-choice="8 秒">8 秒</button><button type="button" data-mobile-create-choice="10 秒">10 秒</button>
+          </div>
+        </section>
+      </div>
+      <div class="mobile-create-sheet-action"><button class="mobile-button primary" type="button" data-mobile-create-settings-close>完成</button></div>
+    </div>
+  </section>
+
+  <section id="mobile-create-history-sheet" class="mobile-bottom-sheet mobile-create-history-sheet" data-mobile-create-history-sheet aria-hidden="true">
+    <button class="mobile-sheet-backdrop" type="button" data-mobile-create-history-close aria-label="关闭生成记录"></button>
+    <div class="mobile-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="mobile-create-history-title">
+      <header class="mobile-sheet-head"><h2 id="mobile-create-history-title">生成记录</h2><button class="mobile-icon-button" type="button" data-mobile-create-history-close aria-label="关闭生成记录"><img class="mobile-icon" src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></button></header>
+      <div class="mobile-sheet-scroll">
+        <div class="mobile-history-list">
+          <a class="mobile-history-row" href="./mobile-image-detail.html"><img src="assets/image_assets/15.jpg" alt=""><span class="mobile-history-copy"><strong>凤冠神女</strong><small>图片生成</small></span><span class="mobile-history-state">已完成</span></a>
+          <a class="mobile-history-row" href="./mobile-video-detail.html"><img src="assets/image_assets/4.png" alt=""><span class="mobile-history-copy"><strong>海灯守望</strong><small>视频生成</small></span><span class="mobile-history-state">已完成</span></a>
+          <a class="mobile-history-row" href="./mobile-generation-progress.html?mode=video&amp;state=running"><img src="assets/image_assets/11.png" alt=""><span class="mobile-history-copy"><strong>龙虎天劫</strong><small>视频生成</small></span><span class="mobile-history-state is-running">生成中</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <button class="mobile-walkthrough-trigger" type="button" data-mobile-walkthrough-open aria-controls="mobile-walkthrough">走查</button>
+  <aside id="mobile-walkthrough" class="mobile-walkthrough" data-mobile-walkthrough aria-hidden="true">
+    <div class="mobile-walkthrough-head"><h2>创作工作台走查规则</h2><button class="mobile-icon-button" type="button" data-mobile-walkthrough-close aria-label="关闭走查规则"><img class="mobile-icon" src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></button></div>
+    <div class="mobile-rule-grid">
+      <section class="mobile-rule-card"><strong>页面目的</strong><p>用同一对话式工作台承接图片与视频生成；提示词是主输入，模式、参考素材、模型和参数作为就近设置。</p></section>
+      <section class="mobile-rule-card"><strong>同款上下文</strong><p>从图片或视频详情进入时展示来源作品，带入媒体类型、提示词、模型与允许复用的参数；用户确认后才发起生成。</p></section>
+      <section class="mobile-rule-card"><strong>输入层级</strong><p>生成记录固定在标题右侧；参考图或首帧入口位于提示词输入框最左侧；模型、预计积分、比例和视频时长归为同一组生成配置。</p></section>
+      <section class="mobile-rule-card"><strong>图片参数</strong><p>图片生成仅展示当前真实支持的模型与画面比例；当前不提供分辨率选择，也不在设置摘要中展示分辨率。</p></section>
+      <section class="mobile-rule-card"><strong>模型与积分</strong><p>图片和视频模型均可单选；每个模型直接展示预计积分，切换后同步更新输入区设置摘要。实际模型、可用状态和积分成本读取可用模型接口。</p></section>
+      <section class="mobile-rule-card"><strong>全局创作入口</strong><p>底部创作入口是全局发布动作，点击后先选择 AIGC 生成或发布闪念；当前页承接 AIGC 生成，发布闪念进入社区闪念频道的编辑层。</p></section>
+      <section class="mobile-rule-card"><strong>记录承接</strong><p>生成记录从标题右侧入口打开底部层；进行中记录恢复原任务，成功记录进入对应结果或作品详情。</p></section>
+      <section class="mobile-rule-card"><strong>状态承接</strong><p>发起生成后在当前对话中加入用户提示词与生成任务卡；任务卡进入原生成进度和结果链路，保存、发布社区与活动投稿继续在结果后分别完成。</p></section>
+      <section class="mobile-rule-card"><strong>验收</strong><p>360/390/430 宽度下输入区不被五导航或键盘遮挡；图片与视频切换、设置、参考素材、记录和同款预填均可操作；不自动生成或扣减积分。</p></section>
+    </div>
+  </aside>
+  <div class="mobile-toast" data-mobile-toast role="status" aria-live="polite"></div>
+</body>
+</html>

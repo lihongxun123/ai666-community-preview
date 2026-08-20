@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#05070b">
+  <title>投稿详情 - 多元拾光</title>
+  <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
+  <link rel="stylesheet" href="./mobile-h5.css?v=20260820-p0b1">
+  <script src="./mobile-h5.js?v=20260820-p0b1" defer></script>
+</head>
+<body class="mobile-h5-body" data-mobile-page="submission-detail">
+  <div class="mobile-shell has-action-bar" data-mobile-submission-screen>
+    <header class="mobile-topbar mobile-topbar-detail" data-mobile-appbar>
+      <button class="mobile-back-button" type="button" data-mobile-back data-fallback="./mobile-campaign-detail.html" aria-label="返回活动详情"><img class="mobile-icon" src="resources/icons/remixicon/svg/Arrows/arrow-left-s-line.svg" alt=""></button>
+      <span class="mobile-page-title">投稿详情</span>
+      <span class="mobile-topbar-placeholder" aria-hidden="true"></span>
+    </header>
+
+    <main id="main" class="mobile-task-content">
+      <section class="mobile-submission-work-card">
+        <img src="assets/image_assets/15.jpg" alt="凤冠神女">
+        <div><span>AI 生图创作挑战</span><h1>凤冠神女</h1><p>提交于 2026年8月19日 10:26</p></div>
+      </section>
+
+      <section class="mobile-submission-status-card" aria-labelledby="mobile-submission-status-title">
+        <span class="mobile-status-badge is-warning" data-mobile-submission-status>需修改</span>
+        <h2 id="mobile-submission-status-title">补充作品说明后重新提交</h2>
+        <p data-mobile-submission-reason>作品说明未完整呈现创作主题。</p>
+      </section>
+
+      <section class="mobile-detail-list" aria-label="投稿信息">
+        <div><span>投稿状态</span><strong data-mobile-submission-status-text>需修改</strong></div>
+        <div><span>活动</span><strong>AI 生图创作挑战</strong></div>
+        <div><span>作品</span><strong>凤冠神女</strong></div>
+        <div><span>最近提交</span><strong>2026年8月19日 10:26</strong></div>
+      </section>
+
+      <form class="mobile-submission-editor" data-mobile-submission-editor hidden>
+        <section class="mobile-form-section">
+          <div class="mobile-form-heading"><h2>作品说明</h2><span><b data-mobile-submission-count>24</b>/200</span></div>
+          <textarea class="mobile-prompt-input is-compact" maxlength="200" data-mobile-submission-copy>凤冠神女站在暗红色殿堂入口，金色逆光勾勒人物轮廓。</textarea>
+        </section>
+        <p class="mobile-field-error" data-mobile-submission-error aria-live="polite"></p>
+      </form>
+
+      <section class="mobile-submission-history" aria-labelledby="mobile-submission-history-title">
+        <div class="mobile-form-heading"><h2 id="mobile-submission-history-title">审核记录</h2></div>
+        <ol>
+          <li><span></span><div><strong>需修改</strong><p>2026年8月19日 10:42</p></div></li>
+          <li><span></span><div><strong>已提交</strong><p>2026年8月19日 10:26</p></div></li>
+        </ol>
+      </section>
+    </main>
+
+    <div class="mobile-action-bar mobile-single-action-bar">
+      <button class="mobile-action-primary" type="button" data-mobile-submission-edit><img class="mobile-icon" src="resources/icons/remixicon/svg/Document/file-edit-line.svg" alt=""><span>修改后重投</span></button>
+    </div>
+  </div>
+
+  <button class="mobile-walkthrough-trigger" type="button" data-mobile-walkthrough-open aria-controls="mobile-walkthrough">走查</button>
+  <aside id="mobile-walkthrough" class="mobile-walkthrough" data-mobile-walkthrough aria-hidden="true">
+    <div class="mobile-walkthrough-head"><h2>投稿详情走查规则</h2><button class="mobile-icon-button" type="button" data-mobile-walkthrough-close aria-label="关闭走查规则"><img class="mobile-icon" src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></button></div>
+    <div class="mobile-rule-grid">
+      <section class="mobile-rule-card"><strong>页面目的</strong><p>承接草稿、审核中、需修改、已通过、未通过和撤回状态，并保留追加式审核记录。</p></section>
+      <section class="mobile-rule-card"><strong>入口与返回</strong><p>从活动详情、我的投稿或消息进入；返回原活动或个人页，不改变社区作品公开状态。</p></section>
+      <section class="mobile-rule-card"><strong>主动作</strong><p>需修改时展示用户可读原因，修改后创建新的重投记录；原审核结果不能被覆盖。</p></section>
+      <section class="mobile-rule-card"><strong>状态边界</strong><p>投稿通过不等于获奖，奖励发放不等于积分到账；C端不展示审核任务号、命中和操作日志。</p></section>
+      <section class="mobile-rule-card"><strong>验收</strong><p>修改编辑器可打开，说明为空时不能重投，提交后状态变为审核中并新增记录。</p></section>
+    </div>
+  </aside>
+  <div class="mobile-toast" data-mobile-toast role="status" aria-live="polite"></div>
+</body>
+</html>

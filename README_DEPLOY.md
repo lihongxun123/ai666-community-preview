@@ -1,6 +1,6 @@
 # AI666 社区模块公网静态预览包
 
-生成时间：2026-08-18T09:52:51.089Z
+生成时间：2026-08-20T03:02:25.235Z
 
 ## 用途
 
@@ -63,6 +63,30 @@ npm.cmd run validate:community:public-preview
 - 内容详情弹层调试台: content-detail-modals.html
 - 一期活动预览入口: campaign-ops.html
 - 漫剧创作转场页: manga-handoff.html
+- 移动端 H5 · 首页: mobile-home.html
+- 移动端 H5 · 社区: mobile-community.html
+- 移动端 H5 · 图片详情: mobile-image-detail.html
+- 移动端 H5 · 视频详情: mobile-video-detail.html
+- 移动端 H5 · 创作首页: mobile-create.html
+- 移动端 H5 · 图片生成: mobile-create-image.html
+- 移动端 H5 · 视频生成: mobile-create-video.html
+- 移动端 H5 · 生成中与恢复: mobile-generation-progress.html
+- 移动端 H5 · 生成结果: mobile-generation-result.html
+- 移动端 H5 · 活动: mobile-activity.html
+- 移动端 H5 · 通用活动详情: mobile-activity-detail.html
+- 移动端 H5 · AI 生图创作挑战: mobile-campaign-detail.html
+- 移动端 H5 · 投稿详情: mobile-submission-detail.html
+- 移动端 H5 · 我的: mobile-my.html
+- 移动端 H5 · 编辑个人资料: mobile-profile-edit.html
+- 移动端 H5 · 我的内容: mobile-my-works.html
+- 移动端 H5 · 我的投稿: mobile-my-submissions.html
+- 移动端 H5 · 新手任务: mobile-tasks.html
+- 移动端 H5 · 积分中心: mobile-points.html
+- 移动端 H5 · 积分记录: mobile-points-records.html
+- 移动端 H5 · AI商城: mobile-exchange.html
+- 移动端 H5 · 兑换记录: mobile-exchange-records.html
+- 移动端 H5 · 邀请有礼: mobile-invite.html
+- 移动端 H5 · 消息中心: mobile-messages.html
 
 ## 边界
 

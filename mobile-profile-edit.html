@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#05070b">
+  <title>编辑个人资料 - 多元拾光</title>
+  <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
+  <link rel="stylesheet" href="./mobile-h5.css?v=20260820-p0b2">
+  <script src="./mobile-h5.js?v=20260820-p0b2" defer></script>
+</head>
+<body class="mobile-h5-body" data-mobile-page="profile-edit">
+  <div class="mobile-shell">
+    <header class="mobile-topbar mobile-topbar-detail" data-mobile-appbar>
+      <button class="mobile-back-button" type="button" data-mobile-back data-fallback="./mobile-my.html" aria-label="返回我的"><img class="mobile-icon" src="resources/icons/remixicon/svg/Arrows/arrow-left-s-line.svg" alt=""></button>
+      <span class="mobile-page-title">编辑个人资料</span><span class="mobile-topbar-placeholder" aria-hidden="true"></span>
+    </header>
+    <main id="main" class="mobile-task-content">
+      <form class="mobile-profile-form" data-mobile-profile-form>
+        <section class="mobile-form-section mobile-avatar-edit"><img src="assets/image_assets/c02f-user-avatar.webp" alt="拾光创作者头像"><button type="button" data-mobile-toast-message="请选择新的头像">更换头像</button></section>
+        <section class="mobile-form-section">
+          <label class="mobile-field"><span>昵称</span><input type="text" value="拾光创作者" maxlength="20"></label>
+          <label class="mobile-field" style="margin-top:12px"><span>个人简介</span><textarea maxlength="80">用 AI 记录每一次灵感。</textarea></label>
+        </section>
+        <button class="mobile-button primary" type="submit">保存</button>
+      </form>
+      <section class="mobile-form-section mobile-account-binding-section" aria-labelledby="mobile-account-binding-title">
+        <div class="mobile-profile-section-heading">
+          <h2 id="mobile-account-binding-title">账号绑定</h2>
+        </div>
+        <div class="mobile-account-binding-list">
+          <div class="mobile-account-binding-row" data-mobile-account-binding="phone">
+            <span class="mobile-account-binding-icon"><img class="mobile-icon" src="resources/icons/remixicon/svg/Device/smartphone-line.svg" alt=""></span>
+            <span class="mobile-account-binding-copy"><strong>手机号</strong><small>138****5678</small></span>
+            <span class="mobile-account-binding-status"><img class="mobile-icon" src="resources/icons/remixicon/svg/System/shield-check-line.svg" alt="">已绑定</span>
+          </div>
+          <div class="mobile-account-binding-row" data-mobile-account-binding="wechat">
+            <span class="mobile-account-binding-icon is-wechat"><img class="mobile-icon" src="resources/icons/remixicon/svg/Logos/wechat-line.svg" alt=""></span>
+            <span class="mobile-account-binding-copy"><strong>微信号</strong><small>微信账号</small></span>
+            <span class="mobile-account-binding-status"><img class="mobile-icon" src="resources/icons/remixicon/svg/System/shield-check-line.svg" alt="">已绑定</span>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <button class="mobile-walkthrough-trigger" type="button" data-mobile-walkthrough-open aria-controls="mobile-walkthrough">走查</button>
+  <aside id="mobile-walkthrough" class="mobile-walkthrough" data-mobile-walkthrough aria-hidden="true"><div class="mobile-walkthrough-head"><h2>资料编辑走查规则</h2><button class="mobile-icon-button" type="button" data-mobile-walkthrough-close aria-label="关闭走查规则"><img class="mobile-icon" src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></button></div><div class="mobile-rule-grid"><section class="mobile-rule-card"><strong>页面目的</strong><p>承接个人中心的资料编辑动作，并同步呈现与 Web 端一致的账号绑定状态。</p></section><section class="mobile-rule-card"><strong>资料状态</strong><p>昵称、简介与头像沿用同一账号资料；保存成功后返回个人中心。</p></section><section class="mobile-rule-card"><strong>账号绑定</strong><p>手机号和微信状态与 Web 端账号资料同源；手机号始终脱敏，微信仅展示绑定状态，相关变更进入对应账号验证流程。</p></section><section class="mobile-rule-card"><strong>验收</strong><p>编辑入口进入本页；键盘出现时字段与保存动作可见；手机号无完整明文；账号绑定区在 360/390/430 宽度下无横向溢出；返回不进入 PC 页面。</p></section></div></aside>
+  <div class="mobile-toast" data-mobile-toast role="status" aria-live="polite"></div>
+</body>
+</html>

@@ -1,0 +1,961 @@
+(() => {
+  const body = document.body;
+  const params = new URLSearchParams(window.location.search);
+  body.dataset.mobileClean = params.get("clean") === "1" ? "true" : "false";
+
+  const showToast = (message) => {
+    const toast = document.querySelector("[data-mobile-toast]");
+    if (!toast) return;
+    toast.textContent = message;
+    toast.classList.add("is-visible");
+    window.clearTimeout(showToast.timer);
+    showToast.timer = window.setTimeout(() => toast.classList.remove("is-visible"), 2200);
+  };
+
+  const createLaunchers = [...document.querySelectorAll(".mobile-nav-create")];
+  let createActionSheet = null;
+  const setCreateActionSheet = (open) => {
+    if (!createActionSheet) return;
+    createActionSheet.classList.toggle("is-open", open);
+    createActionSheet.setAttribute("aria-hidden", open ? "false" : "true");
+    createLaunchers.forEach((launcher) => launcher.setAttribute("aria-expanded", open ? "true" : "false"));
+  };
+  if (createLaunchers.length) {
+    createActionSheet = document.createElement("section");
+    createActionSheet.id = "mobile-create-action-sheet";
+    createActionSheet.className = "mobile-bottom-sheet mobile-create-action-sheet";
+    createActionSheet.dataset.mobileCreateActionSheet = "";
+    createActionSheet.setAttribute("aria-hidden", "true");
+    createActionSheet.innerHTML = `
+      <button class="mobile-sheet-backdrop" type="button" data-mobile-create-action-close aria-label="关闭创作方式"></button>
+      <div class="mobile-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="mobile-create-action-title">
+        <header class="mobile-sheet-head"><h2 id="mobile-create-action-title">选择创作方式</h2><button class="mobile-icon-button" type="button" data-mobile-create-action-close aria-label="关闭创作方式"><img class="mobile-icon" src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></button></header>
+        <div class="mobile-create-action-list">
+          <a class="mobile-create-action-option" href="./mobile-create.html"><span><img class="mobile-icon" src="resources/icons/remixicon/svg/Design/quill-pen-ai-line.svg" alt=""></span><strong>AIGC 生成</strong><img class="mobile-icon" src="resources/icons/remixicon/svg/Arrows/arrow-right-s-line.svg" alt=""></a>
+          <a class="mobile-create-action-option" href="./mobile-community.html?module=flash&amp;compose=1"><span><img class="mobile-icon" src="resources/icons/remixicon/svg/Document/sticky-note-add-line.svg" alt=""></span><strong>发布闪念</strong><img class="mobile-icon" src="resources/icons/remixicon/svg/Arrows/arrow-right-s-line.svg" alt=""></a>
+        </div>
+      </div>`;
+    body.append(createActionSheet);
+    createLaunchers.forEach((launcher) => {
+      launcher.setAttribute("aria-haspopup", "dialog");
+      launcher.setAttribute("aria-controls", "mobile-create-action-sheet");
+      launcher.setAttribute("aria-expanded", "false");
+      launcher.addEventListener("click", (event) => {
+        event.preventDefault();
+        setCreateActionSheet(true);
+      });
+    });
+    createActionSheet.querySelectorAll("[data-mobile-create-action-close]").forEach((button) => button.addEventListener("click", () => setCreateActionSheet(false)));
+  }
+
+  const updatePressedLabel = (button, pressed) => {
+    const idle = button.dataset.idleLabel;
+    const active = button.dataset.activeLabel;
+    const label = button.querySelector("[data-action-label]");
+    if (label && idle && active) label.textContent = pressed ? active : idle;
+  };
+
+  document.querySelectorAll("[data-mobile-toggle]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const pressed = button.getAttribute("aria-pressed") === "true";
+      button.setAttribute("aria-pressed", pressed ? "false" : "true");
+      updatePressedLabel(button, !pressed);
+      showToast(pressed ? (button.dataset.offMessage || "已取消") : (button.dataset.onMessage || "已完成"));
+    });
+  });
+
+  document.querySelectorAll("[data-mobile-share]").forEach((button) => {
+    button.addEventListener("click", async () => {
+      const payload = { title: document.title, url: window.location.href };
+      try {
+        if (navigator.share) {
+          await navigator.share(payload);
+          return;
+        }
+        await navigator.clipboard.writeText(payload.url);
+        showToast("链接已复制");
+      } catch (error) {
+        if (error?.name !== "AbortError") showToast("分享失败，请重试");
+      }
+    });
+  });
+
+  const bannerTrack = document.querySelector("[data-mobile-banner-track]");
+  const bannerSlides = [...document.querySelectorAll("[data-mobile-banner-slide]")];
+  const bannerDots = [...document.querySelectorAll("[data-mobile-banner-dot]")];
+  const setActiveBanner = (index) => {
+    bannerDots.forEach((dot, dotIndex) => dot.classList.toggle("is-active", dotIndex === index));
+  };
+  bannerDots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      const index = Number(dot.dataset.mobileBannerDot || 0);
+      bannerTrack?.scrollTo({ left: (bannerTrack.clientWidth || 0) * index, behavior: "smooth" });
+      setActiveBanner(index);
+    });
+  });
+  let bannerFrame = 0;
+  bannerTrack?.addEventListener("scroll", () => {
+    if (bannerFrame) return;
+    bannerFrame = window.requestAnimationFrame(() => {
+      bannerFrame = 0;
+      const width = bannerTrack.clientWidth || 1;
+      const index = Math.max(0, Math.min(bannerSlides.length - 1, Math.round(bannerTrack.scrollLeft / width)));
+      setActiveBanner(index);
+    });
+  }, { passive: true });
+
+  const appbar = document.querySelector("[data-mobile-appbar]");
+  let appbarFrame = 0;
+  const syncAppbar = () => {
+    appbarFrame = 0;
+    appbar?.classList.toggle("is-scrolled", window.scrollY > 8);
+  };
+  const requestAppbarSync = () => {
+    if (appbarFrame) return;
+    appbarFrame = window.requestAnimationFrame(syncAppbar);
+  };
+  syncAppbar();
+  window.addEventListener("scroll", requestAppbarSync, { passive: true });
+
+  document.querySelectorAll("[data-mobile-focus-target]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const target = document.querySelector(button.dataset.mobileFocusTarget);
+      if (!target) return;
+      target.scrollIntoView({ block: "center", behavior: "smooth" });
+      window.setTimeout(() => target.focus(), 180);
+    });
+  });
+
+  const setupMobileMasonry = (masonry, cardSelector) => {
+    let masonryFrame = 0;
+    const syncMasonry = () => {
+      masonryFrame = 0;
+      if (!masonry) return;
+      const cards = [...masonry.querySelectorAll(cardSelector)];
+      masonry.classList.remove("is-masonry-ready");
+      cards.forEach((card) => card.style.removeProperty("grid-row-end"));
+      const visibleCards = cards.filter((card) => !card.hidden);
+      const rowGap = Number.parseFloat(getComputedStyle(masonry).rowGap) || 0;
+      const rowHeight = 1;
+      const heights = visibleCards.map((card) => card.getBoundingClientRect().height);
+      masonry.classList.add("is-masonry-ready");
+      visibleCards.forEach((card, index) => {
+        const span = Math.max(1, Math.ceil((heights[index] + rowGap) / (rowHeight + rowGap)));
+        card.style.gridRowEnd = `span ${span}`;
+      });
+    };
+    const requestMasonrySync = () => {
+      if (!masonry || masonryFrame) return;
+      masonryFrame = window.requestAnimationFrame(syncMasonry);
+    };
+    window.addEventListener("resize", requestMasonrySync);
+    masonry?.querySelectorAll("img").forEach((image) => {
+      if (!image.complete) image.addEventListener("load", requestMasonrySync, { once: true });
+    });
+    document.fonts?.ready.then(requestMasonrySync);
+    return requestMasonrySync;
+  };
+
+  const homeMasonry = document.querySelector("[data-mobile-home-masonry]");
+  const requestHomeMasonrySync = setupMobileMasonry(homeMasonry, ".mobile-work-card");
+  const communityMasonry = document.querySelector("[data-mobile-community-masonry]");
+  const requestCommunityMasonrySync = setupMobileMasonry(communityMasonry, ".mobile-community-card");
+
+  const applyFeedFilter = () => {
+    const active = document.querySelector("[data-mobile-filter].is-active")?.dataset.mobileFilter || "all";
+    const query = document.querySelector("[data-mobile-search-input]")?.value.trim().toLowerCase() || "";
+    let visibleCount = 0;
+    document.querySelectorAll("[data-mobile-content-type]").forEach((card) => {
+      const types = (card.dataset.mobileContentType || "").split(/\s+/).filter(Boolean);
+      const typeMatch = active === "all" || types.includes(active);
+      const textMatch = !query || card.textContent.toLowerCase().includes(query);
+      const visible = typeMatch && textMatch;
+      card.hidden = !visible;
+      if (visible) visibleCount += 1;
+    });
+    const empty = document.querySelector("[data-mobile-filter-empty]");
+    if (empty) empty.hidden = visibleCount > 0;
+    requestHomeMasonrySync();
+    requestCommunityMasonrySync();
+  };
+
+  document.querySelectorAll("[data-mobile-filter]").forEach((button) => {
+    button.addEventListener("click", () => {
+      document.querySelectorAll("[data-mobile-filter]").forEach((item) => {
+        const active = item === button;
+        item.classList.toggle("is-active", active);
+        item.setAttribute("aria-pressed", String(active));
+      });
+      applyFeedFilter();
+    });
+  });
+  document.querySelector("[data-mobile-search-input]")?.addEventListener("input", applyFeedFilter);
+  applyFeedFilter();
+
+  const communityTabs = [...document.querySelectorAll("[data-mobile-community-tab]")];
+  const communityPanels = [...document.querySelectorAll("[data-mobile-community-panel]")];
+  const setCommunityModule = (moduleName, updateUrl = false) => {
+    if (!communityTabs.length || !communityPanels.length) return;
+    const next = communityTabs.some((tab) => tab.dataset.mobileCommunityTab === moduleName) ? moduleName : "aigc";
+    communityTabs.forEach((tab) => {
+      const active = tab.dataset.mobileCommunityTab === next;
+      tab.classList.toggle("is-active", active);
+      tab.setAttribute("aria-selected", String(active));
+      tab.tabIndex = active ? 0 : -1;
+    });
+    communityPanels.forEach((panel) => { panel.hidden = panel.dataset.mobileCommunityPanel !== next; });
+    if (next === "aigc") applyFeedFilter();
+    if (updateUrl) {
+      const url = new URL(window.location.href);
+      url.searchParams.set("module", next);
+      history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+    }
+  };
+  communityTabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => setCommunityModule(tab.dataset.mobileCommunityTab, true));
+    tab.addEventListener("keydown", (event) => {
+      if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+      event.preventDefault();
+      const offset = event.key === "ArrowRight" ? 1 : -1;
+      const nextTab = communityTabs[(index + offset + communityTabs.length) % communityTabs.length];
+      setCommunityModule(nextTab.dataset.mobileCommunityTab, true);
+      nextTab.focus();
+    });
+  });
+  if (communityTabs.length) setCommunityModule(params.get("compose") === "1" ? "flash" : (params.get("module") || "aigc"));
+
+  const flashComposeSheet = document.querySelector("[data-mobile-flash-compose-sheet]");
+  const flashComposeForm = document.querySelector("[data-mobile-flash-compose]");
+  if (flashComposeSheet && flashComposeForm) {
+    const flashContent = flashComposeForm.querySelector("[data-mobile-flash-compose-content]");
+    const flashCounter = flashComposeForm.querySelector("[data-mobile-flash-compose-counter]");
+    const flashMediaInput = flashComposeForm.querySelector("[data-mobile-flash-media-input]");
+    const flashMediaAdd = flashComposeForm.querySelector("[data-mobile-flash-media-add]");
+    const flashMediaCounter = flashComposeForm.querySelector("[data-mobile-flash-media-counter]");
+    const flashMediaList = flashComposeForm.querySelector("[data-mobile-flash-media-list]");
+    const flashPublish = flashComposeForm.querySelector("[data-mobile-flash-publish]");
+    const flashStatus = flashComposeForm.querySelector("[data-mobile-flash-compose-status]");
+    const flashMediaFiles = [];
+    const flashMediaLimit = 4;
+    const flashImageTypes = new Set(["image/png", "image/jpeg", "image/webp"]);
+    const flashVideoTypes = new Set(["video/mp4", "video/webm", "video/quicktime"]);
+    const setFlashComposeSheet = (open, updateUrl = true) => {
+      flashComposeSheet.classList.toggle("is-open", open);
+      flashComposeSheet.setAttribute("aria-hidden", open ? "false" : "true");
+      if (!open && updateUrl) {
+        const url = new URL(window.location.href);
+        url.searchParams.delete("compose");
+        history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+      }
+      if (open) window.setTimeout(() => flashContent?.focus(), 180);
+    };
+    const canPublishFlash = () => Boolean(flashContent?.value.trim() || flashMediaFiles.length);
+    const refreshFlashCompose = () => {
+      if (flashCounter && flashContent) flashCounter.textContent = `${flashContent.value.length}/600`;
+      if (flashMediaCounter) flashMediaCounter.textContent = `${flashMediaFiles.length}/4`;
+      if (flashPublish) flashPublish.disabled = !canPublishFlash();
+      if (flashMediaAdd) flashMediaAdd.disabled = flashMediaFiles.length >= flashMediaLimit;
+      if (canPublishFlash() && flashStatus) flashStatus.textContent = "";
+    };
+    const renderFlashMedia = () => {
+      if (!flashMediaList) return;
+      flashMediaList.replaceChildren();
+      flashMediaFiles.forEach((item, index) => {
+        const holder = document.createElement("div");
+        holder.className = "mobile-flash-compose-media-item";
+        const preview = document.createElement(item.kind === "video" ? "video" : "img");
+        preview.src = item.url;
+        if (item.kind === "video") {
+          preview.muted = true;
+          preview.playsInline = true;
+          preview.setAttribute("aria-label", item.file.name);
+        } else preview.alt = item.file.name;
+        const remove = document.createElement("button");
+        remove.className = "mobile-flash-compose-media-remove";
+        remove.type = "button";
+        remove.setAttribute("aria-label", `移除 ${item.file.name}`);
+        remove.innerHTML = '<img class="mobile-icon" src="resources/icons/remixicon/svg/System/close-line.svg" alt="">';
+        remove.addEventListener("click", () => {
+          const [removed] = flashMediaFiles.splice(index, 1);
+          if (removed?.url) URL.revokeObjectURL(removed.url);
+          renderFlashMedia();
+        });
+        holder.append(preview, remove);
+        flashMediaList.append(holder);
+      });
+      refreshFlashCompose();
+    };
+    flashContent?.addEventListener("input", refreshFlashCompose);
+    flashMediaAdd?.addEventListener("click", () => flashMediaInput?.click());
+    flashMediaInput?.addEventListener("change", () => {
+      const selectedFiles = [...(flashMediaInput.files || [])];
+      for (const file of selectedFiles) {
+        if (flashMediaFiles.length >= flashMediaLimit) break;
+        const isImage = flashImageTypes.has(file.type);
+        const isVideo = flashVideoTypes.has(file.type);
+        if (!isImage && !isVideo) {
+          if (flashStatus) flashStatus.textContent = "文件格式不支持";
+          continue;
+        }
+        flashMediaFiles.push({ file, kind: isVideo ? "video" : "image", url: URL.createObjectURL(file) });
+      }
+      flashMediaInput.value = "";
+      renderFlashMedia();
+    });
+    flashComposeSheet.querySelectorAll("[data-mobile-flash-compose-close]").forEach((button) => button.addEventListener("click", () => setFlashComposeSheet(false)));
+    flashComposeForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!canPublishFlash()) {
+        if (flashStatus) flashStatus.textContent = "正文或媒体至少填写一项";
+        return;
+      }
+      if (flashPublish) {
+        flashPublish.disabled = true;
+        flashPublish.textContent = "发布中…";
+      }
+      window.setTimeout(() => {
+        showToast("闪念已提交，正在审核中");
+        setFlashComposeSheet(false);
+        if (flashPublish) flashPublish.textContent = "发布闪念";
+      }, 420);
+    });
+    if (params.get("compose") === "1") setFlashComposeSheet(true, false);
+    window.addEventListener("beforeunload", () => flashMediaFiles.forEach((item) => URL.revokeObjectURL(item.url)));
+    refreshFlashCompose();
+  }
+
+  const myContentTabs = [...document.querySelectorAll("[data-mobile-my-tab]")];
+  const myContentPanels = [...document.querySelectorAll("[data-mobile-my-panel]")];
+  const setMyContentTab = (tabName, updateHash = false) => {
+    if (!myContentTabs.length || !myContentPanels.length) return;
+    const next = myContentTabs.some((tab) => tab.dataset.mobileMyTab === tabName) ? tabName : "works";
+    myContentTabs.forEach((tab) => {
+      const active = tab.dataset.mobileMyTab === next;
+      tab.classList.toggle("is-active", active);
+      tab.setAttribute("aria-pressed", String(active));
+    });
+    myContentPanels.forEach((panel) => { panel.hidden = panel.dataset.mobileMyPanel !== next; });
+    if (updateHash) history.replaceState(null, "", next === "works" ? window.location.pathname : `#${next}`);
+  };
+  myContentTabs.forEach((tab) => tab.addEventListener("click", () => setMyContentTab(tab.dataset.mobileMyTab, true)));
+  if (myContentTabs.length) setMyContentTab(window.location.hash.slice(1) || "works");
+
+  document.querySelector("[data-mobile-profile-form]")?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    showToast("资料已保存");
+    window.setTimeout(() => window.location.assign("./mobile-my.html"), 650);
+  });
+
+  const activityDetail = document.querySelector("[data-mobile-activity-detail]");
+  if (activityDetail) {
+    const activityKey = params.get("activity") || "prompt";
+    const activityData = {
+      prompt: {
+        title: "Prompt 共创计划",
+        status: "进行中",
+        reward: "最高可得 3,000 积分",
+        progress: "0/2",
+        description: "分享经过验证的 Prompt，让更多人直接复用你的创作方法。每日发布奖励最高 100 积分，活动内自动发放积分最高 3,000 积分。",
+        cover: "assets/image_assets/activity-live-prompt.png",
+        action: "./mobile-create.html?source=prompt&mode=image",
+        actionLabel: "立即参与",
+        tasks: [
+          { name: "发布带图 Prompt", description: "每天前 2 条满足要求的 Prompt 作品 · 进度 0/2", reward: "+50 积分" },
+          { name: "首页推荐加奖", description: "内容被推荐至首页 · 进度 0/1", reward: "+500 积分" },
+        ],
+      },
+      "seven-day": {
+        title: "七日成长",
+        status: "进行中",
+        reward: "最高可得 300 积分",
+        progress: "0/7",
+        description: "完成新手任务后开启七日成长挑战，连续完成每日任务赢取积分。",
+        cover: "assets/image_assets/activity-live-growth.png",
+        action: "./mobile-home.html",
+        actionLabel: "开始任务",
+        tasks: [
+          { name: "浏览 3 条 AIGC 内容", description: "第 1 天 · 进度 0/3", reward: "+20 积分" },
+          { name: "复制 3 条 Prompt", description: "第 2 天 · 进度 0/3", reward: "+30 积分" },
+          { name: "收藏 3 个 AI 作品", description: "第 3 天 · 进度 0/3", reward: "+30 积分" },
+          { name: "点赞或评论 5 条内容", description: "第 4 天 · 进度 0/5", reward: "+40 积分" },
+          { name: "转发 3 个 AI 作品", description: "第 5 天 · 进度 0/3", reward: "+50 积分" },
+          { name: "转发 1 条社区闪念", description: "第 6 天 · 进度 0/1", reward: "+60 积分" },
+          { name: "发布 1 个 AI 作品", description: "第 7 天 · 进度 0/1", reward: "+70 积分" },
+        ],
+      },
+    };
+    const data = activityData[activityKey] || activityData.prompt;
+    const bindings = {
+      "[data-mobile-activity-title]": data.title,
+      "[data-mobile-activity-status]": data.status,
+      "[data-mobile-activity-reward]": data.reward,
+      "[data-mobile-activity-progress]": data.progress,
+      "[data-mobile-activity-description]": data.description,
+    };
+    Object.entries(bindings).forEach(([selector, value]) => {
+      const node = document.querySelector(selector);
+      if (node) node.textContent = value;
+    });
+    const cover = document.querySelector("[data-mobile-activity-cover]");
+    if (cover) { cover.src = data.cover; cover.alt = data.title; }
+    document.querySelectorAll("[data-mobile-activity-action]").forEach((action) => {
+      action.href = data.action;
+      const icon = action.querySelector(".mobile-icon");
+      action.textContent = "";
+      if (icon) action.append(icon);
+      action.append(data.actionLabel);
+    });
+    const taskList = document.querySelector("[data-mobile-activity-task-list]");
+    if (taskList) {
+      taskList.innerHTML = data.tasks.map((task) => `<article><span class="mobile-status-badge">待完成</span><div><h3>${task.name}</h3><p>${task.description}</p></div><strong>${task.reward}</strong></article>`).join("");
+    }
+    document.title = `${data.title} - 多元拾光`;
+  }
+
+  document.querySelectorAll("[data-mobile-toast-message]").forEach((button) => {
+    button.addEventListener("click", () => showToast(button.dataset.mobileToastMessage));
+  });
+
+  const pointsFilters = document.querySelectorAll("[data-mobile-points-filter]");
+  const pointsRecords = document.querySelectorAll("[data-mobile-points-record]");
+  const pointsRecordGroups = document.querySelectorAll(".mobile-points-record-group");
+  const pointsRecordEmpty = document.querySelector("[data-mobile-points-record-empty]");
+  pointsFilters.forEach((button) => {
+    button.addEventListener("click", () => {
+      const active = button.dataset.mobilePointsFilter;
+      pointsFilters.forEach((item) => {
+        const selected = item === button;
+        item.classList.toggle("is-active", selected);
+        item.setAttribute("aria-selected", selected ? "true" : "false");
+      });
+      pointsRecords.forEach((record) => {
+        record.hidden = active !== "all" && record.dataset.mobilePointsRecord !== active;
+      });
+      pointsRecordGroups.forEach((group) => {
+        group.hidden = [...group.querySelectorAll("[data-mobile-points-record]")].every((record) => record.hidden);
+      });
+      if (pointsRecordEmpty) pointsRecordEmpty.hidden = [...pointsRecords].some((record) => !record.hidden);
+    });
+  });
+
+  document.querySelector("[data-mobile-checkin]")?.addEventListener("click", (event) => {
+    const button = event.currentTarget;
+    if (button.dataset.checked === "true") {
+      showToast("今日已签到");
+      return;
+    }
+    button.dataset.checked = "true";
+    button.textContent = "今日已签到";
+    const points = document.querySelector("[data-mobile-points-value]");
+    if (points) points.textContent = String(Number(points.textContent) + 20);
+    showToast("签到成功，积分 +20");
+  });
+
+  const commentSheet = document.querySelector("[data-mobile-comment-sheet]");
+  const setCommentSheet = (open) => {
+    if (!commentSheet) return;
+    commentSheet.classList.toggle("is-open", open);
+    commentSheet.setAttribute("aria-hidden", open ? "false" : "true");
+    if (open) window.setTimeout(() => commentSheet.querySelector("input")?.focus(), 180);
+  };
+  document.querySelectorAll("[data-mobile-comments-open]").forEach((button) => button.addEventListener("click", () => setCommentSheet(true)));
+  document.querySelectorAll("[data-mobile-comments-close]").forEach((button) => button.addEventListener("click", () => setCommentSheet(false)));
+
+  document.querySelector("[data-mobile-comment-form]")?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const input = event.currentTarget.querySelector("input");
+    if (!input?.value.trim()) return;
+    const list = document.querySelector("[data-mobile-comment-list]");
+    if (list) {
+      const article = document.createElement("article");
+      article.className = "mobile-comment";
+      article.innerHTML = `<img src="assets/image_assets/1.png" alt=""><div class="mobile-comment-copy"><strong>我</strong><p></p></div>`;
+      article.querySelector("p").textContent = input.value.trim();
+      list.prepend(article);
+    }
+    input.value = "";
+    showToast("评论已发布");
+  });
+
+  document.querySelectorAll("[data-mobile-back]").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      const fallback = button.dataset.fallback || "./mobile-community.html";
+      if (window.history.length > 1) window.history.back();
+      else window.location.href = fallback;
+    });
+  });
+
+  const walkthrough = document.querySelector("[data-mobile-walkthrough]");
+  const setWalkthrough = (open) => {
+    if (!walkthrough) return;
+    walkthrough.classList.toggle("is-open", open);
+    walkthrough.setAttribute("aria-hidden", open ? "false" : "true");
+  };
+  document.querySelector("[data-mobile-walkthrough-open]")?.addEventListener("click", () => setWalkthrough(true));
+  document.querySelector("[data-mobile-walkthrough-close]")?.addEventListener("click", () => setWalkthrough(false));
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    setCommentSheet(false);
+    setWalkthrough(false);
+    setCreateActionSheet(false);
+    document.querySelector("[data-mobile-flash-compose-sheet]")?.querySelector("[data-mobile-flash-compose-close]")?.click();
+  });
+
+  const createWorkspace = document.querySelector("[data-mobile-create-workspace]");
+  const createComposer = document.querySelector("[data-mobile-create-composer]");
+  if (createWorkspace && createComposer) {
+    const createPrompt = createComposer.querySelector("[data-mobile-create-prompt]");
+    const createCount = createComposer.querySelector("[data-mobile-create-prompt-count]");
+    const createError = createComposer.querySelector("[data-mobile-create-error]");
+    const createModeInput = createComposer.querySelector("[data-mobile-create-mode-input]");
+    const createAttachment = createComposer.querySelector("[data-mobile-create-attachment]");
+    const createSettingsSummary = createComposer.querySelector("[data-mobile-create-settings-summary]");
+    const createSettingsCost = createComposer.querySelector("[data-mobile-create-settings-cost]");
+    const createEmpty = createWorkspace.querySelector("[data-mobile-create-empty]");
+    const createSource = createWorkspace.querySelector("[data-mobile-create-source]");
+    const settingsSheet = document.querySelector("[data-mobile-create-settings-sheet]");
+    const historySheet = document.querySelector("[data-mobile-create-history-sheet]");
+    const createState = {
+      mode: params.get("mode") === "video" ? "video" : "image",
+      image: { model: "Flux Pro 1.1", cost: 20, ratio: "1:1" },
+      video: { model: "Seedance 2.0", cost: 64, ratio: "16:9", duration: "8 秒" },
+    };
+    const sourceType = params.get("source") || "";
+    const sourceData = {
+      "same-work:image": {
+        kind: "同款来源",
+        title: "凤冠神女",
+        meta: "Flux Pro 1.1 · 1:1",
+        cover: "assets/image_assets/15.jpg",
+        prompt: "凤冠神女站在暗红色殿堂入口，金色逆光勾勒轮廓，电影感人物海报。",
+      },
+      "same-work:video": {
+        kind: "同款来源",
+        title: "海灯守望",
+        meta: "Seedance 2.0 · 16:9 · 8 秒",
+        cover: "assets/image_assets/4.png",
+        prompt: "海边灯塔被薄雾包围，镜头缓慢抬升，最后停在灯塔亮起的瞬间。",
+      },
+      "campaign:image": {
+        kind: "活动创作",
+        title: "AI 生图创作挑战",
+        meta: "图片生成 · 活动投稿",
+        cover: "assets/image_assets/activity-image-challenge-c02e.webp",
+        prompt: "",
+      },
+      "competition:image": {
+        kind: "活动创作",
+        title: "AIGC 创作挑战赛",
+        meta: "图片生成 · 活动投稿",
+        cover: "assets/competition/aigc-competition-hero-ocean-pod.png",
+        prompt: "",
+      },
+      "prompt:image": {
+        kind: "Prompt 共创",
+        title: "Prompt 共创计划",
+        meta: "图片生成 · Prompt 投稿",
+        cover: "assets/image_assets/activity-prompt-cocreate-cover-c02e.png",
+        prompt: "",
+      },
+    };
+
+    const setCreateSheet = (sheet, open) => {
+      if (!sheet) return;
+      sheet.classList.toggle("is-open", open);
+      sheet.setAttribute("aria-hidden", open ? "false" : "true");
+    };
+    const syncCreatePrompt = () => {
+      if (!createPrompt) return;
+      createPrompt.style.height = "auto";
+      createPrompt.style.height = `${Math.min(createPrompt.scrollHeight, 96)}px`;
+      if (createCount) createCount.textContent = String(createPrompt.value.length);
+      if (createPrompt.value.trim() && createError) createError.textContent = "";
+    };
+    const syncCreateSummary = () => {
+      const state = createState[createState.mode];
+      if (createSettingsSummary) {
+        createSettingsSummary.textContent = createState.mode === "video"
+          ? `${state.model} · ${state.ratio} · ${state.duration}`
+          : `${state.model} · ${state.ratio}`;
+      }
+      if (createSettingsCost) createSettingsCost.textContent = `预计消耗 ${state.cost} 积分`;
+    };
+    const syncCreateMode = (mode) => {
+      createState.mode = mode === "video" ? "video" : "image";
+      if (createModeInput) createModeInput.value = createState.mode;
+      if (createPrompt) createPrompt.placeholder = createState.mode === "video" ? "描述你想生成的视频" : "描述你想生成的图片";
+      if (createAttachment) {
+        const attachmentLabel = createAttachment.classList.contains("is-selected")
+          ? (createState.mode === "video" ? "移除首帧图片" : "移除参考图")
+          : (createState.mode === "video" ? "添加首帧图片" : "添加参考图");
+        createAttachment.setAttribute("aria-label", attachmentLabel);
+        createAttachment.setAttribute("title", attachmentLabel);
+      }
+      createComposer.querySelectorAll("[data-mobile-create-mode]").forEach((button) => {
+        const selected = button.dataset.mobileCreateMode === createState.mode;
+        button.classList.toggle("is-selected", selected);
+        button.setAttribute("aria-pressed", selected ? "true" : "false");
+      });
+      document.querySelectorAll("[data-mobile-create-setting-panel]").forEach((panel) => {
+        panel.hidden = panel.dataset.mobileCreateSettingPanel !== createState.mode;
+      });
+      syncCreateSummary();
+    };
+    const renderCreateSource = () => {
+      if (!createSource || !sourceType) return;
+      const data = sourceData[`${sourceType}:${createState.mode}`];
+      if (!data) {
+        createSource.hidden = true;
+        if (createEmpty) createEmpty.hidden = false;
+        return;
+      }
+      createSource.hidden = false;
+      if (createEmpty) createEmpty.hidden = true;
+      const cover = createSource.querySelector("[data-mobile-create-source-cover]");
+      const kind = createSource.querySelector("[data-mobile-create-source-kind]");
+      const title = createSource.querySelector("[data-mobile-create-source-title]");
+      const meta = createSource.querySelector("[data-mobile-create-source-meta]");
+      if (cover) { cover.src = data.cover; cover.alt = data.title; }
+      if (kind) kind.textContent = data.kind;
+      if (title) title.textContent = data.title;
+      if (meta) meta.textContent = data.meta;
+      if (createPrompt && data.prompt) createPrompt.value = data.prompt;
+      syncCreatePrompt();
+    };
+
+    createComposer.querySelectorAll("[data-mobile-create-mode]").forEach((button) => {
+      button.addEventListener("click", () => {
+        syncCreateMode(button.dataset.mobileCreateMode);
+        renderCreateSource();
+      });
+    });
+    document.querySelectorAll("[data-mobile-create-choice-group]").forEach((group) => {
+      group.querySelectorAll("[data-mobile-create-choice]").forEach((button) => {
+        button.addEventListener("click", () => {
+          group.querySelectorAll("[data-mobile-create-choice]").forEach((item) => item.classList.toggle("is-selected", item === button));
+          const key = group.dataset.mobileCreateChoiceGroup;
+          if (key === "video-ratio") createState.video.ratio = button.dataset.mobileCreateChoice;
+          else createState[createState.mode][key] = button.dataset.mobileCreateChoice;
+          syncCreateSummary();
+        });
+      });
+    });
+    document.querySelectorAll("[data-mobile-create-setting-panel]").forEach((panel) => {
+      panel.querySelectorAll("[data-mobile-create-model]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const selectedModel = button.dataset.mobileCreateModel;
+          const selectedCost = Number(button.dataset.mobileCreateCost);
+          if (!selectedModel || !Number.isFinite(selectedCost)) return;
+          panel.querySelectorAll("[data-mobile-create-model]").forEach((item) => {
+            const selected = item === button;
+            item.classList.toggle("is-selected", selected);
+            item.setAttribute("aria-pressed", selected ? "true" : "false");
+            const stateIcon = item.querySelector(":scope > .mobile-icon");
+            if (stateIcon) stateIcon.alt = selected ? "已选择" : "";
+          });
+          const mode = panel.dataset.mobileCreateSettingPanel;
+          createState[mode].model = selectedModel;
+          createState[mode].cost = selectedCost;
+          syncCreateSummary();
+        });
+      });
+    });
+    createAttachment?.addEventListener("click", () => {
+      const selected = createAttachment.classList.toggle("is-selected");
+      createAttachment.setAttribute("aria-pressed", selected ? "true" : "false");
+      createAttachment.setAttribute("aria-label", selected ? (createState.mode === "video" ? "移除首帧图片" : "移除参考图") : (createState.mode === "video" ? "添加首帧图片" : "添加参考图"));
+      createAttachment.setAttribute("title", createAttachment.getAttribute("aria-label"));
+      showToast(selected ? (createState.mode === "video" ? "已添加首帧图片" : "已添加参考图") : "已移除图片");
+    });
+    document.querySelector("[data-mobile-create-settings-open]")?.addEventListener("click", () => setCreateSheet(settingsSheet, true));
+    document.querySelectorAll("[data-mobile-create-settings-close]").forEach((button) => button.addEventListener("click", () => setCreateSheet(settingsSheet, false)));
+    document.querySelector("[data-mobile-create-history-open]")?.addEventListener("click", () => setCreateSheet(historySheet, true));
+    document.querySelectorAll("[data-mobile-create-history-close]").forEach((button) => button.addEventListener("click", () => setCreateSheet(historySheet, false)));
+    createPrompt?.addEventListener("input", syncCreatePrompt);
+    createComposer.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!createPrompt?.value.trim()) {
+        if (createError) createError.textContent = "请输入提示词";
+        createPrompt?.focus();
+        return;
+      }
+      const submittedPrompt = createPrompt.value.trim();
+      const query = new URLSearchParams({ mode: createState.mode, state: "running", prompt: submittedPrompt, model: createState[createState.mode].model });
+      if (sourceType) query.set("source", sourceType);
+      const taskUrl = `./mobile-generation-progress.html?${query.toString()}`;
+      const createThread = createWorkspace.querySelector(".mobile-create-thread");
+      const userTurn = document.createElement("article");
+      userTurn.className = "mobile-create-turn is-user";
+      const userPrompt = document.createElement("p");
+      userPrompt.textContent = submittedPrompt;
+      const userMeta = document.createElement("small");
+      userMeta.textContent = createState.mode === "video" ? "视频生成" : "图片生成";
+      userTurn.append(userPrompt, userMeta);
+      const taskTurn = document.createElement("a");
+      taskTurn.className = "mobile-create-turn is-task";
+      taskTurn.href = taskUrl;
+      const taskIcon = document.createElement("span");
+      taskIcon.className = "mobile-create-task-icon";
+      const taskIconImage = document.createElement("img");
+      taskIconImage.className = "mobile-icon";
+      taskIconImage.src = "resources/icons/remixicon/svg/Design/magic-line.svg";
+      taskIconImage.alt = "";
+      taskIcon.append(taskIconImage);
+      const taskCopy = document.createElement("span");
+      taskCopy.className = "mobile-create-task-copy";
+      const taskStatus = document.createElement("small");
+      taskStatus.className = "mobile-create-task-status";
+      taskStatus.textContent = "生成中 · 68%";
+      const taskTitle = document.createElement("strong");
+      taskTitle.textContent = createState.mode === "video" ? "正在生成视频" : "正在生成图片";
+      const taskMeta = document.createElement("span");
+      taskMeta.textContent = `${createState[createState.mode].model} · 查看进度`;
+      taskCopy.append(taskStatus, taskTitle, taskMeta);
+      const taskArrow = document.createElement("img");
+      taskArrow.className = "mobile-icon";
+      taskArrow.src = "resources/icons/remixicon/svg/Arrows/arrow-right-s-line.svg";
+      taskArrow.alt = "";
+      taskTurn.append(taskIcon, taskCopy, taskArrow);
+      if (createEmpty) createEmpty.hidden = true;
+      if (createThread) {
+        const turnAnchor = createThread.querySelector("[data-mobile-create-empty]");
+        createThread.insertBefore(userTurn, turnAnchor);
+        createThread.insertBefore(taskTurn, turnAnchor);
+      }
+      createPrompt.value = "";
+      syncCreatePrompt();
+      taskTurn.scrollIntoView({ behavior: "smooth", block: "center" });
+      showToast("生成任务已创建");
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") return;
+      setCreateSheet(settingsSheet, false);
+      setCreateSheet(historySheet, false);
+    });
+    syncCreateMode(createState.mode);
+    renderCreateSource();
+    syncCreatePrompt();
+  }
+
+  document.querySelectorAll("[data-mobile-choice-group]").forEach((group) => {
+    const name = group.dataset.choiceName;
+    const form = group.closest("form");
+    const ensureValue = () => {
+      if (!name || !form) return;
+      let hidden = form.querySelector(`input[type="hidden"][name="${name}"]`);
+      if (!hidden) {
+        hidden = document.createElement("input");
+        hidden.type = "hidden";
+        hidden.name = name;
+        form.append(hidden);
+      }
+      hidden.value = group.querySelector("[data-mobile-choice].is-selected")?.dataset.mobileChoice || "";
+    };
+    ensureValue();
+    group.querySelectorAll("[data-mobile-choice]").forEach((button) => {
+      button.addEventListener("click", () => {
+        group.querySelectorAll("[data-mobile-choice]").forEach((item) => item.classList.toggle("is-selected", item === button));
+        ensureValue();
+      });
+    });
+  });
+
+  document.querySelectorAll("[data-mobile-upload]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const uploaded = button.classList.toggle("is-uploaded");
+      const label = button.querySelector("[data-mobile-upload-label]");
+      if (label) label.textContent = uploaded ? "已添加参考图" : "上传图片";
+      showToast(uploaded ? "已添加参考图" : "已移除参考图");
+    });
+  });
+
+  document.querySelectorAll("[data-mobile-prompt]").forEach((input) => {
+    const count = input.closest(".mobile-form-section")?.querySelector("[data-mobile-prompt-count]");
+    const syncCount = () => {
+      if (count) count.textContent = String(input.value.length);
+    };
+    if (params.get("source") === "same-work") {
+      input.value = body.dataset.mobilePage === "create-video"
+        ? "海边灯塔被薄雾包围，镜头缓慢抬升，最后停在灯塔亮起的瞬间。"
+        : "凤冠神女站在暗红色殿堂入口，金色逆光勾勒轮廓，电影感人物海报。";
+    }
+    syncCount();
+    input.addEventListener("input", syncCount);
+  });
+
+  document.querySelectorAll("[data-mobile-generator-form]").forEach((form) => {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const prompt = form.querySelector("[data-mobile-prompt]");
+      const error = form.querySelector("[data-mobile-generator-error]");
+      if (!prompt?.value.trim()) {
+        if (error) error.textContent = "请输入提示词";
+        prompt?.focus();
+        return;
+      }
+      if (error) error.textContent = "";
+      const query = new URLSearchParams(new FormData(form));
+      query.set("state", "running");
+      window.location.href = `./mobile-generation-progress.html?${query.toString()}`;
+    });
+  });
+
+  const generationScreen = document.querySelector("[data-mobile-generation-screen]");
+  if (generationScreen) {
+    const generationMode = params.get("mode") === "video" ? "video" : "image";
+    let generationState = params.get("state") || "running";
+    const stateMap = {
+      queue: { badge: "排队中", badgeClass: "is-running", title: `正在等待${generationMode === "video" ? "视频" : "图片"}生成`, message: "当前进度 18%", progress: 18, action: "刷新状态" },
+      running: { badge: "生成中", badgeClass: "is-running", title: `正在生成${generationMode === "video" ? "视频" : "图片"}`, message: "已完成 68%", progress: 68, action: "刷新状态" },
+      success: { badge: "生成成功", badgeClass: "is-success", title: `${generationMode === "video" ? "视频" : "图片"}已生成`, message: "可查看生成结果", progress: 100, action: "查看结果" },
+      failed: { badge: "生成失败", badgeClass: "is-warning", title: "生成失败", message: "内容未通过安全校验，请调整提示词", progress: 100, action: "调整后重试" },
+      unknown: { badge: "状态未知", badgeClass: "is-warning", title: "状态暂不可确认", message: "请稍后刷新或查看生成记录", progress: 42, action: "刷新状态" },
+    };
+    const renderGeneration = () => {
+      const data = stateMap[generationState] || stateMap.running;
+      const badge = document.querySelector("[data-mobile-generation-badge]");
+      const title = document.querySelector("[data-mobile-generation-state]");
+      const pageTitle = document.querySelector("[data-mobile-generation-title]");
+      const message = document.querySelector("[data-mobile-generation-message]");
+      const progress = document.querySelector("[data-mobile-generation-progress]");
+      const action = document.querySelector("[data-mobile-generation-action]");
+      const spinner = document.querySelector(".mobile-generation-spinner");
+      if (badge) {
+        badge.textContent = data.badge;
+        badge.className = `mobile-status-badge ${data.badgeClass}`;
+      }
+      if (title) title.textContent = data.title;
+      if (pageTitle) pageTitle.textContent = generationState === "success" ? "生成成功" : generationState === "failed" ? "生成失败" : "生成中";
+      if (message) message.textContent = data.message;
+      if (progress) progress.style.width = `${data.progress}%`;
+      if (action) action.textContent = data.action;
+      if (spinner) spinner.hidden = generationState === "success" || generationState === "failed";
+    };
+    const image = document.querySelector("[data-mobile-generation-image]");
+    if (generationMode === "video" && image) image.src = "assets/image_assets/4.png";
+    const kind = document.querySelector("[data-mobile-generation-kind]");
+    const model = document.querySelector("[data-mobile-generation-model]");
+    if (kind) kind.textContent = generationMode === "video" ? "视频生成" : "图片生成";
+    if (model) model.textContent = generationMode === "video" ? "Seedance 2.0" : "Flux Pro 1.1";
+    renderGeneration();
+    document.querySelector("[data-mobile-generation-refresh]")?.addEventListener("click", () => {
+      if (generationState === "success") {
+        window.location.href = `./mobile-generation-result.html?mode=${generationMode}`;
+        return;
+      }
+      if (generationState === "failed") {
+        window.location.href = `./mobile-create.html?mode=${generationMode}`;
+        return;
+      }
+      generationState = generationState === "running" ? "success" : "running";
+      renderGeneration();
+      showToast(generationState === "success" ? "生成完成" : "任务状态已更新");
+    });
+  }
+
+  const resultScreen = document.querySelector("[data-mobile-result-screen]");
+  if (resultScreen) {
+    const resultMode = params.get("mode") === "video" ? "video" : "image";
+    const image = document.querySelector("[data-mobile-result-image]");
+    const video = document.querySelector("[data-mobile-result-video]");
+    const title = document.querySelector("[data-mobile-result-title]");
+    const meta = document.querySelector("[data-mobile-result-meta]");
+    const prompt = document.querySelector("[data-mobile-result-prompt]");
+    const retry = resultScreen.querySelector(".mobile-dual-action-bar > a");
+    if (resultMode === "video") {
+      if (image) image.hidden = true;
+      if (video) video.hidden = false;
+      if (title) title.textContent = "海灯守望";
+      if (meta) meta.textContent = "Seedance 2.0 · 16:9 · 8 秒";
+      if (prompt) prompt.textContent = "海边灯塔被薄雾包围，镜头缓慢抬升，最后停在灯塔亮起的瞬间。";
+      if (retry) retry.href = "./mobile-create.html?mode=video";
+    }
+    const saveButton = document.querySelector("[data-mobile-save-result]");
+    const publishButton = document.querySelector("[data-mobile-publish]");
+    const submitLink = document.querySelector("[data-mobile-submit-activity]");
+    saveButton?.addEventListener("click", () => {
+      const saved = saveButton.dataset.saved === "true";
+      if (saved) {
+        showToast("作品已保存");
+        return;
+      }
+      saveButton.dataset.saved = "true";
+      const label = saveButton.querySelector("span");
+      if (label) label.textContent = "已保存";
+      const state = document.querySelector("[data-mobile-save-state]");
+      if (state) state.textContent = "已保存";
+      const feedback = document.querySelector("[data-mobile-save-feedback]");
+      if (feedback) feedback.hidden = false;
+      if (publishButton) publishButton.disabled = false;
+      if (submitLink) submitLink.setAttribute("aria-disabled", "false");
+      showToast("已保存为作品");
+    });
+    publishButton?.addEventListener("click", () => {
+      if (publishButton.disabled) return;
+      publishButton.disabled = true;
+      publishButton.querySelector("strong").textContent = "发布审核中";
+      showToast("作品已提交发布");
+    });
+    submitLink?.addEventListener("click", (event) => {
+      if (submitLink.getAttribute("aria-disabled") === "true") {
+        event.preventDefault();
+        showToast("请先保存作品");
+      }
+    });
+  }
+
+  const submissionScreen = document.querySelector("[data-mobile-submission-screen]");
+  if (submissionScreen) {
+    const editButton = document.querySelector("[data-mobile-submission-edit]");
+    const editor = document.querySelector("[data-mobile-submission-editor]");
+    const copy = document.querySelector("[data-mobile-submission-copy]");
+    const count = document.querySelector("[data-mobile-submission-count]");
+    const error = document.querySelector("[data-mobile-submission-error]");
+    copy?.addEventListener("input", () => {
+      if (count) count.textContent = String(copy.value.length);
+    });
+    editButton?.addEventListener("click", () => {
+      if (editor?.hidden) {
+        editor.hidden = false;
+        editButton.querySelector("span").textContent = "确认重投";
+        editor.scrollIntoView({ block: "center", behavior: "smooth" });
+        window.setTimeout(() => copy?.focus(), 180);
+        return;
+      }
+      if (!copy?.value.trim()) {
+        if (error) error.textContent = "请输入作品说明";
+        copy?.focus();
+        return;
+      }
+      if (error) error.textContent = "";
+      editor.hidden = true;
+      const badge = document.querySelector("[data-mobile-submission-status]");
+      const statusText = document.querySelector("[data-mobile-submission-status-text]");
+      const title = document.querySelector("#mobile-submission-status-title");
+      const reason = document.querySelector("[data-mobile-submission-reason]");
+      if (badge) {
+        badge.textContent = "审核中";
+        badge.className = "mobile-status-badge is-running";
+      }
+      if (statusText) statusText.textContent = "审核中";
+      if (title) title.textContent = "作品已重新提交";
+      if (reason) reason.textContent = "审核结果将在消息中心同步。";
+      editButton.querySelector("span").textContent = "审核中";
+      editButton.disabled = true;
+      const history = document.querySelector(".mobile-submission-history ol");
+      if (history) {
+        const item = document.createElement("li");
+        item.innerHTML = "<span></span><div><strong>已重新提交</strong><p>刚刚</p></div>";
+        history.prepend(item);
+      }
+      showToast("投稿已重新提交");
+    });
+  }
+
+  const scrollKey = `mobile-scroll:${window.location.pathname}`;
+  const savedScroll = Number(sessionStorage.getItem(scrollKey) || 0);
+  if (savedScroll > 0 && !window.location.hash) window.requestAnimationFrame(() => window.scrollTo(0, savedScroll));
+  window.addEventListener("pagehide", () => sessionStorage.setItem(scrollKey, String(window.scrollY)));
+})();

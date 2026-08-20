@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#05070b">
+  <title>AI商城 - 多元拾光</title>
+  <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
+  <link rel="stylesheet" href="./mobile-h5.css?v=20260820-p0b8">
+  <script src="./mobile-h5.js?v=20260820-p0b8" defer></script>
+</head>
+<body class="mobile-h5-body" data-mobile-page="exchange">
+  <div class="mobile-shell">
+    <header class="mobile-topbar mobile-topbar-detail" data-mobile-appbar>
+      <button class="mobile-back-button" type="button" data-mobile-back data-fallback="./mobile-points.html" aria-label="返回积分中心">
+        <img class="mobile-icon" src="resources/icons/remixicon/svg/Arrows/arrow-left-s-line.svg" alt="">
+      </button>
+      <span class="mobile-page-title">AI商城</span>
+      <span class="mobile-topbar-placeholder" aria-hidden="true"></span>
+    </header>
+
+    <main id="main" class="mobile-task-content mobile-store-content">
+      <section class="mobile-store-hero">
+        <div class="mobile-store-hero-copy">
+          <h1>AI商城</h1>
+          <p>可用积分 <strong>1280</strong></p>
+          <a class="mobile-store-record-entry" href="./mobile-exchange-records.html">
+            <img class="mobile-icon" src="resources/icons/remixicon/svg/System/history-line.svg" alt="">
+            <span>兑换记录</span>
+            <img class="mobile-icon" src="resources/icons/remixicon/svg/Arrows/arrow-right-s-line.svg" alt="">
+          </a>
+        </div>
+        <img src="assets/image_assets/c02f-store-hero.webp" alt="">
+      </section>
+
+      <section class="mobile-section" aria-labelledby="mobile-store-products">
+        <div class="mobile-section-heading"><h2 id="mobile-store-products">可兑换商品</h2><span>8 件</span></div>
+        <div class="mobile-store-grid">
+          <article class="mobile-store-card"><small>API中转站</small><h3>gpt-5-chat-latest Token</h3><p>1200 <span>积分</span></p><button type="button" data-mobile-toast-message="已提交兑换">兑换</button></article>
+          <article class="mobile-store-card"><small>API中转站</small><h3>gpt-4.1 Token</h3><p>520 <span>积分</span></p><button type="button" data-mobile-toast-message="已提交兑换">兑换</button></article>
+          <article class="mobile-store-card"><small>API中转站</small><h3>gpt-image-2 Token</h3><p>760 <span>积分</span></p><button type="button" data-mobile-toast-message="已提交兑换">兑换</button></article>
+          <article class="mobile-store-card"><small>镜像站</small><h3>多元探索网页体验卡</h3><p>100 <span>积分</span></p><button type="button" data-mobile-toast-message="已提交兑换">兑换</button></article>
+          <article class="mobile-store-card"><small>镜像站</small><h3>Codex体验卡</h3><p>200 <span>积分</span></p><button type="button" data-mobile-toast-message="已提交兑换">兑换</button></article>
+          <article class="mobile-store-card"><small>闪创AI</small><h3>闪创AI 体验小时卡</h3><p>180 <span>积分</span></p><button type="button" data-mobile-toast-message="已提交兑换">兑换</button></article>
+          <article class="mobile-store-card"><small>闪创AI</small><h3>闪创AI 体验日卡</h3><p>260 <span>积分</span></p><button type="button" data-mobile-toast-message="已提交兑换">兑换</button></article>
+          <article class="mobile-store-card"><small>闪创AI</small><h3>闪创AI 体验周卡</h3><p>680 <span>积分</span></p><button type="button" data-mobile-toast-message="已提交兑换">兑换</button></article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <button class="mobile-walkthrough-trigger" type="button" data-mobile-walkthrough-open aria-controls="mobile-walkthrough">走查</button>
+  <aside id="mobile-walkthrough" class="mobile-walkthrough" data-mobile-walkthrough aria-hidden="true">
+    <div class="mobile-walkthrough-head"><h2>AI商城走查规则</h2><button class="mobile-icon-button" type="button" data-mobile-walkthrough-close aria-label="关闭走查规则"><img class="mobile-icon" src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></button></div>
+    <div class="mobile-rule-grid">
+      <section class="mobile-rule-card"><strong>页面目的</strong><p>承接积分中心和个人中心的 AI 商城入口，展示与 Web 端一致的可兑换商品，并进入独立兑换记录页。</p></section>
+      <section class="mobile-rule-card"><strong>对象一致</strong><p>商品名称、站点、积分价格与 Web 端使用同一商品对象；移动端不维护第二套商城数据。</p></section>
+      <section class="mobile-rule-card"><strong>记录边界</strong><p>兑换记录与积分流水是两个对象：前者展示商品、兑换时间、消耗积分与履约状态，后者只记录积分收支。</p></section>
+      <section class="mobile-rule-card"><strong>敏感信息</strong><p>记录列表不展示完整卡密、Token 或内部业务号；权益凭证只在受控领取流程中按权限展示。</p></section>
+      <section class="mobile-rule-card"><strong>兑换边界</strong><p>静态原型只演示提交反馈，不扣减真实积分、不领取真实权益凭证。</p></section>
+      <section class="mobile-rule-card"><strong>验收</strong><p>积分中心首屏可进入本页；兑换记录入口进入移动二级页；商品卡在移动端双列展示且无横向溢出。</p></section>
+    </div>
+  </aside>
+  <div class="mobile-toast" data-mobile-toast role="status" aria-live="polite"></div>
+</body>
+</html>

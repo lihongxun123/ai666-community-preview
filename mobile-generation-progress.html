@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#05070b">
+  <title>生成中 - 多元拾光</title>
+  <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
+  <link rel="stylesheet" href="./mobile-h5.css?v=20260820-p0b1">
+  <script src="./mobile-h5.js?v=20260820-p0b1" defer></script>
+</head>
+<body class="mobile-h5-body" data-mobile-page="generation-progress">
+  <div class="mobile-shell has-action-bar" data-mobile-generation-screen>
+    <header class="mobile-topbar mobile-topbar-detail" data-mobile-appbar>
+      <button class="mobile-back-button" type="button" data-mobile-back data-fallback="./mobile-create.html" aria-label="返回创作"><img class="mobile-icon" src="resources/icons/remixicon/svg/Arrows/arrow-left-s-line.svg" alt=""></button>
+      <span class="mobile-page-title" data-mobile-generation-title>生成中</span>
+      <span class="mobile-topbar-placeholder" aria-hidden="true"></span>
+    </header>
+
+    <main id="main" class="mobile-task-content">
+      <section class="mobile-generation-stage" aria-labelledby="mobile-generation-state">
+        <div class="mobile-generation-visual">
+          <img data-mobile-generation-image src="assets/image_assets/15.jpg" alt="生成任务预览">
+          <span class="mobile-generation-spinner"><img class="mobile-icon" src="resources/icons/remixicon/svg/System/loader-4-line.svg" alt=""></span>
+        </div>
+        <div class="mobile-generation-copy">
+          <span class="mobile-status-badge is-running" data-mobile-generation-badge>生成中</span>
+          <h1 id="mobile-generation-state" data-mobile-generation-state>正在生成图片</h1>
+          <p data-mobile-generation-message>已完成 68%</p>
+        </div>
+        <div class="mobile-progress-track is-large"><span data-mobile-generation-progress style="width:68%"></span></div>
+      </section>
+
+      <section class="mobile-detail-list" aria-label="生成任务信息">
+        <div><span>任务</span><strong data-mobile-generation-kind>图片生成</strong></div>
+        <div><span>模型</span><strong data-mobile-generation-model>Flux Pro 1.1</strong></div>
+        <div><span>提交时间</span><strong>刚刚</strong></div>
+        <div><span>预计消耗</span><strong>20 积分</strong></div>
+      </section>
+
+      <section class="mobile-inline-state" data-mobile-generation-recovery>
+        <img class="mobile-icon" src="resources/icons/remixicon/svg/System/time-line.svg" alt="">
+        <div><strong>生成记录</strong><span>任务离开页面后仍可从创作页查看。</span></div>
+      </section>
+    </main>
+
+    <div class="mobile-action-bar mobile-dual-action-bar">
+      <a class="mobile-button secondary" href="./mobile-create.html#recent">生成记录</a>
+      <button class="mobile-action-primary" type="button" data-mobile-generation-refresh><img class="mobile-icon" src="resources/icons/remixicon/svg/System/refresh-line.svg" alt=""><span data-mobile-generation-action>刷新状态</span></button>
+    </div>
+  </div>
+
+  <button class="mobile-walkthrough-trigger" type="button" data-mobile-walkthrough-open aria-controls="mobile-walkthrough">走查</button>
+  <aside id="mobile-walkthrough" class="mobile-walkthrough" data-mobile-walkthrough aria-hidden="true">
+    <div class="mobile-walkthrough-head"><h2>生成状态走查规则</h2><button class="mobile-icon-button" type="button" data-mobile-walkthrough-close aria-label="关闭走查规则"><img class="mobile-icon" src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></button></div>
+    <div class="mobile-rule-grid">
+      <section class="mobile-rule-card"><strong>页面目的</strong><p>同一页承接排队、生成中、成功、失败、超时和状态暂不可确认，并支持离开后回到同一任务。</p></section>
+      <section class="mobile-rule-card"><strong>入口与返回</strong><p>从图片或视频输入页进入；返回创作首页时任务继续由生成记录承接，不重复创建任务。</p></section>
+      <section class="mobile-rule-card"><strong>主动作</strong><p>生成中刷新当前任务；成功进入生成结果；失败回到原输入重试；状态未知可稍后刷新。</p></section>
+      <section class="mobile-rule-card"><strong>权益边界</strong><p>失败、退款和重试是否再次扣减由真实结果决定；静态原型只表达用户可读状态。</p></section>
+      <section class="mobile-rule-card"><strong>验收</strong><p>查询参数 state 可访问 running、success、failed、unknown；状态、动作和结果去向保持一致。</p></section>
+    </div>
+  </aside>
+  <div class="mobile-toast" data-mobile-toast role="status" aria-live="polite"></div>
+</body>
+</html>

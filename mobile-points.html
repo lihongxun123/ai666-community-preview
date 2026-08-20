@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#05070b">
+  <title>积分中心 - 多元拾光</title>
+  <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
+  <link rel="stylesheet" href="./mobile-h5.css?v=20260820-p0b7">
+  <script src="./mobile-h5.js?v=20260820-p0b7" defer></script>
+</head>
+<body class="mobile-h5-body" data-mobile-page="points">
+  <div class="mobile-shell">
+    <header class="mobile-topbar mobile-topbar-detail" data-mobile-appbar>
+      <button class="mobile-back-button" type="button" data-mobile-back data-fallback="./mobile-my.html" aria-label="返回我的">
+        <img class="mobile-icon" src="resources/icons/remixicon/svg/Arrows/arrow-left-s-line.svg" alt="">
+      </button>
+      <span class="mobile-page-title">积分中心</span>
+      <span class="mobile-topbar-placeholder" aria-hidden="true"></span>
+    </header>
+
+    <main id="main" class="mobile-task-content mobile-points-content">
+      <section class="mobile-points-hero" aria-labelledby="mobile-points-balance-title">
+        <div class="mobile-points-balance-head">
+          <span id="mobile-points-balance-title">可用积分</span>
+          <a href="./mobile-points-records.html">积分明细<img class="mobile-icon" src="resources/icons/remixicon/svg/Arrows/arrow-right-s-line.svg" alt=""></a>
+        </div>
+        <strong data-mobile-points-value>1280</strong>
+        <div class="mobile-points-stats" aria-label="积分概览">
+          <span><small>今日获得</small><b>+40</b></span>
+          <span><small>近 7 日获得</small><b>+180</b></span>
+          <span><small>待到账</small><b>0</b></span>
+        </div>
+      </section>
+
+      <a class="mobile-points-store-card" href="./mobile-exchange.html" aria-label="进入 AI 商城">
+        <img src="assets/image_assets/c02f-points-shop.webp" alt="">
+        <span class="mobile-points-store-copy">
+          <small>积分兑换创作权益</small>
+          <strong>AI商城</strong>
+          <b>去逛逛<img class="mobile-icon" src="resources/icons/remixicon/svg/Arrows/arrow-right-line.svg" alt=""></b>
+        </span>
+      </a>
+
+      <section class="mobile-section mobile-points-earn" aria-labelledby="mobile-points-earn-title">
+        <div class="mobile-section-heading">
+          <h2 id="mobile-points-earn-title">赚积分</h2>
+          <a href="./mobile-activity.html">更多活动</a>
+        </div>
+        <div class="mobile-points-earn-list">
+          <a href="./mobile-tasks.html">
+            <span class="mobile-points-earn-icon"><img class="mobile-icon" src="resources/icons/remixicon/svg/Finance/gift-2-line.svg" alt=""></span>
+            <span><strong>新手任务</strong><small>最高 150 积分</small></span>
+            <img class="mobile-icon mobile-menu-arrow" src="resources/icons/remixicon/svg/Arrows/arrow-right-s-line.svg" alt="">
+          </a>
+          <a href="./mobile-activity-detail.html?activity=seven-day">
+            <span class="mobile-points-earn-icon"><img class="mobile-icon" src="resources/icons/remixicon/svg/Business/calendar-event-line.svg" alt=""></span>
+            <span><strong>七日成长</strong><small>最高 300 积分</small></span>
+            <img class="mobile-icon mobile-menu-arrow" src="resources/icons/remixicon/svg/Arrows/arrow-right-s-line.svg" alt="">
+          </a>
+          <a href="./mobile-campaign-detail.html">
+            <span class="mobile-points-earn-icon"><img class="mobile-icon" src="resources/icons/remixicon/svg/Media/image-add-line.svg" alt=""></span>
+            <span><strong>生图挑战</strong><small>最高 5,100 积分</small></span>
+            <img class="mobile-icon mobile-menu-arrow" src="resources/icons/remixicon/svg/Arrows/arrow-right-s-line.svg" alt="">
+          </a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <button class="mobile-walkthrough-trigger" type="button" data-mobile-walkthrough-open aria-controls="mobile-walkthrough">走查</button>
+  <aside id="mobile-walkthrough" class="mobile-walkthrough" data-mobile-walkthrough aria-hidden="true">
+    <div class="mobile-walkthrough-head"><h2>积分中心走查规则</h2><button class="mobile-icon-button" type="button" data-mobile-walkthrough-close aria-label="关闭走查规则"><img class="mobile-icon" src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></button></div>
+    <div class="mobile-rule-grid">
+      <section class="mobile-rule-card"><strong>页面目的</strong><p>积分中心作为积分资产与增长入口：首屏展示余额、收益概览和 AI 商城，正文承接三个真实赚积分入口。</p></section>
+      <section class="mobile-rule-card"><strong>对象一致</strong><p>余额、今日获得、近 7 日获得和待到账沿用 Web 端同一积分账本，不新增移动端积分对象。</p></section>
+      <section class="mobile-rule-card"><strong>动作去向</strong><p>AI 商城进入移动商城；新手、七日成长和生图挑战进入对应移动任务或活动页；积分明细进入独立二级页面。</p></section>
+      <section class="mobile-rule-card"><strong>验收</strong><p>积分中心正文不再罗列流水；商城在首屏可见；三个任务入口与 Web 端名称和奖励口径一致，所有动作不回落 PC。</p></section>
+    </div>
+  </aside>
+  <div class="mobile-toast" data-mobile-toast role="status" aria-live="polite"></div>
+</body>
+</html>

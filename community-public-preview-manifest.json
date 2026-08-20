@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-18T09:52:51.089Z",
+  "generatedAt": "2026-08-20T03:02:25.235Z",
   "packageType": "community-public-preview",
   "sourceRoot": "outputs/community-homepage-style-exploration",
   "entry": "index.html",
@@ -173,6 +173,126 @@
       "slug": "manga-handoff",
       "label": "漫剧创作转场页",
       "path": "manga-handoff.html"
+    },
+    {
+      "slug": "mobile-home",
+      "label": "移动端 H5 · 首页",
+      "path": "mobile-home.html"
+    },
+    {
+      "slug": "mobile-community",
+      "label": "移动端 H5 · 社区",
+      "path": "mobile-community.html"
+    },
+    {
+      "slug": "mobile-image-detail",
+      "label": "移动端 H5 · 图片详情",
+      "path": "mobile-image-detail.html"
+    },
+    {
+      "slug": "mobile-video-detail",
+      "label": "移动端 H5 · 视频详情",
+      "path": "mobile-video-detail.html"
+    },
+    {
+      "slug": "mobile-create",
+      "label": "移动端 H5 · 创作首页",
+      "path": "mobile-create.html"
+    },
+    {
+      "slug": "mobile-create-image",
+      "label": "移动端 H5 · 图片生成",
+      "path": "mobile-create-image.html"
+    },
+    {
+      "slug": "mobile-create-video",
+      "label": "移动端 H5 · 视频生成",
+      "path": "mobile-create-video.html"
+    },
+    {
+      "slug": "mobile-generation-progress",
+      "label": "移动端 H5 · 生成中与恢复",
+      "path": "mobile-generation-progress.html"
+    },
+    {
+      "slug": "mobile-generation-result",
+      "label": "移动端 H5 · 生成结果",
+      "path": "mobile-generation-result.html"
+    },
+    {
+      "slug": "mobile-activity",
+      "label": "移动端 H5 · 活动",
+      "path": "mobile-activity.html"
+    },
+    {
+      "slug": "mobile-activity-detail",
+      "label": "移动端 H5 · 通用活动详情",
+      "path": "mobile-activity-detail.html"
+    },
+    {
+      "slug": "mobile-campaign-detail",
+      "label": "移动端 H5 · AI 生图创作挑战",
+      "path": "mobile-campaign-detail.html"
+    },
+    {
+      "slug": "mobile-submission-detail",
+      "label": "移动端 H5 · 投稿详情",
+      "path": "mobile-submission-detail.html"
+    },
+    {
+      "slug": "mobile-my",
+      "label": "移动端 H5 · 我的",
+      "path": "mobile-my.html"
+    },
+    {
+      "slug": "mobile-profile-edit",
+      "label": "移动端 H5 · 编辑个人资料",
+      "path": "mobile-profile-edit.html"
+    },
+    {
+      "slug": "mobile-my-works",
+      "label": "移动端 H5 · 我的内容",
+      "path": "mobile-my-works.html"
+    },
+    {
+      "slug": "mobile-my-submissions",
+      "label": "移动端 H5 · 我的投稿",
+      "path": "mobile-my-submissions.html"
+    },
+    {
+      "slug": "mobile-tasks",
+      "label": "移动端 H5 · 新手任务",
+      "path": "mobile-tasks.html"
+    },
+    {
+      "slug": "mobile-points",
+      "label": "移动端 H5 · 积分中心",
+      "path": "mobile-points.html"
+    },
+    {
+      "slug": "mobile-points-records",
+      "label": "移动端 H5 · 积分记录",
+      "path": "mobile-points-records.html"
+    },
+    {
+      "slug": "mobile-exchange",
+      "label": "移动端 H5 · AI商城",
+      "path": "mobile-exchange.html"
+    },
+    {
+      "slug": "mobile-exchange-records",
+      "label": "移动端 H5 · 兑换记录",
+      "path": "mobile-exchange-records.html"
+    },
+    {
+      "slug": "mobile-invite",
+      "label": "移动端 H5 · 邀请有礼",
+      "path": "mobile-invite.html"
+    },
+    {
+      "slug": "mobile-messages",
+      "label": "移动端 H5 · 消息中心",
+      "path": "mobile-messages.html"
     }
   ],
   "copiedRuntimeRoots": [
@@ -227,6 +347,14 @@
     "assets/image_assets/activity-image-challenge-c02e.webp",
     "assets/image_assets/activity-image-challenge-cover-c02e.png",
     "assets/image_assets/activity-invite-c02e.png",
+    "assets/image_assets/activity-live-growth.png",
+    "assets/image_assets/activity-live-image-challenge.png",
+    "assets/image_assets/activity-live-invite.png",
+    "assets/image_assets/activity-live-newbie.png",
+    "assets/image_assets/activity-live-prompt.png",
+    "assets/image_assets/activity-live-submission-comfort.webp",
+    "assets/image_assets/activity-live-submission-cute.webp",
+    "assets/image_assets/activity-live-submission-image2.webp",
     "assets/image_assets/activity-new-user-c02e.png",
     "assets/image_assets/activity-prompt-cocreate-c02e.webp",
     "assets/image_assets/activity-prompt-cocreate-cover-c02e.png",
@@ -266,29 +394,44 @@
   ],
   "copiedResources": [
     "resources/icons/remixicon/svg/Arrows/arrow-left-line.svg",
+    "resources/icons/remixicon/svg/Arrows/arrow-left-s-line.svg",
     "resources/icons/remixicon/svg/Arrows/arrow-right-line.svg",
+    "resources/icons/remixicon/svg/Arrows/arrow-right-s-line.svg",
     "resources/icons/remixicon/svg/Arrows/arrow-up-line.svg",
     "resources/icons/remixicon/svg/Buildings/community-line.svg",
+    "resources/icons/remixicon/svg/Buildings/home-5-line.svg",
     "resources/icons/remixicon/svg/Business/archive-drawer-line.svg",
     "resources/icons/remixicon/svg/Business/bookmark-fill.svg",
     "resources/icons/remixicon/svg/Business/bookmark-line.svg",
     "resources/icons/remixicon/svg/Business/calendar-check-line.svg",
+    "resources/icons/remixicon/svg/Business/calendar-event-line.svg",
     "resources/icons/remixicon/svg/Business/medal-2-line.svg",
     "resources/icons/remixicon/svg/Business/medal-line.svg",
     "resources/icons/remixicon/svg/Business/megaphone-fill.svg",
+    "resources/icons/remixicon/svg/Business/send-plane-2-fill.svg",
+    "resources/icons/remixicon/svg/Business/send-plane-2-line.svg",
     "resources/icons/remixicon/svg/Communication/chat-3-line.svg",
     "resources/icons/remixicon/svg/Communication/chat-follow-up-line.svg",
     "resources/icons/remixicon/svg/Communication/message-2-line.svg",
+    "resources/icons/remixicon/svg/Communication/message-3-line.svg",
     "resources/icons/remixicon/svg/Design/edit-2-line.svg",
+    "resources/icons/remixicon/svg/Design/magic-line.svg",
+    "resources/icons/remixicon/svg/Design/quill-pen-ai-line.svg",
     "resources/icons/remixicon/svg/Development/code-box-line.svg",
     "resources/icons/remixicon/svg/Development/terminal-window-line.svg",
+    "resources/icons/remixicon/svg/Device/save-line.svg",
     "resources/icons/remixicon/svg/Device/smartphone-line.svg",
     "resources/icons/remixicon/svg/Document/article-line.svg",
     "resources/icons/remixicon/svg/Document/draft-line.svg",
+    "resources/icons/remixicon/svg/Document/file-check-line.svg",
     "resources/icons/remixicon/svg/Document/file-copy-line.svg",
     "resources/icons/remixicon/svg/Document/file-download-line.svg",
+    "resources/icons/remixicon/svg/Document/file-edit-line.svg",
+    "resources/icons/remixicon/svg/Document/sticky-note-add-line.svg",
     "resources/icons/remixicon/svg/Document/task-line.svg",
+    "resources/icons/remixicon/svg/Editor/attachment-2.svg",
     "resources/icons/remixicon/svg/Editor/link-unlink.svg",
+    "resources/icons/remixicon/svg/Editor/list-check-3.svg",
     "resources/icons/remixicon/svg/Finance/coins-fill.svg",
     "resources/icons/remixicon/svg/Finance/coins-line.svg",
     "resources/icons/remixicon/svg/Finance/copper-coin-line.svg",
@@ -297,7 +440,9 @@
     "resources/icons/remixicon/svg/Finance/gift-line.svg",
     "resources/icons/remixicon/svg/Finance/trophy-line.svg",
     "resources/icons/remixicon/svg/Finance/vip-crown-2-fill.svg",
+    "resources/icons/remixicon/svg/Health & Medical/heart-3-line.svg",
     "resources/icons/remixicon/svg/Logos/wechat-line.svg",
+    "resources/icons/remixicon/svg/Map/compass-3-line.svg",
     "resources/icons/remixicon/svg/Map/rocket-2-line.svg",
     "resources/icons/remixicon/svg/Media/film-ai-line.svg",
     "resources/icons/remixicon/svg/Media/image-add-line.svg",
@@ -310,17 +455,22 @@
     "resources/icons/remixicon/svg/Media/video-add-line.svg",
     "resources/icons/remixicon/svg/Media/video-line.svg",
     "resources/icons/remixicon/svg/Media/video-upload-line.svg",
+    "resources/icons/remixicon/svg/System/add-line.svg",
     "resources/icons/remixicon/svg/System/alarm-warning-line.svg",
     "resources/icons/remixicon/svg/System/checkbox-circle-fill.svg",
+    "resources/icons/remixicon/svg/System/checkbox-circle-line.svg",
     "resources/icons/remixicon/svg/System/close-fill.svg",
     "resources/icons/remixicon/svg/System/close-line.svg",
     "resources/icons/remixicon/svg/System/error-warning-line.svg",
     "resources/icons/remixicon/svg/System/eye-line.svg",
+    "resources/icons/remixicon/svg/System/history-line.svg",
     "resources/icons/remixicon/svg/System/information-line.svg",
+    "resources/icons/remixicon/svg/System/loader-4-line.svg",
     "resources/icons/remixicon/svg/System/lock-line.svg",
     "resources/icons/remixicon/svg/System/logout-box-r-line.svg",
     "resources/icons/remixicon/svg/System/refresh-line.svg",
     "resources/icons/remixicon/svg/System/search-line.svg",
+    "resources/icons/remixicon/svg/System/settings-3-line.svg",
     "resources/icons/remixicon/svg/System/share-2-line.svg",
     "resources/icons/remixicon/svg/System/share-forward-line.svg",
     "resources/icons/remixicon/svg/System/shield-check-line.svg",
@@ -329,6 +479,7 @@
     "resources/icons/remixicon/svg/System/time-line.svg",
     "resources/icons/remixicon/svg/User & Faces/group-line.svg",
     "resources/icons/remixicon/svg/User & Faces/user-3-line.svg",
+    "resources/icons/remixicon/svg/User & Faces/user-add-line.svg",
     "resources/icons/remixicon/svg/User & Faces/user-follow-line.svg",
     "resources/icons/remixicon/svg/User & Faces/user-line.svg",
     "resources/icons/remixicon/svg/User & Faces/user-settings-line.svg",

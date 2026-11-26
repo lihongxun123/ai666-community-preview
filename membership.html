@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>社区会员 · 多元拾光</title>
+  <link rel="icon" href="./assets/brand/duoyuan-shiguang-favicon.svg">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./membership.css">
+<script src="./membership-state.js" defer></script>
+<script src="./membership-site.js" defer></script>
+</head>
+<body>
+  <div class="page membership-page" data-page="membership">
+    <header class="site-header"><div class="header-inner wide-container"><a class="logo" href="./index.html" aria-label="多元拾光"><img class="brand-mark" src="assets/brand/duoyuan-shiguang-logo-mark-reverse.svg" alt=""><span class="brand-copy"><span class="brand-name">多元拾光</span><span class="brand-sub">AI原生实战者社区</span></span></a><nav class="nav" aria-label="主导航"><a href="./index.html">首页</a><a href="./aigc.html">AIGC</a><a href="https://duoyuanx.com/pricing" target="_blank" rel="noopener noreferrer">模型广场</a><a href="./flash.html">闪念</a><a href="./tutorial.html">官方教程</a></nav><div class="header-actions"><a class="action-link activity-center-link" href="./activity-center.html" data-nav-action="activity-center" data-action-label="活动中心">活动中心</a><a class="action-link" href="./invite.html" data-nav-action="invite">邀请有礼</a><a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a><a class="action-link" href="./membership.html" data-nav-action="membership" aria-current="page">会员</a><a class="action-link points-link" href="./points-center.html" data-nav-action="points" data-action-label="积分 1280"><span>积分</span><strong>1280</strong></a><a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a><a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="用户头像"><img src="assets/image_assets/c02f-user-avatar.webp" alt=""></a></div></div></header>
+    <main id="content" class="main" tabindex="-1"></main>
+    <dialog id="purchase-dialog" class="dialog" aria-labelledby="dialog-title"></dialog>
+    <div id="flash-status" class="flash-status" role="status" aria-live="polite"></div>
+    <details class="v1-walkthrough-drawer" data-v1-walkthrough-drawer>
+      <summary>查看注释</summary>
+      <div class="v1-walkthrough-panel">
+        <div class="v1-walkthrough-head"><strong>社区会员</strong></div>
+        <div class="v1-walkthrough-tabs"><span>运营关注</span><span>研发关注</span></div>
+        <div class="v1-rule-section"><strong>页面定位</strong><span>用户在这里比较会员权益、确认订单和查看自己的购买记录。</span></div>
+        <div class="v1-rule-section"><strong>用户主路径</strong><span>从原业务页选档、付款，确认会员与永久积分到账后，回原页继续操作。</span></div>
+        <div class="v1-rule-section"><strong>关键字段</strong><span>每档显示实付、所购时长、永久积分和权益。创作积分不足时，选档与付款前都显示买完还差多少。</span></div>
+        <div class="v1-rule-section"><strong>状态规则</strong><span>同档续费和升档从原到期日延长，高档权益立即生效。会员到期后，永久积分、订单和已发的码仍可查看。</span></div>
+        <div class="v1-rule-section"><strong>动作去向</strong><span>从创作弹层返回后保留原提示词和参数，用户再次点击生成才扣分。从商品或任务返回，更新本人兑换价或可得积分。</span></div>
+        <div class="v1-rule-section"><strong>运营维护</strong><span>运营在原后台的会员管理设置档位、顺序、优惠、时长和装扮。年卡缺码照常开售，客服根据反馈在原单补发。</span></div>
+        <div class="v1-rule-section" data-walkthrough-pane="engineering" hidden><strong>研发验收</strong><span data-engineering-rule>按订单分别核对实际收款时间、会员生效和永久积分到账。重复通知和客服重复修复均只发一次。旧单继续付款前重新校验购买资格。</span></div>
+        <div class="v1-rule-section" data-walkthrough-pane="engineering" hidden><strong>交付边界</strong><span data-engineering-rule>两端在同一浏览器和同一地址使用本地演示数据。支付与发放结果由原型模拟，正式支付、积分账户和库存并发以接入环境的记录为准。</span></div>
+        <div class="membership-presets" hidden><label for="review-preset">演示场景（切换会重置本机会员数据）</label>
+          <select id="review-preset"><option value="">选择场景</option><option value="new">普通用户 · 零积分</option><option value="gap">零积分 · 本次生成需 420 分</option><option value="guest">游客</option><option value="month">有效月卡</option><option value="year">有效年卡</option><option value="expired">会员已到期</option><option value="nocodes">年卡缺码</option><option value="support">已付款 · 兑换码待补发</option><option value="missingPoints">已收款 · 积分未到账</option><option value="missingMember">已收款 · 会员未生效</option><option value="confirming">正在确认支付结果</option></select>
+          <button type="button" class="plain" data-action="receive-payment" hidden>送达支付通知</button>
+          <small>付款有效期演示为 15 分钟，开通积分按整数四舍五入。</small>
+        </div>
+      </div>
+    </details>
+  </div>
+  <script src="./walkthrough.js" defer></script>
+  <script src="./membership-ui.js" defer></script>
+</body>
+</html>

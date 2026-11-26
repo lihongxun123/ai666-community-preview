@@ -1,4 +1,10 @@
 (function () {
+  if (!document.querySelector("script[data-community-released]")) {
+    const script = document.createElement("script");
+    script.src = new URL("community-released.js", document.currentScript.src);
+    script.dataset.communityReleased = "";
+    document.head.append(script);
+  }
   const operationsLabels = new Set(["页面定位", "用户主路径", "关键字段", "状态规则", "动作去向", "运营维护"]);
   const engineeringLabels = new Set(["研发关注", "研发验收", "交互与状态", "数据与资源", "验证关注", "交付边界"]);
 
@@ -1594,6 +1600,7 @@
 
     // 首页静态原型默认展示游客注册主线，已登录用户由任务结果注入下一项新手或当天七日任务。
     if (isTaskGuideHomeSurface()) {
+      if (window.Membership?.read().user.loggedIn) return cloneTaskGuideState("new-user-pending");
       return { ...cloneTaskGuideState("guest-registration"), isPrototypeFallback: true, isTest: false };
     }
     return null;
@@ -1995,6 +2002,17 @@
     }
 
     root.dataset.loginPrototypeReady = "true";
+    const wechatSheet = document.querySelector("[data-wechat-sheet]");
+    if (wechatSheet) {
+      root.querySelector("[data-wechat-open]")?.addEventListener("click", () => wechatSheet.showModal());
+      wechatSheet.querySelector("[data-wechat-close]").addEventListener("click", () => wechatSheet.close());
+      wechatSheet.addEventListener("click", (event) => {
+        if (event.target === wechatSheet && event.clientY < wechatSheet.getBoundingClientRect().top) wechatSheet.close();
+      });
+      window.matchMedia("(max-width: 767px)").addEventListener("change", (event) => {
+        if (!event.matches && wechatSheet.open) wechatSheet.close();
+      });
+    }
     const phoneInput = form.elements.phone;
     const codeInput = form.elements["verification-code"];
     const inviteInput = form.elements["invite-code"];
@@ -2091,16 +2109,17 @@
         setMessage("请输入正确的 11 位手机号", "error");
         return;
       }
-      if (!/^\d{6}$/.test(codeInput?.value.trim() || "")) {
+      if (!/^\d{4,6}$/.test(codeInput?.value.trim() || "")) {
         codeInput?.closest(".login-field")?.classList.add("is-invalid");
         codeInput?.focus();
-        setMessage("请输入 6 位验证码", "error");
+        setMessage("请输入验证码", "error");
         return;
       }
 
       submitButton.disabled = true;
       submitButton.textContent = registrationScenario ? "注册并登录中…" : "登录中…";
       window.setTimeout(() => {
+        window.Membership?.login();
         submitButton.textContent = registrationScenario ? "注册成功" : "登录成功";
         setMessage(
           returnTarget
@@ -2118,17 +2137,72 @@
       }, 480);
     });
 
-    root.querySelectorAll("[data-login-agreement]").forEach((link) => {
-      link.addEventListener("click", (event) => {
-        event.preventDefault();
-        setMessage("协议内容由正式页面承接");
-      });
-    });
-
     syncSendCodeState();
   }
 
+  function initDesktopContact() {
+    const page = location.pathname.split("/").pop();
+    if (!document.querySelector(".site-header") || /^(aigc|prompt-submit|login|competition-|mobile-)/.test(page)) return;
+    const contact = document.createElement("aside");
+    contact.className = "desktop-community-contact";
+    contact.innerHTML = `<section id="desktop-contact-panel" aria-labelledby="desktop-contact-heading" hidden>
+      <header><h2 id="desktop-contact-heading">联系多元拾光</h2><button type="button" aria-label="关闭联系我们" data-close>×</button></header>
+      <strong data-channel></strong><p data-description></p><div class="desktop-contact-code"></div>
+      <span data-status role="status"></span><button type="button" data-retry hidden>重试</button>
+      <footer><span>无法加入社群？</span><button type="button" data-switch></button></footer>
+    </section><button class="desktop-contact-trigger" type="button" aria-label="联系多元拾光" aria-expanded="false" aria-controls="desktop-contact-panel">
+      <img src="resources/icons/remixicon/svg/Communication/chat-3-line.svg" alt=""></button>`;
+    document.body.append(contact);
+    const panel = contact.querySelector("section");
+    const trigger = contact.querySelector(".desktop-contact-trigger");
+    const switcher = panel.querySelector("[data-switch]");
+    const retry = panel.querySelector("[data-retry]");
+    const status = panel.querySelector("[data-status]");
+    let isCommunity = true;
+    let pinned = false;
+    let timer;
+    function renderChannel(community, reload = false) {
+      isCommunity = community;
+      const title = community ? "加入社群" : "添加小助手";
+      panel.querySelector("[data-channel]").textContent = title;
+      panel.querySelector("[data-description]").textContent = community ? "进群送200积分" : "使用咨询，随时为你解答";
+      panel.querySelector("footer span").hidden = !community;
+      switcher.textContent = community ? "添加小助手" : "返回社群二维码";
+      retry.hidden = true;
+      status.textContent = "加载中…";
+      const image = new Image();
+      image.alt = title + "二维码";
+      panel.querySelector(".desktop-contact-code").replaceChildren(image);
+      image.onload = () => { if (image.isConnected) status.textContent = ""; };
+      image.onerror = () => {
+        if (!image.isConnected) return;
+        status.textContent = "二维码加载失败，请重试";
+        retry.hidden = false;
+      };
+      image.src = (community ? "./assets/mobile/contact-community.jpg" : "./assets/mobile/contact-business.jpg") + (reload ? "?retry=" + Date.now() : "");
+    }
+    function toggle(open) {
+      clearTimeout(timer);
+      if (open && panel.hidden) renderChannel(true);
+      panel.hidden = !open;
+      trigger.setAttribute("aria-expanded", String(open));
+      if (!open) pinned = false;
+    }
+    contact.onpointerenter = () => { clearTimeout(timer); timer = setTimeout(() => toggle(true), 150); };
+    contact.onpointerleave = () => { clearTimeout(timer); if (!pinned && !panel.contains(document.activeElement)) timer = setTimeout(() => toggle(false), 250); };
+    trigger.onfocus = () => { if (trigger.matches(":focus-visible")) toggle(true); };
+    trigger.onclick = () => { if (pinned) toggle(false); else { pinned = true; toggle(true); } };
+    const close = () => { trigger.focus(); toggle(false); };
+    panel.querySelector("[data-close]").onclick = close;
+    contact.onfocusout = event => { if (!pinned && !contact.contains(event.relatedTarget) && !contact.matches(":hover")) toggle(false); };
+    switcher.onclick = () => renderChannel(!isCommunity);
+    retry.onclick = () => renderChannel(isCommunity, true);
+    document.addEventListener("pointerdown", event => { if (!panel.hidden && !contact.contains(event.target)) toggle(false); });
+    document.addEventListener("keydown", event => { if (event.key === "Escape" && !panel.hidden) close(); });
+  }
+
   function init() {
+    initDesktopContact();
     const gsap = window.gsap;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     document.querySelectorAll("[data-v1-walkthrough-drawer]").forEach(enhanceDrawer);

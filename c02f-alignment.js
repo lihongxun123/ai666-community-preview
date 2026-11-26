@@ -177,35 +177,118 @@
 
   const initStore = () => {
     const redeemModal = page.querySelector('[data-ai-store-redeem-modal]');
+    if (!redeemModal) return;
     const successModal = page.querySelector('[data-ai-store-success-modal]');
     const recordsModal = page.querySelector('[data-ai-store-record-modal]');
+    const confirm = redeemModal.querySelector('[data-redeem-confirm]');
+    const feedback = redeemModal.querySelector('[data-membership-redeem-feedback]');
+    const pricing = redeemModal.querySelector('[data-membership-store-pricing]');
+    const compare = pricing?.querySelector('p');
+    const memberLink = pricing?.querySelector('a');
+    const catalog = [...page.querySelectorAll('[data-ai-store-product]')];
     let selectedProduct = null;
+    let quotedPrice = 0;
 
-    page.querySelectorAll('[data-redeem-open]').forEach((button) => button.addEventListener('click', () => {
-      selectedProduct = button.closest('[data-ai-store-product]');
-      const name = selectedProduct?.dataset.productName || '--';
-      const price = Number(selectedProduct?.dataset.productPrice || 0);
-      const productNode = redeemModal?.querySelector('[data-redeem-product]');
-      const priceNode = redeemModal?.querySelector('[data-redeem-price]');
-      const balanceNode = redeemModal?.querySelector('[data-redeem-balance]');
-      if (productNode) productNode.textContent = name;
-      if (priceNode) priceNode.textContent = `${price} 积分`;
-      if (balanceNode) balanceNode.textContent = `${Math.max(0, 1280 - price)} 积分`;
+    const membership = () => window.Membership;
+    const benefits = () => window.MembershipBenefits;
+    const balance = () => membership()?.balance() ?? 1280;
+    const basePrice = product => Number(product.dataset.productPrice);
+    const getPrice = product => membership()?.cost(basePrice(product),'store') ?? basePrice(product);
+    const priceText = (product, price) => {
+      quotedPrice = price;
+      redeemModal.querySelector('[data-redeem-product]').textContent = product.dataset.productName;
+      redeemModal.querySelector('[data-redeem-price]').textContent = `${price} 积分`;
+      redeemModal.querySelector('[data-redeem-balance]').textContent = balance() >= price
+        ? `${balance() - price} 积分` : '还差 ' + (price - balance()) + ' 积分';
+      if (pricing && membership() && benefits()) {
+        const tier = membership().activeTier();
+        pricing.hidden = false;
+        compare.textContent = tier ? `普通兑换价 ${basePrice(product)} 积分` : benefits().labelPlans(
+          membership().read().plans, plan => Math.round(basePrice(product) * plan.discount + 1e-9) + ' 积分'
+        );
+        memberLink.href = benefits().href('store','#product-' + product.dataset.productId);
+      }
+    };
+    const refreshCatalog = () => {
+      if (!membership() || !benefits()) return;
+      benefits().showBalance(membership(),page.querySelector('.c02f-store-balance strong'));
+      for (const product of catalog) {
+        const price = product.querySelector('footer > strong');
+        if (price?.firstChild?.nodeType === Node.TEXT_NODE) price.firstChild.nodeValue = getPrice(product) + ' ';
+      }
+    };
+    const showProduct = product => {
+      selectedProduct = product;
+      if (feedback) feedback.textContent = '';
+      if (confirm) confirm.textContent = membership()?.read().user.loggedIn === false ? '登录后兑换' : '确认兑换';
+      priceText(product,getPrice(product));
       openModal(redeemModal);
-    }));
+    };
+    const targetProduct = () => catalog.find(product => window.location.hash === '#product-' + product.dataset.productId);
+    for (const product of catalog) {
+      product.id = 'product-' + product.dataset.productId;
+      product.querySelector('[data-redeem-open]')?.addEventListener('click', () => showProduct(product));
+    }
 
-    redeemModal?.querySelector('[data-redeem-confirm]')?.addEventListener('click', () => {
+    confirm?.addEventListener('click', () => {
+      if (!selectedProduct) return;
+      const {productId,productName} = selectedProduct.dataset;
+      if (membership()) {
+        if (!membership().read().user.loggedIn) {
+          window.location.assign(benefits().loginHref('#product-' + productId));
+          return;
+        }
+        try {
+          membership().spend(basePrice(selectedProduct),'store',quotedPrice,{id:productId,name:productName});
+        } catch (error) {
+          if (error.code === 'PRICE_CHANGED') {
+            priceText(selectedProduct,error.amount);
+            confirm.textContent = '按新价格兑换';
+            if (feedback) feedback.textContent = '会员兑换价已变化，请再次确认后兑换。';
+          } else if (feedback) feedback.textContent = error.message;
+          return;
+        }
+      }
       closeModal(redeemModal);
-      const name = selectedProduct?.dataset.productName || '商品权益';
+      if (targetProduct()) history.replaceState(null,'',window.location.pathname + window.location.search);
       const successName = successModal?.querySelector('[data-redeem-success-product]');
-      if (successName) successName.textContent = name;
+      if (successName) successName.textContent = productName;
       openModal(successModal);
+      refreshCatalog();
     });
 
-    page.querySelector('[data-ai-store-record-entry]')?.addEventListener('click', () => openModal(recordsModal));
-    if (window.location.hash === '#ai-store-records') openModal(recordsModal);
-    window.addEventListener('hashchange', () => {
-      if (window.location.hash === '#ai-store-records') openModal(recordsModal);
+    function showRecords() {
+      const records = recordsModal?.querySelector('.c02f-store-records');
+      if (!records) return;
+      records.querySelectorAll('[data-membership-redemption]').forEach(row => row.remove());
+      const recent = membership()?.read().user.redemptions || [];
+      let after = records.firstElementChild;
+      for (const record of recent) {
+        const row = document.createElement('div');
+        const time = new Date(record.at).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'});
+        row.dataset.membershipRedemption = '';
+        for (const [tag,value] of [['time',time],['span',record.name],['strong',record.points],['em','积分兑换'],['b','已兑换']]) {
+          const cell = document.createElement(tag);
+          cell.textContent = String(value);
+          row.append(cell);
+        }
+        after?.after(row);
+        after = row;
+      }
+      openModal(recordsModal);
+    }
+    page.querySelector('[data-ai-store-record-entry]')?.addEventListener('click',showRecords);
+    const showHash = () => {
+      const product = targetProduct();
+      if (product) showProduct(product);
+      else if (window.location.hash === '#ai-store-records') showRecords();
+    };
+    window.addEventListener('hashchange',showHash);
+    window.addEventListener('membership-changed',refreshCatalog);
+    window.addEventListener('pageshow',refreshCatalog);
+    window.addEventListener('DOMContentLoaded', () => {
+      refreshCatalog();
+      showHash();
     });
     page.querySelector('[data-secret-copy]')?.addEventListener('click', async (event) => {
       await writeClipboard('[CARD_CODE]');

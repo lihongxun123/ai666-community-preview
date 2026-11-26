@@ -480,6 +480,19 @@ video {
   background: var(--mobile-gold);
 }
 
+.mobile-contact-dialog {
+  position: fixed; inset: auto 0 0; margin: 0 auto; width: min(100%, 480px); max-width: 100%; max-height: 90dvh;
+  box-sizing: border-box; overflow: auto; border-radius: 18px 18px 0 0; border: 1px solid #374151;
+  padding: 20px 20px max(20px, env(safe-area-inset-bottom)); color: #f6f7fb; background: #141820; text-align: center;
+}
+.mobile-contact-dialog::backdrop { background: rgb(0 0 0 / 64%); }
+.mobile-contact-dialog header { display: flex; align-items: center; justify-content: space-between; }
+.mobile-contact-dialog h2, .mobile-contact-dialog h3 { margin: 0; font-size: 18px; }
+.mobile-contact-dialog h3 { margin-top: 16px; }
+.mobile-contact-dialog p { font-size: 14px; color: #c3c9d2; }
+.mobile-contact-dialog img { width: min(210px, 65vw); height: auto; border-radius: 8px; }
+.mobile-contact-dialog a, .mobile-contact-dialog button { color: #eeefff; background: #283246; border: 0; padding: 8px 14px; border-radius: 8px; text-decoration: none; cursor: pointer; }
+.mobile-contact-dialog [hidden] { display: none; }
 .mobile-home-shortcuts {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));

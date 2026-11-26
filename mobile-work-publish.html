@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#05070b"><title>发布作品 - 多元拾光</title><link rel="stylesheet" href="./mobile-h5.css"><link rel="stylesheet" href="./community-released.css"><script defer src="./membership-state.js"></script><script defer src="./mobile-work-publish.js"></script></head>
+<body class="mobile-h5-body"><main class="released-form" id="main"><h1>发布作品</h1><p data-context role="status"></p><form hidden>
+<label>作品类型<select name="type"></select></label><label>标题<input name="title" maxlength="100" required></label>
+<label>作品简介<textarea name="intro" rows="3"></textarea></label>
+<label>提示词<textarea name="prompt" rows="3" required></textarea></label>
+<label>关联模型<input name="model" list="publish-models"><datalist id="publish-models"><option>Flux Pro 1.1</option><option>Seedance 2.0</option></datalist></label>
+<label data-media-label>作品媒体<input name="files" type="file" multiple></label><div data-media></div><p role="alert"></p>
+<button class="released-action primary" type="submit">发布作品</button></form>
+<button class="released-action" data-retry hidden>重试</button> <button class="released-action" data-back>返回</button>
+<details class="mobile-rule-card"><summary>走查规则</summary><p>直接发布从空白作品开始。生成后发布带回这次结果；活动规则读取失败可以重试。提交成功后在活动详情或我的作品继续查看。</p></details></main></body></html>

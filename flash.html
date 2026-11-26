@@ -7,6 +7,9 @@
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
   <link rel="stylesheet" href="./style.css?v=20260715-comment-deeplink">
   <link rel="stylesheet" href="./c02d-alignment.css?v=20260805-code-contract-3">
+  <link rel="stylesheet" href="./membership-identity.css">
+<script src="./membership-state.js" defer></script>
+<script src="./membership-site.js" defer></script>
 </head>
 <body>
   <div class="page flash-page">
@@ -23,14 +26,14 @@
         <nav class="nav" aria-label="主导航">
           <a href="./index.html">首页</a>
           <a href="./aigc.html">AIGC</a>
-          <a href="./model-plaza.html">模型广场</a>
+          <a href="https://duoyuanx.com/pricing" target="_blank" rel="noopener noreferrer">模型广场</a>
           <a class="is-active" href="./flash.html">闪念</a>
           <a href="./tutorial.html">官方教程</a>
         </nav>
         <div class="header-actions">
           <a class="action-link activity-center-link" href="./activity-center.html" data-nav-action="activity-center" data-action-label="活动中心">活动中心</a>
           <a class="action-link" href="./invite.html" data-nav-action="invite">邀请有礼</a>
-          <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a>
+          <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a><a class="action-link" href="./membership.html" data-nav-action="membership">会员</a>
           <a class="action-link points-link" href="./points-center.html" data-nav-action="points" data-action-label="积分 1280"><span>积分</span><strong>1280</strong></a>
           <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
           <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="用户头像"><img src="assets/image_assets/1.png" alt=""></a>
@@ -160,6 +163,13 @@
               <strong>青梧</strong>
               <p>429 的问题我一般先看并发窗口，再看是否用了过长上下文。</p>
               <div class="comment-action-line"><span data-relative-time data-published-at="2026-07-15T10:23:00+08:00">31 分钟前</span><a href="#all-comments" data-cta-state="评论回复状态：聚焦底部评论框并带入回复对象">回复</a><a href="#" data-cta-state="评论点赞状态：切换点赞并更新计数">赞 16</a></div>
+            </div>
+          </article>
+          <article class="comment-row" data-membership-identity="demo" data-membership-motion="detail">
+            <a href="./user-center.html?author=demo" data-membership-avatar aria-label="查看拾光创作者的主页"><img src="assets/image_assets/c02f-user-avatar.webp" alt=""></a>
+            <div>
+              <strong><a href="./user-center.html?author=demo" data-membership-name>拾光创作者</a><a data-membership-badge hidden></a></strong>
+              <p>我会另外留一张环境参考图，让后续镜头的光线保持一致。</p>
             </div>
           </article>
           <article id="comment-COM-3098" class="comment-row is-author-only-result" data-comment-id="COM-3098" data-comment-visibility="author-only" tabindex="-1">
@@ -368,6 +378,24 @@
                 <a href="#" data-share-action data-cta-state="分享状态：复制带 post_no 的帖子链接"><img src="resources/icons/remixicon/svg/System/share-forward-line.svg" alt="">分享</a>
               </div>
             </article>
+            <article class="flash-post-card" id="flash-member-demo">
+              <div class="flash-post-head" data-membership-identity="demo" data-membership-motion="still">
+                <a href="./user-center.html?author=demo" data-membership-avatar aria-label="查看拾光创作者的主页"><img class="flash-avatar" src="assets/image_assets/c02f-user-avatar.webp" alt=""></a>
+                <div>
+                  <strong><a href="./user-center.html?author=demo" data-membership-name>拾光创作者</a><a data-membership-badge hidden></a></strong>
+                  <span data-relative-time data-published-at="2026-08-05T10:20:00+08:00">8 月 5 日</span>
+                </div>
+              </div>
+              <h2>三图构图的阅读顺序</h2>
+              <p>第一张交代环境，第二张聚焦人物，最后一张再给动作细节。同一组图的视线方向保持一致，读起来会更顺。</p>
+              <details class="flash-comments-inline">
+                <summary>展开 1 条留言</summary>
+                <div class="comment-row compact" data-membership-identity="demo" data-membership-motion="detail">
+                  <a href="./user-center.html?author=demo" data-membership-avatar aria-label="查看拾光创作者的主页"><img src="assets/image_assets/c02f-user-avatar.webp" alt=""></a>
+                  <div><strong><a href="./user-center.html?author=demo" data-membership-name>拾光创作者</a><a data-membership-badge hidden></a></strong><p>补充一点：三张不用都塞满信息，先把最重要的动作留清楚。</p></div>
+                </div>
+              </details>
+            </article>
           </div>
 
           <aside class="flash-right-rail" aria-label="闪念右侧运营栏">
@@ -410,6 +438,7 @@
         <div class="v1-rule-section"><strong>关键字段</strong><span>post_no、content/content_md、content_type、medias、topics、categories、作者、published_at、like_count、comment_count、is_liked 与右栏 flash_side 展示位是当前页面核心字段。</span></div>
         <div class="v1-rule-section"><strong>状态规则</strong><span>发现流当前请求固定 come=discover、sort_by=default、content_type=0、time_range=0；匿名帖子不展示昵称头像；发布成功文案为“已提交，正在审核中，通过后即可查看”。</span></div>
         <div class="v1-rule-section"><strong>动作去向</strong><span>帖子评论在卡片下展开，卡片点击按 post_no 打开预览；点赞乐观更新并支持回滚；分享复制带 post_no 的链接；发布入口打开当前页模态框，推荐位和教程进入各自真实落点。</span></div>
+        <div class="v1-rule-section"><strong>会员身份</strong><span>会员标识按内容作者所属账号的当前档位展示，点击只前往会员页对应档位。昵称和头像进入作者公开主页。列表展示静态挂件，评论展开后播放一次，挂件摘下后公开内容同步移除。</span></div>
         <div class="v1-rule-section"><strong>运营维护</strong><span>右栏推荐卡来自 flash_side 展示位并按 sort_order 倒序；官方教程读取公开教程列表前三条。当前代码没有闪念首屏广告位，原型不再保留旧首屏活动 Banner。</span></div>
         <div class="v1-rule-section"><strong>研发验收</strong><span data-engineering-rule>发布正文 maxlength=600，正文或媒体至少一项；当前 UI 从正文首个非空行截取最多 50 字作为标题，纯媒体时回退“闪念”。</span><span data-engineering-rule>当前代码限制最多 4 个媒体；图片支持 png、jpg、jpeg、webp 且单个不超过 32MB，视频支持 mp4、webm、mov 且单个不超过 200MB。Apifox 请求上限为 9，属于待研发统一差异，本原型服从当前代码 UI 的 4 个。</span><span data-engineering-rule>发布请求 content_type=1 表示图文，全部媒体均为视频时为 2；当前发布设置中的话题、分类、匿名、回复和转发控件在真实代码中暂隐，原型也不展示。</span><span data-engineering-rule>评论、回复、评论点赞和取消点赞使用帖子评论接口；公开帖子详情按 post_no 读取，列表点赞状态与详情状态保持同步。</span></div>
         <div class="v1-rule-section"><strong>交付边界</strong><span>静态原型只演示文件校验、发布状态、点赞、分享和评论展开，不调用真实写接口；真实审核、文件上传、关注、收藏、草稿和个人中心帖子管理由后续对应模块与研发环境验证。</span></div>
@@ -455,5 +484,6 @@
   </script>
   <script src="./c02d-alignment.js" defer></script>
   <script src="./walkthrough.js" defer></script>
+  <script src="./membership-identity.js" defer></script>
 </body>
 </html>

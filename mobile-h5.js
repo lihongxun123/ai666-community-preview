@@ -1,4 +1,10 @@
 (() => {
+  if (!document.querySelector("script[data-community-released]")) {
+    const script = document.createElement("script");
+    script.src = new URL("community-released.js", document.currentScript.src);
+    script.dataset.communityReleased = "";
+    document.head.append(script);
+  }
   const body = document.body;
   const params = new URLSearchParams(window.location.search);
   document.querySelectorAll("[data-mobile-walkthrough-review-only]").forEach((trigger) => {
@@ -22,6 +28,130 @@
   };
 
   const createLaunchers = [...document.querySelectorAll(".mobile-nav-create")];
+  const contactEntry = document.querySelector("[data-open-community-contact]");
+  if (contactEntry) {
+    const channels = {
+      community: { title: "加入社群", description: "进群送200积分", image: "./assets/mobile/contact-community.jpg", save: "保存社群二维码" },
+      business: { title: "添加小助手", description: "使用咨询，随时为你解答", image: "./assets/mobile/contact-business.jpg", save: "保存小助手二维码" },
+    };
+    const dialog = document.createElement("dialog");
+    dialog.className = "mobile-contact-dialog";
+    dialog.innerHTML = `<header><h2 id="community-contact-title">联系多元拾光</h2><button type="button" aria-label="关闭联系我们" data-contact-close>×</button></header>
+      <h3 data-contact-title></h3><p data-contact-description></p><div data-contact-image></div>
+      <p data-contact-status role="status"></p><button type="button" data-contact-retry hidden>重试</button>
+      <button type="button" data-contact-save></button><p>保存后，打开微信扫一扫，从相册选择</p>
+      <span data-contact-fallback>无法加入社群？</span><button type="button" data-contact-switch></button>`;
+    dialog.setAttribute("aria-labelledby", "community-contact-title");
+    body.append(dialog);
+    let active = "community";
+    let revision = 0;
+    let previewUrl = "";
+    let currentImage;
+    function clearPreview() {
+      if (previewUrl) URL.revokeObjectURL(previewUrl);
+      previewUrl = "";
+    }
+    function showChannel(key, retryLoad = false) {
+      revision++;
+      clearPreview();
+      active = key;
+      const channel = channels[key];
+      dialog.querySelector("[data-contact-title]").textContent = channel.title;
+      dialog.querySelector("[data-contact-description]").textContent = channel.description;
+      dialog.querySelector("[data-contact-switch]").textContent = key === "community" ? "添加小助手" : "返回社群二维码";
+      dialog.querySelector("[data-contact-switch]").hidden = false;
+      dialog.querySelector("[data-contact-fallback]").hidden = key !== "community";
+      const retry = dialog.querySelector("[data-contact-retry]");
+      const status = dialog.querySelector("[data-contact-status]");
+      const save = dialog.querySelector("[data-contact-save]");
+      const img = new Image();
+      currentImage = img;
+      img.alt = channel.title + "二维码";
+      save.disabled = true;
+      save.textContent = channel.save;
+      retry.hidden = true;
+      status.textContent = "加载中…";
+      dialog.querySelector("[data-contact-image]").replaceChildren(img);
+      img.onload = () => {
+        if (!img.isConnected) return;
+        status.textContent = "";
+        save.disabled = false;
+      };
+      img.onerror = () => {
+        if (!img.isConnected) return;
+        status.textContent = "二维码加载失败，请重试";
+        retry.hidden = false;
+      };
+      img.src = retryLoad ? channel.image + "?retry=" + revision : channel.image;
+    }
+    dialog.querySelector("[data-contact-save]").onclick = async (event) => {
+      if (previewUrl) { showChannel(active); return; }
+      const save = event.currentTarget;
+      const channel = channels[active];
+      const token = revision;
+      const status = dialog.querySelector("[data-contact-status]");
+      save.disabled = true;
+      try {
+        const canvas = document.createElement("canvas");
+        const width = Math.max(currentImage.naturalWidth, 640);
+        const padding = Math.round(width * 0.06);
+        const height = Math.round((width - padding * 2) * currentImage.naturalHeight / currentImage.naturalWidth);
+        canvas.width = width;
+        canvas.height = height + padding * 2 + 120;
+        const ctx = canvas.getContext("2d");
+        ctx.fillStyle = "#fff";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#151717";
+        ctx.textAlign = "center";
+        ctx.font = "bold 32px sans-serif";
+        ctx.fillText("多元拾光", width / 2, 48);
+        ctx.font = "26px sans-serif";
+        ctx.fillText(channel.title, width / 2, 90);
+        ctx.drawImage(currentImage, padding, 120 + padding, width - 2 * padding, height);
+        const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/png"));
+        if (!dialog.open || token !== revision) return;
+        if (!blob) throw new Error("Empty image");
+        const url = URL.createObjectURL(blob);
+        if (/iPad|iPhone|iPod|MicroMessenger/i.test(navigator.userAgent) || !("download" in document.createElement("a"))) {
+          previewUrl = url;
+          const image = new Image();
+          image.src = url;
+          image.alt = channel.title + "保存图片";
+          dialog.querySelector("[data-contact-image]").replaceChildren(image);
+          status.textContent = "长按图片，选择保存图片";
+          save.textContent = "返回二维码";
+          dialog.querySelector("[data-contact-switch]").hidden = true;
+          dialog.querySelector("[data-contact-fallback]").hidden = true;
+        } else {
+          const link = document.createElement("a");
+          link.href = url;
+          link.download = active === "community" ? "多元拾光-社群二维码.png" : "多元拾光-小助手二维码.png";
+          link.click();
+          window.setTimeout(() => URL.revokeObjectURL(url), 60000);
+          status.textContent = "已请求浏览器下载，请在下载记录中查看图片。";
+        }
+      } catch {
+        if (token === revision) status.textContent = "图片生成失败，请重试。";
+      } finally {
+        if (token === revision) save.disabled = false;
+      }
+    };
+    contactEntry.addEventListener("click", (event) => {
+      event.preventDefault();
+      showChannel("community");
+      dialog.showModal();
+    });
+    dialog.querySelector("[data-contact-close]").onclick = () => dialog.close();
+    dialog.querySelector("[data-contact-switch]").onclick = () => showChannel(active === "community" ? "business" : "community");
+    dialog.querySelector("[data-contact-retry]").onclick = () => showChannel(active, true);
+    dialog.addEventListener("cancel", (event) => { if (previewUrl) { event.preventDefault(); showChannel(active); } });
+    dialog.addEventListener("close", () => { revision++; clearPreview(); });
+    dialog.addEventListener("click", (event) => {
+      if (event.target !== dialog) return;
+      const rect = dialog.getBoundingClientRect();
+      if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
+    });
+  }
   let createActionSheet = null;
   const setCreateActionSheet = (open) => {
     if (!createActionSheet) return;
@@ -41,6 +171,7 @@
         <header class="mobile-sheet-head"><h2 id="mobile-create-action-title">选择创作方式</h2><button class="mobile-icon-button" type="button" data-mobile-create-action-close aria-label="关闭创作方式"><img class="mobile-icon" src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></button></header>
         <div class="mobile-create-action-list">
           <a class="mobile-create-action-option" href="./mobile-create.html"><span><img class="mobile-icon" src="resources/icons/remixicon/svg/Design/quill-pen-ai-line.svg" alt=""></span><strong>AIGC 生成</strong><img class="mobile-icon" src="resources/icons/remixicon/svg/Arrows/arrow-right-s-line.svg" alt=""></a>
+          <a class="mobile-create-action-option" href="./mobile-work-publish.html"><span><img class="mobile-icon" src="resources/icons/remixicon/svg/System/upload-2-line.svg" alt=""></span><strong>直接发布作品</strong></a>
           <a class="mobile-create-action-option" href="./mobile-community.html?module=flash&amp;compose=1"><span><img class="mobile-icon" src="resources/icons/remixicon/svg/Document/sticky-note-add-line.svg" alt=""></span><strong>发布闪念</strong><img class="mobile-icon" src="resources/icons/remixicon/svg/Arrows/arrow-right-s-line.svg" alt=""></a>
         </div>
       </div>`;
@@ -500,7 +631,7 @@
       promptChoiceSheet.querySelectorAll("[data-mobile-prompt-choice-close]").forEach((button) => button.addEventListener("click", () => setPromptSheet(promptChoiceSheet, false)));
       promptChoiceSheet.querySelector("[data-mobile-prompt-direct-publish]")?.addEventListener("click", () => {
         setPromptSheet(promptChoiceSheet, false);
-        setPromptSheet(promptPublishSheet, true);
+        location.assign("./mobile-work-publish.html?activity_code=prompt&activity_entry=activity_detail");
       });
       promptPublishSheet.querySelectorAll("[data-mobile-prompt-publish-close]").forEach((button) => button.addEventListener("click", () => setPromptSheet(promptPublishSheet, false)));
       const promptTitle = promptPublishForm.querySelector("[data-mobile-prompt-publish-title-input]");
@@ -992,18 +1123,21 @@
       failed: { status: "生成失败", title: () => "请调整提示词后重试", meta: () => "本次未生成作品", action: "返回修改" },
       unknown: { status: "状态待确认", title: (kind) => `${kind}任务仍在处理`, meta: (model) => `${model} · 可稍后刷新`, action: "刷新状态" },
     };
-    const createResultUrl = (mode, model) => {
+    const createResultUrl = (mode, model, generationNo, inputPrompt) => {
       const query = new URLSearchParams({ mode });
+      query.set("generation_no", generationNo);
+      query.set("prompt", inputPrompt);
       if (model) query.set("model", model);
       if (sourceType) query.set("source", sourceType);
       return `./mobile-generation-result.html?${query.toString()}`;
     };
-    const syncCreateTaskUrl = ({ mode, state, prompt, model }) => {
-      const query = new URLSearchParams({ mode, state, prompt, model });
+    const syncCreateTaskUrl = ({ mode, state, prompt, model, generationNo }) => {
+      const query = new URLSearchParams({ mode, state, prompt, model, generation_no:generationNo });
       if (sourceType) query.set("source", sourceType);
       window.history.replaceState(null, "", `${window.location.pathname}?${query.toString()}`);
     };
     const appendCreateTask = (submittedPrompt, initialState = "running", { scroll = false, restored = false } = {}) => {
+      const generationNo = restored && params.get("generation_no") || "G-" + crypto.randomUUID();
       const taskMode = createState.mode;
       const taskKind = taskMode === "video" ? "视频" : taskMode === "script" ? "剧本" : "图片";
       const taskModel = restored && params.get("model") ? params.get("model") : createState[taskMode].model;
@@ -1069,7 +1203,7 @@
           showToast("生成完成后可查看结果");
           return;
         }
-        window.location.href = createResultUrl(taskMode, taskModel);
+        window.location.href = createResultUrl(taskMode, taskModel, generationNo, submittedPrompt);
       };
       const renderCreateTask = () => {
         const state = createTaskStates[taskState];
@@ -1089,7 +1223,7 @@
           ? "resources/icons/remixicon/svg/System/eye-line.svg"
           : "resources/icons/remixicon/svg/System/refresh-line.svg";
         taskAction.setAttribute("aria-label", state.action);
-        syncCreateTaskUrl({ mode: taskMode, state: taskState, prompt: submittedPrompt, model: taskModel });
+        syncCreateTaskUrl({ mode: taskMode, state: taskState, prompt: submittedPrompt, model: taskModel, generationNo });
       };
       taskPreview.addEventListener("click", openTaskResult);
       taskAction.addEventListener("click", () => {
@@ -1190,7 +1324,7 @@
     campaignChoiceSheet.querySelectorAll("[data-mobile-campaign-choice-close]").forEach((button) => button.addEventListener("click", () => setCampaignSheet(campaignChoiceSheet, false)));
     campaignChoiceSheet.querySelector("[data-mobile-campaign-direct-upload]")?.addEventListener("click", () => {
       setCampaignSheet(campaignChoiceSheet, false);
-      setCampaignSheet(campaignUploadSheet, true);
+      location.assign("./mobile-work-publish.html?activity_code=campaign&activity_entry=activity_detail");
     });
     campaignUploadSheet.querySelectorAll("[data-mobile-campaign-upload-close]").forEach((button) => button.addEventListener("click", () => setCampaignSheet(campaignUploadSheet, false)));
     campaignUploadInput?.addEventListener("change", () => {
@@ -1302,6 +1436,7 @@
     const submitButton = document.querySelector(`[data-mobile-generator-submit][form="${form.id}"]`);
     const submitLabel = submitButton?.querySelector("[data-mobile-generator-submit-label]");
     const costLabel = submitButton?.closest(".mobile-form-action-bar")?.querySelector(".mobile-cost span");
+    let generationNo = params.get("generation_no") || "G-" + crypto.randomUUID();
     let generationState = params.get("state") || "";
     const stateMap = {
       queue: { badge: "排队中", badgeClass: "is-running", title: `正在等待${generationKind}生成`, message: "当前进度 18%", progress: 18, action: "刷新状态" },
@@ -1311,12 +1446,13 @@
       unknown: { badge: "状态未知", badgeClass: "is-warning", title: "状态暂不可确认", message: "任务仍在后台处理，可稍后刷新", progress: 42, action: "刷新状态" },
     };
     const resultUrl = () => {
-      const query = new URLSearchParams({ mode: generationMode });
+      const query = new URLSearchParams({ mode: generationMode, generation_no:generationNo, model:generationModel, prompt:form.elements.prompt.value });
       if (generationSource) query.set("source", generationSource);
       return `./mobile-generation-result.html?${query.toString()}`;
     };
     const syncTaskUrl = () => {
       const query = new URLSearchParams(new FormData(form));
+      query.set("generation_no", generationNo);
       if (generationState) query.set("state", generationState);
       query.set("model", generationModel);
       if (generationSource) query.set("source", generationSource);
@@ -1372,6 +1508,7 @@
         return;
       }
       if (error) error.textContent = "";
+      generationNo = "G-" + crypto.randomUUID();
       generationState = "running";
       syncTaskUrl();
       renderTask({ focus: true });
@@ -1440,6 +1577,7 @@
       if (resultSource) retryQuery.set("source", resultSource);
       retry.href = `./mobile-create.html?${retryQuery.toString()}`;
     }
+    if (params.get("prompt") && prompt) prompt.textContent = params.get("prompt");
     promptToggle?.addEventListener("click", () => {
       const expanded = promptToggle.getAttribute("aria-expanded") === "true";
       promptToggle.setAttribute("aria-expanded", expanded ? "false" : "true");
@@ -1447,7 +1585,7 @@
       if (promptToggleLabel) promptToggleLabel.textContent = expanded ? "展开创作信息" : "收起创作信息";
     });
     const resultPrimary = document.querySelector("[data-mobile-result-primary]");
-    const resultPrimaryLabel = document.querySelector("[data-mobile-result-primary-label]");
+
     const resultPrimaryIcon = document.querySelector("[data-mobile-result-primary-icon]");
     const destinationSheet = document.querySelector("[data-mobile-result-destination-sheet]");
     const destinationList = document.querySelector("[data-mobile-result-destination-list]");
@@ -1465,27 +1603,27 @@
       if (resultPrimaryIcon) resultPrimaryIcon.src = "resources/icons/remixicon/svg/Document/file-check-line.svg";
     }
     destinationSheet?.querySelectorAll("[data-mobile-result-destination-close]").forEach((button) => button.addEventListener("click", () => setDestinationSheet(false)));
-    const publishResult = () => {
+    const publishResult = (submitToActivity = false) => {
       if (!resultPrimary || resultPrimary.getAttribute("aria-disabled") === "true") return;
       setDestinationSheet(false);
-      resultPrimary.setAttribute("aria-disabled", "true");
-      if (resultPrimaryLabel) resultPrimaryLabel.textContent = "发布审核中";
-      showToast("作品已提交发布");
+      const id = params.get("generation_no") || "sample-" + resultMode;
+      const records = JSON.parse(sessionStorage.getItem("community.preview.generations") || "{}");
+      records[id] = {type: resultMode === "script" ? "text" : resultMode, title: title?.textContent.trim(),
+        intro: script && resultMode === "script" ? script.textContent.trim() : '',
+        prompt: prompt?.textContent.trim(), model: resultModel || meta?.textContent.split(" · ")[0],
+        media: resultMode === "script" ? [] : [resultMode === "video" ? (video.currentSrc || video.querySelector("source")?.src || video.src) : image.src],
+        activity: resultSource, resultUrl:location.href, status: "success"};
+      sessionStorage.setItem("community.preview.generations", JSON.stringify(records));
+      const query = new URLSearchParams({generation_no: id});
+      if (submitToActivity && activityResult) query.set("activity_code", resultSource);
+      location.assign("./mobile-work-publish.html?" + query);
+
+
     };
-    communityDestination?.addEventListener("click", publishResult);
-    activityDestination?.addEventListener("click", () => {
-      setDestinationSheet(false);
-      if (resultSource === "prompt") {
-        window.location.assign("./mobile-activity-detail.html#mobile-activity-participation");
-        return;
-      }
-      window.location.assign("./mobile-campaign-detail.html#mobile-campaign-participation");
-    });
+    communityDestination?.addEventListener("click", () => publishResult());
+    activityDestination?.addEventListener("click", () => publishResult(true));
     resultPrimary?.addEventListener("click", () => {
-      if (resultPrimary.getAttribute("aria-disabled") === "true") {
-        showToast("作品已提交发布");
-        return;
-      }
+      if (resultPrimary.getAttribute("aria-disabled") === "true") return;
       setDestinationSheet(true);
     });
   }

@@ -1,0 +1,45 @@
+.membership-perk-link {
+  color: #f4c95d;
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.membership-perk-link:focus-visible {
+  outline: 2px solid #f4c95d;
+  outline-offset: 3px;
+}
+
+.membership-sign-in {
+  align-items: center;
+  background: #131419;
+  border: 1px solid var(--c02f-line);
+  border-radius: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
+  margin: 16px 0;
+  padding: 16px 20px;
+  scroll-margin-top: 80px;
+}
+
+.membership-sign-in[hidden], .membership-task-offer[hidden] { display: none; }
+.membership-sign-in h2 { font-size: 18px; margin: 0 0 6px; }
+.membership-sign-in p { color: var(--c02f-muted); line-height: 1.5; margin: 4px 0; }
+.membership-sign-in [data-membership-sign-result] { color: var(--c02f-paper); font-weight: 700; }
+.membership-sign-actions { align-items: center; display: flex; flex-wrap: wrap; gap: 14px; }
+.membership-sign-actions button:disabled { cursor: default; opacity: .65; }
+.membership-points-summary { color: var(--c02f-muted); font-size: 13px; margin: 4px 0 6px; }
+.membership-permanent-ledger h3, .membership-limited-ledger-title { font-size: 15px; margin: 14px 0 8px; }
+.membership-permanent-ledger p { color: var(--c02f-muted); font-size: 13px; margin: 0 0 12px; }
+.c02f-record-table > [hidden], .membership-permanent-ledger .c02f-record-table[hidden] { display: none; }
+.membership-store-pricing { color: var(--c02f-muted); font-size: 13px; line-height: 1.6; margin: 14px 0 0; }
+.membership-store-pricing p { margin: 0 0 4px; }
+.membership-store-pricing:not([hidden]) { display: block; }
+.membership-store-feedback:not(:empty) { color: #f4c95d; margin-top: 12px; }
+.c02f-redeem-summary [data-redeem-product] { overflow-wrap: anywhere; white-space: normal; }
+.c02e-task-card[id^="task-"] { scroll-margin-top: 90px; }
+.c02e-task-head { flex-wrap: wrap; }
+.membership-task-offer { align-items: baseline; display: inline-flex; flex-wrap: wrap; gap: 5px 10px; }
+.membership-task-rates { color: #d3c8b7; font-size: 12px; }

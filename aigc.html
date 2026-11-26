@@ -7,6 +7,8 @@
   <link rel="icon" type="image/svg+xml" href="assets/brand/duoyuan-shiguang-favicon.svg">
   <link rel="stylesheet" href="./style.css?v=20260805-c02b1">
   <link rel="stylesheet" href="./c02c-alignment.css?v=20260805-c02c1">
+<script src="./membership-state.js" defer></script>
+<script src="./membership-site.js" defer></script>
 </head>
 <body>
   <div class="page aigc-page c02c-page" data-page="community-aigc">
@@ -17,12 +19,12 @@
           <span class="brand-copy"><span class="brand-name">多元拾光</span><span class="brand-sub">AI原生实践者社区</span></span>
         </a>
         <nav class="nav" aria-label="主导航">
-          <a href="./index.html">首页</a><a class="is-active" href="./aigc.html">AIGC</a><a href="./model-plaza.html">模型广场</a><a href="./flash.html">闪念</a><a href="./tutorial.html">官方教程</a>
+          <a href="./index.html">首页</a><a class="is-active" href="./aigc.html">AIGC</a><a href="https://duoyuanx.com/pricing" target="_blank" rel="noopener noreferrer">模型广场</a><a href="./flash.html">闪念</a><a href="./tutorial.html">官方教程</a>
         </nav>
         <div class="header-actions">
           <a class="action-link activity-center-link" href="./activity-center.html" data-nav-action="activity-center" data-action-label="活动中心">活动中心</a>
           <a class="action-link" href="./invite.html" data-nav-action="invite">邀请有礼</a>
-          <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a>
+          <a class="action-link" href="./member-store.html" data-nav-action="member">AI商城</a><a class="action-link" href="./membership.html" data-nav-action="membership">会员</a>
           <a class="action-link points-link" href="./points-center.html" data-nav-action="points" data-action-label="积分 1280"><span>积分</span><strong>1280</strong></a>
           <a class="icon-action notification-link" href="./message-center.html" data-nav-action="messages" data-action-label="消息中心" aria-label="消息中心"><img src="resources/icons/remixicon/svg/Media/notification-3-line.svg" alt=""></a>
           <a class="user-avatar-link" href="./user-center.html" data-nav-action="profile" data-action-label="用户头像" aria-label="用户头像"><img src="assets/image_assets/1.png" alt=""></a>
@@ -61,7 +63,7 @@
           <div class="c02c-canvas-copy">
             <span class="c02c-kicker">AIGC CANVAS</span>
             <h2>一句话长成完整漫剧</h2>
-            <p>真实 C 端把漫剧工作台作为独立站点承接。当前页只负责说明能力并在离站前确认，不在社区原型内复制另一套画布。</p>
+            <p>编排场景、角色与分镜，在漫剧工作台完成你的故事。</p>
             <a class="c02c-primary" href="#canvas-leave">进入漫剧制作</a>
           </div>
         </div>
@@ -163,16 +165,18 @@
         <div class="v1-rule-section"><strong>页面定位</strong><span>Hero 承接快速生成，画布介绍承接漫剧外站，灵感广场统一承接社区作品与赛事投稿的发现、筛选和详情，不另开赛事作品模块。</span></div>
         <div class="v1-rule-section"><strong>用户主路径</strong><span>输入灵感打开全局生成，或浏览画布能力与灵感作品；作品详情中的复用动作再回到同一生成弹层。</span></div>
         <div class="v1-rule-section"><strong>关键字段</strong><span>模型、输出类型、提示词、输入图片、画面比例、分辨率、生成单号、结果内容、失败原因和积分成本均来自接口契约。</span></div>
-        <div class="v1-rule-section"><strong>状态规则</strong><span>生成状态固定为 0 处理中、1 成功、2 失败、3 已退款；原型只演示本地状态，不请求真实生成、不扣积分。</span></div>
+        <div class="v1-rule-section"><strong>状态规则</strong><span>生成状态固定为 0 处理中、1 成功、2 失败、3 已退款。原型用本地演示积分展示扣分和生成结果。</span></div>
         <div class="v1-rule-section"><strong>动作去向</strong><span>快速生成留在本页弹层，作品卡打开作品详情，漫剧制作经离站确认后进入本页落地页（/manga-handoff.html），校验成功后跳转到 dream.ai666.net 首页。</span></div>
         <div class="v1-rule-section"><strong>运营维护</strong><span>作品内容分类继承投稿时已选分类；赛事投稿自动带上 B端维护的赛事话题，审核通过且公开展示后进入原有作品流。模型名称、表单、支持比例、分辨率与积分成本由可用模型接口返回。</span></div>
         <div class="v1-rule-section"><strong>研发验收</strong><span data-engineering-rule>页面顺序固定为 CreateHero、CreateCanvasStudio、InspirationLibrary、浮动入口与全局生成弹层；赛事投稿卡片位于现有 data-template-related-works 作品流内，必须同时携带 content_type、赛事话题、work_id 与 submission_id，并复用统一作品详情；不得恢复独立赛事作品模块。</span></div>
-        <div class="v1-rule-section"><strong>交付边界</strong><span data-engineering-rule>静态原型只验证字段、状态和页面流转，不发起真实生成、不扣减积分、不保存账号数据；独立漫剧画布由 dream.ai666.net 承接，模型和积分以 Apifox 及运行接口实时返回为准。</span></div>
+        <div class="v1-rule-section"><strong>会员与生成</strong><span data-engineering-rule>生成前核对当前模型报价和积分余额。余额不足时通过原生成弹层上的会员页开通、续费或升档。返回后保留提示词、模型、比例和分辨率并刷新余额，由用户再次点击生成。</span></div>
+        <div class="v1-rule-section"><strong>交付边界</strong><span data-engineering-rule>会员购买、积分扣减和生成结果使用本地演示数据。独立漫剧画布由 dream.ai666.net 承接，真实模型和积分以 Apifox 及运行接口实时返回为准。</span></div>
       </div>
     </details>
     <div class="footer-space"></div>
   </div>
   <script src="./c02c-alignment.js?v=20260809-c02b2" defer></script>
   <script src="./walkthrough.js?v=20260809-c02b2" defer></script>
+  <script src="./membership-generation.js" defer></script>
 </body>
 </html>

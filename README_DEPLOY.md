@@ -1,6 +1,6 @@
 # AI666 社区模块公网静态预览包
 
-生成时间：2026-08-20T14:53:45.745Z
+生成时间：2026-11-25T16:12:14.425Z
 
 ## 用途
 
@@ -55,10 +55,13 @@ npm.cmd run validate:community:public-preview
 - 邀请有礼: invite.html
 - 登录承接: login.html
 - AI商城: member-store.html
+- 社区会员: membership.html
 - 用户中心: user-center.html
 
 ## 调试页
 
+- 作品与闪念分享: share.html
+- 移动端 H5 · 发布作品: mobile-work-publish.html
 - 赛事 C 端状态预览台: competition-state-preview.html
 - 内容详情弹层调试台: content-detail-modals.html
 - 一期活动预览入口: campaign-ops.html

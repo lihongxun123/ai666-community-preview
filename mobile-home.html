@@ -39,15 +39,15 @@
           <span class="mobile-home-shortcut-icon"><img class="mobile-icon" src="resources/icons/remixicon/svg/Business/calendar-event-line.svg" alt=""></span>
           <strong>活动中心</strong>
         </a>
-        <a href="./mobile-create.html" data-mobile-home-entry>
-          <span class="mobile-home-shortcut-icon"><img class="mobile-icon" src="resources/icons/remixicon/svg/Design/magic-line.svg" alt=""></span>
-          <strong>AIGC 生成</strong>
+        <a href="#contact" data-mobile-home-entry data-open-community-contact aria-haspopup="dialog">
+          <span class="mobile-home-shortcut-icon"><img class="mobile-icon" src="resources/icons/remixicon/svg/User & Faces/group-line.svg" alt=""></span>
+          <strong>加入社群</strong>
         </a>
         <a href="./mobile-points.html" data-mobile-home-entry>
           <span class="mobile-home-shortcut-icon"><img class="mobile-icon" src="resources/icons/remixicon/svg/Finance/coins-line.svg" alt=""></span>
           <strong>积分中心</strong>
         </a>
-        <a href="./mobile-tasks.html" data-mobile-home-entry>
+        <a href="./mobile-tasks.html" data-mobile-home-entry data-mobile-next-action>
           <span class="mobile-home-shortcut-icon"><img class="mobile-icon" src="resources/icons/remixicon/svg/Editor/list-check-3.svg" alt=""></span>
           <strong>新手任务</strong>
         </a>
@@ -87,12 +87,12 @@
   <aside id="mobile-walkthrough" class="mobile-walkthrough" data-mobile-walkthrough aria-hidden="true">
     <div class="mobile-walkthrough-head"><h2>移动首页走查规则</h2><button class="mobile-icon-button" type="button" data-mobile-walkthrough-close aria-label="关闭走查规则"><img class="mobile-icon" src="resources/icons/remixicon/svg/System/close-line.svg" alt=""></button></div>
     <div class="mobile-rule-grid">
-      <section class="mobile-rule-card"><strong>页面目的</strong><p>移动首页复用 Web 首页的 Banner、模块标题、分类名称和内容对象，并提供活动、创作、积分与新手任务四个高频入口。</p></section>
+      <section class="mobile-rule-card"><strong>页面目的</strong><p>移动首页复用 Web 首页的 Banner、模块标题、分类名称和内容对象，并提供活动、社群、积分和下一项任务的入口。</p></section>
       <section class="mobile-rule-card"><strong>页面骨架</strong><p>首页不设置顶部应用栏；底部五项是唯一一级导航，五项文字保持同一水平基线，创作加号单独上浮，首屏从 Banner 直接开始。</p></section>
       <section class="mobile-rule-card"><strong>内容一致</strong><p>Banner 固定展示 3 个当前对象；点击后分别进入移动视频创作、移动生图挑战详情和移动视频创作，不回落桌面页面。爆款作品保留全部、图片生成、视频生成、文本内容和短剧漫剧 5 个分类。</p></section>
-      <section class="mobile-rule-card"><strong>快捷入口</strong><p>Banner 下方固定展示活动中心、AIGC 生成、积分中心和新手任务；入口使用正式模块名并进入对应移动页面，不承载说明文案或移动端独立业务对象。</p></section>
+      <section class="mobile-rule-card"><strong>快捷入口</strong><p>前三格分别是活动中心、加入社群和积分中心。第二格打开社群二维码。第四格按下面选择的任务和活动样例，依次判断新手任务、今日签到、可做的积分活动和直接发布，活动列表读取失败时显示积分任务。</p></section>
       <section class="mobile-rule-card"><strong>筛选与列表</strong><p>分类在当前页完成筛选，不跳转桌面页面；作品使用双列瀑布流，首行优先放满两个可见作品，再按两列剩余高度补位。</p></section>
-      <section class="mobile-rule-card"><strong>验收</strong><p>360/390/430 无横向溢出；底部五项文字水平对齐且创作加号突出于底栏；4 个快捷入口均进入移动页面；3 个 Banner 均不得跳转桌面页面；5 个分类切换时 URL 不变；存在两个以上作品时首行必须占满两列，卡片继续按媒体原始比例自适应高度。</p></section>
+      <section class="mobile-rule-card"><strong>验收</strong><p>360/390/430 无横向溢出；底部五项文字水平对齐且创作加号突出于底栏；社群在首页打开和关闭，其他快捷入口进入对应页面；3 个 Banner 均不得跳转桌面页面；5 个分类切换时 URL 不变；存在两个以上作品时首行必须占满两列，卡片继续按媒体原始比例自适应高度。</p></section>
     </div>
   </aside>
   <div class="mobile-toast" data-mobile-toast role="status" aria-live="polite"></div>

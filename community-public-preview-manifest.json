@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-08-20T14:53:45.745Z",
+  "generatedAt": "2026-11-25T16:12:14.425Z",
   "packageType": "community-public-preview",
   "sourceRoot": "outputs/community-homepage-style-exploration",
   "entry": "index.html",
   "homepage": "index.html",
   "publishBasePath": "/ai666-community-preview",
-  "pageCount": 29,
+  "pageCount": 30,
   "pages": [
     {
       "slug": "index",
@@ -148,12 +148,27 @@
       "path": "member-store.html"
     },
     {
+      "slug": "membership",
+      "label": "社区会员",
+      "path": "membership.html"
+    },
+    {
       "slug": "user-center",
       "label": "用户中心",
       "path": "user-center.html"
     }
   ],
   "standalonePages": [
+    {
+      "slug": "share",
+      "label": "作品与闪念分享",
+      "path": "share.html"
+    },
+    {
+      "slug": "mobile-work-publish",
+      "label": "移动端 H5 · 发布作品",
+      "path": "mobile-work-publish.html"
+    },
     {
       "slug": "competition-state-preview",
       "label": "赛事 C 端状态预览台",
@@ -296,6 +311,19 @@
     }
   ],
   "copiedRuntimeRoots": [
+    "community-released.js",
+    "community-released.css",
+    "mobile-next-action.js",
+    "mobile-work-publish.js",
+    "membership-state.js",
+    "membership-site.js",
+    "membership-ui.js",
+    "membership.css",
+    "membership-generation.js",
+    "membership-benefits.js",
+    "membership-benefits.css",
+    "membership-identity.js",
+    "membership-identity.css",
     "walkthrough.js",
     "c02c-alignment.css",
     "c02c-alignment.js",
@@ -319,7 +347,13 @@
     "c02c-alignment.js",
     "c02d-alignment.js",
     "c02e-alignment.js",
-    "c02f-alignment.js"
+    "c02f-alignment.js",
+    "membership-state.js",
+    "membership-site.js",
+    "membership-ui.js",
+    "membership-generation.js",
+    "membership-benefits.js",
+    "membership-identity.js"
   ],
   "copiedAssets": [
     "assets/competition/aigc-competition-hero-ocean-pod.png",
@@ -391,6 +425,8 @@
     "assets/image_assets/tutorial-cover-TU000108.jpg",
     "assets/image_assets/tutorial-cover-TU000109.jpg",
     "assets/image_assets/tutorial-official-banner-v3.webp",
+    "assets/mobile/contact-business.jpg",
+    "assets/mobile/contact-community.jpg",
     "assets/mobile/invite-pass-background.webp",
     "assets/video_assets/aigc-hero-c02c.mp4",
     "assets/video_assets/nine_grid.mp4",
@@ -402,6 +438,7 @@
     "resources/icons/remixicon/svg/Arrows/arrow-left-s-line.svg",
     "resources/icons/remixicon/svg/Arrows/arrow-right-line.svg",
     "resources/icons/remixicon/svg/Arrows/arrow-right-s-line.svg",
+    "resources/icons/remixicon/svg/Arrows/arrow-right-up-line.svg",
     "resources/icons/remixicon/svg/Arrows/arrow-up-line.svg",
     "resources/icons/remixicon/svg/Buildings/community-line.svg",
     "resources/icons/remixicon/svg/Buildings/home-5-line.svg",
@@ -424,7 +461,6 @@
     "resources/icons/remixicon/svg/Design/magic-line.svg",
     "resources/icons/remixicon/svg/Design/quill-pen-ai-line.svg",
     "resources/icons/remixicon/svg/Development/code-box-line.svg",
-    "resources/icons/remixicon/svg/Development/terminal-window-line.svg",
     "resources/icons/remixicon/svg/Device/restart-line.svg",
     "resources/icons/remixicon/svg/Device/smartphone-line.svg",
     "resources/icons/remixicon/svg/Document/article-line.svg",
@@ -447,6 +483,8 @@
     "resources/icons/remixicon/svg/Finance/gift-line.svg",
     "resources/icons/remixicon/svg/Finance/trophy-line.svg",
     "resources/icons/remixicon/svg/Finance/vip-crown-2-fill.svg",
+    "resources/icons/remixicon/svg/Finance/vip-crown-2-line.svg",
+    "resources/icons/remixicon/svg/Finance/vip-diamond-line.svg",
     "resources/icons/remixicon/svg/Health & Medical/heart-3-line.svg",
     "resources/icons/remixicon/svg/Logos/wechat-line.svg",
     "resources/icons/remixicon/svg/Map/compass-3-line.svg",
@@ -492,6 +530,7 @@
     "resources/icons/remixicon/svg/User & Faces/user-line.svg",
     "resources/icons/remixicon/svg/User & Faces/user-settings-line.svg",
     "resources/icons/remixicon/svg/Weather/flashlight-fill.svg",
+    "resources/icons/remixicon/svg/Weather/flashlight-line.svg",
     "resources/icons/remixicon/svg/Weather/shining-2-fill.svg",
     "resources/icons/remixicon/svg/Weather/sparkling-2-fill.svg",
     "resources/icons/remixicon/svg/Weather/sparkling-2-line.svg"

@@ -25356,3 +25356,5 @@ body:has(#points:target) .profile-anchor-nav a[href="#points"] em {
 body:has(dialog[open], .create-modal:target, .v1-walkthrough-drawer.is-open) .desktop-community-contact,
 :fullscreen .desktop-community-contact { display: none; }
 @media (max-width: 767px) { .desktop-community-contact { display: none; } }
+
+html:not(.prototype-review) [data-v1-walkthrough-drawer] { display: none !important; }

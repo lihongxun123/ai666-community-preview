@@ -85,7 +85,7 @@
       }
       if (heroEnglish) heroEnglish.textContent = activeChannel === 'announcement' ? 'ANNOUNCEMENTS' : 'NOTIFICATIONS';
       if (heroTitle) heroTitle.textContent = activeChannel === 'announcement' ? '公告中心' : '通知中心';
-      if (heroCopy) heroCopy.textContent = activeChannel === 'announcement' ? '查看社区发布的官方公告。' : '及时查看社区互动与系统提醒。';
+      if (heroCopy) heroCopy.textContent = activeChannel === 'announcement' ? '查看社区发布的官方公告。' : '';
     };
 
     channelButtons.forEach((button) => button.addEventListener('click', () => {
@@ -399,7 +399,7 @@
       const copy = confirmModal?.querySelector('[data-confirm-copy]');
       const status = confirmModal?.querySelector('[data-confirm-status]');
       if (title) title.textContent = pendingAction;
-      if (copy) copy.textContent = `${pendingAction}后，列表会按真实接口返回结果刷新。`;
+      if (copy) copy.textContent = `确定要${pendingAction}吗？`;
       if (status) status.textContent = '';
       openModal(confirmModal);
     }));

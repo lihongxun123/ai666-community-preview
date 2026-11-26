@@ -56,36 +56,8 @@
     node.textContent = node.textContent.replace('限时积分', '积分');
   });
 
-  const activityCode = document.querySelector('.page')?.dataset.activityCode;
-  const detailParagraphs = document.querySelectorAll('[data-c02e-activity-detail] .c02e-detail-block p');
-  const userFacingDescriptions = {
-    ai_image_challenge: ['围绕当期主题发布 AI 图片作品。请按本期要求选择内容类型、媒体、模型与场景。', '完成任务后，进度和奖励状态会及时更新。'],
-    prompt_co_creation: ['发布可复用的 Prompt 作品，并按本期要求补充内容、媒体、模型与场景信息。', '优秀作品会进入活动投稿流，供更多创作者发现和复用。'],
-    newbie_task: ['完成账号、互动与创作相关的新手任务，逐步熟悉社区。'],
-    growth_7day: ['在当前任务周期内持续完成每日任务，逐步解锁后续成长奖励。'],
-  };
-  (userFacingDescriptions[activityCode] || []).forEach((value, index) => {
-    if (detailParagraphs[index]) detailParagraphs[index].textContent = value;
-  });
-  const taskDescriptions = {
-    homepage_work: '完成任务后会更新状态与对应奖励。',
-    add_case: '按活动要求补充能够说明 Prompt 效果的案例媒体。',
-    prompt_selected: '优秀作品将进入活动精选或推荐候选。',
-    growth_day_7: '第 7 天：发布 1 个 AI 作品',
-  };
-  Object.entries(taskDescriptions).forEach(([taskCode, value]) => {
-    const task = document.querySelector(`[data-task-code="${taskCode}"]`);
-    const description = task?.querySelector('.c02e-task-main p');
-    if (description) description.textContent = value;
-  });
-
   const modal = document.querySelector('[data-c02e-choice-modal]');
   const result = modal?.querySelector('[data-c02e-choice-result]');
-  const choiceHelp = modal?.querySelector('.c02e-choice-head p');
-  const choiceDescriptions = modal?.querySelectorAll('.c02e-choice-option span');
-  if (choiceHelp) choiceHelp.textContent = '选择继续生成新作品，或直接上传已有作品。';
-  if (choiceDescriptions?.[0]) choiceDescriptions[0].textContent = '打开生成工具，完成作品后发布到本次活动';
-  if (choiceDescriptions?.[1]) choiceDescriptions[1].textContent = '填写作品内容，并上传已经准备好的素材';
   const openChoice = () => {
     if (!modal) return;
     modal.classList.add('is-open');

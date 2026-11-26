@@ -7,6 +7,7 @@
   }
   const body = document.body;
   const params = new URLSearchParams(window.location.search);
+  document.documentElement.classList.toggle("prototype-review", params.get("review") === "1");
   document.querySelectorAll("[data-mobile-walkthrough-review-only]").forEach((trigger) => {
     trigger.hidden = params.get("review") !== "1";
   });

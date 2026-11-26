@@ -1,4 +1,5 @@
 (function () {
+  document.documentElement.classList.toggle("prototype-review", new URLSearchParams(location.search).get("review") === "1");
   if (!document.querySelector("script[data-community-released]")) {
     const script = document.createElement("script");
     script.src = new URL("community-released.js", document.currentScript.src);

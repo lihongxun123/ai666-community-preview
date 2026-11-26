@@ -141,7 +141,7 @@
     open();
   });
   const info = document.querySelector("[data-mobile-walkthrough]");
-  if (slot && info) {
+  if (slot && info && new URLSearchParams(location.search).get("review") === "1") {
     const label = document.createElement("label");
     label.className = "mobile-rule-card";
     label.textContent = "第四格演示账号的任务与活动";

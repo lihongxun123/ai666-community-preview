@@ -7057,3 +7057,5 @@ body[data-mobile-clean="true"] .mobile-walkthrough {
     animation-iteration-count: 1 !important;
   }
 }
+
+html:not(.prototype-review) :is([data-mobile-walkthrough-open], [data-mobile-walkthrough]) { display: none !important; }

@@ -22,7 +22,6 @@ const requestCost = options.get("required");
 const required = requestCost !== null && /^\d+$/.test(requestCost) ? Number(requestCost) : null;
 const generationIntent = ["generate-capsule","generate"].includes(memberSource) && Number.isSafeInteger(required) ? {source:memberSource,required} : null;
 const purchaseText = {open:"开通",renew:"续费",upgrade:"升级为"};
-const avatarImage = "assets/image_assets/c02f-user-avatar.webp";
 const icons = {
   back:"resources/icons/remixicon/svg/Arrows/arrow-left-line.svg", link:"resources/icons/remixicon/svg/Arrows/arrow-right-up-line.svg",
   coins:"resources/icons/remixicon/svg/Finance/coins-line.svg", crown:"resources/icons/remixicon/svg/Finance/vip-crown-2-line.svg",
@@ -120,13 +119,6 @@ function remainingAfter(points) {
 }
 
 
-function avatar(tier, wear, motion = false) {
-  const charmIcon = { month: "charm", quarter: "lightning", year: "crown", jade: "gift" };
-  const skin = tierSkin(tier);
-  return `<span class="avatar-badge ${tier ? `tier-${skin}` : ""}" data-motion="${motion}">
-    <img src="${avatarImage}" alt="">${tier && wear ? `<span class="charm" aria-label="动态挂件">${ico(charmIcon[skin])}</span>` : ""}
-  </span>`;
-}
 
 function tierTag(plan, clickable = false) {
   if (!plan) return "";
@@ -135,16 +127,6 @@ function tierTag(plan, clickable = false) {
   return `<span class="${css}">${memberName(plan)}</span>`;
 }
 
-function avatarPreview(plan, selected = false) {
-  const heading = plan.style || plan.name;
-  return `<div class="avatar-sample tier-${tierSkin(plan.id)}">
-    <div class="avatar-line">
-      ${avatar(plan.id, true, selected)}
-      <div><span class="avatar-name">拾光创作者</span><div>${tierTag(plan)}</div></div>
-    </div>
-    <small>${escapeHtml(heading)}</small>
-  </div>`;
-}
 
 function offerLabel(value) {
   if (!value || value === "常规价") return "";
@@ -173,7 +155,7 @@ function planCard(plan, snapshot, active) {
   return `<article class="plan tier-${tierSkin(plan.id)}" id="plan-${plan.id}" data-selected="${selectedTier === plan.id}" tabindex="-1">
     <div class="plan-title"><h3>${memberName(plan)}</h3>
       ${active === plan.id ? '<span class="status-chip">当前档位</span>' : ""}
-      <button class="plain preview-control" type="button" data-action="preview-style" data-value="${plan.id}">${avatar(plan.id, true)}预览装扮</button>
+      <button class="plain preview-control" type="button" data-action="preview-style" data-value="${plan.id}">${window.MemberArt.portrait(tierSkin(plan.id))}预览装扮</button>
     </div>
     <div class="price-line"><strong>${money(quote.amount)}</strong><span>/ ${term(plan)}</span>
       ${quote.amount < quote.regular ? `<del>${money(quote.regular)}</del>` : ""}</div>
@@ -313,7 +295,8 @@ const actions = {
   "back-from-order"(target) { returnToSource(target); },
   "preview-style"(tier) {
     const plan = getPlan(tier);
-    showDialog(`${plan.name}装扮`, `${avatarPreview(plan,true)}<p class="payment-note">头像框、昵称样式和挂件在社区公开展示。挂件可在个人中心摘下。</p>`);
+    showDialog(plan.name + "装扮", '<div data-member-try></div>');
+    window.MemberArt.tryOn(dialog.querySelector("[data-member-try]"), tierSkin(plan.id), plan);
   },
   buy(tier) {
     selectedTier = tier;

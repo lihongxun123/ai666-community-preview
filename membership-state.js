@@ -45,7 +45,7 @@
   function initUser(preset) {
     const user = {
       loggedIn:preset !== 'guest', tier:null, expiresAt:null, permanent:0, limited:[],
-      firstUsed:false, wear:true, signedDay:null, signAward:0, taskAward:null, usedCampaigns:[], tasks:{}
+      firstUsed:false, wear:true, wearFrame:true, signedDay:null, signAward:0, taskAward:null, usedCampaigns:[], tasks:{}
     };
     if (['month','year','expired','support'].includes(preset)) {
       user.tier = preset === 'month' ? 'month' : 'year';
@@ -87,6 +87,7 @@
     state.user = state.accounts[state.accountId];
     state.activityBudget ||= {pending:0,used:0};
     for (const user of Object.values(state.accounts)) {
+      user.wearFrame ??= true;
       user.tasks ||= {};
       user.signAwards ||= {};
       if (user.signedDay) user.signAwards[user.signedDay] ??= user.signAward;
@@ -503,7 +504,7 @@
       const user=load().accounts[accountId];
       if (!user) return null;
       const tier=active(user);
-      return {tier,wear:Boolean(tier && user.wear)};
+      return {tier,wear:Boolean(tier && user.wear),wearFrame:Boolean(tier && user.wearFrame)};
     },
     switchAccount(accountId,preset='new') {
       return change(state=>{
@@ -537,6 +538,7 @@
     task(taskId='main'){const tasks=load().user.tasks;return Object.hasOwn(tasks,taskId) ? tasks[taskId] : null;},
     achieveTask:(base=100,taskId='main')=>change(state=>achieve(state,base,taskId)),
     releaseTask:(taskId='main')=>change(state=>release(state,taskId)),spend,
+    toggleFrame:()=>change(state=>{requireValue(active(state.user),'会员到期后可重新开通');return state.user.wearFrame=!state.user.wearFrame;}),
     toggleWear:()=>change(state=>{requireValue(active(state.user),'会员到期后可重新开通');return state.user.wear=!state.user.wear;}),
     createPlan,updatePlan,saveCampaign,
     importCodes(values,batchName){return change(state=>{

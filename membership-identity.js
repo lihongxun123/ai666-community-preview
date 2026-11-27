@@ -44,6 +44,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (higher) upgrade.href = membershipLink('profile', returnTo, higher.id);
     else upgrade.removeAttribute('href');
 
+    const frame = area.querySelector('[data-membership-profile-frame]');
+    frame.hidden = !plan;
+    frame.textContent = snapshot.user.wearFrame ? '摘下头像框' : '佩戴头像框';
     wear.hidden = !plan;
     wear.textContent = snapshot.user.wear ? '摘下动态挂件' : '佩戴动态挂件';
     orders.hidden = !snapshot.user.loggedIn;
@@ -82,21 +85,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    if (avatar) {
-      let charm = avatar.querySelector('[data-membership-charm]');
-      if (plan && identity.wear) {
-        if (!charm) {
-          charm = document.createElement('i');
-          charm.dataset.membershipCharm = '';
-          charm.setAttribute('role', 'img');
-          charm.setAttribute('aria-label', '动态挂件');
-          avatar.append(charm);
-        }
-        charm.classList.toggle('is-playing', playing);
-      } else {
-        charm?.remove();
-      }
-    }
+    if (avatar) window.MemberArt.dress(avatar, skin, Boolean(plan && identity.wearFrame),
+      Boolean(plan && identity.wear), playing);
   };
 
   const refresh = () => {
@@ -115,6 +105,11 @@ document.addEventListener('DOMContentLoaded', () => {
     empty.hidden = knownAuthor;
     document.title = knownAuthor ? '拾光创作者的主页 - 多元拾光' : '创作者主页 - 多元拾光';
   }
+
+  document.querySelector('[data-membership-profile-frame]')?.addEventListener('click', () => {
+    if (membership.activeTier()) membership.toggleFrame();
+    refresh();
+  });
 
   document.querySelector('[data-membership-profile-wear]')?.addEventListener('click', () => {
     if (membership.activeTier()) membership.toggleWear();
